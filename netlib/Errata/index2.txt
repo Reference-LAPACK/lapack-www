@@ -1,0 +1,249 @@
+LAPACK-3.3.0 errata file
+========================
+
+updated on Mon Feb 7 2011
+
+maintained by Julien Langou, U. Colorado Denver and Julie Langou, U. Tennessee
+
+link:http://www.netlib.org/lapack/Errata/errata_clapack_3.2.1.html[CLAPACK-3.2.1 errata file]
+
+link:http://www.netlib.org/lapack/Errata/errata_blacs_1.1.patch3.html[BLACS-1.1.patch3 errata file]
+
+link:http://www.netlib.org/lapack/Errata/errata_scalapack_1.8.0.html[ScaLAPACK-1.8.0 errata file]
+
+link:http://www.netlib.org/lapack/WishList/[Wishlist]
+
+[red,,1.5]#RED means BUG WAS CONFIRMED but IT IS STILL HERE#
+
+[orange,,1.5]#ORANGE means BUG WAS NOT CONFIRMED#
+
+[green,,1.5]#GREEN means BUG WAS CORRECTED :#
+
+ - [green,,1.5]#correction will be included in next release#
+ - [green,,1.5]#bug fix available in link:http://netlib.org/lapack/#_svn_access[LAPACK SVN repository]#
+
+== [green]*bug0073* :: secondtst.f and dsecnd.f
+ * bug report sent by John Tellefson on Feb 7th
+ * email sent to lapack mailing list, user provided fix.
+ * corrected by Julie
+ * We went ahead and remove the dummy subroutine in those timing for the last LAPACK version because we did not find a machine or compiler that still had the problem. I guess we were too optimistic.
+ * also committed the "cosmetic" modifications suggested by user as they make the program easier to modify.
+
+== [green]*bug0072* :: cchkhs.f and zchkhs.f
+ * bug report sent by Inge Gutheil on Feb 3rd
+ * email sent to lapack mailing list, user provided fix.
+ * corrected by Julie
+ * Add IF statement to prevent calculation if N=0
+ 
+== [green]*bug0071* :: slarre and dlarre 
+ * bug report sent by Christof Voemel on Jan 31th
+ * email sent directly to Julie and Julien, Christof provided fix.
+ * corrected by Julien
+ * Add a line to prevent TAU from becoming zero
+
+== [green]*bug0070* ::  IWORK dimension is incorrect
+ * bug report sent by nmozarto on Jan 27th
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2156]
+ * confirmed by Julie and corrected by Brian Sutton
+ * The correct dimension is (M-R), in which R is the smallest of P, M-P, Q, and M-Q.
+ * An M-by-M matrix is partitioned into a 2-by-2 block structure. The
+ * dimensions of the blocks are P-by-Q, P-by-(M-Q), (M-P)-by-Q, and
+ * (M-P)-by-(M-Q). IWORK is involved in the permutation of rows or
+ * columns of these blocks, and it is the largest block, in terms of
+ * number of rows or columns, that determines the size of IWORK.
+
+== [green]*bug0069* ::  sytri2x is writing on other part of A
+ * bug report sent by nmozarto on Jan 27th
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2156]
+ * confirmed by Julie and corrected by Julie
+
+== [green]*bug0068* ::  Need to add LDA in *sytrs2
+ * bug report sent by nmozarto on Jan 27th
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2157]
+ * confirmed by Julie and corrected by Julie
+
+== [green]*bug0067* ::  Need to add LDA in *syswapr
+ * bug report sent by nmozarto on Jan 24th
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2150]
+ * confirmed by Julie and corrected by Julien
+ * Need to add LDA in *syswapr routines and update testing to test having LDA
+
+== [green]*bug0066* ::  bugs in {s,d}gejsv 
+ * bug report sent by Paul Roberts on Oct 21st
+ * reported to Zlatko Drmac and corrected by Zlatko Drmac
+ * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html[ LAPACK Mailing list msg 049]
+
+== [red]*bug0065* :: workspace queries not being used     
+ * *CONFIRMED*
+ * bug report by Clint Whaley on October 27th, 2010
+ *  DGESVD does not perform a workspace query on worker
+ *  functions such as DGELQF, but rather it hardwires in an assumption as
+ *  to LQF's workspace requirements.  This means that if LQF is changed,
+ *  GESVD breaks.  This actually happens in ATLAS, because we provide a
+ *  faster GELQF, which sometimes uses extra workspace.  For LAPACK itself,
+ *  it represents extra dependencies that don't need to be there. 
+
+== [red]*bug0061* :: zgehrd.f is overflowing the maximum size in bytes of the largest array that
+can be put on the stack with gfortran (=> leads ,e.g., to non-reproducible and uncorrect execution
+of zgeev in multithreaded context
+ * *CONFIRMED*
+ * bug report by Victor Liu on Tuesday August 03rd, 2010
+ * lapackers involved in the bug fix process: Julie and Julien Langou and Mathieu Faverge
+ * bug fix by Victor Liu on Wednesday August 04th, 2010
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1930[forum topic 1930]
+ * two outstanding issues: (1) how do we go to fix this?, (2) more LAPACK subroutines might be concerned.
+
+== [red]*bug0057* :: Non-eigenvectors from DGEEV, problem in balancing
+ * *CONFIRMED*
+ * bug report sent by Numpy team on April 22nd, 2010
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1818[forum topic 1818]
+ * see follow-up on lapackers on April 22nd from Jim "bug in DGEHRD"
+    "The balancing is choosing to scale some rows/columns by factors like 1e18,
+which rather amplifies tiny rounding errors in the (presumably correctly)
+computed eigenvectors of the balanced matrix, when balancing is undone at the end.
+The expert driver interface dgeevx would let the user disable balancing, until
+we figure out whether this is a bug or a feature, I'm not sure which."
+
+== [red]*bug0024* :: the notation A' is confusing for complex matrices. Does A' stand for A transpose of A Hermitian transpose?
+ * *CONFIRMED*
+ * reported by Clint Whaley early July 2009
+ * LAPACK is not consistent in it use of the notation for transpose and Hermitian transpose.
+ * The use of LAPACK A' is not consistent with the BLAS useage.
+ * We note that the Matlab/Scilab/Octave convention is A' stands for
+      "conjugate transpose" and A.' stands for "transpose".
+ * In the Z routines, LAPACK uses the notation A' 669 times, it means "conjugate
+      transpose" most of the time but it means "transpose" a few times (maybe
+      10 times max, for BLAS-like routines). The notation A*H, A*T, A*N is
+      used 549 times, The notation A^T, A^N, A^H 19 times. (This is just for
+      the Z routines.)
+ * see link:023.txt[Julien's emails]
+ * vote on the lapackers mailing list:
+          A*T (or A^T) and A*H (or A^H): Clint Whaley, Jim Demmel, Sven Hammarling, Antoine Petitet, Daniel Kressner
+          A' (for A*H) and A.' for (A*T): Julien Langou
+      (I love to be that supported by the lapackers!)
+
+== [red]*bug0022* :: workspace query bug with DGEJSV (when only left or right singular vectors desired)
+ * *CONFIRMED*
+ * reported by Allin Cottrell on Tue Jan 15 2009
+ * confirmed by Julien Langou on Fri Jan 30 2009
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=866[forum topic 866]
+ * all information sent to Zlatko Drmac
+    
+
+== [red]*bug0020* :: in xGESDD, workspace query can overflow for large matrices
+ * *CONFIRMED*
+ * reported by Stephan Ripke (Broad Institute, Boston) on Thu May 21 2009
+ * confirmed by Julien Langou on Thu May 21 2009
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1418[forum topic 1418]
+
+
+== [orange]*bug0066* ::  bugs in {s,d}gejsv 
+ * *TO BE CONFIRMED*
+ * bug report sent by Paul Roberts on Oct 21st
+ * reported to Zlatko Drmac
+ * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html[ LAPACK Mailing list msg 049]
+
+== [orange]*bug0056* ::  Non-orthogonal eigenvectors returned from DSYEVR
+ * *TO BE CONFIRMED*
+ * bug report sent by Scipy team on April 22nd
+ * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00874.html[ LAPACK Mailing list msg 874]
+ * Julie cannot reproduce the problem on her machine with 3.2.1 and Ref BLAS
+
+
+== [orange]*bug0040* :: Q referenced in real TGSENs when WANTQ .FALSE.
+ * *TO BE CONFIRMED*
+ * bug report from Mathew Cross on Tue 18 Aug 2009 
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1604[forum topic 1604]
+
+== [orange]*bug0039* :: faulty workspace queries in GEESX
+ * *TO BE CONFIRMED*
+ * bug report from Mathew Cross on Tue 18 Aug 2009 
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1602[forum topic 1602]
+       
+== [orange]*bug0037* :: xLARFP and scaling
+ * *TO BE CONFIRMED*
+ * bug report sent by Pat Quillen on Wed 29 Jul 2009 to "lapack@cs.utk.edu".
+      "xLARFP and scaling"
+ * see link:bug_lapack_3.2.1_0037/026.txt[Pat Quillen's email], and link:bug_lapack_3.2.1_0036/quillen_dlarfp2.f[quillen dlarfp2.f],
+ * see link:bug_lapack_3.2.1_0037/027.txt[Sven Hammarling's email]
+ * see link:bug_lapack_3.2.1_0037/028.txt[Pat Quillen's email], link:bug_lapack_3.2.1_0036/quillen_dlarfp3.f[quillen dlarfp3.f], and link:bug_lapack_3.2.1_0036/quillen_dlarf2.f[quillen dlarf2.f].
+
+== [orange]*bug0036* :: scaling in xSTEQR, xSTERF
+ * *TO BE CONFIRMED*
+ * bug report sent by Pat Quillen on Fri 24 Jul 2009 to "lapack@cs.utk.edu".
+      "Scaling in xSTEQR, xSTERF"
+ * see link:bug_lapack_3.2.1_0036/025.txt[Pat Quillen's email], link:bug_lapack_3.2.1_0036/quillendsteqr.f[quillen dsteqr.f].
+
+== [orange]*bug0035* :: dlarfb.f and likes
+ * *TO BE CONFIRMED*
+ * bug report sent by Michael Chuvelev (Intel) on Tue 21 Jul 2009 to "lapack@cs.utk.edu".
+      "Bug in LAPACK 3.2 dlarfb.f and likes"
+ * see link:bug_lapack_3.2.1_0035/024.txt[Michael Chuvelev and Julie's emails], link:bug_lapack_3.2.1_0035/q.dat[q.dat],
+      link:bug_lapack_3.2.1_0035/tau.dat[tau.dat], and link:bug_lapack_3.2.1_0035/test_dorgql.f[test_dorgql.f]
+
+== [orange]*bug0034* :: comments in SSPTRF not correct 
+ * *TO BE CONFIRMED*
+ * clarification asked by "sarnath" on Thu Jul 02 2009
+ * confirmation of bug by "sarnath" and Julien Langou on Fri Jul 03 2009
+ * The statement "JMAX is the column-index of the largest off-diagonal element in row IMAX" is not correct
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1553[forum topic 1553]
+
+== [orange]*bug0033* :: failure of zheevd on a specific matrix
+ * *TO BE CONFIRMED*
+ * bug report sent by Cezary Sliwa (Instytut Fizyki PAN, Poland) on Thu 2 Jul 2009 to "lapack@cs.utk.edu".
+ * see link:020.f[Cezary Sliwa's test code], link:021.dat[Cezary Sliwa's matrix], and
+      link:022.txt[Cezary Sliwa's email].
+
+== [orange]*bug0032* :: matrix splitting problem with dstebz and sstebz
+ * *TO BE CONFIRMED*
+ * bug report sent by Phil DeMier (IBM) on Mon 29 Jun 2009 to "lapack@cs.utk.edu".
+      "matrix splitting problem with dstebz and sstebz"
+ * see link:018.txt[Phil DeMier's email] and link:019.f[Phil DeMier's test code]
+
+== [orange]*bug0030* :: line 641 of DTGSY2 (present as well in STGSY2, ZTGSY2, CTGSY2)
+ * *TO BE CONFIRMED*
+ * reported by Zbigniew Leyk (College Station, TX) on Mon Jun 01, 2009
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1445[forum topic 1445]
+
+== [orange]*bug0029* :: problem of WORKSPACE query with DSTEDC
+ * *TO BE CONFIRMED*
+ * reported by Tiago Requeijo on Mon Mar 30 2009
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1389[forum topic 1389]
+ * Julie : CANNOT REPRODUCE THE PROBLEM
+
+== [orange]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
+ * *TO BE CONFIRMED*
+ * reported by Vasile Sima on Thu Jan 22 2009
+ * see: link:008.txt[email from Vasile]
+ * more information at: <a href='http://www-math.ucdenver.edu/~langou/lapack-3.2/lapack_known_issues.html'>lapack known issues]
+
+== [orange]*bug0027* :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed
+ * *TO BE CONFIRMED*
+ * reported by Vasile Sima on Tue Jan 27 2009
+ * see: link:005.txt[email from Vasile]
+ * more information:
+      more specifically Vasile is reporting that the comments:
+-----
+*          [...] H contains the upper quasi-triangular
+*          matrix S from the generalized Schur factorization;
+*          2-by-2 diagonal blocks (corresponding to complex conjugate
+*          pairs of eigenvalues) are returned in standard form, with
+*          H(i,i) = H(i+1,i+1) and H(i+1,i)*H(i,i+1) &lt; 0.
+-----
+     are not correct
+
+== [orange]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
+ * *TO BE CONFIRMED*
+ * reported by Pauli Virtanen (scipy team) on Sat Dec 06 2008 (email to lapack@cs.utk.edu)
+ * see: link:004.txt[email from Pauli Virtanen]
+      see: link:http://scipy.org/scipy/scipy/ticket/709[http://scipy.org/scipy/scipy/ticket/709]
+
+
+
+
+== dead code* :: xLAHRD is now replaced by xLAHR2, xLAHRD is a dead code since LAPACK 3.1
+ * xLAHRD will be removed at some point in the future from the distribution
+
+
+  
+// vim: set syntax=asciidoc:

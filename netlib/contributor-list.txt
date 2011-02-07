@@ -1,0 +1,609 @@
+LAPACK Contributors
+===================
+
+:Author:    Julie_Langou_and_Julien_Langou
+:Email:     <julie@cs.utk.edu,julien.langou@ucdenver.edu>
+:Date:      2010/12/08
+:Revision:  1
+
+// We should add year and release of contributions.
+
+== Sponsor
+
+Since 2010, this material is based upon work supported by the National Science
+Foundation under Grant No. NSF-OCI-1032861. Any opinions, findings and
+conclusions or recommendations expressed in this material are those of the
+author(s) and do not necessarily reflect the views of the National Science
+Foundation (NSF). Until 2006, this material was based upon work supported by
+the National Science Foundation under Grant No. ASC-9313958, NSF-0444486 and
+DOE Grant No. DE-FG03-94ER25219. Any opinions, findings and conclusions or
+recommendations expressed in this material are those of the author(s) and do
+not necessarily reflect the views of the National Science Foundation (NSF) or
+the Department of Energy (DOE).
+
+== Contributing institutions
+
+// JL:
+// Alphabetical order for country, then for University name
+
+// BULGARIA
+- University of Rousse; Bulgaria
+// CROATIA
+- University of Zagreb; Croatia
+// DENMARK
+- Danish Computing Center for Research and Education; Denmark
+- Technical University of Denmark; Denmark
+// GERMANY
+- Fernuniversitaet Hagen; Germany
+- Technical University Aachen; Germany
+// ITALIA
+- IBM ECSEC; Italia
+// SPAIN
+- Universidad Jaime I; Spain
+// SWEDEN
+- Ume&aring; University; Sweden
+// SWITZERLAND
+- ETH Zurich; Switzerland
+// UK
+- Numerical Algorithms Group Ltd. (NAG); UK
+- University of Manchester; UK
+// US
+- Cray Research, Inc; US
+- Duke University; US
+- Georgia Institute of Technology; US
+- IBM Watson Research Center; US
+- Intel Corp., US
+- Kitware, US
+- Lawrence Berkeley National Laboratory; US
+- Oak Ridge National Laboratory; US
+- Randolph-Macon College; US
+- Rice University; US
+- University of California, Berkeley; US
+- University of California, Davis; US
+- University of Colorado Denver; US
+- University of Kansas; US
+- University of Kentucky; US
+- University of Tennessee; US
+- University of Washington; US
+
+
+== Contributor list
+
+// Does not work!
+// link:fun/lapack-map.html[get a quick overview here]
+
+
+- Ed Anderson                            (Cray Research Inc. and University of Tennessee; US),
+- Chuck Atkins                           (Kitware; US),
+- Zhaojun Bai                            (University of Kentucky and University of California, Davis; US),
+- V. A. Barker                           (Technical University of Denmark; Denmark),
+- Chris Bischof                          (Technical University Aachen; Germany),
+- Susan Blackford                        (University of Tennessee; US),
+- Zvonomir Bujanovic                     (University of Zagreb; Croatia),
+- Karen Braman                           (University of Kansas; US),
+- Ralph Byers                            (University of Kansas; US),
+- Jim Demmel                             (University of California, Berkeley; US),
+- Inderjit Dhillon                       (University of California, Berkeley; US),
+- Jack Dongarra                          (University of Tennessee and Oak Ridge National Laboratory; US),
+- Zlatko Drmac                           (University of Zagreb; Croatia),
+- Peng Du                                (University of Tennessee; US), 
+- Jeremy Du Croz                         (Numerical Algorithms Group Ltd. (NAG); UK),
+- Mark Fahey                             (University of Kentucky; US),
+- Anne Greenbaum                         (University of Washington; US),
+- Ming Gu                                (University of California, Berkeley; US),
+- Fred Gustavson                         (IBM Watson Research Center; US),
+- Deaglan Halligan                       (University of California, Berkeley; US),
+- Sven Hammarling                        (Numerical Algorithms Group Ltd. (NAG); UK),
+- Yozo Hida                              (University of California, Berkeley; US),
+- Nick Higham                            (University of Manchester; UK),
+- Bill Hoffman                           (Kitware; US),
+- Intel MKL team                         (Intel Corp.; US),
+- Bo Kagstr&ouml;m                       (Ume&aring; University; Sweden),
+- Daniel Kressner                        (ETH Zurich; Switzerland),
+- William Kahan                          (University of California, Berkeley ; US),
+- Julie Langou,                          (University of Tennessee; US),
+- Julien Langou                          (University of Colorado Denver; US),
+- Craig Lucas,                           (University of Manchester and NAG Ltd., UK;),
+- Piotr Luszczek,                        (University of Tennessee; US),
+- Ren-Cang Li                            (University of California, Berkeley; US),
+- Xiaoye Li                              (Lawrence Berkeley National Laboratory; US),
+- M. Marinova                            (Danish Computing Center for Research and Education; Denmark),
+- Osni Marques                           (Lawrence Berkeley National Laboratory; US),
+- Peter Mayes                            (IBM ECSEC; Italia),
+- Alan McKenney                          (no affiliation),
+- Beresford Parlett                      (University of California, Berkeley; US),
+- Antoine Petitet                        (University of Tennessee; US),
+- Peter Poromaa                          (Ume&aring; University; Sweden),
+- Enrique Quintana-Ort&iacute;           (Universidad Jaime I; Spain),
+- Gregorio Quintana-Ort&iacute;          (Universidad Jaime I; Spain),
+- Giuseppe Radicati                      (IBM ECSEC; Italia),
+- Huan Ren                               (University of California, Berkeley; US),
+- Jason Riedy                            (University of California, Berkeley; US; and Georgia Institute of Technology; US),
+- Jeff Rutter                            (University of California, Berkeley; US),
+- Edward Smyth                           (Numerical Algorithms Group Ltd. (NAG); UK),
+- Danny Sorensen                         (Rice University; US),
+- Ken Stanley                            (University of California, Berkeley; US),
+- Xiaobai Sun                            (Duke University; US)
+- Brian Sutton                           (Randolph-Macon College; US),
+- Fran&ccedil;oise Tisseur               (University of Tennessee; US),
+- Robert A. van de Geijn                 (University of Texas at Austin; US),
+- Kresimir Veselic                       (Fernuniversitaet Hagen; Germany)
+- Christof Voemel                        (University of California, Berkeley and Lawrence Berkeley National Laboratory; US).
+- Meghanath Vishvanath                   (University of California, Berkeley; US),
+- David Vu                               (University of California, Berkeley; US),
+- Jerzy Wa&#347;niewski                  (Technical University of Denmark, Denmark),
+- P. Yalamov                             (University of Rousse; Bulgaria).
+
+== Thanks for bug-report/patches/suggestions to:
+
+
+* LAPACK 3.3:
+
+	Allin Cottrell (Wake Forest University),
+	Mathew Cross (NAG),
+	Zlatko Drmac (University of Zagreb, Croatia),
+	Victor Liu, (Stanford University, Palo Alto),
+	the Numpy team,
+	Bart Oldeman, (Montreal, Quebec)
+	Stephan Ripke (Broad Institute, Boston),
+	Ake Sandgren (HPC2N, Umea University),
+	Clint Whaley (University of Texas at San Antonio).
+
+* LAPACK 3.2.2:
+
+	Marco Atzeri
+	Guy Bencteux (CERMICS, France)
+	Michael Chuvelev (Intel)
+	Mathew Cross (NAG)
+	William Gandler (NIH/CIT)
+	Tim Hopkins
+	"Jan"
+	Ondra Kamenik
+	Alexander V. Kobotov (Intel)
+	Ashutosh Mahajan (Mathematics and Computer Science Division of Argonne National Labs) 
+	Lawrence Mulholland (NAG)
+	Pat Quillen (MathWorks)
+	Paul Roberts (NAG)
+	Vasile Sima (National Institute for Research & Development in Informatics, Romania)
+	Sergei Steshenko
+	Kevin Wadleigh
+	Zbigniew
+
+* LAPACK 3.2.1:
+
+	Guy Bencteux (CERMICS, France)
+	Edouard Canot (IRISA, France)
+	Michael Chuvelev (Intel)
+	"faber80"
+	Bruno Pincon (ESIAL, France)
+	Vasile Sima (National Institute for Research & Development in Informatics, Romania)
+	Christof Voemel
+	Daniel Waggoner
+	Igor Zhuravlov
+
+* LAPACK 3.2:
+
+	Patrick Alken (University of Colorado at Boulder, USA),
+	Penny Anderson (MathWorks, MA, USA),
+	Michael Baudin (Scilab, FR),
+	Bobby Cheng (MathWorks, MA, USA),
+	Michael Chuvelev (Intel, USA),
+	Phil DeMier (IBM, USA),
+	Michel Devel (UTINAM institute, University of Franche-Comte, UMR CNRSA, FR),
+	Alan Edelmann (Massachusetts Institute of Technology, MA, USA),
+	Carlo de Falco and all the Octave developers,
+	Fernando Guevara (University of Utah, UT, USA),
+	Christian Keil,
+	Zbigniew Leyk (Wolfram, USA),
+	Cleve Moler (MathWorks, MA, USA),
+	Joao Moreira de Sa Coutinho,
+	Lawrence Mulholland (NAG, UK),
+	Duncan Po (MathWorks, MA, USA),
+	Mick Pont (NAG, UK),
+	Pat Quillen (MathWorks, MA, USA),
+	Clint Whaley (University of Texas at San Antonio, TX, USA),
+	Mikhail Wolfson (MIT, USA),
+	Vittorio Zecca.
+
+* LAPACK 3.1.1:
+
+	Tobias Burns
+	Daniel Kressner
+	Michael Wimmer
+
+* LAPACK 3.1:
+
+	Eduardo Anglada (Universidad Autonoma de Madrid, Spain)
+	David Barnes (University of Kent, England)
+	Alberto Garcia (Universidad del Pais Vasco, Spain)
+	Tim Hopkins (University of Kent, England)
+	Javier Junquera (CITIMAC, Universidad de Cantabria, Spain)
+	Mathworks: Penny Anderson, Bobby Cheng, Pat Quillen, Cleve Moler, Duncan Po, Bin Shi, Greg Wolodkin (MathWorks, USA)
+	George McBane (Grand Valley State University, USA)
+	Matyas Sustik (University of Texas at Austin, USA)
+	Michael Wimmer (Universität Regensburg, Germany)
+	Simon Wood (University of Bath, UK) and in more generally all the R developers
+
+== Principal Investigators
+
+- Jim Demmel                               (University of California, Berkeley; US; Since 1992),
+- Jack Dongarra                            (University of Tennessee and Oak Ridge National Laboratory; US; Since 1992),
+- Julien Langou                            (University of Colorado Denver; US; Since 2006).
+
+== Contributors and their contributions
+
+(single precision routine only for some fields)
+
+=== CS Decomposition -- SORCSD
+
+* Brian Sutton, Randolph-Macon College; US
+
+	A cuncsd    A dorcsd    A sorcsd      A zuncsd
+	A cunbdb    A dorbdb    A sorbdb      A zunbdb
+	A cbbcsd    A dbbcsd    A sbbcsd      A zbbcsd
+	A clapmr    A dlapmr    A slampr      A zlapmr
+                    A dlartgp   A slartgp
+                    A dlartgs   A slartgs
+
+
+=== Secular Equation Solver (used in the Divide and Conquer Algorithm) -- SLASD4
+
+* Ren-Cang Li, Computer Science Division, University of California at Berkeley, US
+
+	SLASD4
+	SLASD5
+
+=== Pivoted Cholesky
+
+// (Need to add Craig's name in the routines!)
+
+* Craig Lucas,                           (University of Manchester and NAG Ltd., UK)
+
+	A SRC/cpstf2.f   A SRC/dpstf2.f   A SRC/spstf2.f   A SRC/zpstf2.f
+	A SRC/cpstrf.f   A SRC/dpstrf.f   A SRC/spstrf.f   A SRC/zpstrf.f
+
+
+=== Machine Parameter Routine -- SLAMCH
+
+* Piotr Luszczek,                        (University of Tennessee; US),
+* Jason Riedy                            (Georgia Institute of Technology; US),
+
+	M dlamch.f
+	M slamch.f
+
+
+=== Condition Number Estimate Subroutine -- SLACN2
+
+*  Nick Higham, University of Manchester
+
+	SLACN2
+	deprecated: SLACON (not thread safe)
+
+=== General purpose auxiliary routines
+
+*  Nick Higham, University of Manchester
+
+	SCSUM1
+
+=== Level-3 BLAS symmetric indefinite solve and symmetric indefinite inversion
+
+// (Need to add Julie's name in the routines!)
+
+* Julie Langou,                          (University of Tennessee; US),
+
+	M chesv.f        M dsysv.f         M ssysv.f       M zhesv.f
+	A chetrs2.f      A dsytrs2.f       A ssytrs2.f     A zhetrs2.f
+	A csyconv.f      A dsyconv.f       A ssyconv.f     A zsyconv.f
+	A csyswapr.f     A dsyswapr.f      A ssyswapr.f    A zsyswapr.f
+	A csytri2.f      A dsytri2.f       A ssytri2.f     A zsytri2.f
+	A csytri2x.f     A dsytri2x.f      A ssytri2x.f    A zsytri2x.f
+
+=== Mixed precision iterative refinement subroutines for exploiting fast single precision hardware
+
+// (Need to add Julie and Julien 's name in the routines!)
+
+* Julie Langou,                          (University of Tennessee; US),
+* Julien Langou                            (University of Colorado Denver; US; 2006-).
+
+	A SRC/dsposv.f          A SRC/zcposv.f
+	A SRC/dsgesv.f          A SRC/zcgesv.f
+
+
+=== Jacobi SVD Algorithm -- SGEJSV & SGESVJ
+
+* Zlatko Drmac of the University of Zagreb
+* Kresimir Veselic of the Fernuniversitaet Hagen
+
+	SGEJSV
+	SGESVJ
+	SGSVJ0
+	SGSVJ1
+
+// JL: NOTE: I'll need to go inside this and split these guys correctly
+=== Divide & Conquer SVD Algorithm -- SGESDD
+=== Linear Least Squares solver based on Divide & Conquer SVD Algorithm -- SGELSD
+
+* Ming Gu, Computer Science Division, University of California at Berkeley, US
+* Huan Ren, Computer Science Division, University of California at Berkeley, US
+
+	SBDSDC
+	SLASD0
+	SLASD1
+	SLASD2
+	SLASD3
+	SLASD6
+	SLASD7
+	SLASD8
+	SLASDA
+	SLASDQ
+	SLASDT
+	SGESDD
+
+* Ming Gu, Computer Science Division, University of California at Berkeley, US
+* Ren-Cang Li, Computer Science Division, University of California at Berkeley, US
+* Osni Marques, LBNL/NERSC, US
+
+	SGELSD, SLALS0, SLALSA, SLALASD
+
+=== QR factorization with column pivoting (Level 3 BLAS) -- SGEQP3
+
+* G. Quintana Ort&iacute;, Depto. de Informatica, Universidad Jaime I, Spain
+* X. Sun, Computer Science Dept., Duke University, US
+
+	SGEQP3
+
+* G. Quintana Ort&iacute;, Depto. de Informatica, Universidad Jaime I, Spain
+* X. Sun, Computer Science Dept., Duke University, US
+* Z. Drmac and Z. Bujanovic, Dept. of Mathematics, University of Zagreb, Croatia.
+
+	SGEQPF (deprecated), SLAQP2, SLAQPS
+
+// JL: NOTE: I need to check here I do not understand what Z. and Z. did ... 
+// I hope their bug fix is also in SGEQP3 ...
+
+=== Linear Least Squares solver based on QR factorization with column pivoting -- SGELSY
+
+* A. Petitet, Computer Science Dept., Univ. of Tenn., Knoxville, US
+* E. Quintana Ort&iacute;, Depto. de Informatica, Universidad Jaime I, Spain
+* G. Quintana Ort&iacute;, Depto. de Informatica, Universidad Jaime I, Spain
+
+	SGELSY
+
+* A. Petitet, Computer Science Dept., Univ. of Tenn., Knoxville, US
+
+	SLARZ
+	SLARZB
+	SLARZT
+	SLATRZ
+	SORMR3
+	SORMRZ
+	STZRZF
+
+=== Nonsymmetric Eigenvalue Problem -- NEP -- SGEEV
+
+==== Multishift QR algorithm with Aggressive Early Deflation -- SHSEQR
+
+* Karen Braman                           (University of Kansas; US),
+* Ralph Byers                            (University of Kansas; US),
+
+	SHSEQR, SLAQR0, SLAQR1, SLAQR2, SLAQR3, SLAQR4, SLAQR5
+
+=== Generalized Schur Decomposition Reordering -- STGSEN
+=== Generalized Sylvester Equation Solver -- STGSYL
+
+* Bo Kagstr&ouml;m, Ume&aring; University; Sweden
+* Peter Poromaa, Ume&aring; University; Sweden
+
+	SGESC2
+	SLATDF
+	STGEX2
+	STGEXC
+	STGSEN
+	STGSNA
+	STGSY2
+	STGSYL
+	SGETC2
+
+=== Extra Precise Iterative Refinement Routines
+
+* James Demmel, Univ. of California, Berkeley, US
+* Deaglan Halligan, Univ. of California, Berkeley, US
+* Yozo Hida, Univ. of California, Berkeley, US
+* Jason Riedy, Univ. of California, Berkeley, US
+
+	SGBEQUB
+	SGBRFSX
+	SGBSVXX
+	SGEEQUB
+	SGERFSX
+	SGESVXX
+	SLA_GBAMV
+	SLA_GBRCOND
+	SLA_GBRFSX_EXTENDED
+	SLA_GBRPVGRW
+	SLA_GEAMV
+	SLA_GERCOND
+	SLA_GERFSX_EXTENDED
+	SLA_LIN_BERR
+	SLA_PORCOND
+	SLA_PORFSX_EXTENDED
+	SLA_PORPVGRW
+	SLA_RPVGRW
+	SLA_SYAMV
+	SLA_SYRCOND
+	SLA_SYRFSX_EXTENDED
+	SLA_SYRPVGRW
+	SLA_WWADDW
+	SLARSCL2
+	SLASCL2 
+	SPOEQUB
+	SPORFSX
+	SPOSVXX
+	SSYEQUB
+	SSYRFSX
+	SSYSVXX
+
+=== Rectangular Full Packed Format
+
+* Fred Gustavson of the IBM Watson Research Center
+
+	SLANSF
+	STFSM
+	STFTRI
+	STFTTP
+	STFTTR
+	STPTTF
+	SPFTRF
+	SPFTRI
+	SPFTRS
+	STRTTF
+
+* Fred Gustavson of the IBM Watson Research Center
+* Julien Langou of the Univ. of Colorado Denver
+
+	STRTTP
+
+* Julien Langou of the Univ. of Colorado Denver
+
+	SSFRK
+	STPTTR
+
+=== Symmetric Eigenvalue Problem -- SEP
+
+==== Expert routines
+
+* Mark Fahey, Department of Mathematics, Univ. of Kentucky, US
+
+	SLAGV2
+	SSYGVD
+	SSYGVX
+	SSBGVD
+	SSBGVX
+	SSPGVD
+	SSPGVX
+
+==== Divide & Conquer Agorithm
+
+* Jeff Rutter, Computer Science Division, University of California at Berkeley, US
+
+	SLAED0
+	SLAED7
+	SLAED8
+	SLAED9
+	SLAEDA
+
+* Jeff Rutter, Computer Science Division, University of California at Berkeley, US
+* Fran&ccedil;oise Tisseur, University of Tennessee.
+
+	SLAED1
+	SLAED2
+	SLAED3
+	SSYEVD
+	SSTEDC
+
+* Ren-Cang Li, Computer Science Division, University of California
+
+	SLAED4
+	SLAED5
+	SLAED6
+
+==== Multiple Relatively Robust Representations Algorithm -- SYEVR
+
+* Beresford Parlett, University of California, Berkeley, US
+* Jim Demmel, University of California, Berkeley, US
+* Inderjit Dhillon, University of Texas, Austin, US
+* Osni Marques, LBNL/NERSC, US
+* Christof Voemel, University of California, Berkeley, US
+
+	SLAR1V
+	SLARRA
+	SLARRB
+	SLARRC
+	SLARRE
+	SLARRF
+	SLARRJ
+	SLARRR
+	SLARRV
+
+* W. Kahan, University of California, Berkeley, US
+* Beresford Parlett, University of California, Berkeley, US
+* Jim Demmel, University of California, Berkeley, US
+* Inderjit Dhillon, University of Texas, Austin, US
+* Osni Marques, LBNL/NERSC, US
+* Christof Voemel, University of California, Berkeley, US
+
+	SLARRD
+
+* Inderjit Dhillon, IBM Almaden, US
+* Osni Marques, LBNL/NERSC, US
+* Christof Voemel, LBNL/NERSC, US
+
+	SSTEGR
+
+* Beresford Parlett, University of California, Berkeley, US
+* Jim Demmel, University of California, Berkeley, US
+* Inderjit Dhillon, University of Texas, Austin, US
+* Osni Marques, LBNL/NERSC, US
+* Christof Voemel, University of California, Berkeley, US
+
+	SSTEMR
+
+* Osni Marques, LBNL/NERSC, US
+* Christof Voemel, University of California, Berkeley, US
+* Jason Riedy, University of California, Berkeley, US
+
+	SLANEG
+
+* Inderjit Dhillon, IBM Almaden, US
+* Osni Marques, LBNL/NERSC, US
+* Ken Stanley, Computer Science Division, University of California at Berkeley, US
+* Jason Riedy, Computer Science Division, University of California at Berkeley, US
+
+	SSTEVR
+	SSYEVR
+
+==== DQDS algorithm 
+
+* Osni Marques of the Lawrence Berkeley National Laboratory
+* Beresford Parlett of the Univ. of California at Berkeley         
+
+	SLASQ1
+	SLASQ2
+	SLASQ3
+	SLASQ4
+	SLASQ5
+	SLASQ6
+
+=== Cholesky for banded matrices
+
+* Peter Mayes, IBM ECSEC, Rome, March 23, 1989
+* Giuseppe Radicati, IBM ECSEC, Rome, March 23, 1989
+
+	SPBTRF
+
+=== CMAKE Build system
+ 
+* Chuck Atkins, Kitware, US
+* Bill Hoffman, Kitware, US
+
+=== LAPACK 95
+
+* V. A. Barker               (Technical University of Denmark; Denmark),
+* Susan Blackford            (University of Tennessee; US),
+* Jack Dongarra              (University of Tennessee and Oak Ridge National Laboratory; US),
+* Jeremy Du Croz             (Numerical Algorithms Group Ltd. (NAG); UK),
+* Sven Hammarling            (Numerical Algorithms Group Ltd. (NAG); UK),
+* M. Marinova                (Danish Computing Center for Research and Education; Denmark),
+* Jerzy Wa&#347;niewski      (Technical University of Denmark, Denmark),
+* P. Yalamov                 (University of Rousse; Bulgaria).
+
+=== Variants for LU, QR and Cholesky
+
+* Peng Du                    (University of Tennsee, US)
+
+=== C Interface to LAPACK
+
+* MKL team
+
+// vim: set syntax=asciidoc:
+

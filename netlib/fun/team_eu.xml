@@ -1,0 +1,456 @@
+<europe_locator>
+<config>
+  <color_state_name>0xffffff</color_state_name>
+  <color_state_name_over>0xffffff</color_state_name_over>
+  <type_of_gradient>0</type_of_gradient>
+  <background_color>0xffffff</background_color>
+  <show_links>0</show_links>
+  <light_effect>1</light_effect>
+  <border_color>0xffffff</border_color>
+  <sound>off</sound>
+</config>
+
+<map_data>
+<state>
+  <id>1</id>
+  <name>Portugal </name>
+   <link>#</link>
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>2</id>
+  <name>Spain </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>3</id>
+  <name>France </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>4</id>
+  <name>Italy </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>5</id>
+  <name>United Kingdom</name>
+  <link>#</link>
+  <comment>&lt;b&gt;Sven Hammarling&lt;/b&gt; (Numerical Algorithms Group Ltd.)
+</comment>
+  <color_map>0xFF6103</color_map>
+  <color_map_over>0xFF6103</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>6</id>
+  <name>Andorra </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>7</id>
+  <name>Ireland </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>8</id>
+  <name>Iceland</name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>9</id>
+  <name>Belgium </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>10</id>
+  <name>Netherlands </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>11</id>
+  <name>Czech Republic</name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>12</id>
+  <name>Germany </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>13</id>
+  <name>Luxembourg </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>14</id>
+  <name>Denmark </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>15</id>
+  <name>Norway </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>16</id>
+  <name>Sweden </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>17</id>
+  <name>Finland </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>18</id>
+  <name>Estonia </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>19</id>
+  <name>Latvia </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>20</id>
+  <name>Lithuania </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>21</id>
+  <name>Russian Federation </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>22</id>
+  <name>Poland </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>23</id>
+  <name>Belarus </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>24</id>
+  <name>Ukraine </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>25</id>
+  <name>Moldova, Republic of</name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>26</id>
+  <name>Romania </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>27</id>
+  <name>Slovakia </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>28</id>
+  <name>Hungary </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>29</id>
+  <name>Austria </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>30</id>
+  <name>Switzerland </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>31</id>
+  <name>Slovenia </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>32</id>
+  <name>Croatia </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>33</id>
+  <name>Bosnia and Gerzegovina</name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>34</id>
+  <name>Montenegro</name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>35</id>
+  <name>Republic of Serbia </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>36</id>
+  <name>Albania </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>37</id>
+  <name>Macedonia, The former</name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>38</id>
+  <name>Greece </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>39</id>
+  <name>Bulgaria </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>40</id>
+  <name>Turkey </name>
+  <link>#</link>    <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>41</id>
+  <name>Georgia </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>42</id>
+  <name>Armenia </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>43</id>
+  <name>Azerbaijan </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>44</id>
+  <name>Cyprus </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>45</id>
+  <name>Malta </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>46</id>
+  <name>Monaco </name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>47</id>
+  <name>Liechtenstein</name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>48</id>
+  <name>Vatican City State (Holy See)</name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+<state>
+  <id>49</id>
+  <name>Crete</name>
+  <link>#</link>  
+  <comment></comment>
+  <color_map>0x7798BA</color_map>
+  <color_map_over>0x366CA3</color_map_over>
+  <frame>_top</frame>
+</state>
+</map_data>
+</europe_locator>

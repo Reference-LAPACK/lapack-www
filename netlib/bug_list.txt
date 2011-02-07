@@ -1,0 +1,536 @@
+LAPACK BUG LIST
+===============
+
+link:http://www.netlib.org/lapack/WishList/[Wishlist]
+
+== [green]*bug0073* :: secondtst.f and dsecnd.f
+ * *CORRECTED* - see svn 918
+ * bug report sent by John Tellefson on Feb 7th
+ * email sent to lapack mailing list, user provided fix.
+ * corrected by Julie
+ * We went ahead and remove the dummy subroutine in those timing for the last LAPACK version because we did not find a machine or compiler that still had the problem. I guess we were too optimistic.
+ * also committed the "cosmetic" modifications suggested by user as they make the program easier to modify.
+
+ Add IF statement to prevent calculation if N=0
+
+== [green]*bug0072* :: cchkhs.f and zchkhs.f
+ * *CORRECTED* - see svn 904
+ * bug report sent by Inge Gutheil on Feb 3rd
+ * email sent to lapack mailing list, user provided fix.
+ * corrected by Julie
+ * Add IF statement to prevent calculation if N=0
+ 
+== [green]*bug0071* :: slarre and dlarre 
+ * *CORRECTED* - see svn 902
+ * bug report sent by Christof Voemel on Jan 31th
+ * email sent directly to Julie and Julien, Christof provided fix.
+ * corrected by Julien
+ * Add a line to prevent TAU from becoming zero
+
+== [green]*bug0070* ::  IWORK dimension is incorrect
+ * *CORRECTED* - see svn 899
+ * bug report sent by nmozarto on Jan 27th
+ * see forum topic 2156
+ * confirmed by Julie and corrected by Brian Sutton
+ * The correct dimension is (M-R), in which R is the smallest of P, M-P, Q, and M-Q.
+ * An M-by-M matrix is partitioned into a 2-by-2 block structure. The
+ * dimensions of the blocks are P-by-Q, P-by-(M-Q), (M-P)-by-Q, and
+ * (M-P)-by-(M-Q). IWORK is involved in the permutation of rows or
+ * columns of these blocks, and it is the largest block, in terms of
+ * number of rows or columns, that determines the size of IWORK.
+
+== [green]*bug0069* ::  sytri2x is writing on other part of A
+ * *CORRECTED* - see svn 898
+ * bug report sent by nmozarto on Jan 27th
+ * see forum topic 2156
+ * confirmed by Julie and corrected by Julie
+
+== [green]*bug0068* ::  Need to add LDA in *sytrs2
+ * *CORRECTED* - see svn 897,896
+ * bug report sent by nmozarto on Jan 27th
+ * see forum topic 2157
+ * confirmed by Julie and corrected by Julie
+
+== [green]*bug0067* ::  Need to add LDA in *syswapr
+ * *CORRECTED* - see svn r893 and 894
+ * bug report sent by nmozarto on Jan 24th
+ * see forum topic 2150
+ * confirmed by Julie and corrected by Julien
+ * Need to add LDA in *syswapr routines and update testing to test having LDA
+
+== [green]*bug0066* ::  bugs in {s,d}gejsv 
+ * *CORRECTED* - see svn r891
+ * bug report sent by Paul Roberts on Oct 21st
+ * reported to Zlatko Drmac and corrected by Zlatko Drmac
+ * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html[ LAPACK Mailing list msg 049]
+ 
+== [red]*bug0065* :: workspace queries not being used     
+ * *CONFIRMED*
+ * bug report by Clint Whaley on October 27th, 2010
+ *  DGESVD does not perform a workspace query on worker
+ *  functions such as DGELQF, but rather it hardwires in an assumption as
+ *  to LQF's workspace requirements.  This means that if LQF is changed,
+ *  GESVD breaks.  This actually happens in ATLAS, because we provide a
+ *  faster GELQF, which sometimes uses extra workspace.  For LAPACK itself,
+ *  it represents extra dependencies that don't need to be there. 
+
+== [green]*bug0064* :: got a bug in divide and conquer (non convergence)
+ * *CORRECTED* - see svn r813
+ * bug report by wdobler on November 12th 2007 and edrumwri (Evan) on October 10th 2010
+ * lapackers involved in the bug fix process: Julie Langou 
+ * bug fix by wdobler
+ * see forum topic 529
+ * Increase MAXIT to 200 (was 20 before)
+
+== [green]*bug0063* :: Division by 0 in *GESVJ & *GEVSJ with zero columns
+ * *CORRECTED* - see svn r790
+ * bug report and fix from Bart Oldeman on Mon Aug 16 2010
+ * independent fix proposed by Zlatko Drmac on Tue Aug 24 2010
+ * see forum topic 1953
+ * The problem that was reported (with zero matrix) is caused by bad
+      initialization to xLASSQ.  It should be ZERO, ONE and not ZERO, ZERO.
+      With ZERO, ZERO, xLASSQ does not touch those variables in case of zero
+      vector, leaving scaling at ZERO, and in the nonzero case the scaling is
+      between ONE and SQRT(N). So, in case of zero vector, division by a
+      variable that is normally bigger than ONE causes division by zero.
+      This is change (i) below.
+ * committed by Julie Langou (SVN revision r790, on Wed, Aug 25 2010)
+ * changes from Zlatko:
+     i)   In xgejsv.f and xgesvj.f input parameters SCALE and SUMSQ in xlassq.f
+	  are now initially set as SCALE = ZERO, SUMSQ=ONE.  Setting them both
+	  to zero (without carefully reading xlassq.f) caused problems with
+          exactly zero columns.
+      ii) There was a problem in the branch that computes only SIGMA and U of
+	  a rank deficient matrix. The computed numerical rank (NR) was
+	  incorrectly written as N in parameter lists of the corresponding
+          calls.
+     iii) In xgsvj0.f, xgsvj1.f testing the input parameters is changed to
+          prevent unnecessarily negative INFO in some situations.
+     iv)  Minor changes, renaming some variables etc.
+
+== [green]*bug0062* :: Array out-of-bounds reference in xLAQR5 
+ * *CORRECTED* - see svn r787
+ * bug report and fix from Mathew Cross (NAG) on Sat Aug 14 2010
+ * see forum topic 1949
+ * In the section of the code "Special case: 2-by-2 reflection (if needed)" the logical test
+      IF( BMP22 .AND. ( V( 1, M22 ).NE.ZERO ) )
+      must be split into a nested test
+      IF (BMP22) THEN, IF (V(1,M22).NE.ZERO) THEN...
+      If .NOT. BMP22 then M22 can exceed the second extent of V (and recall
+      that logical expressions can be evaluated in any order in Fortran).
+ * committed by Julien Langou (SVN revision r787, on Tue, Aug 17 2010)
+
+== [red]*bug0061* :: zgehrd.f is overflowing the maximum size in bytes of the largest array that
+can be put on the stack with gfortran (=> leads ,e.g., to non-reproducible and uncorrect execution
+of zgeev in multithreaded context
+ * *CONFIRMED*
+ * bug report by Victor Liu on Tuesday August 03rd, 2010
+ * lapackers involved in the bug fix process: Julie and Julien Langou and Mathieu Faverge
+ * bug fix by Victor Liu on Wednesday August 04th, 2010
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1930[forum topic 1930]
+ * two outstanding issues: (1) how do we go to fix this?, (2) more LAPACK subroutines might be concerned.
+
+== [green]*bug0060* ::    Bug in dtgsy2, missing IWORK call
+ * *CORRECTED* - see svn r767
+ * bug report and fix sent by Vasile Sima on 24 Feb 2009 to "lapack@cs.utk.edu".
+ * The error is that "IWORK" must appear in the line 640.  (It was included in the 1999 version.)
+      Note that the statement IE = ( I+1 ) - 1 is strange;  also, in other similar place, IWORK is used like below.
+ * committed by Julie Langou (SVN revision r767, on Thu, June 24 2010)
+
+
+== [green]*bug0060* ::  Typo in TESTING/EIG/dchkee.f and TESTING/EIG/zchkee.f  
+ * *CORRECTED* - see svn r768
+ * bug report by Ake Sandgren (HPC2N, Umea University) on Thu July 1 2010 to "lapack@cs.utk.edu".
+ * committed by Julie Langou (SVN revision r768, on Fri, July 2 2010)
+
+== [green]*bug0059* ::    ZGELSD crashes on large matrices (eq M=N=NHRS>=88), if real workspace allocated exactly as reported on workspace query.
+ * *CORRECTED* - see svn r765
+
+ * bug report and fix sent by Alexander Kobotov (Intel) on Wed, 23 June 2010 to "lapack@cs.utk.edu".
+ * Root cause is wrong estimation of real workspace size in ZLALSA (on path zgelsd->zlalsd->zlalsa).
+      It assumes that RWORK array length should be max( N, (SMLSZ+1)*NRHS*3 ), where SMLSIZ=25.
+      But in fact the function calls zlals0 which requires RWORK to be ( K*(1+NRHS) + 2*NRHS ), 
+      where K could be as large as number of columns in matrix A.
+      The same is actual for CGELSD.
+ * committed by Julie Langou (SVN revision r765, on Thu, June 24 2010)
+
+== [green]*bug0058* :: variable N0 in xLASQ3 is INPUT/OUTPUT. (The comments said INPUT.)
+ * *CORRECTED* - see svn r750
+ *  bug report and bug fix are from William Gandler (NIH/CIT) on October 16, 2009; April 23,
+2010; May 01, 2010, May 03, 2010. to "lapack@cs.utk.edu".
+ * committed by Julie Langou (SVN revision r750, on Fri, May 27 2010)
+
+== [red]*bug0057* :: Non-eigenvectors from DGEEV, problem in balancing
+ * *CONFIRMED*
+ * bug report sent by Numpy team on April 22nd, 2010
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1818[forum topic 1818]
+ * see follow-up on lapackers on April 22nd from Jim "bug in DGEHRD"
+    "The balancing is choosing to scale some rows/columns by factors like 1e18,
+which rather amplifies tiny rounding errors in the (presumably correctly)
+computed eigenvectors of the balanced matrix, when balancing is undone at the end.
+The expert driver interface dgeevx would let the user disable balancing, until
+we figure out whether this is a bug or a feature, I'm not sure which."
+
+== [orange]*bug0056* ::  Non-orthogonal eigenvectors returned from DSYEVR
+ * *TO BE CONFIRMED*
+ * bug report sent by Scipy team on April 22nd
+ * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00874.html[ LAPACK Mailing list msg 874]
+ * Julie cannot reproduce the problem on her machine with 3.2.1 and Ref BLAS
+
+== [green]*bug0055* :: Missing arguments descriptions of work and uplo in [csz]syequb
+ * *CORRECTED* - see svn r740
+ * bug report sent by Paul Roberts (NAG) on Fri, 13 Apr 2010 to "lapack@cs.utk.edu".
+ * committed by Julie Langou (SVN revision r740, on Fri, Apr 13 2010)
+
+== [green]*bug0054* :: Fix comment some of the argument descriptions have the wrong type.
+ * *CORRECTED* - see svn r739
+ * bug report sent by Paul Roberts (NAG) on Fri, 12 Apr 2010 to "lapack@cs.utk.edu".
+ * committed by Julie Langou (SVN revision r739, on Fri, Apr 12 2010)
+
+== [green]*bug0053* :: Fix external declaration issue in testing suite file: cebchvxx.f
+ * *CORRECTED* - see svn r738
+ * bug report and fix sent by Michael Chuvelev (Intel) on Fri, 5 Apr 2010 to "lapack@cs.utk.edu".
+ * committed by Julie Langou (SVN revision r738, on Fri, Apr 5 2010)
+
+== [green]*bug0052* :: Incorrect NRHS parameter in call to ?SYTRS from ?la_{po,sy,he}rfsx_extended.f.
+ * *CORRECTED* - see svn r736
+ * bug report and fix sent by Michael Chuvelev (Intel) on Fri, 2 Apr 2010 to "lapack@cs.utk.edu".
+ * committed by Julie Langou (SVN revision r736, on Fri, Apr 2 2010) 
+
+== [green]*bug0051* :: INFO=N+2 in xDGGES due to too stringent threshold in xTGEX2.
+ * *CORRECTED* - see svn r735
+ * bug report sent by Ondra Kamenik on Tue Mar 16, 2010
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1783[forum topic 1783]
+ * We have changed xLARFG to xLARFP in xGEQR2. xGEQR2 is used by xDGGES. The
+      matrices are therefore different (although all of them are correct.) However
+      for the matrix generated by xLARFP, xTGEX2 exceeds the THRES value by 10%,
+      causing an error flag. We decided to increase THRES by a factor of 2.
+      Although the bug was triggered by the change from xLARFG to xLARFP, XLARFP 
+      is not really at guilt.
+ * confirmed by Julie Langou on Thu Mar 18 2010
+ * fix provided by Guillaume Revy and Jim Demmel
+ * committed by Julien Langou (SVN revision r735, on Thu Apr 2 2010)
+
+== [green]*bug0050* :: An extra argument after matrix A lines 348-249 in STFSM.f causes a crash of SGEMM call.
+ * *CORRECTED* - see svn r732
+ * bug report and fix sent by Alexander Kobotov (Intel) on Wed, 3 Feb 2010 to "lapack@cs.utk.edu".
+ * committed by Julie Langou (SVN revision r732, on Tue Mar 9 2010)
+    
+== [green]*bug0049* :: output parameter GIVPTR stays uninitialized in case of quick exit (n.eq.0) or if the rank-1 modifier is small enough in *laed8.
+ * *CORRECTED* - see svn r731
+ * bug report and fix sent by Alexander Kobotov (Intel) on Wed, 3 Feb 2010 to "lapack@cs.utk.edu".
+ * committed by Julie Langou (SVN revision r731, on Tue Mar 9 2010)
+
+== [green]*bug0048* :: Hanging could occur in *gebal if a NaN is in input matrix.
+ * *CORRECTED* - see svn r730
+ * bug report and fix sent by Alexander Kobotov (Intel) on Wed, 3 Feb 2010 to "lapack@cs.utk.edu".
+ * committed by Julie Langou (SVN revision r730, on Tue Mar 9 2010)
+
+== [green]*bug0047* :: incorrect R/C parameter description in *gerfsx
+ * *CORRECTED* - see svn r726
+ * bug report sent by Michael Chuvelev (Intel) on Wed, 1 Mar 2010 to "lapack@cs.utk.edu".
+ * bug fix sent by James Demmel
+       "R/C are input only by their usage"
+       "there's no FACT parameter in these routines"
+ * committed by Julie Langou (SVN revision r726, on Tue Mar 9 2010)
+   
+== [green]*bug0046* :: Incorrectly documented RWORK workspace in ZGESDD
+ * *CORRECTED* - see svn r729
+ * bug report from Zbigniew on Mon 15 Mar 2010 
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1779[forum topic 1779]
+ * committed by Julie Langou (SVN revision 729, on Thu Mar 18 2010)   
+
+== [green]*bug0045* :: bug in dstemr.f when N = 2
+ * *CORRECTED* - see svn r705
+   o bug report and fix sent by Ashutosh Mahajan (Mathematics and Computer Science Division of Argonne National Labs) on Thu, 10 Dec 2009 to "lapack@cs.utk.edu".
+   o committed by Julien Langou (SVN revision 705, on Tue Dec 15 2009)
+
+== [green]*bug0044* :: bug in dsyevr.f when N = 1
+ * *CORRECTED* - see svn r704
+   o bug report and fix sent by Ashutosh Mahajan (Mathematics and Computer Science Division of Argonne National Labs) on Fri, 11 Dec 2009 to "lapack@cs.utk.edu".
+   o committed by Julien Langou (SVN revision 704, on Tue Dec 15 2009)   
+    
+== [green]*bug0043* :: VL, VU are referenced in lapack-3.2.1 dsyevr even if range.ne.'V'
+ * *CORRECTED* - see svn r699
+   o bug report sent by Michael Chuvelev (Intel) on Wed, 14 Oct 2009 to "lapack@cs.utk.edu".
+      "VL, VU are referenced in lapack-3.2.1 dsyevr even if range.ne.'V'"
+   o committed by Julien Langou (SVN revision 699, on Tue Oct 20 2009)
+
+== [green]*bug0042* :: printing format misuse in ./TESTING/EIG/[s,c,d,z]drvgbx.f
+ * *CORRECTED* - see svn r697
+
+ * bug report sent by Kevin Wadleigh on Tue 29 Sep 2009 to "lapack@cs.utk.edu".
+      "LAPACK routine ieeeck.f and compiler optimizations"
+ * The LAPACK function IEEECK should be modified to keep compilers from optimizing away the line
+      NAN6 = NAN5*0.0
+      and replacing it by NAN6 = 0.0.
+      I've seen this happen using two different compilers at their default level of optimization. However, using
+      NAN6 = NAN5*ZERO
+      as in the attached file keeps this from happening.
+ * committed by Julie Langou (SVN revision 697, on Wed Sep 30 2009)
+
+== [green]*bug0041* :: printing format misuse in ./TESTING/EIG/[s,c,d,z]drvgbx.f
+ * *CORRECTED* - see svn r696
+ * bug report sent by Michael Chuvelev (Intel) on Tue 29 Jul 2009 to "lapack@cs.utk.edu".
+      "Bug in lapack-3.2.1/TESTING/EIG/zdrvgbx.f"
+ * printing format misuse, this would possibly lead to a segmentation fault in case of errors in zgbsvxx. 
+ * committed by Julien Langou (SVN revision 696, on Tue Sep 29 2009)
+
+== [orange]*bug0040* :: Q referenced in real TGSENs when WANTQ .FALSE.
+ * *TO BE CONFIRMED*
+ * bug report from Mathew Cross on Tue 18 Aug 2009 
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1604[forum topic 1604]
+
+== [orange]*bug0039* :: faulty workspace queries in GEESX
+ * *TO BE CONFIRMED*
+ * bug report from Mathew Cross on Tue 18 Aug 2009 
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1602[forum topic 1602]
+       
+== [green]*bug0038* :: no LIWORK query in DGELSD
+ * *CORRECTED* - see svn r698
+ * bug report from Mathew Cross on Tue 18 Aug 2009 
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1601[forum topic 1601]
+ * committed by Julie Langou (SVN revision 698, on Thu Oct 20 2009)
+
+== [green]*bug0038* :: out of range element access in DLASET when using DGELSS
+ * *CORRECTED* - see svn r695
+ * bug report sent by Tim Hopkins on Fri 31 Jul 2009
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1582[forum topic 1582]
+ * committed by Julie Langou (SVN revision 695, on Fri Sep 25 2009)
+
+== [orange]*bug0037* :: xLARFP and scaling
+ * *TO BE CONFIRMED*
+ * bug report sent by Pat Quillen on Wed 29 Jul 2009 to "lapack@cs.utk.edu".
+      "xLARFP and scaling"
+ * see link:bug_lapack_3.2.1_0037/026.txt[Pat Quillen's email], and link:bug_lapack_3.2.1_0036/quillen_dlarfp2.f[quillen dlarfp2.f],
+ * see link:bug_lapack_3.2.1_0037/027.txt[Sven Hammarling's email]
+ * see link:bug_lapack_3.2.1_0037/028.txt[Pat Quillen's email], link:bug_lapack_3.2.1_0036/quillen_dlarfp3.f[quillen dlarfp3.f], and link:bug_lapack_3.2.1_0036/quillen_dlarf2.f[quillen dlarf2.f].
+
+== [orange]*bug0036* :: scaling in xSTEQR, xSTERF
+ * *TO BE CONFIRMED*
+ * bug report sent by Pat Quillen on Fri 24 Jul 2009 to "lapack@cs.utk.edu".
+      "Scaling in xSTEQR, xSTERF"
+ * see link:bug_lapack_3.2.1_0036/025.txt[Pat Quillen's email], link:bug_lapack_3.2.1_0036/quillendsteqr.f[quillen dsteqr.f].
+
+== [orange]*bug0035* :: dlarfb.f and likes
+ * *TO BE CONFIRMED*
+ * bug report sent by Michael Chuvelev (Intel) on Tue 21 Jul 2009 to "lapack@cs.utk.edu".
+      "Bug in LAPACK 3.2 dlarfb.f and likes"
+ * see link:bug_lapack_3.2.1_0035/024.txt[Michael Chuvelev and Julie's emails], link:bug_lapack_3.2.1_0035/q.dat[q.dat],
+      link:bug_lapack_3.2.1_0035/tau.dat[tau.dat], and link:bug_lapack_3.2.1_0035/test_dorgql.f[test_dorgql.f]
+
+== [orange]*bug0034* :: comments in SSPTRF not correct 
+ * *TO BE CONFIRMED*
+ * clarification asked by "sarnath" on Thu Jul 02 2009
+ * confirmation of bug by "sarnath" and Julien Langou on Fri Jul 03 2009
+ * The statement "JMAX is the column-index of the largest off-diagonal element in row IMAX" is not correct
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1553[forum topic 1553]
+
+== [orange]*bug0033* :: failure of zheevd on a specific matrix
+ * *TO BE CONFIRMED*
+ * bug report sent by Cezary Sliwa (Instytut Fizyki PAN, Poland) on Thu 2 Jul 2009 to "lapack@cs.utk.edu".
+ * see link:020.f[Cezary Sliwa's test code], link:021.dat[Cezary Sliwa's matrix], and
+      link:022.txt[Cezary Sliwa's email].
+
+== [orange]*bug0032* :: matrix splitting problem with dstebz and sstebz
+ * *TO BE CONFIRMED*
+ * bug report sent by Phil DeMier (IBM) on Mon 29 Jun 2009 to "lapack@cs.utk.edu".
+      "matrix splitting problem with dstebz and sstebz"
+ * see link:018.txt[Phil DeMier's email] and link:019.f[Phil DeMier's test code]
+
+== [green]*bug0031* :: whitespace fix in comments
+ * *CORRECTED* - see svn r692
+ * reported by "Jan" on Tue Jun 02 2009
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1449[forum topic 1449]
+ * committed by Julie Langou (SVN revision 692, on Fri Sep 11 2009)
+
+== [orange]*bug0030* :: line 641 of DTGSY2 (present as well in STGSY2, ZTGSY2, CTGSY2)
+ * *TO BE CONFIRMED*
+ * reported by Zbigniew Leyk (College Station, TX) on Mon Jun 01, 2009
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1445[forum topic 1445]
+
+== [orange]*bug0029* :: problem of WORKSPACE query with DSTEDC
+ * *TO BE CONFIRMED*
+ * reported by Tiago Requeijo on Mon Mar 30 2009
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1389[forum topic 1389]
+ * Julie : CANNOT REPRODUCE THE PROBLEM
+
+== [orange]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
+ * *TO BE CONFIRMED*
+ * reported by Vasile Sima on Thu Jan 22 2009
+ * see: link:008.txt[email from Vasile]
+ * more information at: <a href='http://www-math.ucdenver.edu/~langou/lapack-3.2/lapack_known_issues.html'>lapack known issues]
+
+== [orange]*bug0027* :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed
+ * *TO BE CONFIRMED*
+ * reported by Vasile Sima on Tue Jan 27 2009
+ * see: link:005.txt[email from Vasile]
+ * more information:
+      more specifically Vasile is reporting that the comments:
+-----
+*          [...] H contains the upper quasi-triangular
+*          matrix S from the generalized Schur factorization;
+*          2-by-2 diagonal blocks (corresponding to complex conjugate
+*          pairs of eigenvalues) are returned in standard form, with
+*          H(i,i) = H(i+1,i+1) and H(i+1,i)*H(i,i+1) &lt; 0.
+-----
+     are not correct
+
+== [orange]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
+ * *TO BE CONFIRMED*
+ * reported by Pauli Virtanen (scipy team) on Sat Dec 06 2008 (email to lapack@cs.utk.edu)
+ * see: link:004.txt[email from Pauli Virtanen]
+      see: link:http://scipy.org/scipy/scipy/ticket/709[http://scipy.org/scipy/scipy/ticket/709]
+
+== [green]*bug0025* :: serious problem in DGESDD: DGESDD returns negative singular values with INFO = 0
+ * *CORRECTED* - see svn r760
+ * reported by Guy Bencteux on Sat Dec 06 2008
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=847[forum topic 847]
+ * At the time, Julie was not able to reproduce the bug. The bug is highly BLAS dependent.
+ * on Sat Jun 19 2010, Bruno Pin&ccedil;on from ESIAL, reported another matrix with the same problems
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1868[forum topic 1868]
+ * we were able to reproduce the problem with MacOS with gfortran reference LAPACK
+      and vecLib BLAS, we can not reproduce the problem with reference LAPACK and reference BLAS.
+ * A patch has been proposed and committed by Julien Langou. (See forum topic 1868.)
+ * Note: there is strong evidence that the bug of Guy Bencteux and this one
+      are the same, although we were never able to reproduce Guy's problem. 
+
+== [red]*bug0024* :: the notation A' is confusing for complex matrices. Does A' stand for A transpose of A Hermitian transpose?
+ * *CONFIRMED*
+ * reported by Clint Whaley early July 2009
+ * LAPACK is not consistent in it use of the notation for transpose and Hermitian transpose.
+ * The use of LAPACK A' is not consistent with the BLAS useage.
+ * We note that the Matlab/Scilab/Octave convention is A' stands for
+      "conjugate transpose" and A.' stands for "transpose".
+ * In the Z routines, LAPACK uses the notation A' 669 times, it means "conjugate
+      transpose" most of the time but it means "transpose" a few times (maybe
+      10 times max, for BLAS-like routines). The notation A*H, A*T, A*N is
+      used 549 times, The notation A^T, A^N, A^H 19 times. (This is just for
+      the Z routines.)
+ * see link:023.txt[Julien's emails]
+ * vote on the lapackers mailing list:
+          A*T (or A^T) and A*H (or A^H): Clint Whaley, Jim Demmel, Sven Hammarling, Antoine Petitet, Daniel Kressner
+          A' (for A*H) and A.' for (A*T): Julien Langou
+      (I love to be that supported by the lapackers!)
+
+== [green]*bug0023* :: SROTMG and DROTMG uses deprecated Fortran ASSIGN statement and assigned GOTO statement
+ * *CORRECTED* - see svn r691
+ * reported by Marco Atzeri on Fri Mar 06 2009
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1420[forum topic 1420]
+ * committed by Julie Langou (SVN revision 691, on Thu Sep 10 2009)
+
+== [red]*bug0022* :: workspace query bug with DGEJSV (when only left or right singular vectors desired)
+ * *CONFIRMED*
+ * reported by Allin Cottrell on Tue Jan 15 2009
+ * confirmed by Julien Langou on Fri Jan 30 2009
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=866[forum topic 866]
+ * all information sent to Zlatko Drmac
+    
+== [green]*bug0021* :: in DGESDD, workspace query gives a value smaller than the minimal value given in the header to run the routine
+ * *CORRECTED* - see svn r649
+ * reported by Guy Bencteux on Sat Dec 06 2008
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=846[forum topic 846]
+ * committed by Julie Langou (SVN revision 649, on Tue Mar 17 2009)
+
+== [red]*bug0020* :: in xGESDD, workspace query can overflow for large matrices
+ * *CONFIRMED*
+ * reported by Stephan Ripke (Broad Institute, Boston) on Thu May 21 2009
+ * confirmed by Julien Langou on Thu May 21 2009
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1418[forum topic 1418]
+
+== [green]*bug0019* :: 'make install' generates a "** Error: Time for operations was zero" too easily
+ * *CORRECTED* - see svn r693
+ * negative flop counts can be generated by 'make install'
+ * reported by Sergei Steshenko on Thu Nov 20 2008
+ * see: link:006.txt[emails]
+ * committed by Julie Langou (SVN revision 693, on Fri Sep 11 2009)
+
+== [green]*bug0017* :: in CHBGST/ZHBGST, reference to uninitialized elements of RWORK in the DO 240 and DO 470 loops
+ * *CORRECTED* - see svn r656
+ * patch given by Lawrence Mulholland (NAG) on Wed May 06 2009 
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1408[forum topic 1408]
+ * committed by Julien Langou (SVN revision 656, on Sun May 10 2009)
+
+== [green]*bug0016* :: problem in workspace query for CGEESX/DGEESX/SGEESX/ZGEESX
+ * *CORRECTED* - see svn r657
+ * bug report sent by Alexander V. Kobotov (Intel) on Mon, 6 Apr 2009 to "lapack@cs.utk.edu".
+      "(c/z)geesx: no lwork=-1 branch at all, info = -15 is returned while doing lquery."
+      The S and D versions were not exiting after WORKSPACE query as well.
+ * committed by Julien Langou (SVN revision 657, on Sun May 10 2009)
+
+== [green]*bug0015* :: referencing WORK(1) and IWORK(1) when IJOB=0 in CTGSEN/DTGSEN/STGSEN/ZTGSEN contradicts header description
+ * *CORRECTED* - see svn r658,659
+ * bug report sent by Alexander V. Kobotov (Intel) on Mon, 6 Apr 2009 to "lapack@cs.utk.edu".
+      "(d/s)tgsen.f: iwork(1) always referenced: line 455: iwork( 1 ) = LIWMIN, documentation says that
+      if IJOB=0 it shouldn't, so NULL pointer causes a segfault."
+      Same problem for C and Z versions and for the WORK array.
+ * committed by Julien Langou (SVN revision 658 and 659, on Sun May 10 2009)
+
+== [green]*bug0014* :: CSYEQUB/ZSYEQUB/SSYEQUB/DSYEQUB/CHEEQUB/CHEEQUB: EXTERNAL and INTRINSIC list are not accurate (or not even present)
+ * *CORRECTED* - see svn r660
+ * bug report sent by Alexander V. Kobotov (Intel) on Mon, 6 Apr 2009 to "lapack@cs.utk.edu".
+      "c(he/sy)equb: no slamch in external lists and lsame, intrinsics not described"
+      Same problem for D and S versions and for the WORK array.
+ * committed by Julien Langou (SVN revision 660 on Sun May 10 2009)
+
+
+== [green]*bugXXXX* Wrong type for workspace in cpot01 and zpot01
+ * *CORRECTED* - see svn r655
+ * Bug reported by Julie Langou on Th. 04/30/09
+ * Workspace types needed by CPOT01 and ZPOT01, they need to be REAL (or DOUBLE PRECISION) 
+      and not COMPLEX (or DOUBLE COMPLEX).
+ * committed by Julie Langou (SVN revision r655, on Sun, May 3 2009)
+
+== [green]*bugXXXX* Revert DLARFG to 3.1.0, move DLARFG to DLARFP and improved DLARFP
+ * *CORRECTED* - see svn (r706, r707, r708, r710, r712, r713) + (r755) 
+ * Bug reported by Pat Quillen (MathWorks)
+ * The Householder reflector generation routine dlarfg (for double precision)
+      has been changed in LAPACK-3.2 by dlarfp to generate nonnegative
+      diagonal elements (on the diagonal of the R factor of a QR
+      factorization).  There is an issue in the dlarfp subroutine in
+      LAPACK-3.2. The bug report is from Pat Quillen from MathWorks, have
+      participated in the bug fix: Pat Quillen, Jim Demmel, Sven Hammarling,
+      Mark Hoemmen, Guillaume Revy, William Kahan, Julie Langou and Julien
+      Langou.
+ * Extensive work by Jim Demmel, Guillaume Revy, and William Kahan have
+      revealed that the new Householder reflector that guarantees a positive
+      diagonal of R in QR has two apparently unfixable drawbacks compared to
+      the old reflector:
+      1) the computed reflector can be less orthogonal by a factor of about 4,
+         (Jim, Guillaume and William are not sure why.)
+      2) this new routine is intrinsically more sensitive to over/underflow,
+         this is now well understood, details are skipped here.
+      None of these issues arise with the conventional Householder reflector.
+
+ * So the decision is to
+
+      1) Fix as much as possible the xLARFP routines. This was corrected by
+         Julien (see (r706, r707, r708, r710, r712, r713)) based on Jim's idea.
+
+      2) Back out the changes in LAPACK to go back to using the old reflector
+	 (xlarfg) everywhere (e.g. in xGEQRF, xGEQR2, etc.).
+
+      3) Keep the change that saves flops when u has lots of trailing zeros,
+         since this is independently a good idea.
+
+      4) Change the name from xLARFP to xLARFGP and introduce new QR routines
+	 (xGEQRFP and xGEQR2P) that uses xlarfp to guarantee a new positive
+         diagonal of R, for who needs it.
+
+      5) This requires to adapt the test suites
+
+      6) Note: only the QR routines have an xGEQRFP. While it seems that quite
+         a few users care for QR factorization with nonnegative diagonal R. Noone
+	 seemed to care for this feature on LQ, QL or RQ. So we have left out
+         these routines.
+
+       7) Steps 2 to 6 were done during r755 by Julie.
+
+
+== dead code* :: xLAHRD is now replaced by xLAHR2, xLAHRD is a dead code since LAPACK 3.1
+ * xLAHRD will be removed at some point in the future from the distribution
+
+
+  
+// vim: set syntax=asciidoc:
+

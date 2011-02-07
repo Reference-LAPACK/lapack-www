@@ -1,0 +1,390 @@
+LAPACK -- Linear Algebra PACKage
+================================
+
+// :Author:    Julie_Langou_and_Julien_Langou
+// :Email:     <julie@cs.utk.edu,julien.langou@ucdenver.edu>
+// :Date:      2010/12/08
+// :Revision:  1
+
+[width="100%",cols="^,^,^",frame="none",grid="none"]
+|=======
+| image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] | 
+*Version 3.3.0* + 
+ +
+link:http://www.icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
+mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
+ +
+link:lapack-announce-subscribe@cs.utk.edu[*Get the latest LAPACK News*] +
+ +
+link:http://www.netlib.org/master_counts2.html#lapack[# access]
+ |image:images/lapack2.jpg[LAPACK,scaledwidth="5%"]
+|=======
+
+==========================
+ LAPACK is a software package provided by Univ. of Tennessee; Univ. of California, Berkeley; Univ. of Colorado Denver; and NAG Ltd..
+==========================
+
+
+== Presentation
+
+LAPACK is written in Fortran 90 and provides routines for solving systems of
+simultaneous linear equations, least-squares solutions of linear systems of
+equations, eigenvalue problems, and singular value problems. The associated
+matrix factorizations (LU, Cholesky, QR, SVD, Schur, generalized Schur) are
+also provided, as are related computations such as reordering of the Schur
+factorizations and estimating condition numbers. Dense and banded matrices are
+handled, but not general sparse matrices. In all areas, similar functionality
+is provided for real and complex matrices, in both single and double precision.
+
+// If you're uncertain of the LAPACK routine name to address your application's
+// needs, check out the LAPACK Search Engine.
+
+The original goal of the LAPACK project was to make the widely used EISPACK and
+LINPACK libraries run efficiently on shared-memory vector and parallel
+processors. On these machines, LINPACK and EISPACK are inefficient because
+their memory access patterns disregard the multi-layered memory hierarchies of
+the machines, thereby spending too much time moving data instead of doing
+useful floating-point operations. LAPACK addresses this problem by reorganizing
+the algorithms to use block matrix operations, such as matrix multiplication,
+in the innermost loops. These block operations can be optimized for each
+architecture to account for the memory hierarchy, and so provide a
+transportable way to achieve high efficiency on diverse modern machines. We use
+the term "transportable" instead of "portable" because, for fastest possible
+performance, LAPACK requires that highly optimized block matrix operations be
+already implemented on each machine.
+
+LAPACK routines are written so that as much as possible of the computation is
+performed by calls to the Basic Linear Algebra Subprograms (BLAS).
+// While LINPACK and EISPACK are based on the vector operation kernels of the
+// Level 1 BLAS, 
+LAPACK is designed at the outset to exploit the Level 3 BLAS -- a set of
+specifications for Fortran subprograms that do various types of matrix
+multiplication and the solution of triangular systems with multiple right-hand
+sides. Because of the coarse granularity of the Level 3 BLAS operations, their
+use promotes high efficiency on many high-performance computers, particularly
+if specially coded implementations are provided by the manufacturer.
+
+Highly efficient machine-specific implementations of the BLAS are available for
+many modern high-performance computers. For details of known vendor- or
+ISV-provided BLAS, consult the BLAS FAQ. Alternatively, the user can download
+ATLAS to automatically generate an optimized BLAS library for the architecture.
+A Fortran 77 reference implementation of the BLAS is available from netlib;
+however, its use is discouraged as it will not perform as well as a specifically
+tuned implementation.
+
+.Acknowledgments:
+Since 2010, this material is based upon work supported by the
+National Science Foundation under Grant No. NSF-OCI-1032861. Any opinions,
+findings and conclusions or recommendations expressed in this material are
+those of the author(s) and do not necessarily reflect the views of the National
+Science Foundation (NSF). Until 2006, this material was based upon work
+supported by the National Science Foundation under Grant No. ASC-9313958,
+NSF-0444486 and DOE Grant No. DE-FG03-94ER25219. Any opinions, findings and
+conclusions or recommendations expressed in this material are those of the
+author(s) and do not necessarily reflect the views of the National Science
+Foundation (NSF) or the Department of Energy (DOE).
+
+
+== Software
+
+===  Licensing
+
+LAPACK is a freely-available software package. It is available from netlib via
+anonymous ftp and the World Wide Web at http://www.netlib.org/lapack . Thus, it
+can be included in commercial software packages (and has been). We only ask
+that proper credit be given to the authors.
+
+The license used for the software is the modified BSD license, see:
+
+- link:LICENSE.txt[*LICENSE*]
+
+Like all software, it is copyrighted. It is not trademarked, but we do ask the
+following:
+
+- If you modify the source for these routines we ask that you change the name of
+the routine and comment the changes made to the original.
+
+- We will gladly answer any questions regarding the software. If a modification
+is done, however, it is the responsibility of the person who modified the
+routine to provide support.
+
+=== *LAPACK, version 3.3.0*
+==========================
+ - Download: http://www.netlib.org/lapack/lapack-3.3.0.tgz[lapack-3.3.0.tgz] 
+ - link:lapack-3.3.0.html[*LAPACK 3.3.0 Release Notes*]
+ - Updated:  November 14, 2010
+ - Make and link:http://www.cmake.org[Cmake] build process included
+ - link:http://www.netlib.org/lapack/Errata/index2.html[LAPACK Errata] (Current known bugs)
+==========================
+
+=== Standard C language APIs for LAPACK
+
+collaboration LAPACK and INTEL Math Kernel Library
+==========================
+ - Download: http://www.netlib.org/lapack/lapacke.tgz[LAPACK C INTERFACE]
+ - Version: 1.0.0.009 (Corresponds to Intel MKL 10.3 product)
+ - Updated:  November 14, 2010
+==========================
+
+=== LAPACK for Windows
+
+Please see: http://icl.cs.utk.edu/lapack-for-windows/lapack
+
+=== SVN Access
+
+The LAPACK SVN repository is open for read-only for our users to be able to get
+the latest bug fixed.
+
+----
+svn co http://icl.cs.utk.edu/svn/lapack-dev/lapack/trunk
+----
+
+== Support
+ - link:http://www.icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*]
+ - mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
+ - link:http://lists.cs.utk.edu/pipermail/lapack-announce[Archives of LAPACK mailing list]  
+
+Do not forget to check the
+link:http://www.netlib.org/lapack/Errata/index2.html[current LAPACK errata] to
+check current bug status.
+ 
+== *Contributors*
+
+LAPACK is a community-wide effort.LAPACK relies on
+link:contributor-list.html[many contributors], and we would like to acknowledge
+their outstanding work. link:contributor-list.html[Here is the list of LAPACK contributors since 1992.] 
+
+If you are wishing to contribute, please have a look at
+link:http://www.netlib.org/lapack-dev/lapack-coding/program-style.html[the
+LAPACK Program Style]. This document has been written to facilitate
+contributions to LAPACK by documenting their design and implementation
+guidelines.
+
+Contributions are always welcome and can be sent to the
+mailto:lapack@cs.utk.edu[LAPACK team].
+
+== Documentation
+=== Release Notes
+
+The link:http://www.netlib.org/lapack/release_notes.html[LAPACK Release Notes]
+contain the history of the modifications made to the LAPACK library between
+each new version.
+
+=== Improvements and Bugs
+
+LAPACK is a currently active project, we are striving to bring new improvements
+and new algorithms on a regular basis.
+link:http://www.netlib.org/lapack/improvement.html[Here is the list of the
+improvement since LAPACK 3.0.]
+
+Please contribute to our link:http://www.netlib.org/lapack/WishList/[wishlist]
+if you feel some functionality or algorithms are missing by emailing the
+mailto:lapack@cs.utk.edu[LAPACK team].
+
+link:http://www.netlib.org/lapack/Errata/index2.html[Current known bugs]
+
+Here is the link:http://www.netlib.org/lapack/bug_list.html[list of the bugs]
+(corrected, confirmed and to be confirmed) since LAPACK 3.0.
+
+=== FAQ
+
+Consult LAPACK link:http://www.netlib.org/lapack/faq.html[Frequently Asked Questions].
+
+Please contribute to our FAQ if you feel some questions are missing by emailing the mailto:lapack@cs.utk.edu[LAPACK team].
+
+The link:http://www.icl.cs.utk.edu/lapack-forum[LAPACK User Forum] is also a good source to find answers.
+
+=== Individual Routines
+
+link:http://www.netlib.org/lapack/explore-html[Explore LAPACK code]
+
+link:http://www.netlib.org/lapack/single[LAPACK single precision real routines]
+
+link:http://www.netlib.org/lapack/double[LAPACK double precision real routines]
+
+link:http://www.netlib.org/lapack/complex[LAPACK single precision complex routines]
+
+link:http://www.netlib.org/lapack/complex16[LAPACK double precision complex routines]
+
+link:http://www.netlib.org/lapack/util[LAPACK utility routines]
+
+link:http://www.netlib.org/lapack/testing[LAPACK testing routines]
+
+=== User's Guide
+
+link:http://www.netlib.org/lapack/lug[HTML version of the LAPACK Users' Guide, Third Edition]
+
+
+link:http://www.netlib.org/lapack/lapackqref.ps[LAPACK Quick Reference Guide to the Driver Routines (VERSION 3.0)]
+
+link:http://www.netlib.org/lapack/lawn81[HTML version of "Quick Installation Guide for LAPACK"]
+
+link:http://www.netlib.org/lapack/lawns/lawn81.ps[LAPACK Working Note 81: Quick Installation Guide for LAPACK on Unix Systems (25 pages) (VERSION 3.0)]
+
+link:http://www.netlib.org/lapack/lawn41[HTML version of "LAPACK Installation Guide"]
+
+link:http://www.netlib.org/lapack/lawns/lawn41.ps[LAPACK Working Note 41:  LAPACK Installation Guide (VERSION 3.0)]
+
+link:manpages.tgz[gzip tar file of the manual pages for the LAPACK 3.2.0 driver and computational routines.]
+
+=== *LAWNS*: LAPACK Working Notes 
+
+link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
+
+== Release History
+
+*Version 1.0 : February 29, 1992*
+
+ * Revised, Version 1.0a:  June 30, 1992
+ * Revised, Version 1.0b:  October 31, 1992
+ * Revised, Version 1.1:   March 31, 1993
+
+*Version 2.0:   September 30, 1994*
+
+*Version 3.0:   June 30, 1999*
+
+ * Update, Version 3.0:  October 31, 1999
+ * Update, Version 3.0:  May 31, 2000
+
+*Version 3.1.0:  November 12, 2006*
+
+ * Version 3.1.1:  February 26, 2007
+
+*Version 3.2:    November 18, 2008*
+
+ * Version 3.2.1:  April 17, 2009
+ * Version 3.2.2:  June 30, 2010
+
+*Version 3.3.0: November 14, 2010*
+
+
+== Previous Release
+
+=== LAPACK version 3.2.2
+
+ - Download: http://www.netlib.org/lapack/lapack-3.2.2.tgz[lapack-3.2.2.tgz]
+ - link:lapack-3.2.2.html[LAPACK 3.2.2 Release Notes]
+ - Updated:  June 30, 2010
+
+=== LAPACK version 3.2.1
+
+ - Download: http://www.netlib.org/lapack/lapack-3.2.1.tgz[lapack-3.2.1.tgz]
+ - link:lapack-3.2.1.html[LAPACK 3.2.1 Release Notes]
+ - Updated:  April 17, 2009
+
+=== LAPACK version 3.2 with CMAKE package 
+
+ - Download: http://www.netlib.org/lapack/lapack-3.2.1-CMAKE.tgz[lapack-3.2.1-CMAKE.tgz]
+ - Download: http://www.netlib.org/lapack/lapack-3.2.1-CMAKE.zip[lapack-3.2.1-CMAKE.zip]
+ - link:lapack-3.2.2.html[LAPACK 3.2.2 Release Notes]
+ - Updated:  January 26, 2010
+
+=== LAPACK version 3.2 
+
+ - Download: http://www.netlib.org/lapack/lapack-3.2.tgz[lapack-3.2.tgz]
+ - link:lapack-3.2.html[LAPACK 3.2 Release Notes]
+ - Updated:  November 18, 2008
+
+=== LAPACK version 3.1.1 with manpages and html
+
+ - Download: http://www.netlib.org/lapack/lapack-3.1.1.tgz[lapack-3.1.1.tgz]
+ - link:lapack-3.1.1.changes[LAPACK 3.1.1 Release Notes]
+ - Updated:  February 26, 2007
+
+=== LAPACK version 3.1.1
+
+ - Download: http://www.netlib.org/lapack/lapack-lite-3.1.1.tgz[lapack-lite-3.1.1.tgz]
+ - link:lapack-3.1.1.changes[LAPACK 3.1.1 Release Notes]
+ - Updated:  February 26, 2007
+
+=== LAPACK version 3.1
+
+ - Download: http://www.netlib.org/lapack/lapack-lite-3.1.0.tgz[lapack-lite-3.1.0.tgz]
+ - link:revisions.info.3.1[LAPACK 3.1 Release Notes]
+ - Updated:  November 12, 2006
+
+=== LAPACK version 3.0 + UPDATES
+
+ - Download: http://www.netlib.org/lapack/lapack-3.0.tgz[lapack-3.0.tgz]
+ - Updated:  May 31, 2000
+
+
+=== LAPACK UPDATES for version 3.0
+ - Download: http://www.netlib.org/lapack/update.tgz[update.tgz]
+ - Instructions:  cd LAPACK; gunzip -c update.tgz | tar xvf -
+ - Updated: May 31, 2000
+
+== Vendors LAPACK library
+
+Please report to our
+link:http://www.netlib.org/lapack/faq.html#_what_and_where_are_the_lapack_vendors_implementations[FAQ]
+to know the list of the current vendors implementations.
+
+== Related Projects
+
+=== CLAPACK
+CLAPACK is an f2c'ed conversion of LAPACK
+
+link:http://www.netlib.org/clapack[CLAPACK website]
+
+=== ScaLAPACK
+ScaLAPACK is a distributed-memory implementation of LAPACK
+
+link:http://www.netlib.org/scalapack[ScaLAPACK website]
+
+=== PLASMA
+The Parallel Linear Algebra for Scalable Multi-core Architectures (PLASMA)
+project aims to address the critical and highly disruptive situation that is
+facing the Linear Algebra and High Performance Computing community due to the
+introduction of multi-core architectures.
+
+PLASMA's ultimate goal is to create software frameworks that enable programmers
+to simplify the process of developing applications that can achieve both high
+performance and portability across a range of new architectures.
+
+The development of programming models that enforce asynchronous, out of order
+scheduling of operations is the concept used as the basis for the definition of
+a scalable yet highly efficient software framework for Computational Linear
+Algebra applications.
+
+link:http://icl.cs.utk.edu/plasma/[PLASMA website]
+
+=== MAGMA
+The MAGMA (Matrix Algebra on GPU and Multicore Architectures) project aims to
+develop a dense linear algebra library similar to LAPACK but for
+heterogeneous/hybrid architectures, starting with current "Multicore+GPU"
+systems.
+
+The MAGMA research is based on the idea that, to address the complex challenges
+of the emerging hybrid environments, optimal software solutions will themselves
+have to hybridize, combining the strengths of different algorithms within a
+single framework. Building on this idea, we aim to design linear algebra
+algorithms and frameworks for hybrid manycore and GPUs systems that can enable
+applications to fully exploit the power that each of the hybrid components
+offers.
+
+link:http://icl.cs.utk.edu/magma/[MAGMA website]
+
+== Related older Projects
+
+.Fortran95 interface to LAPACK
+link:../lapack95[LAPACK 95]
+by  mailto:lapack95@cs.utk.edu[Jerzy Wa&#347;niewski]
+
+.Fortran-to-Java LAPACK
+link:../java/f2j[JLAPACK]
+
+.C++ implementation of LAPACK
+LAPACK extensions for high performance linear algebra computations. This
+version includes support for solving linear systems using LU, Cholesky, and QR
+matrix factorizations. 
+link:../lapack\+\+[lapack++]
+by   mailto:pozo@cs.utk.edu[Roldan Pozo]
+
+.essl
+Subdirectory containing CCI (Call Conversion Interface) for LAPACK/ESSL.
+See lawn82 for more information.
+
+// (This is for Julien, please leave these lines.)
+// To generate HTML file from this TXT file: asciidoc -a toc index2.txt
+// vim: set syntax=asciidoc:

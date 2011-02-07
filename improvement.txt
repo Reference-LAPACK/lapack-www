@@ -1,0 +1,147 @@
+Summary of improvements since LAPACK 3.0 
+========================================
+
+1. Improvements in LAPACK 3.1.0
+------------------------------
+
+See link:lapack-3.1.0.changes[Release Notes for 3.1.0] for more details
+
+ 1. *Hessenberg QR algorithm with the small bulge multi-shift QR algorithm
+    together with aggressive early deflation.* This is an implementation of the
+    2003 SIAM SIAG LA Prize winning algorithm of Braman, Byers and Mathias,
+    that significantly speeds up the nonsymmetric eigenproblem.
+
+ 2. *Improvements of the Hessenberg reduction subroutines.* These accelerate the
+    first phase of the nonsymmetric eigenvalue problem. 
+
+ 3. *New MRRR eigenvalue algorithms that also support subset computations.*
+    These implementations of the 2006 SIAM SIAG LA Prize winning algorithm of
+    Dhillon and Parlett are also significantly more accurate than the version
+    in LAPACK 3.0.
+
+ 4. *Mixed precision iterative refinement subroutines for exploiting fast single
+    precision hardware.* On platforms like the Cell processor that do single
+    precision much faster than double, linear systems can be solved many times
+    faster. Even on commodity processors there is a factor of 2 in speed
+    between single and double precision. These are prototype routines in the
+    sense that their interfaces might changed based on user feedback.
+
+ 5. *New partial column norm updating strategy for QR factorization with column
+    pivoting*. This fixes a subtle numerical bug dating back to LINPACK that can
+    give completely wrong results.
+
+ 6. *Thread safety:* Removed all the SAVE and DATA statements (or provided
+    alternate routines without those statements), increasing reliability
+    on SMPs.
+
+ 7. *Additional support for matrices with NaN/subnormal elements, optimization
+    of the balancing subroutines, improving reliability.*
+
+
+2. Improvements in LAPACK 3.1.1
+--------------------------------
+
+See link:lapack-3.1.1.changes[Release Notes for 3.1.1] for more details
+
+ 1. *Add BLAS routines so that the BLAS provided is complete*
+
+ 2. *Provide 5 flavours of SECOND and DSECND and ddd the TIMER variable in the make.inc to chose which routine to use*
+
+2. Improvements in LAPACK 3.2.0
+--------------------------------
+
+See link:lapack-3.2.html[Release Notes for 3.2] for more details
+
+  1. *Extra Precise Iterative Refinement:* New linear solvers that
+  ``guarantee'' fully accurate answers (or give a warning that the
+  answer cannot be trusted).  The matrix types supported in this
+  release are: GE (general), SY (symmetric), PO (positive definite),
+  HE (Hermitian), and GB (general band) in all the relevant
+  precisions.
+
+  2. *XBLAS, or portable ``extra precise BLAS'':* Our new linear
+  solvers in (1) depend on these to perform iterative refinement.
+  The XBLAS will be released in a separate
+  package. 
+
+  3. *Non-Negative Diagonals from Householder QR:* The QR
+  factorization routines now guarantee that the diagonal is both real
+  and non-negative.  Factoring a uniformly random matrix now correctly
+  generates an orthogonal Q from the Haar distribution. 
+
+  4. *High Performance QR and Householder Reflections on Low-Profile
+  Matrices:* The auxiliary routines to apply Householder reflections
+  (e.g. DLARFB) automatically reduce the cost of QR from O(n^3^) to
+  O(n^2^+nb^2^) for matrices stored in a dense format for band
+  matrices with bandwidth b with no user interface changes.  Other
+  users of these routines can see similar benefits in particular on
+  ``narrow profile'' matrices. 
+
+  5. *New fast and accurate Jacobi SVD:* High accuracy SVD routine for
+  dense matrices, which can compute tiny singular values to many more
+  correct digits than xGESVD when the matrix has columns differing
+  widely in norm, and usually runs faster than xGESVD too. 
+
+  6. *Routines for Rectangular Full Packed format:* The RFP format
+  (SF, HF, PF, TF) enables efficient routines with optimal storage for
+  symmetric, Hermitian or triangular matrices.  Since these routines
+  utilize the Level 3 BLAS, they are generally much more efficient
+  than the existing packed storage routines (SP, HP, PP, TP). 
+
+  7. *Pivoted Cholesky:* The Cholesky factorization with diagonal
+  pivoting for symmetric positive semi-definite matrices.  Pivoting is
+  required for reliable rank detection.
+
+  8. *Mixed precision iterative refinement* routines for exploiting
+  fast single precision hardware: On platforms like the Cell processor
+  that do single precision much faster than double, linear systems can
+  be solved many times faster. Even on commodity processors there is a
+  factor of 2 in speed between single and double precision.  The
+  matrix types supported in this release are: GE (general), PO
+  (positive definite).
+
+  9. *Some new variants added for the one sided factorization:* LU
+  gets right-looking, left-looking, Crout and Recursive), QR gets
+  right-looking and left-looking, Cholesky gets left-looking,
+  right-looking and top-looking.  Depending on the computer
+  architecture (or speed of the underlying BLAS), one of these
+  variants may be faster than the original LAPACK implementation.
+
+  10. *More robust DQDS algorithm:* Fixed some rare convergence
+  failures for the bidiagonal DQDS SVD routine.
+
+  11. *Better documentation for the multishift Hessenberg QR algorithm
+  with early aggressive deflation, and various improvements of the
+  code.* 
+
+3. Improvements in LAPACK 3.2.1
+--------------------------------
+
+See link:lapack-3.2.1.html[Release Notes for 3.2.1] for more details
+
+  1. *change xLARRD (MRRR routines) to deal with some matrices from Godunov*
+
+4. Improvements in LAPACK 3.3.0
+--------------------------------
+
+See link:lapack-3.3.0.html[Release Notes for 3.3.0] for more details
+
+  1. *Standard C language APIs for LAPACK:* The standard interfaces include
+  support for Fortran and C data formats (column-major and row-major) to ease
+  interoperability with, and migration of, Fortran code. Full LAPACK
+  functionality is now accessible in a C-friendly manner.  These new interfaces
+  are a key feature of the new LAPACK 3.3 release and the just released Intel
+  MKL 10.3 product. PLASMA 2.3 relies on it.
+
+  2. *Computing the complete CS decomposition:* Compute the complete CS
+  decomposition of a partitioned unitary matrix.  The algorithm is designed
+  for numerical stability.  See: Brian D. Sutton.  Computing the complete CS
+  decomposition. Numer. Algorithms. 50 (2009), no. 1, 33â€“65.
+
+  3. *Level-3 BLAS symmetric indefinite solve and symmetric indefinite inversion*:
+  This enables better performance for xSYTRF and xSYTRI.
+
+  4. *Thread safe xLAMCH*: SLAMCH and DLAMCH were the only two routines not thread-safe 
+  in LAPACK-3.2. This is fixed: all routines in LAPACK-3.3 are now thread-safe. 
+
+// vim: set syntax=asciidoc:

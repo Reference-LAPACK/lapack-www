@@ -1,0 +1,1648 @@
+= LAWNs (LAPACK Working Notes)
+
+link:lawn.bib[LAWNS bibtex]
+
+== lawn237 +[link:http://www.netlib.org/lapack/lawnspdf/lawn237.pdf[pdf]]+
+.Minimizing Communication for Eigenproblems and the Singular Value Decomposition.
+
+by	*Grey Ballard, James Demmel, and Ioana Dumitriu*
+
+UCB/EECS-2010-136, Nov 13, 2010
+
+== lawn236 +[link:http://www.netlib.org/lapack/lawnspdf/lawn236.pdf[pdf]]+
+.A contribution to the conditioning of the total least squares problem.
+
+by	*Marc Baboulin and Serge Gratton*
+INRIA, Nov 5, 2010.
+
+== lawn235 +[link:http://www.netlib.org/lapack/lawnspdf/lawn235.pdf[pdf]]+
+.Reducing the time to tune parallel dense linear algebra routines with partial execution and performance modelling.
+
+by	*Jack Dongarra and Piotr Luszczek*
+
+UT-CS-10-661, Oct 8, 2010.
+
+== lawn232 +[link:http://www.netlib.org/lapack/lawnspdf/lawn232.pdf[pdf]]+
+.Distributed-Memory Task Execution and Dependence Tracking within DAGuE and the DPLASMA Project.
+
+by	*Bosilca, G., Bouteiller, A., Danalis, A, Faverge, M., Haidar, H., Herault, T., Kurzak, J., Langou, J., Lemarinier, P., Ltaief, H., Luszczek, P., YarKhan, A., Dongarra, J*
+
+UT-CS-10-660, Sep 15, 2010.
+
+== lawn231 +[link:http://www.netlib.org/lapack/lawnspdf/lawn231.pdf[pdf]]+
+.DAGuE: A generic distributed DAG engine for high performance computing.
+
+by	*Bosilca, G., Bouteiller, A., Danalis, A., Herault, T., Lemarinier, P., Dongarra, J*
+
+UT-CS-10-659, Sep 15, 2010.
+
+== lawn230 +[link:http://www.netlib.org/lapack/lawnspdf/lawn230.pdf[pdf]]+
+.Faster, Cheaper, Better ‚Äì a Hybridization Methodology to Develop Linear Algebra Software for GPUs.
+
+by	*Emmanuel Agullo, Cedric Augonnet, Jack Dongarra, Hatem Ltaief, Raymond Namyst, Samuel Thibault, and Stanimire Tomov*
+
+UT-CS-10-658, Sep 15, 2010.
+To appear in	GPU Computing GEMs, vol.2
+
+== lawn229 +[link:http://www.netlib.org/lapack/lawnspdf/lawn229.pdf[pdf]]+
+.An Implementation of the Tile QR Factorization for a GPU and Multiple CPUs.
+
+by	*Jakub Kurzak, Rajib Nath, Peng Du, and Jack Dongarra*
+
+UT-CS-10-657, Sep 15, 2010.
+Submitted to	PARA'10
+
+== lawn228 +[link:http://www.netlib.org/lapack/lawnspdf/lawn228.pdf[pdf]]+
+.From CUDA to OpenCL: Towards a Performance-portable Solution for Multi-platform GPU Programming.
+
+by	*Peng Du, Rick Weber, Piotr Luszczek, Stanimire Tomov, Gregory Peterson and Jack Dongarra*
+
+UT-CS-10-656, Sep 6, 2010.
+
+== lawn227 +[link:http://www.netlib.org/lapack/lawnspdf/lawn227.pdf[pdf]]+
+.An Improved MAGMA GEMM for Fermi GPUs.
+
+by	*Rajib Nath, Stanimire Tomov, and Jack Dongarra*
+
+UT-CS-10-655, July 29, 2010.
+
+== lawn226 +[link:http://www.netlib.org/lapack/lawnspdf/lawn226.pdf[pdf]]+
+.CALU: a communication optimal LU factorization algorithm.
+
+by	*Laura Grigori, James W Demmel, and Hua Xiang*
+UCB/EECS-2010-29, March 15, 2010.
+Published in	Submitted to SIAM Journal on Matrix Analysis and Applications (SIMAX).
+
+== lawn225 +[link:http://www.netlib.org/lapack/lawnspdf/lawn225.pdf[pdf]]+
+.Dense Linear Algebra Solvers for Multicore with GPU Accelerators.
+
+by	*Stanimire Tomov, Rajib Nath, Hatem Ltaief, and Jack Dongarra*
+
+UT-CS-09-649, February 18, 2010.
+Published in	In the Proceedings of IPDPS 2010: 24th IEEE International Parallel and Distributed Processing Symposium, Atlanta, GA, April 2010.
+
+== lawn224 +[link:http://www.netlib.org/lapack/lawnspdf/lawn224.pdf[pdf]]+
+.QR Factorization of Tall and Skinny Matrices in a Grid Computing Environment.
+
+by	*Emmanuel Agullo, Camille Coti, Jack Dongarra, Thomas Herault, and Julien Langou*
+
+UT-CS-10-651, January 6, 2010.
+Published in	In the Proceedings of IPDPS 2010: 24th IEEE International Parallel and Distributed Processing Symposium, Atlanta, GA, April 2010.
+
+== lawn223 +[link:http://www.netlib.org/lapack/lawnspdf/lawn223.pdf[pdf]]+
+.A Scalable High Performant Cholesky Factorization for Multicore with GPU Accelerators.
+
+by	*Hatem Ltaief, Stanimire Tomov, Rajib Nath, Peng Du, and Jack Dongarra*
+
+UT-CS-09-646, November 25, 2009.
+
+== lawn222 +[link:http://www.netlib.org/lapack/lawnspdf/lawn222.pdf[pdf]]+
+.Enhancing Parallelism of Tile QR Factorization for Multicore Architectures.
+
+by	*Bilel Hadri, Hatem Ltaief, Emmanuel Agullo, and Jack Dongarra*
+
+UT-CS-09-645, September 4, 2009.
+
+== lawn221 +[link:http://www.netlib.org/lapack/lawnspdf/lawn221.pdf[pdf]]+
+.Dynamic Task Scheduling for Linear Algebra Algorithms on Distributed-Memory Multicore Systems.
+
+by	*Fengguang Song, Asim YarKhan and Jack Dongarra*
+
+UT-CS-09-638, April 13, 2009.
+
+== lawn220 +[link:http://www.netlib.org/lapack/lawnspdf/lawn220.pdf[pdf]]+
+.Fully Dynamic Scheduler for Numerical Computing on Multicore Processors.
+
+by	*Jakub Kurzak and Jack Dongarra*
+
+UT-CS-09-643, June 4, 2009.
+
+== lawn219 +[link:http://www.netlib.org/lapack/lawnspdf/lawn219.pdf[pdf]]+
+.Accelerating the reduction to upper Hessenberg form through hybrid GPU-based computing.
+
+by	*Stanimire Tomov and Jack Dongarra*
+
+UT-CS-09-642, May 24, 2009.
+
+== lawn218 +[link:http://www.netlib.org/lapack/lawnspdf/lawn218.pdf[pdf]]+
+.Minimizing Communication in Linear Algebra.
+
+by	*Grey Ballard, James Demmel, Olga Holtz, and Oded Schwartz*
+UCB/EECS-2009-62, May 15, 2009.
+
+== lawn217 +[link:http://www.netlib.org/lapack/lawnspdf/lawn217.pdf[pdf]]+
+.Comparative Study of One-Sided Factorizations with Multiple Software Packages on Multi-Core Hardware.
+
+by	*Emmanuel Agullo, Bilel Hadri, Hatem Ltaief and Jack Dongarra*
+
+UT-CS-09-640, April 28, 2009.
+
+== lawn216 +[link:http://www.netlib.org/lapack/lawnspdf/lawn216.pdf[pdf]]+
+.A novel parallel QR algorithm for hybrid distributed memory HPC systems.
+
+by	*Robert Granat Bo Kagstrom and Daniel Kressner*
+UMINF-09.06, April 6, 2009.
+
+== lawn215 +[link:http://www.netlib.org/lapack/lawnspdf/lawn215.pdf[pdf]]+
+.Communication-optimal Parallel and Sequential Cholesky decomposition.
+
+by	*Grey Ballard, James Demmel, Olga Holtz, and Oded Schwartz*
+UCB/EECS-2009-29, February 13, 2009.
+
+== lawn214 +[link:http://www.netlib.org/lapack/lawnspdf/lawn214.pdf[pdf]]+
+.Scheduling Two-sided Transformations using Algorithms-
+
+by	*Hatem Ltaief, Jakub Kurzak and Jack Dongarra*
+by-Tiles on Multicore Architectures.
+
+UT-CS-09-637, February 11, 2009.
+
+== lawn213 +[link:http://www.netlib.org/lapack/lawnspdf/lawn213.pdf[pdf]]+
+.Scheduling Linear Algebra Operations on Multicore Processors.
+
+by	*Jakub Kurzak, Hatem Ltaief, Jack Dongarra, and Rosa M. Badia*
+
+UT-CS-09-636, February 5, 2009.
+
+== lawn212 +[link:http://www.netlib.org/lapack/lawnspdf/lawn212.pdf[pdf]]+
+.A Note on Auto-tuning GEMM for GPUs.
+
+by	*Yinan Li, Jack Dongarra, and Stanimire Tomov*
+
+UT-CS-09-635, January 12, 2009.
+
+== lawn211 +[link:http://www.netlib.org/lapack/lawnspdf/lawn211.pdf[pdf]]+
+.Level-3 Cholesky kernel subroutine of a fully portable High Performance minimal storage hybrid format Cholesky algorithm.
+
+by	*Fred G. Gustavson, Jerzy Wasniewski, and Jack Dongarra*
+
+UT-CS-08-634, December 1, 2008.
+
+== lawn210 +[link:http://www.netlib.org/lapack/lawnspdf/lawn210.pdf[pdf]]+
+.Towards Dense Linear Algebra for Hybrid GPU Accelerated Manycore Systems.
+
+by	*Stanimire Tomov, Jack Dongarra, and Marc Baboulin*
+
+UT-CS-08-632, October 17, 2008.
+
+== lawn209 +[link:http://www.netlib.org/lapack/lawnspdf/lawn209.pdf[pdf]]+
+.Parallel Band Two-Sided Matrix Bidiagonalization for Multicore Architectures.
+
+by	*Hatem Ltaief, Jakub Kurzak, and Jack Dongarra*
+
+UT-CS-08-631, October 1, 2008.
+
+== lawn208 +[link:http://www.netlib.org/lapack/lawnspdf/lawn208.pdf[pdf]]+
+.Parallel Block Hessenberg Reduction using Algorithms-
+
+by	*Hatem Ltaief, Jakub Kurzak, and Jack Dongarra*
+by-Tiles for Multicore Architectures Revisited.
+
+UT-CS-08-624, August 7, 2008.
+
+== lawn207 +[link:http://www.netlib.org/lapack/lawnspdf/lawn207.pdf[pdf]]+
+.Using dual techniques to derive componentwise and mixed condition numbers for a linear functional of a linear least squares solution.
+
+by	*Marc Baboulin and Serge Gratton*
+
+UT-CS-08-622, August 4, 2008.
+
+== lawn206 +[link:http://www.netlib.org/lapack/lawnspdf/lawn206.pdf[pdf]]+
+.The Problem with the Linpack Benchmark Matrix Generator.
+
+by	*Jack Dongarra, and Julien Langou*
+UCD-CCM-271, June 28, 2008.
+
+== lawn205 +[link:http://www.netlib.org/lapack/lawnspdf/lawn205.pdf[pdf]]+
+.Algorithmic Based Fault Tolerance Applied to High Performance Computing.
+
+by	*George Bosilca, Remi Delmas, Jack Dongarra, and Julien Langou*
+
+UT-CS-08-620, June 19, 2008.
+
+== lawn204 +[link:http://www.netlib.org/lapack/lawnspdf/lawn204.pdf[pdf]]+
+.Communication-optimal parallel and sequential QR and LU factorizations.
+
+by	*James W. Demmel, Laura Grigori, Mark Frederick Hoemmen and Julien Langou*
+UCB/EECS-2008-89, August 4, 2008.
+
+== lawn203 +[link:http://www.netlib.org/lapack/lawnspdf/lawn203.pdf[pdf]]+
+.Non-Negative Diagonals and High Performance on Low-Profile Matrices from Householder QR.
+
+by	*James W. Demmel, Mark Hoemmen, Yozo Hida, and E. Jason Riedy*
+UCB/EECS-2008-76, May 30, 2008.
+
+== lawn202 +[link:http://www.netlib.org/lapack/lawnspdf/lawn202.pdf[pdf]]+
+.LU, QR and Cholesky Factorizations using Vector Capabilities of GPUs.
+
+by	*Vasily Volkov and James W. Demmel*
+UCB/EECS-2008-49, May 15, 2008.
+
+== lawn201 +[link:http://www.netlib.org/lapack/lawnspdf/lawn201.pdf[pdf]]+
+.QR Factorization for the CELL Processor
+
+by	*Jakub Kurzak and Jack Dongarra*
+
+UT-CS-08-616, May 22, 2008.
+
+== lawn200 +[link:http://www.netlib.org/lapack/lawnspdf/lawn200.pdf[pdf]]+
+.Some Issues in Dense Linear Algebra for Multicore and Special Purpose Architectures.
+
+by	*Marc Baboulin, Jack J. Dongarra and Stanimire Tomov*
+
+UT-CS-08-615, May 6, 2008.
+
+== lawn199 +[link:http://www.netlib.org/lapack/lawnspdf/lawn199.pdf[pdf]]+
+.Rectangular Full Packed Format for Cholesky's Algorithm: Factorization, Solution and Inversion.
+
+by	*Fred G. Gustavson, Jerzy Wasniewski, Julien Langou and Jack J. Dongarra*
+
+UT-CS-08-614, April 28, 2008.
+
+== lawn198 +[link:http://www.netlib.org/lapack/lawnspdf/lawn198.pdf[pdf]]+
+.Blocked Algorithms for the Reduction to Hessenberg-Triangular Form Revisited.
+
+by	*Bo K√•gstr√∂m, Daniel Kressner, Enrique S. Quintana-Ort√≠, and Gregorio Quintana-Ort√≠*
+
+February 2008.
+
+== lawn197 +[link:http://www.netlib.org/lapack/lawnspdf/lawn197.pdf[pdf]]+
+.Using GPUs to Accelerate the Bisection Algorithm for Finding Eigenvalues of Symmetric Tridiagonal Matrices.
+
+by	*Vasily Volkov and James W. Demmel*
+UCB/EECS-2007-179, January 2008.
+
+== lawn196 +[link:http://www.netlib.org/lapack/lawnspdf/lawn196.pdf[pdf]]+
+.A global convergence proof of cyclic Jacobi methods with block rotations.
+
+by	*Zlatko Drmaƒç*
+December 2007.
+
+== lawn195 +[link:http://www.netlib.org/lapack/lawnspdf/lawn195.pdf[pdf]]+
+.ScaLAPACK's MRR Algorithm.
+
+by	*Christof V√∂mel*
+November 2007.
+
+== lawn194 +[link:http://www.netlib.org/lapack/lawnspdf/lawn194.pdf[pdf]]+
+.A Refined Representation Tree for MRRR.
+
+by	*Christof V√∂mel*
+November 2007.
+
+== lawn193 +[link:http://www.netlib.org/lapack/lawnspdf/lawn193.pdf[pdf]]+
+.Computing the Conditioning of the Components of a Linear Least Squares Solution.
+
+by	*Marc Baboulin, Jack Dongarra, Serge Gratton, and Julien Langou*
+
+UT-cs-07-604, September 2007.
+
+== lawn192 +[link:http://www.netlib.org/lapack/lawnspdf/lawn192.pdf[pdf]]+
+.Parallel eigenvalue reordering in real Schur forms.
+
+by	*R. Granat, B. K√•gstr√∂m, D. Kressner*
+September 2007.
+
+== lawn191 +[link:http://www.netlib.org/lapack/lawnspdf/lawn191.pdf[pdf]]+
+.A Class of Parallel Tiled Linear Algebra Algorithms for Multicore Architectures.
+
+by	*Alfredo Buttari, Julien Langou, Jakub Kurzak, and Jack Dongarra*
+
+UT-CS-07-600, September 7, 2007.
+
+== lawn190 +[link:http://www.netlib.org/lapack/lawnspdf/lawn190.pdf[pdf]]+
+
+by	*Alfredo Buttari, Julien Langou, Jakub Kurzak, and Jack Dongarra*
+.Parallel Tiled QR Factorization for Multicore Architectures.
+
+UT-CS-07-598, July 2007.
+Published in	Concurrency and Computation: Practice and Experience, volume 20, Issue 13, pages 1573-1590, Sep 2008, DOI: 10.1002/cpe.1301
+
+== lawn189 +[link:http://www.netlib.org/lapack/lawnspdf/lawn189.pdf[pdf]]+
+.Fast and Small Short Vector SIMD Matrix Multiplication Kernels for the CELL Processor.
+
+by	*Wesley Alvaro, Jakub Kurzak, and Jack Dongarra*
+
+UT-CS-08-609, January 2008.
+
+== lawn188 +[link:http://www.netlib.org/lapack/lawnspdf/lawn188.pdf[pdf]]+
+.Extra-precise Iterative Refinement for Overdetermined Least Squares Problems.
+
+by	*James Demmel, Yozo Hida, Xiaoye S. Li, and E. Jason Riedy*
+
+May 2007
+
+Published in	ACM Transactions on Mathematical Software, Vol. 35, No. 4, 2009.
+
+== lawn187 +[link:http://www.netlib.org/lapack/lawnspdf/lawn187.pdf[pdf]]+
+.LAPACK 3.1 xHSEQR: Tuning and Implementation Notes on the Small Bulge Multi-shift QR Algorithm with Aggressive Early Deflation.
+
+by	*Ralph Byers*
+
+May 2007
+
+== lawn186 +[link:http://www.netlib.org/lapack/lawnspdf/lawn186.pdf[pdf]]+
+.Fast Linear Algebra is Stable.
+
+by	*James Demmel, Ioana Dumitriu, and Olga Holtz*
+
+May 2007
+
+Published in	 Numerische Mathematik, Volume 108, Issue 1 (October 2007), Pages: 59-91, Year of Publication: 2007, ISSN:0029-599X
+
+== lawn185 +[link:http://www.netlib.org/lapack/lawnspdf/lawn185.pdf[pdf]]+
+.Limitations of the PlayStation 3 for High Performance Cluster Computing.
+
+by	*Alfredo Buttari, Jack Dongarra, and Jakub Kurzak*
+
+UT-CS-07-597, May 2007
+
+== lawn184 +[link:http://www.netlib.org/lapack/lawnspdf/lawn184.pdf[pdf]]+
+.Solving Systems of Linear Equations on the CELL Processor Using Cholesky Factorization.
+
+by	*Jakub Kurzak, Alfredo Buttari, and Jack Dongarra*
+
+UT-CS-07-596, May 2007
+
+== lawn183 +[link:http://www.netlib.org/lapack/lawnspdf/lawn183.pdf[pdf]]+
+.Performance and Accuracy of LAPACK's Symmetric Tridiagonal Eigensolvers.
+
+by	*James W. Demmel, Osni A. Marques, Beresford N. Parlett, and Christof V√∂mel*
+
+April 2007
+
+== lawn182 +[link:http://www.netlib.org/lapack/lawnspdf/lawn182.pdf[pdf]]+
+.A Testing Infrastructure for LAPACK's Symmetric Eigensolvers.
+
+by	*James W. Demmel, Osni A. Marques, Beresford N. Parlett, and Christof V√∂mel*
+
+April 2007
+
+== lawn181 +[link:http://www.netlib.org/lapack/lawnspdf/lawn181.pdf[pdf]]+
+.Prospectus for the Next LAPACK and ScaLAPACK Libraries.
+
+by	*James Demmel, Jack Dongarra, Beresford Parlett, William Kahan, Ming Gu, David Bindel
+Yozo Hida, Xiaoye Li, Osni Marques, E. Jason Riedy, Christof V√∂mel, Julien Langou,
+Piotr Luszczek, Jakub Kurzak, Alfredo Buttari, Julie Langou, and Stanimire Tomov*
+
+UT-CS-07-592, February 2007
+
+== lawn180 +[link:http://www.netlib.org/lapack/lawnspdf/lawn180.pdf[pdf]]+
+.Computations to Enhance the Performance while Achieving the 64-bit Accuracy.
+
+by	*Alfredo Buttari, Jack Dongarra, Jakub Kurzak, Piotr Luszczek, and Stanimire Tomov*
+
+UT-CS-06-584, November 2006.
+
+== lawn179 +[link:http://www.netlib.org/lapack/lawnspdf/lawn179.pdf[pdf]]+
+.Parallel tools for solving incremental dense least squares problems. Application to space geodesy.
+
+by	*Marc Baboulin, Luc Giraud, Serge Gratton, and Julien Langou*
+
+UT-CS-06-582, September 2006.
+
+== lawn178 +[link:http://www.netlib.org/lapack/lawnspdf/lawn178.pdf[pdf]]+
+.Implementing Linear Algebra Routines on Multi-Core Processors with Pipelining and a Look Ahead
+
+by	*Jakub Kurzak and Jack Dongarra*
+
+UT-CS-06-581, September 2006.
+
+== lawn177 +[link:http://www.netlib.org/lapack/lawnspdf/lawn177.pdf[pdf]]+
+.Implementation of the Mixed-Precision High Performance LINPACK Benchmark on the CELL Processor
+
+by	*Jakub Kurzak and Jack Dongarra*
+
+UT-CS-06-580, September 2006.
+
+== lawn176 +[link:http://www.netlib.org/lapack/lawnspdf/lawn176.pdf[pdf]]+
+.On the failure of rank revealing QR factorization software - a case study
+
+by	*Zlatko Drmaƒç and Zvonimir Bujanoviƒá*
+June 2006.
+
+== lawn175 +[link:http://www.netlib.org/lapack/lawnspdf/lawn175.pdf[pdf]]+
+.Exploiting the Performance of 32 bit Floating Point Arithmetic in Obtaining 64 bit Accuracy (Revisiting Iterative Refinement for Linear Systems)
+
+by	*Julie Langou, Julien Langou, Piotr Luszczek, Jakub Kurzak, Alfredo Buttari and Jack Dongarra*
+June 2006.
+
+== lawn174 +[link:http://www.netlib.org/lapack/lawnspdf/lawn174.pdf[pdf]]+
+.Cache Efficient Biadiagonalization Using BLAS 2.5 Operators
+
+by	*G. W. Howell, J. W. Demmel, C. T. Fulton, S. Hammarling, and K. Marmol*
+February 2006.
+
+== lawn173 +[link:http://www.netlib.org/lapack/lawnspdf/lawn173.pdf[pdf]]+
+.Multishift Variants of the QZ Algorithm with Agressive Early Deflation
+
+by	*Bo K√•gstr√∂m and Daniel Kressner*
+February 2006.
+
+== lawn172 +[link:http://www.netlib.org/lapack/lawnspdf/lawn172.pdf[pdf]]+
+.Benefits oF IEEE-754 Features in Modern Symmetric Tridiagonal Eigensolvers
+
+by	*Osni A. Marques, E. Jason Riedy, and Christof V√∂mel*
+Technical Report UCB/CSD-05-1414, September 2005.
+
+== lawn171 +[link:http://www.netlib.org/lapack/lawnspdf/lawn171.pdf[pdf]]+
+.Block Algorithms for Reordering Standard and Generalized Schur Forms
+
+by	*Daniel Kressner*
+September 2005.
+Updated February 2006.
+
+== lawn170 +[link:http://www.netlib.org/lapack/lawnspdf/lawn170.pdf[pdf]]+
+.New fast and accurate Jacobi SVD algorithm: II
+
+by	*Zlatko Drmac and Kresimir Veselic*
+August 2005.
+
+== lawn169 +[link:http://www.netlib.org/lapack/lawnspdf/lawn169.pdf[pdf]]+
+.New fast and accurate Jacobi SVD algorithm: I
+
+by	*Zlatko Drmac and Kresimir Veselic*
+August 2005.
+
+== lawn168 +[link:http://www.netlib.org/lapack/lawnspdf/lawn168.pdf[pdf]]+
+. PDSYEVR. ScaLAPACK‚Äôs parallel MRRR algorithm for the symmetric eigenvalue problem
+
+by	*Dominic Antonelli and Christof V√∂mel*
+Technical Report UCB/CSD-05-1399, August 2005.
+
+== lawn167 +[link:http://www.netlib.org/lapack/lawnspdf/lawn167.pdf[pdf]]+
+.Subset Computations with the MRRR algorithm
+
+by	*Osni A. Marques, Beresford N. Parlett, and Christof V√∂mel*
+Technical Report UCB/CSD-05-1392, August 2005.
+
+== lawn166 +[link:http://www.netlib.org/lapack/lawnspdf/lawn166.pdf[pdf]]+
+.Computing The Bidiagonal SVD Using Multiple Relatively Robust Representations
+
+by	*Paul R. Willems, Bruno Lang, and Christof V√∂mel*
+
+UT-CS-05-551, April 2005.
+
+== lawn165 +[link:http://www.netlib.org/lapack/lawnspdf/lawn165.pdf[pdf]]+
+.Error Bounds from Extra Precise Iterative Refinement
+
+by	*James Demmel, Yozo Hida, W. Kahan, Xiaoye S. Li, Soni Mukherjee, and E. Jason Riedy*
+
+UT-CS-05-547, February 2005.
+
+== lawn164 +[link:http://www.netlib.org/lapack/lawnspdf/lawn164.pdf[pdf]]+
+.LAPACK 2005 Prospectus: Reliable and Scalable Software for Linear Algebra Computations on High End Computers
+
+by	*Jim Demmel and Jack Dongarra*
+
+UT-CS-05-546, February 2005.
+
+== lawn163 +[link:http://www.netlib.org/lapack/lawnspdf/lawn163.pdf[pdf]]+
+.How the MRRR Algorithm Can Fail on Tight Eigenvalue Clusters
+
+by	*Beresford N. Parlett and Christof V√∂mel*
+
+UT-CS-04-542, December, 2004.
+
+== lawn162 +[link:http://www.netlib.org/lapack/lawnspdf/lawn162.pdf[pdf]]+
+.The Design and Implementation of the MRRR Algorithm
+
+by	*Inderjit S. Dhillon, Beresford N. Parlett, and Christof V√∂mel*
+
+UT-CS-04-541, December, 2004.
+Published in	ACM Transactions on Mathematical Software (TOMS), Volume 32, Issue 4 (December 2006), Pages: 533-560, Year of Publication: 2006, ISSN:0098-3500
+
+== lawn161 +[link:http://www.netlib.org/lapack/lawnspdf/lawn161.pdf[pdf]]+
+.LAPack-Style Codes for Level 2 and 3 Pivoted Cholesky Factorizations
+
+by	*Craig Lucas*
+
+UT-CS-04-522, February 2004
+
+== lawn160 +[link:http://www.netlib.org/lapack/lawnspdf/lawn160.pdf[pdf]]+
+.Self Adapting Software for Numerical Linear Algebra and LAPACK for Clusters
+
+by	*Zizhong Chen, Jack Dongarra, Piotr Luszczek, and Kenneth Roche*
+
+UT-CS-03-499, January 2003
+Published in	Parallel Computing, Volume 29, Issues 11-12, November-December 2003, Pages 1723-1743
+
+== lawn159 +[link:http://www.netlib.org/lapack/lawnspdf/lawn159.pdf[pdf]]+
+.Finite-choice algorithm optimization in Conjugate Gradients
+
+by	*Jack Dongarra and Victor Eijkhout*
+
+UT-CS-03-502, January 2003
+
+== lawn158 +[link:http://www.netlib.org/lapack/lawnspdf/lawn158.pdf[pdf]]+
+.LAPACK3E -- A Fortran 90-enhanced version of LAPACK
+
+by	*Edward Anderson*
+
+UT-CS-02-497, December 2002
+
+== lawn157 +[link:http://www.netlib.org/lapack/lawnspdf/lawn157.pdf[pdf]]+
+.Self-adapting Numerical Software for Next Generation Applications
+
+by	*Jack Dongarra and Victor Eijkhout*
+
+UT-CS-02-484, August 2002
+Published in	International Journal of High Performance Computing Applications, Vol. 17, Year. 2, pages: 2-7, DOI: 10.1177
+
+== lawn156 +[link:http://www.netlib.org/lapack/lawnspdf/lawn156.pdf[pdf]]+
+.Polynomial acceleration of optimised multi-grid smoothers basic theory
+
+by	*Victor Eijkhout*
+
+UT-CS-02-477, August 2002
+
+== lawn155 +[link:http://www.netlib.org/lapack/lawnspdf/lawn155.pdf[pdf]]+
+.An implementation of the dqds algorithm positive case
+
+by	*Beresford N. Parlett and Osni A. Marques*
+
+UT-CS-02-475, August 2002
+Published in	Linear Algebra and Applications, year 1999, volume 309, page 2000
+
+== lawn154 +[link:http://www.netlib.org/lapack/lawnspdf/lawn154.pdf[pdf]]+
+.Orthogonal Eigenvectors and Relative Gaps
+
+by	*Inderjit S. Dhillon and Beresford N. Parlett*
+
+UT-CS-02-474, August 2002
+
+== lawn153 +[link:http://www.netlib.org/lapack/lawnspdf/lawn153.pdf[pdf]]+
+.New Complex Parallel Eigenvalue and Eigenvector Routines
+
+by	*M. Fahey*
+
+UT-CS-01-471, August 2001.
+
+== lawn152 +[link:http://www.netlib.org/lapack/lawnspdf/lawn152.pdf[pdf]]+
+.Implementation for LAPACK of a Block Algorithm for Matrix 1-Norm Estimation
+
+by	*S. Cheng and N. Higham*
+
+UT-CS-01-470, August 2001.
+
+== lawn151 +[link:http://www.netlib.org/lapack/lawnspdf/lawn151.pdf[pdf]]+
+.Automatic Determination of Matrix-Blocks
+
+by	*V. Eijkhout*
+
+UT-CS-01-458, April 2001.
+
+== lawn150 +[link:http://www.netlib.org/lapack/lawnspdf/lawn150.pdf[pdf]]+
+.Discontinuous Plane Rotations and the Symmetric Eigenvalue Problem
+
+by	*E. Anderson*
+
+UT-CS-00-454, December 2000.
+
+== lawn149 +[link:http://www.netlib.org/lapack/lawnspdf/lawn149.pdf[pdf]]+
+.Design, Implementation and Testing of Extended and Mixed Precision BLAS
+
+by	*X. Li, J. Demmel, D. Bailey, G. Henry, Y. Hida, J. Iskandar, W. Kahan, A. Kapur, M. Martin, T. Tung, D. J. Yoo*
+
+UT-CS-00-451, October 2000.
+
+== lawn148 +[link:http://www.netlib.org/lapack/lawnspdf/lawn148.pdf[pdf]]+
+.On Computing Givens rotations reliably and efficiently
+
+by	*D. Bindel, J. Demmel, W. Kahan, O. Marques*
+
+UT-CS-00-449, October 2000.
+
+== lawn147 +[link:http://www.netlib.org/lapack/lawnspdf/lawn147.pdf[pdf]]+
+.Automated Empirical Optimization of Software and the ATLAS Project
+
+by	*R. C. Whaley, A. Petitet, J. Dongarra*
+
+UT-CS-00-448, September 2000.
+
+== lawn146 +[link:http://www.netlib.org/lapack/lawnspdf/lawn146.pdf[pdf]]+
+.A recursive formulation of Cholesky factorization of a matrix in packed storage
+
+by	*B. Andersen, F. Gustavson and J. Wasniewski*
+
+UT-CS-00-441, May 2000.
+
+== lawn145 +[link:http://www.netlib.org/lapack/lawnspdf/lawn145.pdf[pdf]]+
+.The 'weighted modification' incomplete factorisation method
+
+by	*V. Eijkhout*
+
+UT-CS-99-436, Dec 1999.
+
+== lawn144 +[link:http://www.netlib.org/lapack/lawnspdf/lawn144.pdf[pdf]]+
+.On the Existence Problem of Incomplete Factorisation Methods
+
+by	*V. Eijkhout*
+
+UT-CS-99-435, Dec 1999.
+
+== lawn143 +[link:http://www.netlib.org/lapack/lawnspdf/lawn143.pdf[pdf]]+
+.A Comparison of Parallel Solvers for Diagonally Dominant and General Narrow-Banded Linear Systems II
+
+by	*P. Arbenz, A. Cleary, J. Dongarra, and M. Hegland*
+
+UT-CS-99-415, May 1999.
+
+== lawn142 +[link:http://www.netlib.org/lapack/lawnspdf/lawn142.pdf[pdf]]+
+.A Comparison of Parallel Solvers for Diagonally Dominant and General Narrow-Banded Linear Systems
+
+by	*P. Arbenz, A. Cleary, J. Dongarra, and M. Hegland*
+
+UT-CS-99-414, Feb 1999.
+
+== lawn141 +[link:http://www.netlib.org/lapack/lawnspdf/lawn141.pdf[pdf]]+
+.Overview of Iterative Linear System Solver Packages
+
+by	*Victor Eijkhout*
+
+UT-CS-98-411, Dec 1998.
+
+== lawn140 +[link:http://www.netlib.org/lapack/lawnspdf/lawn140.pdf[pdf]]+
+.NetSolve version 1.2: Design and Implementation
+
+by	*H. Casanova, J. Dongarra*
+
+UT-CS-98-406, Nov 1998.
+
+== lawn139 +[link:http://www.netlib.org/lapack/lawnspdf/lawn139.pdf[pdf]]+
+.A Numerical Linear Algebra Problem Solving Environment Designer's Perspective
+
+by	*A. Petitet, H. Casanova, J. Dongarra, Y. Robert & R.C. Whaley*
+
+UT-CS-98-405, Oct 1998.
+
+== lawn138 +[link:http://www.netlib.org/lapack/lawnspdf/lawn138.pdf[pdf]]+
+.Testing Software for LAPACK90
+
+by	*J. Dongarra, W. Owczarz, J. Wasniewski, P. Yalamov*
+
+UT-CS-98-401, Sept 1998.
+
+== lawn137 +[link:http://www.netlib.org/lapack/lawnspdf/lawn137.pdf[pdf]]+
+.Installation Guide and Design of the HPF 1.1 interface to ScaLAPACK, SLHPF
+
+by	*L. S. Blackford, J. J. Dongarra, C. A. Papadopoulos and R. C. Whaley*
+
+UT-CS-98-396, August 1998.
+
+== lawn136 +[link:http://www.netlib.org/lapack/lawnspdf/lawn136.pdf[pdf]]+
+.ScaLAPACK Evaluation and Performance at the DoD MSRCs
+
+by	*L. S. Blackford and R. C. Whaley*
+
+UT-CS-98-388, April 1998.
+
+== lawn135 +[link:http://www.netlib.org/lapack/lawnspdf/lawn135.pdf[pdf]]+
+.Packed Storage Extensions for ScaLAPACK
+
+by	*E. D'Azevedo and J. Dongarra*
+
+UT-CS-98-385, April 1998.
+
+== lawn134 +[link:http://www.netlib.org/lapack/lawnspdf/lawn134.pdf[pdf]]+
+.High Performance Linear Algebra Package -- LAPACK90
+
+by	*J. Wasniewski and J. Dongarra*
+
+UT-CS-98-384, April 1998.
+
+== lawn133 +[link:http://www.netlib.org/lapack/lawnspdf/lawn133.pdf[pdf]]+
+.Algorithmic Redistribution Methods for Block Cyclic Distributions
+
+by	*A. Petitet and J. Dongarra*
+
+UT-CS-98-383, March 1998.
+
+== lawn132 +[link:http://www.netlib.org/lapack/lawnspdf/lawn132.pdf[pdf]]+
+.Parallelizing the Divide and Conquer Algorithm for the Symmetric Tridiagonal Eigenvalue Problem on Distributed Memory Architectures
+
+by	*F. Tisseur and J. Dongarra*
+
+UT-CS-98-382, March 1998.
+
+== lawn131 +[link:http://www.netlib.org/lapack/lawnspdf/lawn131.pdf[pdf]]+
+.Automatically Tuned Linear Algebra Software
+
+by	*R. Whaley and J. Dongarra*
+
+UT-CS-97-366, December 1997.
+
+== lawn130 +[link:http://www.netlib.org/lapack/lawnspdf/lawn130.pdf[pdf]]+
+.Accurate SVDs of Structured Matrices
+
+by	*J. Demmel*
+
+UT-CS-97-375, October 1997.
+
+== lawn129 +[link:http://www.netlib.org/lapack/lawnspdf/lawn129.pdf[pdf]]+
+.A New Parallel Matrix Multiplication Algorithm on Distributed-Memory Concurrent Computers
+
+by	*J. Choi*
+
+UT-CS-97-369, September 1997.
+
+== lawn128 +[link:http://www.netlib.org/lapack/lawnspdf/lawn128.pdf[pdf]]+
+.Algorithmic Redistribution Methods for Block Cyclic Decompositions
+
+by	*A. Petitet*
+
+UT-CS-97-371, July 1997.
+
+== lawn127 +[link:http://www.netlib.org/lapack/lawnspdf/lawn127.pdf[pdf]]+
+.Sparse Gaussian Elimination on High Performance Computers
+
+by	*X. Li*
+
+UT-CS-97-368, June 1997.
+
+== lawn126 +[link:http://www.netlib.org/lapack/lawnspdf/lawn126.pdf[pdf]]+
+.Performance Improvements to LAPACK for the Cray Scientific Library
+
+by	*E. Anderson and M. Fahey*
+
+UT-CS-97-359, April 1997.
+
+== lawn125 +[link:http://www.netlib.org/lapack/lawnspdf/lawn125.pdf[pdf]]+
+.Implementation in ScaLAPACK of Divide-and-Conquer Algorithms for Banded and Tridiagonal Linear Systems
+
+by	*A. Cleary and J. Dongarra*
+
+UT-CS-97-358, April 1997.
+
+== lawn124 +[link:http://www.netlib.org/lapack/lawnspdf/lawn124.pdf[pdf]]+
+.An Asynchronous Parallel Supernodal Algorithm for Sparse Gaussian Elimination
+
+by	*J. Demmel, J. Gilbert, and X. Li*
+
+UT-CS-97-357, April 1997.
+
+== lawn123 +[link:http://www.netlib.org/lapack/lawnspdf/lawn123.pdf[pdf]]+
+.A Test Matrix Collection for Non-Hermitian Eigenvalue Problems
+
+by	*Z. Bai, D. Day, J. Demmel and J. Dongarra*
+
+UT-CS-97-355, March 1997.
+
+== lawn122 +[link:http://www.netlib.org/lapack/lawnspdf/lawn122.pdf[pdf]]+
+.A New Deflation Criterion for the QR Algorithm
+
+by	*M. Ahues and F. Tisseur*
+
+UT-CS-97-353, March 1997.
+
+== lawn121 +[link:http://www.netlib.org/lapack/lawnspdf/lawn121.pdf[pdf]]+
+.A Parallel Implementation of the Nonsymmetric QR Algorithm for Distributed Memory Architectures
+
+by	*G. Henry, D. Watkins, and J. Dongarra*
+
+UT-CS-97-352, March 1997.
+
+== lawn120 +[link:http://www.netlib.org/lapack/lawnspdf/lawn120.pdf[pdf]]+
+.Scheduling Block-Cyclic Array Redistribution
+
+by	*F. Desprez, J. Dongarra, A. Petitet, C. Randriamaro and Y. Robert*
+
+UT-CS-97-349, February 1997.
+
+== lawn119 +[link:http://www.netlib.org/lapack/lawnspdf/lawn119.pdf[pdf]]+
+.Computing the Singular Value Decomposition with High Relative Accuracy
+
+by	*J. Demmel, M. Gu, S. Eisenstat, I. Slapnicar, K. Veselic and Z. Drmac*
+
+UT-CS-97-348, February 1997.
+
+== lawn118 +[link:http://www.netlib.org/lapack/lawnspdf/lawn118.pdf[pdf]]+
+.The Design and Implementation of the Parallel OUT-of-core ScaLAPACK LU, QR, and Cholesky Factorization Routines
+
+by	*J. J. Dongarra and E. F. D'Azevedo*
+
+UT-CS-97-347, January 1997.
+
+== lawn117 +[link:http://www.netlib.org/lapack/lawnspdf/lawn117.pdf[pdf]]+
+.A Fortran 90 Interface for LAPACK
+
+by	*L. Susan Blackford, Jack J. Dongarra, Jeremy Du Croz, Sven Hammarling, Jerzy Wasniewski*
+
+UT-CS-96-341, December 1996.
+
+== lawn116 +[link:http://www.netlib.org/lapack/lawnspdf/lawn116.pdf[pdf]]+
+.Parallel Matrix Distributions: Have we been doing it all right?
+
+by	*M. Sidani and B. Harrod*
+
+UT-CS-96-340, November 1996.
+
+== lawn115 +[link:http://www.netlib.org/lapack/lawnspdf/lawn115.pdf[pdf]]+
+.On the Error Analysis and Implementation of Some Eigenvalue Decomposition and Singular Value Decomposition Algorithms
+
+by	*H. Ren*
+
+UT-CS-96-336, September 1996.
+
+== lawn114 +[link:http://www.netlib.org/lapack/lawnspdf/lawn114.pdf[pdf]]+
+.A BLAS-3 Version of the QR Factorization with Column Pivoting
+
+by	*G. Quintana-Orti, X. Sun, and C. Bischof*
+
+UT-CS-96-334, August 1996.
+
+== lawn113 +[link:http://www.netlib.org/lapack/lawnspdf/lawn113.pdf[pdf]]+
+.Block-Partitioned Algorithms for Solving the Linear Least Squares Problem
+
+by	*G. Quintana-Orti, E. S. Quintana-Orti, and A. Petitet*
+
+UT-CS-96-333, July 1996.
+
+== lawn112 +[link:http://www.netlib.org/lapack/lawnspdf/lawn112.pdf[pdf]]+
+.Practical Experience in the Dangers of Heterogeneous Computing
+
+by	*L. S. Blackford, A. Cleary, J. Demmel, I. Dhillon, J. Dongarra, S. Hammarling, A. Petitet, H. Ren, K. Stanley, and R. C. Whaley*
+
+UT-CS-96-330, July 1996.
+
+== lawn111 +[link:http://www.netlib.org/lapack/lawnspdf/lawn111.pdf[pdf]]+
+.Optimizing Matrix Multiply using PHiPAC: a Portable, High-Performance, ANSI C Coding Methodology
+
+by	*J. Bilmes, K. Asanovic, J. Demmel, D. Lam, and C.-W. Chin*
+
+UT-CS-96-326, May 1996.
+
+== lawn110 +[link:http://www.netlib.org/lapack/lawnspdf/lawn110.pdf[pdf]]+
+.Key Concepts For Parallel OUT-Of-Core LU Factorization
+
+by	*J. J. Dongarra, S. Hammarling, and D. W. Walker*
+
+UT-CS-96-324, April 1996.
+
+== lawn109 +[link:http://www.netlib.org/lapack/lawnspdf/lawn109.pdf[pdf]]+
+.BLAS Technical Workshop
+
+by	*J. Dongarra, S. Hammarling, and S. Ostrouchov*
+
+UT-CS-95-317, November 1995.
+
+== lawn108 +[link:http://www.netlib.org/lapack/lawnspdf/lawn108.pdf[pdf]]+
+.GEMM-Based Level 3 BLAS: Installation, Tuning and Use of the Model Implementations and the Performance Evaluation Benchmark
+
+by	*B. Kagstrom, P. Ling, and C. Van Loan*
+
+UT-CS-95-316, November 1995.
+
+== lawn107 +[link:http://www.netlib.org/lapack/lawnspdf/lawn107.pdf[pdf]]+
+.GEMM-Based Level 3 BLAS: High-Performance Model Implementations and Performance Evaluation Benchmark
+
+by	*B. Kagstrom, P. Ling, and C. Van Loan*
+
+UT-CS-95-315, November 1995.
+
+== lawn106 +[link:http://www.netlib.org/lapack/lawnspdf/lawn106.pdf[pdf]]+
+.Templates for Linear Algebra Problems
+
+by	*Z. Bai, D. Day, J. Demmel, J. Dongarra, M. Gu, A. Ruhe, and H. van der Vorst*
+
+UT-CS-95-311, October 1995.
+
+== lawn105 +[link:http://www.netlib.org/lapack/lawnspdf/lawn105.pdf[pdf]]+
+.Stability of the Diagonal Pivoting Method with Partial Pivoting
+
+by	*N. J. Higham*
+
+UT-CS-95-309, October 1995.
+
+== lawn104 +[link:http://www.netlib.org/lapack/lawnspdf/lawn104.pdf[pdf]]+
+.Iterative Refinement and LAPACK
+
+by	*N. J. Higham*
+
+UT-CS-95-308, October 1995.
+
+== lawn103 +[link:http://www.netlib.org/lapack/lawnspdf/lawn103.pdf[pdf]]+
+.A Supernodal Approach to Sparse Partial Pivoting
+
+by	*J. W. Demmel, S. C. Eisenstat, J. R. Gilbert, X. S. Li, and J. W. H. Liu*
+
+UT-CS-95-304, September 1995.
+
+== lawn102 +[link:http://www.netlib.org/lapack/lawnspdf/lawn102.pdf[pdf]]+
+.IML++ v. 1.2: Iterative Methods Library Reference Guide
+
+by	*J. Dongarra, A. Lumsdaine, R. Pozo, and K. Remington*
+
+UT-CS-95-303, August 1995.
+
+== lawn101 +[link:http://www.netlib.org/lapack/lawnspdf/lawn101.pdf[pdf]]+
+.A Proposal for a Fortran 90 Interface for LAPACK
+
+by	*J. J. Dongarra, J. Du Croz, S. Hammarling, J. Wasniewski, and A. Zemla*
+
+UT-CS-95-295, July 1995.
+
+== lawn100 +[link:http://www.netlib.org/lapack/lawnspdf/lawn100.pdf[pdf]]+
+.A Proposal for a Set of Parallel Basic Linear Algebra Subprograms
+
+by	*J. Choi, J. Dongarra, S. Ostrouchov, A. Petitet, D. Walker and R. C. Whaley*
+
+UT-CS-95-292, May 1995.
+
+== lawn99 +[link:http://www.netlib.org/lapack/lawnspdf/lawn99.pdf[pdf]]+
+.Reverse Communication Interface for Linear Algebra Templates for Iterative Methods
+
+by	*J. Dongarra, V. Eijkhout, and A. Kalhan*
+
+UT-CS-95-291, May 1995.
+
+== lawn98 +[link:http://www.netlib.org/lapack/lawnspdf/lawn98.pdf[pdf]]+
+.LAPACK++ V. 1.0: High Performance Linear Algebra Users' Guide
+
+by	*J. Dongarra, R. Pozo, and D. Walker*
+
+UT-CS-95-290, May 1995.
+
+== lawn97 +[link:http://www.netlib.org/lapack/lawnspdf/lawn97.pdf[pdf]]+
+.Modeling the Benefits of Mixed Data and Task Parallelism
+
+by	*S. Chakrabarti, J. Demmel, and D. Yelick*
+
+UT-CS-95-289, May 1995.
+
+== lawn96 +[link:http://www.netlib.org/lapack/lawnspdf/lawn96.pdf[pdf]]+
+.SUMMA: Scalable Universal Matrix Multiplication Algorithm
+
+by	*R. A. van de Geijn and J. Watts*
+
+UT-CS-95-286, April 1995.
+
+== lawn95 +[link:http://www.netlib.org/lapack/lawnspdf/lawn95.pdf[pdf]]+
+.ScaLAPACK: A Portable Linear Algebra Library for Distributed Memory Computers - Design Issues and Performance
+
+by	*J. Choi, J. Demmel, I. Dhillon, J. Dongarra, S. Ostrouchov, A. Petitet, K. Stanley, D. Walker, and R. C. Whaley*
+
+UT-CS-95-283, March 1995.
+
+== lawn94 +[link:http://www.netlib.org/lapack/lawnspdf/lawn94.pdf[pdf]]+
+.A User's Guide to the BLACS v1.1
+by	*J. Dongarra and R. C. Whaley*
+UPDATED: May 5, 1997 (VERSION 1.1).
+
+UT-CS-95-281, March 1995.
+
+== lawn93 +[link:http://www.netlib.org/lapack/lawnspdf/lawn93.pdf[pdf]]+
+.Installation Guide for ScaLAPACK
+
+by	*J. Choi, J. Demmel, I. Dhillon, J. Dongarra, S. Ostrouchov, A. Petitet, K. Stanley, D. Walker, and R. C. Whaley*
+UPDATED: August 31, 2001 (VERSION 1.7).
+
+UT-CS-95-280, March, 1995.
+
+== lawn92 +[link:http://www.netlib.org/lapack/lawnspdf/lawn92.pdf[pdf]]+
+.The Design of a Parallel Dense Linear Algebra Software Library: Reduction to Hessenberg, Tridiagonal, and Bidiagonal Form
+
+by	*J. Choi, J. Dongarra, and D. Walker*
+
+UT-CS-95-275, February 1995.
+
+== lawn91 +[link:http://www.netlib.org/lapack/lawnspdf/lawn91.pdf[pdf]]+
+.The Spectral Decomposition of Nonsymmetric Matrices on Distributed Memory Computers
+
+by	*Z. Bai, J. Demmel, J. Dongarra, A. Petitet, H. Robinson, and K. Stanley*
+
+UT-CS-95-273, January 1995.
+
+== lawn90 +[link:http://www.netlib.org/lapack/lawnspdf/lawn90.pdf[pdf]]+
+.Algorithm-Based Diskless Checkpointing for Fault Tolerant Matrix Operations
+
+by	*J. S. Plank, Y. Kim, and J. J. Dongarra*
+
+UT-CS-94-268, December 1994.
+
+== lawn89 +[link:http://www.netlib.org/lapack/lawnspdf/lawn89.pdf[pdf]]+
+.Solving Secular Equations Stably and Efficiently
+
+by	*Ren-Cang Li*
+
+UT-CS-94-260, November, 1994.
+
+== lawn88 +[link:http://www.netlib.org/lapack/lawnspdf/lawn88.pdf[pdf]]+
+.Efficient Computation of the Singular Value Decomposition with Applications to Least Squares Problems
+
+by	*Ming Gu, James Demmel, and Inderjit Dhillon*
+
+UT-CS-94-257, October, 1994.
+
+== lawn87 +[link:http://www.netlib.org/lapack/lawnspdf/lawn87.pdf[pdf]]+
+.Computing Eigenspaces with Specified Eigenvalues of a Regular Matrix Pair (A,B) and Condition Estimation: Theory Algorithms and Software
+
+by	*B. Kagstrom and P. Poromaa*
+
+UT-CS-94-255, September, 1994.
+
+== lawn86 +[link:http://www.netlib.org/lapack/lawnspdf/lawn86.pdf[pdf]]+
+.The Performance of Finding Eigenvalues and Eigenvectors of Dense Symmetric Matrices on Distributed Memory Computers
+
+by	*J. Demmel and K. Stanley*
+
+UT-CS-94-254, September, 1994.
+
+== lawn85 +[link:http://www.netlib.org/lapack/lawnspdf/lawn85.pdf[pdf]]+
+.Relative Perturbation Theory: (II) Eigenspace Variations
+
+by	*Ren-Cang Li*
+
+UT-CS-94-253, September, 1994.
+
+== lawn84 +[link:http://www.netlib.org/lapack/lawnspdf/lawn84.pdf[pdf]]+
+.Relative Perturbation Theory: (I) Eigenvalue Variations
+
+by	*Ren-Cang Li*
+
+UT-CS-94-252, September, 1994.
+
+== lawn83 +[link:http://www.netlib.org/lapack/lawnspdf/lawn83.pdf[pdf]]+
+.Relative Perturbation Bounds for the Unitary Polar Factor
+
+by	*Ren-Cang Li*
+
+UT-CS-94-251, September, 1994.
+
+== lawn82 +[link:http://www.netlib.org/lapack/lawnspdf/lawn82.pdf[pdf]]+
+.Call Conversion Interface (CCI) for LAPACK/ESSL
+
+by	*J. Dongarra and M. Kolatis*
+
+UT-CS-94-250, August, 1994.
+
+== lawn81 +[link:http://www.netlib.org/lapack/lawnspdf/lawn81.pdf[pdf]]+
+.Quick Installation Guide for LAPACK on Unix Systems
+
+by	*S. Blackford and J. Dongarra*
+
+UT-CS-94-249, September, 1994.
+UPDATED: June 30, 1999. (VERSION 3.0)
+
+== lawn80 +[link:http://www.netlib.org/lapack/lawnspdf/lawn80.pdf[pdf]]+
+.The Design and Implementation of the ScaLAPACK LU, QR, and Cholesky Factorization Routines
+
+by	*J. Choi, J. J. Dongarra, S. Ostrouchov, A. P. Petitet, D. W. Walker, and R. C. Whaley*
+
+UT-CS-94-246, September, 1994.
+
+== lawn79 +[link:http://www.netlib.org/lapack/lawnspdf/lawn79.pdf[pdf]]+
+.Parallelizing the QR Algorithm for the Unsymmetric Algebraic Eigenvalue Problem: Myths and Reality
+
+by	*Greg Henry and Robert van de Geijn*
+
+UT-CS-94-244, August, 1994.
+
+== lawn78 +[link:http://www.netlib.org/lapack/lawnspdf/lawn78.pdf[pdf]]+
+.Computational variants of the CGS and BiCGstab methods
+
+by	*Victor Eijkhout*
+
+UT-CS-94-241, August, 1994.
+
+== lawn77 +[link:http://www.netlib.org/lapack/lawnspdf/lawn77.pdf[pdf]]+
+.Basic Concepts for Distributed Sparse Linear Algebra Operations
+
+by	*Victor Eijkhout and Roldan Pozo*
+
+UT-CS-94-240, August, 1994.
+
+== lawn76 +[link:http://www.netlib.org/lapack/lawnspdf/lawn76.pdf[pdf]]+
+.Algorithic Bombardment for the Iterative Solution of Linear Systems: A Poly-Iterative Approach
+
+by	*Richard Barrett, Michael Berry, Jack Dongarra, Victor Eijkhout, and Charles Romine*
+
+UT-CS-94-239, August, 1994.
+
+== lawn75 +[link:http://www.netlib.org/lapack/lawnspdf/lawn75.pdf[pdf]]+
+.LAPACK-Style Algorithms and Software for Solving the Generalized Sylvester Equation and Estimating the Separating Between Regular Matrix Pairs
+
+by	*Bo Kagstrom and Peter Poromaa*
+
+UT-CS-94-237, July 1994.
+
+== lawn74 +[link:http://www.netlib.org/lapack/lawnspdf/lawn74.pdf[pdf]]+
+.A Sparse Matrix Library in C++ for High Performance Architectures
+
+by	*J. Dongarra, A. Lumsdaine, X. Niu, R. Pozo, and K. Remington*
+
+UT-CS-94-236, July 1994.
+
+== lawn73 +[link:http://www.netlib.org/lapack/lawnspdf/lawn73.pdf[pdf]]+
+.Basic Linear Algebra Communication Subprograms: Analysis and Implementation Across Multiple Parallel Architectures
+
+by	*R. Clint Whaley*
+
+UT-CS-94-234, May 1994.
+
+== lawn72 +[link:http://www.netlib.org/lapack/lawnspdf/lawn72.pdf[pdf]]+
+.The Computation of Elementary Unitary Matrices
+
+by	*R. Lehoucq*
+
+UT-CS-94-233, October 1995.
+
+== lawn71 +[link:http://www.netlib.org/lapack/lawnspdf/lawn71.pdf[pdf]]+
+.IBM RS/6000-550 & -590 Performance for Selected Routines in ESSL
+
+by	*Jack Dongarra and Michael Kolatis*
+
+UT-CS-94-231, April 1994.
+
+== lawn70 +[link:http://www.netlib.org/lapack/lawnspdf/lawn70.pdf[pdf]]+
+.On the Correctness of Parallel Bisection in Floating Point
+
+by	*James Demmel, Inderjit Dhillon, and Huan Ren*
+
+UT-CS-94-228, March 1994.
+
+== lawn69 +[link:http://www.netlib.org/lapack/lawnspdf/lawn69.pdf[pdf]]+
+.A Serial Implementation of Cuppen's Divide and Conquer Algorithm for the Symmetric Eigenvalue Problem
+
+by	*J. Rutter*
+
+UT-CS-94-225, March 1994.
+
+== lawn68 +[link:http://www.netlib.org/lapack/lawnspdf/lawn68.pdf[pdf]]+
+.A Highly Parallel Algorithm for the Reduction of a Nonsymmetric Matrix to Block Upper-Hessenberg Form
+
+by	*Michael W. Berry, Jack J. Dongarra and Youngbae Kim*
+
+UT-CS-94-221, February 1994.
+
+== lawn67 +[link:http://www.netlib.org/lapack/lawnspdf/lawn67.pdf[pdf]]+
+.Performance Complexity of $LU$ Factorization with Efficient Pipelining and Overlap on a Multiprocessor
+
+by	*F. Desprez, J. Dongarra, and B. Tourancheau*
+
+UT-CS-93-218, December, 1993.
+
+== lawn66 +[link:http://www.netlib.org/lapack/lawnspdf/lawn66.pdf[pdf]]+
+.A Characterization of Polynomial Iterative Methods
+
+by	*Victor Eijkhout*
+
+UT-CS-93-216, November 1993.
+
+== lawn65 +[link:http://www.netlib.org/lapack/lawnspdf/lawn65.pdf[pdf]]+
+.Parallel Matrix Transpose Algorithms on Distributed Memory Concurrent Computers
+
+by	*Jaeyoung Choi, Jack J. Dongarra, and David W. Walker*
+
+UT-CS-93-215, November, 1993.
+
+== lawn64 +[link:http://www.netlib.org/lapack/lawnspdf/lawn64.pdf[pdf]]+
+.Distributed Sparse Gaussian Elimination and Orthogonal Factorization
+
+by	*Padma Raghavan*
+
+UT-CS-93-203, August 1993.
+
+== lawn63 +[link:http://www.netlib.org/lapack/lawnspdf/lawn63.pdf[pdf]]+
+.Line and Plane Separators
+
+by	*Michael T. Heath and Padma Raghavan*
+
+UT-CS-93-202, August 1993.
+
+== lawn62 +[link:http://www.netlib.org/lapack/lawnspdf/lawn62.pdf[pdf]]+
+.Distributed Solution of Sparse Linear Systems
+
+by	*Michael T. Heath and Padma Raghavan*
+
+UT-CS-93-201, August 1993.
+
+== lawn61 +[link:http://www.netlib.org/lapack/lawnspdf/lawn61.pdf[pdf]]+
+.An Object Oriented Design for High Performance Linear Algebra on Distributed Memory Architectures
+
+by	*J. Dongarra, R. Pozo, and D. Walker*
+
+UT-CS-93-200, August 1993.
+
+== lawn60 +[link:http://www.netlib.org/lapack/lawnspdf/lawn60.pdf[pdf]]+
+.Parallel Numerical Linear Algebra
+
+by	*James W. Demmel, Michael T. Heath, and Henk A. van der Vorst*
+
+UT-CS-93-192, March 1993.
+
+== lawn59 +[link:http://www.netlib.org/lapack/lawnspdf/lawn59.pdf[pdf]]+
+.Faster Numerical Algorithms via Exception Handling
+
+by	*James W. Demmel and Xiaoye Li*
+
+UT-CS-93-192, March 1993.
+
+== lawn58 +[link:http://www.netlib.org/lapack/lawnspdf/lawn58.pdf[pdf]]+
+.The Design of Linear Algebra Libraries for High Performance Computer
+
+by	*Jack Dongarra and David Walker*
+
+UT-CS-93-188, June 1993.
+
+== lawn57 +[link:http://www.netlib.org/lapack/lawnspdf/lawn57.pdf[pdf]]+
+lawn57.tgz
+.PUMMA: Parallel Universal Matrix Multiplication Algorithms on Distributed Memory Concurrent Computers
+
+by	*Jaeyoung Choi, Jack J. Dongarra, and David W. Walker*
+
+UT-CS-93-187, May 1993.
+
+== lawn56 +[link:http://www.netlib.org/lapack/lawnspdf/lawn56.pdf[pdf]]+
+lawn56.tgz 
+.Reducing Communication Costs in the Conjugate Gradient Algorithm on Distributed Memory Multiprocessors
+
+by	*E.F. D'Azevedo, V.L. Eijkhout and C.H. Romine*
+
+UT-CS-93-185, January 1993.
+
+== lawn55 +[link:http://www.netlib.org/lapack/lawnspdf/lawn55.pdf[pdf]]+
+.ScaLAPACK: A Scalable Linear Algebra for Distributed Memory Concurrent Computers
+
+by	*J. Choi, J. Dongarra, R. Pozo, and D. Walker*
+
+UT-CS-92-181, November 1992.
+
+== lawn54 +[link:http://www.netlib.org/lapack/lawnspdf/lawn54.pdf[pdf]]+
+.On Swapping Diagonal Blocks in Real Schur Form
+
+by	*Z. Bai and J.W. Demmel*
+
+UT-CS-92-182, October 1992.
+
+== lawn53 +[link:http://www.netlib.org/lapack/lawnspdf/lawn53.pdf[pdf]]+
+.Trading Off Parallelism and Numerical Stability
+
+by	*J.W. Demmel*
+
+UT-CS-92-179, June 1992.
+
+== lawn52 +[link:http://www.netlib.org/lapack/lawnspdf/lawn52.pdf[pdf]]+
+.A Cartesian Parallel Nested Dissection Algorithm
+
+by	*Michael T. Heath and Padma Raghavan*
+
+UT-CS-92-178, June 1992.
+
+== lawn51 +[link:http://www.netlib.org/lapack/lawnspdf/lawn51.pdf[pdf]]+
+.Qualitative Properties of the Conjugate Gradient and Lanczos Methods in a Matrix Framework
+
+by	*Victor Eijkhout*
+
+UT-CS-92-170, May 1992.
+
+== lawn50 +[link:http://www.netlib.org/lapack/lawnspdf/lawn50.pdf[pdf]]+
+.Distributed Sparse Data Structures for Linear Algebra Operations
+
+by	*Victor Eijkhout*
+
+UT-CS-92-169, May 1992.
+
+== lawn49 +[link:http://www.netlib.org/lapack/lawnspdf/lawn49.pdf[pdf]]+
+.A Specification for Floating Point Parallel Prefix
+
+by	*J. Demmel*
+
+UT-CS-92-167, May 1992.
+
+== lawn48 +[link:http://www.netlib.org/lapack/lawnspdf/lawn48.pdf[pdf]]+
+.On Computing Accurate Singular Values and Eigenvalues of Matrices with Acyclic Graphs
+
+by	*J. Demmel and W. Gragg*
+
+UT-CS-92-166, May 1992.
+
+== lawn47 +[link:http://www.netlib.org/lapack/lawnspdf/lawn47.pdf[pdf]]+
+.Open Problems in Numerical Linear Algebra
+
+by	*J. Demmel*
+
+UT-CS-92-164, May 1992.
+
+== lawn46 +[link:http://www.netlib.org/lapack/lawnspdf/lawn46.pdf[pdf]]+
+.Computing the Generalized Singular Value Decomposition
+
+by	*Z. Bai and J. Demmel*
+
+UT-CS-92-163, May 1992.
+
+== lawn45 +[link:http://www.netlib.org/lapack/lawnspdf/lawn45.pdf[pdf]]+
+.The Inherent Inaccuracy of Implicit Tridiagonal QR
+
+by	*J. Demmel*
+
+UT-CS-92-162, May 1992.
+
+== lawn44 +[link:http://www.netlib.org/lapack/lawnspdf/lawn44.pdf[pdf]]+
+.Performance of LAPACK: A Portable Library of Numerical Linear Algebra Routines
+
+by	*Edward Anderson and Jack Dongarra*
+
+UT-CS-92-156, May 1992.
+
+== lawn43 +[link:http://www.netlib.org/lapack/lawnspdf/lawn43.pdf[pdf]]+
+.A Look at Scalable Dense Linear Algebra Libraries
+
+by	*Jack Dongarra, Robert van de Geijn and David Walker*
+
+UT-CS-92-155, April, 1992.
+
+== lawn42 +[link:http://www.netlib.org/lapack/lawnspdf/lawn42.pdf[pdf]]+
+.Perturbation Theory and Backward Error for $AX-XB=C$
+
+by	*Nick Higham*
+
+UT-CS-92-153, April, 1992.
+
+== lawn41 +[link:http://www.netlib.org/lapack/lawnspdf/lawn41.pdf[pdf]]+
+.Installation Guide for LAPACK
+
+by	*Susan Blackford and Jack Dongarra*
+
+UT-CS-92-151, March, 1992.
+Updated: June 30, 1999 (VERSION 3.0)
+
+== lawn40 +[link:http://www.netlib.org/lapack/lawnspdf/lawn40.pdf[pdf]]+
+.Block LU Factorization
+
+by	*James Demmel, Nick Higham, Rob Schreiber*
+
+UT-CS-92-149, February 1992.
+
+== lawn39 +[link:http://www.netlib.org/lapack/lawnspdf/lawn39.pdf[pdf]]+
+.On Designing Portable High Performance Numerical Libraries
+
+by	*James Demmel, Jack Dongarra, and W. Kahan*
+
+UT-CS-91-141, July, 1991.
+
+== lawn38 +[link:http://www.netlib.org/lapack/lawnspdf/lawn38.pdf[pdf]]+
+.On a Direct Algorithm for Computing Invariant Subspaces with Specified Eigenvalues
+
+by	*Z. Bai and J. Demmel*
+
+UT-CS-91-139, November, 1991.
+
+== lawn37 +[link:http://www.netlib.org/lapack/lawnspdf/lawn37.pdf[pdf]]+
+.Two Dimensional Basic Linear Algebra Communication Subprograms
+
+by	*Jack J. Dongarra and Robert A. van de Geijn*
+
+UT-CS-91-138, October, 1991.
+
+== lawn36 +[link:http://www.netlib.org/lapack/lawnspdf/lawn36.pdf[pdf]]+
+.Robust Triangular solvers
+
+by	*E. Anderson*
+
+UT-CS-91-142, August, 1991.
+
+== lawn35 +[link:http://www.netlib.org/lapack/lawnspdf/lawn35.pdf[pdf]]+
+.Implementation guide for LAPACK
+
+by	*E. Anderson, J. Dongarra, and S. Ostrouchov*
+
+UT-CS-91-138, August 1991.
+
+== lawn34 +[link:http://www.netlib.org/lapack/lawnspdf/lawn34.pdf[pdf]]+
+.Workshop on the BLACS
+
+by	*J. J. Dongarra*
+
+UT-CS-91-134, May 1991.
+
+== lawn33 +[link:http://www.netlib.org/lapack/lawnspdf/lawn33.pdf[pdf]]+
+.Robust Incremental Condition Estimation
+
+by	*C. Bischof, P.T.P. Tang*
+
+UT-CS-91-133, May 1991.
+
+== lawn32 +[link:http://www.netlib.org/lapack/lawnspdf/lawn32.pdf[pdf]]+
+.Generalized Incremental Condition Estimation
+
+by	*C. Bischof, P.T.P. Tang*
+
+UT-CS-91-132, May 1991.
+
+== lawn31 +[link:http://www.netlib.org/lapack/lawnspdf/lawn31.pdf[pdf]]+
+.Generalized QR Factorization and its Applications
+
+by	*E. Anderson, Z. Bai, J. Dongarra*
+
+UT-CS-91-131, April 1991.
+
+== lawn30 +[link:http://www.netlib.org/lapack/lawnspdf/lawn30.pdf[pdf]]+
+.Reduction to Condensed Form for the Eigenvalue Problem on Distributed Memory Architectures
+
+by	*J. Dongarra, R. van de Geijn*
+
+UT-CS-91-130, April 1991.
+
+== lawn29 +[link:http://www.netlib.org/lapack/lawnspdf/lawn29.pdf[pdf]]+
+.On Global Combine Operations
+
+by	*R. van de Geijn*
+
+UT-CS-91-129, April 1991.
+
+== lawn28 +[link:http://www.netlib.org/lapack/lawnspdf/lawn28.pdf[pdf]]+
+.The IBM RISC System/6000 and Linear Algebra Operations
+
+by	*J. Dongarra, P. Mayes, G. Radicati*
+
+UT-CS-90-122, December 1990.
+
+== lawn27 +[link:http://www.netlib.org/lapack/lawnspdf/lawn27.pdf[pdf]]+
+.Stability of Methods for Matrix Inversion
+
+by	*J. DuCroz, N. Higham*
+
+UT-CS-90-119, October, 1990.
+
+== lawn26 +[link:http://www.netlib.org/lapack/lawnspdf/lawn26.pdf[pdf]]+
+.Prospectus for an Extension to LAPACK: A Portable Linear Algebra Library for High-Performance Computers
+
+by	*E. Anderson, C. Bischof, J. Demmel, J. Dongarra, J. DuCroz, S. Hammarling, and W. Kahan*
+
+UT-CS-90-118, November 1990.
+
+== lawn25 +[link:http://www.netlib.org/lapack/lawnspdf/lawn25.pdf[pdf]]+
+.Numerical Considerations in Computing Invariant Subspaces
+
+by	*J. Dongarra, S. Hammarling, and J. Wilkinson*
+
+UT-CS-90-117, October, 1990.
+
+== lawn24 +[link:http://www.netlib.org/lapack/lawnspdf/lawn24.pdf[pdf]]+
+.LAPACK Block Factorization Algorithms on the Intel iPSC/860
+
+by	*J. Dongarra and S. Ostrouchov*
+
+UT-CS-90-115, October, 1990.
+
+== lawn23 +[link:http://www.netlib.org/lapack/lawnspdf/lawn23.pdf[pdf]]+
+.Improved Error Bounds for Underdetermined System Solvers}
+
+by	*J. Demmel and N. Higham*
+
+UT-CS-90-113, August 1990.
+
+== lawn22 +[link:http://www.netlib.org/lapack/lawnspdf/lawn22.pdf[pdf]]+
+.Stability of Block Algorithms with Fast Level 3 BLAS
+
+by	*J. Demmel and N. Higham*
+
+UT-CS-90-110, July 1990.
+
+== lawn21 +[link:http://www.netlib.org/lapack/lawnspdf/lawn21.pdf[pdf]]+
+.Factorizations of Band Matrices Using Level 3 BLAS
+
+by	*Jeremy Du Croz, Peter Mayes, and Guiseppe Radicati*
+
+UT-CS-90-109, July 1990.
+
+== lawn20 +[link:http://www.netlib.org/lapack/lawnspdf/lawn20.pdf[pdf]]+
+.LAPACK: A Portable Linear Algebra Library for High-Performance Computers
+
+by	*E. Anderson, Z. Bai, C. Bischof, J. Demmel, J. Dongarra, J. DuCroz, A. Greenbaum, S. Hammarling, A. McKenney, D. Sorensen*
+
+UT-CS-90-105, May 1990.
+
+== lawn19 +[link:http://www.netlib.org/lapack/lawnspdf/lawn19.pdf[pdf]]+, download scanned copy with figures [pdf scan]
+.Evaluating Block Algorithm Variants in LAPACK
+
+by	*E. Anderson and J. Dongarra*
+
+UT-CS-90-103, April 1990.
+
+== lawn18 +[link:http://www.netlib.org/lapack/lawnspdf/lawn18.pdf[pdf]]+
+.Implementation Guide for LAPACK
+
+by	*E. Anderson and J. Dongarra*
+
+UT-CS-90-101, April 1990.
+
+== lawn17 +[link:http://www.netlib.org/lapack/lawnspdf/lawn17.pdf[pdf]]+
+.Experiments with QR/QL Methods for the Symmetric Tridiagonal Eigenproblem
+
+by	*A. Greenbaum and J. Dongarra*
+
+UT-CS-89-92, November 1989.
+
+== lawn16 +[link:http://www.netlib.org/lapack/lawnspdf/lawn16.pdf[pdf]]+
+.Results from the Initial Release of LAPACK
+
+by	*E. Anderson and J. Dongarra*
+
+UT-CS-89-89, November 1989. (Replaced by lawn 41 or 81!!)
+
+== lawn15 +[link:http://www.netlib.org/lapack/lawnspdf/lawn15.pdf[pdf]]+
+.Jacobi's Method is More Accurate than QR
+
+by	*J. Demmel and K. Veselic*
+
+UT-CS-89-88, October 1989.
+
+== lawn14 +[link:http://www.netlib.org/lapack/lawnspdf/lawn14.pdf[pdf]]+
+.On Floating Point Errors in Cholesky
+
+by	*J. Demmel*
+
+UT-CS-89-87, October 1989.
+
+== lawn13 +[link:http://www.netlib.org/lapack/lawnspdf/lawn13.pdf[pdf]]+
+.On the Conditioning of the Nonsymmetric Eigenproblem: Theory and Software
+
+by	*Z. Bai, J. Demmel, and A. McKenney*
+
+UT-CS-89-86, October 1989.
+
+== lawn12 +[link:http://www.netlib.org/lapack/lawnspdf/lawn12.pdf[pdf]]+
+.Banded Cholosky Factorization Using Level 3 BLAS
+
+by	*Peter Mayes and Giuseppe Radicati*
+ANL/MCS-TM-134, August 1989.
+
+== lawn11 +[link:http://www.netlib.org/lapack/lawnspdf/lawn11.pdf[pdf]]+
+.The Bidiagonal Singular Value Decomposition and Hamiltonian Mechanics
+
+by	*P. Deift, J. Demmel, L.-C. Li, and C. Tomei*
+ANL, MCS-TM-133, August 1989.
+
+== lawn10 +[link:http://www.netlib.org/lapack/lawnspdf/lawn10.pdf[pdf]]+
+.Installing and Testing the Initial Release of LAPACK --Unix and Non-Unix Versions
+
+by	*E. Anderson and J. Dongarra*
+ANL, MCS-TM-130, May 1989.
+
+== lawn09 +[link:http://www.netlib.org/lapack/lawnspdf/lawn09.pdf[pdf]]+
+.A Test Matrix Generation Suite
+
+by	*J. Demmel and A. McKenney*
+ANL, MCS-P69-0389, March 1989.
+
+== lawn08 +[link:http://www.netlib.org/lapack/lawnspdf/lawn08.pdf[pdf]]+
+.On a Block Implementation of Hessenberg Multishift QR Iteration
+
+by	*Z. Bai and J. Demmel*
+
+ANL, MCS-TM-127, January 1989.
+
+== lawn07 +[link:http://www.netlib.org/lapack/lawnspdf/lawn07.pdf[pdf]]+
+.Computing Accurate Eigensystems of Scaled Diagonally Dominant Matrices
+
+by	*J. Barlow and J. Demmel*
+
+ANL, MCS-TM-126, December 1988.
+
+== lawn06 +[link:http://www.netlib.org/lapack/lawnspdf/lawn06.pdf[pdf]]+
+.Tools to Aid in the Analysis of Memory Access Patterns for FORTRAN Programs
+
+by	*O. Brewer, J. Dongarra, and D. Sorensen*
+
+ANL, MCS-TM-120, June 1988
+
+== lawn05 +[link:http://www.netlib.org/lapack/lawnspdf/lawn05.pdf[pdf]]+
+.Provisional Contents
+
+by	*C. Bischof, J. Demmel, J. Dongarra, J. Du Croz, A. Greenbaum, S. Hammarling, and D. Sorensen*
+
+ANL, MCS-TM-38, September 1988
+
+== lawn04 +[link:http://www.netlib.org/lapack/lawnspdf/lawn04.pdf[pdf]]+
+.Guidelines for the Design of Symmetric Eigenroutines, SVD, and Iterative Refinement and Condition Estimation for Linear Systems
+
+by	*J. Demmel, J. Du Croz, S. Hammarling, and D. Sorensen*
+
+ANL, MCS-TM-111, March 1988
+
+
+== lawn03 +[link:http://www.netlib.org/lapack/lawnspdf/lawn03.pdf[pdf]]+
+.Computing Small Singular Values of Bidiagonal Matrices with Guaranteed High Relative Accuracy
+
+by	*J. Demmel and W. Kahan*
+
+ANL, MCS-TM-110, February 1988
+
+
+== lawn02 +[link:http://www.netlib.org/lapack/lawnspdf/lawn02.pdf[pdf]]+
+.Block Reduction of Matrices to Condensed Forms for Eigenvalue Computations
+
+by	*J. Dongarra, S. Hammarling, and D. Sorensen*
+
+ANL, MCS-TM-99, September 1987
+
+== lawn01 +[link:http://www.netlib.org/lapack/lawnspdf/lawn01.pdf[pdf]]+
+.Prospectus for the Development of a Linear Algebra Library for High-Performance Computers
+
+by	*J. Demmel, J. Dongarra, J. Du Croz, A. Greenbaum, S. Hammarling, and D. Sorensen*
+
+ANL, MCS-TM-97, September 1987
+ 
+

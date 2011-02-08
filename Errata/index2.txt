@@ -226,11 +226,12 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1389[forum topic 1389]
  * Julie : CANNOT REPRODUCE THE PROBLEM
 
-== [orange]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
- * *TO BE CONFIRMED*
+== [red]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
+ * *CONFIRMED*
  * reported by Vasile Sima on Thu Jan 22 2009
  * see: link:008.txt[email from Vasile]
  * more information at: <a href='http://www-math.ucdenver.edu/~langou/lapack-3.2/lapack_known_issues.html'>lapack known issues]
+ * related to bug0026 below
 
 == [orange]*bug0027* :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed
  * *TO BE CONFIRMED*
@@ -247,14 +248,15 @@ we figure out whether this is a bug or a feature, I'm not sure which."
 -----
      are not correct
 
-== [orange]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
+== [red]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
  * *CONFIRMED*
  * reported by Pauli Virtanen (scipy team) on Sat Dec 06 2008 (email to lapack@cs.utk.edu)
  * see: link:004.txt[email from Pauli Virtanen]
       see: link:http://scipy.org/scipy/scipy/ticket/709[http://scipy.org/scipy/scipy/ticket/709]
  * problem appears to be with an underflow producing alpha=beta=zero eigenvalues for some cases in the above test code
  * it does not depend on the compiler options in later versions of gfortran (and other compilers), and is also present in SGEEV
-
+ * most likely these issues are due to the shift strategy for QZ
+ 
 
 
 == dead code* :: xLAHRD is now replaced by xLAHR2, xLAHRD is a dead code since LAPACK 3.1

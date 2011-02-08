@@ -248,11 +248,12 @@ we figure out whether this is a bug or a feature, I'm not sure which."
      are not correct
 
 == [orange]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
- * *TO BE CONFIRMED*
+ * *CONFIRMED*
  * reported by Pauli Virtanen (scipy team) on Sat Dec 06 2008 (email to lapack@cs.utk.edu)
  * see: link:004.txt[email from Pauli Virtanen]
       see: link:http://scipy.org/scipy/scipy/ticket/709[http://scipy.org/scipy/scipy/ticket/709]
-
+ * problem appears to be with an underflow producing alpha=beta=zero eigenvalues for some cases in the above test code
+ * it does not depend on the compiler options in later versions of gfortran (and other compilers), and is also present in SGEEV
 
 
 

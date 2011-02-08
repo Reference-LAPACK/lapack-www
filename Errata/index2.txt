@@ -73,6 +73,21 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  * reported to Zlatko Drmac and corrected by Zlatko Drmac
  * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html[ LAPACK Mailing list msg 049]
 
+== [red]*bug0075* :: not orhtogonal: eigenvectors of a symmetric matrix with DSYEV 
+ * *CONFIRMED*
+ * bug report sent by fabioaffinito on Feb 8th
+ * see forum topic 2169
+ * The bug appears only when the matrix is diagonalized by using the upper half, and when the leading dimension n>200 approx.
+ * User gave test program see: link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=2169&p=6237#p6237[here]
+ * Come from change in version 3.2 [link:http://netlib.org/lapack/lapack-3.2.html[Release Notes]]
+
+== [red]*bug0074* :: ?sysv and ?hesv
+ * *CONFIRMED*
+ * bug report sent by Alexander Kobotov on Feb 8th
+ * see forum topic 2168
+ * In LAPACK 3.3 ?(SY/HE)SV are updated to use TRS2. The TRS2 requires WORK(N) to operate, whereas in SV requirements for LWORK just to be >=1. There is no any check in SV if LWORK>=N, the array WORK just passed as it is to TRS2. So if LWORK<N a crash could occur while executing TRS2 due to overuse of allocated workspace.
+ * I guess for the case of LWORK<N just previsous Level2 based ?(SY/HE)TRS should be used.
+
 == [red]*bug0065* :: workspace queries not being used     
  * *CONFIRMED*
  * bug report by Clint Whaley on October 27th, 2010

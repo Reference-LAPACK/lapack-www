@@ -3,6 +3,23 @@ LAPACK BUG LIST
 
 link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
+http://netlib.org/lapack/lapack-3.2.html
+
+== [red]*bug0075* :: not orhtogonal: eigenvectors of a symmetric matrix with DSYEV 
+ * *CONFIRMED*
+ * bug report sent by fabioaffinito on Feb 8th
+ * see forum topic 2169
+ * The bug appears only when the matrix is diagonalized by using the upper half, and when the leading dimension n>200 approx.
+ * User gave test program see: link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=2169&p=6237#p6237[here]
+ * Come from change in version 3.2 [link:http://netlib.org/lapack/lapack-3.2.html[Release Notes]]
+
+== [red]*bug0074* :: ?sysv and ?hesv
+ * *CONFIRMED*
+ * bug report sent by Alexander Kobotov on Feb 8th
+ * see forum topic 2168
+ * In LAPACK 3.3 ?(SY/HE)SV are updated to use TRS2. The TRS2 requires WORK(N) to operate, whereas in SV requirements for LWORK just to be >=1. There is no any check in SV if LWORK>=N, the array WORK just passed as it is to TRS2. So if LWORK<N a crash could occur while executing TRS2 due to overuse of allocated workspace.
+ * I guess for the case of LWORK<N just previsous Level2 based ?(SY/HE)TRS should be used.
+
 == [green]*bug0073* :: secondtst.f and dsecnd.f
  * *CORRECTED* - see svn 918
  * bug report sent by John Tellefson on Feb 7th
@@ -10,8 +27,6 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  * corrected by Julie
  * We went ahead and remove the dummy subroutine in those timing for the last LAPACK version because we did not find a machine or compiler that still had the problem. I guess we were too optimistic.
  * also committed the "cosmetic" modifications suggested by user as they make the program easier to modify.
-
- Add IF statement to prevent calculation if N=0
 
 == [green]*bug0072* :: cchkhs.f and zchkhs.f
  * *CORRECTED* - see svn 904

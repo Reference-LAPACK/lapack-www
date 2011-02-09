@@ -1,0 +1,350 @@
+<html>
+<pre>
+This represents known issue with the LAPACK software package that have not been yet solved.
+(As of Sunday October 26th 2008.)
+
+<ol>
+<li><a href="#QZ">LAPACK does not have any exceptional shift strategy for QZ</a></li>
+<li><a href="#DQDS">DQDS algorithm (useful to compute the singular values of a matrix)</a></li>
+</ol>
+
+
+<a name="QZ">
+<p style="font-size:xx-large;"><b>1 -- LAPACK does not have any exceptional shift strategy for QZ</b></p>
+
+<b>[1.1-- The problems]</b>
+ 
+LAPACK current shift strategy is known to fail on various pencils. Here are
+three pencils, (A1,B1), (A2,B2), (A3,B3) where LAPACK fails
+ 
+A1 = [
+ 0 0 1 ;
+ 0 1 0 ;
+ 1 0 0
+];
+ 
+B1 = [
+ 2 0 0 ;
+ 0 0 1 ;
+ 0 1 0
+];
+ 
+Pencil (A1,B1) has been sent to us by Zbigniew Leyk, Senior Lecturer,
+Department of Computer Science, Texas A &amp; M University on Jan 30 2007.
+See: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=317">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=317</a>
+ 
+A2 = [
+ 0 0 0 1 ;
+ 1 0 0 0 ;
+ 0 1 0 0 ;
+ 0 0 1 0
+];
+ 
+B2 = [
+ 1 0 0 0 ;
+ 0 1 0 0 ;
+ 0 0 1 0 ;
+ 0 0 0 1
+];
+ 
+Pencil (A2,B2) has been sent to us by Daniel Kressner in 2005 who quote Vasile
+Sima.
+ 
+A3 = [
+ 1  1  0;
+ 0  0 -1;
+ 1  0  0
+];
+ 
+B3 = [
+-1  0 -1;
+ 0 -1  0;
+-1  0 -1
+];
+ 
+Pencil (A3,B3) has been sent to us by Patrick Alken from University of
+Colorado at Boulder on Apr 24 2007.
+See: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=382">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=382</a>
+ 
+A4 = [
+ 1     1e-9  0;
+ 1e-9  1     0;
+ 0     0     1
+];
+ 
+B4 = [
+ 1  0  0;
+ 0  1  0;
+ 0  0  1
+];
+ 
+Pencil (A4,B4) has been sent to us by Micheal Baudin from the Scilab project on Tu Oct 28th 2008.
+This one pencil make ZGGEV fail. DGGEV handles it correctly.
+<a href="http://bugzilla.scilab.org/show_bug.cgi?id=3652">http://bugzilla.scilab.org/show_bug.cgi?id=3652</a>
+ 
+<b>[1.2-- The fixes]</b>
+ 
+[1.2.a-- Mathworks' patch]
+ 
+Bobby Cheng sent the lapackers the Mathworks patch to fix LAPACK QZ. This
+patch works fine on the pencils (A1,B1) and (A2,B2). But fails on pencil
+(A3,B3). As observed by Jim Demmel, matlab qz works fine with pencil (A3,B3).
+
+<font color=#408080>
+Date: Thu, 15 Sep 2005 20:35:00 +0200 (CEST)
+From: Daniel Kressner 
+Subject: Re: [Lapackers] Mathworks modif on LAPACK
+
+
+Hi,
+
+below are some comments on Mathworks' modifications to DGEBAL and DHGEQZ.
+
+<font color=#800000>
+> 1)Change SCLFAC from 8 to 2 to be the same as LINPACK.
+> 
+> File:
+> cgebal.f
+> zgebal.f
+> sgebal.f
+> dgebal.f
+</font>
+
+I support the point of view taken by Mathworks. Changing SCLFAC from 8 to
+2 may result in a few extra iterations of the balancing algorithm, but it
+may also give a balanced matrix of slightly smaller norm and consequently
+one or two more accurate digits in the computed eigenvalues.
+I am not aware that the execution time needed by balancing could be a
+major concern when solving nonsymmetric eigenvalues.
+
+<font color=#800000>
+> 3)Change to implicit shift and exceptional shift calculations.
+> Some problem were not converging.
+> 
+> Files:
+> zhgeqz.f (lines 602-672)
+> chgeqz.f (lines 602-672)
+> shgeqz.f (lines 657-667, 819-821)
+> dhgeqz.f (lines 657-667, 819-821)
+</font>
+
+
+As far as I can see, Mathworks applied four changes to *HGEQZ (not all of
+them are marked in the code):
+
+(1) Exceptional shift strategy
+
+As also pointed out by Vasile Sima, the exceptional shift strategy for the
+QZ algorithm currently implemented in DHGEQZ seems to be less effective
+than the one for the QR algorithm. For example, it fails for the matrix
+pair
+
+     [ 0 0 0 1 ]
+     [ 1 0 0 0 ]
+A =  [ 0 1 0 0 ],  B = identity.
+     [ 0 0 1 0 ]
+
+LAPACK's exceptional shift is zero (this is the same as the standard shift
+-> no convergence). Mathworks' exceptional shift is one (much better).
+
+(2) Choice of single real shift
+
+DHGEQZ applies a single shift QZ algorithm if the computed shifts are
+real. This seems to be a relict of Ward's combination shift QZ algorithm,
+which has no meaningful purpose anymore (applying two single shift QZ
+iterations is more expensive than applying one double shift QZ iteration,
+even in terms of flops).
+
+If two real shifts are computed, Mathworks' change has the effect that
+always the shift closer to the last diagonal element of A\B is used. If I
+remember correctly, this is in the spirit of what Wilkinson proposed for
+symmetric matrices. I support this change and expect that it can lead to
+slightly faster convergence.
+
+(3) Mathworks included B22 = -B22 on line 820 (in DHGEQZ)
+
+This is a bug fix and I highly recommend to include it. It seems that
+DHGEQZ computes wrong complex conjugate eigenvalue pairs if DLASV2
+computes negative diagonal elements (I am not sure whether this is an
+unlikely event in the context of the QZ algorithm).
+
+(4) Mathworks uses the workspace to store the number of iterations
+     needed for each eigenvalue.
+
+This is probably used for debugging and should not be included in LAPACK.
+
+As announced at the Householder meeting, Bo Kagstrom and I are currently
+working on an extension of Ralph Byers' multishift aggressive QR code to
+QZ. This code will take the modifs of Mathworks into account. However, I
+suggest to include these modifs (particularly (1) and (3)) already in the
+next update of LAPACK.
+
+With best regards,
+Daniel
+</font>
+
+ 
+[1.2.b-- David Day's patch]
+ 
+I found in the lapackers archive a patch from David Day. 
+
+<font color=#408080>
+From: David Day (Sandia)
+Date: Tue Sep  7 09:49:40 2004
+Subject: [Lapackers] Re: [Fwd: Convergence failure of LAPACK's zggevx]
+
+Dear Jim Demmel:
+
+The reported problem does involve the Exceptional shifts in QZ. Changing the QZ 
+exceptional shift to something similar to what I have advixed for real QR and 
+real QZ does fix this particular bug report. In my version of zhgeqz.f lines 
+603 read
+
+          ELSE
+*
+*           Exceptional shift.  Chosen for no particularly good reason.
+*
+             ESHIFT = ESHIFT + DCONJG( ( ASCALE*A( ILAST-1, ILAST ) ) /
+      $               ( BSCALE*B( ILAST-1, ILAST-1 ) ) )
+
+After these lines, I added
+             TEMP =
+      $      ABS(ASCALE*A(ILAST-1,ILAST-2)/(BSCALE*B(ILAST-1,ILAST-1)))+
+      $      ABS(ASCALE*A(ILAST  ,ILAST-1)/(BSCALE*B(ILAST-2,ILAST-2)))
+             TEMP2 =
+      $      ABS(ASCALE*A(ILAST-1,ILAST-2)/(BSCALE*B(ILAST-2,ILAST-2)))+
+      $      ABS(ASCALE*A(ILAST  ,ILAST-1)/(BSCALE*B(ILAST-1,ILAST-1)))
+             ESHIFT = DCMPLX(MIN(TEMP, TEMP2),0)
+
+This changes the value of the shift, now set on line 616
+             SHIFT = ESHIFT
+
+
+Thank you for including me in this discussion.
+--David M. Day
+</font>
+ 
+[1.2.c-- Patrick Alken's patch]
+ 
+<font color=#408080>
+Date: Wed, 2 May 2007 16:14:55 -0600
+From: Patrick Alken <patrick.alken@colorado.edu>
+Subject: Re: [Lapack] dggev fails on non-singular system
+
+Hello,
+
+   I have done some testing and I have found that the following
+patch fixes all the 3x3 and 4x4 matrix systems that I found failures
+on:
+
+Replace (in dhgeqz.f):
+
+     629             IF( ( DBLE( MAXIT )*SAFMIN )*ABS( H( ILAST-1, ILAST) ).LT.
+     630      $          ABS( T( ILAST-1, ILAST-1 ) ) ) THEN
+     631                ESHIFT = ESHIFT + H( ILAST-1, ILAST ) /
+     632      $                  T( ILAST-1, ILAST-1 )
+     633             ELSE
+     634                ESHIFT = ESHIFT + ONE / ( SAFMIN*DBLE( MAXIT ) )
+     635             END IF
+
+with:
+
+     629             IF( ( DBLE( MAXIT )*SAFMIN )*ABS( H( ILAST, ILAST-1) ).LT.
+     630      $          ABS( T( ILAST-1, ILAST-1 ) ) ) THEN
+     631                ESHIFT = ESHIFT + 0.736 * H( ILAST, ILAST-1 ) /
+     632      $                  T( ILAST-1, ILAST-1 )
+     633             ELSE
+     634                ESHIFT = ESHIFT + ONE / ( SAFMIN*DBLE( MAXIT ) )
+     635             END IF
+
+The idea here is the following: in the previous code, its certainly
+possible for H(ILAST-1,ILAST) to equal 0, in which case the test
+will pass but ESHIFT will not be modified at all. I have just
+replaced it with H(ILAST,ILAST-1) which is guaranteed not to be
+zero, since its a subdiagonal element and the previous tests will
+search for zeros on the subdiagonal. The 0.736 coefficient is
+arbitrary - without it, I still found a small number of convergence
+failures on 4x4 integer systems.
+
+Patrick Alken
+</font>
+
+<b>[1.3-- Fix]</b>
+Wait for a new QZ with early agressive deflation and multishift.
+ 
+<a name="DQDS">
+<p style="font-size:xx-large;"><b>
+2 -- DQDS algorithm (useful to compute the singular values of a matrix)</a></li>
+</b></p>
+
+Cleve Moler reported that LAPACK DLASQ1 routine (called by DBDSQR when only the
+singular values are needed) fails on the bidiagonal matrix: <a
+href="set_Moler_200.c">set_Moler_200.c</a>. Osni Marques provided us with
+DLASQ1-6 routines that passes the matrix.
+
+<font color=#408080>
+
+I have done some investigation to find out why the 200 by 200 matrix that Cleve
+Moler sent to us weeks ago leads to a failure in Matlab's "norm". My
+understanding is that "norm" resorts to LAPACK's dbdsqr, which in turn calls
+dqds, i.e. dlasq1 (which calls dlasq2 etc), if only singular vectors are
+desired. Indeed, LAPACK 3.1.1's dlasq1 returns INFO=2 (Matlab prints "Warning:
+SVD did not converge at index = 2") for Cleve's matrix, meaning "current block
+of Z not diagonalized after 30*N iterations (in inner while loop)". This is
+related to the NBIG = 30*( N0-I0+1 ) limit that is set in dlasq2, where I0 and
+N0 indicate the active (sub)matrix dlasq2 is dealing with. It starts with I0=1
+and N0=N if there is no initial splitting; I0 and N0 may change later if
+splittings occur.
+
+These are my findings:
+
+1) Contrary to what I had originally thought, LAPACK 3.1.1's dlasq2 does not
+contain our last modifications, in particular a mechanism to reverse (flip) the
+qd-array in some adverse situations. The lack of this mechanism may greatly
+delay convergence. In fact, LAPACK 3.1.1's dqds works if we allow more than
+30*N iterations: without flipping, convergence is achieved in 8073 iterations
+(to achieve this I changed 30*N to 300*N). In contrast, the latest dqds that we
+have produced works just fine on Cleve's matrix: convergence is achieved in 969
+iterations. Interestingly, LAPACK 3.1.1 converges in 970 iterations if we first
+flip Cleve's matrix (similarly, "norm" also works fine).
+
+2) In the computation of shifts (by dlasq4), we have TTYPE.EQ.-6, i.e. "Case 6,
+no information to guide us." This case is based on a variable G that is used
+for the computation of the shift (S = G*DMIN). Modifications were performed in
+the dqds routines to make them thread safe (by removing SAVE statements) but in
+LAPACK 3.1.1 G seems to be set to zero too often. I am afraid that for a
+sequence of TTYPE.EQ.-6 this may lead to shifts that are not so efficient.
+
+My records indicate that I submitted our latest version of dqds for inclusion
+in LAPACK on 07/11/06 but the changes have not been incorporated (LAPACK 3.1 is
+dated 11/12/06, and LAPACK 3.1.1 is dated 02/26/07). In any case, I am sending
+it attached so it can be compared with LAPACK 3.1.1's dqds. I am also attaching
+Cleve's 200 by 200 matrix as well as its flipped form in case someone (in the
+cc list) would like to experiment with them.
+
+Cheers,
+
+Osni
+</font>
+
+The reason for which Osni code is not in LAPACK is that Osni code fail on some
+of the matrices in the LAPACK testing, for example: <a href="set_PB1_30.c">set_PB1_30.c</a>.
+
+Indeed the double precision routines of Osni are fine, there are only a few problems 
+with the single precision routines.
+
+Current status: 
+Hello lapackers,
+
+I did not understand upfront what Bobby Cheng was saying with his:
+"MATLAB switched back to the old algorithm and lost some speed."
+So I asked Bobby Cheng for their files.
+
+MathWorks simply have hacked xBDSQR so that they use the QR algorithm (they simply have commented the lines that call
+DLASQ1). So they use QR even if they want only the singular values. Matlab does not use the dqds algorithm when computing
+a norm for example.
+
+Julien.
+</pre>
+</html>
+

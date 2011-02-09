@@ -230,7 +230,7 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * *CONFIRMED*
  * reported by Vasile Sima on Thu Jan 22 2009
  * see: link:008.txt[email from Vasile]
- * more information at: <a href='http://www-math.ucdenver.edu/~langou/lapack-3.2/lapack_known_issues.html'>lapack known issues]
+ * more information at: link:vrac/lapack_known_issues.html[lapack known issues]
  * related to bug0026 below
 
 == [orange]*bug0027* :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed

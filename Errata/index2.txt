@@ -80,6 +80,12 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  * reported to Zlatko Drmac and corrected by Zlatko Drmac
  * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html[ LAPACK Mailing list msg 049]
 
+== [green]*bug0034* :: comments in SSPTRF not correct 
+ * clarification asked by "sarnath" on Thu Jul 02 2009
+ * confirmation of bug by "sarnath" and Julien Langou on Fri Jul 03 2009
+ * The statement "JMAX is the column-index of the largest off-diagonal element in row IMAX" is not correct
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1553[forum topic 1553]
+
 == [green]*bug0027* :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed
  * reported by Vasile Sima on Tue Jan 27 2009
  * see: link:005.txt[email from Vasile]
@@ -134,6 +140,25 @@ which rather amplifies tiny rounding errors in the (presumably correctly)
 computed eigenvectors of the balanced matrix, when balancing is undone at the end.
 The expert driver interface dgeevx would let the user disable balancing, until
 we figure out whether this is a bug or a feature, I'm not sure which."
+
+== [red]*bug0033* :: failure of zheevd on a specific matrix
+ * *CONFIRMED*
+ * bug report sent by Cezary Sliwa (Instytut Fizyki PAN, Poland) on Thu 2 Jul 2009 to "lapack@cs.utk.edu".
+ * see link:020.f[Cezary Sliwa's test code], link:021.dat[Cezary Sliwa's matrix], and
+      link:022.txt[Cezary Sliwa's email].
+ * Confirmed by Rodney on Tue, 17 Feb 2011
+ * Rodney: "I actually have a different problem than what was reported.
+ *  The user reports the routine returning with info=81.  
+ * I try to run it and get a seg fault (down in a zdotc). 
+ * The test example is calling the routine correctly, and
+ * I verified that the sizes are correct for the work arrays, so it does appear that something is wrong."
+
+== [red]*bug0032* :: matrix splitting problem with dstebz and sstebz
+ * *CONFIRMED*
+ * bug report sent by Phil DeMier (IBM) on Mon 29 Jun 2009 to "lapack@cs.utk.edu".
+      "matrix splitting problem with dstebz and sstebz"
+ * see link:018.txt[Phil DeMier's email] and link:019.f[Phil DeMier's test code]
+ * Confirmed by Rodney on Tue, 17 Feb 2011
 
 == [red]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
  * *CONFIRMED*
@@ -228,25 +253,6 @@ we figure out whether this is a bug or a feature, I'm not sure which."
       "Bug in LAPACK 3.2 dlarfb.f and likes"
  * see link:bug_lapack_3.2.1_0035/024.txt[Michael Chuvelev and Julie's emails], link:bug_lapack_3.2.1_0035/q.dat[q.dat],
       link:bug_lapack_3.2.1_0035/tau.dat[tau.dat], and link:bug_lapack_3.2.1_0035/test_dorgql.f[test_dorgql.f]
-
-== [orange]*bug0034* :: comments in SSPTRF not correct 
- * *TO BE CONFIRMED*
- * clarification asked by "sarnath" on Thu Jul 02 2009
- * confirmation of bug by "sarnath" and Julien Langou on Fri Jul 03 2009
- * The statement "JMAX is the column-index of the largest off-diagonal element in row IMAX" is not correct
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1553[forum topic 1553]
-
-== [orange]*bug0033* :: failure of zheevd on a specific matrix
- * *TO BE CONFIRMED*
- * bug report sent by Cezary Sliwa (Instytut Fizyki PAN, Poland) on Thu 2 Jul 2009 to "lapack@cs.utk.edu".
- * see link:020.f[Cezary Sliwa's test code], link:021.dat[Cezary Sliwa's matrix], and
-      link:022.txt[Cezary Sliwa's email].
-
-== [orange]*bug0032* :: matrix splitting problem with dstebz and sstebz
- * *TO BE CONFIRMED*
- * bug report sent by Phil DeMier (IBM) on Mon 29 Jun 2009 to "lapack@cs.utk.edu".
-      "matrix splitting problem with dstebz and sstebz"
- * see link:018.txt[Phil DeMier's email] and link:019.f[Phil DeMier's test code]
 
 == dead code* :: xLAHRD is now replaced by xLAHR2, xLAHRD is a dead code since LAPACK 3.1
  * xLAHRD will be removed at some point in the future from the distribution

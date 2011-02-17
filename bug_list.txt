@@ -13,10 +13,11 @@ http://netlib.org/lapack/lapack-3.2.html
  * User gave test program see: link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=2169&p=6237#p6237[here]
  * Come from change in version 3.2 [link:http://netlib.org/lapack/lapack-3.2.html[Release Notes]]
 
-== [red]*bug0074* :: ?sysv and ?hesv
- * *CONFIRMED*
+== [green]*bug0074* :: ?sysv and ?hesv
+ * *CORRECTED* - see svn 926 and 927
  * bug report sent by Alexander Kobotov on Feb 8th
  * see forum topic 2168
+ * corrected by Julie
  * In LAPACK 3.3 ?(SY/HE)SV are updated to use TRS2. The TRS2 requires WORK(N) to operate, whereas in SV requirements for LWORK just to be >=1. There is no any check in SV if LWORK>=N, the array WORK just passed as it is to TRS2. So if LWORK<N a crash could occur while executing TRS2 due to overuse of allocated workspace.
  * I guess for the case of LWORK<N just previsous Level2 based ?(SY/HE)TRS should be used.
 
@@ -370,14 +371,14 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1389[forum topic 1389]
  * Julie : CANNOT REPRODUCE THE PROBLEM
 
-== [orange]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
+== [red]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
  * *TO BE CONFIRMED*
  * reported by Vasile Sima on Thu Jan 22 2009
  * see: link:008.txt[email from Vasile]
  * more information at: <a href='http://www-math.ucdenver.edu/~langou/lapack-3.2/lapack_known_issues.html'>lapack known issues]
 
-== [orange]*bug0027* :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed
- * *TO BE CONFIRMED*
+== [green]*bug0027* :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed
+ * *CORRECTED* - see svn r929
  * reported by Vasile Sima on Tue Jan 27 2009
  * see: link:005.txt[email from Vasile]
  * more information:
@@ -389,9 +390,11 @@ we figure out whether this is a bug or a feature, I'm not sure which."
 *          pairs of eigenvalues) are returned in standard form, with
 *          H(i,i) = H(i+1,i+1) and H(i+1,i)*H(i,i+1) &lt; 0.
 -----
-     are not correct
+are not correct
 
-== [orange]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
+ * committed by Rodney James (SVN revision r929, on Tue Feb 17 2011)
+
+== [red]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
  * *TO BE CONFIRMED*
  * reported by Pauli Virtanen (scipy team) on Sat Dec 06 2008 (email to lapack@cs.utk.edu)
  * see: link:004.txt[email from Pauli Virtanen]

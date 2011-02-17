@@ -2,6 +2,21 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn239 +[link:http://www.netlib.org/lapack/lawnspdf/lawn239.pdf[pdf]]+
+.Communication bounds for heterogeneous architectures.
+
+by	*Grey Ballard, James Demmel, and Andrew Gearhart*
+
+UCB/EECS-2011-13, Feb 11, 2011
+
+
+== lawn238 +[link:http://www.netlib.org/lapack/lawnspdf/lawn238.pdf[pdf]]+
+.Communication-optimal parallel 2.5D matrix multiplication and LU factorization algorithms.
+
+by	*Edgar Solomonik and James Demmel*
+
+UCB/EECS-2011-10, Feb 9, 2011
+
 == lawn237 +[link:http://www.netlib.org/lapack/lawnspdf/lawn237.pdf[pdf]]+
 .Minimizing Communication for Eigenproblems and the Singular Value Decomposition.
 

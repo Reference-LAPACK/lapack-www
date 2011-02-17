@@ -198,7 +198,6 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00874.html[ LAPACK Mailing list msg 874]
  * Julie cannot reproduce the problem on her machine with 3.2.1 and Ref BLAS
 
-
 == [orange]*bug0040* :: Q referenced in real TGSENs when WANTQ .FALSE.
  * *TO BE CONFIRMED*
  * bug report from Mathew Cross on Tue 18 Aug 2009 
@@ -248,17 +247,6 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * bug report sent by Phil DeMier (IBM) on Mon 29 Jun 2009 to "lapack@cs.utk.edu".
       "matrix splitting problem with dstebz and sstebz"
  * see link:018.txt[Phil DeMier's email] and link:019.f[Phil DeMier's test code]
-
-== [orange]*bug0030* :: line 641 of DTGSY2 (present as well in STGSY2, ZTGSY2, CTGSY2)
- * *TO BE CONFIRMED*
- * reported by Zbigniew Leyk (College Station, TX) on Mon Jun 01, 2009
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1445[forum topic 1445]
-
-== [orange]*bug0029* :: problem of WORKSPACE query with DSTEDC
- * *TO BE CONFIRMED*
- * reported by Tiago Requeijo on Mon Mar 30 2009
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1389[forum topic 1389]
- * Julie : CANNOT REPRODUCE THE PROBLEM
 
 == dead code* :: xLAHRD is now replaced by xLAHR2, xLAHRD is a dead code since LAPACK 3.1
  * xLAHRD will be removed at some point in the future from the distribution

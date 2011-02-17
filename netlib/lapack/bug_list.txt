@@ -360,16 +360,17 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1449[forum topic 1449]
  * committed by Julie Langou (SVN revision 692, on Fri Sep 11 2009)
 
-== [orange]*bug0030* :: line 641 of DTGSY2 (present as well in STGSY2, ZTGSY2, CTGSY2)
- * *TO BE CONFIRMED*
+== [green]*bug0030* :: line 641 of DTGSY2 (present as well in STGSY2, ZTGSY2, CTGSY2)
+ * *CORRECTED* - see svn r766
+ * Same bug than bug0060
  * reported by Zbigniew Leyk (College Station, TX) on Mon Jun 01, 2009
  * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1445[forum topic 1445]
 
-== [orange]*bug0029* :: problem of WORKSPACE query with DSTEDC
- * *TO BE CONFIRMED*
+== [black]*bug0029* :: problem of WORKSPACE query with DSTEDC
+ * *NOT A BUG*
  * reported by Tiago Requeijo on Mon Mar 30 2009
  * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1389[forum topic 1389]
- * Julie : CANNOT REPRODUCE THE PROBLEM
+ * Julie, Rodney: User made a mistakes in his code.
 
 == [red]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
  * *TO BE CONFIRMED*

@@ -292,6 +292,14 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * printing format misuse, this would possibly lead to a segmentation fault in case of errors in zgbsvxx. 
  * committed by Julien Langou (SVN revision 696, on Tue Sep 29 2009)
 
+== [green]*bug0034* :: comments in SSPTRF not correct 
+ * *CORRECTED* - see svn r932 and 933
+ * clarification asked by "sarnath" on Thu Jul 02 2009
+ * confirmation of bug by "sarnath" and Julien Langou on Fri Jul 03 2009
+ * The statement "JMAX is the column-index of the largest off-diagonal element in row IMAX" is not correct
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1553[forum topic 1553]
+ * committed by Rodney (SVN revision 932, 933, on Tue Feb 17 2011)
+
 == [orange]*bug0040* :: Q referenced in real TGSENs when WANTQ .FALSE.
  * *TO BE CONFIRMED*
  * bug report from Mathew Cross on Tue 18 Aug 2009 
@@ -335,24 +343,24 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * see link:Errata/bug_lapack_3.2.1_0035/024.txt[Michael Chuvelev and Julie's emails], link:Errata/bug_lapack_3.2.1_0035/q.dat[q.dat],
       link:Errata/bug_lapack_3.2.1_0035/tau.dat[tau.dat], and link:Errata/bug_lapack_3.2.1_0035/test_dorgql.f[test_dorgql.f]
 
-== [orange]*bug0034* :: comments in SSPTRF not correct 
- * *TO BE CONFIRMED*
- * clarification asked by "sarnath" on Thu Jul 02 2009
- * confirmation of bug by "sarnath" and Julien Langou on Fri Jul 03 2009
- * The statement "JMAX is the column-index of the largest off-diagonal element in row IMAX" is not correct
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1553[forum topic 1553]
-
-== [orange]*bug0033* :: failure of zheevd on a specific matrix
- * *TO BE CONFIRMED*
+== [red]*bug0033* :: failure of zheevd on a specific matrix
+ * *CONFIRMED*
  * bug report sent by Cezary Sliwa (Instytut Fizyki PAN, Poland) on Thu 2 Jul 2009 to "lapack@cs.utk.edu".
  * see link:020.f[Cezary Sliwa's test code], link:021.dat[Cezary Sliwa's matrix], and
       link:022.txt[Cezary Sliwa's email].
-
-== [orange]*bug0032* :: matrix splitting problem with dstebz and sstebz
- * *TO BE CONFIRMED*
+ * Confirmed by Rodney on Tue, 17 Feb 2011
+ * Rodney: "I actually have a different problem than what was reported.
+ *  The user reports the routine returning with info=81.  
+ * I try to run it and get a seg fault (down in a zdotc). 
+ * The test example is calling the routine correctly, and
+ * I verified that the sizes are correct for the work arrays, so it does appear that something is wrong."
+ 
+== [red]*bug0032* :: matrix splitting problem with dstebz and sstebz
+ * *CONFIRMED*
  * bug report sent by Phil DeMier (IBM) on Mon 29 Jun 2009 to "lapack@cs.utk.edu".
       "matrix splitting problem with dstebz and sstebz"
  * see link:018.txt[Phil DeMier's email] and link:019.f[Phil DeMier's test code]
+ * Confirmed by Rodney on Tue, 08 Feb 2011
 
 == [green]*bug0031* :: whitespace fix in comments
  * *CORRECTED* - see svn r692

@@ -22,6 +22,20 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  - [green,,1.5]#correction will be included in next release#
  - [green,,1.5]#bug fix available in link:http://netlib.org/lapack/#_svn_access[LAPACK SVN repository]#
 
+== [green]*bug0076* :: Problem in ?(sy/he)tri2 when nbmax greater than n
+ * bug report sent by nmozarto on Mar 4th
+ * see forum topic 2223
+ * corrected by Julie on Fri March 4th 2011
+
+== [green]*bug0075* :: not orhtogonal: eigenvectors of a symmetric matrix with DSYEV 
+ * bug report sent by fabioaffinito on Feb 8th
+ * see forum topic 2169
+ * corrected by Rodney on Thu March 3rd 2011
+ * The bug appears only when the matrix is diagonalized by using the upper half, and when the leading dimension n>200 approx.
+ * User gave test program see: link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=2169&p=6237#p6237[here]
+ * Come from change in version 3.2 [link:http://netlib.org/lapack/lapack-3.2.html[Release Notes]]
+ * related to 0035
+
 == [green]*bug0074* :: ?sysv and ?hesv
  * bug report sent by Alexander Kobotov on Feb 8th
  * see forum topic 2168
@@ -80,6 +94,22 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  * reported to Zlatko Drmac and corrected by Zlatko Drmac
  * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html[ LAPACK Mailing list msg 049]
 
+== [green]*bug0036* :: scaling in xSTEQR, xSTERF
+ * bug report sent by Pat Quillen on Fri 24 Jul 2009 to "lapack@cs.utk.edu".
+      "Scaling in xSTEQR, xSTERF"
+ * see link:bug_lapack_3.2.1_0036/025.txt[Pat Quillen's email], link:bug_lapack_3.2.1_0036/quillen_dsteqr.f[quillen dsteqr.f].
+ * Correction: "changed matrix norm to 'M' (max) from 'I' (inf) for scaling of input matrix
+ * and added check for zero norm in xSTERF (the xSTEQR already had this check)"
+ * confirmed by Rodney and corrected by Rodney
+
+== [green]*bug0035* :: dlarfb.f and likes
+ * bug report sent by Michael Chuvelev (Intel) on Tue 21 Jul 2009 to "lapack@cs.utk.edu".
+      "Bug in LAPACK 3.2 dlarfb.f and likes"
+ * see link:bug_lapack_3.2.1_0035/024.txt[Michael Chuvelev and Julie's emails], link:bug_lapack_3.2.1_0035/q.dat[q.dat],
+      link:bug_lapack_3.2.1_0035/tau.dat[tau.dat], and link:bug_lapack_3.2.1_0035/test_dorgql.f[test_dorgql.f]
+ * confirmed by Rodney on Tue Feb 22 2011
+ * corrected by Rodney on Thu March 3rd 2011
+
 == [green]*bug0034* :: comments in SSPTRF not correct 
  * clarification asked by "sarnath" on Thu Jul 02 2009
  * confirmation of bug by "sarnath" and Julien Langou on Fri Jul 03 2009
@@ -102,14 +132,6 @@ are not correct
 
  * confirmed by Rodney and corrected by Rodney
 
-== [red]*bug0075* :: not orhtogonal: eigenvectors of a symmetric matrix with DSYEV 
- * *CONFIRMED*
- * bug report sent by fabioaffinito on Feb 8th
- * see forum topic 2169
- * The bug appears only when the matrix is diagonalized by using the upper half, and when the leading dimension n>200 approx.
- * User gave test program see: link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=2169&p=6237#p6237[here]
- * Come from change in version 3.2 [link:http://netlib.org/lapack/lapack-3.2.html[Release Notes]]
-
 == [red]*bug0065* :: workspace queries not being used     
  * *CONFIRMED*
  * bug report by Clint Whaley on October 27th, 2010
@@ -120,11 +142,12 @@ are not correct
  *  faster GELQF, which sometimes uses extra workspace.  For LAPACK itself,
  *  it represents extra dependencies that don't need to be there. 
 
-== [red]*bug0061* :: zgehrd.f is overflowing the maximum size in bytes of the largest array that
-can be put on the stack with gfortran (=> leads ,e.g., to non-reproducible and uncorrect execution
-of zgeev in multithreaded context
+== [red]*bug0061* :: zgehrd.f is overflowing 
  * *CONFIRMED*
  * bug report by Victor Liu on Tuesday August 03rd, 2010
+ * zgehrd.f is overflowing  the maximum size in bytes of the largest array that
+ * can be put on the stack with gfortran (=> leads ,e.g., to non-reproducible and uncorrect execution
+ * of zgeev in multithreaded context
  * lapackers involved in the bug fix process: Julie and Julien Langou and Mathieu Faverge
  * bug fix by Victor Liu on Wednesday August 04th, 2010
  * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1930[forum topic 1930]
@@ -141,17 +164,21 @@ computed eigenvectors of the balanced matrix, when balancing is undone at the en
 The expert driver interface dgeevx would let the user disable balancing, until
 we figure out whether this is a bug or a feature, I'm not sure which."
 
+== [red]*bug0056* ::  Non-orthogonal eigenvectors returned from DSYEVR
+ * *CONFIRMED*
+ * bug report sent by Scipy team on April 22nd
+ * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00874.html[ LAPACK Mailing list msg 874]
+ * Confirmed by Rodney on Tue, 17 Feb 2011
+ * " I can reproduce similar problems that the user encountered with non-orthogonal eigenvectors when only
+ * a few eigenvalues are requested.  This also happens with SSYEVR.  If I set ABSTOL to SLAMCH('Safe minimum'),
+ * the problem goes away in SSYEVR, and improves with DSYEVR but does not completely go away."
+ 
 == [red]*bug0033* :: failure of zheevd on a specific matrix
  * *CONFIRMED*
  * bug report sent by Cezary Sliwa (Instytut Fizyki PAN, Poland) on Thu 2 Jul 2009 to "lapack@cs.utk.edu".
  * see link:020.f[Cezary Sliwa's test code], link:021.dat[Cezary Sliwa's matrix], and
       link:022.txt[Cezary Sliwa's email].
  * Confirmed by Rodney on Tue, 17 Feb 2011
- * Rodney: "I actually have a different problem than what was reported.
- *  The user reports the routine returning with info=81.  
- * I try to run it and get a seg fault (down in a zdotc). 
- * The test example is calling the routine correctly, and
- * I verified that the sizes are correct for the work arrays, so it does appear that something is wrong."
 
 == [red]*bug0032* :: matrix splitting problem with dstebz and sstebz
  * *CONFIRMED*
@@ -202,57 +229,12 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * confirmed by Julien Langou on Fri Jan 30 2009
  * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=866[forum topic 866]
  * all information sent to Zlatko Drmac
-    
 
 == [red]*bug0020* :: in xGESDD, workspace query can overflow for large matrices
  * *CONFIRMED*
  * reported by Stephan Ripke (Broad Institute, Boston) on Thu May 21 2009
  * confirmed by Julien Langou on Thu May 21 2009
  * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1418[forum topic 1418]
-
-
-== [orange]*bug0066* ::  bugs in {s,d}gejsv 
- * *TO BE CONFIRMED*
- * bug report sent by Paul Roberts on Oct 21st
- * reported to Zlatko Drmac
- * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html[ LAPACK Mailing list msg 049]
-
-== [orange]*bug0056* ::  Non-orthogonal eigenvectors returned from DSYEVR
- * *TO BE CONFIRMED*
- * bug report sent by Scipy team on April 22nd
- * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00874.html[ LAPACK Mailing list msg 874]
- * Julie cannot reproduce the problem on her machine with 3.2.1 and Ref BLAS
-
-== [orange]*bug0040* :: Q referenced in real TGSENs when WANTQ .FALSE.
- * *TO BE CONFIRMED*
- * bug report from Mathew Cross on Tue 18 Aug 2009 
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1604[forum topic 1604]
-
-== [orange]*bug0039* :: faulty workspace queries in GEESX
- * *TO BE CONFIRMED*
- * bug report from Mathew Cross on Tue 18 Aug 2009 
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1602[forum topic 1602]
-       
-== [orange]*bug0037* :: xLARFP and scaling
- * *TO BE CONFIRMED*
- * bug report sent by Pat Quillen on Wed 29 Jul 2009 to "lapack@cs.utk.edu".
-      "xLARFP and scaling"
- * see link:bug_lapack_3.2.1_0037/026.txt[Pat Quillen's email], and link:bug_lapack_3.2.1_0036/quillen_dlarfp2.f[quillen dlarfp2.f],
- * see link:bug_lapack_3.2.1_0037/027.txt[Sven Hammarling's email]
- * see link:bug_lapack_3.2.1_0037/028.txt[Pat Quillen's email], link:bug_lapack_3.2.1_0036/quillen_dlarfp3.f[quillen dlarfp3.f], and link:bug_lapack_3.2.1_0036/quillen_dlarf2.f[quillen dlarf2.f].
-
-== [orange]*bug0036* :: scaling in xSTEQR, xSTERF
- * *TO BE CONFIRMED*
- * bug report sent by Pat Quillen on Fri 24 Jul 2009 to "lapack@cs.utk.edu".
-      "Scaling in xSTEQR, xSTERF"
- * see link:bug_lapack_3.2.1_0036/025.txt[Pat Quillen's email], link:bug_lapack_3.2.1_0036/quillendsteqr.f[quillen dsteqr.f].
-
-== [orange]*bug0035* :: dlarfb.f and likes
- * *TO BE CONFIRMED*
- * bug report sent by Michael Chuvelev (Intel) on Tue 21 Jul 2009 to "lapack@cs.utk.edu".
-      "Bug in LAPACK 3.2 dlarfb.f and likes"
- * see link:bug_lapack_3.2.1_0035/024.txt[Michael Chuvelev and Julie's emails], link:bug_lapack_3.2.1_0035/q.dat[q.dat],
-      link:bug_lapack_3.2.1_0035/tau.dat[tau.dat], and link:bug_lapack_3.2.1_0035/test_dorgql.f[test_dorgql.f]
 
 == dead code* :: xLAHRD is now replaced by xLAHR2, xLAHRD is a dead code since LAPACK 3.1
  * xLAHRD will be removed at some point in the future from the distribution

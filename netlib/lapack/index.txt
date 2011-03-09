@@ -160,6 +160,8 @@ LAPACK Program Style]. This document has been written to facilitate
 contributions to LAPACK by documenting their design and implementation
 guidelines.
 
+LAPACK Project Software Grant and Corporate Contributor License Agreement (“Agreement”) link:http://www.netlib.org/lapack/lapack-corporate-contributor-agrement.doc[[Download]] 
+
 Contributions are always welcome and can be sent to the
 mailto:lapack@cs.utk.edu[LAPACK team].
 

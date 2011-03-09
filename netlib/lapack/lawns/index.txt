@@ -2,13 +2,37 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn242 +[link:http://www.netlib.org/lapack/lawnspdf/lawn242.pdf[pdf]]+
+.A Fully Empirical Autotuned Dense QR Factorization For Multicore Architectures.
+
+by	*Emmanuel Agullo, Jack Dongarra, Rajib Nath and Stanimire Tomov*
+
+INRIA-7526, Mar 9, 2011
+
+== lawn241 +[link:http://www.netlib.org/lapack/lawnspdf/lawn241.pdf[pdf]]+
+.Scalable Tile Communication-Avoiding QR Factorization on Multicore Cluster Systems.
+
+by	*Fengguang Song, Hatem Ltaief, Bilel Hadri and Jack Dongarra*
+
+UT-CS-10-653, Mar 4, 2011
+
+Published at SC'10.
+
+== lawn240 +[link:http://www.netlib.org/lapack/lawnspdf/lawn240.pdf[pdf]]+
+.Communication-Avoiding QR Decomposition for GPUs.
+
+by	*Michael Anderson, Grey Ballard, James Demmel and Kurt Keutzer*
+
+update of UCB/EECS-2010-131, Feb 18, 2011
+
+To appear in IPDPS'11
+
 == lawn239 +[link:http://www.netlib.org/lapack/lawnspdf/lawn239.pdf[pdf]]+
 .Communication bounds for heterogeneous architectures.
 
 by	*Grey Ballard, James Demmel, and Andrew Gearhart*
 
 UCB/EECS-2011-13, Feb 11, 2011
-
 
 == lawn238 +[link:http://www.netlib.org/lapack/lawnspdf/lawn238.pdf[pdf]]+
 .Communication-optimal parallel 2.5D matrix multiplication and LU factorization algorithms.
@@ -57,7 +81,8 @@ UT-CS-10-659, Sep 15, 2010.
 by	*Emmanuel Agullo, Cedric Augonnet, Jack Dongarra, Hatem Ltaief, Raymond Namyst, Samuel Thibault, and Stanimire Tomov*
 
 UT-CS-10-658, Sep 15, 2010.
-To appear in	GPU Computing GEMs, vol.2
+
+To appear in GPU Computing GEMs, vol.2
 
 == lawn229 +[link:http://www.netlib.org/lapack/lawnspdf/lawn229.pdf[pdf]]+
 .An Implementation of the Tile QR Factorization for a GPU and Multiple CPUs.
@@ -86,7 +111,8 @@ UT-CS-10-655, July 29, 2010.
 
 by	*Laura Grigori, James W Demmel, and Hua Xiang*
 UCB/EECS-2010-29, March 15, 2010.
-Published in	Submitted to SIAM Journal on Matrix Analysis and Applications (SIMAX).
+
+Submitted to SIAM Journal on Matrix Analysis and Applications (SIMAX).
 
 == lawn225 +[link:http://www.netlib.org/lapack/lawnspdf/lawn225.pdf[pdf]]+
 .Dense Linear Algebra Solvers for Multicore with GPU Accelerators.
@@ -94,6 +120,7 @@ Published in	Submitted to SIAM Journal on Matrix Analysis and Applications (SIMA
 by	*Stanimire Tomov, Rajib Nath, Hatem Ltaief, and Jack Dongarra*
 
 UT-CS-09-649, February 18, 2010.
+
 Published in	In the Proceedings of IPDPS 2010: 24th IEEE International Parallel and Distributed Processing Symposium, Atlanta, GA, April 2010.
 
 == lawn224 +[link:http://www.netlib.org/lapack/lawnspdf/lawn224.pdf[pdf]]+
@@ -102,6 +129,7 @@ Published in	In the Proceedings of IPDPS 2010: 24th IEEE International Parallel 
 by	*Emmanuel Agullo, Camille Coti, Jack Dongarra, Thomas Herault, and Julien Langou*
 
 UT-CS-10-651, January 6, 2010.
+
 Published in	In the Proceedings of IPDPS 2010: 24th IEEE International Parallel and Distributed Processing Symposium, Atlanta, GA, April 2010.
 
 == lawn223 +[link:http://www.netlib.org/lapack/lawnspdf/lawn223.pdf[pdf]]+

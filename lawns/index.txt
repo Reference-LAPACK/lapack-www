@@ -2,6 +2,119 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn257 +[link:http://www.netlib.org/lapack/lawnspdf/lawn257.pdf[pdf]]+
+.Hierarchical QR factorization algorithms for multi-core cluster systems.
+
+by	*Jack Dongarra, Mathieu Faverge, Thomas Herault, Julien Langou and Yves Robert*
+
+UT-CS-11-684, Oct 4, 2011
+
+== lawn256 +[link:http://www.netlib.org/lapack/lawnspdf/lawn256.pdf[pdf]]+
+.High Performance Linear System Solver with Resilience to Multiple Soft Errors.
+
+by	*Peng Du, Piotr Luszczek and Jack Dongarra*
+
+UT-CS-11-683, Oct 4, 2011
+
+== lawn255 +[link:http://www.netlib.org/lapack/lawnspdf/lawn255.pdf[pdf]]+
+.Improving communication performance in dense linear algebra via topology aware collectives.
+
+by	*Edgar Solomonik Abhinav Bhatele and James Demmel*
+
+UCB/EECS-2011-92, Aug 15, 2011
+
+== lawn254 +[link:http://www.netlib.org/lapack/lawnspdf/lawn254.pdf[pdf]]+
+.Parallel Reduction to Condensed Forms for Symmetric Eigenvalue Problems using Aggregated Fine-Grained and Memory-Aware Kernels.
+
+by	*Azzam Haidar, Hatem Ltaief and Jack Dongarra*
+
+UT-CS-11-677, Aug 5, 2011
+
+== lawn253 +[link:http://www.netlib.org/lapack/lawnspdf/lawn253.pdf[pdf]]+
+.Algorithm-based Fault Tolerance for Dense Matrix Factorizations.
+
+by	*Peng Du, Aurelien Bouteiller, George Bosilca, Thomas Herault and Jack Dongarra*
+
+UT-CS-11-676, Aug 5, 2011
+
+== lawn252 +[link:http://www.netlib.org/lapack/lawnspdf/lawn252.pdf[pdf]]+
+.Soft Error Resilient QR Factorization for Hybrid System.
+
+by	*Peng Du, Piotr Luszczek, Stanimire Tomov, and Jack Dongarra*
+
+UT-CS-11-675, July 1, 2011
+
+== lawn251 +[link:http://www.netlib.org/lapack/lawnspdf/lawn251.pdf[pdf]]+
+.Profiling High Performance Dense Linear Algebra Algorithms on Multicore Architectures for Power and Energy Efficiency.
+
+by	*Hatem Ltaief, Piotr Luszczek, and Jack Dongarra*
+
+UT-CS-11-674, June 21, 2011
+
+== lawn250 +[link:http://www.netlib.org/lapack/lawnspdf/lawn250.pdf[pdf]]+
+.Efficient Support for Matrix Computations on Heterogeneous Multi-core and Multi-GPU Architectures.
+
+by	*Fengguang Song, Stanimire Tomov, and Jack Dongarra*
+
+UT-CS-11-668, June 16, 2011
+
+== lawn249 +[link:http://www.netlib.org/lapack/lawnspdf/lawn249.pdf[pdf]]+
+.Level-3 Cholesky Factorization Routines as Part of Many Cholesky Algorithms.
+
+by	*Fred G. Gustavson, Jerzy Wásniewski, Jack J. Dongarra, José R. Herrero and Julien Langou*
+
+DTU/IMM-Technical-Report-2011-11.
+
+Submitted at TOMS
+
+== lawn248 +[link:http://www.netlib.org/lapack/lawnspdf/lawn248.pdf[pdf]]+
+.Communication-optimal parallel 2.5D matrix multiplication and LU factorization algorithms.
+
+by	*Edgar Solomonik and James Demmel*
+
+UCB/EECS-2011-72, Jun 7, 2011
+
+== lawn247 +[link:http://www.netlib.org/lapack/lawnspdf/lawn247.pdf[pdf]]+
+.High Performance Bidiagonal Reduction using Tile Algorithms on Homogeneous Multicore Architectures.
+
+by	*Hatem Ltaief, Piotr Luszczek, and Jack Dongarra*
+
+UT-CS-11-673, May 18, 2011
+
+Submitted at TOMS
+
+== lawn246 +[link:http://www.netlib.org/lapack/lawnspdf/lawn246.pdf[pdf]]+
+.Accelerating linear system solutions using randomization techniques.
+
+by	*Marc Baboulin, Jack Dongarra, Julien Herrmann, and Stanimire Tomov*
+
+INRIA RR-7616, May 15 2011
+
+== lawn245 +[link:http://www.netlib.org/lapack/lawnspdf/lawn245.pdf[pdf]]+
+.Autotuning GEMMs for Fermi.
+
+by	*Jakub Kurzak, Stanimire Tomov, and Jack Dongarra*
+
+UT-CS-11-671, Apr 18, 2011
+
+Submitted at SC11 November 12-18, 2011, Seattle, Washington, USA.
+
+== lawn244 +[link:http://www.netlib.org/lapack/lawnspdf/lawn244.pdf[pdf]]+
+.Two-Stage Tridiagonal Reduction for Dense Symmetric Matrices using Tile Algorithms on Multicore Architectures.
+
+by	*Piotr Luszczek, Hatem Ltaief, and Jack Dongarra*
+
+UT-CS-11-670, Apr 18, 2011
+
+== lawn243 +[link:http://www.netlib.org/lapack/lawnspdf/lawn243.pdf[pdf]]+
+.Analysis of Dynamically Scheduled Tile Algorithms for Dense Linear Algebra on Multicore Architectures.
+
+by	*Azzam Haidar, Hatem Ltaief, Asim YarKhan and Jack Dongarra*
+
+UT-CS-11-666, Mar 10, 2011
+
+Submitted at Concurrency and Computations.
+
 == lawn242 +[link:http://www.netlib.org/lapack/lawnspdf/lawn242.pdf[pdf]]+
 .A Fully Empirical Autotuned Dense QR Factorization For Multicore Architectures.
 
@@ -60,6 +173,15 @@ INRIA, Nov 5, 2010.
 by	*Jack Dongarra and Piotr Luszczek*
 
 UT-CS-10-661, Oct 8, 2010.
+
+== lawn233 +[link:http://www.netlib.org/lapack/lawnspdf/lawn233.pdf[pdf]]+
+.QR Factorization on a Multicore Node Enhanced with Multiple GPU Accelerators.
+
+by	*Agullo, E., Augonnet, C., Dongarra, J., Faverge, M., Ltaief, H., Thibault, S. and Tomov, S.*
+
+UT-CS-10-XXX, Oct, 2010.
+
+Proceedings of IPDPS 2011
 
 == lawn232 +[link:http://www.netlib.org/lapack/lawnspdf/lawn232.pdf[pdf]]+
 .Distributed-Memory Task Execution and Dependence Tracking within DAGuE and the DPLASMA Project.

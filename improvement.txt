@@ -144,4 +144,22 @@ See link:lapack-3.3.0.html[Release Notes for 3.3.0] for more details
   4. *Thread safe xLAMCH*: SLAMCH and DLAMCH were the only two routines not thread-safe 
   in LAPACK-3.2. This is fixed: all routines in LAPACK-3.3 are now thread-safe. 
 
+4. Improvements in LAPACK 3.3.1
+--------------------------------
+
+See link:lapack-3.3.1.html[Release Notes for 3.3.1] for more details
+
+*Improve the CMAKE build system.*
+
+* Added a FindBLAS module to easily search for and link against various optimized BLAS implementations
+* Added proper default compiler flags for various commercial Fortran compilers
+* Check for and disable SIGFPE handlers (LAPACK code handles these internally) on known compilers
+* Remove testing drivers and BLAS source from nightly code coverage to get a more accurate representation of the LAPACK code getting exercised
+* Suppress harmless warning messages for various platforms and compilers
+* Added nightly builds (http://my.cdash.org/index.php?project=LAPACK)
+* Standardized binary output locations to play nicely when building Windows DLLs
+* Cleaned up CMake packaging to allow find_package(LAPACK) in applications
+* Added missing link dependencies for test libraries
+
+
 // vim: set syntax=asciidoc:

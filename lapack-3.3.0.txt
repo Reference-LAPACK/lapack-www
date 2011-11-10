@@ -1,0 +1,438 @@
+
+LAPACK 3.3
+==========
+
+Release date: Su 11/14/2010.
+
+This material is based upon work supported by the National Science Foundation
+and the Department of Energy under Grant No. NSF-OCI-1032861 (2010-2013 est.),
+NSF-CCF-00444486 (2005-2008 est.), NSF-CNS-0325873 (2004-2009 est.),
+NSF-EIA-0122599 (2001-2004 est.), NSF-ACI-0090127, DOE-DE-FC02-01ER25478,
+DOE-DE-FC02-06ER25768.
+
+LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California Berkeley, Univ. of Colorado Denver and NAG  Ltd.
+
+1. Support and questions:
+-------------------------
+
+http://icl.cs.utk.edu/lapack-forum/
+
+2. LAPACK 3.3: What's new
+-------------------------
+
+  1. *Standard C language APIs for LAPACK:* The standard interfaces include
+  support for Fortran and C data formats (column-major and row-major) to ease
+  interoperability with, and migration of, Fortran code. Full LAPACK
+  functionality is now accessible in a C-friendly manner.  These new interfaces
+  are a key feature of the new LAPACK 3.3 release and the just released Intel
+  MKL 10.3 product. PLASMA 2.3 relies on it.
+
+  2. *Computing the complete CS decomposition:* Compute the complete CS
+  decomposition of a partitioned unitary matrix.  The algorithm is designed
+  for numerical stability.  See: Brian D. Sutton.  Computing the complete CS
+  decomposition. Numer. Algorithms. 50 (2009), no. 1, 33–65.
+
+  3. *Level-3 BLAS symmetric indefinite solve and symmetric indefinite inversion*:
+  This enables better performance for xSYTRF and xSYTRI.
+
+  4. *Thread safe xLAMCH*: SLAMCH and DLAMCH were the only two routines not thread-safe 
+  in LAPACK-3.2. This is fixed: all routines in LAPACK-3.3 are now thread-safe. 
+
+
+3. External Contributors
+------------------------
+
+    * Intel MKL team
+    * Brian Sutton (Randolph-Macon College)
+
+4. Thanks
+---------
+
+Thanks for bug-report/patches/suggestions to:
+
+Allin Cottrell (Wake Forest University),
+Mathew Cross (NAG),
+Zlatko Drmac (University of Zagreb, Croatia),
+Victor Liu,
+the Numpy team,
+Bart Oldeman, 
+Stephan Ripke (Broad Institute, Boston),
+Ake Sandgren (HPC2N, Umea University), and
+Clint Whaley (University of Texas Austin).
+
+5. Developer list
+-----------------
+
+.Principal Investigators
+
+    * Jim Demmel (University of California at Berkeley, USA)
+    * Jack Dongarra (University of Tennessee and ORNL, USA)
+    * Julien Langou (University of Colorado Denver, USA)
+
+.LAPACK developers involved in this release
+
+    * Julie Langou (University of Tennessee, USA)
+    * Piotr Luszczek (University of Tennessee, USA) 
+    * Jason Riedy (Georgia Institute of Technology, USA)
+
+6. More details
+----------------
+   	  							    				  
+6.1.  Computing the complete CS decomposition
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.contributor
+
+    Brian Sutton (Randolph-Macon College)
+
+.contribution
+
+Compute the complete CS decomposition of a partitioned unitary matrix.  The
+algorithm is designed for numerical stability.  See: Brian D. Sutton.
+Computing the complete CS decomposition. Numer. Algorithms. 50 (2009), no. 1,
+33–65.
+
+      A cuncsd    A dorcsd    A sorcsd      A zuncsd
+      A cunbdb    A dorbdb    A sorbdb      A zunbdb
+      A cbbcsd    A dbbcsd    A sbbcsd      A zbbcsd
+      A clapmr    A dlapmr    A slampr      A zlapmr
+                  A dlartgp   A slartgp
+                  A dlartgs   A slartgs
+
+link:README-CSD.html[see here]
+
+6.2. Level-3 BLAS symmetric indefinite solve and symmetric indefinite inversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.lapacker
+
+Julie Langou
+
+.contribution
+
+Level-3 BLAS symmetric indefinite solve (xSYTRS) and symmetric indefinite
+inversion (xSYTRI).
+
+        M chesv.f        M dsysv.f         M ssysv.f       M zhesv.f         
+        A chetrs2.f      A dsytrs2.f       A ssytrs2.f     A zhetrs2.f       
+        A csyconv.f      A dsyconv.f       A ssyconv.f     A zsyconv.f       
+        A csyswapr.f     A dsyswapr.f      A ssyswapr.f    A zsyswapr.f                      
+        A csytri2.f      A dsytri2.f       A ssytri2.f     A zsytri2.f                       
+        A csytri2x.f     A dsytri2x.f      A ssytri2x.f    A zsytri2x.f                      
+
+[[plot_results_lila_sytri_perf]]
+.Performance of LDLT Inversion (DSYTRI) link:plot_results_lila_sytri_perf.pdf[pdf]
+image::plot_results_lila_sytri_perf.png[]
+
+[[plot_results_lila_sytrs_perf]]
+.Performance of LDLT Solve (DSYTRS) link:plot_results_lila_sytrs_perf.pdf[pdf]
+image::plot_results_lila_sytrs_perf.png[]
+
+6.3. Thread safe xLAMCH
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.lapackers
+
+Piotr Luszczek and Jason Riedy
+
+.contribution
+
+Thread safe xLAMCH: SLAMCH and DLAMCH were the only two routines not thread-safe 
+in LAPACK-3.2. This is fixed: all routines in LAPACK-3.3 are now thread-safe. 
+The new xLAMCH routines use Fortran 90 intrinsics.
+
+        M dlamch.f
+        M slamch.f
+
+6.4. LAPACK C interface
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.contributors
+
+Intel MKL team
+
+.lapackers
+
+Julie Langou
+
+.contribution
+
+The standard interfaces include support for Fortran and C data formats
+(column-major and row-major) to ease interoperability with, and migration of,
+Fortran code. Full LAPACK functionality is now accessible in a C-friendly
+manner.  These new interfaces are a key feature of the new LAPACK 3.3 release
+and the just released Intel MKL 10.3 product. PLASMA 2.3 relies on it.
+
+NaN check subroutines for all matrix formats (C interface only)
+
+   A lapacke_c_nancheck.c       A lapacke_d_nancheck.c       A lapacke_s_nancheck.c      A lapacke_z_nancheck.c      
+   A lapacke_cgb_nancheck.c     A lapacke_dgb_nancheck.c     A lapacke_sgb_nancheck.c    A lapacke_zgb_nancheck.c    
+   A lapacke_cge_nancheck.c     A lapacke_dge_nancheck.c     A lapacke_sge_nancheck.c    A lapacke_zge_nancheck.c    
+   A lapacke_cgg_nancheck.c     A lapacke_dgg_nancheck.c     A lapacke_sgg_nancheck.c    A lapacke_zgg_nancheck.c    
+   A lapacke_cgt_nancheck.c     A lapacke_dgt_nancheck.c     A lapacke_sgt_nancheck.c    A lapacke_zgt_nancheck.c    
+   A lapacke_chb_nancheck.c     -                            -                           A lapacke_zhb_nancheck.c    
+   A lapacke_che_nancheck.c     -                            -                           A lapacke_zhe_nancheck.c    
+   A lapacke_chp_nancheck.c     -                            -                           A lapacke_zhp_nancheck.c    
+   A lapacke_chs_nancheck.c     A lapacke_dhs_nancheck.c     A lapacke_shs_nancheck.c    A lapacke_zhs_nancheck.c    
+   A lapacke_cpb_nancheck.c     A lapacke_dpb_nancheck.c     A lapacke_spb_nancheck.c    A lapacke_zpb_nancheck.c    
+   A lapacke_cpf_nancheck.c     A lapacke_dpf_nancheck.c     A lapacke_spf_nancheck.c    A lapacke_zpf_nancheck.c    
+   A lapacke_cpo_nancheck.c     A lapacke_dpo_nancheck.c     A lapacke_spo_nancheck.c    A lapacke_zpo_nancheck.c    
+   A lapacke_cpp_nancheck.c     A lapacke_dpp_nancheck.c     A lapacke_spp_nancheck.c    A lapacke_zpp_nancheck.c    
+   A lapacke_cpt_nancheck.c     A lapacke_dpt_nancheck.c     A lapacke_spt_nancheck.c    A lapacke_zpt_nancheck.c    
+   -                            A lapacke_dsb_nancheck.c     A lapacke_ssb_nancheck.c    -                           
+   A lapacke_csp_nancheck.c     A lapacke_dsp_nancheck.c     A lapacke_ssp_nancheck.c    A lapacke_zsp_nancheck.c    
+   A lapacke_cst_nancheck.c     A lapacke_dst_nancheck.c     A lapacke_sst_nancheck.c    A lapacke_zst_nancheck.c    
+   A lapacke_csy_nancheck.c     A lapacke_dsy_nancheck.c     A lapacke_ssy_nancheck.c    A lapacke_zsy_nancheck.c    
+   A lapacke_ctb_nancheck.c     A lapacke_dtb_nancheck.c     A lapacke_stb_nancheck.c    A lapacke_ztb_nancheck.c    
+   A lapacke_ctf_nancheck.c     A lapacke_dtf_nancheck.c     A lapacke_stf_nancheck.c    A lapacke_ztf_nancheck.c    
+   A lapacke_ctp_nancheck.c     A lapacke_dtp_nancheck.c     A lapacke_stp_nancheck.c    A lapacke_ztp_nancheck.c    
+   A lapacke_ctr_nancheck.c     A lapacke_dtr_nancheck.c     A lapacke_str_nancheck.c    A lapacke_ztr_nancheck.c    
+
+Convertion order for all matrix formats (from row major to col major and from row major to col major)
+
+   A lapacke_cgb_trans.c        A lapacke_dgb_trans.c        A lapacke_sgb_trans.c       A lapacke_zgb_trans.c        
+   A lapacke_cge_trans.c        A lapacke_dge_trans.c        A lapacke_sge_trans.c       A lapacke_zge_trans.c        
+   A lapacke_cgg_trans.c        A lapacke_dgg_trans.c        A lapacke_sgg_trans.c       A lapacke_zgg_trans.c        
+   A lapacke_chb_trans.c        A lapacke_dhs_trans.c        A lapacke_shs_trans.c       A lapacke_zhb_trans.c        
+   A lapacke_che_trans.c        -                            -                           A lapacke_zhe_trans.c        
+   A lapacke_chp_trans.c        -                            -                           A lapacke_zhp_trans.c        
+   A lapacke_chs_trans.c        -                            -                           A lapacke_zhs_trans.c        
+   A lapacke_cpb_trans.c        A lapacke_dpb_trans.c        A lapacke_spb_trans.c       A lapacke_zpb_trans.c        
+   A lapacke_cpf_trans.c        A lapacke_dpf_trans.c        A lapacke_spf_trans.c       A lapacke_zpf_trans.c        
+   A lapacke_cpo_trans.c        A lapacke_dpo_trans.c        A lapacke_spo_trans.c       A lapacke_zpo_trans.c        
+   A lapacke_cpp_trans.c        A lapacke_dpp_trans.c        A lapacke_spp_trans.c       A lapacke_zpp_trans.c        
+   -                            A lapacke_dsb_trans.c        A lapacke_ssb_trans.c       -                            
+   A lapacke_csp_trans.c        A lapacke_dsp_trans.c        A lapacke_ssp_trans.c       A lapacke_zsp_trans.c        
+   A lapacke_csy_trans.c        A lapacke_dsy_trans.c        A lapacke_ssy_trans.c       A lapacke_zsy_trans.c        
+   A lapacke_ctb_trans.c        A lapacke_dtb_trans.c        A lapacke_stb_trans.c       A lapacke_ztb_trans.c        
+   A lapacke_ctf_trans.c        A lapacke_dtf_trans.c        A lapacke_stf_trans.c       A lapacke_ztf_trans.c        
+   A lapacke_ctp_trans.c        A lapacke_dtp_trans.c        A lapacke_stp_trans.c       A lapacke_ztp_trans.c        
+   A lapacke_ctr_trans.c        A lapacke_dtr_trans.c        A lapacke_str_trans.c       A lapacke_ztr_trans.c        
+                                                            
+High Level Interfaces
+
+   A lapacke_cbdsqr.c           A lapacke_dbdsdc.c           A lapacke_sbdsdc.c          A lapacke_zbdsqr.c 
+   A lapacke_cgbbrd.c           A lapacke_dbdsqr.c           A lapacke_sbdsqr.c          A lapacke_zgbbrd.c 
+   A lapacke_cgbcon.c           A lapacke_ddisna.c           A lapacke_sdisna.c          A lapacke_zgbcon.c 
+   A lapacke_cgbequ.c           A lapacke_dgbbrd.c           A lapacke_sgbbrd.c          A lapacke_zgbequ.c 
+   A lapacke_cgbequb.c          A lapacke_dgbcon.c           A lapacke_sgbcon.c          A lapacke_zgbequb.c
+   A lapacke_cgbrfs.c           A lapacke_dgbequ.c           A lapacke_sgbequ.c          A lapacke_zgbrfs.c 
+   A lapacke_cgbrfsx.c          A lapacke_dgbequb.c          A lapacke_sgbequb.c         A lapacke_zgbrfsx.c
+   A lapacke_cgbsv.c            A lapacke_dgbrfs.c           A lapacke_sgbrfs.c          A lapacke_zgbsv.c  
+   A lapacke_cgbsvx.c           A lapacke_dgbrfsx.c          A lapacke_sgbrfsx.c         A lapacke_zgbsvx.c 
+   A lapacke_cgbsvxx.c          A lapacke_dgbsv.c            A lapacke_sgbsv.c           A lapacke_zgbsvxx.c
+   A lapacke_cgbtrf.c           A lapacke_dgbsvx.c           A lapacke_sgbsvx.c          A lapacke_zgbtrf.c 
+   A lapacke_cgbtrs.c           A lapacke_dgbsvxx.c          A lapacke_sgbsvxx.c         A lapacke_zgbtrs.c 
+   A lapacke_cgebak.c           A lapacke_dgbtrf.c           A lapacke_sgbtrf.c          A lapacke_zgebak.c 
+   A lapacke_cgebal.c           A lapacke_dgbtrs.c           A lapacke_sgbtrs.c          A lapacke_zgebal.c 
+   A lapacke_cgebrd.c           A lapacke_dgebak.c           A lapacke_sgebak.c          A lapacke_zgebrd.c 
+   A lapacke_cgecon.c           A lapacke_dgebal.c           A lapacke_sgebal.c          A lapacke_zgecon.c 
+   A lapacke_cgeequ.c           A lapacke_dgebrd.c           A lapacke_sgebrd.c          A lapacke_zgeequ.c 
+   A lapacke_cgeequb.c          A lapacke_dgecon.c           A lapacke_sgecon.c          A lapacke_zgeequb.c
+   A lapacke_cgees.c            A lapacke_dgeequ.c           A lapacke_sgeequ.c          A lapacke_zgees.c  
+   A lapacke_cgeesx.c           A lapacke_dgeequb.c          A lapacke_sgeequb.c         A lapacke_zgeesx.c 
+   A lapacke_cgeev.c            A lapacke_dgees.c            A lapacke_sgees.c           A lapacke_zgeev.c  
+   A lapacke_cgeevx.c           A lapacke_dgeesx.c           A lapacke_sgeesx.c          A lapacke_zgeevx.c 
+   A lapacke_cgehrd.c           A lapacke_dgeev.c            A lapacke_sgeev.c           A lapacke_zgehrd.c 
+   A lapacke_cgelqf.c           A lapacke_dgeevx.c           A lapacke_sgeevx.c          A lapacke_zgelqf.c 
+   A lapacke_cgels.c            A lapacke_dgehrd.c           A lapacke_sgehrd.c          A lapacke_zgels.c  
+   A lapacke_cgelsd.c           A lapacke_dgejsv.c           A lapacke_sgejsv.c          A lapacke_zgelsd.c 
+   A lapacke_cgelss.c           A lapacke_dgelqf.c           A lapacke_sgelqf.c          A lapacke_zgelss.c 
+   A lapacke_cgelsy.c           A lapacke_dgels.c            A lapacke_sgels.c           A lapacke_zgelsy.c 
+   A lapacke_cgeqlf.c           A lapacke_dgelsd.c           A lapacke_sgelsd.c          A lapacke_zgeqlf.c 
+   A lapacke_cgeqp3.c           A lapacke_dgelss.c           A lapacke_sgelss.c          A lapacke_zgeqp3.c 
+   A lapacke_cgeqpf.c           A lapacke_dgelsy.c           A lapacke_sgelsy.c          A lapacke_zgeqpf.c 
+   A lapacke_cgeqrf.c           A lapacke_dgeqlf.c           A lapacke_sgeqlf.c          A lapacke_zgeqrf.c 
+   A lapacke_cgeqrfp.c          A lapacke_dgeqp3.c           A lapacke_sgeqp3.c          A lapacke_zgeqrfp.c
+   A lapacke_cgerfs.c           A lapacke_dgeqpf.c           A lapacke_sgeqpf.c          A lapacke_zgerfs.c 
+   A lapacke_cgerfsx.c          A lapacke_dgeqrf.c           A lapacke_sgeqrf.c          A lapacke_zgerfsx.c
+   A lapacke_cgerqf.c           A lapacke_dgeqrfp.c          A lapacke_sgeqrfp.c         A lapacke_zgerqf.c 
+   A lapacke_cgesdd.c           A lapacke_dgerfs.c           A lapacke_sgerfs.c          A lapacke_zgesdd.c 
+   A lapacke_cgesv.c            A lapacke_dgerfsx.c          A lapacke_sgerfsx.c         A lapacke_zgesv.c  
+   A lapacke_cgesvd.c           A lapacke_dgerqf.c           A lapacke_sgerqf.c          A lapacke_zgesvd.c 
+   A lapacke_cgesvx.c           A lapacke_dgesdd.c           A lapacke_sgesdd.c          A lapacke_zgesvx.c 
+   A lapacke_cgesvxx.c          A lapacke_dgesv.c            A lapacke_sgesv.c           A lapacke_zgesvxx.c
+   A lapacke_cgetrf.c           A lapacke_dgesvd.c           A lapacke_sgesvd.c          A lapacke_zgetrf.c 
+   A lapacke_cgetri.c           A lapacke_dgesvj.c           A lapacke_sgesvj.c          A lapacke_zgetri.c 
+   A lapacke_cgetrs.c           A lapacke_dgesvx.c           A lapacke_sgesvx.c          A lapacke_zgetrs.c 
+   A lapacke_cggbak.c           A lapacke_dgesvxx.c          A lapacke_sgesvxx.c         A lapacke_zggbak.c 
+   A lapacke_cggbal.c           A lapacke_dgetrf.c           A lapacke_sgetrf.c          A lapacke_zggbal.c 
+   A lapacke_cgges.c            A lapacke_dgetri.c           A lapacke_sgetri.c          A lapacke_zgges.c  
+   A lapacke_cggesx.c           A lapacke_dgetrs.c           A lapacke_sgetrs.c          A lapacke_zggesx.c 
+   A lapacke_cggev.c            A lapacke_dggbak.c           A lapacke_sggbak.c          A lapacke_zggev.c  
+   A lapacke_cggevx.c           A lapacke_dggbal.c           A lapacke_sggbal.c          A lapacke_zggevx.c 
+   A lapacke_cggglm.c           A lapacke_dgges.c            A lapacke_sgges.c           A lapacke_zggglm.c 
+   A lapacke_cgghrd.c           A lapacke_dggesx.c           A lapacke_sggesx.c          A lapacke_zgghrd.c 
+   A lapacke_cgglse.c           A lapacke_dggev.c            A lapacke_sggev.c           A lapacke_zgglse.c 
+   A lapacke_cggqrf.c           A lapacke_dggevx.c           A lapacke_sggevx.c          A lapacke_zggqrf.c 
+   A lapacke_cggrqf.c           A lapacke_dggglm.c           A lapacke_sggglm.c          A lapacke_zggrqf.c 
+   A lapacke_cggsvd.c           A lapacke_dgghrd.c           A lapacke_sgghrd.c          A lapacke_zggsvd.c 
+   A lapacke_cggsvp.c           A lapacke_dgglse.c           A lapacke_sgglse.c          A lapacke_zggsvp.c 
+   A lapacke_cgtcon.c           A lapacke_dggqrf.c           A lapacke_sggqrf.c          A lapacke_zgtcon.c 
+   A lapacke_cgtrfs.c           A lapacke_dggrqf.c           A lapacke_sggrqf.c          A lapacke_zgtrfs.c 
+   A lapacke_cgtsv.c            A lapacke_dggsvd.c           A lapacke_sggsvd.c          A lapacke_zgtsv.c  
+   A lapacke_cgtsvx.c           A lapacke_dggsvp.c           A lapacke_sggsvp.c          A lapacke_zgtsvx.c 
+   A lapacke_cgttrf.c           A lapacke_dgtcon.c           A lapacke_sgtcon.c          A lapacke_zgttrf.c 
+   A lapacke_cgttrs.c           A lapacke_dgtrfs.c           A lapacke_sgtrfs.c          A lapacke_zgttrs.c 
+   A lapacke_chbev.c            A lapacke_dgtsv.c            A lapacke_sgtsv.c           A lapacke_zhbev.c  
+   A lapacke_chbevd.c           A lapacke_dgtsvx.c           A lapacke_sgtsvx.c          A lapacke_zhbevd.c 
+   A lapacke_chbevx.c           A lapacke_dgttrf.c           A lapacke_sgttrf.c          A lapacke_zhbevx.c 
+   A lapacke_chbgst.c           A lapacke_dgttrs.c           A lapacke_sgttrs.c          A lapacke_zhbgst.c 
+   A lapacke_chbgv.c            A lapacke_dhgeqz.c           A lapacke_shgeqz.c          A lapacke_zhbgv.c  
+   A lapacke_chbgvd.c           A lapacke_dhsein.c           A lapacke_shsein.c          A lapacke_zhbgvd.c 
+   A lapacke_chbgvx.c           A lapacke_dhseqr.c           A lapacke_shseqr.c          A lapacke_zhbgvx.c 
+   A lapacke_chbtrd.c           A lapacke_dopgtr.c           A lapacke_sopgtr.c          A lapacke_zhbtrd.c 
+   A lapacke_checon.c           A lapacke_dopmtr.c           A lapacke_sopmtr.c          A lapacke_zhecon.c 
+   A lapacke_cheequb.c          A lapacke_dorgbr.c           A lapacke_sorgbr.c          A lapacke_zheequb.c
+   A lapacke_cheev.c            A lapacke_dorghr.c           A lapacke_sorghr.c          A lapacke_zheev.c  
+   A lapacke_cheevd.c           A lapacke_dorglq.c           A lapacke_sorglq.c          A lapacke_zheevd.c 
+   A lapacke_cheevr.c           A lapacke_dorgql.c           A lapacke_sorgql.c          A lapacke_zheevr.c 
+   A lapacke_cheevx.c           A lapacke_dorgqr.c           A lapacke_sorgqr.c          A lapacke_zheevx.c 
+   A lapacke_chegst.c           A lapacke_dorgrq.c           A lapacke_sorgrq.c          A lapacke_zhegst.c 
+   A lapacke_chegv.c            A lapacke_dorgtr.c           A lapacke_sorgtr.c          A lapacke_zhegv.c  
+   A lapacke_chegvd.c           A lapacke_dormbr.c           A lapacke_sormbr.c          A lapacke_zhegvd.c 
+   A lapacke_chegvx.c           A lapacke_dormhr.c           A lapacke_sormhr.c          A lapacke_zhegvx.c 
+   A lapacke_cherfs.c           A lapacke_dormlq.c           A lapacke_sormlq.c          A lapacke_zherfs.c 
+   A lapacke_cherfsx.c          A lapacke_dormql.c           A lapacke_sormql.c          A lapacke_zherfsx.c
+   A lapacke_chesv.c            A lapacke_dormqr.c           A lapacke_sormqr.c          A lapacke_zhesv.c  
+   A lapacke_chesvx.c           A lapacke_dormrq.c           A lapacke_sormrq.c          A lapacke_zhesvx.c 
+   A lapacke_chesvxx.c          A lapacke_dormrz.c           A lapacke_sormrz.c          A lapacke_zhesvxx.c
+   A lapacke_chetrd.c           A lapacke_dormtr.c           A lapacke_sormtr.c          A lapacke_zhetrd.c 
+   A lapacke_chetrf.c           A lapacke_dpbcon.c           A lapacke_spbcon.c          A lapacke_zhetrf.c 
+   A lapacke_chetri.c           A lapacke_dpbequ.c           A lapacke_spbequ.c          A lapacke_zhetri.c 
+   A lapacke_chetrs.c           A lapacke_dpbrfs.c           A lapacke_spbrfs.c          A lapacke_zhetrs.c 
+   A lapacke_chfrk.c            A lapacke_dpbstf.c           A lapacke_spbstf.c          A lapacke_zhfrk.c  
+   A lapacke_chgeqz.c           A lapacke_dpbsv.c            A lapacke_spbsv.c           A lapacke_zhgeqz.c 
+   A lapacke_chpcon.c           A lapacke_dpbsvx.c           A lapacke_spbsvx.c          A lapacke_zhpcon.c 
+   A lapacke_chpev.c            A lapacke_dpbtrf.c           A lapacke_spbtrf.c          A lapacke_zhpev.c  
+   A lapacke_chpevd.c           A lapacke_dpbtrs.c           A lapacke_spbtrs.c          A lapacke_zhpevd.c 
+   A lapacke_chpevx.c           A lapacke_dpftrf.c           A lapacke_spftrf.c          A lapacke_zhpevx.c 
+   A lapacke_chpgst.c           A lapacke_dpftri.c           A lapacke_spftri.c          A lapacke_zhpgst.c 
+   A lapacke_chpgv.c            A lapacke_dpftrs.c           A lapacke_spftrs.c          A lapacke_zhpgv.c  
+   A lapacke_chpgvd.c           A lapacke_dpocon.c           A lapacke_spocon.c          A lapacke_zhpgvd.c 
+   A lapacke_chpgvx.c           A lapacke_dpoequ.c           A lapacke_spoequ.c          A lapacke_zhpgvx.c 
+   A lapacke_chprfs.c           A lapacke_dpoequb.c          A lapacke_spoequb.c         A lapacke_zhprfs.c 
+   A lapacke_chpsv.c            A lapacke_dporfs.c           A lapacke_sporfs.c          A lapacke_zhpsv.c  
+   A lapacke_chpsvx.c           A lapacke_dporfsx.c          A lapacke_sporfsx.c         A lapacke_zhpsvx.c 
+   A lapacke_chptrd.c           A lapacke_dposv.c            A lapacke_sposv.c           A lapacke_zhptrd.c 
+   A lapacke_chptrf.c           A lapacke_dposvx.c           A lapacke_sposvx.c          A lapacke_zhptrf.c 
+   A lapacke_chptri.c           A lapacke_dposvxx.c          A lapacke_sposvxx.c         A lapacke_zhptri.c 
+   A lapacke_chptrs.c           A lapacke_dpotrf.c           A lapacke_spotrf.c          A lapacke_zhptrs.c 
+   A lapacke_chsein.c           A lapacke_dpotri.c           A lapacke_spotri.c          A lapacke_zhsein.c 
+   A lapacke_chseqr.c           A lapacke_dpotrs.c           A lapacke_spotrs.c          A lapacke_zhseqr.c 
+   A lapacke_cpbcon.c           A lapacke_dppcon.c           A lapacke_sppcon.c          A lapacke_zpbcon.c 
+   A lapacke_cpbequ.c           A lapacke_dppequ.c           A lapacke_sppequ.c          A lapacke_zpbequ.c 
+   A lapacke_cpbrfs.c           A lapacke_dpprfs.c           A lapacke_spprfs.c          A lapacke_zpbrfs.c 
+   A lapacke_cpbstf.c           A lapacke_dppsv.c            A lapacke_sppsv.c           A lapacke_zpbstf.c 
+   A lapacke_cpbsv.c            A lapacke_dppsvx.c           A lapacke_sppsvx.c          A lapacke_zpbsv.c  
+   A lapacke_cpbsvx.c           A lapacke_dpptrf.c           A lapacke_spptrf.c          A lapacke_zpbsvx.c 
+   A lapacke_cpbtrf.c           A lapacke_dpptri.c           A lapacke_spptri.c          A lapacke_zpbtrf.c 
+   A lapacke_cpbtrs.c           A lapacke_dpptrs.c           A lapacke_spptrs.c          A lapacke_zpbtrs.c 
+   A lapacke_cpftrf.c           A lapacke_dpstrf.c           A lapacke_spstrf.c          A lapacke_zpftrf.c 
+   A lapacke_cpftri.c           A lapacke_dptcon.c           A lapacke_sptcon.c          A lapacke_zpftri.c 
+   A lapacke_cpftrs.c           A lapacke_dpteqr.c           A lapacke_spteqr.c          A lapacke_zpftrs.c 
+   A lapacke_cpocon.c           A lapacke_dptrfs.c           A lapacke_sptrfs.c          A lapacke_zpocon.c 
+   A lapacke_cpoequ.c           A lapacke_dptsv.c            A lapacke_sptsv.c           A lapacke_zpoequ.c 
+   A lapacke_cpoequb.c          A lapacke_dptsvx.c           A lapacke_sptsvx.c          A lapacke_zpoequb.c
+   A lapacke_cporfs.c           A lapacke_dpttrf.c           A lapacke_spttrf.c          A lapacke_zporfs.c 
+   A lapacke_cporfsx.c          A lapacke_dpttrs.c           A lapacke_spttrs.c          A lapacke_zporfsx.c
+   A lapacke_cposv.c            A lapacke_dsbev.c            A lapacke_ssbev.c           A lapacke_zposv.c  
+   A lapacke_cposvx.c           A lapacke_dsbevd.c           A lapacke_ssbevd.c          A lapacke_zposvx.c 
+   A lapacke_cposvxx.c          A lapacke_dsbevx.c           A lapacke_ssbevx.c          A lapacke_zposvxx.c
+   A lapacke_cpotrf.c           A lapacke_dsbgst.c           A lapacke_ssbgst.c          A lapacke_zpotrf.c 
+   A lapacke_cpotri.c           A lapacke_dsbgv.c            A lapacke_ssbgv.c           A lapacke_zpotri.c 
+   A lapacke_cpotrs.c           A lapacke_dsbgvd.c           A lapacke_ssbgvd.c          A lapacke_zpotrs.c 
+   A lapacke_cppcon.c           A lapacke_dsbgvx.c           A lapacke_ssbgvx.c          A lapacke_zppcon.c 
+   A lapacke_cppequ.c           A lapacke_dsbtrd.c           A lapacke_ssbtrd.c          A lapacke_zppequ.c 
+   A lapacke_cpprfs.c           A lapacke_dsfrk.c            A lapacke_ssfrk.c           A lapacke_zpprfs.c 
+   A lapacke_cppsv.c            A lapacke_dsgesv.c           A lapacke_ssgesv.c          A lapacke_zppsv.c  
+   A lapacke_cppsvx.c           A lapacke_dspcon.c           A lapacke_sspcon.c          A lapacke_zppsvx.c 
+   A lapacke_cpptrf.c           A lapacke_dspev.c            A lapacke_sspev.c           A lapacke_zpptrf.c 
+   A lapacke_cpptri.c           A lapacke_dspevd.c           A lapacke_sspevd.c          A lapacke_zpptri.c 
+   A lapacke_cpptrs.c           A lapacke_dspevx.c           A lapacke_sspevx.c          A lapacke_zpptrs.c 
+   A lapacke_cpstrf.c           A lapacke_dspgst.c           A lapacke_sspgst.c          A lapacke_zpstrf.c 
+   A lapacke_cptcon.c           A lapacke_dspgv.c            A lapacke_sspgv.c           A lapacke_zptcon.c 
+   A lapacke_cpteqr.c           A lapacke_dspgvd.c           A lapacke_sspgvd.c          A lapacke_zpteqr.c 
+   A lapacke_cptrfs.c           A lapacke_dspgvx.c           A lapacke_sspgvx.c          A lapacke_zptrfs.c 
+   A lapacke_cptsv.c            A lapacke_dsposv.c           A lapacke_ssposv.c          A lapacke_zptsv.c  
+   A lapacke_cptsvx.c           A lapacke_dsprfs.c           A lapacke_ssprfs.c          A lapacke_zptsvx.c 
+   A lapacke_cpttrf.c           A lapacke_dspsv.c            A lapacke_sspsv.c           A lapacke_zpttrf.c 
+   A lapacke_cpttrs.c           A lapacke_dspsvx.c           A lapacke_sspsvx.c          A lapacke_zpttrs.c 
+   A lapacke_cspcon.c           A lapacke_dsptrd.c           A lapacke_ssptrd.c          A lapacke_zspcon.c 
+   A lapacke_csprfs.c           A lapacke_dsptrf.c           A lapacke_ssptrf.c          A lapacke_zsprfs.c 
+   A lapacke_cspsv.c            A lapacke_dsptri.c           A lapacke_ssptri.c          A lapacke_zspsv.c  
+   A lapacke_cspsvx.c           A lapacke_dsptrs.c           A lapacke_ssptrs.c          A lapacke_zspsvx.c 
+   A lapacke_csptrf.c           A lapacke_dstebz.c           A lapacke_sstebz.c          A lapacke_zsptrf.c 
+   A lapacke_csptri.c           A lapacke_dstedc.c           A lapacke_sstedc.c          A lapacke_zsptri.c 
+   A lapacke_csptrs.c           A lapacke_dstegr.c           A lapacke_sstegr.c          A lapacke_zsptrs.c 
+   A lapacke_cstedc.c           A lapacke_dstein.c           A lapacke_sstein.c          A lapacke_zstedc.c 
+   A lapacke_cstegr.c           A lapacke_dstemr.c           A lapacke_sstemr.c          A lapacke_zstegr.c 
+   A lapacke_cstein.c           A lapacke_dsteqr.c           A lapacke_ssteqr.c          A lapacke_zstein.c 
+   A lapacke_cstemr.c           A lapacke_dsterf.c           A lapacke_ssterf.c          A lapacke_zstemr.c 
+   A lapacke_csteqr.c           A lapacke_dstev.c            A lapacke_sstev.c           A lapacke_zsteqr.c 
+   A lapacke_csycon.c           A lapacke_dstevd.c           A lapacke_sstevd.c          A lapacke_zsycon.c 
+   A lapacke_csyequb.c          A lapacke_dstevr.c           A lapacke_sstevr.c          A lapacke_zsyequb.c
+   A lapacke_csyrfs.c           A lapacke_dstevx.c           A lapacke_sstevx.c          A lapacke_zsyrfs.c 
+   A lapacke_csyrfsx.c          A lapacke_dsycon.c           A lapacke_ssycon.c          A lapacke_zsyrfsx.c
+   A lapacke_csysv.c            A lapacke_dsyequb.c          A lapacke_ssyequb.c         A lapacke_zsysv.c  
+   A lapacke_csysvx.c           A lapacke_dsyev.c            A lapacke_ssyev.c           A lapacke_zsysvx.c 
+   A lapacke_csysvxx.c          A lapacke_dsyevd.c           A lapacke_ssyevd.c          A lapacke_zsysvxx.c
+   A lapacke_csytrf.c           A lapacke_dsyevr.c           A lapacke_ssyevr.c          A lapacke_zsytrf.c 
+   A lapacke_csytri.c           A lapacke_dsyevx.c           A lapacke_ssyevx.c          A lapacke_zsytri.c 
+   A lapacke_csytrs.c           A lapacke_dsygst.c           A lapacke_ssygst.c          A lapacke_zsytrs.c 
+   A lapacke_ctbcon.c           A lapacke_dsygv.c            A lapacke_ssygv.c           A lapacke_ztbcon.c 
+   A lapacke_ctbrfs.c           A lapacke_dsygvd.c           A lapacke_ssygvd.c          A lapacke_ztbrfs.c 
+   A lapacke_ctbtrs.c           A lapacke_dsygvx.c           A lapacke_ssygvx.c          A lapacke_ztbtrs.c 
+   A lapacke_ctfsm.c            A lapacke_dsyrfs.c           A lapacke_ssyrfs.c          A lapacke_ztfsm.c  
+   A lapacke_ctftri.c           A lapacke_dsyrfsx.c          A lapacke_ssyrfsx.c         A lapacke_ztftri.c 
+   A lapacke_ctfttp.c           A lapacke_dsysv.c            A lapacke_ssysv.c           A lapacke_ztfttp.c 
+   A lapacke_ctfttr.c           A lapacke_dsysvx.c           A lapacke_ssysvx.c          A lapacke_ztfttr.c 
+   A lapacke_ctgevc.c           A lapacke_dsysvxx.c          A lapacke_ssysvxx.c         A lapacke_ztgevc.c 
+   A lapacke_ctgexc.c           A lapacke_dsytrd.c           A lapacke_ssytrd.c          A lapacke_ztgexc.c 
+   A lapacke_ctgsen.c           A lapacke_dsytrf.c           A lapacke_ssytrf.c          A lapacke_ztgsen.c 
+   A lapacke_ctgsja.c           A lapacke_dsytri.c           A lapacke_ssytri.c          A lapacke_ztgsja.c 
+   A lapacke_ctgsna.c           A lapacke_dsytrs.c           A lapacke_ssytrs.c          A lapacke_ztgsna.c 
+   A lapacke_ctgsyl.c           A lapacke_dtbcon.c           A lapacke_stbcon.c          A lapacke_ztgsyl.c 
+   A lapacke_ctpcon.c           A lapacke_dtbrfs.c           A lapacke_stbrfs.c          A lapacke_ztpcon.c 
+   A lapacke_ctprfs.c           A lapacke_dtbtrs.c           A lapacke_stbtrs.c          A lapacke_ztprfs.c 
+   A lapacke_ctptri.c           A lapacke_dtfsm.c            A lapacke_stfsm.c           A lapacke_ztptri.c 
+   A lapacke_ctptrs.c           A lapacke_dtftri.c           A lapacke_stftri.c          A lapacke_ztptrs.c 
+   A lapacke_ctpttf.c           A lapacke_dtfttp.c           A lapacke_stfttp.c          A lapacke_ztpttf.c 
+   A lapacke_ctpttr.c           A lapacke_dtfttr.c           A lapacke_stfttr.c          A lapacke_ztpttr.c 
+   A lapacke_ctrcon.c           A lapacke_dtgevc.c           A lapacke_stgevc.c          A lapacke_ztrcon.c 
+   A lapacke_ctrevc.c           A lapacke_dtgexc.c           A lapacke_stgexc.c          A lapacke_ztrevc.c 
+   A lapacke_ctrexc.c           A lapacke_dtgsen.c           A lapacke_stgsen.c          A lapacke_ztrexc.c 
+   A lapacke_ctrrfs.c           A lapacke_dtgsja.c           A lapacke_stgsja.c          A lapacke_ztrrfs.c 
+   A lapacke_ctrsen.c           A lapacke_dtgsna.c           A lapacke_stgsna.c          A lapacke_ztrsen.c 
+   A lapacke_ctrsna.c           A lapacke_dtgsyl.c           A lapacke_stgsyl.c          A lapacke_ztrsna.c 
+   A lapacke_ctrsyl.c           A lapacke_dtpcon.c           A lapacke_stpcon.c          A lapacke_ztrsyl.c 
+   A lapacke_ctrtri.c           A lapacke_dtprfs.c           A lapacke_stprfs.c          A lapacke_ztrtri.c 
+   A lapacke_ctrtrs.c           A lapacke_dtptri.c           A lapacke_stptri.c          A lapacke_ztrtrs.c 
+   A lapacke_ctrttf.c           A lapacke_dtptrs.c           A lapacke_stptrs.c          A lapacke_ztrttf.c 
+   A lapacke_ctrttp.c           A lapacke_dtpttf.c           A lapacke_stpttf.c          A lapacke_ztrttp.c 
+   A lapacke_ctzrzf.c           A lapacke_dtpttr.c           A lapacke_stpttr.c          A lapacke_ztzrzf.c 
+   A lapacke_cungbr.c           A lapacke_dtrcon.c           A lapacke_strcon.c          A lapacke_zungbr.c 
+   A lapacke_cunghr.c           A lapacke_dtrevc.c           A lapacke_strevc.c          A lapacke_zunghr.c 
+   A lapacke_cunglq.c           A lapacke_dtrexc.c           A lapacke_strexc.c          A lapacke_zunglq.c 
+   A lapacke_cungql.c           A lapacke_dtrrfs.c           A lapacke_strrfs.c          A lapacke_zungql.c 
+   A lapacke_cungqr.c           A lapacke_dtrsen.c           A lapacke_strsen.c          A lapacke_zungqr.c 
+   A lapacke_cungrq.c           A lapacke_dtrsna.c           A lapacke_strsna.c          A lapacke_zungrq.c 
+   A lapacke_cungtr.c           A lapacke_dtrsyl.c           A lapacke_strsyl.c          A lapacke_zungtr.c 
+   A lapacke_cunmbr.c           A lapacke_dtrtri.c           A lapacke_strtri.c          A lapacke_zunmbr.c 
+   A lapacke_cunmhr.c           A lapacke_dtrtrs.c           A lapacke_strtrs.c          A lapacke_zunmhr.c 
+   A lapacke_cunmlq.c           A lapacke_dtrttf.c           A lapacke_strttf.c          A lapacke_zunmlq.c 
+   A lapacke_cunmql.c           A lapacke_dtrttp.c           A lapacke_strttp.c          A lapacke_zunmql.c 
+   A lapacke_cunmqr.c           A lapacke_dtzrzf.c           A lapacke_stzrzf.c          A lapacke_zunmqr.c 
+   A lapacke_cunmrq.c                                                                    A lapacke_zunmrq.c
+   A lapacke_cunmrz.c                                                                    A lapacke_zunmrz.c
+   A lapacke_cunmtr.c                                                                    A lapacke_zunmtr.c
+   A lapacke_cupgtr.c                                                                    A lapacke_zupgtr.c
+   A lapacke_cupmtr.c                                                                    A lapacke_zupmtr.c
+
+
+
+7. Bug Fix
+----------
+
+link:bugfixedin33.txt[see here]

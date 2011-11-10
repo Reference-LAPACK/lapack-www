@@ -1,0 +1,55 @@
+LAPACK RELEASE NOTES
+====================
+
+
+1. Latest LAPACK Release 
+------------------------
+
+*Version:* 3.3.0
+
+*Release date:* November 14, 2010
+
+link:lapack-3.3.0.html[*LAPACK 3.3.0 Release Notes*]
+
+
+2. Latest LAPACK Errata
+------------------------
+LAPACK has been tested on a variety of architectures.  However, keep in mind that we do not have access to every possible type of machine, and the regrettable bug report will appear.  We apologize for any inconvenience this may cause to our users, and strongly encourage users to post your query on the http://icl.cs.utk.edu/lapack-forum[LAPACK forum] if you suspect an abnormality.
+
+link:Errata/index.html[*LAPACK 3.3.0 Errata*]
+
+3. Errata for LAPACK Users' Guide, Third Edition
+------------------------------------------------
+
+link:html/errata.lug[Errata in LAPACK Users' Guide, Third Edition]
+
+4. History of LAPACK releases
+-----------------------------
+
+.Version 1.0 : February 29, 1992
+ * Revised, Version 1.0a:  June 30, 1992
+ * Revised, Version 1.0b:  October 31, 1992
+ * Revised, Version 1.1:   March 31, 1993
+
+.Version 2.0:   September 30, 1994
+.Version 3.0:   June 30, 1999
+ * Update, Version 3.0:  October 31, 1999
+ * Update, Version 3.0:  May 31, 2000
+
+.Version 3.1.0:  November 2006 link:lapack-3.1.0.changes[Release Notes for 3.1.0]
+ * Version 3.1.1:  February 2007 link:lapack-3.1.1.changes[Release Notes for 3.1.1]
+
+.Version 3.2:    November 18, 2008 link:lapack-3.2.html[Release Notes for 3.2]
+
+ * Version 3.2.1:  April 17, 2009 link:lapack-3.2.1.html[Release Notes for 3.2.1]
+ * Version 3.2.2:  June 30, 2010 link:lapack-3.2.2.html[Release Notes for 3.2.2]
+
+5. Previous releases
+-------------------
+link:release_notes.v3.0.html[Errata in LAPACK, version 3.0]
+
+link:release_notes.v2.0[Errata in LAPACK, version 2.0]
+
+link:installation.hints[old Machine-specific Installation Hints]
+
+// vim: set syntax=asciidoc:

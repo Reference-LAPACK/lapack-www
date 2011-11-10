@@ -1,0 +1,243 @@
+
+LAPACK 3.3.1
+============
+
+Release date: Mo 04/18/2011.
+
+This material is based upon work supported by the National Science Foundation
+and the Department of Energy under Grant No. NSF-OCI-1032861 (2010-2013 est.),
+NSF-CCF-00444486 (2005-2008 est.), NSF-CNS-0325873 (2004-2009 est.),
+NSF-EIA-0122599 (2001-2004 est.), NSF-ACI-0090127, DOE-DE-FC02-01ER25478,
+DOE-DE-FC02-06ER25768.
+
+LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California Berkeley, Univ. of Colorado Denver and NAG  Ltd.
+
+1. Support and questions:
+-------------------------
+
+http://icl.cs.utk.edu/lapack-forum/
+
+2. LAPACK 3.3.1: What's new
+-------------------------
+
+.IMPORTANT
+****
+This is just a *BUG FIX release* and also we tried to improve the *CMAKE build system*.
+
+**** 
+  
+3. External Contributors
+------------------------
+
+    * Chuck Atkins and Brad King (Kitware, Inc)
+
+4. Thanks
+---------
+
+.Thanks for bug-report/patches/suggestions to:
+ * Nadezhda Mozartova (Intel, USA)
+ * Alexander Kobotov (Intel, USA)
+ * John Tellefson (Salina, KS, USA)
+ * Inge Gutheil (Juelich Supercomputing Centre, Germany)
+ * Christof Voemel
+ * Paul Roberts (NAG, UK)
+ * Pat Quillen (Mathworks, USA)
+ * Michael Chuvelev (Intel, USA)
+ * Vasile Sima (National Institute for Research & Development in Informatics, Romania)
+ * Clint Whaley (University of Texas at San Antonio, USA)
+ * Allin Cottrell (Wake Forest University, USA)
+ 
+.and our users of the LAPACK forum:
+ * squartz
+ * fabioaffinito
+ * sarnath
+
+5. Developer list
+-----------------
+
+.Principal Investigators
+
+    * Jim Demmel (University of California at Berkeley, USA)
+    * Jack Dongarra (University of Tennessee and ORNL, USA)
+    * Julien Langou (University of Colorado Denver, USA)
+
+.LAPACK developers involved in this release
+
+    * Julie Langou (University of Tennessee, USA)
+    * Rodney James (University of Colorado Denver, USA)
+
+6. Improvment to the CMAKE build
+--------------------------------
+
+.Here's a summary of the CMake changes:
+* Added a FindBLAS module to easily search for and link against various optimized BLAS implementations
+* Added proper default compiler flags for various commercial Fortran compilers
+* Check for and disable SIGFPE handlers (LAPACK code handles these internally) on known compilers
+* Remove testing drivers and BLAS source from nightly code coverage to get a more accurate representation of the LAPACK code getting exercised
+* Suppress harmless warning messages for various platforms and compilers
+* Added 28 nightly builds (http://my.cdash.org/index.php?project=LAPACK)
+* Standardized binary output locations to play nicely when building Windows DLLs
+* Cleaned up CMake packaging to allow find_package(LAPACK) in applications
+* Added missing link dependencies for test libraries
+
+7. Level-3 BLAS hermitian indefinite inversion: This enables better performance for CHETRI and ZHETRI.
+------------------------------------------------------------------------------------------------------
+.lapacker
+
+Julie Langou
+
+.contribution
+
+Level-3 BLAS hermitian indefinite inversion (CHETRI and ZHETRI).
+See link:lapack-3.3.0.html[Release 3.3.0 section 6.2 for more details]
+
+8. Bug Fix
+----------
+
+== [green]*bug0078* :: DBDSDC problem with orthogonality of U in certain cases
+ * bug report sent by duncanpo on April 4th 2011
+ * see forum topic 2326
+ * decreased EPS by a factor of 0.9 to correct problem with orthogonality of U in certain cases
+ * corrected by Rodney on Tue April 7th 2011
+
+== [green]*bug0077* :: [DS]GESVD Minimum Worksize comments need clarification
+ * bug report sent by squartz on Sep 19th
+ * see forum topic 2011
+ * corrected by Julie on Tue April 5th 2011
+
+== [green]*bug0076* :: Problem in ?(sy/he)tri2 when nbmax greater than n
+ * bug report sent by nmozarto on Mar 4th
+ * see forum topic 2223
+ * corrected by Julie on Fri March 4th 2011
+
+== [green]*bug0075* :: not orhtogonal: eigenvectors of a symmetric matrix with DSYEV 
+ * bug report sent by fabioaffinito on Feb 8th
+ * see forum topic 2169
+ * corrected by Rodney on Thu March 3rd 2011
+ * The bug appears only when the matrix is diagonalized by using the upper half, and when the leading dimension n>200 approx.
+ * User gave test program see: link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=2169&p=6237#p6237[here]
+ * Come from change in version 3.2 [link:http://netlib.org/lapack/lapack-3.2.html[Release Notes]]
+ * related to 0035
+
+== [green]*bug0074* :: ?sysv and ?hesv
+ * bug report sent by Alexander Kobotov on Feb 8th
+ * see forum topic 2168
+ * corrected by Julie
+ * In LAPACK 3.3 ?(SY/HE)SV are updated to use TRS2. The TRS2 requires WORK(N) to operate, whereas in SV requirements for LWORK just to be >=1. There is no any check in SV if LWORK>=N, the array WORK just passed as it is to TRS2. So if LWORK<N a crash could occur while executing TRS2 due to overuse of allocated workspace.
+ * I guess for the case of LWORK<N just previsous Level2 based ?(SY/HE)TRS should be used.
+
+== [green]*bug0073* :: secondtst.f and dsecnd.f
+ * bug report sent by John Tellefson on Feb 7th
+ * email sent to lapack mailing list, user provided fix.
+ * corrected by Julie
+ * We went ahead and remove the dummy subroutine in those timing for the last LAPACK version because we did not find a machine or compiler that still had the problem. I guess we were too optimistic.
+ * also committed the "cosmetic" modifications suggested by user as they make the program easier to modify.
+
+== [green]*bug0072* :: cchkhs.f and zchkhs.f
+ * bug report sent by Inge Gutheil on Feb 3rd
+ * email sent to lapack mailing list, user provided fix.
+ * corrected by Julie
+ * Add IF statement to prevent calculation if N=0
+ 
+== [green]*bug0071* :: slarre and dlarre 
+ * bug report sent by Christof Voemel on Jan 31th
+ * email sent directly to Julie and Julien, Christof provided fix.
+ * corrected by Julien
+ * Add a line to prevent TAU from becoming zero
+
+== [green]*bug0070* ::  IWORK dimension is incorrect
+ * bug report sent by nmozarto on Jan 27th
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2156]
+ * confirmed by Julie and corrected by Brian Sutton
+ * The correct dimension is (M-R), in which R is the smallest of P, M-P, Q, and M-Q.
+ * An M-by-M matrix is partitioned into a 2-by-2 block structure. The
+ * dimensions of the blocks are P-by-Q, P-by-(M-Q), (M-P)-by-Q, and
+ * (M-P)-by-(M-Q). IWORK is involved in the permutation of rows or
+ * columns of these blocks, and it is the largest block, in terms of
+ * number of rows or columns, that determines the size of IWORK.
+
+== [green]*bug0069* ::  sytri2x is writing on other part of A
+ * bug report sent by nmozarto on Jan 27th
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2156]
+ * confirmed by Julie and corrected by Julie
+
+== [green]*bug0068* ::  Need to add LDA in *sytrs2
+ * bug report sent by nmozarto on Jan 27th
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2157]
+ * confirmed by Julie and corrected by Julie
+
+== [green]*bug0067* ::  Need to add LDA in *syswapr
+ * bug report sent by nmozarto on Jan 24th
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2150]
+ * confirmed by Julie and corrected by Julien
+ * Need to add LDA in *syswapr routines and update testing to test having LDA
+
+== [green]*bug0066* ::  bugs in {s,d}gejsv 
+ * bug report sent by Paul Roberts on Oct 21st
+ * reported to Zlatko Drmac and corrected by Zlatko Drmac
+ * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html[ LAPACK Mailing list msg 049]
+
+== [green]*bug0036* :: scaling in xSTEQR, xSTERF
+ * bug report sent by Pat Quillen on Fri 24 Jul 2009 to "lapack@cs.utk.edu".
+      "Scaling in xSTEQR, xSTERF"
+ * see link:Errata/bug_lapack_3.2.1_0036/025.txt[Pat Quillen's email], link:Errata/bug_lapack_3.2.1_0036/quillen_dsteqr.f[quillen dsteqr.f].
+ * Correction: "changed matrix norm to 'M' (max) from 'I' (inf) for scaling of input matrix
+ * and added check for zero norm in xSTERF (the xSTEQR already had this check)"
+ * confirmed by Rodney and corrected by Rodney
+
+== [green]*bug0035* :: dlarfb.f and likes
+ * bug report sent by Michael Chuvelev (Intel) on Tue 21 Jul 2009 to "lapack@cs.utk.edu".
+      "Bug in LAPACK 3.2 dlarfb.f and likes"
+ * see link:Errata/bug_lapack_3.2.1_0035/024.txt[Michael Chuvelev and Julie's emails], link:Errata/bug_lapack_3.2.1_0035/q.dat[q.dat],
+      link:Errata/bug_lapack_3.2.1_0035/tau.dat[tau.dat], and link:Errata/bug_lapack_3.2.1_0035/test_dorgql.f[test_dorgql.f]
+ * confirmed by Rodney on Tue Feb 22 2011
+ * corrected by Rodney on Thu March 3rd 2011
+
+== [green]*bug0034* :: comments in SSPTRF not correct 
+ * clarification asked by "sarnath" on Thu Jul 02 2009
+ * confirmation of bug by "sarnath" and Julien Langou on Fri Jul 03 2009
+ * The statement "JMAX is the column-index of the largest off-diagonal element in row IMAX" is not correct
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1553[forum topic 1553]
+
+== [green]*bug0027* :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed
+ * reported by Vasile Sima on Tue Jan 27 2009
+ * see: link:Errata/005.txt[email from Vasile]
+ * more information:
+      more specifically Vasile is reporting that the comments:
+-----
+*          [...] H contains the upper quasi-triangular
+*          matrix S from the generalized Schur factorization;
+*          2-by-2 diagonal blocks (corresponding to complex conjugate
+*          pairs of eigenvalues) are returned in standard form, with
+*          H(i,i) = H(i+1,i+1) and H(i+1,i)*H(i,i+1) &lt; 0.
+-----
+are not correct
+
+ * confirmed by Rodney and corrected by Rodney
+
+== [green]*bug0024* :: the notation A' is confusing for complex matrices. Does A' stand for A transpose of A Hermitian transpose?
+ * reported by Clint Whaley early July 2009
+ * LAPACK is not consistent in it use of the notation for transpose and Hermitian transpose.
+ * The use of LAPACK A' is not consistent with the BLAS useage.
+ * We note that the Matlab/Scilab/Octave convention is A' stands for
+      "conjugate transpose" and A.' stands for "transpose".
+ * In the Z routines, LAPACK uses the notation A' 669 times, it means "conjugate
+      transpose" most of the time but it means "transpose" a few times (maybe
+      10 times max, for BLAS-like routines). The notation A*H, A*T, A*N is
+      used 549 times, The notation A^T, A^N, A^H 19 times. (This is just for
+      the Z routines.)
+ * see link:Errata/023.txt[Julien's emails]
+ * vote on the lapackers mailing list:
+          A*T (or A^T) and A*H (or A^H): Clint Whaley, Jim Demmel, Sven Hammarling, Antoine Petitet, Daniel Kressner
+          A' (for A*H) and A.' for (A*T): Julien Langou
+      (I love to be that supported by the lapackers!)
+ * corrected by Julie
+
+== [green]*bug0022* :: workspace query bug with DGEJSV (when only left or right singular vectors desired)
+ * reported by Allin Cottrell on Tue Jan 15 2009
+ * confirmed by Julien Langou on Fri Jan 30 2009
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=866[forum topic 866]
+ * all information sent to Zlatko Drmac
+ * Corrected by Zlatko Drmac
+

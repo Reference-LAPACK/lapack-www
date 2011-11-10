@@ -1,0 +1,74 @@
+SCALAPACK-1.8.0 and BLACS errata file
+=====================================
+
+updated on Thu Jul 07 2011
+
+maintained by Julien Langou, U. Colorado Denver and Julie Langou, U. Tennessee
+
+
+link:http://www.netlib.org/lapack/Errata/index2.html[LAPACK errata file]
+
+link:http://www.netlib.org/lapack/WishList/[Wishlist]
+
+[red,,1.5]#RED means BUG WAS CONFIRMED but IT IS STILL HERE#
+
+[orange,,1.5]#ORANGE means BUG WAS NOT CONFIRMED#
+
+[green,,1.5]#GREEN means BUG WAS CORRECTED :#
+
+ - [green,,1.5]#correction will be included in next release#
+ - [green,,1.5]#bug fix available in link:http://netlib.org/lapack/#_svn_access[LAPACK SVN repository]#
+
+
+
+== [blue,,1.5]*ScaLAPACK*
+
+== [red]*bug* :: Diagonal element of R not arranged correctly for complex pivoted QR factorization
+ * *CONFIRMED*
+ * reported on the scalapack mailing list 
+ * see link:http://icl.cs.utk.edu/lapack-forum/archives/scalapack/msg00254.html[ ScaLAPACK Mailing list msg 254]
+ * confirmed by Rodney, Sven and Jim on Thu Oct 20 2011
+
+== [green]*bug* :: uninitialized variables, bug in p?trsm, and problem in xzsep testing (timeout)
+ * *CORRECTED*
+ * reported on the forum 
+ * fix provided by Joost VandeVondele
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=588[forum topic 588]
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=2625[forum topic 2625]
+ * confirmed by Julie Langou on Thu Aug 16 2011
+ * committed by Julie on Thu Jul 07 2011 (SVN: r92).
+
+== [green]*bug* :: ROFFZ and IZROW are not initialized in case WANTZ evaluates to .FALSE.
+ * *CORRECTED*
+ * confirmed by Julie Langou on Thu Jul 07 2011
+ * fix from Julie
+ * committed by Julie on Thu Jul 07 2011 (SVN: r92).
+
+== [green]*bug* :: ScaLAPACK does not handle matrix larger than N > sqrt(2^31)
+ * *CORRECTED*
+ * Reported several times
+ * The following fix works fine. The fix has been provided by John Moyart from CNES, France. It works great for all who have tried it.
+ 
+****
+ replaced Mptr() definition:
+   #define    Mptr( a_, i_, j_, lda_, siz_ ) \ ( (a_) + ( ( (i_)+(j_)*(lda_) )*(siz_) ) )
+ by:
+   #define    Mptr( a_, i_, j_, lda_, siz_ ) \ ( (a_) + ( (off_t) ( (off_t)(i_)+(off_t)(j_)*(off_t)(lda_))*(off_t)(siz_) ) )
+****
+ 
+ *  Other fix: compile scalapack using 64-bit integers
+ * committed by Julien on Sat Sep 12 2009 (SVN: r69).
+
+== [green]*bug* :: workspace query not correct for IWORK in PDGECON when no local rows in process row
+ * *CORRECTED*
+ * reported by Jill Reese (MathWorks) on Fri Aug 28 2009
+ * confirmed by Julien Langou on Fri Aug 28 2009
+ * fix from Jill and Julien
+ * committed by Julien on Sat Sep 12 2009 (SVN: r68).
+
+== [blue,,1.5]*BLACS*
+
+== [green]*bug* :: false comments in igamx2d 
+ * *CORRECTED*
+ * reported by Åke Sandgren (HPC2N, Umeå, Sweden) on Tue Mar 3 2009
+ * see forum topic 917

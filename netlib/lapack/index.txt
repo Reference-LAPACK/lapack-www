@@ -9,9 +9,9 @@ LAPACK -- Linear Algebra PACKage
 [width="100%",cols="^,^,^",frame="none",grid="none"]
 |=======
 | image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] | 
-*Version 3.3.0* + 
+*Version 3.3.1* + 
  +
-link:http://www.icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
+link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
 mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
  +
 link:lapack-announce-subscribe@cs.utk.edu[*Get the latest LAPACK News*] +
@@ -108,11 +108,11 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== *LAPACK, version 3.3.0*
+=== *LAPACK, version 3.3.1*
 ==========================
- - Download: http://www.netlib.org/lapack/lapack-3.3.0.tgz[lapack-3.3.0.tgz] 
- - link:lapack-3.3.0.html[*LAPACK 3.3.0 Release Notes*]
- - Updated:  November 14, 2010
+ - Download: http://www.netlib.org/lapack/lapack-3.3.1.tgz[lapack-3.3.1.tgz] 
+ - link:lapack-3.3.1.html[*LAPACK 3.3.1 Release Notes*]
+ - Updated:  April 18, 2011
  - Make and link:http://www.cmake.org[Cmake] build process included
  - link:http://www.netlib.org/lapack/Errata/index2.html[LAPACK Errata] (Current known bugs)
 ==========================
@@ -136,13 +136,13 @@ The LAPACK SVN repository is open for read-only for our users to be able to get
 the latest bug fixed.
 
 ----
-svn co http://icl.cs.utk.edu/svn/lapack-dev/lapack/trunk
+svn co https://icl.cs.utk.edu/svn/lapack-dev/lapack/trunk
 ----
 
 == Support
- - link:http://www.icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*]
+ - link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK/ScaLAPACK User Forum*]
  - mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
- - link:http://lists.cs.utk.edu/pipermail/lapack-announce[Archives of LAPACK mailing list]  
+ - link:http://icl.cs.utk.edu/lapack-forum/archives/[Archives of LAPACK mailing list]  
 
 Do not forget to check the
 link:http://www.netlib.org/lapack/Errata/index2.html[current LAPACK errata] to
@@ -183,7 +183,7 @@ Please contribute to our link:http://www.netlib.org/lapack/WishList/[wishlist]
 if you feel some functionality or algorithms are missing by emailing the
 mailto:lapack@cs.utk.edu[LAPACK team].
 
-link:http://www.netlib.org/lapack/Errata/index2.html[Current known bugs]
+link:http://www.netlib.org/lapack/Errata/index2.html[CURRENT KNOWN BUGS]
 
 Here is the link:http://www.netlib.org/lapack/bug_list.html[list of the bugs]
 (corrected, confirmed and to be confirmed) since LAPACK 3.0.
@@ -194,7 +194,7 @@ Consult LAPACK link:http://www.netlib.org/lapack/faq.html[Frequently Asked Quest
 
 Please contribute to our FAQ if you feel some questions are missing by emailing the mailto:lapack@cs.utk.edu[LAPACK team].
 
-The link:http://www.icl.cs.utk.edu/lapack-forum[LAPACK User Forum] is also a good source to find answers.
+The link:http://icl.cs.utk.edu/lapack-forum[LAPACK User Forum] is also a good source to find answers.
 
 === Individual Routines
 
@@ -227,7 +227,13 @@ link:http://www.netlib.org/lapack/lawn41[HTML version of "LAPACK Installation Gu
 
 link:http://www.netlib.org/lapack/lawns/lawn41.ps[LAPACK Working Note 41:  LAPACK Installation Guide (VERSION 3.0)]
 
-link:manpages.tgz[gzip tar file of the manual pages for the LAPACK 3.2.0 driver and computational routines.]
+=== Manpages
+
+link:manpages.tgz[gzip tar file of the manual pages for the LAPACK driver and computational routines.]
+
+Please follow the instructions of the link:README-MANPAGES[README] to install the LAPACK manpages on your machine.
+
+The LAPACK team would like to thank Sylvestre Ledru for helping us maintaing those manpages.
 
 === *LAWNS*: LAPACK Working Notes 
 
@@ -259,8 +265,16 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
 *Version 3.3.0: November 14, 2010*
 
+ * Version 3.3.1:  April 18, 2011
+
 
 == Previous Release
+
+=== LAPACK version 3.3.0
+
+ - Download: http://www.netlib.org/lapack/lapack-3.3.0.tgz[lapack-3.3.0.tgz]
+ - link:lapack-3.3.0.html[LAPACK 3.3.0 Release Notes]
+ - Updated:  November 14, 2010
 
 === LAPACK version 3.2.2
 

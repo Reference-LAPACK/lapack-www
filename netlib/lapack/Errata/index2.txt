@@ -1,15 +1,13 @@
-LAPACK-3.3.0 errata file
+LAPACK-3.3.1 errata file
 ========================
 
-updated on Mon Feb 7 2011
+updated on Tue Apr 19 2011
 
 maintained by Julien Langou, U. Colorado Denver and Julie Langou, U. Tennessee
 
 link:http://www.netlib.org/lapack/Errata/errata_clapack_3.2.1.html[CLAPACK-3.2.1 errata file]
 
-link:http://www.netlib.org/lapack/Errata/errata_blacs_1.1.patch3.html[BLACS-1.1.patch3 errata file]
-
-link:http://www.netlib.org/lapack/Errata/errata_scalapack_1.8.0.html[ScaLAPACK-1.8.0 errata file]
+link:http://www.netlib.org/lapack/Errata/errata_scalapack.html[BLACS and ScaLAPACK errata file]
 
 link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
@@ -22,118 +20,49 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  - [green,,1.5]#correction will be included in next release#
  - [green,,1.5]#bug fix available in link:http://netlib.org/lapack/#_svn_access[LAPACK SVN repository]#
 
-== [green]*bug0076* :: Problem in ?(sy/he)tri2 when nbmax greater than n
- * bug report sent by nmozarto on Mar 4th
- * see forum topic 2223
- * corrected by Julie on Fri March 4th 2011
+== [green]*bug0084* :: Bug Ming Gu
+ * *CORRECTED*
+ * bug reported by Mong Gu (UC Berkeley) through Jim Demmel
+ * LAPACK driver routine infected: All SVD solvers when asked for singular values only. (Pathological matrix only)
+ * bug is present in LAPACK since 3.1.1 and in Matlab 2010a and 2010b
+ * For very specific matrices (given by Ming Gu), the DQDS code converges much slower than expected. The algorithm converges for these matrices un many more iterations
+ than the LAPACK maximum number of iterations allow.
+ * bug fix: (1) increase the maximum number of iterations in xlasq2, (2) fall back on Demmel/Kahan algorithm in case of nonconvergence of dqds.
+ * corrected by Benjamin Lipschitz on Mon Oct 3rd 2011
 
-== [green]*bug0075* :: not orhtogonal: eigenvectors of a symmetric matrix with DSYEV 
- * bug report sent by fabioaffinito on Feb 8th
- * see forum topic 2169
- * corrected by Rodney on Thu March 3rd 2011
- * The bug appears only when the matrix is diagonalized by using the upper half, and when the leading dimension n>200 approx.
- * User gave test program see: link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=2169&p=6237#p6237[here]
- * Come from change in version 3.2 [link:http://netlib.org/lapack/lapack-3.2.html[Release Notes]]
- * related to 0035
+== [green]*bug0083* :: Bug in the testing of CHERFSX function
+ * *CORRECTED*
+ * bug reported by omitrofa (intel team) on the LAPACK forum
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=2644[forum topic 2644]
+ * Test of CHERFSX function doesn't work because there is an error in ../TESTING/LIN/cerrhex.f ( lines 284-330 ). This function uses the diagonal pivoting factorization of a Hermitian indefinite matrix instead of the diagonal pivoting factorization of a Hermitian indefinite packed matrix. When CHERFSX is included in conditional "IF( LSAMEN( 2, C2, 'HE' ) ) THEN " the test works.
+ * corrected by Julie on Mon Aug 15th 2011
 
-== [green]*bug0074* :: ?sysv and ?hesv
- * bug report sent by Alexander Kobotov on Feb 8th
- * see forum topic 2168
- * corrected by Julie
- * In LAPACK 3.3 ?(SY/HE)SV are updated to use TRS2. The TRS2 requires WORK(N) to operate, whereas in SV requirements for LWORK just to be >=1. There is no any check in SV if LWORK>=N, the array WORK just passed as it is to TRS2. So if LWORK<N a crash could occur while executing TRS2 due to overuse of allocated workspace.
- * I guess for the case of LWORK<N just previsous Level2 based ?(SY/HE)TRS should be used.
+== [green]*bug0082* :: [CZ]laed2 Memory problems when COMPZ='I' in DSTEDC 
+ * *CORRECTED*
+ * bug reported by Edward Smyth
+ * Added IF statement to prevent potential out of range errors with "K+1" indices.
+ * corrected by Rodney on Wed Jun 21th 2011
 
-== [green]*bug0073* :: secondtst.f and dsecnd.f
- * bug report sent by John Tellefson on Feb 7th
- * email sent to lapack mailing list, user provided fix.
- * corrected by Julie
- * We went ahead and remove the dummy subroutine in those timing for the last LAPACK version because we did not find a machine or compiler that still had the problem. I guess we were too optimistic.
- * also committed the "cosmetic" modifications suggested by user as they make the program easier to modify.
+== [green]*bug0081* :: [SD]laed2 WORKSPACE size is wrong when NCVT = NRU = NCC = 0 
+ * *CORRECTED*
+ * bug reported by Hatem
+ * Update Workspace requirement to 4*N because the routine call [SD]LASCL that requires a 4*N workspace.
+ * corrected by Julie on Thu May 19th 2011
 
-== [green]*bug0072* :: cchkhs.f and zchkhs.f
- * bug report sent by Inge Gutheil on Feb 3rd
- * email sent to lapack mailing list, user provided fix.
- * corrected by Julie
- * Add IF statement to prevent calculation if N=0
- 
-== [green]*bug0071* :: slarre and dlarre 
- * bug report sent by Christof Voemel on Jan 31th
- * email sent directly to Julie and Julien, Christof provided fix.
- * corrected by Julien
- * Add a line to prevent TAU from becoming zero
+== [green]*bug0080* :: [CZ]BDSQR WORKSPACE size is wrong when NCVT = NRU = NCC = 0 
+ * *CORRECTED*
+ * bug reported by Hatem
+ * Update Workspace requirement to 4*N because the routine call [SD]LASCL that requires a 4*N workspace.
+ * corrected by Julie on Thu May 19th 2011
 
-== [green]*bug0070* ::  IWORK dimension is incorrect
- * bug report sent by nmozarto on Jan 27th
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2156]
- * confirmed by Julie and corrected by Brian Sutton
- * The correct dimension is (M-R), in which R is the smallest of P, M-P, Q, and M-Q.
- * An M-by-M matrix is partitioned into a 2-by-2 block structure. The
- * dimensions of the blocks are P-by-Q, P-by-(M-Q), (M-P)-by-Q, and
- * (M-P)-by-(M-Q). IWORK is involved in the permutation of rows or
- * columns of these blocks, and it is the largest block, in terms of
- * number of rows or columns, that determines the size of IWORK.
+== [green]*bug0079* :: ILA[SDCZ]LR out of bound access in the DO LOOP for array A.
+ * *CORRECTED*
+ * bug detected by Julie
+ * Change DO LOOP condition and add a IF inside the DO LOOP
+ * corrected by Rodney on Tue April 21th 2011
 
-== [green]*bug0069* ::  sytri2x is writing on other part of A
- * bug report sent by nmozarto on Jan 27th
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2156]
- * confirmed by Julie and corrected by Julie
-
-== [green]*bug0068* ::  Need to add LDA in *sytrs2
- * bug report sent by nmozarto on Jan 27th
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2157]
- * confirmed by Julie and corrected by Julie
-
-== [green]*bug0067* ::  Need to add LDA in *syswapr
- * bug report sent by nmozarto on Jan 24th
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930[forum topic 2150]
- * confirmed by Julie and corrected by Julien
- * Need to add LDA in *syswapr routines and update testing to test having LDA
-
-== [green]*bug0066* ::  bugs in {s,d}gejsv 
- * bug report sent by Paul Roberts on Oct 21st
- * reported to Zlatko Drmac and corrected by Zlatko Drmac
- * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html[ LAPACK Mailing list msg 049]
-
-== [green]*bug0036* :: scaling in xSTEQR, xSTERF
- * bug report sent by Pat Quillen on Fri 24 Jul 2009 to "lapack@cs.utk.edu".
-      "Scaling in xSTEQR, xSTERF"
- * see link:bug_lapack_3.2.1_0036/025.txt[Pat Quillen's email], link:bug_lapack_3.2.1_0036/quillen_dsteqr.f[quillen dsteqr.f].
- * Correction: "changed matrix norm to 'M' (max) from 'I' (inf) for scaling of input matrix
- * and added check for zero norm in xSTERF (the xSTEQR already had this check)"
- * confirmed by Rodney and corrected by Rodney
-
-== [green]*bug0035* :: dlarfb.f and likes
- * bug report sent by Michael Chuvelev (Intel) on Tue 21 Jul 2009 to "lapack@cs.utk.edu".
-      "Bug in LAPACK 3.2 dlarfb.f and likes"
- * see link:bug_lapack_3.2.1_0035/024.txt[Michael Chuvelev and Julie's emails], link:bug_lapack_3.2.1_0035/q.dat[q.dat],
-      link:bug_lapack_3.2.1_0035/tau.dat[tau.dat], and link:bug_lapack_3.2.1_0035/test_dorgql.f[test_dorgql.f]
- * confirmed by Rodney on Tue Feb 22 2011
- * corrected by Rodney on Thu March 3rd 2011
-
-== [green]*bug0034* :: comments in SSPTRF not correct 
- * clarification asked by "sarnath" on Thu Jul 02 2009
- * confirmation of bug by "sarnath" and Julien Langou on Fri Jul 03 2009
- * The statement "JMAX is the column-index of the largest off-diagonal element in row IMAX" is not correct
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1553[forum topic 1553]
-
-== [green]*bug0027* :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed
- * reported by Vasile Sima on Tue Jan 27 2009
- * see: link:005.txt[email from Vasile]
- * more information:
-      more specifically Vasile is reporting that the comments:
------
-*          [...] H contains the upper quasi-triangular
-*          matrix S from the generalized Schur factorization;
-*          2-by-2 diagonal blocks (corresponding to complex conjugate
-*          pairs of eigenvalues) are returned in standard form, with
-*          H(i,i) = H(i+1,i+1) and H(i+1,i)*H(i,i+1) &lt; 0.
------
-are not correct
-
- * confirmed by Rodney and corrected by Rodney
-
-== [red]*bug0065* :: workspace queries not being used     
- * *CONFIRMED*
+== [green]*bug0065* :: workspace queries not being used     
+ * *CORRECTED*
  * bug report by Clint Whaley on October 27th, 2010
  *  DGESVD does not perform a workspace query on worker
  *  functions such as DGELQF, but rather it hardwires in an assumption as
@@ -141,6 +70,14 @@ are not correct
  *  GESVD breaks.  This actually happens in ATLAS, because we provide a
  *  faster GELQF, which sometimes uses extra workspace.  For LAPACK itself,
  *  it represents extra dependencies that don't need to be there. 
+ * corrected by Julie on Mon Nov 7th 2011
+
+== [green]*bug0029* :: problem of WORKSPACE query with DSTEDC
+ * *CORRECTED*
+ * reported by Tiago Requeijo on Mon Mar 30 2009
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1389[forum topic 1389]
+ * see also email from Edward Smyth on June 21st 2011
+ * corrected by Rodney
 
 == [red]*bug0061* :: zgehrd.f is overflowing 
  * *CONFIRMED*
@@ -205,31 +142,6 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * most likely these issues are due to the shift strategy for QZ
  * Confirmed by Rodney on Tue, 08 Feb 2011
  
-== [red]*bug0024* :: the notation A' is confusing for complex matrices. Does A' stand for A transpose of A Hermitian transpose?
- * *CONFIRMED*
- * reported by Clint Whaley early July 2009
- * LAPACK is not consistent in it use of the notation for transpose and Hermitian transpose.
- * The use of LAPACK A' is not consistent with the BLAS useage.
- * We note that the Matlab/Scilab/Octave convention is A' stands for
-      "conjugate transpose" and A.' stands for "transpose".
- * In the Z routines, LAPACK uses the notation A' 669 times, it means "conjugate
-      transpose" most of the time but it means "transpose" a few times (maybe
-      10 times max, for BLAS-like routines). The notation A*H, A*T, A*N is
-      used 549 times, The notation A^T, A^N, A^H 19 times. (This is just for
-      the Z routines.)
- * see link:023.txt[Julien's emails]
- * vote on the lapackers mailing list:
-          A*T (or A^T) and A*H (or A^H): Clint Whaley, Jim Demmel, Sven Hammarling, Antoine Petitet, Daniel Kressner
-          A' (for A*H) and A.' for (A*T): Julien Langou
-      (I love to be that supported by the lapackers!)
-
-== [red]*bug0022* :: workspace query bug with DGEJSV (when only left or right singular vectors desired)
- * *CONFIRMED*
- * reported by Allin Cottrell on Tue Jan 15 2009
- * confirmed by Julien Langou on Fri Jan 30 2009
- * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=866[forum topic 866]
- * all information sent to Zlatko Drmac
-
 == [red]*bug0020* :: in xGESDD, workspace query can overflow for large matrices
  * *CONFIRMED*
  * reported by Stephan Ripke (Broad Institute, Boston) on Thu May 21 2009

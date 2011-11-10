@@ -5,6 +5,60 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
 http://netlib.org/lapack/lapack-3.2.html
 
+== [green]*bug0084* :: Bug Ming Gu
+ * *CORRECTED* - see svn 1017
+ * bug reported by Mong Gu (UC Berkeley) through Jim Demmel
+ * LAPACK driver routine infected: All SVD solvers when asked for singular values only. (Pathological matrix only)
+ * bug is present in LAPACK since 3.1.1 and in Matlab 2010a and 2010b
+ * For very specific matrices (given by Ming Gu), the DQDS code converges much slower than expected. The algorithm converges for these matrices un many more iterations
+ than the LAPACK maximum number of iterations allow.
+ * bug fix: (1) increase the maximum number of iterations in xlasq2, (2) fall back on Demmel/Kahan algorithm in case of nonconvergence of dqds.
+ * corrected by Benjamin Lipschitz on Mon Oct 3rd 2011
+
+== [green]*bug0083* :: Bug in the testing of CHERFSX function
+ * *CORRECTED* - see svn 1000
+ * bug reported by omitrofa (intel team) on the LAPACK forum
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=2644[forum topic 2644]
+ * Test of CHERFSX function doesn't work because there is an error in ../TESTING/LIN/cerrhex.f ( lines 284-330 ). This function uses the diagonal pivoting factorization of a Hermitian indefinite matrix instead of the diagonal pivoting factorization of a Hermitian indefinite packed matrix. When CHERFSX is included in conditional "IF( LSAMEN( 2, C2, 'HE' ) ) THEN " the test works.
+ * corrected by Julie on Mon Aug 15th 2011
+
+== [green]*bug0082* :: [CZ]laed2 Memory problems when COMPZ='I' in DSTEDC 
+ * *CORRECTED* - see svn 982
+ * bug reported by Edward Smyth
+ * Added IF statement to prevent potential out of range errors with "K+1" indices.
+ * corrected by Rodney on Wed Jun 21th 2011
+
+== [green]*bug0081* :: [SD]laed2 WORKSPACE size is wrong when NCVT = NRU = NCC = 0 
+ * *CORRECTED* - see svn 979
+ * bug reported by Hatem
+ * Update Workspace requirement to 4*N because the routine call [SD]LASCL that requires a 4*N workspace.
+ * corrected by Julie on Thu May 19th 2011
+
+== [green]*bug0080* :: [CZ]BDSQR WORKSPACE size is wrong when NCVT = NRU = NCC = 0 
+ * *CORRECTED* - see svn 979
+ * bug reported by Hatem
+ * Update Workspace requirement to 4*N because the routine call [SD]LASCL that requires a 4*N workspace.
+ * corrected by Julie on Thu May 19th 2011
+
+== [green]*bug0079* :: ILA[SDCZ]LR out of bound access in the DO LOOP for array A.
+ * *CORRECTED* - see svn 977
+ * bug detected by Julie
+ * Change DO LOOP condition and add a IF inside the DO LOOP
+ * corrected by Rodney on Tue April 21th 2011
+
+== [green]*bug0078* :: DBDSDC problem with orthogonality of U in certain cases
+ * *CORRECTED* - see svn 968
+ * bug report sent by duncanpo on April 4th 2011
+ * see forum topic 2326
+ * decreased EPS by a factor of 0.9 to correct problem with orthogonality of U in certain cases
+ * corrected by Rodney on Tue April 7th 2011
+
+== [green]*bug0077* :: [DS]GESVD Minimum Worksize comments need clarification
+ * *CORRECTED* - see svn 967
+ * bug report sent by squartz on Sep 19th
+ * see forum topic 2011
+ * corrected by Julie on Tue April 5th 2011
+
 == [green]*bug0076* :: Problem in ?(sy/he)tri2 when nbmax greater than n
  * *CORRECTED* - see svn 953
  * bug report sent by nmozarto on Mar 4th
@@ -88,8 +142,8 @@ http://netlib.org/lapack/lapack-3.2.html
  * reported to Zlatko Drmac and corrected by Zlatko Drmac
  * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html[ LAPACK Mailing list msg 049]
  
-== [red]*bug0065* :: workspace queries not being used     
- * *CONFIRMED*
+== [green]*bug0065* :: workspace queries not being used     
+ * *CORRECTED* - see svn r1038
  * bug report by Clint Whaley on October 27th, 2010
  *  DGESVD does not perform a workspace query on worker
  *  functions such as DGELQF, but rather it hardwires in an assumption as
@@ -391,11 +445,12 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * reported by Zbigniew Leyk (College Station, TX) on Mon Jun 01, 2009
  * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1445[forum topic 1445]
 
-== [black]*bug0029* :: problem of WORKSPACE query with DSTEDC
- * *NOT A BUG*
+== [green]*bug0029* :: problem of WORKSPACE query with DSTEDC
+ * *CORRECTED* - see svn r984
  * reported by Tiago Requeijo on Mon Mar 30 2009
  * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1389[forum topic 1389]
- * Julie, Rodney: User made a mistakes in his code.
+ * see also email from Edward Smyth on June 21st 2011
+ * committed by Rodney (SVN revision 984, on Wed Jun 22 2011)
 
 == [red]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
  * *TO BE CONFIRMED*
@@ -439,8 +494,8 @@ are not correct
  * Note: there is strong evidence that the bug of Guy Bencteux and this one
       are the same, although we were never able to reproduce Guy's problem. 
 
-== [red]*bug0024* :: the notation A' is confusing for complex matrices. Does A' stand for A transpose of A Hermitian transpose?
- * *CONFIRMED*
+== [green]*bug0024* :: the notation A' is confusing for complex matrices. Does A' stand for A transpose of A Hermitian transpose?
+ * *CORRECTED* - see svn r969, 966 and 965
  * reported by Clint Whaley early July 2009
  * LAPACK is not consistent in it use of the notation for transpose and Hermitian transpose.
  * The use of LAPACK A' is not consistent with the BLAS useage.
@@ -463,12 +518,13 @@ are not correct
  * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1420[forum topic 1420]
  * committed by Julie Langou (SVN revision 691, on Thu Sep 10 2009)
 
-== [red]*bug0022* :: workspace query bug with DGEJSV (when only left or right singular vectors desired)
- * *CONFIRMED*
+== [green]*bug0022* :: workspace query bug with DGEJSV (when only left or right singular vectors desired)
+ * *CORRECTED* - see 891 and 964
  * reported by Allin Cottrell on Tue Jan 15 2009
  * confirmed by Julien Langou on Fri Jan 30 2009
  * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=866[forum topic 866]
  * all information sent to Zlatko Drmac
+ * committed by Julie Langou (SVN revision 891 and 964)
     
 == [green]*bug0021* :: in DGESDD, workspace query gives a value smaller than the minimal value given in the header to run the routine
  * *CORRECTED* - see svn r649

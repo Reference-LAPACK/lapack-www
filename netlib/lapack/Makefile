@@ -11,12 +11,12 @@ contributor-list.html: contributor-list.txt
 faq.html: faq.txt
 	asciidoc -a toc faq.txt
 
-release_notes: release_notes.txt release_notes-3.3.0.txt lapack-3.3.1.txt lapack-3.3.0.txt lapack-3.4.txt lapacke.txt errata_from_331_to_340.txt
+release_notes: release_notes.txt release_notes-3.3.0.txt lapack-3.3.1.txt lapack-3.3.0.txt lapack-3.4.0.txt lapacke.txt errata_from_331_to_340.txt
 	asciidoc release_notes.txt
 	asciidoc release_notes-3.3.0.txt
 	asciidoc lapack-3.3.1.txt
 	asciidoc lapack-3.3.0.txt
-	asciidoc -a toc lapack-3.4.txt
+	asciidoc -a toc lapack-3.4.0.txt
 	asciidoc -a toc lapacke.txt
 	asciidoc -a toc errata_from_331_to_340.txt
 

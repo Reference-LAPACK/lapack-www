@@ -1,5 +1,5 @@
-LAPACK 3.4
-==========
+LAPACK 3.4.0
+============
 
 Release date: Fr 11/11/11.
 
@@ -17,8 +17,8 @@ California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
 
 http://icl.cs.utk.edu/lapack-forum/
 
-2. LAPACK 3.4: What's new
--------------------------
+2. LAPACK 3.4.0: What's new
+---------------------------
 
   1. *xGEQRT: QR factorization (improved interface).* Contribution by Rodney
 James (UC Denver). xGEQRT is analogous to xGEQRF with a modified interface which

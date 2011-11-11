@@ -161,10 +161,10 @@ See link:lapack-3.3.1.html[Release Notes for 3.3.1] for more details
 * Cleaned up CMake packaging to allow find_package(LAPACK) in applications
 * Added missing link dependencies for test libraries
 
-5. Improvements in LAPACK 3.4
------------------------------
+5. Improvements in LAPACK 3.4.0
+-------------------------------
 
-See link:lapack-3.4.html[Release Notes for 3.4] for more details
+See link:lapack-3.4.0.html[Release Notes for 3.4.0] for more details
 
   1. *xGEQRT: QR factorization (improved interface).* Contribution by Rodney
 James (UC Denver). xGEQRT is analogous to xGEQRF with a modified interface which

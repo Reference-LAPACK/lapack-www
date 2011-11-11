@@ -277,7 +277,7 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 === LAPACK, version 3.4
 
  - Download: http://www.netlib.org/lapack/lapack-3.4.tgz[lapack-3.4.tgz] 
- - link:lapack-3.3.1.html[LAPACK 3.4 Release Notes]
+ - link:lapack-3.4.html[LAPACK 3.4 Release Notes]
  - Updated:  November 11, 2011
 
 === LAPACK, version 3.3.1

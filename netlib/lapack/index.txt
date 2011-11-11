@@ -9,7 +9,7 @@ LAPACK -- Linear Algebra PACKage
 [width="100%",cols="^,^,^",frame="none",grid="none"]
 |=======
 | image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] | 
-*Version 3.4.0* +
+*Version 3.4* +
  +
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
 mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
@@ -105,10 +105,10 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== LAPACK, version 3.4.0
-=========================
- - Download: http://www.netlib.org/lapack/lapack-3.4.0.tgz[lapack-3.4.0.tgz] 
- - link:lapack-3.4.0.html[LAPACK 3.4.0 Release Notes]
+=== LAPACK, version 3.4
+=======================
+ - Download: http://www.netlib.org/lapack/lapack-3.4.tgz[lapack-3.4.tgz] 
+ - link:lapack-3.4.html[LAPACK 3.4 Release Notes]
  - Updated:  November 11, 2011
  - link:Errata/index.html[LAPACK Errata] (Current known bugs)
 ==========================
@@ -143,7 +143,7 @@ svn co https://icl.cs.utk.edu/svn/lapack-dev/lapack/trunk
  - link:http://icl.cs.utk.edu/lapack-forum/archives/[Archives of LAPACK mailing list]  
 
 Do not forget to check the
-link:http://www.netlib.org/lapack/Errata/index2.html[current LAPACK errata] to
+link:Errata/index2.html[current LAPACK errata] to
 check current bug status.
  
 == Contributors
@@ -166,7 +166,7 @@ mailto:lapack@cs.utk.edu[LAPACK team].
 == Documentation
 === Release Notes
 
-The link:http://www.netlib.org/lapack/release_notes.html[LAPACK Release Notes]
+The link:release_notes.html[LAPACK Release Notes]
 contain the history of the modifications made to the LAPACK library between
 each new version.
 
@@ -174,14 +174,14 @@ each new version.
 
 LAPACK is a currently active project, we are striving to bring new improvements
 and new algorithms on a regular basis.
-link:http://www.netlib.org/lapack/improvement.html[Here is the list of the
+link:improvement.html[Here is the list of the
 improvement since LAPACK 3.0.]
 
 Please contribute to our link:http://www.netlib.org/lapack/WishList/[wishlist]
 if you feel some functionality or algorithms are missing by emailing the
 mailto:lapack@cs.utk.edu[LAPACK team].
 
-link:http://www.netlib.org/lapack/Errata/index2.html[CURRENT KNOWN BUGS]
+link:Errata/index2.html[Current LAPACK errata]
 
 Here is the link:http://www.netlib.org/lapack/bug_list.html[list of the bugs]
 (corrected, confirmed and to be confirmed) since LAPACK 3.0.
@@ -270,9 +270,15 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
  * Version 3.3.1:  April 18, 2011
 
-*Version 3.4.0: November 11, 2011*
+*Version 3.4: November 11, 2011*
 
 == Previous Release
+
+=== LAPACK, version 3.4
+
+ - Download: http://www.netlib.org/lapack/lapack-3.4.tgz[lapack-3.4.tgz] 
+ - link:lapack-3.3.1.html[LAPACK 3.4 Release Notes]
+ - Updated:  November 11, 2011
 
 === LAPACK, version 3.3.1
 

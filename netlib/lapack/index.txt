@@ -118,9 +118,9 @@ routine to provide support.
 collaboration LAPACK and INTEL Math Kernel Library Team
 
 ==========================
- - Download: http://www.netlib.org/lapack/lapacke.tgz[LAPACK C INTERFACE]
- - Version: 1.0.0.009 (Corresponds to Intel MKL 10.3 product)
- - Updated:  November 14, 2010
+ - LAPACK C INTERFACE is now included in the LAPACK package (in the lapacke directory)
+ - link:lapacke.html[LAPACKE User Guide]
+ - Updated:  November 11, 2011
 ==========================
 
 === LAPACK for Windows

@@ -147,7 +147,7 @@ Rodney James (UC Denver)
 
 .reference
 
-E. Elmroth and F.G. Gustavson. ``Applying recursion to serial and
+Elmroth, E., and Gustavson, F.G. ``Applying recursion to serial and
 parallel QR factorization leads to better performance.'' IBM Journal of
 Research and Development 44(4): 605-624 (2000)
 

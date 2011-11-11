@@ -161,5 +161,52 @@ See link:lapack-3.3.1.html[Release Notes for 3.3.1] for more details
 * Cleaned up CMake packaging to allow find_package(LAPACK) in applications
 * Added missing link dependencies for test libraries
 
+5. Improvements in LAPACK 3.4
+-----------------------------
+
+See link:lapack-3.4.html[Release Notes for 3.4] for more details
+
+  1. *xGEQRT: QR factorization (improved interface).* Contribution by Rodney
+James (UC Denver). xGEQRT is analogous to xGEQRF with a modified interface which
+enables better performance when the blocked reflectors need to be reused. The
+companion subroutines xGEMQRT apply the reflectors.
+
+  2. *xGEQRT3: recursive QR factorization.* Contribution by Rodney James (UC
+Denver). The recursive QR factorization enables cache-oblivious and enables high
+performance on tall and skinny matrices.
+
+  3. *xTPQRT: Communication-Avoiding QR sequential kernels.* Contribution by
+Rodney James (UC Denver).  These subroutines are useful for updating a QR
+factorization and are used in sequential and parallel Communication Avoiding
+QR. These subroutines support the general case Triangle on top of Pentagon
+which includes as special cases so-called Triangle on top of Triangle and
+Triangle on top of Square. This is the right-looking version of the subroutines
+and the subroutines are blocked. The T matrices and the block size are part of
+the interface. The companion subroutines xTPMQRT apply the reflectors.
+
+ 4. *xSYSVK: LDL^T^ with rook pivoting.* Contribution by Craig Lucas (University
+of Manchester and NAG) and Sven Hammarling (NAG).  These subroutines enable
+better stability than the Bunch-Kaufman pivoting scheme currently used in
+LAPACK xSYSV solvers; also, the elements of L are bounded, which is important
+in some applications.  The computational time of xSYSVK is slightly higher than
+the one of xSYSV.
+
+ 5. *CMAKE build system.* We are striving to help our users install our
+libraries seamlessly on their machines.  The CMAKE team contributed to our
+effort to port LAPACK and ScaLAPACK under the CMAKE build system. Building
+under Windows has never been easier. This also allows us to release dll for
+Windows, so users no longer need a Fortran compiler to use LAPACK under
+Windows.
+
+ 6. *Doxygen documentation.* LAPACK routine documentation has never been more
+accessible. See http://www.netlib.org/lapack/explore-html/.
+
+ 7. *New website allowing for easier navigation.*
+
+ 8. *LAPACKE - Standard C language APIs for LAPACK.* Since LAPACK 3.3.0, LAPACK
+includes new C interfaces. With the LAPACK 3.4.0 release, LAPACKE is directly
+integrated within the LAPACK library and has been enriched by the full set of
+LAPACK subroutines. See link:lapacke.html[here].
+
 
 // vim: set syntax=asciidoc:

@@ -39,7 +39,7 @@ Triangle on top of Square. This is the right-looking version of the subroutines
 and the subroutines are blocked. The T matrices and the block size are part of
 the interface. The companion subroutines xTPMQRT apply the reflectors.
 
- 4. *xSYSVK: LDLT with rook pivoting.* Contribution by Craig Lucas (University
+ 4. *xSYSVK: LDL^T^ with rook pivoting.* Contribution by Craig Lucas (University
 of Manchester and NAG) and Sven Hammarling (NAG).  These subroutines enable
 better stability than the Bunch-Kaufman pivoting scheme currently used in
 LAPACK xSYSV solvers; also, the elements of L are bounded, which is important
@@ -187,8 +187,8 @@ subroutines xTPMQRT apply the reflectors.
    A SRC/dtpmqrt.f   A SRC/dtpqrt.f    A SRC/dtpqrt2.f   A SRC/dtprfb.f
    A SRC/ztpmqrt.f   A SRC/ztpqrt.f    A SRC/ztpqrt2.f   A SRC/ztprfb.f
 
-7.4.  xSYSVK: LDLT with rook pivoting
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+7.4.  xSYSVK: LDL^T^ with rook pivoting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .contributors
 
@@ -276,3 +276,5 @@ enriched by the full set of LAPACK subroutines. See link:lapacke.html[here].
 -----------
 
 link:errata_from_331_to_340.html[see here]
+
+// vim: set syntax=asciidoc:

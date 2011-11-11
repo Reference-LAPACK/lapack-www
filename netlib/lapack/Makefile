@@ -11,13 +11,14 @@ contributor-list.html: contributor-list.txt
 faq.html: faq.txt
 	asciidoc -a toc faq.txt
 
-release_notes: release_notes.txt release_notes-3.3.0.txt lapack-3.3.1.txt lapack-3.3.0.txt lapack-3.4.0.txt lapacke.txt
+release_notes: release_notes.txt release_notes-3.3.0.txt lapack-3.3.1.txt lapack-3.3.0.txt lapack-3.4.0.txt lapacke.txt errata_from_331_to_340.txt
 	asciidoc release_notes.txt
 	asciidoc release_notes-3.3.0.txt
 	asciidoc lapack-3.3.1.txt
 	asciidoc lapack-3.3.0.txt
 	asciidoc -a toc lapack-3.4.0.txt
 	asciidoc -a toc lapacke.txt
+	asciidoc -a toc errata_from_331_to_340.txt
 
 improvement.html: improvement.txt
 	asciidoc improvement.txt
@@ -25,7 +26,7 @@ improvement.html: improvement.txt
 index.html: index.txt
 	asciidoc -a toc -a toc-title="Menu" index.txt
 
-err: Errata/index2.txt Errata/errata_scalapack.txt
+err: Errata/index.txt Errata/errata_scalapack.txt
 	@(cd Errata && make && cd ..)
 
 lawn: lawns/index.txt

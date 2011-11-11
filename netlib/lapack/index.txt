@@ -3,7 +3,7 @@ LAPACK -- Linear Algebra PACKage
 
 // :Author:    Julie_Langou_and_Julien_Langou
 // :Email:     <julie@cs.utk.edu,julien.langou@ucdenver.edu>
-// :Date:      2010/12/08
+// :Date:      2011/11/11
 // :Revision:  1
 
 [width="100%",cols="^,^,^",frame="none",grid="none"]
@@ -93,7 +93,7 @@ that proper credit be given to the authors.
 
 The license used for the software is the modified BSD license, see:
 
-- link:LICENSE.txt[*LICENSE*]
+- link:LICENSE.txt[LICENSE]
 
 Like all software, it is copyrighted. It is not trademarked, but we do ask the
 following:
@@ -105,17 +105,18 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== *LAPACK, version 3.4.0*
-==========================
+=== LAPACK, version 3.4.0
+=========================
  - Download: http://www.netlib.org/lapack/lapack-3.4.0.tgz[lapack-3.4.0.tgz] 
- - link:lapack-3.4.0.html[*LAPACK 3.4.0 Release Notes*]
+ - link:lapack-3.4.0.html[LAPACK 3.4.0 Release Notes]
  - Updated:  November 11, 2011
  - link:Errata/index.html[LAPACK Errata] (Current known bugs)
 ==========================
 
 === Standard C language APIs for LAPACK
 
-collaboration LAPACK and INTEL Math Kernel Library
+collaboration LAPACK and INTEL Math Kernel Library Team
+
 ==========================
  - Download: http://www.netlib.org/lapack/lapacke.tgz[LAPACK C INTERFACE]
  - Version: 1.0.0.009 (Corresponds to Intel MKL 10.3 product)
@@ -136,15 +137,16 @@ svn co https://icl.cs.utk.edu/svn/lapack-dev/lapack/trunk
 ----
 
 == Support
- - link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK/ScaLAPACK User Forum*]
- - mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
+
+ - link:http://icl.cs.utk.edu/lapack-forum[Browse the LAPACK/ScaLAPACK User Forum]
+ - mailto:lapack@cs.utk.edu[Contact the LAPACK team]
  - link:http://icl.cs.utk.edu/lapack-forum/archives/[Archives of LAPACK mailing list]  
 
 Do not forget to check the
 link:http://www.netlib.org/lapack/Errata/index2.html[current LAPACK errata] to
 check current bug status.
  
-== *Contributors*
+== Contributors
 
 LAPACK is a community-wide effort.LAPACK relies on
 link:contributor-list.html[many contributors], and we would like to acknowledge
@@ -156,7 +158,7 @@ LAPACK Program Style]. This document has been written to facilitate
 contributions to LAPACK by documenting their design and implementation
 guidelines.
 
-LAPACK Project Software Grant and Corporate Contributor License Agreement (“Agreement”) link:http://www.netlib.org/lapack/lapack-corporate-contributor-agrement.doc[[Download]] 
+LAPACK Project Software Grant and Corporate Contributor License Agreement (``Agreement'') link:http://www.netlib.org/lapack/lapack-corporate-contributor-agrement.doc[[Download]] 
 
 Contributions are always welcome and can be sent to the
 mailto:lapack@cs.utk.edu[LAPACK team].
@@ -194,6 +196,7 @@ The link:http://icl.cs.utk.edu/lapack-forum[LAPACK User Forum] is also a good so
 
 === Individual Routines
 
+==========================
 link:http://www.netlib.org/lapack/explore-html[Explore LAPACK code]
 
 link:http://www.netlib.org/lapack/single[LAPACK single precision real routines]
@@ -208,8 +211,11 @@ link:http://www.netlib.org/lapack/util[LAPACK utility routines]
 
 link:http://www.netlib.org/lapack/testing[LAPACK testing routines]
 
-=== User's Guide
+==========================
 
+=== Users' Guide
+
+==========================
 link:http://www.netlib.org/lapack/lug[HTML version of the LAPACK Users' Guide, Third Edition]
 
 link:http://www.netlib.org/lapack/lapackqref.ps[LAPACK Quick Reference Guide to the Driver Routines (VERSION 3.0)]
@@ -221,6 +227,8 @@ link:http://www.netlib.org/lapack/lawns/lawn81.ps[LAPACK Working Note 81: Quick 
 link:http://www.netlib.org/lapack/lawn41[HTML version of "LAPACK Installation Guide"]
 
 link:http://www.netlib.org/lapack/lawns/lawn41.ps[LAPACK Working Note 41:  LAPACK Installation Guide (VERSION 3.0)]
+
+==========================
 
 === Manpages
 

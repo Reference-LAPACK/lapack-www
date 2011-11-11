@@ -1,7 +1,7 @@
-LAPACK-3.3.1 errata file
+LAPACK-3.4.0 errata file
 ========================
 
-updated on Tue Apr 19 2011
+updated on November 11 2011
 
 maintained by Julien Langou, U. Colorado Denver and Julie Langou, U. Tennessee
 
@@ -19,65 +19,6 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
  - [green,,1.5]#correction will be included in next release#
  - [green,,1.5]#bug fix available in link:http://netlib.org/lapack/#_svn_access[LAPACK SVN repository]#
-
-== [green]*bug0084* :: Bug Ming Gu
- * *CORRECTED*
- * bug reported by Mong Gu (UC Berkeley) through Jim Demmel
- * LAPACK driver routine infected: All SVD solvers when asked for singular values only. (Pathological matrix only)
- * bug is present in LAPACK since 3.1.1 and in Matlab 2010a and 2010b
- * For very specific matrices (given by Ming Gu), the DQDS code converges much slower than expected. The algorithm converges for these matrices un many more iterations
- than the LAPACK maximum number of iterations allow.
- * bug fix: (1) increase the maximum number of iterations in xlasq2, (2) fall back on Demmel/Kahan algorithm in case of nonconvergence of dqds.
- * corrected by Benjamin Lipschitz on Mon Oct 3rd 2011
-
-== [green]*bug0083* :: Bug in the testing of CHERFSX function
- * *CORRECTED*
- * bug reported by omitrofa (intel team) on the LAPACK forum
- * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=2644[forum topic 2644]
- * Test of CHERFSX function doesn't work because there is an error in ../TESTING/LIN/cerrhex.f ( lines 284-330 ). This function uses the diagonal pivoting factorization of a Hermitian indefinite matrix instead of the diagonal pivoting factorization of a Hermitian indefinite packed matrix. When CHERFSX is included in conditional "IF( LSAMEN( 2, C2, 'HE' ) ) THEN " the test works.
- * corrected by Julie on Mon Aug 15th 2011
-
-== [green]*bug0082* :: [CZ]laed2 Memory problems when COMPZ='I' in DSTEDC 
- * *CORRECTED*
- * bug reported by Edward Smyth
- * Added IF statement to prevent potential out of range errors with "K+1" indices.
- * corrected by Rodney on Wed Jun 21th 2011
-
-== [green]*bug0081* :: [SD]laed2 WORKSPACE size is wrong when NCVT = NRU = NCC = 0 
- * *CORRECTED*
- * bug reported by Hatem
- * Update Workspace requirement to 4*N because the routine call [SD]LASCL that requires a 4*N workspace.
- * corrected by Julie on Thu May 19th 2011
-
-== [green]*bug0080* :: [CZ]BDSQR WORKSPACE size is wrong when NCVT = NRU = NCC = 0 
- * *CORRECTED*
- * bug reported by Hatem
- * Update Workspace requirement to 4*N because the routine call [SD]LASCL that requires a 4*N workspace.
- * corrected by Julie on Thu May 19th 2011
-
-== [green]*bug0079* :: ILA[SDCZ]LR out of bound access in the DO LOOP for array A.
- * *CORRECTED*
- * bug detected by Julie
- * Change DO LOOP condition and add a IF inside the DO LOOP
- * corrected by Rodney on Tue April 21th 2011
-
-== [green]*bug0065* :: workspace queries not being used     
- * *CORRECTED*
- * bug report by Clint Whaley on October 27th, 2010
- *  DGESVD does not perform a workspace query on worker
- *  functions such as DGELQF, but rather it hardwires in an assumption as
- *  to LQF's workspace requirements.  This means that if LQF is changed,
- *  GESVD breaks.  This actually happens in ATLAS, because we provide a
- *  faster GELQF, which sometimes uses extra workspace.  For LAPACK itself,
- *  it represents extra dependencies that don't need to be there. 
- * corrected by Julie on Mon Nov 7th 2011
-
-== [green]*bug0029* :: problem of WORKSPACE query with DSTEDC
- * *CORRECTED*
- * reported by Tiago Requeijo on Mon Mar 30 2009
- * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1389[forum topic 1389]
- * see also email from Edward Smyth on June 21st 2011
- * corrected by Rodney
 
 == [red]*bug0061* :: zgehrd.f is overflowing 
  * *CONFIRMED*

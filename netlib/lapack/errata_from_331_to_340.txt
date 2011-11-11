@@ -13,7 +13,7 @@ Bugs corrected from 3.3.1 to 3.4.0
 
 == [green]*bug0083* :: Bug in the testing of CHERFSX function
  * *CORRECTED*
- * bug reported by Olga Mitrofanova, (Intel MKL team) on the LAPACK forum
+ * bug reported by Olga Mitrofanova (Intel MKL team), on the LAPACK forum
  * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=2644[forum topic 2644]
  * Test of CHERFSX function doesn't work because there is an error in ../TESTING/LIN/cerrhex.f ( lines 284-330 ). This function uses the diagonal pivoting factorization of a Hermitian indefinite matrix instead of the diagonal pivoting factorization of a Hermitian indefinite packed matrix. When CHERFSX is included in conditional "IF( LSAMEN( 2, C2, 'HE' ) ) THEN " the test works.
  * corrected by Julie on Mon Aug 15th 2011
@@ -59,3 +59,5 @@ Bugs corrected from 3.3.1 to 3.4.0
  * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1389[forum topic 1389]
  * see also email from Edward Smyth on June 21st 2011
  * corrected by Rodney
+
+// vim: set syntax=asciidoc:

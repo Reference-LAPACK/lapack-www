@@ -7,7 +7,7 @@ http://netlib.org/lapack/lapack-3.2.html
 
 == [green]*bug0084* :: Bug Ming Gu
  * *CORRECTED* - see svn 1017
- * bug reported by Mong Gu (UC Berkeley) through Jim Demmel
+ * bug reported by Ming Gu (UC Berkeley) through Jim Demmel
  * LAPACK driver routine infected: All SVD solvers when asked for singular values only. (Pathological matrix only)
  * bug is present in LAPACK since 3.1.1 and in Matlab 2010a and 2010b
  * For very specific matrices (given by Ming Gu), the DQDS code converges much slower than expected. The algorithm converges for these matrices un many more iterations
@@ -17,26 +17,26 @@ http://netlib.org/lapack/lapack-3.2.html
 
 == [green]*bug0083* :: Bug in the testing of CHERFSX function
  * *CORRECTED* - see svn 1000
- * bug reported by omitrofa (intel team) on the LAPACK forum
+ * bug reported by Olga Mitrofanova (Intel MKL team), on the LAPACK forum
  * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=2644[forum topic 2644]
  * Test of CHERFSX function doesn't work because there is an error in ../TESTING/LIN/cerrhex.f ( lines 284-330 ). This function uses the diagonal pivoting factorization of a Hermitian indefinite matrix instead of the diagonal pivoting factorization of a Hermitian indefinite packed matrix. When CHERFSX is included in conditional "IF( LSAMEN( 2, C2, 'HE' ) ) THEN " the test works.
  * corrected by Julie on Mon Aug 15th 2011
 
-== [green]*bug0082* :: [CZ]laed2 Memory problems when COMPZ='I' in DSTEDC 
+== [green]*bug0082* :: [CZ]laed2 Memory problems when COMPZ=\'I' in DSTEDC 
  * *CORRECTED* - see svn 982
- * bug reported by Edward Smyth
+ * bug reported by Edward Smyth (NAG)
  * Added IF statement to prevent potential out of range errors with "K+1" indices.
  * corrected by Rodney on Wed Jun 21th 2011
 
 == [green]*bug0081* :: [SD]laed2 WORKSPACE size is wrong when NCVT = NRU = NCC = 0 
  * *CORRECTED* - see svn 979
- * bug reported by Hatem
+ * bug reported by Hatem Ltaief (KAUST)
  * Update Workspace requirement to 4*N because the routine call [SD]LASCL that requires a 4*N workspace.
  * corrected by Julie on Thu May 19th 2011
 
 == [green]*bug0080* :: [CZ]BDSQR WORKSPACE size is wrong when NCVT = NRU = NCC = 0 
  * *CORRECTED* - see svn 979
- * bug reported by Hatem
+ * bug reported by Hatem Ltaief (KAUST)
  * Update Workspace requirement to 4*N because the routine call [SD]LASCL that requires a 4*N workspace.
  * corrected by Julie on Thu May 19th 2011
 

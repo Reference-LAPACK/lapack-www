@@ -62,7 +62,7 @@ accessible. See http://www.netlib.org/lapack/explore-html/.
  8. *LAPACKE - Standard C language APIs for LAPACK.* Since LAPACK 3.3.0, LAPACK
 includes new C interfaces. With the LAPACK 3.4.0 release, LAPACKE is directly
 integrated within the LAPACK library and has been enriched by the full set of
-LAPACK subroutines.
+LAPACK subroutines. See link:lapacke.html[here].
 
 
 3. References
@@ -83,6 +83,8 @@ Number 2, 1998, pp. 513–561.
 4. External Contributors
 ------------------------
 
+    * CMAKE team
+    * Intel MKL team
     * Craig Lucas (University of Manchester and NAG)
 
 5. Thanks
@@ -213,6 +215,62 @@ bounded, which is important in some applications.  The computational time of
 xSYSVK is slightly higher than the one of xSYSV.
 
 .public interfaces
+
+
+7.5.  CMAKE build system
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.contributors
+
+CMAKE team
+
+.lapacker
+
+Julie Langou (University of Tennessee)
+
+.contribution
+
+We are striving to help our users install our libraries seamlessly on their
+machines.  The CMAKE team contributed to our effort to port LAPACK and
+ScaLAPACK under the CMAKE build system. Building under Windows has never been
+easier. This also allows us to release dll for Windows, so users no longer need
+a Fortran compiler to use LAPACK under Windows.
+
+7.6.  Doxygen documentation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.lapacker
+
+Julie Langou (University of Tennessee)
+
+.contribution
+
+LAPACK routine documentation has never been more
+accessible. See http://www.netlib.org/lapack/explore-html/.
+
+7.7.  New website allowing for easier navigation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.lapacker
+
+Julie Langou (University of Tennessee)
+
+7.8.  LAPACKE - Standard C language APIs for LAPACK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.contributors
+
+Intel MKL team
+
+.lapacker
+
+Julie Langou (University of Tennessee)
+
+.contribution
+
+Since LAPACK 3.3.0, LAPACK includes new C interfaces. With the LAPACK 3.4.0
+release, LAPACKE is directly integrated within the LAPACK library and has been
+enriched by the full set of LAPACK subroutines. See link:lapacke.html[here].
 
 8.  Bug Fix
 -----------

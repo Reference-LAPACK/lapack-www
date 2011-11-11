@@ -72,7 +72,6 @@ LAPACK subroutines.
 parallel QR factorization leads to better performance.'' IBM Journal of
 Research and Development 44(4): 605-624 (2000)
 
-
 [2] [[2]]:: N.J. Higham. ``Accuracy and Stability of Numerical Algorithms''.
 Section 11.1.3.  SIAM, Philadelphia, PA, USA, 1996.
 
@@ -90,8 +89,12 @@ Number 2, 1998, pp. 513–561.
 ---------
 
 Thanks for bug-report/patches/suggestions to:
-
-????
+Ming Gu (UC Berkeley),
+Hatem Ltaif (KAUST, Saudi Arabia),
+omitrofa (intel team),
+Tiago Requeijo,
+Edward Smyth (NAG), and
+Clint Whaley (University of Texas at San Antonio, USA).
 
 6. Developer list
 -----------------
@@ -110,862 +113,108 @@ Thanks for bug-report/patches/suggestions to:
     * Benjamin Lipshitz  (University of California,  Berkeley, USA)
     * Rodney James (University of Colorado Denver, USA)
 
-7. Install Procedure
---------------------
-[IMPORTANT]
-==============================================================
-LAPACK-3.2 now requires a FORTRAN 90 compiler.
-(Do not try to compile with g77 or other 77 compilers.)
-==============================================================
-
-7.1  XBLAS & extra precise refinement routines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[TIP]
-==============================================================
-To install the XBLAS you might try this:
-
-     wget http://www.netlib.org/xblas/xblas.tar.gz
-     tar xvf xblas.tar.gz
-     cd xblas
-     autoconf
-     CC=gcc FC=gfortran ./configure
-     m4 Makefile.m4 >Makefile
-     make makefiles
-     make
-
-The XBLAS must be built with a Fortran compiler compatible to the one
-used to build LAPACK.  We recommend using exactly the same Fortran
-compiler for both the XBLAS and LAPACK.  If these instructions do not
-work, see the INSTALL file in the XBLAS distribution for more
-information.
-==============================================================
-
-
-7.2  Variants
-~~~~~~~~~~~~~
-
-      make variants
-      make variants_testing
-
-	Corresponding libraries created in SRC/VARIANTS/LIB:
-		- LU Crout : lucr.a
-		- LU Left Looking : lull.a
-		- LU Sivan Toledo's Recursive as Iterative: lurec.a
-		- QR Left Looking : qrll.a
-		- Cholesky Right Looking : cholrl.a
-		- Cholesky Top : choltop.a
-
-
-These variants are compiled by default in the build process but they
-are not tested by default.
-
-Please refer to the README file in SRC/VARIANTS for more information.
-
-8. Interface changes
---------------------
-
-[WARNING]
-==============================================================
-There are interface changes from LAPACK versions 3.1 to 3.2 for routines:
-
-    ZCGESV DLASQ3 DLASQ4 SLASQ3 SLASQ4
-
-We have removed the routines:
-
-    DLAZQ3 DLAZQ4 SLAZQ3 SLAZQ4
-==============================================================
-
-
-
-9. More details
+7. More details
 ----------------
 
-9.1. Extra Precise Iterative Refinement
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+7.1.  xGEQRT: QR factorization (improved interface)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .contributors
 
-James W. Demmel, Deaglan Halligan, Yozo Hida, Jason Riedy, David Vu, and Meghanath Vishvanath
-
-.lapackers
-
-Deaglan Halligan, Yozo Hida, and Jason Riedy
-
-.reference
-
-James Demmel, Yozo Hida, William Kahan, Xiaoye S. Li, Sonil Mukherjee, and E.
-Jason Riedy. _Error Bounds from Extra Precise Iterative Refinement_. 
-http://www.netlib.org/lapack/lawnspdf/lawn165.pdf[LAPACK Working Note 165], May 2008.
+Rodney James (UC Denver)
 
 .contribution
 
-New linear solvers that ``guarantee'' answers accurate to machine precision or
-warn that the answer cannot be trusted based on computed error bounds. All but
-extremely ill-conditioned problems fall into the first category.
+xGEQRT is analogous to xGEQRF with a modified interface which enables better
+performance when the blocked reflectors need to be reused. The companion
+subroutines xGEMQRT apply the reflectors.
 
 .public interfaces
 
-These interfaces are prototypes; they may change after user feedback.
-The matrix types supported in this release are
+   A SRC/sgeqrt.f    A SRC/sgemqrt.f   A SRC/sgeqrt2.f
+   A SRC/cgeqrt.f    A SRC/cgemqrt.f   A SRC/cgeqrt2.f
+   A SRC/dgeqrt.f    A SRC/dgemqrt.f   A SRC/dgeqrt2.f
+   A SRC/zgeqrt.f    A SRC/zgemqrt.f   A SRC/zgeqrt2.f
 
-1. GE (general)
-2. SY (symmetric)
-3. PO (positive definite)
-4. HE (Hermitian)
-5. GB (general band)
-
-in real/complex and single/double precision versions. The driver routines are designated
--svxx, and the refinement routines -rfsx.  The testing codes for SY
-and HE have not been integrated into the LAPACK distribution yet.
-
-   A SRC/sgesvxx.f   A SRC/sposvxx.f   A SRC/sgerfsx.f   A SRC/sporfsx.f   
-   A SRC/cgesvxx.f   A SRC/cposvxx.f   A SRC/cgerfsx.f   A SRC/cporfsx.f
-   A SRC/dgesvxx.f   A SRC/dposvxx.f   A SRC/dgerfsx.f   A SRC/dporfsx.f
-   A SRC/zgesvxx.f   A SRC/zposvxx.f   A SRC/zgerfsx.f   A SRC/zporfsx.f
-   A SRC/ssysvxx.f   A SRC/sgbsvxx.f   A SRC/ssyrfsx.f   A SRC/sgbrfsx.f
-   A SRC/csysvxx.f   A SRC/cgbsvxx.f   A SRC/csyrfsx.f   A SRC/cgbrfsx.f
-   A SRC/dsysvxx.f   A SRC/dgbsvxx.f   A SRC/dsyrfsx.f   A SRC/dgbrfsx.f
-   A SRC/zsysvxx.f   A SRC/zgbsvxx.f   A SRC/zsyrfsx.f   A SRC/zgbrfsx.f
-		     A SRC/chesvxx.f			 A SRC/cherfsx.f
- 		     A SRC/zhesvxx.f			 A SRC/zherfsx.f
-
-We have also added routines to compute equilibration factors.
-
-   A SRC/sgeequb.f   A SRC/ssyequb.f   A SRC/spoequb.f   A SRC/sgbequb.f
-   A SRC/cgeequb.f   A SRC/csyequb.f   A SRC/cpoequb.f   A SRC/cgbequb.f
-   A SRC/dgeequb.f   A SRC/dsyequb.f   A SRC/dpoequb.f   A SRC/dgbequb.f
-   A SRC/zgeequb.f   A SRC/zsyequb.f   A SRC/zpoequb.f   A SRC/zgbequb.f
-							 A SRC/cheequb.f
-							 A SRC/zheequb.f
-
-The following is the interface of the extra-precise iterative refinement driver SGESVXX.
-The interfaces for the drivers for other matrix types and precisions are analoguous.
-
-[source,fortran]
-----
-      SUBROUTINE SGESVXX( FACT, TRANS, N, NRHS, A, LDA, AF, LDAF, IPIV,
-     $                    EQUED, R, C, B, LDB, X, LDX, RCOND, RPVGRW,
-     $                    BERR, N_ERR_BNDS, ERR_BNDS_NORM,
-     $                    ERR_BNDS_COMP, NPARAMS, PARAMS, WORK, IWORK,
-     $                    INFO )
-C     ..
-C     .. Scalar Arguments ..
-      CHARACTER          EQUED, FACT, TRANS
-      INTEGER            INFO, LDA, LDAF, LDB, LDX, N, NRHS, NPARAMS,
-     $                   N_ERR_BNDS
-      REAL               RCOND, RPVGRW
-C     ..
-C     .. Array Arguments ..
-      INTEGER            IPIV( * ), IWORK( * )
-      REAL               A( LDA, * ), AF( LDAF, * ), B( LDB, * ),
-     $                   X( LDX , * ), WORK( * )
-      REAL               R( * ), C( * ), PARAMS( * ), BERR( * ),
-     $                   ERR_BNDS_NORM( NRHS, * ),
-     $                   ERR_BNDS_COMP( NRHS, * )
-C     ..
-C
-C     Purpose
-C     =======
-C
-C     SGESVXX uses the LU factorization to compute the solution to a
-C     real system of linear equations  A * X = B,  where A is an
-C     N-by-N matrix and X and B are N-by-NRHS matrices.
-C
-C     If requested, both normwise and maximum componentwise error bounds
-C     are returned. SGESVXX will return a solution with a tiny
-C     guaranteed error (O(eps) where eps is the working machine
-C     precision) unless the matrix is very ill-conditioned, in which
-C     case a warning is returned. Relevant condition numbers also are
-C     calculated and returned.
-C
-C     SGESVXX accepts user-provided factorizations and equilibration
-C     factors; see the definitions of the FACT and EQUED options.
-C     Solving with refinement and using a factorization from a previous
-C     SGESVXX call will also produce a solution with either O(eps)
-C     errors or warnings, but we cannot make that claim for general
-C     user-provided factorizations and equilibration factors if they
-C     differ from what SGESVXX would itself produce.
-C
-----
-
-.auxiliary routines
-
-The refinement routines listed above make use of new routines to refine each right-hand side.
-
-   A SRC/sla_gerfsx_extended.f   A SRC/sla_porfsx_extended.f   A SRC/cla_herfsx_extended.f
-   A SRC/cla_gerfsx_extended.f   A SRC/cla_porfsx_extended.f   A SRC/zla_herfsx_extended.f
-   A SRC/dla_gerfsx_extended.f   A SRC/dla_porfsx_extended.f
-   A SRC/zla_gerfsx_extended.f   A SRC/zla_porfsx_extended.f
-   A SRC/sla_syrfsx_extended.f   A SRC/sla_gbrfsx_extended.f
-   A SRC/cla_syrfsx_extended.f   A SRC/cla_gbrfsx_extended.f
-   A SRC/dla_syrfsx_extended.f   A SRC/dla_gbrfsx_extended.f
-   A SRC/zla_syrfsx_extended.f   A SRC/zla_gbrfsx_extended.f
-
-We have added new routines to compute the reciprocal condition number.
-
-   A SRC/sla_gercond.f     A SRC/sla_syrcond.f     A SRC/sla_porcond.f     A SRC/sla_gbrcond.f  
-   A SRC/cla_gercond_x.f   A SRC/cla_syrcond_x.f   A SRC/cla_porcond_x.f   A SRC/cla_gbrcond_x.f
-   A SRC/cla_gercond_c.f   A SRC/cla_syrcond_c.f   A SRC/cla_porcond_c.f   A SRC/cla_gbrcond_c.f
-   A SRC/dla_gercond.f     A SRC/dla_syrcond.f     A SRC/dla_porcond.f	   A SRC/dla_gbrcond.f
-   A SRC/zla_gercond_x.f   A SRC/zla_syrcond_x.f   A SRC/zla_porcond_x.f   A SRC/zla_gbrcond_x.f
-   A SRC/zla_gercond_c.f   A SRC/zla_syrcond_c.f   A SRC/zla_porcond_c.f   A SRC/zla_gbrcond_c.f
-									   A SRC/zla_hercond_x.f
-									   A SRC/zla_hercond_c.f 
-
-We have added routines to compute reciprocal pivot growth.
-
-   A SRC/sla_rpvgrw.f   A SRC/sla_syrpvgrw.f   A SRC/sla_porpvgrw.f   A SRC/sla_gbrpvgrw.f
-   A SRC/cla_rpvgrw.f   A SRC/cla_syrpvgrw.f   A SRC/cla_porpvgrw.f   A SRC/cla_gbrpvgrw.f
-   A SRC/dla_rpvgrw.f   A SRC/dla_syrpvgrw.f   A SRC/dla_porpvgrw.f   A SRC/dla_gbrpvgrw.f
-   A SRC/zla_rpvgrw.f   A SRC/zla_syrpvgrw.f   A SRC/zla_porpvgrw.f   A SRC/zla_gbrpvgrw.f
-								      A SRC/cla_herpvgrw.f
-								      A SRC/zla_herpvgrw.f
-
-Finally, we have added a number of auxiliary routines that are necessary to support the above.
-
-   A SRC/sla_lin_berr.f   A SRC/slascl2.f	A SRC/sla_geamv.f   A SRC/cla_heamv.f	    				
-   A SRC/cla_lin_berr.f   A SRC/clascl2.f	A SRC/cla_geamv.f   A SRC/zla_heamv.f		   				
-   A SRC/dla_lin_berr.f   A SRC/dlascl2.f       A SRC/dla_geamv.f
-   A SRC/zla_lin_berr.f   A SRC/zlascl2.f	A SRC/zla_geamv.f
-   A SRC/slarscl2.f       A SRC/sla_wwaddw.f	A SRC/sla_syamv.f    				  
-   A SRC/clarscl2.f       A SRC/cla_wwaddw.f	A SRC/cla_syamv.f		
-   A SRC/dlarscl2.f       A SRC/dla_wwaddw.f    A SRC/dla_syamv.f			
-   A SRC/zlarscl2.f       A SRC/zla_wwaddw.f	A SRC/zla_syamv.f
-   	  							    				  
-9.2. XBLAS, or the portable extra-precision and mixed-precision BLAS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-All material relevant to the XBLAS is located at
-http://www.netlib.org/xblas/.  They are necessary to build the
-extra-precise refinement routines above.
-
-9.3. Non-Negative Diagonals from Householder QR
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+7.2.  xGEQRT3: recursive QR factorization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .contributors
 
-James W. Demmel, Mark Hoemmen, Yozo Hida, and Jason Riedy.
-
-.lapacker
-
-Jason Riedy
+Rodney James (UC Denver)
 
 .reference
 
-James W. Demmel, Mark Hoemmen, Yozo Hida, and E. Jason Riedy.  _Non-Negative
-Diagonals and High Performance on Low-Profile Matrices from Householder QR_.
-http://www.netlib.org/lapack/lawnspdf/lawn203.pdf[LAPACK Working Note 203], May 2008.
+E. Elmroth and F.G. Gustavson. ``Applying recursion to serial and
+parallel QR factorization leads to better performance.'' IBM Journal of
+Research and Development 44(4): 605-624 (2000)
 
 .contribution
 
-The QR factorization routines now guarantee that the diagonal is both real and
-non-negative.  Factoring a uniformly random matrix now correctly generates an
-orthogonal Q from the Haar distribution.
+The recursive QR factorization enables cache-oblivious and enables high
+performance on tall and skinny matrices.
 
-The reflectors are generated by new auxiliary routines xLARFP.  The
-old xLARFG reflectors are not affected.
+.public interfaces
 
-   A SRC/clarfp.f  A SRC/dlarfp.f  A SRC/slarfp.f    A SRC/zlarfp.f
+   A SRC/sgeqrt3.f
+   A SRC/cgeqrt3.f
+   A SRC/dgeqrt3.f
+   A SRC/zgeqrt3.f
 
-9.4. High Performance QR and Householder Reflections on Low-Profile Matrices
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+7.3.  xTPQRT: Communication-Avoiding QR sequential kernels
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .contributors
 
-James W. Demmel, Mark Hoemmen, Yozo Hida, and E. Jason Riedy.
-
-.lapacker
-
-Jason Riedy
-
-.reference
-
-James W. Demmel, Mark Hoemmen, Yozo Hida, and E. Jason Riedy.  _Non-Negative
-Diagonals and High Performance on Low-Profile Matrices from Householder QR_.
-http://www.netlib.org/lapack/lawnspdf/lawn203.pdf[LAPACK Working Note 203], May 2008.
+Rodney James (UC Denver)
 
 .contribution
 
-The auxiliary routines to apply Householder reflections (e.g. DLARFB)
-automatically reduce the cost of QR from O(n^3^) to O(n^2^+nb^2^) for matrices
-stored in a dense format for band matrices with bandwidth b with no user
-interface changes.  Other users of these routines can see similar benefits in
-particular on ``narrow profile'' matrices.
+These subroutines are useful for updating a QR factorization and are used in
+sequential and parallel Communication Avoiding QR. These subroutines support
+the general case Triangle on top of Pentagon which includes as special cases
+so-called Triangle on top of Triangle and Triangle on top of Square. This is
+the right-looking version of the subroutines and the subroutines are blocked.
+The T matrices and the block size are part of the interface. The companion
+subroutines xTPMQRT apply the reflectors.
 
-   M SRC/clarf.f   M SRC/dlarf.f   M SRC/slarf.f   M SRC/zlarf.f
-   M SRC/clarfb.f  M SRC/dlarfb.f  M SRC/slarfb.f  M SRC/zlarfb.f
-   M SRC/clarft.f  M SRC/dlarft.f  M SRC/slarft.f  M SRC/zlarft.f
-   M SRC/clarfx.f  M SRC/dlarfx.f  M SRC/slarfx.f  M SRC/zlarfx.f
-   A SRC/ilaclc.f  A SRC/iladlc.f  A SRC/ilaslc.f  A SRC/ilazlc.f
-   A SRC/ilaclr.f  A SRC/iladlr.f  A SRC/ilaslr.f  A SRC/ilazlr.f
+.public interfaces
 
-9.5. New fast and accurate Jacobi SVD
+   A SRC/stpmqrt.f   A SRC/stpqrt.f    A SRC/stpqrt2.f   A SRC/stprfb.f
+   A SRC/ctpmqrt.f   A SRC/ctpqrt.f    A SRC/ctpqrt2.f   A SRC/ctprfb.f
+   A SRC/dtpmqrt.f   A SRC/dtpqrt.f    A SRC/dtpqrt2.f   A SRC/dtprfb.f
+   A SRC/ztpmqrt.f   A SRC/ztpqrt.f    A SRC/ztpqrt2.f   A SRC/ztprfb.f
+
+7.4.  xSYSVK: LDLT with rook pivoting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .contributors
 
-Zlatko Drmac and Kresimir Veselic
+Craig Lucas (University of Manchester and NAG) and Sven Hammarling (NAG)
 
 .lapacker
 
-Julien Langou
-
-.references
-
-Zlatko Drmac and Kresimir Veselic.  _New fast and accurate Jacobi SVD
-algorithm: I_.  SIAM Journal on Matrix Analysis and Applications,
-29(4):1322-1342, 2007. (Also http://www.netlib.org/lapack/lawnspdf/lawn169.pdf[LAWN-169]).
-
-Zlatko Drmac and Kresimir Veselic.  _New fast and accurate Jacobi SVD
-algorithm: II_.  SIAM Journal on Matrix Analysis and Applications,
-29(4):1343-1362, 2007. (Also http://www.netlib.org/lapack/lawnspdf/lawn170.pdf[LAWN-170]).
-
-.contribution
-
-High accuracy SVD routine for dense matrices, which can compute tiny singular
-values to many more correct digits than `SGESVD` when the matrix has columns
-differing widely in norm, and usually runs faster than `SGESVD` too.
-
-   A dgejsv.f         A sgejsv.f
-   A dgesvj.f         A sgesvj.f
-   A dgsvj0.f         A sgsvj0.f
-   A dgsvj1.f         A sgsvj1.f
-
-*SGESVJ* implements one-sided Jacobi SVD with fast scaled rotations and de
-Rijk's pivoting. The code works as specified in the theory of Demmel and
-Veselic. It uses a special implementation of Jacobi rotations, so that it can
-compute the singular values in the full range [underflow, overflow].  `SGESVJ`
-can be used as standalone, and it is also the kernel routine in the expert
-driver routine `SGEJSV`.
-
-[source,fortran]
-----
-      SUBROUTINE SGESVJ( JOBA, JOBU, JOBV, M, N, A, LDA, SVA,
-     &                     MV, V, LDV, WORK, LWORK, INFO )
-C
-      INTEGER    INFO, LDA, LDV, LWORK, M, MV, N
-      CHARACTER  JOBA, JOBU, JOBV
-      REAL       A( LDA, N ), SVA( N ), V( LDV, N ), WORK( LWORK )
-C
-C  Purpose
-C  =======
-C  DGESVJ computes the singular value decomposition (SVD) of a real
-C  M-by-N matrix A, where M >= N. The SVD of A is written as
-C                                     [++]   [xx]   [x0]   [xx]
-C               A = U * SIGMA * V^t,  [++] = [xx] * [ox] * [xx]
-C                                     [++]   [xx]
-C  where SIGMA is an N-by-N diagonal matrix, U is an M-by-N orthonormal
-C  matrix, and V is an N-by-N orthogonal matrix. The diagonal elements
-C  of SIGMA are the singular values of A. The columns of U and V are the
-C  left and the right singular vectors of A, respectively.
-C
-----
-
-*SGEJSV* implements the preconditioned Jacobi SVD of Drmac and Veselic. This is
-the expert driver routine that calls `SGESVJ` after certain preconditioning. In
-keeping the standard type of accuracy it also delivers relatively accurate
-singular values, including the smallest ones, if the matrix A can be diagonally
-scaled so that the scaled matrix `C = A \* D` is well conditioned. The relative
-accuracy is usually obtained on a broader class of matrices `A = D1 \* C \* D2`,
-where `D1`, `D2` are arbitrary diagonal matrices and `C` is well conditioned.
-The computational range for the singular values can be set as the full range
-(underflow, overflow), provided that the BLAS and LAPACK routines called by
-xGEJSV are implemented to work in that range.
-
-The driver routine `SGEJSV` can be set to work safely in a restricted range,
-meaning that the singular values of magnitude below `||A||_2 / SLAMCH(\'O\')` are
-returned as zeros.  This means that the software complies with the theory as
-long the condition number does not overflow.
-
-
-[source,fortran]
-----
-      SUBROUTINE SGEJSV( JOBA, JOBU, JOBV, JOBR, JOBT, JOBP,
-     &                   M, N, A, LDA, SVA, U, LDU, V, LDV,
-     &                   WORK, LWORK, IWORK, INFO )
-C
-      INTEGER    INFO, LDA, LDU, LDV, LWORK, M, N
-      INTEGER    IWORK( * )
-      CHARACTER  JOBA, JOBP, JOBR, JOBT, JOBU, JOBV
-      REAL       A( LDA, N ), SVA( N ), U( LDU, N ), V( LDV, N ),
-     &           WORK( LWORK )
-C     ..
-C
-C  Purpose
-C  ~~~~~~~
-C  SGEJSV computes the singular value decomposition (SVD) of a real M-by-N
-C  matrix [A], where M >= N. The SVD of [A] is written as
-C
-C               [A] = [U] * [SIGMA] * [V]^t,
-C
-C  where [SIGMA] is an N-by-N (M-by-N) matrix which is zero except for its N
-C  diagonal elements, [U] is an M-by-N (or M-by-M) orthonormal matrix, and
-C  [V] is an N-by-N orthogonal matrix. The diagonal elements of [SIGMA] are
-C  the singular values of [A]. The columns of [U] and [V] are the left and
-C  the right singular vectors of [A], respectively. The matrices [U] and [V]
-C  are computed and stored in the arrays U and V, respectively. The diagonal
-C  of [SIGMA] is computed and stored in the array SVA.
-C
-----
-
-[CAUTION]
-This release only include `SINGLE PRECISION` and `DOUBLE PRECISION`.  In other
-words, we do not have complex support. Also the matrix in input needs to be
-with `M.GE.N`.
-
-9.6. Rectangular Full Packed format
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.contributor
-
-Fred Gustavson and Jerzy Wasniewski
-
-.lapacker
-
-Julien Langou
+Igor Kozachenko (University of California, Berkeley, USA)
 
 .reference
 
-Fred G. Gustavson, Jerzy Wasniewski, and Jack J. Dongarra.  _Rectangular
-Full Packed Format for Cholesky's Algorithm: Factorization, Solution and
-Inversion_.  http://www.netlib.org/lapack/lawnspdf/lawn199.pdf[LAPACK Working Note 199],
-April 2008.
+- N.J. Higham. ``Accuracy and Stability of Numerical Algorithms''.  Section
+11.1.3.  SIAM, Philadelphia, PA, USA, 1996.
 
-.rfp
-
-RFP = Rectangular Full Packed.
-
-Motivation for the RFP format: LAPACK current full formats (PO, TR, HE) waste
-half of the memory, LAPACK current packed formats (PP, TP, HP) are
-inefficient. In 2005 Gustavson introduced the rectangular full packed format
-(PF, TF, HF) which enables the use of half the full storage while maintaining
-efficiency by using Level 3 BLAS/LAPACK kernels.
-
-The idea is simple: to store an N by N triangle (and suppose for simplicity
-that N is even), partition the triangle into three parts: two N/2 by N/2
-triangles and an N/2 by N/2 square, then pack this as an N by N/2
-rectangle (or N/2 by N rectangle), by transposing (or transpose-conjugating)
-one of the triangles and packing it next to the other triangle.  Since the two
-triangles are stored in full storage (PO, TR, HE) one can use existing
-efficient routines on them. They are some subtleties and variants, but
-everything works fine. The storage format Gustavson has proposed has 8
-possible cases depending whether N is odd or even, whether the matrix is upper or lower
-triangular, and whether the user chooses to store
-the conjugate-transpose of the storage or its normal form.
-
-.storing a matrix in RFP format
-
-1. The RFP format is not that hard to understand. We refer to the headers of
-the routines, the paper in the reference above or an illustrative webpage
-[http://www-math.cudenver.edu/~langou/lapack-3.2/rfp.html[URL-3]].
-
-2. The routines `CHFRK`, `ZHFRK`, `SSFRK` and `DSFRK` directly build matrices
-in RFP format. Once the matrix is constructed the user can then use it without
-understanding the details of the format.
-
-3. There are some conversion routines: `xTPTTF` goes from standard packed to 
-RFP and `xTRTTF` goes from full to RFP. This approach is less interesting than
-(1) or (2) since it requires the storage of two matrices.
-
-
-.RFP nomenclature
-[grid="all"]
-`---`---------`------------------------------------------------
-SF       xSFyy    symmetric
-HF       xHFyy    Hermitian
-PF       xPFyy    symmetric/Hermitian positive definite
-TF       xTFyy    triangular
----------------------------------------------------------------
+- C. Ashcraft, R.G. Grimes, and J.G. Lewis. ``Accurate Symmetric Indefinite
+Linear Equations Solvers.'' SIAM J. Matrix Anal. Appl. Vol. 20.  Number 2,
+1998, pp. 513–561.
 
 .contribution
 
-   A SRC/chfrk.f          A SRC/dlansf.f         A SRC/slansf.f          A SRC/zhfrk.f
-   A SRC/clanhf.f         A SRC/dpftrf.f         A SRC/spftrf.f          A SRC/zlanhf.f
-   A SRC/cpftrf.f         A SRC/dpftri.f         A SRC/spftri.f          A SRC/zpftrf.f
-   A SRC/cpftri.f         A SRC/dpftrs.f         A SRC/spftrs.f          A SRC/zpftri.f
-   A SRC/cpftrs.f         A SRC/dsfrk.f          A SRC/ssfrk.f           A SRC/zpftrs.f
-   A SRC/ctfsm.f          A SRC/dtfsm.f          A SRC/stfsm.f           A SRC/ztfsm.f
-   A SRC/ctftri.f         A SRC/dtftri.f         A SRC/stftri.f          A SRC/ztftri.f
-   A SRC/ctfttp.f         A SRC/dtfttp.f         A SRC/stfttp.f          A SRC/ztfttp.f
-   A SRC/ctfttr.f         A SRC/dtfttr.f         A SRC/stfttr.f          A SRC/ztfttr.f
-   A SRC/ctpttf.f         A SRC/dtpttf.f         A SRC/stpttf.f          A SRC/ztpttf.f
-   A SRC/ctpttr.f         A SRC/dtpttr.f         A SRC/stpttr.f          A SRC/ztpttr.f
-   A SRC/ctrttf.f         A SRC/dtrttf.f         A SRC/strttf.f          A SRC/ztrttf.f
-   A SRC/ctrttp.f         A SRC/dtrttp.f         A SRC/strttp.f          A SRC/ztrttp.f
+These subroutines enable better stability than the Bunch-Kaufman pivoting
+scheme currently used in LAPACK xSYSV solvers; also, the elements of L are
+bounded, which is important in some applications.  The computational time of
+xSYSVK is slightly higher than the one of xSYSV.
 
-.functionality and interface
-[grid="all"]
-`------------------------------`----------`----------`----------`----------`-----------------------------------------------
-Cholesky factorization          CPFTRF     DPFTRF     SPFTRF     ZPFTRF     (TRANSR,UPLO,N,A,INFO)
-Multiple solve after xPFTRF     CPFTRS     DPFTRS     SPFTRS     ZPFTRS     (TRANSR,UPLO,N,NR,A,B,LDB,INFO)
-Inversion after xPFTRF          CPFTRI     DPFTRI     SPFTRI     ZPFTRI     (TRANSR,UPLO,N,A,INFO)
-Triangular inversion            CTFTRI     DTFTRI     STFTRI     ZTFTRI     (TRANSR,UPLO,DIAG,N,A,INFO)
-Sym/Herm matrix norm            CLANHF     DLANSF     SLANSF     ZLANHF     (NORM,TRANSR,UPLO,N,A,WORK)
-Triangular solve                CTFSM      DTFSM      STFSM      ZTFSM      (TRANSR,SIDE,UPLO,TRANS,DIAG,M,N,ALPHA,A,B,LDB)
-Sym/Herm rank-k update          CHFRK      DSFRK      SSFRK      ZHFRK      (TRANSR,UPLO,TRANS,N,K,ALPHA,A,LDA,BETA,C)
-Conv. from TP to TF             CTPTTF     DTPTTF     STPTTF     ZTPTTF     (TRANSR,UPLO,N,AP,ARF,INFO)
-Conv. from TR to TF             CTRTTF     DTRTTF     STRTTF     ZTRTTF     (TRANSR,UPLO,N,A,LDA,ARF,INFO)
-Conv. from TF to TP             CTFTTP     DTFTTP     STFTTP     ZTFTTP     (TRANSR,UPLO,N,ARF,AP,INFO)
-Conv. from TF to TR             CTFTTR     DTFTTR     STFTTR     ZTFTTR     (TRANSR,UPLO,N,ARF,A,LDA,INFO)
-Conv. from TR to TP             CTRTTP     DTRTTP     STRTTP     ZTRTTP     (UPLO,N,A,LDA,AP,INFO)
-Conv. from TP to TR             CTPTTR     DTPTTR     STPTTR     ZTPTTR     (UPLO,N,AP,A,LDA,INFO)
----------------------------------------------------------------------------------------------------------------------------
+.public interfaces
 
-.example of what one can do with this new release
+8.  Bug Fix
+-----------
 
-   1. ZHFRK( )  Form the normal equations (maybe update them)
-   2. ZPFTRF( ) Cholesky factorization of the normal equations
-   3. ZPFTRS( ) Solve the normal equations
-
-which performs the same operations as ZSYRK, ZPOTRF, ZPOTRS (with half the storage
-for the normal equations).
-
-[WARNING]
-The current RFP routines can have `INTEGER` overflow since they access entries
-like `A( N*N )` and `N*N` (for very large `N`) may not be representable
-as a 32-bit `INTEGER`. (Note that the same restriction holds for any current LAPACK
-packed routines). Use 64-bit `INTEGER` and you'll be covered.
-
-[URL-3] Illustration of the RFP. http://www-math.cudenver.edu/~langou/lapack-3.2/rfp.html.
-
-9.7. Pivoted Cholesky
-~~~~~~~~~~~~~~~~~~~~~
-
-.contributor
-
-Craig Lucas
-
-.lapacker
-
-Jason Riedy
-
-.reference
-
-Craig Lucas.  _LAPACK-Style Codes for Level 2 and 3 Pivoted Cholesky
-Factorizations_.
-http://www.netlib.org/lapack/lawnspdf/lawn161.pdf[LAPACK Working Note 161],
-February 2004.
-
-.contribution
-
-The Cholesky factorization with diagonal pivoting for symmetric positive
-semi-definite matrices.  Pivoting is required for reliable rank detection. 
-
-   A SRC/cpstf2.f   A SRC/dpstf2.f   A SRC/spstf2.f   A SRC/zpstf2.f
-   A SRC/cpstrf.f   A SRC/dpstrf.f   A SRC/spstrf.f   A SRC/zpstrf.f
-
-[source,fortran]
-----
-     SUBROUTINE SPSTRF( UPLO, N, A, LDA, PIV, RANK, TOL, WORK, INFO )
-C
-      REAL               TOL
-      INTEGER            INFO, LDA, N, RANK
-      CHARACTER          UPLO
-      REAL               A( LDA, N ), WORK( 2*N )
-      INTEGER            PIV( N )
-C
-C  Purpose
-C  =======
-C
-C  SPSTRF computes the Cholesky factorization with complete
-C  pivoting of a real symmetric positive semidefinite matrix A.
-C
-C  The factorization has the form
-C     P' * A * P = U' * U ,  if UPLO = 'U',
-C     P' * A * P = L  * L',  if UPLO = 'L',
-C  where U is an upper triangular matrix and L is lower triangular, and
-C  P is stored as vector PIV.
-C
-C  This algorithm does not attempt to check that A is positive
-C  semidefinite. This version of the algorithm calls level 3 BLAS.
-C
-----
-
-9.8. Mixed precision iterative refinement subroutines for exploiting fast single precision hardware
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.contributor
-
-Julie Langou
-
-.lapacker
-
-Julie Langou
-
-.reference
-
-Alfredo Buttari, Jack Dongarra, Julie Langou, Julien Langou, Piotr Luszczek,
-and Jakub Kurzak. _Mixed Precision Iterative Refinement Techniques for the
-Solution of Dense Linear Systems_. International Journal of High Performance
-Computing Applications, 21(4):457-466, 2007. 
-
-.contribution
-
-On platforms like the Cell processor that do single precision much faster than
-double, linear systems can be solved many times faster. Even on commodity
-processors there is a factor of 2 in speed between single and double
-precision.  The matrix types supported in this release are: GE (general), PO
-(positive definite).
-
-         A SRC/dsposv.f          A SRC/zcposv.f
-
-[source,fortran]
-----
-      SUBROUTINE ZCPOSV( UPLO, N, NRHS, A, LDA, B, LDB, X, LDX, WORK,
-     +                   SWORK, RWORK, ITER, INFO )
-C
-      CHARACTER          UPLO
-      INTEGER            INFO, ITER, LDA, LDB, LDX, N, NRHS
-      DOUBLE PRECISION   RWORK( N*NRHS )
-      COMPLEX            SWORK( N*(N+NRHS) )
-      COMPLEX*16         A( LDA, N ), B( LDB, NRHS ), WORK( N, NRHS ),
-     +                   X( LDX, NRHS )
-C
-C  Purpose
-C  =======
-C
-C  ZCPOSV computes the solution to a complex system of linear equations
-C     A * X = B,
-C  where A is an N-by-N Hermitian positive definite matrix and X and B
-C  are N-by-NRHS matrices.
-C
-C  ZCPOSV first attempts to factorize the matrix in COMPLEX and use this
-C  factorization within an iterative refinement procedure to produce a
-C  solution with COMPLEX*16 normwise backward error quality. If the
-C  approach fails the method switches to a COMPLEX*16 factorization and
-C  solve.
-C
-----
-
-9.9. Add some variants for the one-sided factorization
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.contributors
-
-Peng Du and Jason Riedy
-
-.lapackers
-
-Julie Langou and Jason Riedy
-
-.contribution
-
-LAPACK QR blocked factorization (xGEQRF) is right-looking, added the
-left-looking variant. LAPACK Cholesky blocked factorization (xPOTRF) is
-left-looking, added the right-looking variant and the top-looking
-variant. LAPACK LU blocked factorization (xGETRF) is right-looking,
-added the right-looking variant, the Crout variant and the recursive
-variant (in F77).
-
-   A SRC/VARIANTS/cholesky/RL/cpotrf.f
-   A SRC/VARIANTS/cholesky/RL/dpotrf.f
-   A SRC/VARIANTS/cholesky/RL/spotrf.f
-   A SRC/VARIANTS/cholesky/RL/zpotrf.f
-   A SRC/VARIANTS/cholesky/TOP/cpotrf.f
-   A SRC/VARIANTS/cholesky/TOP/dpotrf.f
-   A SRC/VARIANTS/cholesky/TOP/spotrf.f
-   A SRC/VARIANTS/cholesky/TOP/zpotrf.f
-   A SRC/VARIANTS/lu/CR/cgetrf.f
-   A SRC/VARIANTS/lu/CR/dgetrf.f
-   A SRC/VARIANTS/lu/CR/sgetrf.f
-   A SRC/VARIANTS/lu/CR/zgetrf.f
-   A SRC/VARIANTS/lu/LL/cgetrf.f
-   A SRC/VARIANTS/lu/LL/dgetrf.f
-   A SRC/VARIANTS/lu/LL/sgetrf.f
-   A SRC/VARIANTS/lu/LL/zgetrf.f
-   A SRC/VARIANTS/lu/REC/cgetrf.f
-   A SRC/VARIANTS/lu/REC/dgetrf.f
-   A SRC/VARIANTS/lu/REC/sgetrf.f
-   A SRC/VARIANTS/lu/REC/zgetrf.f
-   A SRC/VARIANTS/qr/LL/cgeqrf.f
-   A SRC/VARIANTS/qr/LL/dgeqrf.f
-   A SRC/VARIANTS/qr/LL/sceil.f
-   A SRC/VARIANTS/qr/LL/sgeqrf.f
-   A SRC/VARIANTS/qr/LL/zgeqrf.f
-
-.integration in LAPACK
-
-To install and test the variants:
-
---------------------------------
-make variants
-make variants_testing
---------------------------------
-
-This should create the following libraries in `SRC/VARIANTS/LIB`
-
---------------------------------
-- LU Crout : `lucr.a`
-- LU Left Looking : `lull.a`
-- LU Sivan Toledo's Recursive as Iterative : `lurec.a`
-- QR Left Looking : `qrll.a`
-- Cholesky Right Looking : `cholrl.a`
-- Cholesky Top : `choltop.a`
---------------------------------
-
-Please refer to the README file in SRC/VARIANTS for more information.
-
-9.10. Bug fixes for the bidiagonal SVD routine that fix some rare convergence failures
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.contributors
-
-Osni Marques and Beresford Parlett
-
-.lapackers
-
-Osni Marques, Jim Demmel, and Julien Langou
-
-.contribution
-
-The version of dqds available in LAPACK-3.1.1 (released in February 2007) is
-essentially the version of dqds available in LAPACK-3.0 (released in 1999).
-
-The difference between those two versions is that the dqds in LAPACK-3.1.1 is
-thread safe.  Any eventual shortcomings of the dqds algorithm in LAPACK-3.0
-are still present in LAPACK-3.1.1. In LAPACK-3.2.0, we introduce the latest
-version of dqds that Beresford Parlett and Osni Marques produced in 2006.  This version
-contained a number of improvements that were introduced after 1999. In
-particular, the flipping mechanism has been improved. The original motivation
-was a problem reported by one of Inderjit Dhillon's students (Univ. of Texas at
-Austin). As a result, this new version of dqds (let us call it dqds-3.2)
-passes the tests with Cleve Moler's matrix while dqds-3.0 and dqds-3.1 do not pass the tests with this
-matrix.  The algorithm in dqds-3.0 and dqds-3.1 fails to converge in the
-maximum number of iterations allowed. Cleve Moler's matrix is at
-[http://www-math.cudenver.edu/\~langou/lapack-3.2/set_Moler_200.c[URL-1]].
-The single precision version of the code dqds-3.2 has a problem in the LAPACK
-TESTING with one of the matrices of type 16 while dqds-3.0 and dqds-3.1 were
-fine. The matrix is at
-[http://www-math.cudenver.edu/~langou/lapack-3.2/set_PB1_30.c[URL-2]].  To
-pass this matrix, we needed to set the `IEEE` LOGICAL variable in SLASQ2 to
-`.FALSE.`.  This is a temporary fix; we wish to have a better fix in the
-future.
-
-   M SRC/dlasq1.f         M SRC/slasq1.f
-   M SRC/dlasq2.f         M SRC/slasq2.f
-   M SRC/dlasq3.f         M SRC/slasq3.f
-   M SRC/dlasq4.f         M SRC/slasq4.f
-   M SRC/dlasq5.f         M SRC/slasq5.f
-   M SRC/dlasq6.f         M SRC/slasq6.f
-   D SRC/dlazq3.f         D SRC/slazq3.f
-   D SRC/dlazq4.f         D SRC/slazq4.f
-
-[CAUTION]
-There are interface changes for:
-  `DLASQ3`, `DLASQ4`, `SLASQ3`, `SLASQ4`.
-We decided not to add another set of routines and simply
-changed the interfaces. +
-We have removed the routines
-  `DLAZQ3`, `DLAZQ4`, `SLAZQ3`, `SLAZQ4`.
-They were introduced in 3.1 for thread safety but are no longer needed.
-
-[URL-1] A nasty matrix of Cleve Moler's. http://www-math.cudenver.edu/\~langou/lapack-3.2/set_Moler_200.c.
-
-[URL-2] A nasty matrix from the LAPACK TESTING. http://www-math.cudenver.edu/~langou/lapack-3.2/set_PB1_30.c.
-
-9.11. Better multishift Hessenberg QR algorithm with early aggressive deflation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.contributor
-
-Ralph Byers
-
-.lapacker
-
-Edward Smyth
-
-.reference
-
-Ralph Byers. _LAPACK 3.1 xHSEQR: Tuning and Implementation Notes on the Small
-Bulge Multi-shift QR Algorithm with Aggressive Early Deflation_.
-http://www.netlib.org/lapack/lawnspdf/lawn187.pdf[LAPACK Working Note 187],
-May 2007.
-
-.contribution
-
-Most of the revisions are fixing typographical errors, but there are a few
-revisions that have a small affect on how the program works.  Even these are
-relatively minor revisions:
-
-  1. Revised the choice of the size of the deflation window slightly to make
-     the code a little more robust against convergence failures.
-  2. Revised the section of code that tries to reintroduce bulges after they
-     have collapsed due to underflow.  The new version is cleaner and more
-     robust.
-  3. Revised `xLAQR1` so that it does not assume that `H(2,1)` is real.  A code
-     ought to do what it claims to do and in the complex case, this small
-     subroutine didn't quite do it.
-
-   M SRC/chseqr.f   M SRC/dhseqr.f   M SRC/shseqr.f   M SRC/zhseqr.f
-   M SRC/clahqr.f   M SRC/dlahqr.f   M SRC/slahqr.f   M SRC/zlahqr.f
-   M SRC/claqr0.f   M SRC/dlaqr0.f   M SRC/slaqr0.f   M SRC/zlaqr0.f
-   M SRC/claqr1.f   M SRC/dlaqr2.f   M SRC/slaqr2.f   M SRC/zlaqr1.f
-   M SRC/claqr2.f   M SRC/dlaqr3.f   M SRC/slaqr3.f   M SRC/zlaqr2.f
-   M SRC/claqr3.f   M SRC/dlaqr4.f   M SRC/slaqr4.f   M SRC/zlaqr3.f
-   M SRC/claqr4.f   M SRC/dlaqr5.f   M SRC/slaqr5.f   M SRC/zlaqr4.f
-   M SRC/claqr5.f                                     M SRC/zlaqr5.f
-
-10. Expected additions and improvements for the future
-------------------------------------------------------
-
-.multishift QZ with early aggressive deflation
-Bo Kagstrom and Daniel Kressner.
-_Multishift variants of the QZ algorithm with aggressive early deflation_.
-SIAM J. Matrix Anal. Appl., 29(1):199-227, 2006.
-
-.block reordering algorithm
-Daniel Kressner.
-_Block algorithms for reordering standard and generalized Schur forms_.
-ACM Trans. Math. Software, 32(4):521-532, 2006.
-
-.Extra-precise iterative refinement for overdetermined least squares
-James Demmel, Yozo Hida, Xiaoye S. Li, and E. Jason Riedy.
-_Extra-precise Iterative Refinement for Overdetermined Least Squares Problems_.
-http://www.netlib.org/lapack/lawnspdf/lawn188.pdf[LAPACK Working Note 188],
-May 2007.
-
-.accurate and efficient Givens rotations
-http://www.cs.berkeley.edu/~demmel/Givens/
-
-David Bindel, James Demmel, William Kahan, and Osni Marques.
-_On computing givens rotations reliably and efficiently_.
-ACM Transactions on Mathematical Software (TOMS)
-Volume 28, Issue 2, 2002.  Pages: 206-238.
-
-.blas 2.5
-
-Gary W. Howell, James Demmel, Charles T. Fulton, Sven Hammarling, and Karen Marmol.
-_Cache efficient bidiagonalization using BLAS 2.5 operators_.
-ACM Transactions on Mathematical Software (TOMS)
-Volume 34, Issue 3, 2008.
-
-.level 3 BLAS dsytrs, ssytrs, zhetrs, chetrs, dsytri, ssytri, zhetri, chetri
-Upgrade dsytrs, ssytrs, zhetrs, chetrs, dsytri, ssytri, zhetri, chetri to use
-level 3 BLAS when called with multiple right-hand sides (feedback from the
-MathWorks).
-
-.support more matrix types for extra-precise iterative refinement.
-Matrix types SB (symmetric band), PB (positive definite band), HB
-(Hermitian band), and packed storage.  Tridiagonal types such as GT
-(general tridiagonal) are also on the wish list but first we need to derive
-adequate test cases.
-
-.make xLARFT thread friendly
-Take into account the comments of Robert van de Geijn (Univ. of Texas at
-Austin) concerning the interface of xLARFT.  The interface labels V as
-input/output and this is not at all convenient for multithreaded
-implementations. xLARFT could be written in such a way that V is input
-only. This impacts also the thread friendliness of ORMQR and alikes.
-
-.laundry list
-1. Change the default Cholesky factorization in SRC from right-looking to left-looking,
-move left-looking to the VARIANTS directory.
-2. Add some recursive variants for QR and Cholesky.
-3. Remove IEEE=.FALSE. in DQDS (DLASQ3, SLASQ3 of Osni).
-4. Remove the possibilities of INTEGER overflow in the RFP routines
-5. Since we moved F90, remove xLAMCH by its FORTRAN INTRINSICs analoguous
-
-
- Contribution by Robert Granat, Bo Kågström, Meiyue Shao (Umeå University and HPC2N),
-PxHSEQR: Nonsymmetric Eigenvalue Problem
-
+link:errata_from_331_to_340.html[see here]

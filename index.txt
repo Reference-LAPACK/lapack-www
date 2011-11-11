@@ -9,7 +9,7 @@ LAPACK -- Linear Algebra PACKage
 [width="100%",cols="^,^,^",frame="none",grid="none"]
 |=======
 | image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] | 
-*Version 3.3.1* + 
+*Version 3.4.0* +
  +
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
 mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
@@ -20,10 +20,7 @@ link:http://www.netlib.org/master_counts2.html#lapack[# access]
  |image:images/lapack2.jpg[LAPACK,scaledwidth="5%"]
 |=======
 
-==========================
- LAPACK is a software package provided by Univ. of Tennessee; Univ. of California, Berkeley; Univ. of Colorado Denver; and NAG Ltd..
-==========================
-
+LAPACK is a software package provided by Univ. of Tennessee; Univ. of California, Berkeley; Univ. of Colorado Denver; and NAG Ltd..
 
 == Presentation
 
@@ -113,7 +110,7 @@ routine to provide support.
  - Download: http://www.netlib.org/lapack/lapack-3.4.0.tgz[lapack-3.4.0.tgz] 
  - link:lapack-3.4.0.html[*LAPACK 3.4.0 Release Notes*]
  - Updated:  November 11, 2011
- - link:http://www.netlib.org/lapack/Errata/index2.html[LAPACK Errata] (Current known bugs)
+ - link:Errata/index.html[LAPACK Errata] (Current known bugs)
 ==========================
 
 === Standard C language APIs for LAPACK

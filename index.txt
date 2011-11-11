@@ -108,12 +108,11 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== *LAPACK, version 3.3.1*
+=== *LAPACK, version 3.4.0*
 ==========================
- - Download: http://www.netlib.org/lapack/lapack-3.3.1.tgz[lapack-3.3.1.tgz] 
- - link:lapack-3.3.1.html[*LAPACK 3.3.1 Release Notes*]
- - Updated:  April 18, 2011
- - Make and link:http://www.cmake.org[Cmake] build process included
+ - Download: http://www.netlib.org/lapack/lapack-3.4.0.tgz[lapack-3.4.0.tgz] 
+ - link:lapack-3.4.0.html[*LAPACK 3.4.0 Release Notes*]
+ - Updated:  November 11, 2011
  - link:http://www.netlib.org/lapack/Errata/index2.html[LAPACK Errata] (Current known bugs)
 ==========================
 
@@ -216,7 +215,6 @@ link:http://www.netlib.org/lapack/testing[LAPACK testing routines]
 
 link:http://www.netlib.org/lapack/lug[HTML version of the LAPACK Users' Guide, Third Edition]
 
-
 link:http://www.netlib.org/lapack/lapackqref.ps[LAPACK Quick Reference Guide to the Driver Routines (VERSION 3.0)]
 
 link:http://www.netlib.org/lapack/lawn81[HTML version of "Quick Installation Guide for LAPACK"]
@@ -267,8 +265,15 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
  * Version 3.3.1:  April 18, 2011
 
+*Version 3.4.0: November 11, 2011*
 
 == Previous Release
+
+=== LAPACK, version 3.3.1
+
+ - Download: http://www.netlib.org/lapack/lapack-3.3.1.tgz[lapack-3.3.1.tgz] 
+ - link:lapack-3.3.1.html[LAPACK 3.3.1 Release Notes]
+ - Updated:  April 18, 2011
 
 === LAPACK version 3.3.0
 

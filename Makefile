@@ -1,6 +1,6 @@
 
 
-all: bug_list.html contributor-list.html faq.html release_notes improvement.html index.html err coding 
+all: bug_list.html contributor-list.html faq.html release_notes improvement.html index.html err coding
 
 bug_list.html: bug_list.txt
 	asciidoc -a toc bug_list.txt
@@ -11,11 +11,13 @@ contributor-list.html: contributor-list.txt
 faq.html: faq.txt
 	asciidoc -a toc faq.txt
 
-release_notes: release_notes.txt release_notes-3.3.0.txt lapack-3.3.1.txt lapack-3.3.0.txt
+release_notes: release_notes.txt release_notes-3.3.0.txt lapack-3.3.1.txt lapack-3.3.0.txt lapack-3.4.0.txt lapacke.txt
 	asciidoc release_notes.txt
 	asciidoc release_notes-3.3.0.txt
 	asciidoc lapack-3.3.1.txt
 	asciidoc lapack-3.3.0.txt
+	asciidoc -a toc lapack-3.4.0.txt
+	asciidoc -a toc lapacke.txt
 
 improvement.html: improvement.txt
 	asciidoc improvement.txt

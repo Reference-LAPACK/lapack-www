@@ -194,7 +194,7 @@ Please contribute to our FAQ if you feel some questions are missing by emailing 
 
 The link:http://icl.cs.utk.edu/lapack-forum[LAPACK User Forum] is also a good source to find answers.
 
-=== Individual Routines
+=== Browse, Download LAPACK routines with on-line documentation browser
 
 ==========================
 link:http://www.netlib.org/lapack/explore-html[Explore LAPACK code]

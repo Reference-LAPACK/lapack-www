@@ -110,7 +110,7 @@ routine to provide support.
  - Download: http://www.netlib.org/lapack/lapack-3.4.0.tgz[lapack-3.4.0.tgz] 
  - link:lapack-3.4.0.html[LAPACK 3.4.0 Release Notes]
  - Updated:  November 11, 2011
- - link:Errata/index.html[LAPACK Errata] (Current known bugs)
+ - link:Errata/index2.html[LAPACK Errata] (Current known bugs)
 ==========================
 
 === Standard C language APIs for LAPACK
@@ -199,17 +199,9 @@ The link:http://icl.cs.utk.edu/lapack-forum[LAPACK User Forum] is also a good so
 ==========================
 link:http://www.netlib.org/lapack/explore-html[Explore LAPACK code]
 
-link:http://www.netlib.org/lapack/single[LAPACK single precision real routines]
+Here you will be able to browse through the many LAPACK functions, and also download individual routine plus its dependency.
 
-link:http://www.netlib.org/lapack/double[LAPACK double precision real routines]
-
-link:http://www.netlib.org/lapack/complex[LAPACK single precision complex routines]
-
-link:http://www.netlib.org/lapack/complex16[LAPACK double precision complex routines]
-
-link:http://www.netlib.org/lapack/util[LAPACK utility routines]
-
-link:http://www.netlib.org/lapack/testing[LAPACK testing routines]
+To access a routine, either use the search functionality or go through the different modules.
 
 ==========================
 
@@ -232,11 +224,11 @@ link:http://www.netlib.org/lapack/lawns/lawn41.ps[LAPACK Working Note 41:  LAPAC
 
 === Manpages
 
-link:manpages.tgz[gzip tar file of the manual pages for the LAPACK driver and computational routines.]
+link:manpages.tgz[gzip tar file of the manual pages for LAPACK ]
 
 Please follow the instructions of the link:README-MANPAGES[README] to install the LAPACK manpages on your machine.
 
-The LAPACK team would like to thank Sylvestre Ledru for helping us maintaing those manpages.
+The LAPACK team would like to thank Sylvestre Ledru for helping us maintaing those manpages and Albert from the Doxygen team.
 
 === *LAWNS*: LAPACK Working Notes 
 

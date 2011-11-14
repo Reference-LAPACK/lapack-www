@@ -26,7 +26,7 @@ improvement.html: improvement.txt
 index.html: index.txt
 	asciidoc -a toc -a toc-title="Menu" index.txt
 
-err: Errata/index2.txt Errata/errata_scalapack.txt
+err: Errata/index2.txt Errata/index2.txt Errata/errata_scalapack.txt
 	@(cd Errata && make && cd ..)
 
 lawn: lawns/index.txt

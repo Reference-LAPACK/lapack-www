@@ -4,7 +4,7 @@ LAPACK FAQ
 == LAPACK
 
 [NOTE]
-If you have a problem or question not answered on this page, please take a look at link:http://www.icl.cs.utk.edu/lapack-forum[*the LAPACK User Forum*]
+If you have a problem or question not answered on this page, please take a look at link:http://icl.cs.utk.edu/lapack-forum[*the LAPACK User Forum*]
 
 === What and where is LAPACK? 
 
@@ -205,7 +205,7 @@ However, the routines are contained in the respective directories on netlib. If 
 
 === I can't get a program to work. What should I do?
 
-Technical questions should be directed to the authors at the link:http://www.icl.cs.utk.edu/lapack-forum[LAPACK User Forum] (preferred means of communication) or at lapack@cs.utk.edu
+Technical questions should be directed to the authors at the link:http://icl.cs.utk.edu/lapack-forum[LAPACK User Forum] (preferred means of communication) or at lapack@cs.utk.edu
 
 Please tell us the type of machine on which the tests were run, the compiler and compiler options that were used, details of the BLAS library that was used, and a copy of the input file if appropriate.
 
@@ -230,7 +230,7 @@ Full details of the LAPACK Test Suite and Timing Suite can be found in link:http
 
 === What technical support for LAPACK is available?
 
-Technical questions and comments should be directed to the authors at the link:http://www.icl.cs.utk.edu/lapack-forum[LAPACK User Forum] (preferred means of communication) or at lapack@cs.utk.edu
+Technical questions and comments should be directed to the authors at the link:http://icl.cs.utk.edu/lapack-forum[LAPACK User Forum] (preferred means of communication) or at lapack@cs.utk.edu
 
 
 === How do I interpret LAPACK testing failures?

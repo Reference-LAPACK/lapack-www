@@ -2,6 +2,20 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn259 +[link:http://www.netlib.org/lapack/lawnspdf/lawn259.pdf[pdf]]+
+.Achieving Numerical Accuracy and High Performance using Recursive Tile LU Factorization.
+
+by	*Jack Dongarra, Mathieu Faverge, Hatem Ltaief and Piotr Luszczek*
+
+UT-CS-11-688, Dec 9, 2011
+
+== lawn258 +[link:http://www.netlib.org/lapack/lawnspdf/lawn258.pdf[pdf]]+
+.A Block-Asynchronous Relaxation Method for Graphics Processing Units.
+
+by	*Hartwig Anzt, Stanimire Tomov, Jack Dongarra and Vincent Heuveline*
+
+UT-CS-11-687, Dec 1, 2011
+
 == lawn257 +[link:http://www.netlib.org/lapack/lawnspdf/lawn257.pdf[pdf]]+
 .Hierarchical QR factorization algorithms for multi-core cluster systems.
 

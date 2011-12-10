@@ -5,6 +5,30 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
 http://netlib.org/lapack/lapack-3.2.html
 
+== [orange]*bug0088* :: Uninitialized variable bug in ZHERFSX
+ * *NOT CONFIRMED*
+ * Present in LAPACK 3.4.0
+ * bug report by Mick Pont from NAG on Sat, 30 Nov 2011 
+ * See link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=2893[forum topic 2893]
+ 
+== [green]*bug0087* :: Wrong call name for XBLAS xLA_RPVGRW, needs to be xLA_GERPVGRW
+ * *CORRECTED* - see svn 1128
+ * Present in LAPACK 3.4.0
+ * bug detected and corrected by Julie
+ 
+== [green]*bug0086* :: ILAxLR:commit r1006 reverts the change made in commit r977
+ * *CORRECTED* - see svn 1099
+ * Present in LAPACK 3.4.0
+ * bug report by Ake Sandgren on Sat, 22 Oct 2011 
+ * See link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01149.html[ LAPACK Mailing list msg 01149]
+ * corrected by Rodney James on Nov 30 2011
+ 
+== [red]*bug0085* :: xGESVD Problem in Workspace computation
+ * *CONFIRMED* in LAPACK 3.4.0
+ * bug report by Marco on Nov 18th 2011
+ * See link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=2861&p=7686#p7686[forum topic 2861]
+ * Problem in Workspace computation
+ 
 == [green]*bug0084* :: Bug Ming Gu
  * *CORRECTED* - see svn 1017
  * bug reported by Ming Gu (UC Berkeley) through Jim Demmel

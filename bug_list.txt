@@ -499,11 +499,13 @@ are not correct
 
  * committed by Rodney James (SVN revision r929, on Tue Feb 17 2011)
 
-== [red]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
- * *TO BE CONFIRMED*
+== [green]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
+ * *CORRECTED* - see svn r1239
  * reported by Pauli Virtanen (scipy team) on Sat Dec 06 2008 (email to lapack@cs.utk.edu)
  * see: link:004.txt[email from Pauli Virtanen]
       see: link:http://scipy.org/scipy/scipy/ticket/709[http://scipy.org/scipy/scipy/ticket/709]
+ * (initially unrelated) bug fix provided by Peng Hong Bo from IBM on Monday 4-1-2012
+ * committed by Rodney James (SVN revision r1239, on Tue 04 02 2012)
 
 == [green]*bug0025* :: serious problem in DGESDD: DGESDD returns negative singular values with INFO = 0
  * *CORRECTED* - see svn r760

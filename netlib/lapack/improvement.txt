@@ -184,29 +184,33 @@ Triangle on top of Square. This is the right-looking version of the subroutines
 and the subroutines are blocked. The T matrices and the block size are part of
 the interface. The companion subroutines xTPMQRT apply the reflectors.
 
- 4. *xSYSVK: LDL^T^ with rook pivoting.* Contribution by Craig Lucas (University
-of Manchester and NAG) and Sven Hammarling (NAG).  These subroutines enable
-better stability than the Bunch-Kaufman pivoting scheme currently used in
-LAPACK xSYSV solvers; also, the elements of L are bounded, which is important
-in some applications.  The computational time of xSYSVK is slightly higher than
-the one of xSYSV.
-
- 5. *CMAKE build system.* We are striving to help our users install our
+ 4. *CMAKE build system.* We are striving to help our users install our
 libraries seamlessly on their machines.  The CMAKE team contributed to our
 effort to port LAPACK and ScaLAPACK under the CMAKE build system. Building
 under Windows has never been easier. This also allows us to release dll for
 Windows, so users no longer need a Fortran compiler to use LAPACK under
 Windows.
 
- 6. *Doxygen documentation.* LAPACK routine documentation has never been more
+ 5. *Doxygen documentation.* LAPACK routine documentation has never been more
 accessible. See http://www.netlib.org/lapack/explore-html/.
 
- 7. *New website allowing for easier navigation.*
+ 6. *New website allowing for easier navigation.*
 
- 8. *LAPACKE - Standard C language APIs for LAPACK.* Since LAPACK 3.3.0, LAPACK
+ 7. *LAPACKE - Standard C language APIs for LAPACK.* Since LAPACK 3.3.0, LAPACK
 includes new C interfaces. With the LAPACK 3.4.0 release, LAPACKE is directly
 integrated within the LAPACK library and has been enriched by the full set of
 LAPACK subroutines. See link:lapacke.html[here].
 
 
 // vim: set syntax=asciidoc:
+
+////
+*Comment* block
+
+4. *xSYSV_ROOK: LDL^T^ with rook pivoting.* Contribution by Craig Lucas (University
+of Manchester and NAG) and Sven Hammarling (NAG).  These subroutines enable
+better stability than the Bunch-Kaufman pivoting scheme currently used in
+LAPACK xSYSV solvers; also, the elements of L are bounded, which is important
+in some applications.  The computational time of xSYSV_ROOK is slightly higher than
+the one of xSYSV.
+////

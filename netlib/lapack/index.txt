@@ -14,7 +14,7 @@ LAPACK -- Linear Algebra PACKage
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
 mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
  +
-link:lapack-announce-subscribe@cs.utk.edu[*Get the latest LAPACK News*] +
+mailto:lapack-announce-subscribe@eecs.utk.edu[*Get the latest LAPACK News*] +
  +
 link:http://www.netlib.org/master_counts2.html#lapack[# access]
  |image:images/lapack2.jpg[LAPACK,scaledwidth="5%"]

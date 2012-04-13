@@ -17,8 +17,10 @@ release_notes: release_notes.txt release_notes-3.3.0.txt lapack-3.3.1.txt lapack
 	asciidoc lapack-3.3.1.txt
 	asciidoc lapack-3.3.0.txt
 	asciidoc -a toc lapack-3.4.0.txt
+	asciidoc -a toc lapack-3.4.1.txt
 	asciidoc -a toc lapacke.txt
 	asciidoc -a toc errata_from_331_to_340.txt
+	asciidoc -a toc errata_from_340_to_341.txt
 
 improvement.html: improvement.txt
 	asciidoc improvement.txt

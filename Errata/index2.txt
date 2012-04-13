@@ -1,7 +1,7 @@
 LAPACK-3.4.0 errata file
 ========================
 
-updated on November 11 2011
+updated on March 20 2012
 
 maintained by Julien Langou, U. Colorado Denver and Julie Langou, U. Tennessee
 
@@ -20,11 +20,32 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  - [green,,1.5]#correction will be included in next release#
  - [green,,1.5]#bug fix available in link:http://netlib.org/lapack/#_svn_access[LAPACK SVN repository]#
 
-== [orange]*bug0088* :: Uninitialized variable bug in ZHERFSX
- * *NOT CONFIRMED*
+== [green]*bug0091* :: xLANHF div by zero
+ * *CORRECTED*- see svn 1254, 1255
+ * Present in LAPACK 3.4.0
+ * bug report by Ake Sandgren, Umea University and HPC2N, on 10-22-2011.
+ * See link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01195.html[LAPACK Mailing list msg 01195]
+ * corrected by Rodney on Apr 11 2012
+
+== [green]*bug0090* :: xGGEV and xGGEVX: Need to unscale if necessary when there is an error in DHGEQZ (QZ iteration failed)
+ * *CORRECTED* - see svn 1231
+ * Present in LAPACK 3.4.0
+ * bug report by Hong Bo Peng Sandgren, on 03-19-2012.
+ * See link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01257.html[LAPACK Mailing list msg 01257]
+ * corrected by Julie on Mar 20 2012
+ 
+== [green]*bug0089* :: unused external declarations
+ * *CORRECTED* - see svn 1091
+ * Present in LAPACK 3.4.0
+ * bug report by Ake Sandgren, Umea University and HPC2N, on 11-16-2011.
+ * See link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01176.html[LAPACK Mailing list msg 01176]
+ 
+== [green]*bug0088* :: Uninitialized variable bug in ZHERFSX
+ * *CORRECTED*- see svn 1262, 1263
  * Present in LAPACK 3.4.0
  * bug report by Mick Pont from NAG on Sat, 30 Nov 2011 
  * See link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=2893[forum topic 2893]
+ * corrected by Julie on April 11 2012
  
 == [green]*bug0087* :: Wrong call name for XBLAS xLA_RPVGRW, needs to be xLA_GERPVGRW
  * *CORRECTED* - see svn 1128
@@ -36,12 +57,14 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  * Present in LAPACK 3.4.0
  * bug report by Ake Sandgren on Sat, 22 Oct 2011 
  * See link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01149.html[ LAPACK Mailing list msg 01149]
- 
-== [red]*bug0085* :: xGESVD Problem in Workspace computation
- * *CONFIRMED* in LAPACK 3.4.0
+
+== [green]*bug0085* :: xGESVD Problem in Workspace computation
+ * *CORRECTED* - see svn 1207
+ * Present in LAPACK 3.4.0
  * bug report by Marco on Nov 18th 2011
  * See link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=2861&p=7686#p7686[forum topic 2861]
  * Problem in Workspace computation
+ * corrected by Julie on Jan 6 2012
  
 == [red]*bug0061* :: zgehrd.f is overflowing 
  * *CONFIRMED*
@@ -96,15 +119,16 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * related to bug0026 below
  * Confirmed by Rodney on Tue, 08 Feb 2011
 
-== [red]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
- * *CONFIRMED*
+== [green]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
+ * *CORRECTED*
  * reported by Pauli Virtanen (scipy team) on Sat Dec 06 2008 (email to lapack@cs.utk.edu)
  * see: link:004.txt[email from Pauli Virtanen]
       see: link:http://scipy.org/scipy/scipy/ticket/709[http://scipy.org/scipy/scipy/ticket/709]
- * problem appears to be with an underflow producing alpha=beta=zero eigenvalues for some cases in the above test code
- * it does not depend on the compiler options in later versions of gfortran (and other compilers), and is also present in SGEEV
- * most likely these issues are due to the shift strategy for QZ
  * Confirmed by Rodney on Tue, 08 Feb 2011
+ * A patch has been proposed by Hong Bo Peng.
+ * Issue was actually in DHGEQZ, the update to B22 was missing
+ * See link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01273.html[ LAPACK Mailing list msg 1273]
+ * committed by Rodney on Tue Apr 3 2012
  
 == [red]*bug0020* :: in xGESDD, workspace query can overflow for large matrices
  * *CONFIRMED*

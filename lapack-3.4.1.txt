@@ -1,0 +1,159 @@
+LAPACK 3.4.1
+============
+
+Release date: Fr 04/20/12.
+
+This material is based upon work supported by the National Science Foundation
+and the Department of Energy under Grant No. NSF-OCI-1032861, NSF-CCF-00444486,
+NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127, DOE-DE-FC02-01ER25478,
+DOE-DE-FC02-06ER25768.
+
+LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
+
+
+1. Support and questions:
+-------------------------
+
+http://icl.cs.utk.edu/lapack-forum/
+
+2. LAPACK 3.4.0: What's new
+---------------------------
+
+.IMPORTANT
+****
+This is just a *BUG FIX release* that includes also some improvement the *CMAKE build system*.
+
+**** 
+
+3. External Contributors
+------------------------
+
+    * CMAKE team
+    * Mick Pont (NAG)
+
+4. Thanks
+---------
+
+Thanks for bug-report/patches/suggestions to:
+Hong Bo Peng (IBM)
+Ake Sandgren (Umea University and HPC2N),
+Marco (from the User Forum),
+Pauli Virtanen (scipy team)
+
+5. Developer list
+-----------------
+
+.Principal Investigators
+
+    * Jim Demmel (University of California,  Berkeley, USA)
+    * Jack Dongarra (University of Tennessee and ORNL, USA)
+    * Julien Langou (University of Colorado Denver, USA)
+
+.LAPACK developers involved in this release
+
+    * Sven Hammarling (NAG Ltd. and University of Manchester, UK)
+    * Igor Kozachenko  (University of California,  Berkeley, USA)
+    * Julie Langou (University of Tennessee, USA)
+    * Benjamin Lipshitz  (University of California,  Berkeley, USA)
+    * Rodney James (University of Colorado Denver, USA)
+
+6. More details
+----------------
+
+6.1.  xGEQRT: QR factorization (improved interface)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.contributors
+
+Rodney James (UC Denver)
+
+.contribution
+
+
+
+6.2.  xTPQRT: Communication-Avoiding QR sequential kernels
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.contributors
+
+Rodney James (UC Denver)
+
+.contribution
+
+
+
+6.3.  BLAS test codes now using F90 machine epsilon, optimization now works
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.contributors
+
+Rodney James (UC Denver)
+
+.contribution
+BLAS test codes now using F90 machine epsilon, optimization now works
+
+6.4.  Fix Thread safety issue
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.contributors
+
+Rodney James (UC Denver)
+
+.contribution
+
+xLARFT routines modified so that V in now [in] only instead of [in/out], now thread safe
+
+6.5.  LAPACK test suite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.contributors
+
+Rodney James (UC Denver)
+
+.contribution
+
+LAPACK test suite modified so that all tests will pass with gfortran (and ifort with -O0, and hopefully others)
+
+6.6.  LAPACKE - Standard C language APIs for LAPACK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.lapacker
+
+Julie Langou (University of Tennessee)
+
+.contribution
+
+Since LAPACK 3.3.0, LAPACK includes new C interfaces. With the LAPACK 3.4.0
+release, LAPACKE is directly integrated within the LAPACK library and has been
+enriched with the new set of LAPACK subroutines. See link:lapacke.html[here].
+
+Headers and code have been cleaned up and some routines have been added. 
+
+6.7.  CMAKE build system
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.contributors
+
+CMAKE team
+
+.lapacker
+
+Julie Langou (University of Tennessee)
+
+.contribution
+
+We are striving to help our users install our libraries seamlessly on their
+machines.  The CMAKE team contributed to our effort to port LAPACK
+under the CMAKE build system. LAPACKE integration has been improved, and support for
+XLF compiler has been added.
+With this release, we are releasing for Windows all dlls: reference BLAS, LAPACK and LAPACKE
+Windows are now able to call LAPACKE directly form Visual Studio. (No Fortran involved!)
+More info and download available at http://icl.cs.utk.edu/lapack-for-windows/lapack/
+
+8.  Bug Fix
+-----------
+
+link:errata_from_340_to_341.html[see here]
+
+// vim: set syntax=asciidoc:

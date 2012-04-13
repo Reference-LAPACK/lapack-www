@@ -2,6 +2,66 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn266 +[link:http://www.netlib.org/lapack/lawnspdf/lawn266.pdf[pdf]]+
+.LU Factorization with Partial Pivoting for a Multi-CPU, Multi-GPU Shared Memory System.
+
+by	*Jakub Kurzak, Piotr Luszczek, and Mathieu Faverge*
+
+****
+accepted to VECPAR'12
+****
+
+== lawn265 +[link:http://www.netlib.org/lapack/lawnspdf/lawn265.pdf[pdf]]+
+.Using group replication for resilience on exascale systems.
+
+by	*Marin Bougeret, Henri Casanova, Yves Robert, Frédéric Vivien and Dounia Zaidouni*
+
+== lawn264 +[link:http://www.netlib.org/lapack/lawnspdf/lawn264.pdf[pdf]]+
+.Dense Linear Algebra on Distributed Heterogeneous Hardware with a Symbolic DAG Approach.
+
+by	*George Bosilca, Aurelien Bouteiller, Anthony Danalis, Thomas Herault, Piotr Luszczek, and Jack J. Dongarra*
+
+.To be published in
+****
+Title: *Scalable Computing and Communications: Theory and Practice*
+
+Editors: *Samee U. Khan, Lizhe Wang, and Albert Y. Zomaya*
+
+Publisher: *John Wiley & Sons*
+****
+
+== lawn263 +[link:http://www.netlib.org/lapack/lawnspdf/lawn263.pdf[pdf]]+
+.LU factorization with panel rank revealing pivoting and its communication avoiding version
+
+by	*Amal Khabou, James W. Demmel, Laura Grigori, and Ming Gu*
+
+UCB/EECS-20112-XX, Janary 24, 2012.
+
+== lawn262 +[link:http://www.netlib.org/lapack/lawnspdf/lawn262.pdf[pdf]]+
+.Using replication for resilience on exascale systems.
+
+by	*Marin Bougeret, Henri Casanova, Yves Robert, Frédéric Vivien and Dounia Zaidouni*
+
+UT-CS-11-691 Dec 10, 2011
+
+== lawn261 +[link:http://www.netlib.org/lapack/lawnspdf/lawn261.pdf[pdf]]+
+.A parallel tiled solver for dense symmetric indefinite systems on multicore architectures.
+
+by	*Marc Baboulin, Dulceneia Becker, and Jack Dongarra*
+
+ICL-UT-11-07, INRIA RR-7762 Dec 14, 2011
+
+****
+To appear in the proceedings of IPDPS 2012.
+****
+
+== lawn260 +[link:http://www.netlib.org/lapack/lawnspdf/lawn260.pdf[pdf]]+
+.GPU-Accelerated Asynchronous Error Correction for Mixed Precision Iterative Refinement.
+
+by	*Hartwig Anzt, Piotr Luszczek, Jack Dongarra, and Vincent Heuveline*
+
+UT-CS-11-690, Dec 14, 2011
+
 == lawn259 +[link:http://www.netlib.org/lapack/lawnspdf/lawn259.pdf[pdf]]+
 .Achieving Numerical Accuracy and High Performance using Recursive Tile LU Factorization.
 
@@ -79,7 +139,9 @@ by	*Fred G. Gustavson, Jerzy Wásniewski, Jack J. Dongarra, José R. Herrero and
 
 DTU/IMM-Technical-Report-2011-11.
 
+****
 Submitted at TOMS
+****
 
 == lawn248 +[link:http://www.netlib.org/lapack/lawnspdf/lawn248.pdf[pdf]]+
 .Communication-optimal parallel 2.5D matrix multiplication and LU factorization algorithms.
@@ -95,7 +157,9 @@ by	*Hatem Ltaief, Piotr Luszczek, and Jack Dongarra*
 
 UT-CS-11-673, May 18, 2011
 
+****
 Submitted at TOMS
+****
 
 == lawn246 +[link:http://www.netlib.org/lapack/lawnspdf/lawn246.pdf[pdf]]+
 .Accelerating linear system solutions using randomization techniques.
@@ -111,7 +175,9 @@ by	*Jakub Kurzak, Stanimire Tomov, and Jack Dongarra*
 
 UT-CS-11-671, Apr 18, 2011
 
-Submitted at SC11 November 12-18, 2011, Seattle, Washington, USA.
+****
+accepted to IEEE TPDS
+****
 
 == lawn244 +[link:http://www.netlib.org/lapack/lawnspdf/lawn244.pdf[pdf]]+
 .Two-Stage Tridiagonal Reduction for Dense Symmetric Matrices using Tile Algorithms on Multicore Architectures.
@@ -127,7 +193,9 @@ by	*Azzam Haidar, Hatem Ltaief, Asim YarKhan and Jack Dongarra*
 
 UT-CS-11-666, Mar 10, 2011
 
+****
 Submitted at Concurrency and Computations.
+****
 
 == lawn242 +[link:http://www.netlib.org/lapack/lawnspdf/lawn242.pdf[pdf]]+
 .A Fully Empirical Autotuned Dense QR Factorization For Multicore Architectures.
@@ -143,7 +211,9 @@ by	*Fengguang Song, Hatem Ltaief, Bilel Hadri and Jack Dongarra*
 
 UT-CS-10-653, Mar 4, 2011
 
+****
 Published at SC'10.
+****
 
 == lawn240 +[link:http://www.netlib.org/lapack/lawnspdf/lawn240.pdf[pdf]]+
 .Communication-Avoiding QR Decomposition for GPUs.
@@ -152,7 +222,9 @@ by	*Michael Anderson, Grey Ballard, James Demmel and Kurt Keutzer*
 
 update of UCB/EECS-2010-131, Feb 18, 2011
 
+****
 To appear in IPDPS'11
+****
 
 == lawn239 +[link:http://www.netlib.org/lapack/lawnspdf/lawn239.pdf[pdf]]+
 .Communication bounds for heterogeneous architectures.
@@ -195,7 +267,9 @@ by	*Agullo, E., Augonnet, C., Dongarra, J., Faverge, M., Ltaief, H., Thibault, S
 
 UT-CS-10-XXX, Oct, 2010.
 
+****
 Proceedings of IPDPS 2011
+****
 
 == lawn232 +[link:http://www.netlib.org/lapack/lawnspdf/lawn232.pdf[pdf]]+
 .Distributed-Memory Task Execution and Dependence Tracking within DAGuE and the DPLASMA Project.
@@ -218,7 +292,9 @@ by	*Emmanuel Agullo, Cedric Augonnet, Jack Dongarra, Hatem Ltaief, Raymond Namys
 
 UT-CS-10-658, Sep 15, 2010.
 
+****
 To appear in GPU Computing GEMs, vol.2
+****
 
 == lawn229 +[link:http://www.netlib.org/lapack/lawnspdf/lawn229.pdf[pdf]]+
 .An Implementation of the Tile QR Factorization for a GPU and Multiple CPUs.
@@ -226,7 +302,10 @@ To appear in GPU Computing GEMs, vol.2
 by	*Jakub Kurzak, Rajib Nath, Peng Du, and Jack Dongarra*
 
 UT-CS-10-657, Sep 15, 2010.
+
+****
 Submitted to	PARA'10
+****
 
 == lawn228 +[link:http://www.netlib.org/lapack/lawnspdf/lawn228.pdf[pdf]]+
 .From CUDA to OpenCL: Towards a Performance-portable Solution for Multi-platform GPU Programming.
@@ -246,9 +325,12 @@ UT-CS-10-655, July 29, 2010.
 .CALU: a communication optimal LU factorization algorithm.
 
 by	*Laura Grigori, James W Demmel, and Hua Xiang*
+
 UCB/EECS-2010-29, March 15, 2010.
 
+****
 Submitted to SIAM Journal on Matrix Analysis and Applications (SIMAX).
+****
 
 == lawn225 +[link:http://www.netlib.org/lapack/lawnspdf/lawn225.pdf[pdf]]+
 .Dense Linear Algebra Solvers for Multicore with GPU Accelerators.
@@ -257,7 +339,9 @@ by	*Stanimire Tomov, Rajib Nath, Hatem Ltaief, and Jack Dongarra*
 
 UT-CS-09-649, February 18, 2010.
 
-Published in	In the Proceedings of IPDPS 2010: 24th IEEE International Parallel and Distributed Processing Symposium, Atlanta, GA, April 2010.
+****
+Published In the Proceedings of IPDPS 2010: 24th IEEE International Parallel and Distributed Processing Symposium, Atlanta, GA, April 2010.
+****
 
 == lawn224 +[link:http://www.netlib.org/lapack/lawnspdf/lawn224.pdf[pdf]]+
 .QR Factorization of Tall and Skinny Matrices in a Grid Computing Environment.
@@ -266,7 +350,9 @@ by	*Emmanuel Agullo, Camille Coti, Jack Dongarra, Thomas Herault, and Julien Lan
 
 UT-CS-10-651, January 6, 2010.
 
-Published in	In the Proceedings of IPDPS 2010: 24th IEEE International Parallel and Distributed Processing Symposium, Atlanta, GA, April 2010.
+****
+Published In the Proceedings of IPDPS 2010: 24th IEEE International Parallel and Distributed Processing Symposium, Atlanta, GA, April 2010.
+****
 
 == lawn223 +[link:http://www.netlib.org/lapack/lawnspdf/lawn223.pdf[pdf]]+
 .A Scalable High Performant Cholesky Factorization for Multicore with GPU Accelerators.
@@ -320,19 +406,20 @@ UT-CS-09-640, April 28, 2009.
 .A novel parallel QR algorithm for hybrid distributed memory HPC systems.
 
 by	*Robert Granat Bo Kagstrom and Daniel Kressner*
+
 UMINF-09.06, April 6, 2009.
 
 == lawn215 +[link:http://www.netlib.org/lapack/lawnspdf/lawn215.pdf[pdf]]+
 .Communication-optimal Parallel and Sequential Cholesky decomposition.
 
 by	*Grey Ballard, James Demmel, Olga Holtz, and Oded Schwartz*
+
 UCB/EECS-2009-29, February 13, 2009.
 
 == lawn214 +[link:http://www.netlib.org/lapack/lawnspdf/lawn214.pdf[pdf]]+
-.Scheduling Two-sided Transformations using Algorithms-
+.Scheduling Two-sided Transformations using Algorithms by-Tiles on Multicore Architectures.
 
 by	*Hatem Ltaief, Jakub Kurzak and Jack Dongarra*
-by-Tiles on Multicore Architectures.
 
 UT-CS-09-637, February 11, 2009.
 
@@ -372,10 +459,9 @@ by	*Hatem Ltaief, Jakub Kurzak, and Jack Dongarra*
 UT-CS-08-631, October 1, 2008.
 
 == lawn208 +[link:http://www.netlib.org/lapack/lawnspdf/lawn208.pdf[pdf]]+
-.Parallel Block Hessenberg Reduction using Algorithms-
+.Parallel Block Hessenberg Reduction using Algorithms by Tiles for Multicore Architectures Revisited.
 
 by	*Hatem Ltaief, Jakub Kurzak, and Jack Dongarra*
-by-Tiles for Multicore Architectures Revisited.
 
 UT-CS-08-624, August 7, 2008.
 
@@ -390,6 +476,7 @@ UT-CS-08-622, August 4, 2008.
 .The Problem with the Linpack Benchmark Matrix Generator.
 
 by	*Jack Dongarra, and Julien Langou*
+
 UCD-CCM-271, June 28, 2008.
 
 == lawn205 +[link:http://www.netlib.org/lapack/lawnspdf/lawn205.pdf[pdf]]+
@@ -403,18 +490,21 @@ UT-CS-08-620, June 19, 2008.
 .Communication-optimal parallel and sequential QR and LU factorizations.
 
 by	*James W. Demmel, Laura Grigori, Mark Frederick Hoemmen and Julien Langou*
+
 UCB/EECS-2008-89, August 4, 2008.
 
 == lawn203 +[link:http://www.netlib.org/lapack/lawnspdf/lawn203.pdf[pdf]]+
 .Non-Negative Diagonals and High Performance on Low-Profile Matrices from Householder QR.
 
 by	*James W. Demmel, Mark Hoemmen, Yozo Hida, and E. Jason Riedy*
+
 UCB/EECS-2008-76, May 30, 2008.
 
 == lawn202 +[link:http://www.netlib.org/lapack/lawnspdf/lawn202.pdf[pdf]]+
 .LU, QR and Cholesky Factorizations using Vector Capabilities of GPUs.
 
 by	*Vasily Volkov and James W. Demmel*
+
 UCB/EECS-2008-49, May 15, 2008.
 
 == lawn201 +[link:http://www.netlib.org/lapack/lawnspdf/lawn201.pdf[pdf]]+
@@ -449,24 +539,28 @@ February 2008.
 .Using GPUs to Accelerate the Bisection Algorithm for Finding Eigenvalues of Symmetric Tridiagonal Matrices.
 
 by	*Vasily Volkov and James W. Demmel*
+
 UCB/EECS-2007-179, January 2008.
 
 == lawn196 +[link:http://www.netlib.org/lapack/lawnspdf/lawn196.pdf[pdf]]+
 .A global convergence proof of cyclic Jacobi methods with block rotations.
 
 by	*Zlatko Drmaƒç*
+
 December 2007.
 
 == lawn195 +[link:http://www.netlib.org/lapack/lawnspdf/lawn195.pdf[pdf]]+
 .ScaLAPACK's MRR Algorithm.
 
 by	*Christof V√∂mel*
+
 November 2007.
 
 == lawn194 +[link:http://www.netlib.org/lapack/lawnspdf/lawn194.pdf[pdf]]+
 .A Refined Representation Tree for MRRR.
 
 by	*Christof V√∂mel*
+
 November 2007.
 
 == lawn193 +[link:http://www.netlib.org/lapack/lawnspdf/lawn193.pdf[pdf]]+
@@ -480,6 +574,7 @@ UT-cs-07-604, September 2007.
 .Parallel eigenvalue reordering in real Schur forms.
 
 by	*R. Granat, B. K√•gstr√∂m, D. Kressner*
+
 September 2007.
 
 == lawn191 +[link:http://www.netlib.org/lapack/lawnspdf/lawn191.pdf[pdf]]+
@@ -495,7 +590,10 @@ by	*Alfredo Buttari, Julien Langou, Jakub Kurzak, and Jack Dongarra*
 .Parallel Tiled QR Factorization for Multicore Architectures.
 
 UT-CS-07-598, July 2007.
-Published in	Concurrency and Computation: Practice and Experience, volume 20, Issue 13, pages 1573-1590, Sep 2008, DOI: 10.1002/cpe.1301
+
+****
+Published in Concurrency and Computation: Practice and Experience, volume 20, Issue 13, pages 1573-1590, Sep 2008, DOI: 10.1002/cpe.1301
+****
 
 == lawn189 +[link:http://www.netlib.org/lapack/lawnspdf/lawn189.pdf[pdf]]+
 .Fast and Small Short Vector SIMD Matrix Multiplication Kernels for the CELL Processor.
@@ -511,7 +609,9 @@ by	*James Demmel, Yozo Hida, Xiaoye S. Li, and E. Jason Riedy*
 
 May 2007
 
-Published in	ACM Transactions on Mathematical Software, Vol. 35, No. 4, 2009.
+****
+Published in ACM Transactions on Mathematical Software, Vol. 35, No. 4, 2009.
+****
 
 == lawn187 +[link:http://www.netlib.org/lapack/lawnspdf/lawn187.pdf[pdf]]+
 .LAPACK 3.1 xHSEQR: Tuning and Implementation Notes on the Small Bulge Multi-shift QR Algorithm with Aggressive Early Deflation.
@@ -527,7 +627,9 @@ by	*James Demmel, Ioana Dumitriu, and Olga Holtz*
 
 May 2007
 
-Published in	 Numerische Mathematik, Volume 108, Issue 1 (October 2007), Pages: 59-91, Year of Publication: 2007, ISSN:0029-599X
+****
+Published in Numerische Mathematik, Volume 108, Issue 1 (October 2007), Pages: 59-91, Year of Publication: 2007, ISSN:0029-599X
+****
 
 == lawn185 +[link:http://www.netlib.org/lapack/lawnspdf/lawn185.pdf[pdf]]+
 .Limitations of the PlayStation 3 for High Performance Cluster Computing.
@@ -598,36 +700,42 @@ UT-CS-06-580, September 2006.
 .On the failure of rank revealing QR factorization software - a case study
 
 by	*Zlatko Drmaƒç and Zvonimir Bujanoviƒá*
+
 June 2006.
 
 == lawn175 +[link:http://www.netlib.org/lapack/lawnspdf/lawn175.pdf[pdf]]+
 .Exploiting the Performance of 32 bit Floating Point Arithmetic in Obtaining 64 bit Accuracy (Revisiting Iterative Refinement for Linear Systems)
 
 by	*Julie Langou, Julien Langou, Piotr Luszczek, Jakub Kurzak, Alfredo Buttari and Jack Dongarra*
+
 June 2006.
 
 == lawn174 +[link:http://www.netlib.org/lapack/lawnspdf/lawn174.pdf[pdf]]+
 .Cache Efficient Biadiagonalization Using BLAS 2.5 Operators
 
 by	*G. W. Howell, J. W. Demmel, C. T. Fulton, S. Hammarling, and K. Marmol*
+
 February 2006.
 
 == lawn173 +[link:http://www.netlib.org/lapack/lawnspdf/lawn173.pdf[pdf]]+
 .Multishift Variants of the QZ Algorithm with Agressive Early Deflation
 
 by	*Bo K√•gstr√∂m and Daniel Kressner*
+
 February 2006.
 
 == lawn172 +[link:http://www.netlib.org/lapack/lawnspdf/lawn172.pdf[pdf]]+
 .Benefits oF IEEE-754 Features in Modern Symmetric Tridiagonal Eigensolvers
 
 by	*Osni A. Marques, E. Jason Riedy, and Christof V√∂mel*
+
 Technical Report UCB/CSD-05-1414, September 2005.
 
 == lawn171 +[link:http://www.netlib.org/lapack/lawnspdf/lawn171.pdf[pdf]]+
 .Block Algorithms for Reordering Standard and Generalized Schur Forms
 
 by	*Daniel Kressner*
+
 September 2005.
 Updated February 2006.
 
@@ -635,24 +743,28 @@ Updated February 2006.
 .New fast and accurate Jacobi SVD algorithm: II
 
 by	*Zlatko Drmac and Kresimir Veselic*
+
 August 2005.
 
 == lawn169 +[link:http://www.netlib.org/lapack/lawnspdf/lawn169.pdf[pdf]]+
 .New fast and accurate Jacobi SVD algorithm: I
 
 by	*Zlatko Drmac and Kresimir Veselic*
+
 August 2005.
 
 == lawn168 +[link:http://www.netlib.org/lapack/lawnspdf/lawn168.pdf[pdf]]+
 . PDSYEVR. ScaLAPACK‚Äôs parallel MRRR algorithm for the symmetric eigenvalue problem
 
 by	*Dominic Antonelli and Christof V√∂mel*
+
 Technical Report UCB/CSD-05-1399, August 2005.
 
 == lawn167 +[link:http://www.netlib.org/lapack/lawnspdf/lawn167.pdf[pdf]]+
 .Subset Computations with the MRRR algorithm
 
 by	*Osni A. Marques, Beresford N. Parlett, and Christof V√∂mel*
+
 Technical Report UCB/CSD-05-1392, August 2005.
 
 == lawn166 +[link:http://www.netlib.org/lapack/lawnspdf/lawn166.pdf[pdf]]+
@@ -689,7 +801,10 @@ UT-CS-04-542, December, 2004.
 by	*Inderjit S. Dhillon, Beresford N. Parlett, and Christof V√∂mel*
 
 UT-CS-04-541, December, 2004.
-Published in	ACM Transactions on Mathematical Software (TOMS), Volume 32, Issue 4 (December 2006), Pages: 533-560, Year of Publication: 2006, ISSN:0098-3500
+
+****
+Published in ACM Transactions on Mathematical Software (TOMS), Volume 32, Issue 4 (December 2006), Pages: 533-560, Year of Publication: 2006, ISSN:0098-3500
+****
 
 == lawn161 +[link:http://www.netlib.org/lapack/lawnspdf/lawn161.pdf[pdf]]+
 .LAPack-Style Codes for Level 2 and 3 Pivoted Cholesky Factorizations
@@ -704,7 +819,10 @@ UT-CS-04-522, February 2004
 by	*Zizhong Chen, Jack Dongarra, Piotr Luszczek, and Kenneth Roche*
 
 UT-CS-03-499, January 2003
-Published in	Parallel Computing, Volume 29, Issues 11-12, November-December 2003, Pages 1723-1743
+
+****
+Published in Parallel Computing, Volume 29, Issues 11-12, November-December 2003, Pages 1723-1743
+****
 
 == lawn159 +[link:http://www.netlib.org/lapack/lawnspdf/lawn159.pdf[pdf]]+
 .Finite-choice algorithm optimization in Conjugate Gradients
@@ -726,7 +844,10 @@ UT-CS-02-497, December 2002
 by	*Jack Dongarra and Victor Eijkhout*
 
 UT-CS-02-484, August 2002
-Published in	International Journal of High Performance Computing Applications, Vol. 17, Year. 2, pages: 2-7, DOI: 10.1177
+
+****
+Published in International Journal of High Performance Computing Applications, Vol. 17, Year. 2, pages: 2-7, DOI: 10.1177
+****
 
 == lawn156 +[link:http://www.netlib.org/lapack/lawnspdf/lawn156.pdf[pdf]]+
 .Polynomial acceleration of optimised multi-grid smoothers basic theory
@@ -741,7 +862,10 @@ UT-CS-02-477, August 2002
 by	*Beresford N. Parlett and Osni A. Marques*
 
 UT-CS-02-475, August 2002
-Published in	Linear Algebra and Applications, year 1999, volume 309, page 2000
+
+****
+Published in Linear Algebra and Applications, year 1999, volume 309, page 2000
+****
 
 == lawn154 +[link:http://www.netlib.org/lapack/lawnspdf/lawn154.pdf[pdf]]+
 .Orthogonal Eigenvectors and Relative Gaps

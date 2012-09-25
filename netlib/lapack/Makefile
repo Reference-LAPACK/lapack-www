@@ -1,6 +1,6 @@
 
 
-all: bug_list.html contributor-list.html faq.html release_notes improvement.html index.html err coding
+all: bug_list.html contributor-list.html faq.html release_notes improvement.html index err coding
 
 bug_list.html: bug_list.txt
 	asciidoc -a toc bug_list.txt
@@ -14,19 +14,26 @@ faq.html: faq.txt
 release_notes: release_notes.txt release_notes-3.3.0.txt lapack-3.3.1.txt lapack-3.3.0.txt lapack-3.4.0.txt lapacke.txt errata_from_331_to_340.txt
 	asciidoc release_notes.txt
 	asciidoc release_notes-3.3.0.txt
+	asciidoc release_notes-3.4.0.txt
+	asciidoc release_notes-3.4.1.txt
+	asciidoc release_notes-3.4.2.txt
 	asciidoc lapack-3.3.1.txt
 	asciidoc lapack-3.3.0.txt
 	asciidoc -a toc lapack-3.4.0.txt
 	asciidoc -a toc lapack-3.4.1.txt
+	asciidoc -a toc lapack-3.4.2.txt
 	asciidoc -a toc lapacke.txt
 	asciidoc -a toc errata_from_331_to_340.txt
 	asciidoc -a toc errata_from_340_to_341.txt
+	asciidoc -a toc errata_from_341_to_342.txt
 
 improvement.html: improvement.txt
 	asciidoc improvement.txt
 
-index.html: index.txt
+index: index.txt
 	asciidoc -a toc -a toc-title="Menu" index.txt
+	scp index.html index.txt netlib.org:/netlib/lapack
+	
 
 err: Errata/index2.txt Errata/index2.txt Errata/errata_scalapack.txt
 	@(cd Errata && make && cd ..)

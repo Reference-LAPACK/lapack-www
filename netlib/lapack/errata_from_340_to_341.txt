@@ -1,6 +1,14 @@
 Bugs corrected from 3.4.0 to 3.4.1
 ==================================
 
+== [green]*bug0092* :: xLAED6 avoid div by zero
+ * *CORRECTED*
+ * Present in LAPACK 3.4.0
+ * bug report by Mict Pont (NAG).
+ * In the 40 loop - when DSCALE(I)=TAU you get a divide by zero (rare in practice). This can cause some compilers to immediately stop, e.g. the Sun compiler.
+ * Sent directly yo Julie
+ * corrected by Julie on Apr 18 2012
+
 == [green]*bug0091* :: xLANHF div by zero
  * *CORRECTED*- see svn 1254, 1255
  * Present in LAPACK 3.4.0
@@ -46,6 +54,15 @@ Bugs corrected from 3.4.0 to 3.4.1
  * See link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=2861&p=7686#p7686[forum topic 2861]
  * Problem in Workspace computation
  * corrected by Julie on Jan 6 2012
+
+== [green]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
+ * *CORRECTED*
+ * reported by Vasile Sima on Thu Jan 22 2009
+ * see: link:008.txt[email from Vasile]
+ * more information at: see link:http://netlib.org/lapack/Errata/vrac/lapack_known_issues.html[lapack known issues]
+ * related to bug0026 below
+ * Confirmed by Rodney on Tue, 08 Feb 2011
+ * committed by Rodney on Tue Apr 17 2012
 
 == [green]*bug0026* :: problem when playing with DGEEV and gfortran optimization flags
  * *CORRECTED*

@@ -2,10 +2,56 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+
+== lawn273 +[link:http://www.netlib.org/lapack/lawnspdf/lawn273.pdf[pdf]]+
+.Efficient computation of condition estimates for linear least squares problems
+
+by *Marc Baboulin, Serge Gratton, Remi Lacroix and Alan Laub*
+
+Inria Research Report 8065 Sep 2012
+
+== lawn272 +[link:http://www.netlib.org/lapack/lawnspdf/lawn272.pdf[pdf]]+
+.Providing GPU Capability to LU and QR within the ScaLAPACK Framework
+
+by *Peng Du, Stanimire Tomov, and Jack Dongarra*
+
+UT-CS-12-699 Sep 2012
+
+== lawn271 +[link:http://www.netlib.org/lapack/lawnspdf/lawn271.pdf[pdf]]+
+.Optimally packed chains of bulges in multishift QR algorithms
+
+by	*Lars Karlsson, and Daniel Kressner*
+
+== lawn270 +[link:http://www.netlib.org/lapack/lawnspdf/lawn270.pdf[pdf]]+
+.How LAPACK library enables Microsoft Visual Studio support with CMake and LAPACKE
+
+by	*Julie Langou, Bill Hoffman, and Brad King*
+
+UT-CS-12-698 Jul 2, 2012
+
+== lawn269 +[link:http://www.netlib.org/lapack/lawnspdf/lawn269.pdf[pdf]]+
+.Unified Model for Assessing Checkpointing Protocols at Extreme-Scale
+
+by	*George Bosilca, Aurélien Bouteiller, Elisabeth Brunet, Franck Cappello, Jack Dongarra, Amina Guermouche, Thomas Hérault, Yves Robert, Frédéric Vivien, and Dounia Zaidouni*
+
+UT-CS-12-697 Jun 4, 2012
+
+== lawn268 +[link:http://www.netlib.org/lapack/lawnspdf/lawn268.pdf[pdf]]+
+.Combining Process Replication and Checkpointing for Resilience on Exascale Systems
+
+by	*Henri Casanova, Yves Robert, Frédéric Vivien, and Dounia Zaidouni*
+
+UT-CS-12-696 Jun 4, 2012
+
+== lawn267 +[link:http://www.netlib.org/lapack/lawnspdf/lawn267.pdf[pdf]]+
+.Preliminary Results of Autotuning GEMM Kernels for the NVIDIA Kepler Architecture – GeForce GTX 680.
+
+by	*Jakub Kurzak, Piotr Luszczek, Stanimire Tomov, and Jack Dongarra*
+
 == lawn266 +[link:http://www.netlib.org/lapack/lawnspdf/lawn266.pdf[pdf]]+
 .LU Factorization with Partial Pivoting for a Multi-CPU, Multi-GPU Shared Memory System.
 
-by	*Jakub Kurzak, Piotr Luszczek, and Mathieu Faverge*
+by	*Jakub Kurzak, Piotr Luszczek, Mathieu Faverge, and Jack Dongarra*
 
 ****
 accepted to VECPAR'12
@@ -15,6 +61,8 @@ accepted to VECPAR'12
 .Using group replication for resilience on exascale systems.
 
 by	*Marin Bougeret, Henri Casanova, Yves Robert, Frédéric Vivien and Dounia Zaidouni*
+
+INRIA Research report RR-7876, February 2012
 
 == lawn264 +[link:http://www.netlib.org/lapack/lawnspdf/lawn264.pdf[pdf]]+
 .Dense Linear Algebra on Distributed Heterogeneous Hardware with a Symbolic DAG Approach.
@@ -1817,7 +1865,7 @@ by	*E. Anderson, Z. Bai, C. Bischof, J. Demmel, J. Dongarra, J. DuCroz, A. Green
 
 UT-CS-90-105, May 1990.
 
-== lawn19 +[link:http://www.netlib.org/lapack/lawnspdf/lawn19.pdf[pdf]]+, download scanned copy with figures [pdf scan]
+== lawn19 +[link:http://www.netlib.org/lapack/lawnspdf/lawn19.pdf[pdf]]+, download scanned copy with figures +[link:http://www.netlib.org/lapack/lawnspdf/lawn19_scan.pdf[pdf scan]]
 .Evaluating Block Algorithm Variants in LAPACK
 
 by	*E. Anderson and J. Dongarra*

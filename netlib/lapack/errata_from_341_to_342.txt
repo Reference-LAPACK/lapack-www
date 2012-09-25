@@ -1,0 +1,72 @@
+Bugs corrected from 3.4.1 to 3.4.2
+==================================
+
+== [green]*bug0100* :: [S,D]gesdd correct minimum LWORK size
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Tim Wentz (CRAY) on August 23 2012
+ * Email sent directly to Julie
+ * correct LWORK size bug for the case JOBZ='A' and M >> N (which corresponds to path 4 in the code)
+ * the minimum LWORK size in this case had incorrectly used N as the length of LWORK to the DORGQR call, when it should have been M
+ * Corrected by Rodney on August 23rd in rev 1329
+
+== [green]*bug0099* :: [S,D]sgesvj array SVA(N2=0) can be out of the array boundary
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Shandong Lao (ORACLE) on August 20 2012
+ * Email sent directly to Julie
+ * Corrected by Rodney on August 21st in rev 1327
+
+== [green]*bug0098* :: DSYEV may return non-orthogonal eigenvectors
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Duncan Po (Mathworks) on August 15 2012
+ * See link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=3597[forum topic 3597]
+ * Corrected by Rodney on August 16 2012 in rev 1319
+
+== [green]*bug0097* :: [S,D]LASQ3 could cause NaNs appearance in ?GESVD and ?GESDD
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Alexander Kobotov (INTEL) on June 28 2012
+ * See link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=3455[forum topic 3455]
+ * Corrected by Rodney on rev
+
+== [green]*bug0096* :: ?STEMR sorting is not done for N=2.
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Joseph Young (SANDIA) on June 26 2012
+ * bug report sent to lapack mailing list
+ * corrected by Julie on July 3 2012 in rev 1307
+
+== [green]*bug0095* :: [S,D]LASQ3 could cause NaNs appearance in ?GESVD and ?GESDD
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Alexander Kobotov (INTEL) on June 29 2012
+ * Added fix to prevent dividing by T when T=0 .
+ * See link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=3455[forum topic 3455]
+ * corrected by Rodney on June 29 2012 in rev 1304
+
+== [green]*bug0094* :: [S,D]SYEVR and [C,Z]SYEVR routine - workspace indices problem
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Keita Teranishi (CRAY) on May 18 2012
+ * INDIWO should be INDIFL+N.  Otherwise, subsequent {S,D}STEIN call takes the same address for IWORK(INDIWO) and INWROK(INDIFL).
+ * Sent to LAPACK team
+ * corrected by Julie on May 21 2012 in rev 1302
+
+== [green]*bug0093* :: LAPACKE - LAPACKE_xlange routine - workspace problem
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Mathieu (PLASMA)
+ * Was allocating workspace for Frobenius norm, but not inf norm - This is wrong, only the inf norm needs a workspace.
+ * Sent directly yo Julie
+ * corrected by Julie on May 11 2012 in rev 1299
+
+== [green]*bug0020* :: in xGESDD, workspace query can overflow for large matrices
+ * *CLOSED*
+ * reported by Stephan Ripke (Broad Institute, Boston) on Thu May 21 2009
+ * confirmed by Julien Langou on Thu May 21 2009
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1418[forum topic 1418]
+ * It's just the usual 32-bit integer overflow issue, which is a user problem, not a bug in the code.
+ * Recompiling everything with 64-bit integers is the correct way to deal with this issue.
+

@@ -5,18 +5,18 @@ LAPACK RELEASE NOTES
 1. Latest LAPACK Release 
 ------------------------
 
-*Version:* 3.4.1
+*Version:* 3.4.2
 
-*Release date:* April 20, 2012
+*Release date:* September 25, 2012
 
-link:lapack-3.4.1.html[*LAPACK 3.4.1 Release Notes*]
+link:lapack-3.4.2.html[*LAPACK 3.4.2 Release Notes*]
 
 
 2. Latest LAPACK Errata
 ------------------------
 LAPACK has been tested on a variety of architectures.  However, keep in mind that we do not have access to every possible type of machine, and the regrettable bug report will appear.  We apologize for any inconvenience this may cause to our users, and strongly encourage users to post your query on the http://icl.cs.utk.edu/lapack-forum[LAPACK forum] if you suspect an abnormality.
 
-link:Errata/index2.html[*LAPACK 3.4.1 Errata*]
+link:Errata/index2.html[*LAPACK 3.4.2 Errata*]
 
 3. Errata for LAPACK Users' Guide, Third Edition
 ------------------------------------------------
@@ -55,6 +55,7 @@ link:html/errata.lug[Errata in LAPACK Users' Guide, Third Edition]
 *Version 3.4.0: November 11, 2011 link:lapack-3.4.0.html[Release Notes for LAPACK 3.4.0 ]*
 
  * Version 3.4.1: April 20, 2012 link:lapack-3.4.1.html[Release Notes for LAPACK 3.4.1 ]
+ * Version 3.4.2: September 25, 2012 link:lapack-3.4.2.html[Release Notes for LAPACK 3.4.2 ]
 
 
 5. Previous releases

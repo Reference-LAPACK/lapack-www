@@ -17,7 +17,7 @@ California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
 
 http://icl.cs.utk.edu/lapack-forum/
 
-2. LAPACK 3.4.0: What's new
+2. LAPACK 3.4.1: What's new
 ---------------------------
 
 .IMPORTANT
@@ -151,7 +151,7 @@ With this release, we are releasing for Windows all dlls: reference BLAS, LAPACK
 Windows are now able to call LAPACKE directly form Visual Studio. (No Fortran involved!)
 More info and download available at http://icl.cs.utk.edu/lapack-for-windows/lapack/
 
-8.  Bug Fix
+7.  Bug Fix
 -----------
 
 link:errata_from_340_to_341.html[see here]

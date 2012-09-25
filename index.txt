@@ -9,7 +9,7 @@ LAPACK -- Linear Algebra PACKage
 [width="100%",cols="^,^,^",frame="none",grid="none"]
 |=======
 | image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] | 
-*Version 3.4.0* +
+*Version 3.4.2* +
  +
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
 mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
@@ -105,11 +105,11 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== LAPACK, version 3.4.0
+=== LAPACK, version 3.4.2
 =========================
- - Download: http://www.netlib.org/lapack/lapack-3.4.0.tgz[lapack-3.4.0.tgz] 
- - link:lapack-3.4.0.html[LAPACK 3.4.0 Release Notes]
- - Updated:  November 11, 2011
+ - Download: http://www.netlib.org/lapack/lapack-3.4.2.tgz[lapack-3.4.2.tgz] 
+ - link:lapack-3.4.2.html[LAPACK 3.4.2 Release Notes]
+ - Updated:  September 25, 2012
  - link:Errata/index2.html[LAPACK Errata] (Current known bugs)
 ==========================
 
@@ -120,12 +120,26 @@ collaboration LAPACK and INTEL Math Kernel Library Team
 ==========================
  - LAPACK C INTERFACE is now included in the LAPACK package (in the lapacke directory)
  - link:lapacke.html[LAPACKE User Guide]
- - Updated:  November 11, 2011
+ - Updated:  April 20, 2012
+ - header files: link:lapacke.h[lapacke.h], link:lapacke_config.h[lapacke_config.h], link:lapacke_mangling.h[lapacke_mangling.h], link:lapacke_utils.h[lapacke_utils.h]
 ==========================
 
 === LAPACK for Windows
 
-Please see: http://icl.cs.utk.edu/lapack-for-windows/lapack
+LAPACK is built under Windows using link:http://www.cmake.org[Cmake] the cross-platform, open-source build system.
+The new build system was developed in collaboration with Kitware Inc. 
+
+A dedicated website (http://icl.cs.utk.edu/lapack-for-windows/lapack) is available for Windows users.
+
+- You will find information about your configuration need.
+
+- You will be able to download BLAS, LAPACK, LAPACKE pre-built libraries.
+
+- You will learn how you can directly run LAPACKE from VS Studio (just C code, no Fortran!!!). LAPACK now offers Windows users the ability to code in C using Microsoft Visual Studio 
+and link to LAPACK Fortran libraries without the need of a vendor-supplied Fortran compiler add-on. To get more information, please refer to link:http://www.netlib.org/lapack/lawnspdf/lawn270.pdf[lawn 270].
+
+- You will get step by steps procedures Easy Windows Build.
+
 
 === SVN Access
 
@@ -264,7 +278,22 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
 *Version 3.4.0: November 11, 2011*
 
+ * Version 3.4.1:  April 20, 2012
+ * Version 3.4.2:  September 25, 2012
+
 == Previous Release
+
+=== LAPACK, version 3.4.2
+
+ - Download: http://www.netlib.org/lapack/lapack-3.4.2.tgz[lapack-3.4.2.tgz] 
+ - link:lapack-3.4.2.html[LAPACK 3.4.2 Release Notes]
+ - Updated:  September 25, 2012
+
+=== LAPACK, version 3.4.1
+
+ - Download: http://www.netlib.org/lapack/lapack-3.4.1.tgz[lapack-3.4.1.tgz] 
+ - link:lapack-3.4.1.html[LAPACK 3.4.1 Release Notes]
+ - Updated:  April 20, 2012
 
 === LAPACK, version 3.4.0
 

@@ -201,6 +201,15 @@ includes new C interfaces. With the LAPACK 3.4.0 release, LAPACKE is directly
 integrated within the LAPACK library and has been enriched by the full set of
 LAPACK subroutines. See link:lapacke.html[here].
 
+6. Improvements in LAPACK 3.4.1
+-------------------------------
+
+See link:lapack-3.4.1.html[Release Notes for 3.4.1] for more details
+
+ 1.  *BLAS test codes now using F90 machine epsilon, optimization now works*
+ 2.  *Fix Thread safety issue.* xLARFT routines modified so that V in now [in] only instead of [in/out], now thread safe
+ 3.  *LAPACK test suite modified so that all tests will pass with gfortran (and ifort with -O0, and hopefully others)*
+
 
 // vim: set syntax=asciidoc:
 

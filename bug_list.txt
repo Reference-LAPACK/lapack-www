@@ -3,6 +3,67 @@ LAPACK BUG LIST
 
 link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
+== [green]*bug0100* :: [S,D]gesdd correct minimum LWORK size
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Tim Wentz (CRAY) on August 23 2012
+ * Email sent directly to Julie
+ * correct LWORK size bug for the case JOBZ='A' and M >> N (which corresponds to path 4 in the code)
+ * the minimum LWORK size in this case had incorrectly used N as the length of LWORK to the DORGQR call, when it should have been M
+ * Corrected by Rodney
+
+== [green]*bug0099* :: [S,D]sgesvj array SVA(N2=0) can be out of the array boundary
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Shandong Lao (ORACLE) on August 20 2012
+ * Email sent directly to Julie
+ * Corrected by Rodney
+
+== [green]*bug0098* :: DSYEV may return non-orthogonal eigenvectors
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Duncan Po (Mathworks) on August 15 2012
+ * See link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=3597[forum topic 3597]
+ * Corrected by Rodney
+
+== [green]*bug0097* :: [S,D]LASQ3 could cause NaNs appearance in ?GESVD and ?GESDD
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Alexander Kobotov (INTEL) on June 28 2012
+ * See link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=3455[forum topic 3455]
+ * Corrected by Rodney
+
+== [green]*bug0096* :: ?STEMR sorting is not done for N=2.
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Joseph Young (SANDIA) on June 26 2012
+ * bug report sent to lapack mailing list
+ * corrected by Julie on July 3 2012
+
+== [green]*bug0094* :: [S,D]SYEVR and [C,Z]SYEVR routine - workspace indices problem
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Keita Teranishi (CRAY) on May 18 2012
+ * INDIWO should be INDIFL+N.  Otherwise, subsequent {S,D}STEIN call takes the same address for IWORK(INDIWO) and INWROK(INDIFL).
+ * Sent to LAPACK team
+ * corrected by Julie on May 21 2012
+
+== [green]*bug0093* :: LAPACKE - LAPACKE_xlange routine - workspace problem
+ * *CORRECTED*
+ * Present in LAPACK 3.4.1
+ * bug report by Mathieu (PLASMA)
+ * Was allocating workspace for Frobenius norm, but not inf norm - This is wrong, only the inf norm needs a workspace.
+ * Sent directly yo Julie
+ * corrected by Julie on May 11 2012
+
+== [green]*bug0092* :: xLAED6 avoid div by zero
+ * *CORRECTED*
+ * Present in LAPACK 3.4.0
+ * bug report by Mict Pont (NAG).
+ * In the 40 loop - when DSCALE(I)=TAU you get a divide by zero (rare in practice). This can cause some compilers to immediately stop, e.g. the Sun compiler.
+ * Sent directly yo Julie
+ * corrected by Julie on Apr 18 2012
+
 == [green]*bug0091* :: xLANHF div by zero
  * *CORRECTED*
  * Present in LAPACK 3.4.0
@@ -497,11 +558,12 @@ we figure out whether this is a bug or a feature, I'm not sure which."
  * see also email from Edward Smyth on June 21st 2011
  * committed by Rodney (SVN revision 984, on Wed Jun 22 2011)
 
-== [red]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
- * *TO BE CONFIRMED*
+== [green]*bug0028* :: failure of convergence of DHGEQZ for some specific matrix pencils
+ * *CORRECTED* - see svn r1272, 1271
  * reported by Vasile Sima on Thu Jan 22 2009
  * see: link:008.txt[email from Vasile]
  * more information at: <a href='http://www-math.ucdenver.edu/~langou/lapack-3.2/lapack_known_issues.html'>lapack known issues]
+ * committed by Rodney (SVN revision r1272, 1271, on Tue Apr 17 2012)
 
 == [green]*bug0027* :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed
  * *CORRECTED* - see svn r929
@@ -582,11 +644,13 @@ are not correct
  * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=846[forum topic 846]
  * committed by Julie Langou (SVN revision 649, on Tue Mar 17 2009)
 
-== [red]*bug0020* :: in xGESDD, workspace query can overflow for large matrices
- * *CONFIRMED*
+== [green]*bug0020* :: in xGESDD, workspace query can overflow for large matrices
+ * *CORRECTED*
  * reported by Stephan Ripke (Broad Institute, Boston) on Thu May 21 2009
  * confirmed by Julien Langou on Thu May 21 2009
  * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1418[forum topic 1418]
+ * It's just the usual 32-bit integer overflow issue, which is a user problem, not a bug in the code.
+ * Recompiling everything with 64-bit integers is the correct way to deal with this issue.
 
 == [green]*bug0019* :: 'make install' generates a "** Error: Time for operations was zero" too easily
  * *CORRECTED* - see svn r693

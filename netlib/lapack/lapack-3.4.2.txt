@@ -1,0 +1,76 @@
+LAPACK 3.4.2
+============
+
+Release date: Tu 09/25/12.
+
+This material is based upon work supported by the National Science Foundation
+and the Department of Energy under Grant No. NSF-OCI-1032861, NSF-CCF-00444486,
+NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127, DOE-DE-FC02-01ER25478,
+DOE-DE-FC02-06ER25768.
+
+LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
+
+
+1. Support and questions:
+-------------------------
+
+http://icl.cs.utk.edu/lapack-forum/
+
+2. LAPACK 3.4.2: What's new
+---------------------------
+
+.IMPORTANT
+****
+This is just a *BUG FIX release* that includes also some improvement the *CMAKE build system*.
+
+**** 
+
+3. External Contributors
+------------------------
+
+    * Ren-cang Li (University of Texas at Arlington)
+
+4. Thanks
+---------
+
+Thanks for bug-report/patches/suggestions to:
+
+ * Tim Wentz (CRAY)
+ * Shandong Lao (ORACLE)
+ * Duncan Po (Mathworks)
+ * Alexander Kobotov (INTEL)
+ * Joseph Young (SANDIA)
+ * Keita Teranishi (CRAY)
+ * Mathieu Faverge (ICL - PLASMA)
+ * Stephan Ripke (Broad Institute, Boston)
+
+5. Developer list
+-----------------
+
+.Principal Investigators
+
+    * Jim Demmel (University of California,  Berkeley, USA)
+    * Jack Dongarra (University of Tennessee and ORNL, USA)
+    * Julien Langou (University of Colorado Denver, USA)
+
+.LAPACK developers involved in this release
+
+    * Sven Hammarling (NAG Ltd. and University of Manchester, UK)
+    * Igor Kozachenko  (University of California,  Berkeley, USA)
+    * Julie Langou (University of Tennessee, USA)
+    * Benjamin Lipshitz  (University of California,  Berkeley, USA)
+    * Rodney James (University of Colorado Denver, USA)
+
+6. More details
+----------------
+
+ * *Modified all of the matrix norm routines*. Now, if a matrix contains a NaN, a NaN will be returned for all choices of norm.
+ Previously, if a matrix contained a NaN, the norm routines would not return necessarily a NaN. (They would return regular floating-point numbers in some cases.)
+
+7.  Bug Fix
+-----------
+
+link:errata_from_341_to_342.html[see here]
+
+// vim: set syntax=asciidoc:

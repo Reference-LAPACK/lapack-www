@@ -210,16 +210,24 @@ See link:lapack-3.4.1.html[Release Notes for 3.4.1] for more details
  2.  *Fix Thread safety issue.* xLARFT routines modified so that V in now [in] only instead of [in/out], now thread safe
  3.  *LAPACK test suite modified so that all tests will pass with gfortran (and ifort with -O0, and hopefully others)*
 
+7. Improvements in LAPACK 3.4.2
+-------------------------------
+
+See link:lapack-3.4.2.html[Release Notes for 3.4.2] for more details
+
+ * *Modified all of the matrix norm routines*. Now, if a matrix contains a NaN, a NaN will be returned for all choices of norm.
+ Previously, if a matrix contained a NaN, the norm routines would not return necessarily a NaN. (They would return regular floating-point numbers in some cases.)
 
 // vim: set syntax=asciidoc:
 
-////
-*Comment* block
+8. Improvements in LAPACK 3.5.0
+-------------------------------
 
-4. *xSYSV_ROOK: LDL^T^ with rook pivoting.* Contribution by Craig Lucas (University
+See link:lapack-3.5.0.html[Release Notes for 3.5.0] for more details
+
+*xSYSV_ROOK: LDL^T^ with rook pivoting.* Contribution by Craig Lucas (University
 of Manchester and NAG) and Sven Hammarling (NAG).  These subroutines enable
 better stability than the Bunch-Kaufman pivoting scheme currently used in
 LAPACK xSYSV solvers; also, the elements of L are bounded, which is important
 in some applications.  The computational time of xSYSV_ROOK is slightly higher than
 the one of xSYSV.
-////

@@ -67,6 +67,5 @@ Bugs corrected from 3.4.1 to 3.4.2
  * reported by Stephan Ripke (Broad Institute, Boston) on Thu May 21 2009
  * confirmed by Julien Langou on Thu May 21 2009
  * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1418[forum topic 1418]
- * It's just the usual 32-bit integer overflow issue, which is a user problem, not a bug in the code.
- * Recompiling everything with 64-bit integers is the correct way to deal with this issue.
+ * This is a standard 32-bit integer overflow issue. This can be addressed by recompiling the whole LAPACK library with 64-bit integers.
 

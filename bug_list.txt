@@ -3,6 +3,79 @@ LAPACK BUG LIST
 
 link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
+== [green]*bug0109* ::  [xSTEGR_WORK] do not check ldz correctly
+ * *CORRECTED*, rev 1425
+ * Present in LAPACKE 3.4.2
+ * bug report by Hong Xu (INTEL) on July 21st
+ * Patch sent by Hong Xu (INTEL)
+ * In the input parameter checking, LDZ was not checked correctly
+ * LDZ was checked against M instead of N essentially
+ * Corrected by Julien on July 22 2013
+
+== [green]*bug0108* ::  [xDRVRFP] Test was failing
+ * *CORRECTED*, rev 1416
+ * Present in LAPACK 3.4.2
+ * bug report by Elena Ivanova (INTEL)
+ * Patch sent by Elena Ivanova (INTEL)
+ * add MAX() to ensure index is at least 1
+ * Corrected by Rodney on June 27 2013
+
+== [green]*bug0107* ::  [CSD routines] fixed array index problems
+ * *CORRECTED*, rev 1414
+ * Present in LAPACK 3.4.2
+ * add MAX() to ensure index is at least 1
+ * this fixes array bounds violations in the test suite when array bounds checking is enabled
+ * Corrected by Rodney on June 04 2013
+
+== [green]*bug0106* ::  [xGEBAL] very large backward error for certain Hessenberg matrices (Watkins)
+ * *CORRECTED*, rev 1413
+ * Present in LAPACK 3.4.2
+ * bug report on the forum topic 4221
+ * Patch sent by bmoloney
+ * Now using 2-norm to compute vector norms of row and column for balancing algorithm.
+ * This seems to fix problems with balancing causing very large backward error for certain
+ * Hessenberg matrices, including the often cited example of Watkins.
+ * Corrected by Rodney on May 26 2013
+
+== [green]*bug0105* ::  [LAPACKE] lapacke.h problem
+ * *CORRECTED*, rev 1388
+ * Present in LAPACKE 3.4.2
+ * bug report on the forum topic 4221
+ * Patch sent by bmoloney
+ * A few C++ library includes are inside of the 'extern C block which causes many template with C 
+ * linkage errors when the header is included in a C++ file.
+ * Corrected by Julie on April 03 2013
+
+== [green]*bug0104* :: dgeqp3 fall over when asked to do a factorization of the last two columns.
+ * *CORRECTED*, rev 1385
+ * Present in LAPACK 3.4.2
+ * bug report by Tyrone Rees (STFC Rutherford Appleton Laboratory) on March 22 2013
+ * Patch sent by Tyrone Rees
+ * Corrected by Rodney on March 22 2013
+
+== [green]*bug0103* :: [dlasd4/slasd4] fixes bug where TAU2 can be uninitialized.
+ * *CORRECTED*, rev 1384
+ * Present in LAPACK 3.4.2
+ * bug report by Sergey Kuznetsov (INTEL) on March 15 2013
+ * Patch sent by Sergey Kuznetsov
+ * Corrected by Rodney on March 22 2013
+ 
+== [green]*bug0102* :: convergence problem with some particular pencils in xGGEV
+ * *CORRECTED*, rev 1351
+ * Present in LAPACK 3.4.2
+ * bug report by Mathworks on October 19 2012
+ * Patch sent by Mathworks
+ * Corrected by Rodney on Thu Oct 19
+
+== [green]*bug0101* :: [S,D, C, Z]hsein: NaN in H can cause an infinite loop
+ * *CORRECTED*
+ * Present in LAPACK 3.4.2
+ * bug report by Alexander Kobotov (INTEL) on October 3 2012
+ * See link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=3928[forum topic 3928]
+ * added check for NaN after the norm of each block of H is computed
+ * if NaN is detected, returns with INFO=-6 (H is the 6th parameter)
+ * Corrected by Rodney
+
 == [green]*bug0100* :: [S,D]gesdd correct minimum LWORK size
  * *CORRECTED*
  * Present in LAPACK 3.4.1

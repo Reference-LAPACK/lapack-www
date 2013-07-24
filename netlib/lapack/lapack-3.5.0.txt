@@ -17,30 +17,86 @@ California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
 
 http://icl.cs.utk.edu/lapack-forum/
 
-2. LAPACK 3.5.0: What's new
----------------------------
- *xSYSV_ROOK: LDL^T^ with rook pivoting.* Contribution by Craig Lucas (University
-of Manchester and NAG) and Sven Hammarling (NAG). 
-
-3. External Contributors
-------------------------
-     
-4. Thanks
+2. Thanks
 ---------
 
 Thanks for bug-report/patches/suggestions to:
 
-     * Alexander Kobotov (INTEL)
+     * Alexander Kobotov (INTEL) - r1350
      * Bo Kagstrom
-     * Hong Bo Peng (IBM)
-     * Victor Liu (Stanford)
+     * Brian Sutton (Randolph-Macon College) - r1414
+     * Duncan Po (Mathworks) - r1349
+     * Elena Ivanov (ORACLE) - r1416
+     * Hong Bo Peng (IBM) - r1425
      * Michael Baudin (SciLAB)
-     * Robert L. Smith
-     * Sergey Kuznetsov (INTEL)
-     * Tyrone Rees (STFC Rutherford Appleton Laboratory)
+     * Sergey Kuznetsov (INTEL) - r1384
+     * Tyrone Rees (STFC Rutherford Appleton Laboratory, UK) - r1385
+     * Victor Liu (Stanford University) - r1372
+
+Forum users:
      * bmoloney (OHSU)
      * eem2314
-     * Elena Ivanov (INTEL)
+     
+
+3. LAPACK 3.5.0: What's new
+---------------------------
+ 
+* [Igor Kozachenko] added Hermitian LDLT factorization routines with rook pivoting algorithm
+
+A ./SRC/checon_rook.f   A ./SRC/csytrf_rook.f   A ./SRC/ssycon_rook.f    A ./SRC/zhetrs_rook.f
+A ./SRC/chesv_rook.f    A ./SRC/csytri_rook.f   A ./SRC/ssysv_rook.f     A ./SRC/zlahef_rook.f
+A ./SRC/chetf2_rook.f   A ./SRC/csytrs_rook.f   A ./SRC/ssytf2_rook.f    A ./SRC/zlasyf_rook.f
+A ./SRC/chetrf_rook.f   A ./SRC/dlasyf_rook.f   A ./SRC/ssytrf_rook.f    A ./SRC/zsycon_rook.f
+A ./SRC/chetri_rook.f   A ./SRC/dsycon_rook.f   A ./SRC/ssytri_rook.f    A ./SRC/zsysv_rook.f
+A ./SRC/chetrs_rook.f   A ./SRC/dsysv_rook.f    A ./SRC/ssytrs_rook.f    A ./SRC/zsytf2_rook.f
+A ./SRC/clahef_rook.f   A ./SRC/dsytf2_rook.f   A ./SRC/zhecon_rook.f    A ./SRC/zsytrf_rook.f
+A ./SRC/clasyf_rook.f   A ./SRC/dsytrf_rook.f   A ./SRC/zhesv_rook.f     A ./SRC/zsytri_rook.f
+A ./SRC/csycon_rook.f   A ./SRC/dsytri_rook.f   A ./SRC/zhetf2_rook.f    A ./SRC/zsytrs_rook.f
+A ./SRC/csysv_rook.f    A ./SRC/dsytrs_rook.f   A ./SRC/zhetrf_rook.f
+A ./SRC/csytf2_rook.f   A ./SRC/slasyf_rook.f   A ./SRC/zhetri_rook.f
+
+A ./lapacke/src/lapacke_csysv_rook.c
+A ./lapacke/src/lapacke_csysv_rook_work.c
+A ./lapacke/src/lapacke_dsysv_rook.c
+A ./lapacke/src/lapacke_dsysv_rook_work.c
+A ./lapacke/src/lapacke_ssysv_rook.c
+A ./lapacke/src/lapacke_ssysv_rook_work.c
+A ./lapacke/src/lapacke_zsysv_rook.c
+A ./lapacke/src/lapacke_zsysv_rook_work.c
+                               
+A ./TESTING/LIN/cchkhe_rook.f   A ./TESTING/LIN/schksy_rook.f
+A ./TESTING/LIN/cchksy_rook.f   A ./TESTING/LIN/sdrvsy_rook.f
+A ./TESTING/LIN/cdrvhe_rook.f   A ./TESTING/LIN/slavsy_rook.f
+A ./TESTING/LIN/cdrvsy_rook.f   A ./TESTING/LIN/ssyt01_rook.f
+A ./TESTING/LIN/chet01_rook.f   A ./TESTING/LIN/zchkhe_rook.f
+A ./TESTING/LIN/clavhe_rook.f   A ./TESTING/LIN/zchksy_rook.f
+A ./TESTING/LIN/clavsy_rook.f   A ./TESTING/LIN/zdrvhe_rook.f
+A ./TESTING/LIN/csyt01_rook.f   A ./TESTING/LIN/zdrvsy_rook.f
+A ./TESTING/LIN/dchksy_rook.f   A ./TESTING/LIN/zhet01_rook.f
+A ./TESTING/LIN/ddrvsy_rook.f   A ./TESTING/LIN/zlavhe_rook.f
+A ./TESTING/LIN/dlavsy_rook.f   A ./TESTING/LIN/zlavsy_rook.f
+A ./TESTING/LIN/dsyt01_rook.f   A ./TESTING/LIN/zsyt01_rook.f
+
+* [Rodeny James, r1413] New stopping criteria for balancing.
+
+This fix the problem described in: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4270
+
+M ./SRC/cgebal.f        M ./SRC/dgebal.f        M ./SRC/sgebal.f        M ./SRC/zgebal.f
+
+* [Victor Liu, r1372] New complex division algorithm.
+
+Following the algorithm of Michael Baudin, Robert L. Smith (see arxiv.1210.4539 )
+
+M ./SRC/dladiv.f        M ./SRC/sladiv.f
+
+improvements:
+* slasyf.f, clasyf.f, clahef.f, dlasyf.f, zlahef.f, zlasyf.f :: various improvements by Igor Kozachenko
+* dhgeqz.f, shgeqz.f :: improvements by Duncan Po (MathWorks), committed by Rodney James
+* dlasd4.f, slasd4.f :: improvements by Sergey Kuznetsov (Intel), committed by Rodney James
+* clarfb.f, dlarfb.f, slarfb.f, zlarfb.f :: improvements by Rodney James
+
+3. External Contributors
+------------------------
      
 5. Developer list
 -----------------
@@ -67,6 +123,8 @@ LAPACK xSYSV solvers; also, the elements of L are bounded, which is important
 in some applications.  The computational time of xSYSV_ROOK is slightly higher than
 the one of xSYSV.
 
+ * New stopping criteria for balancing.
+ 
  * more robust complex division routine [DLADIV]- suggested by Victor Liu <vkl@stanford.edu>
  contributed by Michael Baudin, Robert L. Smith
  Source: http://arxiv.org/abs/1210.4539

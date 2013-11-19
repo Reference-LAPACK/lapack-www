@@ -3,13 +3,13 @@ LAPACK -- Linear Algebra PACKage
 
 // :Author:    Julie_Langou_and_Julien_Langou
 // :Email:     <julie@cs.utk.edu,julien.langou@ucdenver.edu>
-// :Date:      2011/11/11
+// :Date:      2013/11/16
 // :Revision:  1
 
 [width="100%",cols="^,^,^",frame="none",grid="none"]
 |=======
 | image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] | 
-*Version 3.4.2* +
+*Version 3.5.0* +
  +
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
 mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
@@ -105,11 +105,11 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== LAPACK, version 3.4.2
+=== LAPACK, version 3.5.0
 =========================
- - Download: http://www.netlib.org/lapack/lapack-3.4.2.tgz[lapack-3.4.2.tgz] 
- - link:lapack-3.4.2.html[LAPACK 3.4.2 Release Notes]
- - Updated:  September 25, 2012
+ - Download: http://www.netlib.org/lapack/lapack-3.5.0.tgz[lapack-3.5.0.tgz] 
+ - link:lapack-3.5.0.html[LAPACK 3.5.0 Release Notes]
+ - Updated:  November 16, 2013
  - link:Errata/index2.html[LAPACK Errata] (Current known bugs)
 ==========================
 
@@ -120,7 +120,7 @@ collaboration LAPACK and INTEL Math Kernel Library Team
 ==========================
  - LAPACK C INTERFACE is now included in the LAPACK package (in the lapacke directory)
  - link:lapacke.html[LAPACKE User Guide]
- - Updated:  April 20, 2012
+ - Updated:  November 16, 2013
  - header files: link:lapacke.h[lapacke.h], link:lapacke_config.h[lapacke_config.h], link:lapacke_mangling.h[lapacke_mangling.h], link:lapacke_utils.h[lapacke_utils.h]
 ==========================
 
@@ -282,6 +282,12 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
  * Version 3.4.2:  September 25, 2012
 
 == Previous Release
+
+=== LAPACK, version 3.5.0
+
+ - Download: http://www.netlib.org/lapack/lapack-3.5.0.tgz[lapack-3.5.0.tgz] 
+ - link:lapack-3.5.0.html[LAPACK 3.5.0 Release Notes]
+ - Updated:  November 19, 2013
 
 === LAPACK, version 3.4.2
 

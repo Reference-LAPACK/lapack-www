@@ -1,6 +1,24 @@
 Bugs corrected from 3.4.2 to 3.5.0
 ==================================
 
+== [green]*bug112* :: DSYEVR does not seem to be thread-safe
+* *CORRECTED*, rev 1436
+* Present in LAPACK 3.4.2
+* Bug report by Daniel Strobusch on LAPACK Mailing  - August 19th 2013
+* Links: http://stackoverflow.com/q/18216314/1458343
+* Fix: LAPACK needs to be compiled with option "-frecursive" so that local
+arrays are allocated on the stack. * Corrected by Julien on Oct 4 2013
+
+== [green]*bug110* :: possible infinite loop in ZLARTG when input vector has NaN
+ * *CORRECTED*, rev 1437
+* Present in LAPACK 3.4.2
+* Bug report by Mark Hoemmen and Jack Poulson
+* See http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=5&t=3267&p=9067
+* Mark Hoemmen writes: Jack Poulson found that ZLARTG has an infinite loop related
+* to NaN .EQ. 0. It's the line below "ELSE IF( SCALE.LE.SAFMN2 )" between 10 and
+* 20. When G is NaN, then the loop goes forever.
+* Corrected by Rodney on Oct 5 2013
+
 == [green]*bug0109* ::  [xDRVRFP] Test was failing
  * *CORRECTED*, rev 1425
  * Present in LAPACK 3.4.2
@@ -13,8 +31,8 @@ Bugs corrected from 3.4.2 to 3.5.0
 == [green]*bug0108* ::  [xDRVRFP] Test was failing
  * *CORRECTED*, rev 1416
  * Present in LAPACK 3.4.2
- * bug report by Elena Ivanova (INTEL)
- * Patch sent by Elena Ivanova (INTEL)
+ * bug report by Elena Ivanova (ORACLE)
+ * Patch sent by Elena Ivanova (ORACLE)
  * add MAX() to ensure index is at least 1
  * Corrected by Rodney on June 27 2013
 
@@ -29,11 +47,10 @@ Bugs corrected from 3.4.2 to 3.5.0
  * *CORRECTED*, rev 1413
  * Present in LAPACK 3.4.2
  * bug report on the forum topic 4221
- * Patch sent by bmoloney
  * Now using 2-norm to compute vector norms of row and column for balancing algorithm.
  * This seems to fix problems with balancing causing very large backward error for certain
  * Hessenberg matrices, including the often cited example of Watkins.
- * Corrected by Rodney on May 26 2013
+ * Corrected by Bradley Lowery, Rodney James, Julien Langou on May 26 2013
 
 == [green]*bug0105* ::  [LAPACKE] lapacke.h problem
  * *CORRECTED*, rev 1388
@@ -73,4 +90,17 @@ Bugs corrected from 3.4.2 to 3.5.0
  * added check for NaN after the norm of each block of H is computed
  * if NaN is detected, returns with INFO=-6 (H is the 6th parameter)
  * Corrected by Rodney on Thu Oct 11
+
+== [green]*bug0057* :: Non-eigenvectors from DGEEV, problem in balancing
+ * *CORRECTED*
+ * Same bug than bug0106
+ * bug report sent by Numpy team on April 22nd, 2010
+ * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1818[forum topic 1818]
+ * see follow-up on lapackers on April 22nd from Jim "bug in DGEHRD"
+    "The balancing is choosing to scale some rows/columns by factors like 1e18,
+which rather amplifies tiny rounding errors in the (presumably correctly)
+computed eigenvectors of the balanced matrix, when balancing is undone at the end.
+The expert driver interface dgeevx would let the user disable balancing, until
+we figure out whether this is a bug or a feature, I'm not sure which."
+ * Corrected by Bradley Lowery, Rodney James, Julien Langou on May 26 2013
 

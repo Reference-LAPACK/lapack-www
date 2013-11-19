@@ -2,6 +2,75 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn283 +[link:http://www.netlib.org/lapack/lawnspdf/lawn283.pdf[pdf]]+
+.An Improved Parallel Singular Value Algorithm and Its Implementation for Multicore Hardware
+
+by *Azzam Haidar, Piotr Luszczek, Jakub Kurzak, and Jack Dongarra*
+
+UT-EECS-13-720 October 2013
+
+== lawn282 +[link:http://www.netlib.org/lapack/lawnspdf/lawn282.pdf[pdf]]+
+.Designing LU-QR hybrid solvers for performance and stability
+
+by *Mathieu Faverge, Julien Herrmann, Julien Langou, Bradley Lowery, Yves Robert and Jack Dongarra*
+
+UT-EECS-13-719 October 2013
+
+== lawn281 +[link:http://www.netlib.org/lapack/lawnspdf/lawn281.pdf[pdf]]+
+.Optimal Checkpointing Period: Time vs. Energy
+
+by *Guillaume Aupy, Anne Benoit, Thomas Herault, Yves Robert and Jack Dongarra*
+
+UT-EECS-13-718 October 2013
+
+== lawn280 +[link:http://www.netlib.org/lapack/lawnspdf/lawn280.pdf[pdf]]+
+.On Algorithmic Variants of Parallel Gaussian Elimination: Comparison of Implementations in Terms of Performance and Numerical Properties
+
+by *Simplice Donfack, Jack Dongarra, Mathieu Faverge, Mark Gates, Jakub Kurzak, Piotr Luszczek, and Ichitaro Yamazaki*
+
+UT-CS-13-715 July 2013
+
+== lawn279 +[link:http://www.netlib.org/lapack/lawnspdf/lawn279.pdf[pdf]]+
+.Transient Error Resilient Hessenberg Reduction on GPU-based Hybrid Architectures
+
+by *Yulu Jia, Piotr Luszczek, and Jack Dongarra*
+
+UT-CS-13-712 June 2013
+
+== lawn278 +[link:http://www.netlib.org/lapack/lawnspdf/lawn278.pdf[pdf]]+
+.On the Combination of Silent Error Detection and Checkpointing
+
+by *Guillaume Aupy, Anne Benoit, Thomas Hérault, Yves Robert, Frédéric Vivien and Dounia Zaidouni*
+
+UT-CS-13-710 June 2013
+
+== lawn277 +[link:http://www.netlib.org/lapack/lawnspdf/lawn277.pdf[pdf]]+
+.Implementing a systolic algorithm for QR factorization on multicore clusters with PaRSEC
+
+by *Guillaume Aupy, Mathieu Faverge, Yves Robert, Jakub Kurzak, Piotr Luszczek, and Jack Dongarra*
+
+UT-CS-13-709 May 2013
+
+== lawn276 +[link:http://www.netlib.org/lapack/lawnspdf/lawn276.pdf[pdf]]+
+.Communication Avoiding Rank Revealing QR Factorization With Column Pivoting
+
+by *James W. Demmel, Laura Grigori, Ming Gu, and Hua Xiang*
+
+UCB/EECS-2013-46 May 2013
+
+== lawn275 +[link:http://www.netlib.org/lapack/lawnspdf/lawn275.pdf[pdf]]+
+.clMAGMA: High Performance Dense Linear Algebra with OpenCL
+
+by *Chongxiao Cao, Jack Dongarra, Peng Du, Mark Gates, Piotr Luszczek, and Stanimire Tomov*
+
+UT-CS-13-706 Mar 2013
+
+== lawn274 +[link:http://www.netlib.org/lapack/lawnspdf/lawn274.pdf[pdf]]+
+.Revisiting the double checkpointing algorithm
+
+by *Jack Dongarra, Thomas Herault and Yves Robert*
+
+UT-CS-13-705 Dec 2012
 
 == lawn273 +[link:http://www.netlib.org/lapack/lawnspdf/lawn273.pdf[pdf]]+
 .Efficient computation of condition estimates for linear least squares problems

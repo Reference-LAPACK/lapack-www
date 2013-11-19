@@ -225,9 +225,24 @@ See link:lapack-3.4.2.html[Release Notes for 3.4.2] for more details
 
 See link:lapack-3.5.0.html[Release Notes for 3.5.0] for more details
 
-*xSYSV_ROOK: LDL^T^ with rook pivoting.* Contribution by Craig Lucas (University
+  1. *xSYSV_ROOK: LDL^T^ with rook pivoting.* Contribution by Craig Lucas (University
 of Manchester and NAG) and Sven Hammarling (NAG).  These subroutines enable
 better stability than the Bunch-Kaufman pivoting scheme currently used in
 LAPACK xSYSV solvers; also, the elements of L are bounded, which is important
 in some applications.  The computational time of xSYSV_ROOK is slightly higher than
 the one of xSYSV.
+
+  2. *2-by-1 CSD to be used for tall and skinny matrix with orthonormal columns* (in LAPCK 3.4.0, we already integrated CSD of a full square orthogonal matrix)
+More info here: http://faculty.rmc.edu/bsutton/simultaneousbidiagonalization.html 
+
+  3. *New stopping criteria for balancing*.
+
+  4. *New complex division algorithm*.
+Following the algorithm of Michael Baudin, Robert L. Smith (see arxiv.1210.4539 )
+
+  5. *Other improvements:*
+* slasyf.f, clasyf.f, clahef.f, dlasyf.f, zlahef.f, zlasyf.f :: various improvements by Igor Kozachenko
+* dhgeqz.f, shgeqz.f :: improvements by Duncan Po (MathWorks), committed by Rodney James
+* dlasd4.f, slasd4.f :: improvements by Sergey Kuznetsov (Intel), committed by Rodney James
+* clarfb.f, dlarfb.f, slarfb.f, zlarfb.f :: improvements by Rodney James
+

@@ -1,7 +1,7 @@
-SCALAPACK-1.8.0 and BLACS errata file
+SCALAPACK-2.0.2 and BLACS errata file
 =====================================
 
-updated on Thu Jul 07 2011
+updated on Thu Nov 26 2013
 
 maintained by Julien Langou, U. Colorado Denver and Julie Langou, U. Tennessee
 
@@ -12,7 +12,7 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
 [red,,1.5]#RED means BUG WAS CONFIRMED but IT IS STILL HERE#
 
-[orange,,1.5]#ORANGE means BUG WAS NOT CONFIRMED#
+[maroon,,1.5]#ORANGE means BUG WAS NOT CONFIRMED#
 
 [green,,1.5]#GREEN means BUG WAS CORRECTED :#
 
@@ -22,6 +22,12 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
 
 == [blue,,1.5]*ScaLAPACK*
+
+
+== [maroon]*bug* :: PDLAQR1 possible bug?
+ * *NOT CONFIRMED*
+ * reported on the LAPACK forum by Sieg Young
+ * see http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&t=4334[ Forum topic 4334]
 
 == [red]*bug* :: Diagonal element of R not arranged correctly for complex pivoted QR factorization
  * *CONFIRMED*
@@ -67,6 +73,16 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  * committed by Julien on Sat Sep 12 2009 (SVN: r68).
 
 == [blue,,1.5]*BLACS*
+
+== [maroon]*bug* :: bug 
+ * *NOT CONFIRMED*
+ * reported by  Sergey  Kuznetsov (Intel)
+ * directly sent to Julien
+
+== [green]*bug* :: bug in dlasd4/slasd4
+ * *CORRECTED*
+ * reported by Åke Sandgren (HPC2N, Umeå, Sweden) on Tue Mar 3 2009
+ * see forum topic 917
 
 == [green]*bug* :: false comments in igamx2d 
  * *CORRECTED*

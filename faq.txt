@@ -38,6 +38,7 @@ These optimized LAPACK libraries are provided by the computer vendor, by an inde
  - link:http://www.maplesoft.com/[Maple]
  - link:http://www.r-project.org/[R project]
  - link:http://www.scilab.org/[Scilab]
+ - link:http://www.ceemple.com/[Ceemple]
 
 ==== Linux Distribution
  - Fedora, RedHat, Suse, Mandriva	link:http://rpmfind.net/linux/rpm2html/search.php?query=lapack[RPM]

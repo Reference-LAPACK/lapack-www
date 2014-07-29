@@ -2,6 +2,32 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn287 +[link:http://www.netlib.org/lapack/lawnspdf/lawn287.pdf[pdf]]+
+.Efficient checkpoint/verification patterns for silent error detection
+
+by *Anne Benoit, Saurabh K. Raina and Yves Robert*
+
+UT-EECS-14-729 May 2014
+
+== lawn286 +[link:http://www.netlib.org/lapack/lawnspdf/lawn286.pdf[pdf]]+
+.Accelerating computation of eigenvectors in the nonsymmetric eigenvalue problem
+
+by *Mark Gates, Azzam Haidar, and Jack Dongarra*
+
+UT-EECS-14-724 March 2014
+
+== lawn285 +[link:http://www.netlib.org/lapack/lawnspdf/lawn285.pdf[pdf]]+
+.Using Random Butterfly Transformations to Avoid Pivoting in Sparse Direct Methods
+
+by *Marc Baboulin, Xiaoye S. Li, and François-Henry Rouet*
+
+Inria Research Report RR-8481 (Feb. 2014)
+
+== lawn284 +[link:http://www.netlib.org/lapack/lawnspdf/lawn284.pdf[pdf]]+
+.FlexiBLAS - A flexible BLAS library with runtime exchangeable backends
+
+by *Martin Köhler, and Jens Saak*
+
 == lawn283 +[link:http://www.netlib.org/lapack/lawnspdf/lawn283.pdf[pdf]]+
 .An Improved Parallel Singular Value Algorithm and Its Implementation for Multicore Hardware
 

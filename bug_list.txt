@@ -3,6 +3,39 @@ LAPACK BUG LIST
 
 link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
+== [green]*bug118* :: ZLANHF and CLANHF Norm Calculation 
+* *CORRECTED*, rev 1483
+* Present in LAPACK 3.5.0
+* Bug report by by Themos Tsikas fron NAG Ltd on LAPACK Forum  - June 16th 2014
+* Links: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4558
+* Corrected by Julien Langou on June 16th
+
+== [maroon]*bug117* :: NSPLIT unitialized; N=2 code wrong
+* *NOT CONFIRMED*
+* Present in LAPACK 3.5.0
+* Bug report by Lawrence Mulholland, NAG on LAPACK Forum  - July 26th 2013
+* Links: http://icl.utk.edu/lapack-forum/viewtopic.php?f=2&t=4331
+
+== [maroon]*bug116* :: ZGGEV fails but Matlab works
+* *NOT CONFIRMED*
+* Present in LAPACK 3.5.0
+* Bug report by Victor Liu, Standford on LAPACK Forum  - August 20th 2013
+* Links: http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&t=4357
+
+== [maroon]*bug115* :: DSYEVD fails to converge
+* *CONFIRMED*
+* Present in LAPACK 3.5.0
+* Bug report by Duncan Po on LAPACK Forum  - September 12th 2013
+* Links: http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&t=4391
+* Need to take a look at the matrix - Julien Langou on Nov 26th
+
+== [green]*bug114* :: (C, Z)GESVD stack corruption issue
+* *CORRECTED*, rev 1455
+* Present in LAPACK 3.5.0
+* Bug report by Alex Zotkevich on LAPACK Forum  - September 16th 2013
+* Links: http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&t=4392
+* Corrected by Julien Langou on Nov 26th
+
 == [maroon]*bug113* :: DLARRB() infinite loop bug
 * *NOT CONFIRMED*
 * Present in LAPACK 3.4.2

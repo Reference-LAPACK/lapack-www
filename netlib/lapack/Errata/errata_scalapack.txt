@@ -19,15 +19,40 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  - [green,,1.5]#correction will be included in next release#
  - [green,,1.5]#bug fix available in link:http://netlib.org/lapack/#_svn_access[LAPACK SVN repository]#
 
+== [green]*bug* :: Missing initialization of ICTXT in a few ScaLAPACK routines
+* *CORRECTED*
+* Present in ScaLAPACK 
+* Bug reported by Dmitry Baksheev (Intel) on Nov 10th 2015
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4838
+* committed by Julie on Nov 10 2015 (SVN: r202).
 
+== [green]*bug* :: Incorrect call of CHK1MAT in pzheevd.f
+* *CORRECTED*
+* Present in ScaLAPACK 
+* Bug reported by Dmitry Baksheev (Intel) on Nov 10th 2015
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4837
+* committed by Julie on Nov 10 2015 (SVN: r201).
 
-== [blue,,1.5]*ScaLAPACK*
+== [maroon]*bug* :: bug in dgamx2d (triggered in parpack)
+* *NOT CONFIRMED*
+* Present in ScaLAPACK 
+* Bug reported by davydden on Jul 22nd
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4676
+* Not Assigned
 
+== [green]*bug* :: Wrong XERBLA call in pshseqr, pdhseqr, psgebal, pdgebal functions
+ * *CORRECTED*
+ * reported by Bjorn Adlerborn on Scalapack mailing list.
+ * reported by eugene Chereshnev on LAPACK Forum
+ * fixed from Rodney and Julie
+ * committed by Rodney on Feb 5 2013 (SVN: r192).
+ * committed by Julie on Oct 10 2014 and Apr 30 2015 (SVN: r199 and r200).
 
 == [maroon]*bug* :: PDLAQR1 possible bug?
  * *NOT CONFIRMED*
  * reported on the LAPACK forum by Sieg Young
  * see http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&t=4334[ Forum topic 4334]
+ * Not Assigned
 
 == [red]*bug* :: Diagonal element of R not arranged correctly for complex pivoted QR factorization
  * *CONFIRMED*

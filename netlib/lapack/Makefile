@@ -35,7 +35,7 @@ improvement.html: improvement.txt
 
 index: index.txt
 	asciidoc -a toc -a toc-title="Menu" index.txt
-	scp index.html index.txt brutus.icl.utk.edu:/silk/homes/netlib/lapack
+	scp index.html index.txt brutus.icl.utk.edu:/mnt/netlib/lapack
 	
 
 err: Errata/index2.txt Errata/index2.txt Errata/errata_scalapack.txt
@@ -43,20 +43,20 @@ err: Errata/index2.txt Errata/index2.txt Errata/errata_scalapack.txt
 
 lawn: lawns/index.txt
 	@(cd lawns && make && cd ..)
-	scp lawns/*.txt lawns/*.html lawns/lawn.bib brutus.icl.utk.edu:/silk/homes/netlib/lapack/lawns
+	scp lawns/*.txt lawns/*.html lawns/lawn.bib brutus.icl.utk.edu:/mnt/netlib/lapack/lawns
 
 coding: lapack-coding/program-style.txt
 	@(cd lapack-coding && make && cd ..)
 
 publish:
-	scp *.txt *.html brutus.icl.utk.edu:/silk/homes/netlib/lapack
-	scp Errata/*.txt Errata/*.html brutus.icl.utk.edu:/silk/homes/netlib/lapack/Errata
-	scp lapack-coding/*.txt lapack-coding/*.html brutus.icl.utk.edu:/silk/homes/netlib/lapack-dev/lapack-coding
+	scp *.txt *.html brutus.icl.utk.edu:/mnt/netlib/lapack
+	scp Errata/*.txt Errata/*.html brutus.icl.utk.edu:/mnt/netlib/lapack/Errata
+	scp lapack-coding/*.txt lapack-coding/*.html brutus.icl.utk.edu:/mnt/netlib/lapack-dev/lapack-coding
 
 pub_bug: bug_list.html err
-	scp bug_list.* brutus.icl.utk.edu:/silk/homes/netlib/lapack
-	scp Errata/*.txt Errata/*.html brutus.icl.utk.edu:/silk/homes/netlib/lapack/Errata
-	scp -r Errata/vrac/* brutus.icl.utk.edu:/silk/homes/netlib/lapack/Errata/vrac
+	scp bug_list.* brutus.icl.utk.edu:/mnt/netlib/lapack
+	scp Errata/*.txt Errata/*.html brutus.icl.utk.edu:/mnt/netlib/lapack/Errata
+	scp -r Errata/vrac/*  brutus.icl.utk.edu:/mnt/netlib/lapack/Errata/vrac
 
 clean:
 	rm -rf *.html Errata/*.html lapack-coding/*.html

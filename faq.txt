@@ -26,7 +26,7 @@ These optimized LAPACK libraries are provided by the computer vendor, by an inde
  - Cray : link:http://docs.cray.com/books/004-2151-002//004-2151-002-manual.pdf[libsci manual, chapter 3]
  - HP : link:http://www.hp.com/go/mlib[MLIB]
  - IBM : ESSL / Parallel ESSL link:http://www-03.ibm.com/systems/p/software/essl.html[Overview], link:http://publib.boulder.ibm.com/infocenter/clresctr/index.jsp?topic=/com.ibm.cluster.essl.doc/esslbooks.html[Documentation]
- - Intel : link:http://www.intel.com/cd/software/products/asmo-na/eng/perflib/mkl/index.htm[MKL]
+ - Intel : link:https://software.intel.com/en-us/intel-mkl[MKL]
  - NEC : link:http://www.sw.nec.co.jp/hpc/mediator/sxm_e/software/61.html[PDLIB/SX]
  - SGI : link:http://www.sgi.com/products/software/scsl.html[SCSL]
  - SUN : link:http://developers.sun.com/prodtech/cc/perflib_index.html[Sun Performance Library]

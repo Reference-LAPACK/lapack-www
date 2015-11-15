@@ -17,8 +17,6 @@ but it looks ugly.  dblatex seems to work.
  -- Jason Riedy <ejr@cs.berkeley.edu>
 ////
 
-HEllo
-
 
 Introduction
 ------------

@@ -1,7 +1,7 @@
 LAPACK-3.5.0 errata file
 ========================
 
-updated on November 16 2013
+updated on August 26 2015
 
 maintained by Julien Langou, U. Colorado Denver and Julie Langou, U. Tennessee
 
@@ -20,30 +20,209 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  - [green,,1.5]#correction will be included in next release#
  - [green,,1.5]#bug fix available in link:http://netlib.org/lapack/#_svn_access[LAPACK SVN repository]#
 
+== [green]*bug141* LAPACKE dlantr causes memory corruption
+* *CORRECTED*, rev 1602
+* Present in LAPACK 3.5.0
+* Bug reported by Dan Kortschak on LAPACK forum on Sep 6th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4788
+* Confirmed by Julien on Oct 7th
+* Corrected by Julie on Oct 21th rev 1602 (apply patch submitted by Dan Kortschak)
+
+== [maroon]*bug140* LAHEF_ROOK and LASYF_ROOK: could choose zero pivot in the case when non-zero pivot could be used
+* *NOT CONFIRMED*
+* Present in LAPACK 3.5.0
+* Bug reported on Oct 7th by Eugene Chereshnev on LAPACK Forum
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4812
+* Assigned to Igor on Oct 7th
+
+== [green]*bug139* xSTEDC eigenvalues not sorted
+* *CORRECTED*
+* Present in LAPACK 3.5.0
+* Bug reported on Oct 6th by Christoph Conrads on lapack mailing list
+* Link: http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01713.html
+* Confirmed by Julien on Oct 7th
+* Corrected by Julie on Oct 21th rev 1601 (apply patch submitted by Christoph Conrads)
+
+== [green]*bug138* :: LAPACKE_dtr_nancheck not working for trapezoidal matrix 
+* *CORRECTED* "Quick Fix"
+* Present in LAPACK 3.5.0
+* Bug reported by Dan Kortschak on LAPACK forum on Oct 5th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4810
+* Confirmed by Julie on Oct 5th
+* Corrected by Julien on Oct 5th rev 1598
+
+== [green]*bug 137* :: Dlange gives inconsistent/incorrect results for RowMajor
+* *CORRECTED*, rev 1602
+* Bug reported by Dan Kortschak on Sep 16th
+* Link: https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4789&p=0#p0 
+* Assigned to Julien on Sep 16th
+* Confirmed by Julien on Sep 16th
+* Corrected by Julie on Oct 21th rev 1602 (apply patch submitted by Dan Kortschak)
+
+== [red]*bug 136* :: xGGEV3 returns zeros in BETA array
+* *CONFIRMED*
+* *CORRECTION* in rev 1599
+* Bug reported by pavel (Multiprecision Computing Toolbox for MATLAB) on Sep 10th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4796&p=11509
+* Assigned to Julien on Sep 10th
+* Corrected by lawrence mulholland (NAG) in rev 1599 but not verified
+
+== [green]*bug 135* :: LAPACKE_dlansy et al cause segfault with 1-norm
+* *CORRECTED*, rev 1587
+* Present in LAPACK 3.5.0
+* Bug reported by kortschak on Sep 10th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4793
+* Confirmed by Julie on Sep 10th
+* Corrected by Julie on Sep 10th
+
+== [red]*bug 134* :: Rook pivoting factorization goes into an infinite loop
+* *CONFIRMED*
+* Present in LAPACK 3.5.0
+* Bug reported directly by Bobby Cheng (Matlab) on Aug 12th
+* Assigned to Igor on Aug 12th 2015
+* Not able to reproduce the issue (Aug 20th 2015)
+* Correction to be made: Working on having NaNs/Infs not cause an infinite loop (Aug 20th 2015)
+
+== [green]*bug 133* :: Dormlq C interface error check
+* *CORRECTED*
+* Present in LAPACK 3.5.0
+* Bug reported by btracey on Aug 10th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4771
+* Assigned to Julie on Aug 11th 2015
+* Confirmed by Julie on Aug 25th
+* Corrected by Julie on Sep 2nd
+
+== [green]*bug 132* :: dsyevr bug
+* *NOT A BUG*
+* Bug reported by osirpt on Aug 4th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=4767
+* Assigned to Osni on Aug 4th 2015
+* Osni not able to reproduce issue - unconfirmed on Sep 24th
+
+== [green]*bug 131* :: Possible bug in DORGR2
+* *NOT A BUG*
+* Present in LAPACK 3.5.0
+* Bug reported by hrautila on Aug 3rd
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4765
+* Unconfirmed by Julie on Sep 2nd 2015
+* Julien to send explanation
+
+== [red]*bug 130* :: Ambiguous lapacke interfaces to Cosine/Sine decomposition - 2 Trans parameters
+* *CONFIRMED* on July 9th 2015
+* Present in LAPACK 3.5.0
+* Bug reported by Victor Kostin (INTEL) on July 9th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4748
+* Confirmed by Julie on July 9th 2015
+
+== [green]*bug 129* :: LAPACK_?syconv interface problem - Work is used to return values
+* *CORRECTED*, rev 1581
+* Present in LAPACK 3.5.0
+* Bug reported by Victor Kostin (INTEL) on July 9th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4747
+* Confirmed by Julie on July 9th 2015
+* Corrected by Julie on Aug 25th 2015
+
+== [green]*bug 128* :: lapacke_?laset has limitations - pb if initialize the matrix with NaNs (Matrix assumed to be initialized by this functions)
+* *CORRECTED*, rev 1580
+* Present in LAPACK 3.5.0
+* Bug reported by Victor Kostin (INTEL) on July 9th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4746
+* Confirmed by Julie on July 9th 2015
+* Corrected by Julien on Aug 25th 2015
+
+== [red]*bug 127* :: LAPACKE interface to ?ORCSD / ?UNCSD is not fully functional - Work is used to return values
+* *CONFIRMED* on July 9th 2015
+* Present in LAPACK 3.5.0
+* Bug reported by Victor Kostin (INTEL) on July 9th
+* Link http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4745
+* Confirmed by Julie on July 9th 2015
+
+== [red]*bug 126* :: DSTEMR -  related to some splitting of the tridiagonal
+* *CONFIRMED* on Jun 24th 2015
+* Present in LAPACK 3.5.0
+* Bug reported by Miroslav Ilias on Jun 27th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1820
+* Assigned to Osni
+
+== [green]*bug125* :: xLAHQR v3.5 does not converge on some matrices while xLAHQR v2 converges
+* *CORRECTED*, rev 1537
+* Present in LAPACK 3.5.0
+* Bug reported by Yoshihide Okimi on July 16, 2014
+* Link: https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4566
+* and, independently, by Marco Caliari (Università di Verona) on February 11, 2015.
+* Involved in bug fix: Yoshihide Okimi, Marco Caliari (Università di Verona),
+* Meiyue Shao (LBL), Julien Langou, and Daniel Kressner (EPFL).
+* Confirmed and Corrected by Julien Langou on Mar 25th 2015. 
+
+== [green]*bug124* :: dpstf2 returns incorrect value of rank
+* *CORRECTED*, rev 1536
+* Present in LAPACK 3.5.0
+* Bug reported by Victor (INTEL) on the LAPACK forum on December 26th 2014
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4643&p=11162#p11162
+* Confirmed by Julie Langou on Mar 17th 2015
+* Corrected by Julien Langou on Mar 25th 2015. Involved as well Nick Higham, Sven Hammarling and Craig Lucas.
+
+== [green]*bug123* :: csytrf_rook test fails for dimensions 127, 260
+* *CORRECTED*, rev 1571
+* Present in LAPACK 3.5.0
+* Bug reported by Alex  (INTEL) on the LAPACK forum on September 26th 2014
+* Assigned to Igor (UC Berkeley) on Feb 11th 2015
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4590
+* Confirmed by Igor on Apr 7th 2015
+* Corrected by Igor on Aug 11th 2015
+
+== [green]*bug122* :: Wrong Info code when checking input parameter QSIZ in SLASD7 and DLASD7
+* *CORRECTED*, rev 1504
+* Present in LAPACK 3.5.0
+* Bug report by Elena Ivanova (Oracle) directly to Julie on Oct 2nd 2014
+* Corrected by Julie Langou on October 6th
+
+== [green]*bug121* :: Bugs in DLASD8 and DLASD6 
+* *CORRECTED*, rev 1505, 1525
+* Present in LAPACK 3.5.0
+* Bug report by forswg on the Forum - Sep 18th 2014
+* Links: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4586&p=11035#p11035
+* Seems to be related to bug 115
+* Corrected by Osni Marques on Oct 1st 2014
+
+== [green]*bug120* :: Workspace query return too small value for xGESDD 
+* *CORRECTED*, rev 1503
+* Present in LAPACK 3.5.0
+* Bug report by Rasmus Munk Larsen, Google Knowledge & Research, Mountain View. on the Forum - Sep 18th 2014
+* Links: https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4587&p=11036#p11036
+* Corrected by Julie Langou on September 22nd
+
+== [green]*bug119* :: CBLAS - missing the floating point constant argument in sdsdotsub 
+* *CORRECTED*, rev 1493
+* Present in CBLAS
+* Bug report by by Shandong Lao fron Oracle on LAPACK Mailing List  - Aug 11th 2014
+
 == [green]*bug118* :: ZLANHF and CLANHF Norm Calculation 
 * *CORRECTED*, rev 1483
 * Present in LAPACK 3.5.0
-* Bug report by by Themos Tsikas fron NAG Ltd on LAPACK Forum  - June 16th 2014
+* Bug report by Themos Tsikas fron NAG Ltd on LAPACK Forum  - June 16th 2014
 * Links: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4558
 
-== [maroon]*bug117* :: NSPLIT unitialized; N=2 code wrong
-* *NOT CONFIRMED*
-* Present in LAPACK 3.5.0
+== [green]*bug117* :: NSPLIT unitialized; N=2 code wrong
+* *CORRECTED*, rev 1432, 1463
+* Present in LAPACK 3.4.0
 * Bug report by Lawrence Mulholland, NAG on LAPACK Forum  - July 26th 2013
 * Links: http://icl.utk.edu/lapack-forum/viewtopic.php?f=2&t=4331
+* Bug fix by Ake Sandgren and Lawrence Mulholland
 
 == [maroon]*bug116* :: ZGGEV fails but Matlab works
 * *NOT CONFIRMED*
 * Present in LAPACK 3.5.0
 * Bug report by Victor Liu, Standford on LAPACK Forum  - August 20th 2013
+* Assigned to Julien (UC Denver) on Feb 11th 2015
 * Links: http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&t=4357
 
-== [maroon]*bug115* :: DSYEVD fails to converge
-* *CONFIRMED*
+== [green]*bug115* :: DSYEVD fails to converge
+* *CORRECTED*, rev 1505
 * Present in LAPACK 3.5.0
 * Bug report by Duncan Po on LAPACK Forum  - September 12th 2013
 * Links: http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&t=4391
-* Need to take a look at the matrix - Julien Langou on Nov 26th
+* Corrected by Osni Marques on Oct 1st 2014
 
 == [green]*bug114* :: (C, Z)GESVD stack corruption issue
 * *CORRECTED*, rev 1455
@@ -52,24 +231,32 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 * Links: http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&t=4392
 * Corrected by Julien Langou on Nov 26th
 
-== [maroon]*bug113* :: DLARRB() infinite loop bug
-* *NOT CONFIRMED*
+== [green]*bug113* :: DLARRB() infinite loop bug
+* *CORRECTED*, rev 1540, rev 1603
 * Present in LAPACK 3.4.2
 * Bug report by Aleksey Vorona on LAPACK Mailing  - September 11th 2013
+* Assigned to Osni (UC Berkeley) on Feb 11th 2015
 * Links: https://bugs.r-project.org/bugzilla3/show_bug.cgi?id=15211
 * The patch is attached to the bug: https://bugs.r-project.org/bugzilla3/attachment.cgi?id=1478
+* Confirmed by Osni on Mon, 06 Apr 2015
+* Corrected by Osni on Mon May 4th 2015
+* Corrected by Osni on Oct 26th 2015
+* Prevention fix to avoid enter into an infinite loop in some rare cases. 
+* Fix: set the variable NOFAIL to .false. 
 
-== [maroon]*bug111* ::  incorrect RWORK size for ZGESDD
-* *NOT CONFIRMED*
+== [green]*bug111* ::  incorrect RWORK size for ZGESDD
+* *CORRECTED*, rev 1535 (LAPACK), rev 1541 (LAPACKE)
 * Present in LAPACK 3.4.2
 * Bug report by Kevin Squire on LAPACK Mailing  - August 15th 2013
 * From Kevin: We were following the recommendation for RWORK size calculation from the ZGESDD header here ( http://netlib.org/lapack/complex16/zgesdd.f), and were finding that when INFO='N', the size was insufficient, and generally led to a segmentation fault.
-*  The current definition says that "If JOBZ = 'N', LRWORK >= 5*min(M,N)", but we found that the minimum size needed to be at least 7*min(M,N).  This was through experimentation and comparison with code from Numpy and Octave, so you may wish to verify this through the code.
+* The current definition says that "If JOBZ = 'N', LRWORK >= 5*min(M,N)", but we found that the minimum size needed to be at least 7*min(M,N).  This was through experimentation and comparison with code from Numpy and Octave, so you may wish to verify this through the code.
+* Assigned to Julie (U Tennessee) on Feb 11th 2015
 *  Relevant Julia links:
 * https://github.com/JuliaLang/julia/issues/3966 
 * fix: https://github.com/JuliaLang/julia/commit/484a9f0892
 * https://github.com/JuliaLang/julia/issues/4016 
 * fix: https://github.com/JuliaLang/julia/commit/9f6058804c
+* Confirmed and Corrected by Julie Langou on Mar 17th 2015
 
 == [red]*bug0061* :: zgehrd.f is overflowing 
  * *CONFIRMED*
@@ -79,11 +266,12 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
  * of zgeev in multithreaded context
  * lapackers involved in the bug fix process: Julie and Julien Langou and Mathieu Faverge
  * bug fix by Victor Liu on Wednesday August 04th, 2010
+ * Assigned to Julien (UC Denver) on Feb 11th 2015
  * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1930[forum topic 1930]
  * two outstanding issues: (1) how do we go to fix this?, (2) more LAPACK subroutines might be concerned.
 
-== [red]*bug0057* :: Non-eigenvectors from DGEEV, problem in balancing
- * *CONFIRMED*
+== [green]*bug0057* :: Non-eigenvectors from DGEEV, problem in balancing
+* *CORRECTED*, rev 1413
  * bug report sent by Numpy team on April 22nd, 2010
  * see link:https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1818[forum topic 1818]
  * see follow-up on lapackers on April 22nd from Jim "bug in DGEHRD"
@@ -92,29 +280,34 @@ which rather amplifies tiny rounding errors in the (presumably correctly)
 computed eigenvectors of the balanced matrix, when balancing is undone at the end.
 The expert driver interface dgeevx would let the user disable balancing, until
 we figure out whether this is a bug or a feature, I'm not sure which."
+ * Corrected by Bradley Lowery, Rodney James, Julien Langou on May 26 2013
 
-== [red]*bug0056* ::  Non-orthogonal eigenvectors returned from DSYEVR
- * *CONFIRMED*
+== [green]*bug0056* ::  Non-orthogonal eigenvectors returned from DSYEVR
+ * *CORRECTED*, rev 1540
  * bug report sent by Scipy team on April 22nd
  * see link:http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00874.html[ LAPACK Mailing list msg 874]
  * Confirmed by Rodney on Tue, 17 Feb 2011
  * " I can reproduce similar problems that the user encountered with non-orthogonal eigenvectors when only
  * a few eigenvalues are requested.  This also happens with SSYEVR.  If I set ABSTOL to SLAMCH('Safe minimum'),
  * the problem goes away in SSYEVR, and improves with DSYEVR but does not completely go away."
- 
-== [red]*bug0033* :: failure of zheevd on a specific matrix
- * *CONFIRMED*
+ * Assigned to Osni (UC Berkeley) and Julien (UC Denver)? on Feb 11th 2015
+ * Corrected by Osni on Mon May 4th 2015
+
+== [green]*bug0033* :: failure of zheevd on a specific matrix
+* *CORRECTED*, rev 1505
  * bug report sent by Cezary Sliwa (Instytut Fizyki PAN, Poland) on Thu 2 Jul 2009 to "lapack@cs.utk.edu".
  * see link:020.f[Cezary Sliwa's test code], link:021.dat[Cezary Sliwa's matrix], and
       link:022.txt[Cezary Sliwa's email].
  * Confirmed by Rodney on Tue, 17 Feb 2011
+ * Corrected by Osni Marques on Oct 1st 2014
 
-== [red]*bug0032* :: matrix splitting problem with dstebz and sstebz
- * *CONFIRMED*
+== [green]*bug0032* :: matrix splitting problem with dstebz and sstebz
+ * *CORRECTED*, rev 1540
  * bug report sent by Phil DeMier (IBM) on Mon 29 Jun 2009 to "lapack@cs.utk.edu".
       "matrix splitting problem with dstebz and sstebz"
  * see link:018.txt[Phil DeMier's email] and link:019.f[Phil DeMier's test code]
- * Confirmed by Rodney on Tue, 17 Feb 2011
+ * Confirmed by Rodney on Tue, 08 Feb 2011
+ * Corrected by Osni on Mon May 4th 2015
 
   
 // vim: set syntax=asciidoc:

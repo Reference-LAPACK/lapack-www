@@ -2,6 +2,20 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn289 +[link:http://www.netlib.org/lapack/lawnspdf/lawn289.pdf[pdf]]+
+.Fault tolerance techniques for high-performance computing
+
+by *Jack Dongarra, Thomas Herault and Yves Robert*
+
+UT-EECS-15-734 May 2015
+
+== lawn288 +[link:http://www.netlib.org/lapack/lawnspdf/lawn288.pdf[pdf]]+
+.PULSAR Users’ Guide
+
+by *Jack Dongarra, Jakub Kurzak, Piotr Luszczek, and Ichitaro Yamazaki*
+
+UT-EECS-14-733 December 2014
+
 == lawn287 +[link:http://www.netlib.org/lapack/lawnspdf/lawn287.pdf[pdf]]+
 .Efficient checkpoint/verification patterns for silent error detection
 

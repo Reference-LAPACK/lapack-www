@@ -246,3 +246,7 @@ Following the algorithm of Michael Baudin, Robert L. Smith (see arxiv.1210.4539 
 * dlasd4.f, slasd4.f :: improvements by Sergey Kuznetsov (Intel), committed by Rodney James
 * clarfb.f, dlarfb.f, slarfb.f, zlarfb.f :: improvements by Rodney James
 
+9. Improvements in LAPACK 3.6.0
+-------------------------------
+
+See link:lapack-3.6.0.html[Release Notes for 3.6.0] for more details

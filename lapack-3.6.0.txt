@@ -1,0 +1,214 @@
+LAPACK 3.6.0
+============
+
+Release date: 11/15.
+
+This material is based upon work supported by the National Science Foundation
+and the Department of Energy under Grant No. NSF-OCI-1032861, NSF-CCF-00444486,
+NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127, DOE-DE-FC02-01ER25478,
+DOE-DE-FC02-06ER25768.
+
+LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
+
+
+1. Support and questions:
+-------------------------
+
+http://icl.cs.utk.edu/lapack-forum/
+
+2. Thanks
+---------
+
+Thanks for bug-report/patches/suggestions to:
+
+
+Forum users:
+     
+
+3. LAPACK 3.6.0: What's new
+---------------------------
+
+* [Philippe Theveny, UC Denver] *BLAS3 routines for generalised SVD*
+
+xGGSVD3 and xGGSVP3. Use Level 3 BLAS algorithm. xGGSVD3 uses xGEQP3, xGGSVP3 uses xGGSVD3.
+This replaces the deprecated subroutines xGGSVD and xGGSVP. xGGSVD3 was using xGEQPF, xGGSVP was using xGGSVD.
+
+Added:
+
+	SRC/cggsvd3.f
+	SRC/cggsvp3.f
+	SRC/dggsvd3.f
+	SRC/dggsvp3.f
+	SRC/sggsvd3.f
+	SRC/sggsvp3.f
+	SRC/zggsvd3.f
+	SRC/zggsvp3.f
+
+Modified:
+
+	SRC/cgeqp3.f
+	SRC/cggsvd.f
+	SRC/cggsvp.f
+	SRC/dgeqp3.f
+	SRC/dggsvd.f
+	SRC/dggsvp.f
+	SRC/sgeqp3.f
+	SRC/sggsvd.f
+	SRC/sggsvp.f
+	SRC/zgeqp3.f
+	SRC/zggsvd.f
+	SRC/zggsvp.f
+   
+* [Osni Marquez] *Computing a Subset of the Singular Value Decomposition*
+full or partial (subset) SVD of a bidiagonal matrix through an associated eigenvalue problem
+full or partial (subset) SVD of a general matrix by invoking bdsvdx
+
+Added:
+
+	SRC/dbdsvdx.f
+	SRC/sbdsvdx.f: 
+	SRC/dgesvdx.f
+	SRC/sgesvdx.f
+	SRC/zgesvdx.f
+	SRC/cgesvdx.f: 
+
+* [Zlatko Drmac] *Complex Jacobi SVD*
+
+Inclusion of complex and double complex routines (real and double precision were included in LAPACK 3.2.0)
+
+Added:
+
+	SRC/cgejsv.f
+	SRC/zgejsv.f
+	SRC/cgesvj.f
+	SRC/cgsvj0.f
+	SRC/cgsvj1.f
+	SRC/zgesvj.f
+	SRC/zgsvj0.f
+	SRC/zgsvj1.f
+
+* [Piotr Luszczek, Univ of TN] *Recursive Cholesky*
+
+Added:
+
+	lapack/trunk/SRC/cpotrf2.f
+	lapack/trunk/SRC/dpotrf2.f
+	lapack/trunk/SRC/spotrf2.f
+	lapack/trunk/SRC/zpotrf2.f
+
+Modified:
+
+	lapack/trunk/SRC/cpotrf.f
+	lapack/trunk/SRC/dpotrf.f
+	lapack/trunk/SRC/spotrf.f
+	lapack/trunk/SRC/zpotrf.f
+
+
+* [Daniel Kressner and Meiyue Shao] *Improvements to QR (NEP)*
+
+Improvements to nonsymmetric generalized eigenvalue problems
+xGGHD3: blocked Hessenberg-triangular reduction routines, xGGHD3, for nonsymmetric generalized eigenvalue problems. This replaces the current unblocked routines xGGHRD. CONTRIBUTION BY Daniel Kressner and Meiyue Shao
+
+
+* [Philippe Theveny, UC Denver] *Deprecated routines*
+
+	CGEGS	CGEGV	CGELSX	CGEQPF	CGGSVD
+	CGGSVP	CLAHRD	CLATZM	CTZRQF
+	DGEGS	DGEGV	DGELSX	DGEQPF	DGGSVD
+	DGGSVP	DLAHRD	DLATZM	DTZRQF	
+	SGEGS	SGEGV	SGELSX	SGEQPF	SGGSVD
+	SGGSVP	SLAHRD	SLATZM	STZRQF
+	ZGEGS	ZGEGV	ZGELSX	ZGEQPF	ZGGSVD
+	ZGGSVP	ZLAHRD	ZLATZM	ZTZRQF
+
+
+* matrix_order -> matrix_layout in the LAPACKE C Interface.
+
+3. External Contributors
+------------------------
+* Zlatko Drmac, University of Zagreb
+* Daniel Kressner, École Polytechnique Fédérale de Lausanne
+* Meiyue Shao, Lawrence Berkeley National Laboratory
+
+4. Thanks
+---------
+* Aleksey Vorona
+* Alex Zotkevich
+* Alex Zotkevich (INTEL)
+* Alexander Kobotov (INTEL)
+* Allan Wollaber
+* Amran Illoul
+* Andreas Noack Jensen 
+* Beresford Parlett
+* Bobby Chen (Mathworks)
+* btracey (GONUM)
+* Cezary Sliwa
+* Christoph Conrads
+* Dan Kortschak
+* David Hough (ORACLE)
+* Don Fike
+* Duncan Po (Mathworks)
+* Ed Anderson
+* Elena Ivanov (ORACLE)
+* Eugene Chereshnev (INTEL)
+* forswg (LAPACK Forum user)
+* hrautila (LAPACK Forum user)
+* Julien Schueller (Phimeca)
+* Justin Si
+* Kevin Squire
+* Lawrence Mulholland (NAG Ltd.)
+* Martyn & Lejeczek (Fedora)
+* Miroslav Ilias
+* Nico
+* Nico Schloemer
+* Numpy team
+* osirpt (LAPACK Forum user)
+* Pauli Virtanen
+* Pavel Holoborodko
+* Phil DeMier (IBM) 
+* Rasmus Munk Larsen (Google Knowledge & Research)
+* Rodney James
+* Scipy team
+* Sergey Kuznetsov (INTEL)
+* Shandong Lao (ORACLE)
+* Themos Tsikas (NAG Ltd.) 
+* Tom Callaway (RedHat)
+* Tracey Brendan
+* Victor Kostin (INTEL)
+* Victor Liu
+* vitaut (LAPACK Forum user)
+* Vitorrio Zecca
+* Vittorio Zecca 
+* Willem Vermin
+* Yoshihide Okimi
+* zhaowei (LAPACK Forum user)
+    
+5. Developer list
+-----------------
+
+.Principal Investigators
+
+    * Jim Demmel (University of California,  Berkeley, USA)
+    * Jack Dongarra (University of Tennessee and ORNL, USA)
+    * Julien Langou (University of Colorado Denver, USA)
+
+.LAPACK developers involved in this release
+
+    * Julie Langou (University of Tennessee, USA)
+    * Philippe Theveny (University of Colorado Denver, USA)
+    * Osni Marquez (University of California,  Berkeley, USA)
+    * Lawrence Mulholland (NAG Ltd.)
+    * Piotr Luszczek (University of Tennessee, USA)
+    * Igor Kozachenko  (University of California,  Berkeley, USA)
+
+6. More details
+----------------
+
+
+7.  Bug Fix
+-----------
+
+link:errata_from_350_to_360.html[see here]
+
+// vim: set syntax=asciidoc:

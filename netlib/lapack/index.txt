@@ -81,6 +81,8 @@ conclusions or recommendations expressed in this material are those of the
 author(s) and do not necessarily reflect the views of the National Science
 Foundation (NSF) or the Department of Energy (DOE).
 
+The LAPACK project is also sponsored in part by http://www.mathworks.com/[MathWorks] and https://software.intel.com/en-us/intel-mkl[Intel] since many years.
+
 
 == Software
 

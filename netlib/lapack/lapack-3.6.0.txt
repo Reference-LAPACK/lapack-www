@@ -88,7 +88,7 @@ Added:
 	SRC/zgsvj0.f
 	SRC/zgsvj1.f
 
-* [Piotr Luszczek, Univ of TN] *Recursive Cholesky*
+* [Piotr Luszczek, Univ of TN and Yaohung Mike Tsai, Univ of TN] *Recursive Cholesky*
 
 Added:
 
@@ -200,6 +200,7 @@ xGGHD3: blocked Hessenberg-triangular reduction routines, xGGHD3, for nonsymmetr
     * Osni Marquez (University of California,  Berkeley, USA)
     * Lawrence Mulholland (NAG Ltd.)
     * Piotr Luszczek (University of Tennessee, USA)
+    * Yaohung Mike Tsai (University of Tennessee, USA)
     * Igor Kozachenko  (University of California,  Berkeley, USA)
 
 6. More details

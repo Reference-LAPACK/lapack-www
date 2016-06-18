@@ -3,6 +3,31 @@ LAPACK BUG LIST
 
 link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
+
+== [red]*bug 159* DSTEMR - related to splitting of a tridiagonal - new behavior introduced by fix to bug #113
+* *CONFIRMED*
+* Present in LAPACK 3.6.0
+* Bug reported by Ren-Cang Li in 2016 to Julien
+* See email to LAPACK team
+* Assigned to Osni.
+* Osni: We have a new subroutine to replace the subroutine causing us trouble.  We will be sitting together (OM and Prof. Parlett) tomorrow to discuss how this will behave.
+* I expect the new version of the subroutine will fix bug 113
+* 02/10/16 Osni: The bug has been traced to the factorization(s) performed by dlarrf. 
+* The current implementation of dlarrf can lead to NaNs or element growth (this is expected) but the tests to deal with these cases are not working properly.
+* Beresford and I have experimented changing a few things in dlarrf, which fixes this bug and also bug 126, but we know that a more robust strategy needs to be devised. 
+* 2/11/16: We were able to trace the issue down here to the factorizations.  We have some tests to cope with extreme growth in elements and NaNs, 
+* but these tests are not robust.  So we end up with linearly dependent eigenvectors when eigenvalues are close to each other.
+* 5/9/16: (Osni) We had a meeting in Berkeley (Prof. Parlett, Jim, Osni, I Dhillon) Some safeguards were removed over the years thinking we did not need them;
+* perhaps they must come back (this was the focus of our discussion).  For some matrices, the vectors that are returned are not orthogonal the way we would 
+* like them to be---the level of orthogonality is not ideal for nearly multiple eigenvalues.  Prof Parlett and I will sit together to determine the best strategy for future LAPACK release. 
+
+== [red]*bug 158* problem with DC SVD least squares
+* *CONFIRMED*
+* Present in LAPACK 3.6.0
+* Bug reported by Ren-Cang Li in 2016 to Julien
+* See email to LAPACK team
+* Assigned to Osni.
+
 == [green]*bug 157* gesdd , gesvd, and bdsdc Workspace computation
 * *CORRECTED*
 * Present in LAPACK 3.6.0
@@ -196,8 +221,8 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 * Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4765
 * Unconfirmed by Julie on Sep 2nd 2015
 
-== [red]*bug 130* :: Ambiguous lapacke interfaces to Cosine/Sine decomposition - 2 Trans parameters
-* *CONFIRMED* on July 9th 2015
+== [green]*bug 130* :: Ambiguous lapacke interfaces to Cosine/Sine decomposition - 2 Trans parameters
+* *NOT A BUG* on July 9th 2015
 * Present in LAPACK 3.5.0
 * Bug reported by Victor Kostin (INTEL) on July 9th
 * Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4748
@@ -231,6 +256,7 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 * Present in LAPACK 3.5.0
 * Bug reported by Miroslav Ilias on Jun 27th
 * Link http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1820
+* See bug 159
 
 == [green]*bug125* :: xLAHQR v3.5 does not converge on some matrices while xLAHQR v2 converges
 * *CORRECTED*, rev 1537

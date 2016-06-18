@@ -1,0 +1,1804 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>Bugs corrected from 3.5.0 to 3.6.0</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Bugs corrected from 3.5.0 to 3.6.0</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug141_span_strong_lapacke_dlantr_causes_memory_corruption"><strong><span class="green">bug141</span></strong> LAPACKE dlantr causes memory corruption</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1602
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Dan Kortschak on LAPACK forum on Sep 6th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4788">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4788</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julien on Oct 7th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Oct 21th rev 1602 (apply patch submitted by Dan Kortschak)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug139_span_strong_xstedc_eigenvalues_not_sorted"><strong><span class="green">bug139</span></strong> xSTEDC eigenvalues not sorted</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported on Oct 6th by Christoph Conrads on lapack mailing list
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01713.html">http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01713.html</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julien on Oct 7th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Oct 21th rev 1601 (apply patch submitted by Christoph Conrads)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug138_span_strong_lapacke_dtr_nancheck_not_working_for_trapezoidal_matrix"><strong><span class="green">bug138</span></strong> :: LAPACKE_dtr_nancheck not working for trapezoidal matrix</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> "Quick Fix"
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Dan Kortschak on LAPACK forum on Oct 5th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4810">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4810</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on Oct 5th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Oct 5th rev 1598
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_137_span_strong_dlange_gives_inconsistent_incorrect_results_for_rowmajor"><strong><span class="green">bug 137</span></strong> :: Dlange gives inconsistent/incorrect results for RowMajor</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1602
+</p>
+</li>
+<li>
+<p>
+Bug reported by Dan Kortschak on Sep 16th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4789&amp;p=0#p0">https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4789&amp;p=0#p0</a>
+</p>
+</li>
+<li>
+<p>
+Assigned to Julien on Sep 16th
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julien on Sep 16th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Oct 21th rev 1602 (apply patch submitted by Dan Kortschak)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_135_span_strong_lapacke_dlansy_et_al_cause_segfault_with_1_norm"><strong><span class="green">bug 135</span></strong> :: LAPACKE_dlansy et al cause segfault with 1-norm</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1587
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by kortschak on Sep 10th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4793">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4793</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on Sep 10th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Sep 10th
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_133_span_strong_dormlq_c_interface_error_check"><strong><span class="green">bug 133</span></strong> :: Dormlq C interface error check</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by btracey on Aug 10th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4771">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4771</a>
+</p>
+</li>
+<li>
+<p>
+Assigned to Julie on Aug 11th 2015
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on Aug 25th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Sep 2nd
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_132_span_strong_dsyevr_bug"><strong><span class="green">bug 132</span></strong> :: dsyevr bug</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>NOT A BUG</strong>
+</p>
+</li>
+<li>
+<p>
+Bug reported by osirpt on Aug 4th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=4767">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=4767</a>
+</p>
+</li>
+<li>
+<p>
+Assigned to Osni on Aug 4th 2015
+</p>
+</li>
+<li>
+<p>
+Osni not able to reproduce issue - unconfirmed on Sep 24th
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_131_span_strong_possible_bug_in_dorgr2"><strong><span class="green">bug 131</span></strong> :: Possible bug in DORGR2</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>NOT A BUG</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by hrautila on Aug 3rd
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4765">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4765</a>
+</p>
+</li>
+<li>
+<p>
+Unconfirmed by Julie on Sep 2nd 2015
+</p>
+</li>
+<li>
+<p>
+Julien to send explanation
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_129_span_strong_lapack__syconv_interface_problem_work_is_used_to_return_values"><strong><span class="green">bug 129</span></strong> :: LAPACK_?syconv interface problem - Work is used to return values</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1581
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Victor Kostin (INTEL) on July 9th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4747">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4747</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on July 9th 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Aug 25th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_128_span_strong_lapacke__laset_has_limitations_pb_if_initialize_the_matrix_with_nans_matrix_assumed_to_be_initialized_by_this_functions"><strong><span class="green">bug 128</span></strong> :: lapacke_?laset has limitations - pb if initialize the matrix with NaNs (Matrix assumed to be initialized by this functions)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1580
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Victor Kostin (INTEL) on July 9th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4746">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4746</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on July 9th 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Aug 25th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_red_bug_127_span_strong_lapacke_interface_to_orcsd_uncsd_is_not_fully_functional_work_is_used_to_return_values"><strong><span class="red">bug 127</span></strong> :: LAPACKE interface to ?ORCSD / ?UNCSD is not fully functional - Work is used to return values</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CONFIRMED</strong> on July 9th 2015
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Victor Kostin (INTEL) on July 9th
+</p>
+</li>
+<li>
+<p>
+Link <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4745">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4745</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on July 9th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug125_span_strong_xlahqr_v3_5_does_not_converge_on_some_matrices_while_xlahqr_v2_converges"><strong><span class="green">bug125</span></strong> :: xLAHQR v3.5 does not converge on some matrices while xLAHQR v2 converges</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1537
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Yoshihide Okimi on July 16, 2014
+</p>
+</li>
+<li>
+<p>
+Link: <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4566">https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4566</a>
+</p>
+</li>
+<li>
+<p>
+and, independently, by Marco Caliari (Università di Verona) on February 11, 2015.
+</p>
+</li>
+<li>
+<p>
+Involved in bug fix: Yoshihide Okimi, Marco Caliari (Università di Verona),
+</p>
+</li>
+<li>
+<p>
+Meiyue Shao (LBL), Julien Langou, and Daniel Kressner (EPFL).
+</p>
+</li>
+<li>
+<p>
+Confirmed and Corrected by Julien Langou on Mar 25th 2015.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug124_span_strong_dpstf2_returns_incorrect_value_of_rank"><strong><span class="green">bug124</span></strong> :: dpstf2 returns incorrect value of rank</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1536
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Victor (INTEL) on the LAPACK forum on December 26th 2014
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4643&amp;p=11162#p11162">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4643&amp;p=11162#p11162</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie Langou on Mar 17th 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien Langou on Mar 25th 2015. Involved as well Nick Higham, Sven Hammarling and Craig Lucas.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug123_span_strong_csytrf_rook_test_fails_for_dimensions_127_260"><strong><span class="green">bug123</span></strong> :: csytrf_rook test fails for dimensions 127, 260</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1571
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Alex  (INTEL) on the LAPACK forum on September 26th 2014
+</p>
+</li>
+<li>
+<p>
+Assigned to Igor (UC Berkeley) on Feb 11th 2015
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4590">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4590</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Igor on Apr 7th 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Igor on Aug 11th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug122_span_strong_wrong_info_code_when_checking_input_parameter_qsiz_in_slasd7_and_dlasd7"><strong><span class="green">bug122</span></strong> :: Wrong Info code when checking input parameter QSIZ in SLASD7 and DLASD7</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1504
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Elena Ivanova (Oracle) directly to Julie on Oct 2nd 2014
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie Langou on October 6th
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug121_span_strong_bugs_in_dlasd8_and_dlasd6"><strong><span class="green">bug121</span></strong> :: Bugs in DLASD8 and DLASD6</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1505, 1525
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by forswg on the Forum - Sep 18th 2014
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4586&amp;p=11035#p11035">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4586&amp;p=11035#p11035</a>
+</p>
+</li>
+<li>
+<p>
+Seems to be related to bug 115
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni Marques on Oct 1st 2014
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug120_span_strong_workspace_query_return_too_small_value_for_xgesdd"><strong><span class="green">bug120</span></strong> :: Workspace query return too small value for xGESDD</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1503
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Rasmus Munk Larsen, Google Knowledge &amp; Research, Mountain View. on the Forum - Sep 18th 2014
+</p>
+</li>
+<li>
+<p>
+Links: <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4587&amp;p=11036#p11036">https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4587&amp;p=11036#p11036</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie Langou on September 22nd
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug119_span_strong_cblas_missing_the_floating_point_constant_argument_in_sdsdotsub"><strong><span class="green">bug119</span></strong> :: CBLAS - missing the floating point constant argument in sdsdotsub</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1493
+</p>
+</li>
+<li>
+<p>
+Present in CBLAS
+</p>
+</li>
+<li>
+<p>
+Bug report by by Shandong Lao fron Oracle on LAPACK Mailing List  - Aug 11th 2014
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug118_span_strong_zlanhf_and_clanhf_norm_calculation"><strong><span class="green">bug118</span></strong> :: ZLANHF and CLANHF Norm Calculation</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1483
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Themos Tsikas fron NAG Ltd on LAPACK Forum  - June 16th 2014
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4558">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4558</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug117_span_strong_nsplit_unitialized_n_2_code_wrong"><strong><span class="green">bug117</span></strong> :: NSPLIT unitialized; N=2 code wrong</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1432, 1463
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Lawrence Mulholland, NAG on LAPACK Forum  - July 26th 2013
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://icl.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=4331">http://icl.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=4331</a>
+</p>
+</li>
+<li>
+<p>
+Bug fix by Ake Sandgren and Lawrence Mulholland
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug115_span_strong_dsyevd_fails_to_converge"><strong><span class="green">bug115</span></strong> :: DSYEVD fails to converge</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1505
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Duncan Po on LAPACK Forum  - September 12th 2013
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4391">http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4391</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni Marques on Oct 1st 2014
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug114_span_strong_c_z_gesvd_stack_corruption_issue"><strong><span class="green">bug114</span></strong> :: (C, Z)GESVD stack corruption issue</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1455
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Alex Zotkevich on LAPACK Forum  - September 16th 2013
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4392">http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4392</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien Langou on Nov 26th
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug113_span_strong_dlarrb_infinite_loop_bug"><strong><span class="green">bug113</span></strong> :: DLARRB() infinite loop bug</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1540, rev 1603
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+Bug report by Aleksey Vorona on LAPACK Mailing  - September 11th 2013
+</p>
+</li>
+<li>
+<p>
+Assigned to Osni (UC Berkeley) on Feb 11th 2015
+</p>
+</li>
+<li>
+<p>
+Links: <a href="https://bugs.r-project.org/bugzilla3/show_bug.cgi?id=15211">https://bugs.r-project.org/bugzilla3/show_bug.cgi?id=15211</a>
+</p>
+</li>
+<li>
+<p>
+The patch is attached to the bug: <a href="https://bugs.r-project.org/bugzilla3/attachment.cgi?id=1478">https://bugs.r-project.org/bugzilla3/attachment.cgi?id=1478</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Osni on Mon, 06 Apr 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni on Mon May 4th 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni on Oct 26th 2015
+</p>
+</li>
+<li>
+<p>
+Prevention fix to avoid enter into an infinite loop in some rare cases.
+</p>
+</li>
+<li>
+<p>
+Fix: set the variable NOFAIL to .false.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug111_span_strong_incorrect_rwork_size_for_zgesdd"><strong><span class="green">bug111</span></strong> ::  incorrect RWORK size for ZGESDD</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1535 (LAPACK), rev 1541 (LAPACKE)
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+Bug report by Kevin Squire on LAPACK Mailing  - August 15th 2013
+</p>
+</li>
+<li>
+<p>
+From Kevin: We were following the recommendation for RWORK size calculation from the ZGESDD header here ( <a href="http://netlib.org/lapack/complex16/zgesdd.f">http://netlib.org/lapack/complex16/zgesdd.f</a>), and were finding that when INFO=<em>N</em>, the size was insufficient, and generally led to a segmentation fault.
+</p>
+</li>
+<li>
+<p>
+The current definition says that "If JOBZ = <em>N</em>, LRWORK &gt;= 5*min(M,N)", but we found that the minimum size needed to be at least 7*min(M,N).  This was through experimentation and comparison with code from Numpy and Octave, so you may wish to verify this through the code.
+</p>
+</li>
+<li>
+<p>
+Assigned to Julie (U Tennessee) on Feb 11th 2015
+</p>
+</li>
+<li>
+<p>
+Relevant Julia links:
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/JuliaLang/julia/issues/3966">https://github.com/JuliaLang/julia/issues/3966</a>
+</p>
+</li>
+<li>
+<p>
+fix: <a href="https://github.com/JuliaLang/julia/commit/484a9f0892">https://github.com/JuliaLang/julia/commit/484a9f0892</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/JuliaLang/julia/issues/4016">https://github.com/JuliaLang/julia/issues/4016</a>
+</p>
+</li>
+<li>
+<p>
+fix: <a href="https://github.com/JuliaLang/julia/commit/9f6058804c">https://github.com/JuliaLang/julia/commit/9f6058804c</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed and Corrected by Julie Langou on Mar 17th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0057_span_strong_non_eigenvectors_from_dgeev_problem_in_balancing"><strong><span class="green">bug0057</span></strong> :: Non-eigenvectors from DGEEV, problem in balancing</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1413
+</p>
+</li>
+<li>
+<p>
+bug report sent by Numpy team on April 22nd, 2010
+</p>
+</li>
+<li>
+<p>
+see <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1818">forum topic 1818</a>
+</p>
+</li>
+<li>
+<p>
+see follow-up on lapackers on April 22nd from Jim "bug in DGEHRD"
+    "The balancing is choosing to scale some rows/columns by factors like 1e18,
+which rather amplifies tiny rounding errors in the (presumably correctly)
+computed eigenvectors of the balanced matrix, when balancing is undone at the end.
+The expert driver interface dgeevx would let the user disable balancing, until
+we figure out whether this is a bug or a feature, I&#8217;m not sure which."
+</p>
+</li>
+<li>
+<p>
+Corrected by Bradley Lowery, Rodney James, Julien Langou on May 26 2013
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0056_span_strong_non_orthogonal_eigenvectors_returned_from_dsyevr"><strong><span class="green">bug0056</span></strong> ::  Non-orthogonal eigenvectors returned from DSYEVR</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1540
+</p>
+</li>
+<li>
+<p>
+bug report sent by Scipy team on April 22nd
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00874.html"> LAPACK Mailing list msg 874</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Rodney on Tue, 17 Feb 2011
+</p>
+</li>
+<li>
+<p>
+" I can reproduce similar problems that the user encountered with non-orthogonal eigenvectors when only
+</p>
+</li>
+<li>
+<p>
+a few eigenvalues are requested.  This also happens with SSYEVR.  If I set ABSTOL to SLAMCH(<em>Safe minimum</em>),
+</p>
+</li>
+<li>
+<p>
+the problem goes away in SSYEVR, and improves with DSYEVR but does not completely go away."
+</p>
+</li>
+<li>
+<p>
+Assigned to Osni (UC Berkeley) and Julien (UC Denver)? on Feb 11th 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni on Mon May 4th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0033_span_strong_failure_of_zheevd_on_a_specific_matrix"><strong><span class="green">bug0033</span></strong> :: failure of zheevd on a specific matrix</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1505
+</p>
+</li>
+<li>
+<p>
+bug report sent by Cezary Sliwa (Instytut Fizyki PAN, Poland) on Thu 2 Jul 2009 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+see <a href="020.f">Cezary Sliwa&#8217;s test code</a>, <a href="021.dat">Cezary Sliwa&#8217;s matrix</a>, and
+      <a href="022.txt">Cezary Sliwa&#8217;s email</a>.
+</p>
+</li>
+<li>
+<p>
+Confirmed by Rodney on Tue, 17 Feb 2011
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni Marques on Oct 1st 2014
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0032_span_strong_matrix_splitting_problem_with_dstebz_and_sstebz"><strong><span class="green">bug0032</span></strong> :: matrix splitting problem with dstebz and sstebz</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1540
+</p>
+</li>
+<li>
+<p>
+bug report sent by Phil DeMier (IBM) on Mon 29 Jun 2009 to "lapack@cs.utk.edu".
+      "matrix splitting problem with dstebz and sstebz"
+</p>
+</li>
+<li>
+<p>
+see <a href="018.txt">Phil DeMier&#8217;s email</a> and <a href="019.f">Phil DeMier&#8217;s test code</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Rodney on Tue, 08 Feb 2011
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni on Mon May 4th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-04-28 20:18:03 PDT
+</div>
+</div>
+</body>
+</html>

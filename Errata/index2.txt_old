@@ -1,0 +1,224 @@
+LAPACK-3.6.0 errata file
+========================
+
+updated on March 21 2016
+
+maintained by Julien Langou, U. Colorado Denver and Julie Langou, U. Tennessee
+
+link:http://www.netlib.org/lapack/Errata/errata_clapack_3.2.1.html[CLAPACK-3.2.1 errata file]
+
+link:http://www.netlib.org/lapack/Errata/errata_scalapack.html[BLACS and ScaLAPACK errata file]
+
+link:http://www.netlib.org/lapack/WishList/[Wishlist]
+
+[red,,1.5]#RED means BUG WAS CONFIRMED but IT IS STILL HERE#
+
+[maroon,,1.5]#MARRON means BUG WAS NOT CONFIRMED#
+
+[green,,1.5]#GREEN means BUG WAS CORRECTED :#
+
+ - [green,,1.5]#correction will be included in next release#
+ - [green,,1.5]#bug fix available in link:http://netlib.org/lapack/#_svn_access[LAPACK SVN repository]#
+
+
+
+== [red]*bug 159* DSTEMR - related to splitting of a tridiagonal - new behavior introduced by fix to bug #113
+* *CONFIRMED*
+* Present in LAPACK 3.6.0
+* Bug reported by Ren-Cang Li in 2016 to Julien
+* See email to LAPACK team
+* Assigned to Osni.
+* Osni: We have a new subroutine to replace the subroutine causing us trouble.  We will be sitting together (OM and Prof. Parlett) tomorrow to discuss how this will behave.
+* I expect the new version of the subroutine will fix bug 113
+* 02/10/16 Osni: The bug has been traced to the factorization(s) performed by dlarrf. 
+* The current implementation of dlarrf can lead to NaNs or element growth (this is expected) but the tests to deal with these cases are not working properly.
+* Beresford and I have experimented changing a few things in dlarrf, which fixes this bug and also bug 126, but we know that a more robust strategy needs to be devised. 
+* 2/11/16: We were able to trace the issue down here to the factorizations.  We have some tests to cope with extreme growth in elements and NaNs, 
+* but these tests are not robust.  So we end up with linearly dependent eigenvectors when eigenvalues are close to each other.
+* 5/9/16: (Osni) We had a meeting in Berkeley (Prof. Parlett, Jim, Osni, I Dhillon) Some safeguards were removed over the years thinking we did not need them;
+* perhaps they must come back (this was the focus of our discussion).  For some matrices, the vectors that are returned are not orthogonal the way we would 
+* like them to be---the level of orthogonality is not ideal for nearly multiple eigenvalues.  Prof Parlett and I will sit together to determine the best strategy for future LAPACK release. 
+
+== [red]*bug 158* problem with DC SVD least squares
+* *CONFIRMED*
+* Present in LAPACK 3.6.0
+* Bug reported by Ren-Cang Li in 2016 to Julien
+* See email to LAPACK team
+* Assigned to Osni.
+
+== [green]*bug 157* gesdd , gesvd, and bdsdc Workspace computation
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug reported by Mark Gates on Feb 12th 2016 to Julie / Julien
+* Bug report from Peng HongBo (IBM) on Mar 14 th 2016, Mar 21st 2016 to LAPACK mailing List
+* Corrected by Mark (files sent to Julie) on Apr 27th, svn 1739.
+
+== [green]*bug 156* Accuracy Loss in DSTEVD and DSTEVR
+* *NOT A BUG*
+* Present in LAPACK 3.6.0
+* Bug reported by Pavel Holoborodko on Jan 18th 2016 on LAPACK Forum
+* http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4882
+* Closed by Osni on Feb 23rd
+
+== [green]*bug 155* [CZ]GESVJ - OMPQ eval only when rotating
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug reported by lawrence mulholland on Jan 27th 2016 on LAPACK Forum
+* http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4892
+* Corrected by Julie on Feb 10th, svn 1688
+
+== [green]*bug 154* [LAPACKE] lapacke_?lantr: unnecessary work array allocation
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug reported by Eugene Chereshnev on Dec 17th 2015 on LAPACK Forum
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4867
+* Corrected by Julien on Dec 17th, svn 1670
+* NEED REVIEW: Wait, that code was the fix for 141...
+
+== [green]*bug 153* Fix out of bounds error in dgeev
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug reported by Andreas Noack (MIT) on Dec 9th 2015 on LAPACK Mailing List
+* Corrected by Julien on Dec 9th, svn 1669
+
+== [green]*bug 152* [LAPACKE] Dormbr check wrong for RowMajor
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug reported by Tracey Brendan on Dec 9th 2015 on LAPACK Forum
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4863
+* Corrected by Julien on Dec 9th, svn 1668
+
+== [green]*bug 151* Bug in xGETC2, quick return for N=0, N=1
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug reported by Martin Köhler on Nov 29th 2015 on LAPACK Mailing List
+* Corrected by Julien on Nov 29th, svn 1660
+
+== [green]*bug 150* [LAPACKE] Fix bug on [sd]lantr which don't report the result
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug and fix reported by Mathieu Faverge (PLASMA team) on Nov 25 2015
+* Corrected by Mathieu Faverge on Nov 22th, svn 1658
+
+== [green]*bug 149* workspace computation for [CZ]GESVDX when a workspace query is done
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug and fix reported by Lawrence Mulholland (NAG) on Nov 22 2015 on LAPACK Forum
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4850
+* Corrected by Julien on Nov 22th, svn 1656
+
+== [green]*bug 148* workspace computation for [s/d]gesvdx.f
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug and fix reported by Lawrence Mulholland (NAG) on Nov 20 2015 on LAPACK Forum
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4850
+* Corrected by Julien on Nov 20th, svn 1655
+
+== [green]*bug 147* INFO parameter value when LVT is not correct.
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug and fix reported by Lawrence Mulholland (NAG) on Nov 20 2015 on LAPACK Forum
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4851
+* Corrected by Julien on Nov 20th, svn 1654, 1661
+
+== [green]*bug 146* properly avoid setting the install rpath when installing to system directories
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug and fix reported by Orion Poplawski on Nov 18 2015 on LAPACK Mailing List
+* Corrected by Julie on Nov 18th, rev 1653
+
+== [green]*bug 145* Fix upper case issue in CMakeLists
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug and fix reported by Julien Schueller on Nov 17 2015 on LAPACK Mailing List
+* Corrected by Julie on Nov 17th, rev 1651
+
+== [green]*bug 144* inconsistency in the lapacke cmake config files install directory location
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug and fix reported by Julien Schueller on Mon Nov 16 2015 on LAPACK Mailing List
+* Corrected by Julie on Nov 16th, rev 1650
+
+== [green]*bug 143* [CZ]GEJSV - real-> complex bugs
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug reported by Lawrence Mulholland on Mon Nov 16 2015 on LAPACK Forum
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4844
+* Corrected by Julien and Zlatko Drmac on Nov 16th, rev 1649
+
+== [green]*bug142* Mistake in computation of workspace for ZGGEV3
+* *CORRECTED*
+* Present in LAPACK 3.6.0
+* Bug reported by Pavel Holoborodko on Mon Nov 16 2015 on LAPACK Forum
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4796
+* Corrected by Julien on Nov 16th, rev 1648
+
+== [green]*bug140* LAHEF_ROOK and LASYF_ROOK: could choose zero pivot in the case when non-zero pivot could be used
+* *NOT A BUG*
+* Present in LAPACK 3.5.0
+* Bug reported on Oct 7th by Eugene Chereshnev on LAPACK Forum
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4812
+* Assigned to Igor on Oct 7th
+* 1/14/2016: Jim:  This is a bug that was posited could occur due to non-reproducibility but has not actually happened.  This has not occurred in any application.  I would like to see this be part of a bigger, longer term discussion.
+* 2/11/16: Jim:  Not really a bug, but possibly a future bug.  I would rather talk about this in the larger context of reproducibility.
+* Move to closed? yes
+
+== [green]*bug 136* :: xGGEV3 returns zeros in BETA array
+* *CORRECTED*
+* *CORRECTION* in rev 1599
+* Bug reported by pavel (Multiprecision Computing Toolbox for MATLAB) on Sep 10th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4796&p=11509
+* Assigned to Julien on Sep 10th
+* Corrected by lawrence mulholland (NAG) in rev 1599 but not verified
+
+== [green]*bug 134* :: Rook pivoting factorization goes into an infinite loop
+* *NOT A BUG*
+* Present in LAPACK 3.5.0
+* Bug reported directly by Bobby Cheng (Matlab) on Aug 12th
+* Assigned to Igor on Aug 12th 2015
+* Not able to reproduce the issue (Aug 20th 2015)
+* Correction to be made: Working on having NaNs/Infs not cause an infinite loop (Aug 20th 2015)
+
+== [red]*bug 130* :: Ambiguous lapacke interfaces to Cosine/Sine decomposition - 2 Trans parameters
+* *CONFIRMED* on July 9th 2015
+* Present in LAPACK 3.5.0
+* Bug reported by Victor Kostin (INTEL) on July 9th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4748
+* Confirmed by Julie on July 9th 2015
+
+== [green]*bug 127* :: LAPACKE interface to ?ORCSD / ?UNCSD is not fully functional - Work is used to return values
+* *NOT A BUG* on July 9th 2015
+* Present in LAPACK 3.5.0
+* Bug reported by Victor Kostin (INTEL) on July 9th
+* Link http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4745
+* Confirmed by Julie on July 9th 2015
+
+== [red]*bug 126* :: DSTEMR -  related to some splitting of the tridiagonal
+* *CONFIRMED* on Jun 24th 2015
+* Present in LAPACK 3.5.0
+* Bug reported by Miroslav Ilias on Jun 27th
+* Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1820
+* Assigned to Osni
+* 02/10/16 Osni: The bug is actually not related to splitting but rather a misbehaviour of dlarrf; see bug 113.
+* SEE BUG 113 for all updates (will be closed along with 113)
+
+== [maroon]*bug116* :: ZGGEV fails but Matlab works
+* *NOT CONFIRMED*
+* Present in LAPACK 3.5.0
+* Bug report by Victor Liu, Standford on LAPACK Forum  - August 20th 2013
+* Assigned to Julien (UC Denver) on Feb 11th 2015
+* Links: http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&t=4357
+
+== [red]*bug0061* :: zgehrd.f is overflowing 
+ * *CONFIRMED*
+ * bug report by Victor Liu on Tuesday August 03rd, 2010
+ * zgehrd.f is overflowing  the maximum size in bytes of the largest array that
+ * can be put on the stack with gfortran (=> leads ,e.g., to non-reproducible and uncorrect execution
+ * of zgeev in multithreaded context
+ * lapackers involved in the bug fix process: Julie and Julien Langou and Mathieu Faverge
+ * bug fix by Victor Liu on Wednesday August 04th, 2010
+ * Assigned to Julien (UC Denver) on Feb 11th 2015
+ * see link:http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1930[forum topic 1930]
+ * two outstanding issues: (1) how do we go to fix this?, (2) more LAPACK subroutines might be concerned.
+
+// vim: set syntax=asciidoc:

@@ -1,0 +1,5811 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>LAPACK BUG LIST</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>LAPACK BUG LIST</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p><a href="http://www.netlib.org/lapack/WishList/">Wishlist</a></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_red_bug_159_span_strong_dstemr_related_to_splitting_of_a_tridiagonal_new_behavior_introduced_by_fix_to_bug_113"><strong><span class="red">bug 159</span></strong> DSTEMR - related to splitting of a tridiagonal - new behavior introduced by fix to bug #113</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CONFIRMED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Ren-Cang Li in 2016 to Julien
+</p>
+</li>
+<li>
+<p>
+See email to LAPACK team
+</p>
+</li>
+<li>
+<p>
+Assigned to Osni.
+</p>
+</li>
+<li>
+<p>
+Osni: We have a new subroutine to replace the subroutine causing us trouble.  We will be sitting together (OM and Prof. Parlett) tomorrow to discuss how this will behave.
+</p>
+</li>
+<li>
+<p>
+I expect the new version of the subroutine will fix bug 113
+</p>
+</li>
+<li>
+<p>
+02/10/16 Osni: The bug has been traced to the factorization(s) performed by dlarrf.
+</p>
+</li>
+<li>
+<p>
+The current implementation of dlarrf can lead to NaNs or element growth (this is expected) but the tests to deal with these cases are not working properly.
+</p>
+</li>
+<li>
+<p>
+Beresford and I have experimented changing a few things in dlarrf, which fixes this bug and also bug 126, but we know that a more robust strategy needs to be devised. 
+</p>
+</li>
+<li>
+<p>
+2/11/16: We were able to trace the issue down here to the factorizations.  We have some tests to cope with extreme growth in elements and NaNs,
+</p>
+</li>
+<li>
+<p>
+but these tests are not robust.  So we end up with linearly dependent eigenvectors when eigenvalues are close to each other.
+</p>
+</li>
+<li>
+<p>
+5/9/16: (Osni) We had a meeting in Berkeley (Prof. Parlett, Jim, Osni, I Dhillon) Some safeguards were removed over the years thinking we did not need them;
+</p>
+</li>
+<li>
+<p>
+perhaps they must come back (this was the focus of our discussion).  For some matrices, the vectors that are returned are not orthogonal the way we would
+</p>
+</li>
+<li>
+<p>
+like them to be---the level of orthogonality is not ideal for nearly multiple eigenvalues.  Prof Parlett and I will sit together to determine the best strategy for future LAPACK release.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_red_bug_158_span_strong_problem_with_dc_svd_least_squares"><strong><span class="red">bug 158</span></strong> problem with DC SVD least squares</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CONFIRMED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Ren-Cang Li in 2016 to Julien
+</p>
+</li>
+<li>
+<p>
+See email to LAPACK team
+</p>
+</li>
+<li>
+<p>
+Assigned to Osni.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_157_span_strong_gesdd_gesvd_and_bdsdc_workspace_computation"><strong><span class="green">bug 157</span></strong> gesdd , gesvd, and bdsdc Workspace computation</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Mark Gates on Feb 12th 2016 to Julie / Julien
+</p>
+</li>
+<li>
+<p>
+Bug report from Peng HongBo (IBM) on Mar 14 th 2016, Mar 21st 2016 to LAPACK mailing List
+</p>
+</li>
+<li>
+<p>
+Corrected by Mark (files sent to Julie) on Apr 27th, svn 1739.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_156_span_strong_accuracy_loss_in_dstevd_and_dstevr"><strong><span class="green">bug 156</span></strong> Accuracy Loss in DSTEVD and DSTEVR</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>NOT A BUG</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Pavel Holoborodko on Jan 18th 2016 on LAPACK Forum
+</p>
+</li>
+<li>
+<p>
+<a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4882">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4882</a>
+</p>
+</li>
+<li>
+<p>
+Closed by Osni on Feb 23rd
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_155_span_strong_cz_gesvj_ompq_eval_only_when_rotating"><strong><span class="green">bug 155</span></strong> [CZ]GESVJ - OMPQ eval only when rotating</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by lawrence mulholland on Jan 27th 2016 on LAPACK Forum
+</p>
+</li>
+<li>
+<p>
+<a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4892">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4892</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Feb 10th, svn 1688
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_154_span_strong_lapacke_lapacke__lantr_unnecessary_work_array_allocation"><strong><span class="green">bug 154</span></strong> [LAPACKE] lapacke_?lantr: unnecessary work array allocation</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Eugene Chereshnev on Dec 17th 2015 on LAPACK Forum
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4867">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4867</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Dec 17th, svn 1670
+</p>
+</li>
+<li>
+<p>
+NEED REVIEW: Wait, that code was the fix for 141&#8230;
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_153_span_strong_fix_out_of_bounds_error_in_dgeev"><strong><span class="green">bug 153</span></strong> Fix out of bounds error in dgeev</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Andreas Noack (MIT) on Dec 9th 2015 on LAPACK Mailing List
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Dec 9th, svn 1669
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_152_span_strong_lapacke_dormbr_check_wrong_for_rowmajor"><strong><span class="green">bug 152</span></strong> [LAPACKE] Dormbr check wrong for RowMajor</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Tracey Brendan on Dec 9th 2015 on LAPACK Forum
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4863">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4863</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Dec 9th, svn 1668
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_151_span_strong_bug_in_xgetc2_quick_return_for_n_0_n_1"><strong><span class="green">bug 151</span></strong> Bug in xGETC2, quick return for N=0, N=1</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Martin Köhler on Nov 29th 2015 on LAPACK Mailing List
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Nov 29th, svn 1660
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_150_span_strong_lapacke_fix_bug_on_sd_lantr_which_don_8217_t_report_the_result"><strong><span class="green">bug 150</span></strong> [LAPACKE] Fix bug on [sd]lantr which don&#8217;t report the result</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug and fix reported by Mathieu Faverge (PLASMA team) on Nov 25 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Mathieu Faverge on Nov 22th, svn 1658
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_149_span_strong_workspace_computation_for_cz_gesvdx_when_a_workspace_query_is_done"><strong><span class="green">bug 149</span></strong> workspace computation for [CZ]GESVDX when a workspace query is done</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug and fix reported by Lawrence Mulholland (NAG) on Nov 22 2015 on LAPACK Forum
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4850">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4850</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Nov 22th, svn 1656
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_148_span_strong_workspace_computation_for_s_d_gesvdx_f"><strong><span class="green">bug 148</span></strong> workspace computation for [s/d]gesvdx.f</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug and fix reported by Lawrence Mulholland (NAG) on Nov 20 2015 on LAPACK Forum
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4850">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4850</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Nov 20th, svn 1655
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_147_span_strong_info_parameter_value_when_lvt_is_not_correct"><strong><span class="green">bug 147</span></strong> INFO parameter value when LVT is not correct.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug and fix reported by Lawrence Mulholland (NAG) on Nov 20 2015 on LAPACK Forum
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4851">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4851</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Nov 20th, svn 1654, 1661
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_146_span_strong_properly_avoid_setting_the_install_rpath_when_installing_to_system_directories"><strong><span class="green">bug 146</span></strong> properly avoid setting the install rpath when installing to system directories</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug and fix reported by Orion Poplawski on Nov 18 2015 on LAPACK Mailing List
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Nov 18th, rev 1653
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_145_span_strong_fix_upper_case_issue_in_cmakelists"><strong><span class="green">bug 145</span></strong> Fix upper case issue in CMakeLists</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug and fix reported by Julien Schueller on Nov 17 2015 on LAPACK Mailing List
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Nov 17th, rev 1651
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_144_span_strong_inconsistency_in_the_lapacke_cmake_config_files_install_directory_location"><strong><span class="green">bug 144</span></strong> inconsistency in the lapacke cmake config files install directory location</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug and fix reported by Julien Schueller on Mon Nov 16 2015 on LAPACK Mailing List
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Nov 16th, rev 1650
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_143_span_strong_cz_gejsv_real_8594_complex_bugs"><strong><span class="green">bug 143</span></strong> [CZ]GEJSV - real&#8594; complex bugs</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Lawrence Mulholland on Mon Nov 16 2015 on LAPACK Forum
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4844">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4844</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien and Zlatko Drmac on Nov 16th, rev 1649
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug142_span_strong_mistake_in_computation_of_workspace_for_zggev3"><strong><span class="green">bug142</span></strong> Mistake in computation of workspace for ZGGEV3</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.6.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Pavel Holoborodko on Mon Nov 16 2015 on LAPACK Forum
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4796">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=4796</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Nov 16th, rev 1648
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug141_span_strong_lapacke_dlantr_causes_memory_corruption"><strong><span class="green">bug141</span></strong> LAPACKE dlantr causes memory corruption</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1602
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Dan Kortschak on LAPACK forum on Sep 6th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4788">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4788</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julien on Oct 7th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Oct 21th rev 1602 (apply patch submitted by Dan Kortschak)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_maroon_bug140_span_strong_lahef_rook_and_lasyf_rook_could_choose_zero_pivot_in_the_case_when_non_zero_pivot_could_be_used"><strong><span class="maroon">bug140</span></strong> LAHEF_ROOK and LASYF_ROOK: could choose zero pivot in the case when non-zero pivot could be used</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>NOT CONFIRMED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported on Oct 7th by Eugene Chereshnev on LAPACK Forum
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4812">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4812</a>
+</p>
+</li>
+<li>
+<p>
+Assigned to Igor on Oct 7th
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug139_span_strong_xstedc_eigenvalues_not_sorted"><strong><span class="green">bug139</span></strong> xSTEDC eigenvalues not sorted</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported on Oct 6th by Christoph Conrads on lapack mailing list
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01713.html">http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01713.html</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julien on Oct 7th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Oct 21th rev 1601 (apply patch submitted by Christoph Conrads)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug138_span_strong_lapacke_dtr_nancheck_not_working_for_trapezoidal_matrix"><strong><span class="green">bug138</span></strong> :: LAPACKE_dtr_nancheck not working for trapezoidal matrix</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> "Quick Fix"
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Dan Kortschak on LAPACK forum on Oct 5th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4810">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4810</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on Oct 5th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Oct 5th rev 1598
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_137_span_strong_dlange_gives_inconsistent_incorrect_results_for_rowmajor"><strong><span class="green">bug 137</span></strong> :: Dlange gives inconsistent/incorrect results for RowMajor</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1602
+</p>
+</li>
+<li>
+<p>
+Bug reported by Dan Kortschak on Sep 16th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4789&amp;p=0#p0">https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4789&amp;p=0#p0</a>
+</p>
+</li>
+<li>
+<p>
+Assigned to Julien on Sep 16th
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julien on Sep 16th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Oct 21th rev 1602 (apply patch submitted by Dan Kortschak)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_136_span_strong_xggev3_returns_zeros_in_beta_array"><strong><span class="green">bug 136</span></strong> :: xGGEV3 returns zeros in BETA array</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+<strong>CORRECTION</strong> in rev 1599
+</p>
+</li>
+<li>
+<p>
+Bug reported by pavel (Multiprecision Computing Toolbox for MATLAB) on Sep 10th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4796&amp;p=11509">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4796&amp;p=11509</a>
+</p>
+</li>
+<li>
+<p>
+Assigned to Julien on Sep 10th
+</p>
+</li>
+<li>
+<p>
+Corrected by lawrence mulholland (NAG) in rev 1599 but not verified
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_135_span_strong_lapacke_dlansy_et_al_cause_segfault_with_1_norm"><strong><span class="green">bug 135</span></strong> :: LAPACKE_dlansy et al cause segfault with 1-norm</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1587
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by kortschak on Sep 10th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4793">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4793</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on Sep 10th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Sep 10th
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_134_span_strong_rook_pivoting_factorization_goes_into_an_infinite_loop"><strong><span class="green">bug 134</span></strong> :: Rook pivoting factorization goes into an infinite loop</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>NOT A BUG</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported directly by Bobby Cheng (Matlab) on Aug 12th
+</p>
+</li>
+<li>
+<p>
+Assigned to Igor on Aug 12th 2015
+</p>
+</li>
+<li>
+<p>
+Not able to reproduce the issue (Aug 20th 2015)
+</p>
+</li>
+<li>
+<p>
+Correction to be made: Working on having NaNs/Infs not cause an infinite loop (Aug 20th 2015)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_133_span_strong_dormlq_c_interface_error_check"><strong><span class="green">bug 133</span></strong> :: Dormlq C interface error check</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by btracey on Aug 10th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4771">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4771</a>
+</p>
+</li>
+<li>
+<p>
+Assigned to Julie on Aug 11th 2015
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on Aug 25th
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Sep 2nd
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_132_span_strong_dsyevr_bug"><strong><span class="green">bug 132</span></strong> :: dsyevr bug</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>NOT A BUG</strong>
+</p>
+</li>
+<li>
+<p>
+Bug reported by osirpt on Aug 4th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=4767">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=4767</a>
+</p>
+</li>
+<li>
+<p>
+Assigned to Osni on Aug 4th 2015
+</p>
+</li>
+<li>
+<p>
+Osni not able to reproduce issue - unconfirmed on Sep 24th
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_131_span_strong_possible_bug_in_dorgr2"><strong><span class="green">bug 131</span></strong> :: Possible bug in DORGR2</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>NOT A BUG</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by hrautila on Aug 3rd
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4765">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4765</a>
+</p>
+</li>
+<li>
+<p>
+Unconfirmed by Julie on Sep 2nd 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_130_span_strong_ambiguous_lapacke_interfaces_to_cosine_sine_decomposition_2_trans_parameters"><strong><span class="green">bug 130</span></strong> :: Ambiguous lapacke interfaces to Cosine/Sine decomposition - 2 Trans parameters</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>NOT A BUG</strong> on July 9th 2015
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Victor Kostin (INTEL) on July 9th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4748">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4748</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on July 9th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_129_span_strong_lapack__syconv_interface_problem_work_is_used_to_return_values"><strong><span class="green">bug 129</span></strong> :: LAPACK_?syconv interface problem - Work is used to return values</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1581
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Victor Kostin (INTEL) on July 9th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4747">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4747</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on July 9th 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Aug 25th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_128_span_strong_lapacke__laset_has_limitations_pb_if_initialize_the_matrix_with_nans_matrix_assumed_to_be_initialized_by_this_functions"><strong><span class="green">bug 128</span></strong> :: lapacke_?laset has limitations - pb if initialize the matrix with NaNs (Matrix assumed to be initialized by this functions)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1580
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Victor Kostin (INTEL) on July 9th
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4746">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4746</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on July 9th 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on Aug 25th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug_127_span_strong_lapacke_interface_to_orcsd_uncsd_is_not_fully_functional_work_is_used_to_return_values"><strong><span class="green">bug 127</span></strong> :: LAPACKE interface to ?ORCSD / ?UNCSD is not fully functional - Work is used to return values</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>NOT A BUG</strong> on July 9th 2015
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Victor Kostin (INTEL) on July 9th
+</p>
+</li>
+<li>
+<p>
+Link <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4745">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4745</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie on July 9th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_red_bug_126_span_strong_dstemr_related_to_some_splitting_of_the_tridiagonal"><strong><span class="red">bug 126</span></strong> :: DSTEMR -  related to some splitting of the tridiagonal</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CONFIRMED</strong> on Jun 24th
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Miroslav Ilias on Jun 27th
+</p>
+</li>
+<li>
+<p>
+Link <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1820">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1820</a>
+</p>
+</li>
+<li>
+<p>
+See bug 159
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug125_span_strong_xlahqr_v3_5_does_not_converge_on_some_matrices_while_xlahqr_v2_converges"><strong><span class="green">bug125</span></strong> :: xLAHQR v3.5 does not converge on some matrices while xLAHQR v2 converges</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1537
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Yoshihide Okimi on July 16, 2014
+</p>
+</li>
+<li>
+<p>
+Link: <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4566">https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4566</a>
+</p>
+</li>
+<li>
+<p>
+and, independently, by Marco Caliari (Università di Verona) on February 11, 2015.
+</p>
+</li>
+<li>
+<p>
+Involved in bug fix: Yoshihide Okimi, Marco Caliari (Università di Verona),
+</p>
+</li>
+<li>
+<p>
+Meiyue Shao (LBL), Julien Langou, and Daniel Kressner (EPFL).
+</p>
+</li>
+<li>
+<p>
+Confirmed and Corrected by Julien Langou on Mar 25th 2015.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug124_span_strong_dpstf2_returns_incorrect_value_of_rank"><strong><span class="green">bug124</span></strong> :: dpstf2 returns incorrect value of rank</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1536
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Victor (INTEL) on the LAPACK forum on December 26th 2014
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4643&amp;p=11162#p11162">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4643&amp;p=11162#p11162</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Julie Langou on Mar 17th 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien Langou on Mar 25th 2015. Involved as well Nick Higham, Sven Hammarling and Craig Lucas.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_red_bug123_span_strong_csytrf_rook_test_fails_for_dimensions_127_260"><strong><span class="red">bug123</span></strong> :: csytrf_rook test fails for dimensions 127, 260</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CONFIRMED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug reported by Alex  (INTEL) on the LAPACK forum on September 26th 2014
+</p>
+</li>
+<li>
+<p>
+Bug sent to Berkeley
+</p>
+</li>
+<li>
+<p>
+Link: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4590">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4590</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Igor on Apr 7th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug122_span_strong_wrong_info_code_when_checking_input_parameter_qsiz_in_slasd7_and_dlasd7"><strong><span class="green">bug122</span></strong> :: Wrong Info code when checking input parameter QSIZ in SLASD7 and DLASD7</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1504
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Elena Ivanova (Oracle) directly to Julie on Oct 2nd 2014
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie Langou on October 6th
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug121_span_strong_bugs_in_dlasd8_and_dlasd6"><strong><span class="green">bug121</span></strong> :: Bugs in DLASD8 and DLASD6</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED?</strong>, rev 1505
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by forswg on the Forum - Sep 18th 2014
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4586&amp;p=11035#p11035">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4586&amp;p=11035#p11035</a>
+</p>
+</li>
+<li>
+<p>
+Seems to be related to bug 115
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni Marques on Oct 1st 2014
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug120_span_strong_workspace_query_return_too_small_value_for_xgesdd"><strong><span class="green">bug120</span></strong> :: Workspace query return too small value for xGESDD</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1503
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Rasmus Munk Larsen, Google Knowledge &amp; Research, Mountain View. on the Forum - Sep 18th 2014
+</p>
+</li>
+<li>
+<p>
+Links: <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4587&amp;p=11036#p11036">https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4587&amp;p=11036#p11036</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie Langou on September 22nd
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug119_span_strong_cblas_missing_the_floating_point_constant_argument_in_sdsdotsub"><strong><span class="green">bug119</span></strong> :: CBLAS - missing the floating point constant argument in sdsdotsub</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Present in CBLAS
+</p>
+</li>
+<li>
+<p>
+Bug report by by Shandong Lao fron Oracle on LAPACK Mailing List  - Aug 11th 2014
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien and Julie Langou on August 11th
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug118_span_strong_zlanhf_and_clanhf_norm_calculation"><strong><span class="green">bug118</span></strong> :: ZLANHF and CLANHF Norm Calculation</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1483
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by by Themos Tsikas fron NAG Ltd on LAPACK Forum  - June 16th 2014
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4558">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4558</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien Langou on June 16th
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug117_span_strong_nsplit_unitialized_n_2_code_wrong"><strong><span class="green">bug117</span></strong> :: NSPLIT unitialized; N=2 code wrong</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1432, 1463
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Lawrence Mulholland, NAG on LAPACK Forum  - July 26th 2013
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://icl.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=4331">http://icl.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=4331</a>
+</p>
+</li>
+<li>
+<p>
+Bug fix by Ake Sandgren and Lawrence Mulholland
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_maroon_bug116_span_strong_zggev_fails_but_matlab_works"><strong><span class="maroon">bug116</span></strong> :: ZGGEV fails but Matlab works</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>NOT CONFIRMED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Victor Liu, Standford on LAPACK Forum  - August 20th 2013
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4357">http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4357</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug115_span_strong_dsyevd_fails_to_converge"><strong><span class="green">bug115</span></strong> :: DSYEVD fails to converge</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1505
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Duncan Po on LAPACK Forum  - September 12th 2013
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4391">http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4391</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni Marques on Oct 1st 2014
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug114_span_strong_c_z_gesvd_stack_corruption_issue"><strong><span class="green">bug114</span></strong> :: (C, Z)GESVD stack corruption issue</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1455
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.5.0
+</p>
+</li>
+<li>
+<p>
+Bug report by Alex Zotkevich on LAPACK Forum  - September 16th 2013
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4392">http://icl.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=4392</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien Langou on Nov 26th
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug113_span_strong_dlarrb_infinite_loop_bug"><strong><span class="green">bug113</span></strong> :: DLARRB() infinite loop bug</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1540, rev 1603
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+Bug report by Aleksey Vorona on LAPACK Mailing  - September 11th 2013
+</p>
+</li>
+<li>
+<p>
+Assigned to Osni (UC Berkeley) on Feb 11th 2015
+</p>
+</li>
+<li>
+<p>
+Links: <a href="https://bugs.r-project.org/bugzilla3/show_bug.cgi?id=15211">https://bugs.r-project.org/bugzilla3/show_bug.cgi?id=15211</a>
+</p>
+</li>
+<li>
+<p>
+The patch is attached to the bug: <a href="https://bugs.r-project.org/bugzilla3/attachment.cgi?id=1478">https://bugs.r-project.org/bugzilla3/attachment.cgi?id=1478</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Osni on Mon, 06 Apr 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni on Mon May 4th 2015
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni on Oct 26th 2015
+</p>
+</li>
+<li>
+<p>
+Prevention fix to avoid enter into an infinite loop in some rare cases.
+</p>
+</li>
+<li>
+<p>
+Fix: set the variable NOFAIL to .false.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug112_span_strong_dsyevr_does_not_seem_to_be_thread_safe"><strong><span class="green">bug112</span></strong> :: DSYEVR does not seem to be thread-safe</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1436
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+Bug report by Daniel Strobusch on LAPACK Mailing  - August 19th 2013
+</p>
+</li>
+<li>
+<p>
+Links: <a href="http://stackoverflow.com/q/18216314/1458343">http://stackoverflow.com/q/18216314/1458343</a>
+</p>
+</li>
+<li>
+<p>
+Fix: LAPACK needs to be compiled with option "-frecursive" so that local
+arrays are allocated on the stack. * Corrected by Julien on Oct 4 2013
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug111_span_strong_incorrect_rwork_size_for_zgesdd"><strong><span class="green">bug111</span></strong> ::  incorrect RWORK size for ZGESDD</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1535 (LAPACK), rev 1541 (LAPACKE)
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+Bug report by Kevin Squire on LAPACK Mailing  - August 15th 2013
+</p>
+</li>
+<li>
+<p>
+From Kevin: We were following the recommendation for RWORK size calculation from the ZGESDD header here ( <a href="http://netlib.org/lapack/complex16/zgesdd.f">http://netlib.org/lapack/complex16/zgesdd.f</a>), and were finding that when INFO=<em>N</em>, the size was insufficient, and generally led to a segmentation fault.
+</p>
+</li>
+<li>
+<p>
+The current definition says that "If JOBZ = <em>N</em>, LRWORK &gt;= 5*min(M,N)", but we found that the minimum size needed to be at least 7*min(M,N).  This was through experimentation and comparison with code from Numpy and Octave, so you may wish to verify this through the code.
+</p>
+</li>
+<li>
+<p>
+Relevant Julia links:
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/JuliaLang/julia/issues/3966">https://github.com/JuliaLang/julia/issues/3966</a>
+</p>
+</li>
+<li>
+<p>
+fix: <a href="https://github.com/JuliaLang/julia/commit/484a9f0892">https://github.com/JuliaLang/julia/commit/484a9f0892</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/JuliaLang/julia/issues/4016">https://github.com/JuliaLang/julia/issues/4016</a>
+</p>
+</li>
+<li>
+<p>
+fix: <a href="https://github.com/JuliaLang/julia/commit/9f6058804c">https://github.com/JuliaLang/julia/commit/9f6058804c</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on Mar 7 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug110_span_strong_possible_infinite_loop_in_zlartg_when_input_vector_has_nan"><strong><span class="green">bug110</span></strong> :: possible infinite loop in ZLARTG when input vector has NaN</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1437
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+Bug report by Mark Hoemmen and Jack Poulson
+</p>
+</li>
+<li>
+<p>
+See <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=5&amp;t=3267&amp;p=9067">http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=5&amp;t=3267&amp;p=9067</a>
+</p>
+</li>
+<li>
+<p>
+Mark Hoemmen writes: Jack Poulson found that ZLARTG has an infinite loop related
+</p>
+</li>
+<li>
+<p>
+to NaN .EQ. 0. It&#8217;s the line below "ELSE IF( SCALE.LE.SAFMN2 )" between 10 and
+</p>
+</li>
+<li>
+<p>
+20. When G is NaN, then the loop goes forever.
+</p>
+</li>
+<li>
+<p>
+Corrected by Rodney on Oct 5 2013
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0109_span_strong_xstegr_work_do_not_check_ldz_correctly"><strong><span class="green">bug0109</span></strong> ::  [xSTEGR_WORK] do not check ldz correctly</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1425
+</p>
+</li>
+<li>
+<p>
+Present in LAPACKE 3.4.2
+</p>
+</li>
+<li>
+<p>
+bug report by Hong Xu (INTEL) on July 21st
+</p>
+</li>
+<li>
+<p>
+Patch sent by Hong Xu (INTEL)
+</p>
+</li>
+<li>
+<p>
+In the input parameter checking, LDZ was not checked correctly
+</p>
+</li>
+<li>
+<p>
+LDZ was checked against M instead of N essentially
+</p>
+</li>
+<li>
+<p>
+Corrected by Julien on July 22 2013
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0108_span_strong_xdrvrfp_test_was_failing"><strong><span class="green">bug0108</span></strong> ::  [xDRVRFP] Test was failing</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1416
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+bug report by Elena Ivanova (ORACLE)
+</p>
+</li>
+<li>
+<p>
+Patch sent by Elena Ivanova (ORACLE)
+</p>
+</li>
+<li>
+<p>
+add MAX() to ensure index is at least 1
+</p>
+</li>
+<li>
+<p>
+Corrected by Rodney on June 27 2013
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0107_span_strong_csd_routines_fixed_array_index_problems"><strong><span class="green">bug0107</span></strong> ::  [CSD routines] fixed array index problems</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1414
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+add MAX() to ensure index is at least 1
+</p>
+</li>
+<li>
+<p>
+this fixes array bounds violations in the test suite when array bounds checking is enabled
+</p>
+</li>
+<li>
+<p>
+Corrected by Rodney on June 04 2013
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0106_span_strong_xgebal_very_large_backward_error_for_certain_hessenberg_matrices_watkins"><strong><span class="green">bug0106</span></strong> ::  [xGEBAL] very large backward error for certain Hessenberg matrices (Watkins)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1413
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+bug report on the forum topic 4221
+</p>
+</li>
+<li>
+<p>
+Now using 2-norm to compute vector norms of row and column for balancing algorithm.
+</p>
+</li>
+<li>
+<p>
+This seems to fix problems with balancing causing very large backward error for certain
+</p>
+</li>
+<li>
+<p>
+Hessenberg matrices, including the often cited example of Watkins.
+</p>
+</li>
+<li>
+<p>
+Corrected by Bradley Lowery, Rodney James, Julien Langou on May 26 2013
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0105_span_strong_lapacke_lapacke_h_problem"><strong><span class="green">bug0105</span></strong> ::  [LAPACKE] lapacke.h problem</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1388
+</p>
+</li>
+<li>
+<p>
+Present in LAPACKE 3.4.2
+</p>
+</li>
+<li>
+<p>
+bug report on the forum topic 4221
+</p>
+</li>
+<li>
+<p>
+Patch sent by bmoloney
+</p>
+</li>
+<li>
+<p>
+A few C++ library includes are inside of the 'extern C block which causes many template with C
+</p>
+</li>
+<li>
+<p>
+linkage errors when the header is included in a C++ file.
+</p>
+</li>
+<li>
+<p>
+Corrected by Julie on April 03 2013
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0104_span_strong_dgeqp3_fall_over_when_asked_to_do_a_factorization_of_the_last_two_columns"><strong><span class="green">bug0104</span></strong> :: dgeqp3 fall over when asked to do a factorization of the last two columns.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1385
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+bug report by Tyrone Rees (STFC Rutherford Appleton Laboratory) on March 22 2013
+</p>
+</li>
+<li>
+<p>
+Patch sent by Tyrone Rees
+</p>
+</li>
+<li>
+<p>
+Corrected by Rodney on March 22 2013
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0103_span_strong_dlasd4_slasd4_fixes_bug_where_tau2_can_be_uninitialized"><strong><span class="green">bug0103</span></strong> :: [dlasd4/slasd4] fixes bug where TAU2 can be uninitialized.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1384
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+bug report by Sergey Kuznetsov (INTEL) on March 15 2013
+</p>
+</li>
+<li>
+<p>
+Patch sent by Sergey Kuznetsov
+</p>
+</li>
+<li>
+<p>
+Corrected by Rodney on March 22 2013
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0102_span_strong_convergence_problem_with_some_particular_pencils_in_xggev"><strong><span class="green">bug0102</span></strong> :: convergence problem with some particular pencils in xGGEV</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1351
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+bug report by Mathworks on October 19 2012
+</p>
+</li>
+<li>
+<p>
+Patch sent by Mathworks
+</p>
+</li>
+<li>
+<p>
+Corrected by Rodney on Thu Oct 19
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0101_span_strong_s_d_c_z_hsein_nan_in_h_can_cause_an_infinite_loop"><strong><span class="green">bug0101</span></strong> :: [S,D, C, Z]hsein: NaN in H can cause an infinite loop</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.2
+</p>
+</li>
+<li>
+<p>
+bug report by Alexander Kobotov (INTEL) on October 3 2012
+</p>
+</li>
+<li>
+<p>
+See <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=3928">forum topic 3928</a>
+</p>
+</li>
+<li>
+<p>
+added check for NaN after the norm of each block of H is computed
+</p>
+</li>
+<li>
+<p>
+if NaN is detected, returns with INFO=-6 (H is the 6th parameter)
+</p>
+</li>
+<li>
+<p>
+Corrected by Rodney
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0100_span_strong_s_d_gesdd_correct_minimum_lwork_size"><strong><span class="green">bug0100</span></strong> :: [S,D]gesdd correct minimum LWORK size</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.1
+</p>
+</li>
+<li>
+<p>
+bug report by Tim Wentz (CRAY) on August 23 2012
+</p>
+</li>
+<li>
+<p>
+Email sent directly to Julie
+</p>
+</li>
+<li>
+<p>
+correct LWORK size bug for the case JOBZ=<em>A</em> and M &gt;&gt; N (which corresponds to path 4 in the code)
+</p>
+</li>
+<li>
+<p>
+the minimum LWORK size in this case had incorrectly used N as the length of LWORK to the DORGQR call, when it should have been M
+</p>
+</li>
+<li>
+<p>
+Corrected by Rodney
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0099_span_strong_s_d_sgesvj_array_sva_n2_0_can_be_out_of_the_array_boundary"><strong><span class="green">bug0099</span></strong> :: [S,D]sgesvj array SVA(N2=0) can be out of the array boundary</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.1
+</p>
+</li>
+<li>
+<p>
+bug report by Shandong Lao (ORACLE) on August 20 2012
+</p>
+</li>
+<li>
+<p>
+Email sent directly to Julie
+</p>
+</li>
+<li>
+<p>
+Corrected by Rodney
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0098_span_strong_dsyev_may_return_non_orthogonal_eigenvectors"><strong><span class="green">bug0098</span></strong> :: DSYEV may return non-orthogonal eigenvectors</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.1
+</p>
+</li>
+<li>
+<p>
+bug report by Duncan Po (Mathworks) on August 15 2012
+</p>
+</li>
+<li>
+<p>
+See <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=3597">forum topic 3597</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Rodney
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0097_span_strong_s_d_lasq3_could_cause_nans_appearance_in_gesvd_and_gesdd"><strong><span class="green">bug0097</span></strong> :: [S,D]LASQ3 could cause NaNs appearance in ?GESVD and ?GESDD</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.1
+</p>
+</li>
+<li>
+<p>
+bug report by Alexander Kobotov (INTEL) on June 28 2012
+</p>
+</li>
+<li>
+<p>
+See <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=3455">forum topic 3455</a>
+</p>
+</li>
+<li>
+<p>
+Corrected by Rodney
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0096_span_strong_stemr_sorting_is_not_done_for_n_2"><strong><span class="green">bug0096</span></strong> :: ?STEMR sorting is not done for N=2.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.1
+</p>
+</li>
+<li>
+<p>
+bug report by Joseph Young (SANDIA) on June 26 2012
+</p>
+</li>
+<li>
+<p>
+bug report sent to lapack mailing list
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on July 3 2012
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0094_span_strong_s_d_syevr_and_c_z_syevr_routine_workspace_indices_problem"><strong><span class="green">bug0094</span></strong> :: [S,D]SYEVR and [C,Z]SYEVR routine - workspace indices problem</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.1
+</p>
+</li>
+<li>
+<p>
+bug report by Keita Teranishi (CRAY) on May 18 2012
+</p>
+</li>
+<li>
+<p>
+INDIWO should be INDIFL+N.  Otherwise, subsequent {S,D}STEIN call takes the same address for IWORK(INDIWO) and INWROK(INDIFL).
+</p>
+</li>
+<li>
+<p>
+Sent to LAPACK team
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on May 21 2012
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0093_span_strong_lapacke_lapacke_xlange_routine_workspace_problem"><strong><span class="green">bug0093</span></strong> :: LAPACKE - LAPACKE_xlange routine - workspace problem</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.1
+</p>
+</li>
+<li>
+<p>
+bug report by Mathieu (PLASMA)
+</p>
+</li>
+<li>
+<p>
+Was allocating workspace for Frobenius norm, but not inf norm - This is wrong, only the inf norm needs a workspace.
+</p>
+</li>
+<li>
+<p>
+Sent directly yo Julie
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on May 11 2012
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0092_span_strong_xlaed6_avoid_div_by_zero"><strong><span class="green">bug0092</span></strong> :: xLAED6 avoid div by zero</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.0
+</p>
+</li>
+<li>
+<p>
+bug report by Mict Pont (NAG).
+</p>
+</li>
+<li>
+<p>
+In the 40 loop - when DSCALE(I)=TAU you get a divide by zero (rare in practice). This can cause some compilers to immediately stop, e.g. the Sun compiler.
+</p>
+</li>
+<li>
+<p>
+Sent directly yo Julie
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on Apr 18 2012
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0091_span_strong_xlanhf_div_by_zero"><strong><span class="green">bug0091</span></strong> :: xLANHF div by zero</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.0
+</p>
+</li>
+<li>
+<p>
+bug report by Ake Sandgren, Umea University and HPC2N, on 10-22-2011.
+</p>
+</li>
+<li>
+<p>
+See <a href="http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01195.html">LAPACK Mailing list msg 01195</a>
+</p>
+</li>
+<li>
+<p>
+corrected by Rodney on Apr 11 2012
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0090_span_strong_xggev_and_xggevx_need_to_unscale_if_necessary_when_there_is_an_error_in_dhgeqz_qz_iteration_failed"><strong><span class="green">bug0090</span></strong> :: xGGEV and xGGEVX: Need to unscale if necessary when there is an error in DHGEQZ (QZ iteration failed)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.0
+</p>
+</li>
+<li>
+<p>
+bug report by Hong Bo Peng Sandgren, on 03-19-2012.
+</p>
+</li>
+<li>
+<p>
+See <a href="http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01257.html">LAPACK Mailing list msg 01257</a>
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on Mar 20 2012
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0089_span_strong_unused_external_declarations"><strong><span class="green">bug0089</span></strong> :: unused external declarations</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.0
+</p>
+</li>
+<li>
+<p>
+bug report by Ake Sandgren, Umea University and HPC2N, on 11-16-2011.
+</p>
+</li>
+<li>
+<p>
+See <a href="http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01176.html">LAPACK Mailing list msg 01176</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0088_span_strong_uninitialized_variable_bug_in_zherfsx"><strong><span class="green">bug0088</span></strong> :: Uninitialized variable bug in ZHERFSX</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.0
+</p>
+</li>
+<li>
+<p>
+bug report by Mick Pont from NAG on Sat, 30 Nov 2011
+</p>
+</li>
+<li>
+<p>
+See <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=2893">forum topic 2893</a>
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on April 11 2012
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0087_span_strong_wrong_call_name_for_xblas_xla_rpvgrw_needs_to_be_xla_gerpvgrw"><strong><span class="green">bug0087</span></strong> :: Wrong call name for XBLAS xLA_RPVGRW, needs to be xLA_GERPVGRW</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 1128
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.0
+</p>
+</li>
+<li>
+<p>
+bug detected and corrected by Julie
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0086_span_strong_ilaxlr_commit_r1006_reverts_the_change_made_in_commit_r977"><strong><span class="green">bug0086</span></strong> :: ILAxLR:commit r1006 reverts the change made in commit r977</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 1099
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.0
+</p>
+</li>
+<li>
+<p>
+bug report by Ake Sandgren on Sat, 22 Oct 2011
+</p>
+</li>
+<li>
+<p>
+See <a href="http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01149.html"> LAPACK Mailing list msg 01149</a>
+</p>
+</li>
+<li>
+<p>
+corrected by Rodney James on Nov 30 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0085_span_strong_xgesvd_problem_in_workspace_computation"><strong><span class="green">bug0085</span></strong> :: xGESVD Problem in Workspace computation</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 1207
+</p>
+</li>
+<li>
+<p>
+Present in LAPACK 3.4.0
+</p>
+</li>
+<li>
+<p>
+bug report by Marco on Nov 18th 2011
+</p>
+</li>
+<li>
+<p>
+See <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=2861&amp;p=7686#p7686">forum topic 2861</a>
+</p>
+</li>
+<li>
+<p>
+Problem in Workspace computation
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on Jan 6 2012
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0084_span_strong_bug_ming_gu"><strong><span class="green">bug0084</span></strong> :: Bug Ming Gu</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 1017
+</p>
+</li>
+<li>
+<p>
+bug reported by Ming Gu (UC Berkeley) through Jim Demmel
+</p>
+</li>
+<li>
+<p>
+LAPACK driver routine infected: All SVD solvers when asked for singular values only. (Pathological matrix only)
+</p>
+</li>
+<li>
+<p>
+bug is present in LAPACK since 3.1.1 and in Matlab 2010a and 2010b
+</p>
+</li>
+<li>
+<p>
+For very specific matrices (given by Ming Gu), the DQDS code converges much slower than expected. The algorithm converges for these matrices un many more iterations
+ than the LAPACK maximum number of iterations allow.
+</p>
+</li>
+<li>
+<p>
+bug fix: (1) increase the maximum number of iterations in xlasq2, (2) fall back on Demmel/Kahan algorithm in case of nonconvergence of dqds.
+</p>
+</li>
+<li>
+<p>
+corrected by Benjamin Lipschitz on Mon Oct 3rd 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0083_span_strong_bug_in_the_testing_of_cherfsx_function"><strong><span class="green">bug0083</span></strong> :: Bug in the testing of CHERFSX function</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 1000
+</p>
+</li>
+<li>
+<p>
+bug reported by Olga Mitrofanova (Intel MKL team), on the LAPACK forum
+</p>
+</li>
+<li>
+<p>
+see <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=2644">forum topic 2644</a>
+</p>
+</li>
+<li>
+<p>
+Test of CHERFSX function doesn&#8217;t work because there is an error in ../TESTING/LIN/cerrhex.f ( lines 284-330 ). This function uses the diagonal pivoting factorization of a Hermitian indefinite matrix instead of the diagonal pivoting factorization of a Hermitian indefinite packed matrix. When CHERFSX is included in conditional "IF( LSAMEN( 2, C2, <em>HE</em> ) ) THEN " the test works.
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on Mon Aug 15th 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0082_span_strong_cz_laed2_memory_problems_when_compz_i_in_dstedc"><strong><span class="green">bug0082</span></strong> :: [CZ]laed2 Memory problems when COMPZ='I' in DSTEDC</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 982
+</p>
+</li>
+<li>
+<p>
+bug reported by Edward Smyth (NAG)
+</p>
+</li>
+<li>
+<p>
+Added IF statement to prevent potential out of range errors with "K+1" indices.
+</p>
+</li>
+<li>
+<p>
+corrected by Rodney on Wed Jun 21th 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0081_span_strong_sd_laed2_workspace_size_is_wrong_when_ncvt_nru_ncc_0"><strong><span class="green">bug0081</span></strong> :: [SD]laed2 WORKSPACE size is wrong when NCVT = NRU = NCC = 0</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 979
+</p>
+</li>
+<li>
+<p>
+bug reported by Hatem Ltaief (KAUST)
+</p>
+</li>
+<li>
+<p>
+Update Workspace requirement to 4*N because the routine call [SD]LASCL that requires a 4*N workspace.
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on Thu May 19th 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0080_span_strong_cz_bdsqr_workspace_size_is_wrong_when_ncvt_nru_ncc_0"><strong><span class="green">bug0080</span></strong> :: [CZ]BDSQR WORKSPACE size is wrong when NCVT = NRU = NCC = 0</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 979
+</p>
+</li>
+<li>
+<p>
+bug reported by Hatem Ltaief (KAUST)
+</p>
+</li>
+<li>
+<p>
+Update Workspace requirement to 4*N because the routine call [SD]LASCL that requires a 4*N workspace.
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on Thu May 19th 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0079_span_strong_ila_sdcz_lr_out_of_bound_access_in_the_do_loop_for_array_a"><strong><span class="green">bug0079</span></strong> :: ILA[SDCZ]LR out of bound access in the DO LOOP for array A.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 977
+</p>
+</li>
+<li>
+<p>
+bug detected by Julie
+</p>
+</li>
+<li>
+<p>
+Change DO LOOP condition and add a IF inside the DO LOOP
+</p>
+</li>
+<li>
+<p>
+corrected by Rodney on Tue April 21th 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0078_span_strong_dbdsdc_problem_with_orthogonality_of_u_in_certain_cases"><strong><span class="green">bug0078</span></strong> :: DBDSDC problem with orthogonality of U in certain cases</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 968
+</p>
+</li>
+<li>
+<p>
+bug report sent by duncanpo on April 4th 2011
+</p>
+</li>
+<li>
+<p>
+see forum topic 2326
+</p>
+</li>
+<li>
+<p>
+decreased EPS by a factor of 0.9 to correct problem with orthogonality of U in certain cases
+</p>
+</li>
+<li>
+<p>
+corrected by Rodney on Tue April 7th 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0077_span_strong_ds_gesvd_minimum_worksize_comments_need_clarification"><strong><span class="green">bug0077</span></strong> :: [DS]GESVD Minimum Worksize comments need clarification</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 967
+</p>
+</li>
+<li>
+<p>
+bug report sent by squartz on Sep 19th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2011
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on Tue April 5th 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0076_span_strong_problem_in_sy_he_tri2_when_nbmax_greater_than_n"><strong><span class="green">bug0076</span></strong> :: Problem in ?(sy/he)tri2 when nbmax greater than n</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 953
+</p>
+</li>
+<li>
+<p>
+bug report sent by nmozarto on Mar 4th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2223
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on Fri March 4th 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0075_span_strong_not_orhtogonal_eigenvectors_of_a_symmetric_matrix_with_dsyev"><strong><span class="green">bug0075</span></strong> :: not orhtogonal: eigenvectors of a symmetric matrix with DSYEV</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 946
+</p>
+</li>
+<li>
+<p>
+bug report sent by fabioaffinito on Feb 8th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2169
+</p>
+</li>
+<li>
+<p>
+The bug appears only when the matrix is diagonalized by using the upper half, and when the leading dimension n&gt;200 approx.
+</p>
+</li>
+<li>
+<p>
+User gave test program see: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=2169&amp;p=6237#p6237">here</a>
+</p>
+</li>
+<li>
+<p>
+Come from change in version 3.2 [<a href="http://netlib.org/lapack/lapack-3.2.html">Release Notes</a>]
+</p>
+</li>
+<li>
+<p>
+committed by Rodney on Thu Mar 3 2011
+</p>
+</li>
+<li>
+<p>
+related to 0035
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0074_span_strong_sysv_and_hesv"><strong><span class="green">bug0074</span></strong> :: ?sysv and ?hesv</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 926 and 927
+</p>
+</li>
+<li>
+<p>
+bug report sent by Alexander Kobotov on Feb 8th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2168
+</p>
+</li>
+<li>
+<p>
+corrected by Julie
+</p>
+</li>
+<li>
+<p>
+In LAPACK 3.3 ?(SY/HE)SV are updated to use TRS2. The TRS2 requires WORK(N) to operate, whereas in SV requirements for LWORK just to be &gt;=1. There is no any check in SV if LWORK&gt;=N, the array WORK just passed as it is to TRS2. So if LWORK&lt;N a crash could occur while executing TRS2 due to overuse of allocated workspace.
+</p>
+</li>
+<li>
+<p>
+I guess for the case of LWORK&lt;N just previsous Level2 based ?(SY/HE)TRS should be used.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0073_span_strong_secondtst_f_and_dsecnd_f"><strong><span class="green">bug0073</span></strong> :: secondtst.f and dsecnd.f</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 918
+</p>
+</li>
+<li>
+<p>
+bug report sent by John Tellefson on Feb 7th
+</p>
+</li>
+<li>
+<p>
+email sent to lapack mailing list, user provided fix.
+</p>
+</li>
+<li>
+<p>
+corrected by Julie
+</p>
+</li>
+<li>
+<p>
+We went ahead and remove the dummy subroutine in those timing for the last LAPACK version because we did not find a machine or compiler that still had the problem. I guess we were too optimistic.
+</p>
+</li>
+<li>
+<p>
+also committed the "cosmetic" modifications suggested by user as they make the program easier to modify.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0072_span_strong_cchkhs_f_and_zchkhs_f"><strong><span class="green">bug0072</span></strong> :: cchkhs.f and zchkhs.f</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 904
+</p>
+</li>
+<li>
+<p>
+bug report sent by Inge Gutheil on Feb 3rd
+</p>
+</li>
+<li>
+<p>
+email sent to lapack mailing list, user provided fix.
+</p>
+</li>
+<li>
+<p>
+corrected by Julie
+</p>
+</li>
+<li>
+<p>
+Add IF statement to prevent calculation if N=0
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0071_span_strong_slarre_and_dlarre"><strong><span class="green">bug0071</span></strong> :: slarre and dlarre</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 902
+</p>
+</li>
+<li>
+<p>
+bug report sent by Christof Voemel on Jan 31th
+</p>
+</li>
+<li>
+<p>
+email sent directly to Julie and Julien, Christof provided fix.
+</p>
+</li>
+<li>
+<p>
+corrected by Julien
+</p>
+</li>
+<li>
+<p>
+Add a line to prevent TAU from becoming zero
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0070_span_strong_iwork_dimension_is_incorrect"><strong><span class="green">bug0070</span></strong> ::  IWORK dimension is incorrect</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 899
+</p>
+</li>
+<li>
+<p>
+bug report sent by nmozarto on Jan 27th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2156
+</p>
+</li>
+<li>
+<p>
+confirmed by Julie and corrected by Brian Sutton
+</p>
+</li>
+<li>
+<p>
+The correct dimension is (M-R), in which R is the smallest of P, M-P, Q, and M-Q.
+</p>
+</li>
+<li>
+<p>
+An M-by-M matrix is partitioned into a 2-by-2 block structure. The
+</p>
+</li>
+<li>
+<p>
+dimensions of the blocks are P-by-Q, P-by-(M-Q), (M-P)-by-Q, and
+</p>
+</li>
+<li>
+<p>
+(M-P)-by-(M-Q). IWORK is involved in the permutation of rows or
+</p>
+</li>
+<li>
+<p>
+columns of these blocks, and it is the largest block, in terms of
+</p>
+</li>
+<li>
+<p>
+number of rows or columns, that determines the size of IWORK.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0069_span_strong_sytri2x_is_writing_on_other_part_of_a"><strong><span class="green">bug0069</span></strong> ::  sytri2x is writing on other part of A</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 898
+</p>
+</li>
+<li>
+<p>
+bug report sent by nmozarto on Jan 27th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2156
+</p>
+</li>
+<li>
+<p>
+confirmed by Julie and corrected by Julie
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0068_span_strong_need_to_add_lda_in_sytrs2"><strong><span class="green">bug0068</span></strong> ::  Need to add LDA in *sytrs2</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 897,896
+</p>
+</li>
+<li>
+<p>
+bug report sent by nmozarto on Jan 27th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2157
+</p>
+</li>
+<li>
+<p>
+confirmed by Julie and corrected by Julie
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0067_span_strong_need_to_add_lda_in_syswapr"><strong><span class="green">bug0067</span></strong> ::  Need to add LDA in *syswapr</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r893 and 894
+</p>
+</li>
+<li>
+<p>
+bug report sent by nmozarto on Jan 24th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2150
+</p>
+</li>
+<li>
+<p>
+confirmed by Julie and corrected by Julien
+</p>
+</li>
+<li>
+<p>
+Need to add LDA in *syswapr routines and update testing to test having LDA
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0066_span_strong_bugs_in_s_d_gejsv"><strong><span class="green">bug0066</span></strong> ::  bugs in {s,d}gejsv</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r891
+</p>
+</li>
+<li>
+<p>
+bug report sent by Paul Roberts on Oct 21st
+</p>
+</li>
+<li>
+<p>
+reported to Zlatko Drmac and corrected by Zlatko Drmac
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html"> LAPACK Mailing list msg 049</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0065_span_strong_workspace_queries_not_being_used"><strong><span class="green">bug0065</span></strong> :: workspace queries not being used</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r1038
+</p>
+</li>
+<li>
+<p>
+bug report by Clint Whaley on October 27th, 2010
+</p>
+</li>
+<li>
+<p>
+DGESVD does not perform a workspace query on worker
+</p>
+</li>
+<li>
+<p>
+functions such as DGELQF, but rather it hardwires in an assumption as
+</p>
+</li>
+<li>
+<p>
+to LQF&#8217;s workspace requirements.  This means that if LQF is changed,
+</p>
+</li>
+<li>
+<p>
+GESVD breaks.  This actually happens in ATLAS, because we provide a
+</p>
+</li>
+<li>
+<p>
+faster GELQF, which sometimes uses extra workspace.  For LAPACK itself,
+</p>
+</li>
+<li>
+<p>
+it represents extra dependencies that don&#8217;t need to be there.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0064_span_strong_got_a_bug_in_divide_and_conquer_non_convergence"><strong><span class="green">bug0064</span></strong> :: got a bug in divide and conquer (non convergence)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r813
+</p>
+</li>
+<li>
+<p>
+bug report by wdobler on November 12th 2007 and edrumwri (Evan) on October 10th 2010
+</p>
+</li>
+<li>
+<p>
+lapackers involved in the bug fix process: Julie Langou
+</p>
+</li>
+<li>
+<p>
+bug fix by wdobler
+</p>
+</li>
+<li>
+<p>
+see forum topic 529
+</p>
+</li>
+<li>
+<p>
+Increase MAXIT to 200 (was 20 before)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0063_span_strong_division_by_0_in_gesvj_amp_gevsj_with_zero_columns"><strong><span class="green">bug0063</span></strong> :: Division by 0 in *GESVJ &amp; *GEVSJ with zero columns</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r790
+</p>
+</li>
+<li>
+<p>
+bug report and fix from Bart Oldeman on Mon Aug 16 2010
+</p>
+</li>
+<li>
+<p>
+independent fix proposed by Zlatko Drmac on Tue Aug 24 2010
+</p>
+</li>
+<li>
+<p>
+see forum topic 1953
+</p>
+</li>
+<li>
+<p>
+The problem that was reported (with zero matrix) is caused by bad
+      initialization to xLASSQ.  It should be ZERO, ONE and not ZERO, ZERO.
+      With ZERO, ZERO, xLASSQ does not touch those variables in case of zero
+      vector, leaving scaling at ZERO, and in the nonzero case the scaling is
+      between ONE and SQRT(N). So, in case of zero vector, division by a
+      variable that is normally bigger than ONE causes division by zero.
+      This is change (i) below.
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r790, on Wed, Aug 25 2010)
+</p>
+</li>
+<li>
+<p>
+changes from Zlatko:
+</p>
+<div class="olist lowerroman"><ol class="lowerroman">
+<li>
+<p>
+In xgejsv.f and xgesvj.f input parameters SCALE and SUMSQ in xlassq.f
+          are now initially set as SCALE = ZERO, SUMSQ=ONE.  Setting them both
+          to zero (without carefully reading xlassq.f) caused problems with
+          exactly zero columns.
+</p>
+</li>
+<li>
+<p>
+There was a problem in the branch that computes only SIGMA and U of
+          a rank deficient matrix. The computed numerical rank (NR) was
+          incorrectly written as N in parameter lists of the corresponding
+          calls.
+</p>
+</li>
+<li>
+<p>
+In xgsvj0.f, xgsvj1.f testing the input parameters is changed to
+          prevent unnecessarily negative INFO in some situations.
+</p>
+</li>
+<li>
+<p>
+Minor changes, renaming some variables etc.
+</p>
+</li>
+</ol></div>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0062_span_strong_array_out_of_bounds_reference_in_xlaqr5"><strong><span class="green">bug0062</span></strong> :: Array out-of-bounds reference in xLAQR5</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r787
+</p>
+</li>
+<li>
+<p>
+bug report and fix from Mathew Cross (NAG) on Sat Aug 14 2010
+</p>
+</li>
+<li>
+<p>
+see forum topic 1949
+</p>
+</li>
+<li>
+<p>
+In the section of the code "Special case: 2-by-2 reflection (if needed)" the logical test
+      IF( BMP22 .AND. ( V( 1, M22 ).NE.ZERO ) )
+      must be split into a nested test
+      IF (BMP22) THEN, IF (V(1,M22).NE.ZERO) THEN&#8230;
+      If .NOT. BMP22 then M22 can exceed the second extent of V (and recall
+      that logical expressions can be evaluated in any order in Fortran).
+</p>
+</li>
+<li>
+<p>
+committed by Julien Langou (SVN revision r787, on Tue, Aug 17 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_red_bug0061_span_strong_zgehrd_f_is_overflowing"><strong><span class="red">bug0061</span></strong> :: zgehrd.f is overflowing</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CONFIRMED</strong>
+</p>
+</li>
+<li>
+<p>
+bug report by Victor Liu on Tuesday August 03rd, 2010
+</p>
+</li>
+<li>
+<p>
+zgehrd.f is overflowing  the maximum size in bytes of the largest array that
+</p>
+</li>
+<li>
+<p>
+can be put on the stack with gfortran (&#8658; leads ,e.g., to non-reproducible and uncorrect execution
+</p>
+</li>
+<li>
+<p>
+of zgeev in multithreaded context
+</p>
+</li>
+<li>
+<p>
+bug report by Victor Liu on Tuesday August 03rd, 2010
+</p>
+</li>
+<li>
+<p>
+lapackers involved in the bug fix process: Julie and Julien Langou and Mathieu Faverge
+</p>
+</li>
+<li>
+<p>
+bug fix by Victor Liu on Wednesday August 04th, 2010
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1930">forum topic 1930</a>
+</p>
+</li>
+<li>
+<p>
+two outstanding issues: (1) how do we go to fix this?, (2) more LAPACK subroutines might be concerned.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0060_span_strong_bug_in_dtgsy2_missing_iwork_call"><strong><span class="green">bug0060</span></strong> ::    Bug in dtgsy2, missing IWORK call</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r767
+</p>
+</li>
+<li>
+<p>
+bug report and fix sent by Vasile Sima on 24 Feb 2009 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+The error is that "IWORK" must appear in the line 640.  (It was included in the 1999 version.)
+      Note that the statement IE = ( I+1 ) - 1 is strange;  also, in other similar place, IWORK is used like below.
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r767, on Thu, June 24 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0060_span_strong_typo_in_testing_eig_dchkee_f_and_testing_eig_zchkee_f"><strong><span class="green">bug0060</span></strong> ::  Typo in TESTING/EIG/dchkee.f and TESTING/EIG/zchkee.f</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r768
+</p>
+</li>
+<li>
+<p>
+bug report by Ake Sandgren (HPC2N, Umea University) on Thu July 1 2010 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r768, on Fri, July 2 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0059_span_strong_zgelsd_crashes_on_large_matrices_eq_m_n_nhrs_gt_88_if_real_workspace_allocated_exactly_as_reported_on_workspace_query"><strong><span class="green">bug0059</span></strong> ::    ZGELSD crashes on large matrices (eq M=N=NHRS&gt;=88), if real workspace allocated exactly as reported on workspace query.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r765
+</p>
+</li>
+<li>
+<p>
+bug report and fix sent by Alexander Kobotov (Intel) on Wed, 23 June 2010 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+Root cause is wrong estimation of real workspace size in ZLALSA (on path zgelsd&#8594;zlalsd&#8594;zlalsa).
+      It assumes that RWORK array length should be max( N, (SMLSZ+1)<strong>NRHS*3 ), where SMLSIZ=25.
+      But in fact the function calls zlals0 which requires RWORK to be ( K</strong>(1+NRHS) + 2*NRHS ),
+      where K could be as large as number of columns in matrix A.
+      The same is actual for CGELSD.
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r765, on Thu, June 24 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0058_span_strong_variable_n0_in_xlasq3_is_input_output_the_comments_said_input"><strong><span class="green">bug0058</span></strong> :: variable N0 in xLASQ3 is INPUT/OUTPUT. (The comments said INPUT.)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r750
+</p>
+</li>
+<li>
+<p>
+bug report and bug fix are from William Gandler (NIH/CIT) on October 16, 2009; April 23,
+2010; May 01, 2010, May 03, 2010. to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r750, on Fri, May 27 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0057_span_strong_non_eigenvectors_from_dgeev_problem_in_balancing"><strong><span class="green">bug0057</span></strong> :: Non-eigenvectors from DGEEV, problem in balancing</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+Same bug than bug0106
+</p>
+</li>
+<li>
+<p>
+bug report sent by Numpy team on April 22nd, 2010
+</p>
+</li>
+<li>
+<p>
+see <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1818">forum topic 1818</a>
+</p>
+</li>
+<li>
+<p>
+see follow-up on lapackers on April 22nd from Jim "bug in DGEHRD"
+    "The balancing is choosing to scale some rows/columns by factors like 1e18,
+which rather amplifies tiny rounding errors in the (presumably correctly)
+computed eigenvectors of the balanced matrix, when balancing is undone at the end.
+The expert driver interface dgeevx would let the user disable balancing, until
+we figure out whether this is a bug or a feature, I&#8217;m not sure which."
+</p>
+</li>
+<li>
+<p>
+Corrected by Bradley Lowery, Rodney James, Julien Langou on May 26 2013
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0056_span_strong_non_orthogonal_eigenvectors_returned_from_dsyevr"><strong><span class="green">bug0056</span></strong> ::  Non-orthogonal eigenvectors returned from DSYEVR</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1540
+</p>
+</li>
+<li>
+<p>
+bug report sent by Scipy team on April 22nd
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00874.html"> LAPACK Mailing list msg 874</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Rodney on Tue, 17 Feb 2011
+</p>
+</li>
+<li>
+<p>
+" I can reproduce similar problems that the user encountered with non-orthogonal eigenvectors when only
+</p>
+</li>
+<li>
+<p>
+a few eigenvalues are requested.  This also happens with SSYEVR.  If I set ABSTOL to SLAMCH(<em>Safe minimum</em>),
+</p>
+</li>
+<li>
+<p>
+the problem goes away in SSYEVR, and improves with DSYEVR but does not completely go away."
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni on Mon May 4th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0055_span_strong_missing_arguments_descriptions_of_work_and_uplo_in_csz_syequb"><strong><span class="green">bug0055</span></strong> :: Missing arguments descriptions of work and uplo in [csz]syequb</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r740
+</p>
+</li>
+<li>
+<p>
+bug report sent by Paul Roberts (NAG) on Fri, 13 Apr 2010 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r740, on Fri, Apr 13 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0054_span_strong_fix_comment_some_of_the_argument_descriptions_have_the_wrong_type"><strong><span class="green">bug0054</span></strong> :: Fix comment some of the argument descriptions have the wrong type.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r739
+</p>
+</li>
+<li>
+<p>
+bug report sent by Paul Roberts (NAG) on Fri, 12 Apr 2010 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r739, on Fri, Apr 12 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0053_span_strong_fix_external_declaration_issue_in_testing_suite_file_cebchvxx_f"><strong><span class="green">bug0053</span></strong> :: Fix external declaration issue in testing suite file: cebchvxx.f</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r738
+</p>
+</li>
+<li>
+<p>
+bug report and fix sent by Michael Chuvelev (Intel) on Fri, 5 Apr 2010 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r738, on Fri, Apr 5 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0052_span_strong_incorrect_nrhs_parameter_in_call_to_sytrs_from_la__po_sy_he_rfsx_extended_f"><strong><span class="green">bug0052</span></strong> :: Incorrect NRHS parameter in call to ?SYTRS from ?la_{po,sy,he}rfsx_extended.f.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r736
+</p>
+</li>
+<li>
+<p>
+bug report and fix sent by Michael Chuvelev (Intel) on Fri, 2 Apr 2010 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r736, on Fri, Apr 2 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0051_span_strong_info_n_2_in_xdgges_due_to_too_stringent_threshold_in_xtgex2"><strong><span class="green">bug0051</span></strong> :: INFO=N+2 in xDGGES due to too stringent threshold in xTGEX2.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r735
+</p>
+</li>
+<li>
+<p>
+bug report sent by Ondra Kamenik on Tue Mar 16, 2010
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1783">forum topic 1783</a>
+</p>
+</li>
+<li>
+<p>
+We have changed xLARFG to xLARFP in xGEQR2. xGEQR2 is used by xDGGES. The
+      matrices are therefore different (although all of them are correct.) However
+      for the matrix generated by xLARFP, xTGEX2 exceeds the THRES value by 10%,
+      causing an error flag. We decided to increase THRES by a factor of 2.
+      Although the bug was triggered by the change from xLARFG to xLARFP, XLARFP
+      is not really at guilt.
+</p>
+</li>
+<li>
+<p>
+confirmed by Julie Langou on Thu Mar 18 2010
+</p>
+</li>
+<li>
+<p>
+fix provided by Guillaume Revy and Jim Demmel
+</p>
+</li>
+<li>
+<p>
+committed by Julien Langou (SVN revision r735, on Thu Apr 2 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0050_span_strong_an_extra_argument_after_matrix_a_lines_348_249_in_stfsm_f_causes_a_crash_of_sgemm_call"><strong><span class="green">bug0050</span></strong> :: An extra argument after matrix A lines 348-249 in STFSM.f causes a crash of SGEMM call.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r732
+</p>
+</li>
+<li>
+<p>
+bug report and fix sent by Alexander Kobotov (Intel) on Wed, 3 Feb 2010 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r732, on Tue Mar 9 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0049_span_strong_output_parameter_givptr_stays_uninitialized_in_case_of_quick_exit_n_eq_0_or_if_the_rank_1_modifier_is_small_enough_in_laed8"><strong><span class="green">bug0049</span></strong> :: output parameter GIVPTR stays uninitialized in case of quick exit (n.eq.0) or if the rank-1 modifier is small enough in *laed8.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r731
+</p>
+</li>
+<li>
+<p>
+bug report and fix sent by Alexander Kobotov (Intel) on Wed, 3 Feb 2010 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r731, on Tue Mar 9 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0048_span_strong_hanging_could_occur_in_gebal_if_a_nan_is_in_input_matrix"><strong><span class="green">bug0048</span></strong> :: Hanging could occur in *gebal if a NaN is in input matrix.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r730
+</p>
+</li>
+<li>
+<p>
+bug report and fix sent by Alexander Kobotov (Intel) on Wed, 3 Feb 2010 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r730, on Tue Mar 9 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0047_span_strong_incorrect_r_c_parameter_description_in_gerfsx"><strong><span class="green">bug0047</span></strong> :: incorrect R/C parameter description in *gerfsx</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r726
+</p>
+</li>
+<li>
+<p>
+bug report sent by Michael Chuvelev (Intel) on Wed, 1 Mar 2010 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+bug fix sent by James Demmel
+       "R/C are input only by their usage"
+       "there&#8217;s no FACT parameter in these routines"
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r726, on Tue Mar 9 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0046_span_strong_incorrectly_documented_rwork_workspace_in_zgesdd"><strong><span class="green">bug0046</span></strong> :: Incorrectly documented RWORK workspace in ZGESDD</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r729 (LAPACK), rev 1541 (LAPACKE)
+</p>
+</li>
+<li>
+<p>
+bug report from Zbigniew on Mon 15 Mar 2010
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1779">forum topic 1779</a>
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision 729, on Thu Mar 18 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0045_span_strong_bug_in_dstemr_f_when_n_2"><strong><span class="green">bug0045</span></strong> :: bug in dstemr.f when N = 2</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r705
+   o bug report and fix sent by Ashutosh Mahajan (Mathematics and Computer Science Division of Argonne National Labs) on Thu, 10 Dec 2009 to "lapack@cs.utk.edu".
+   o committed by Julien Langou (SVN revision 705, on Tue Dec 15 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0044_span_strong_bug_in_dsyevr_f_when_n_1"><strong><span class="green">bug0044</span></strong> :: bug in dsyevr.f when N = 1</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r704
+   o bug report and fix sent by Ashutosh Mahajan (Mathematics and Computer Science Division of Argonne National Labs) on Fri, 11 Dec 2009 to "lapack@cs.utk.edu".
+   o committed by Julien Langou (SVN revision 704, on Tue Dec 15 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0043_span_strong_vl_vu_are_referenced_in_lapack_3_2_1_dsyevr_even_if_range_ne_em_v_em"><strong><span class="green">bug0043</span></strong> :: VL, VU are referenced in lapack-3.2.1 dsyevr even if range.ne.<em>V</em></h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r699
+   o bug report sent by Michael Chuvelev (Intel) on Wed, 14 Oct 2009 to "lapack@cs.utk.edu".
+      "VL, VU are referenced in lapack-3.2.1 dsyevr even if range.ne.<em>V</em>"
+   o committed by Julien Langou (SVN revision 699, on Tue Oct 20 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0042_span_strong_printing_format_misuse_in_testing_eig_s_c_d_z_drvgbx_f"><strong><span class="green">bug0042</span></strong> :: printing format misuse in ./TESTING/EIG/[s,c,d,z]drvgbx.f</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r697
+</p>
+</li>
+<li>
+<p>
+bug report sent by Kevin Wadleigh on Tue 29 Sep 2009 to "lapack@cs.utk.edu".
+      "LAPACK routine ieeeck.f and compiler optimizations"
+</p>
+</li>
+<li>
+<p>
+The LAPACK function IEEECK should be modified to keep compilers from optimizing away the line
+      NAN6 = NAN5*0.0
+      and replacing it by NAN6 = 0.0.
+      I&#8217;ve seen this happen using two different compilers at their default level of optimization. However, using
+      NAN6 = NAN5*ZERO
+      as in the attached file keeps this from happening.
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision 697, on Wed Sep 30 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0041_span_strong_printing_format_misuse_in_testing_eig_s_c_d_z_drvgbx_f"><strong><span class="green">bug0041</span></strong> :: printing format misuse in ./TESTING/EIG/[s,c,d,z]drvgbx.f</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r696
+</p>
+</li>
+<li>
+<p>
+bug report sent by Michael Chuvelev (Intel) on Tue 29 Jul 2009 to "lapack@cs.utk.edu".
+      "Bug in lapack-3.2.1/TESTING/EIG/zdrvgbx.f"
+</p>
+</li>
+<li>
+<p>
+printing format misuse, this would possibly lead to a segmentation fault in case of errors in zgbsvxx.
+</p>
+</li>
+<li>
+<p>
+committed by Julien Langou (SVN revision 696, on Tue Sep 29 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0040_span_strong_q_referenced_in_real_tgsens_when_wantq_false"><strong><span class="green">bug0040</span></strong> :: Q referenced in real TGSENs when WANTQ .FALSE.</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r643
+</p>
+</li>
+<li>
+<p>
+bug report from Mathew Cross on Tue 18 Aug 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1604">forum topic 1604</a>
+</p>
+</li>
+<li>
+<p>
+committed by Jason (SVN revision 643, on Tue Mar 3 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0039_span_strong_faulty_workspace_queries_in_geesx"><strong><span class="green">bug0039</span></strong> :: faulty workspace queries in GEESX</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r657
+</p>
+</li>
+<li>
+<p>
+bug report from Mathew Cross on Tue 18 Aug 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1602">forum topic 1602</a>
+</p>
+</li>
+<li>
+<p>
+committed by Julien (SVN revision 657, on Sun May 10 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0038_span_strong_no_liwork_query_in_dgelsd"><strong><span class="green">bug0038</span></strong> :: no LIWORK query in DGELSD</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r698
+</p>
+</li>
+<li>
+<p>
+bug report from Mathew Cross on Tue 18 Aug 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1601">forum topic 1601</a>
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision 698, on Thu Oct 20 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0038_span_strong_out_of_range_element_access_in_dlaset_when_using_dgelss"><strong><span class="green">bug0038</span></strong> :: out of range element access in DLASET when using DGELSS</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r695
+</p>
+</li>
+<li>
+<p>
+bug report sent by Tim Hopkins on Fri 31 Jul 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1582">forum topic 1582</a>
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision 695, on Fri Sep 25 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0037_span_strong_xlarfp_and_scaling"><strong><span class="green">bug0037</span></strong> :: xLARFP and scaling</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 754, 755
+</p>
+</li>
+<li>
+<p>
+bug report sent by Pat Quillen on Wed 29 Jul 2009 to "lapack@cs.utk.edu".
+      "xLARFP and scaling"
+</p>
+</li>
+<li>
+<p>
+see <a href="Errata/bug_lapack_3.2.1_0037/026.txt">Pat Quillen&#8217;s email</a>, and <a href="Errata/bug_lapack_3.2.1_0036/quillen_dlarfp2.f">quillen dlarfp2.f</a>,
+</p>
+</li>
+<li>
+<p>
+see <a href="Errata/bug_lapack_3.2.1_0037/027.txt">Sven Hammarling&#8217;s email</a>
+</p>
+</li>
+<li>
+<p>
+see <a href="Errata/bug_lapack_3.2.1_0037/028.txt">Pat Quillen&#8217;s email</a>, <a href="Errata/bug_lapack_3.2.1_0036/quillen_dlarfp3.f">quillen dlarfp3.f</a>, and <a href="Errata/bug_lapack_3.2.1_0036/quillen_dlarf2.f">quillen dlarf2.f</a>.
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision 695, on Fri Jun 18 2010)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0036_span_strong_scaling_in_xsteqr_xsterf"><strong><span class="green">bug0036</span></strong> :: scaling in xSTEQR, xSTERF</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 937
+</p>
+</li>
+<li>
+<p>
+bug report sent by Pat Quillen on Fri 24 Jul 2009 to "lapack@cs.utk.edu".
+      "Scaling in xSTEQR, xSTERF"
+</p>
+</li>
+<li>
+<p>
+see <a href="Errata/bug_lapack_3.2.1_0036/025.txt">Pat Quillen&#8217;s email</a>, <a href="Errata/bug_lapack_3.2.1_0036/quillen_dsteqr.f">quillen dsteqr.f</a>.
+</p>
+</li>
+<li>
+<p>
+confirmed by Rodney on Tue Feb 21 2011
+</p>
+</li>
+<li>
+<p>
+Correction: "changed matrix norm to <em>M</em> (max) from <em>I</em> (inf) for scaling of input matrix
+</p>
+</li>
+<li>
+<p>
+and added check for zero norm in xSTERF (the xSTEQR already had this check)"
+</p>
+</li>
+<li>
+<p>
+committed by Rodney on Tue Feb 24 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0035_span_strong_dlarfb_f_and_likes"><strong><span class="green">bug0035</span></strong> :: dlarfb.f and likes</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 946
+</p>
+</li>
+<li>
+<p>
+bug report sent by Michael Chuvelev (Intel) on Tue 21 Jul 2009 to "lapack@cs.utk.edu".
+      "Bug in LAPACK 3.2 dlarfb.f and likes"
+</p>
+</li>
+<li>
+<p>
+see <a href="Errata/bug_lapack_3.2.1_0035/024.txt">Michael Chuvelev and Julie&#8217;s emails</a>, <a href="Errata/bug_lapack_3.2.1_0035/q.dat">q.dat</a>,
+      <a href="Errata/bug_lapack_3.2.1_0035/tau.dat">tau.dat</a>, and <a href="Errata/bug_lapack_3.2.1_0035/test_dorgql.f">test_dorgql.f</a>
+</p>
+</li>
+<li>
+<p>
+confirmed by Rodney on Tue Feb 22 2011
+</p>
+</li>
+<li>
+<p>
+committed by Rodney on Thu Mar 3 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0034_span_strong_comments_in_ssptrf_not_correct"><strong><span class="green">bug0034</span></strong> :: comments in SSPTRF not correct</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r932 and 933
+</p>
+</li>
+<li>
+<p>
+clarification asked by "sarnath" on Thu Jul 02 2009
+</p>
+</li>
+<li>
+<p>
+confirmation of bug by "sarnath" and Julien Langou on Fri Jul 03 2009
+</p>
+</li>
+<li>
+<p>
+The statement "JMAX is the column-index of the largest off-diagonal element in row IMAX" is not correct
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1553">forum topic 1553</a>
+</p>
+</li>
+<li>
+<p>
+committed by Rodney (SVN revision 932, 933, on Tue Feb 17 2011)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0033_span_strong_failure_of_zheevd_on_a_specific_matrix"><strong><span class="green">bug0033</span></strong> :: failure of zheevd on a specific matrix</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1505
+</p>
+</li>
+<li>
+<p>
+bug report sent by Cezary Sliwa (Instytut Fizyki PAN, Poland) on Thu 2 Jul 2009 to "lapack@cs.utk.edu".
+</p>
+</li>
+<li>
+<p>
+see <a href="020.f">Cezary Sliwa&#8217;s test code</a>, <a href="021.dat">Cezary Sliwa&#8217;s matrix</a>, and
+      <a href="022.txt">Cezary Sliwa&#8217;s email</a>.
+</p>
+</li>
+<li>
+<p>
+Confirmed by Rodney on Tue, 17 Feb 2011
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni Marques on Oct 1st 2014
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0032_span_strong_matrix_splitting_problem_with_dstebz_and_sstebz"><strong><span class="green">bug0032</span></strong> :: matrix splitting problem with dstebz and sstebz</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>, rev 1540
+</p>
+</li>
+<li>
+<p>
+bug report sent by Phil DeMier (IBM) on Mon 29 Jun 2009 to "lapack@cs.utk.edu".
+      "matrix splitting problem with dstebz and sstebz"
+</p>
+</li>
+<li>
+<p>
+see <a href="018.txt">Phil DeMier&#8217;s email</a> and <a href="019.f">Phil DeMier&#8217;s test code</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Rodney on Tue, 08 Feb 2011
+</p>
+</li>
+<li>
+<p>
+Corrected by Osni on Mon May 4th 2015
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0031_span_strong_whitespace_fix_in_comments"><strong><span class="green">bug0031</span></strong> :: whitespace fix in comments</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r692
+</p>
+</li>
+<li>
+<p>
+reported by "Jan" on Tue Jun 02 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1449">forum topic 1449</a>
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision 692, on Fri Sep 11 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0030_span_strong_line_641_of_dtgsy2_present_as_well_in_stgsy2_ztgsy2_ctgsy2"><strong><span class="green">bug0030</span></strong> :: line 641 of DTGSY2 (present as well in STGSY2, ZTGSY2, CTGSY2)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r766
+</p>
+</li>
+<li>
+<p>
+Same bug than bug0060
+</p>
+</li>
+<li>
+<p>
+reported by Zbigniew Leyk (College Station, TX) on Mon Jun 01, 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1445">forum topic 1445</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0029_span_strong_problem_of_workspace_query_with_dstedc"><strong><span class="green">bug0029</span></strong> :: problem of WORKSPACE query with DSTEDC</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r984
+</p>
+</li>
+<li>
+<p>
+reported by Tiago Requeijo on Mon Mar 30 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1389">forum topic 1389</a>
+</p>
+</li>
+<li>
+<p>
+see also email from Edward Smyth on June 21st 2011
+</p>
+</li>
+<li>
+<p>
+committed by Rodney (SVN revision 984, on Wed Jun 22 2011)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0028_span_strong_failure_of_convergence_of_dhgeqz_for_some_specific_matrix_pencils"><strong><span class="green">bug0028</span></strong> :: failure of convergence of DHGEQZ for some specific matrix pencils</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r1272, 1271
+</p>
+</li>
+<li>
+<p>
+reported by Vasile Sima on Thu Jan 22 2009
+</p>
+</li>
+<li>
+<p>
+see: <a href="008.txt">email from Vasile</a>
+</p>
+</li>
+<li>
+<p>
+more information at: &lt;a href=<em>http://www-math.ucdenver.edu/~langou/lapack-3.2/lapack_known_issues.html</em>&gt;lapack known issues]
+</p>
+</li>
+<li>
+<p>
+committed by Rodney (SVN revision r1272, 1271, on Tue Apr 17 2012)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0027_span_strong_misleading_comment_in_the_header_of_dgheqz_the_2x2_block_of_the_real_schur_form_are_not_as_claimed"><strong><span class="green">bug0027</span></strong> :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r929
+</p>
+</li>
+<li>
+<p>
+reported by Vasile Sima on Tue Jan 27 2009
+</p>
+</li>
+<li>
+<p>
+see: <a href="005.txt">email from Vasile</a>
+</p>
+</li>
+<li>
+<p>
+more information:
+      more specifically Vasile is reporting that the comments:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>*          [...] H contains the upper quasi-triangular
+*          matrix S from the generalized Schur factorization;
+*          2-by-2 diagonal blocks (corresponding to complex conjugate
+*          pairs of eigenvalues) are returned in standard form, with
+*          H(i,i) = H(i+1,i+1) and H(i+1,i)*H(i,i+1) &amp;lt; 0.</code></pre>
+</div></div>
+<div class="paragraph"><p>are not correct</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+committed by Rodney James (SVN revision r929, on Tue Feb 17 2011)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0026_span_strong_problem_when_playing_with_dgeev_and_gfortran_optimization_flags"><strong><span class="green">bug0026</span></strong> :: problem when playing with DGEEV and gfortran optimization flags</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn 1239
+</p>
+</li>
+<li>
+<p>
+reported by Pauli Virtanen (scipy team) on Sat Dec 06 2008 (email to <a href="mailto:lapack@cs.utk.edu">lapack@cs.utk.edu</a>)
+</p>
+</li>
+<li>
+<p>
+see: <a href="004.txt">email from Pauli Virtanen</a>
+      see: <a href="http://scipy.org/scipy/scipy/ticket/709">http://scipy.org/scipy/scipy/ticket/709</a>
+</p>
+</li>
+<li>
+<p>
+Confirmed by Rodney on Tue, 08 Feb 2011
+</p>
+</li>
+<li>
+<p>
+A patch has been proposed by Hong Bo Peng.
+</p>
+</li>
+<li>
+<p>
+Issue was actually in DHGEQZ, the update to B22 was missing
+</p>
+</li>
+<li>
+<p>
+See <a href="http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg01273.html"> LAPACK Mailing list msg 1273</a>
+</p>
+</li>
+<li>
+<p>
+committed by Rodney (SVN revision 1239, on Tue Apr 3 2012)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0025_span_strong_serious_problem_in_dgesdd_dgesdd_returns_negative_singular_values_with_info_0"><strong><span class="green">bug0025</span></strong> :: serious problem in DGESDD: DGESDD returns negative singular values with INFO = 0</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r760
+</p>
+</li>
+<li>
+<p>
+reported by Guy Bencteux on Sat Dec 06 2008
+</p>
+</li>
+<li>
+<p>
+see <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=847">forum topic 847</a>
+</p>
+</li>
+<li>
+<p>
+At the time, Julie was not able to reproduce the bug. The bug is highly BLAS dependent.
+</p>
+</li>
+<li>
+<p>
+on Sat Jun 19 2010, Bruno Pin&ccedil;on from ESIAL, reported another matrix with the same problems
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1868">forum topic 1868</a>
+</p>
+</li>
+<li>
+<p>
+we were able to reproduce the problem with MacOS with gfortran reference LAPACK
+      and vecLib BLAS, we can not reproduce the problem with reference LAPACK and reference BLAS.
+</p>
+</li>
+<li>
+<p>
+A patch has been proposed and committed by Julien Langou. (See forum topic 1868.)
+</p>
+</li>
+<li>
+<p>
+Note: there is strong evidence that the bug of Guy Bencteux and this one
+      are the same, although we were never able to reproduce Guy&#8217;s problem.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0024_span_strong_the_notation_a_is_confusing_for_complex_matrices_does_a_stand_for_a_transpose_of_a_hermitian_transpose"><strong><span class="green">bug0024</span></strong> :: the notation A' is confusing for complex matrices. Does A' stand for A transpose of A Hermitian transpose?</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r969, 966 and 965
+</p>
+</li>
+<li>
+<p>
+reported by Clint Whaley early July 2009
+</p>
+</li>
+<li>
+<p>
+LAPACK is not consistent in it use of the notation for transpose and Hermitian transpose.
+</p>
+</li>
+<li>
+<p>
+The use of LAPACK A' is not consistent with the BLAS useage.
+</p>
+</li>
+<li>
+<p>
+We note that the Matlab/Scilab/Octave convention is A' stands for
+      "conjugate transpose" and A.' stands for "transpose".
+</p>
+</li>
+<li>
+<p>
+In the Z routines, LAPACK uses the notation A' 669 times, it means "conjugate
+      transpose" most of the time but it means "transpose" a few times (maybe
+      10 times max, for BLAS-like routines). The notation A*H, A*T, A*N is
+      used 549 times, The notation A<sup>T, A</sup>N, A^H 19 times. (This is just for
+      the Z routines.)
+</p>
+</li>
+<li>
+<p>
+see <a href="023.txt">Julien&#8217;s emails</a>
+</p>
+</li>
+<li>
+<p>
+vote on the lapackers mailing list:
+          A*T (or A<sup>T) and A*H (or A</sup>H): Clint Whaley, Jim Demmel, Sven Hammarling, Antoine Petitet, Daniel Kressner
+          A' (for A*H) and A.' for (A*T): Julien Langou
+      (I love to be that supported by the lapackers!)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0023_span_strong_srotmg_and_drotmg_uses_deprecated_fortran_assign_statement_and_assigned_goto_statement"><strong><span class="green">bug0023</span></strong> :: SROTMG and DROTMG uses deprecated Fortran ASSIGN statement and assigned GOTO statement</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r691
+</p>
+</li>
+<li>
+<p>
+reported by Marco Atzeri on Fri Mar 06 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1420">forum topic 1420</a>
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision 691, on Thu Sep 10 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0022_span_strong_workspace_query_bug_with_dgejsv_when_only_left_or_right_singular_vectors_desired"><strong><span class="green">bug0022</span></strong> :: workspace query bug with DGEJSV (when only left or right singular vectors desired)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see 891 and 964
+</p>
+</li>
+<li>
+<p>
+reported by Allin Cottrell on Tue Jan 15 2009
+</p>
+</li>
+<li>
+<p>
+confirmed by Julien Langou on Fri Jan 30 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=866">forum topic 866</a>
+</p>
+</li>
+<li>
+<p>
+all information sent to Zlatko Drmac
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision 891 and 964)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0021_span_strong_in_dgesdd_workspace_query_gives_a_value_smaller_than_the_minimal_value_given_in_the_header_to_run_the_routine"><strong><span class="green">bug0021</span></strong> :: in DGESDD, workspace query gives a value smaller than the minimal value given in the header to run the routine</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r649
+</p>
+</li>
+<li>
+<p>
+reported by Guy Bencteux on Sat Dec 06 2008
+</p>
+</li>
+<li>
+<p>
+see <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=846">forum topic 846</a>
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision 649, on Tue Mar 17 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0020_span_strong_in_xgesdd_workspace_query_can_overflow_for_large_matrices"><strong><span class="green">bug0020</span></strong> :: in xGESDD, workspace query can overflow for large matrices</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong>
+</p>
+</li>
+<li>
+<p>
+reported by Stephan Ripke (Broad Institute, Boston) on Thu May 21 2009
+</p>
+</li>
+<li>
+<p>
+confirmed by Julien Langou on Thu May 21 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1418">forum topic 1418</a>
+</p>
+</li>
+<li>
+<p>
+It&#8217;s just the usual 32-bit integer overflow issue, which is a user problem, not a bug in the code.
+</p>
+</li>
+<li>
+<p>
+Recompiling everything with 64-bit integers is the correct way to deal with this issue.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0019_span_strong_em_make_install_em_generates_a_error_time_for_operations_was_zero_too_easily"><strong><span class="green">bug0019</span></strong> :: <em>make install</em> generates a "** Error: Time for operations was zero" too easily</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r693
+</p>
+</li>
+<li>
+<p>
+negative flop counts can be generated by <em>make install</em>
+</p>
+</li>
+<li>
+<p>
+reported by Sergei Steshenko on Thu Nov 20 2008
+</p>
+</li>
+<li>
+<p>
+see: <a href="006.txt">emails</a>
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision 693, on Fri Sep 11 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0017_span_strong_in_chbgst_zhbgst_reference_to_uninitialized_elements_of_rwork_in_the_do_240_and_do_470_loops"><strong><span class="green">bug0017</span></strong> :: in CHBGST/ZHBGST, reference to uninitialized elements of RWORK in the DO 240 and DO 470 loops</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r656
+</p>
+</li>
+<li>
+<p>
+patch given by Lawrence Mulholland (NAG) on Wed May 06 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1408">forum topic 1408</a>
+</p>
+</li>
+<li>
+<p>
+committed by Julien Langou (SVN revision 656, on Sun May 10 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0016_span_strong_problem_in_workspace_query_for_cgeesx_dgeesx_sgeesx_zgeesx"><strong><span class="green">bug0016</span></strong> :: problem in workspace query for CGEESX/DGEESX/SGEESX/ZGEESX</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r657
+</p>
+</li>
+<li>
+<p>
+bug report sent by Alexander V. Kobotov (Intel) on Mon, 6 Apr 2009 to "lapack@cs.utk.edu".
+      "(c/z)geesx: no lwork=-1 branch at all, info = -15 is returned while doing lquery."
+      The S and D versions were not exiting after WORKSPACE query as well.
+</p>
+</li>
+<li>
+<p>
+committed by Julien Langou (SVN revision 657, on Sun May 10 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0015_span_strong_referencing_work_1_and_iwork_1_when_ijob_0_in_ctgsen_dtgsen_stgsen_ztgsen_contradicts_header_description"><strong><span class="green">bug0015</span></strong> :: referencing WORK(1) and IWORK(1) when IJOB=0 in CTGSEN/DTGSEN/STGSEN/ZTGSEN contradicts header description</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r658,659
+</p>
+</li>
+<li>
+<p>
+bug report sent by Alexander V. Kobotov (Intel) on Mon, 6 Apr 2009 to "lapack@cs.utk.edu".
+      "(d/s)tgsen.f: iwork(1) always referenced: line 455: iwork( 1 ) = LIWMIN, documentation says that
+      if IJOB=0 it shouldn&#8217;t, so NULL pointer causes a segfault."
+      Same problem for C and Z versions and for the WORK array.
+</p>
+</li>
+<li>
+<p>
+committed by Julien Langou (SVN revision 658 and 659, on Sun May 10 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0014_span_strong_csyequb_zsyequb_ssyequb_dsyequb_cheequb_cheequb_external_and_intrinsic_list_are_not_accurate_or_not_even_present"><strong><span class="green">bug0014</span></strong> :: CSYEQUB/ZSYEQUB/SSYEQUB/DSYEQUB/CHEEQUB/CHEEQUB: EXTERNAL and INTRINSIC list are not accurate (or not even present)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r660
+</p>
+</li>
+<li>
+<p>
+bug report sent by Alexander V. Kobotov (Intel) on Mon, 6 Apr 2009 to "lapack@cs.utk.edu".
+      "c(he/sy)equb: no slamch in external lists and lsame, intrinsics not described"
+      Same problem for D and S versions and for the WORK array.
+</p>
+</li>
+<li>
+<p>
+committed by Julien Langou (SVN revision 660 on Sun May 10 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bugxxxx_span_strong_wrong_type_for_workspace_in_cpot01_and_zpot01"><strong><span class="green">bugXXXX</span></strong> Wrong type for workspace in cpot01 and zpot01</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn r655
+</p>
+</li>
+<li>
+<p>
+Bug reported by Julie Langou on Th. 04/30/09
+</p>
+</li>
+<li>
+<p>
+Workspace types needed by CPOT01 and ZPOT01, they need to be REAL (or DOUBLE PRECISION)
+      and not COMPLEX (or DOUBLE COMPLEX).
+</p>
+</li>
+<li>
+<p>
+committed by Julie Langou (SVN revision r655, on Sun, May 3 2009)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bugxxxx_span_strong_revert_dlarfg_to_3_1_0_move_dlarfg_to_dlarfp_and_improved_dlarfp"><strong><span class="green">bugXXXX</span></strong> Revert DLARFG to 3.1.0, move DLARFG to DLARFP and improved DLARFP</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CORRECTED</strong> - see svn (r706, r707, r708, r710, r712, r713) + (r755)
+</p>
+</li>
+<li>
+<p>
+Bug reported by Pat Quillen (MathWorks)
+</p>
+</li>
+<li>
+<p>
+The Householder reflector generation routine dlarfg (for double precision)
+      has been changed in LAPACK-3.2 by dlarfp to generate nonnegative
+      diagonal elements (on the diagonal of the R factor of a QR
+      factorization).  There is an issue in the dlarfp subroutine in
+      LAPACK-3.2. The bug report is from Pat Quillen from MathWorks, have
+      participated in the bug fix: Pat Quillen, Jim Demmel, Sven Hammarling,
+      Mark Hoemmen, Guillaume Revy, William Kahan, Julie Langou and Julien
+      Langou.
+</p>
+</li>
+<li>
+<p>
+Extensive work by Jim Demmel, Guillaume Revy, and William Kahan have
+      revealed that the new Householder reflector that guarantees a positive
+      diagonal of R in QR has two apparently unfixable drawbacks compared to
+      the old reflector:
+      1) the computed reflector can be less orthogonal by a factor of about 4,
+         (Jim, Guillaume and William are not sure why.)
+      2) this new routine is intrinsically more sensitive to over/underflow,
+         this is now well understood, details are skipped here.
+      None of these issues arise with the conventional Householder reflector.
+</p>
+</li>
+<li>
+<p>
+So the decision is to
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>1) Fix as much as possible the xLARFP routines. This was corrected by
+   Julien (see (r706, r707, r708, r710, r712, r713)) based on Jim's idea.</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>2) Back out the changes in LAPACK to go back to using the old reflector
+   (xlarfg) everywhere (e.g. in xGEQRF, xGEQR2, etc.).</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>3) Keep the change that saves flops when u has lots of trailing zeros,
+   since this is independently a good idea.</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>4) Change the name from xLARFP to xLARFGP and introduce new QR routines
+   (xGEQRFP and xGEQR2P) that uses xlarfp to guarantee a new positive
+   diagonal of R, for who needs it.</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>5) This requires to adapt the test suites</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>6) Note: only the QR routines have an xGEQRFP. While it seems that quite
+   a few users care for QR factorization with nonnegative diagonal R. Noone
+   seemed to care for this feature on LQ, QL or RQ. So we have left out
+   these routines.</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>7) Steps 2 to 6 were done during r755 by Julie.</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dead_code_xlahrd_is_now_replaced_by_xlahr2_xlahrd_is_a_dead_code_since_lapack_3_1">dead code* :: xLAHRD is now replaced by xLAHR2, xLAHRD is a dead code since LAPACK 3.1</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+xLAHRD will be removed at some point in the future from the distribution
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-06-18 14:10:09 PDT
+</div>
+</div>
+</body>
+</html>

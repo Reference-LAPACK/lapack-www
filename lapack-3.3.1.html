@@ -1,0 +1,1556 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>LAPACK 3.3.1</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>LAPACK 3.3.1</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>Release date: Mo 04/18/2011.</p></div>
+<div class="paragraph"><p>This material is based upon work supported by the National Science Foundation
+and the Department of Energy under Grant No. NSF-OCI-1032861 (2010-2013 est.),
+NSF-CCF-00444486 (2005-2008 est.), NSF-CNS-0325873 (2004-2009 est.),
+NSF-EIA-0122599 (2001-2004 est.), NSF-ACI-0090127, DOE-DE-FC02-01ER25478,
+DOE-DE-FC02-06ER25768.</p></div>
+<div class="paragraph"><p>LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California Berkeley, Univ. of Colorado Denver and NAG  Ltd.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_support_and_questions">1. Support and questions:</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><a href="http://icl.cs.utk.edu/lapack-forum/">http://icl.cs.utk.edu/lapack-forum/</a></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_lapack_3_3_1_what_8217_s_new">2. LAPACK 3.3.1: What&#8217;s new</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="title">IMPORTANT</div>
+<div class="paragraph"><p>This is just a <strong>BUG FIX release</strong> and also we tried to improve the <strong>CMAKE build system</strong>.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_external_contributors">3. External Contributors</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Chuck Atkins and Brad King (Kitware, Inc)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_thanks">4. Thanks</h2>
+<div class="sectionbody">
+<div class="ulist"><div class="title">Thanks for bug-report/patches/suggestions to:</div><ul>
+<li>
+<p>
+Nadezhda Mozartova (Intel, USA)
+</p>
+</li>
+<li>
+<p>
+Alexander Kobotov (Intel, USA)
+</p>
+</li>
+<li>
+<p>
+John Tellefson (Salina, KS, USA)
+</p>
+</li>
+<li>
+<p>
+Inge Gutheil (Juelich Supercomputing Centre, Germany)
+</p>
+</li>
+<li>
+<p>
+Christof Voemel
+</p>
+</li>
+<li>
+<p>
+Paul Roberts (NAG, UK)
+</p>
+</li>
+<li>
+<p>
+Pat Quillen (Mathworks, USA)
+</p>
+</li>
+<li>
+<p>
+Michael Chuvelev (Intel, USA)
+</p>
+</li>
+<li>
+<p>
+Vasile Sima (National Institute for Research &amp; Development in Informatics, Romania)
+</p>
+</li>
+<li>
+<p>
+Clint Whaley (University of Texas at San Antonio, USA)
+</p>
+</li>
+<li>
+<p>
+Allin Cottrell (Wake Forest University, USA)
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">and our users of the LAPACK forum:</div><ul>
+<li>
+<p>
+squartz
+</p>
+</li>
+<li>
+<p>
+fabioaffinito
+</p>
+</li>
+<li>
+<p>
+sarnath
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_developer_list">5. Developer list</h2>
+<div class="sectionbody">
+<div class="ulist"><div class="title">Principal Investigators</div><ul>
+<li>
+<p>
+Jim Demmel (University of California at Berkeley, USA)
+</p>
+</li>
+<li>
+<p>
+Jack Dongarra (University of Tennessee and ORNL, USA)
+</p>
+</li>
+<li>
+<p>
+Julien Langou (University of Colorado Denver, USA)
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">LAPACK developers involved in this release</div><ul>
+<li>
+<p>
+Julie Langou (University of Tennessee, USA)
+</p>
+</li>
+<li>
+<p>
+Rodney James (University of Colorado Denver, USA)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_improvment_to_the_cmake_build">6. Improvment to the CMAKE build</h2>
+<div class="sectionbody">
+<div class="ulist"><div class="title">Here&#8217;s a summary of the CMake changes:</div><ul>
+<li>
+<p>
+Added a FindBLAS module to easily search for and link against various optimized BLAS implementations
+</p>
+</li>
+<li>
+<p>
+Added proper default compiler flags for various commercial Fortran compilers
+</p>
+</li>
+<li>
+<p>
+Check for and disable SIGFPE handlers (LAPACK code handles these internally) on known compilers
+</p>
+</li>
+<li>
+<p>
+Remove testing drivers and BLAS source from nightly code coverage to get a more accurate representation of the LAPACK code getting exercised
+</p>
+</li>
+<li>
+<p>
+Suppress harmless warning messages for various platforms and compilers
+</p>
+</li>
+<li>
+<p>
+Added 28 nightly builds (<a href="http://my.cdash.org/index.php?project=LAPACK">http://my.cdash.org/index.php?project=LAPACK</a>)
+</p>
+</li>
+<li>
+<p>
+Standardized binary output locations to play nicely when building Windows DLLs
+</p>
+</li>
+<li>
+<p>
+Cleaned up CMake packaging to allow find_package(LAPACK) in applications
+</p>
+</li>
+<li>
+<p>
+Added missing link dependencies for test libraries
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_7_level_3_blas_hermitian_indefinite_inversion_this_enables_better_performance_for_chetri_and_zhetri">7. Level-3 BLAS hermitian indefinite inversion: This enables better performance for CHETRI and ZHETRI.</h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">lapacker</div><p>Julie Langou</p></div>
+<div class="paragraph"><div class="title">contribution</div><p>Level-3 BLAS hermitian indefinite inversion (CHETRI and ZHETRI).
+See <a href="lapack-3.3.0.html">Release 3.3.0 section 6.2 for more details</a></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_8_bug_fix">8. Bug Fix</h2>
+<div class="sectionbody">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0078_span_strong_dbdsdc_problem_with_orthogonality_of_u_in_certain_cases"><strong><span class="green">bug0078</span></strong> :: DBDSDC problem with orthogonality of U in certain cases</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by duncanpo on April 4th 2011
+</p>
+</li>
+<li>
+<p>
+see forum topic 2326
+</p>
+</li>
+<li>
+<p>
+decreased EPS by a factor of 0.9 to correct problem with orthogonality of U in certain cases
+</p>
+</li>
+<li>
+<p>
+corrected by Rodney on Tue April 7th 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0077_span_strong_ds_gesvd_minimum_worksize_comments_need_clarification"><strong><span class="green">bug0077</span></strong> :: [DS]GESVD Minimum Worksize comments need clarification</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by squartz on Sep 19th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2011
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on Tue April 5th 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0076_span_strong_problem_in_sy_he_tri2_when_nbmax_greater_than_n"><strong><span class="green">bug0076</span></strong> :: Problem in ?(sy/he)tri2 when nbmax greater than n</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by nmozarto on Mar 4th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2223
+</p>
+</li>
+<li>
+<p>
+corrected by Julie on Fri March 4th 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0075_span_strong_not_orhtogonal_eigenvectors_of_a_symmetric_matrix_with_dsyev"><strong><span class="green">bug0075</span></strong> :: not orhtogonal: eigenvectors of a symmetric matrix with DSYEV</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by fabioaffinito on Feb 8th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2169
+</p>
+</li>
+<li>
+<p>
+corrected by Rodney on Thu March 3rd 2011
+</p>
+</li>
+<li>
+<p>
+The bug appears only when the matrix is diagonalized by using the upper half, and when the leading dimension n&gt;200 approx.
+</p>
+</li>
+<li>
+<p>
+User gave test program see: <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&amp;t=2169&amp;p=6237#p6237">here</a>
+</p>
+</li>
+<li>
+<p>
+Come from change in version 3.2 [<a href="http://netlib.org/lapack/lapack-3.2.html">Release Notes</a>]
+</p>
+</li>
+<li>
+<p>
+related to 0035
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0074_span_strong_sysv_and_hesv"><strong><span class="green">bug0074</span></strong> :: ?sysv and ?hesv</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by Alexander Kobotov on Feb 8th
+</p>
+</li>
+<li>
+<p>
+see forum topic 2168
+</p>
+</li>
+<li>
+<p>
+corrected by Julie
+</p>
+</li>
+<li>
+<p>
+In LAPACK 3.3 ?(SY/HE)SV are updated to use TRS2. The TRS2 requires WORK(N) to operate, whereas in SV requirements for LWORK just to be &gt;=1. There is no any check in SV if LWORK&gt;=N, the array WORK just passed as it is to TRS2. So if LWORK&lt;N a crash could occur while executing TRS2 due to overuse of allocated workspace.
+</p>
+</li>
+<li>
+<p>
+I guess for the case of LWORK&lt;N just previsous Level2 based ?(SY/HE)TRS should be used.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0073_span_strong_secondtst_f_and_dsecnd_f"><strong><span class="green">bug0073</span></strong> :: secondtst.f and dsecnd.f</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by John Tellefson on Feb 7th
+</p>
+</li>
+<li>
+<p>
+email sent to lapack mailing list, user provided fix.
+</p>
+</li>
+<li>
+<p>
+corrected by Julie
+</p>
+</li>
+<li>
+<p>
+We went ahead and remove the dummy subroutine in those timing for the last LAPACK version because we did not find a machine or compiler that still had the problem. I guess we were too optimistic.
+</p>
+</li>
+<li>
+<p>
+also committed the "cosmetic" modifications suggested by user as they make the program easier to modify.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0072_span_strong_cchkhs_f_and_zchkhs_f"><strong><span class="green">bug0072</span></strong> :: cchkhs.f and zchkhs.f</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by Inge Gutheil on Feb 3rd
+</p>
+</li>
+<li>
+<p>
+email sent to lapack mailing list, user provided fix.
+</p>
+</li>
+<li>
+<p>
+corrected by Julie
+</p>
+</li>
+<li>
+<p>
+Add IF statement to prevent calculation if N=0
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0071_span_strong_slarre_and_dlarre"><strong><span class="green">bug0071</span></strong> :: slarre and dlarre</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by Christof Voemel on Jan 31th
+</p>
+</li>
+<li>
+<p>
+email sent directly to Julie and Julien, Christof provided fix.
+</p>
+</li>
+<li>
+<p>
+corrected by Julien
+</p>
+</li>
+<li>
+<p>
+Add a line to prevent TAU from becoming zero
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0070_span_strong_iwork_dimension_is_incorrect"><strong><span class="green">bug0070</span></strong> ::  IWORK dimension is incorrect</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by nmozarto on Jan 27th
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930">forum topic 2156</a>
+</p>
+</li>
+<li>
+<p>
+confirmed by Julie and corrected by Brian Sutton
+</p>
+</li>
+<li>
+<p>
+The correct dimension is (M-R), in which R is the smallest of P, M-P, Q, and M-Q.
+</p>
+</li>
+<li>
+<p>
+An M-by-M matrix is partitioned into a 2-by-2 block structure. The
+</p>
+</li>
+<li>
+<p>
+dimensions of the blocks are P-by-Q, P-by-(M-Q), (M-P)-by-Q, and
+</p>
+</li>
+<li>
+<p>
+(M-P)-by-(M-Q). IWORK is involved in the permutation of rows or
+</p>
+</li>
+<li>
+<p>
+columns of these blocks, and it is the largest block, in terms of
+</p>
+</li>
+<li>
+<p>
+number of rows or columns, that determines the size of IWORK.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0069_span_strong_sytri2x_is_writing_on_other_part_of_a"><strong><span class="green">bug0069</span></strong> ::  sytri2x is writing on other part of A</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by nmozarto on Jan 27th
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930">forum topic 2156</a>
+</p>
+</li>
+<li>
+<p>
+confirmed by Julie and corrected by Julie
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0068_span_strong_need_to_add_lda_in_sytrs2"><strong><span class="green">bug0068</span></strong> ::  Need to add LDA in *sytrs2</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by nmozarto on Jan 27th
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930">forum topic 2157</a>
+</p>
+</li>
+<li>
+<p>
+confirmed by Julie and corrected by Julie
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0067_span_strong_need_to_add_lda_in_syswapr"><strong><span class="green">bug0067</span></strong> ::  Need to add LDA in *syswapr</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by nmozarto on Jan 24th
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?t=1930">forum topic 2150</a>
+</p>
+</li>
+<li>
+<p>
+confirmed by Julie and corrected by Julien
+</p>
+</li>
+<li>
+<p>
+Need to add LDA in *syswapr routines and update testing to test having LDA
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0066_span_strong_bugs_in_s_d_gejsv"><strong><span class="green">bug0066</span></strong> ::  bugs in {s,d}gejsv</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by Paul Roberts on Oct 21st
+</p>
+</li>
+<li>
+<p>
+reported to Zlatko Drmac and corrected by Zlatko Drmac
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/archives/lapack/msg00949.html"> LAPACK Mailing list msg 049</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0036_span_strong_scaling_in_xsteqr_xsterf"><strong><span class="green">bug0036</span></strong> :: scaling in xSTEQR, xSTERF</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by Pat Quillen on Fri 24 Jul 2009 to "lapack@cs.utk.edu".
+      "Scaling in xSTEQR, xSTERF"
+</p>
+</li>
+<li>
+<p>
+see <a href="Errata/bug_lapack_3.2.1_0036/025.txt">Pat Quillen&#8217;s email</a>, <a href="Errata/bug_lapack_3.2.1_0036/quillen_dsteqr.f">quillen dsteqr.f</a>.
+</p>
+</li>
+<li>
+<p>
+Correction: "changed matrix norm to <em>M</em> (max) from <em>I</em> (inf) for scaling of input matrix
+</p>
+</li>
+<li>
+<p>
+and added check for zero norm in xSTERF (the xSTEQR already had this check)"
+</p>
+</li>
+<li>
+<p>
+confirmed by Rodney and corrected by Rodney
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0035_span_strong_dlarfb_f_and_likes"><strong><span class="green">bug0035</span></strong> :: dlarfb.f and likes</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+bug report sent by Michael Chuvelev (Intel) on Tue 21 Jul 2009 to "lapack@cs.utk.edu".
+      "Bug in LAPACK 3.2 dlarfb.f and likes"
+</p>
+</li>
+<li>
+<p>
+see <a href="Errata/bug_lapack_3.2.1_0035/024.txt">Michael Chuvelev and Julie&#8217;s emails</a>, <a href="Errata/bug_lapack_3.2.1_0035/q.dat">q.dat</a>,
+      <a href="Errata/bug_lapack_3.2.1_0035/tau.dat">tau.dat</a>, and <a href="Errata/bug_lapack_3.2.1_0035/test_dorgql.f">test_dorgql.f</a>
+</p>
+</li>
+<li>
+<p>
+confirmed by Rodney on Tue Feb 22 2011
+</p>
+</li>
+<li>
+<p>
+corrected by Rodney on Thu March 3rd 2011
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0034_span_strong_comments_in_ssptrf_not_correct"><strong><span class="green">bug0034</span></strong> :: comments in SSPTRF not correct</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+clarification asked by "sarnath" on Thu Jul 02 2009
+</p>
+</li>
+<li>
+<p>
+confirmation of bug by "sarnath" and Julien Langou on Fri Jul 03 2009
+</p>
+</li>
+<li>
+<p>
+The statement "JMAX is the column-index of the largest off-diagonal element in row IMAX" is not correct
+</p>
+</li>
+<li>
+<p>
+see <a href="http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=1553">forum topic 1553</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0027_span_strong_misleading_comment_in_the_header_of_dgheqz_the_2x2_block_of_the_real_schur_form_are_not_as_claimed"><strong><span class="green">bug0027</span></strong> :: misleading comment in the header of DGHEQZ, the 2x2 block of the real Schur form are not as claimed</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+reported by Vasile Sima on Tue Jan 27 2009
+</p>
+</li>
+<li>
+<p>
+see: <a href="Errata/005.txt">email from Vasile</a>
+</p>
+</li>
+<li>
+<p>
+more information:
+      more specifically Vasile is reporting that the comments:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>*          [...] H contains the upper quasi-triangular
+*          matrix S from the generalized Schur factorization;
+*          2-by-2 diagonal blocks (corresponding to complex conjugate
+*          pairs of eigenvalues) are returned in standard form, with
+*          H(i,i) = H(i+1,i+1) and H(i+1,i)*H(i,i+1) &amp;lt; 0.</code></pre>
+</div></div>
+<div class="paragraph"><p>are not correct</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+confirmed by Rodney and corrected by Rodney
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0024_span_strong_the_notation_a_is_confusing_for_complex_matrices_does_a_stand_for_a_transpose_of_a_hermitian_transpose"><strong><span class="green">bug0024</span></strong> :: the notation A' is confusing for complex matrices. Does A' stand for A transpose of A Hermitian transpose?</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+reported by Clint Whaley early July 2009
+</p>
+</li>
+<li>
+<p>
+LAPACK is not consistent in it use of the notation for transpose and Hermitian transpose.
+</p>
+</li>
+<li>
+<p>
+The use of LAPACK A' is not consistent with the BLAS useage.
+</p>
+</li>
+<li>
+<p>
+We note that the Matlab/Scilab/Octave convention is A' stands for
+      "conjugate transpose" and A.' stands for "transpose".
+</p>
+</li>
+<li>
+<p>
+In the Z routines, LAPACK uses the notation A' 669 times, it means "conjugate
+      transpose" most of the time but it means "transpose" a few times (maybe
+      10 times max, for BLAS-like routines). The notation A*H, A*T, A*N is
+      used 549 times, The notation A<sup>T, A</sup>N, A^H 19 times. (This is just for
+      the Z routines.)
+</p>
+</li>
+<li>
+<p>
+see <a href="Errata/023.txt">Julien&#8217;s emails</a>
+</p>
+</li>
+<li>
+<p>
+vote on the lapackers mailing list:
+          A*T (or A<sup>T) and A*H (or A</sup>H): Clint Whaley, Jim Demmel, Sven Hammarling, Antoine Petitet, Daniel Kressner
+          A' (for A*H) and A.' for (A*T): Julien Langou
+      (I love to be that supported by the lapackers!)
+</p>
+</li>
+<li>
+<p>
+corrected by Julie
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_strong_span_class_green_bug0022_span_strong_workspace_query_bug_with_dgejsv_when_only_left_or_right_singular_vectors_desired"><strong><span class="green">bug0022</span></strong> :: workspace query bug with DGEJSV (when only left or right singular vectors desired)</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+reported by Allin Cottrell on Tue Jan 15 2009
+</p>
+</li>
+<li>
+<p>
+confirmed by Julien Langou on Fri Jan 30 2009
+</p>
+</li>
+<li>
+<p>
+see <a href="https://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&amp;t=866">forum topic 866</a>
+</p>
+</li>
+<li>
+<p>
+all information sent to Zlatko Drmac
+</p>
+</li>
+<li>
+<p>
+Corrected by Zlatko Drmac
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-04-28 20:18:03 PDT
+</div>
+</div>
+</body>
+</html>

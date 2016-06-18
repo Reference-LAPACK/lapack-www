@@ -9,7 +9,7 @@ LAPACK -- Linear Algebra PACKage
 [width="100%",cols="^,^,^",frame="none",grid="none"]
 |=======
 | image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] | 
-*Version 3.6.0* +
+*Version 3.6.1* +
  +
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
 mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
@@ -107,11 +107,11 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== LAPACK, version 3.6.0
+=== LAPACK, version 3.6.1
 =========================
- - Download: http://www.netlib.org/lapack/lapack-3.6.0.tgz[lapack-3.6.0.tgz] 
- - link:lapack-3.6.0.html[LAPACK 3.6.0 Release Notes]
- - Updated:  November 13, 2015
+ - Download: http://www.netlib.org/lapack/lapack-3.6.1.tgz[lapack-3.6.1.tgz] 
+ - link:lapack-3.6.1.html[LAPACK 3.6.1 Release Notes]
+ - Updated:  June 18, 2016
  - link:Errata/index2.html[LAPACK Errata] (Current known bugs)
 ==========================
 
@@ -287,7 +287,16 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
 *Version 3.6.0: November 15, 2015*
 
+  *Version 3.6.1: June 18, 2016*
+
+
 == Previous Release
+
+=== LAPACK, version 3.6.1
+
+ - Download: http://www.netlib.org/lapack/lapack-3.6.1.tgz[lapack-3.6.1.tgz] 
+ - link:lapack-3.6.1.html[LAPACK 3.6.1 Release Notes]
+ - Updated:  June 18, 2016
 
 === LAPACK, version 3.6.0
 

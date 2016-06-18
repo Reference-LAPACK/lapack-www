@@ -1,0 +1,119 @@
+LAPACK 3.6.1
+============
+
+Release date: 06/16.
+
+This material is based upon work supported by the National Science Foundation
+and the Department of Energy under Grant No. NSF-OCI-1032861, NSF-CCF-00444486,
+NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127, DOE-DE-FC02-01ER25478,
+DOE-DE-FC02-06ER25768.
+
+LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
+
+
+1. Support and questions:
+-------------------------
+
+http://icl.cs.utk.edu/lapack-forum/
+
+2. Thanks
+---------
+
+Thanks for bug-report/patches/suggestions to:
+
+
+Forum users:
+     
+
+3. LAPACK 3.6.1: What's new
+---------------------------
+
+* [Mark Gates, UTK] *blocked back-transformation for the non-symmetric eigenvalue problem*
+
+It blocks NB gemv calls into one gemm call inside trevc. 
+To do that, it needs a new routine, trevc3, because unfortunately the lwork was not passed into trevc.
+Attached is the performance speedup for dgeev. It gives a nice 1.5x speedup for N=20000, and that appears to still be increasing with N.
+This is not the improvements that Greg Henry recently provided for doing the triangular solves as BLAS-3 instead of BLAS-1.
+That will take a while to process, but we expect another, even larger increase in performance when those changes are applied. 
+This also does not include doing multiple (BLAS-1) triangular solves in parallel, which is available in MAGMA, since that requires OpenMP or pthreads. 
+
+Added:
+
+	SRC/strevc3.f
+	SRC/dtrevc3.f
+	SRC/ctrevc3.f
+	SRC/ztrevc3.f
+
+Modified:
+
+	SRC/sgeev.f
+	SRC/dgeev.f
+	SRC/cgeev.f
+	SRC/zgeev.f
+	SRC/sgeevx.f
+	SRC/dgeevx.f
+	SRC/cgeevx.f
+	SRC/zgeevx.f
+
+3. External Contributors
+------------------------
+
+
+4. Thanks
+---------
+
+
+* Edward Smyth (NAG): r1683, r1684
+* Tim Hopkins (University of Kent): r1734, r1735, r1764, r1765, r1766, r1764, r1765, r1766
+* Eugene Chereshnev (Intel): r1670, r1737, r1759, r1760, r1761, r1762, r1763
+* Dmitry Baksheev (Intel): r1686, r1687, r1689-r1730
+* Alex Zotkevich (Intel): r1755, r1756, r1757, r1758
+* Nathan Whitehead: r1740, r1742, r1744
+* Lawrence Mulholland (NAG): r1649, r1654, r1655, r1656, r1688, r1746
+* Orion Poplawski (NWRA): r1653, r1751, r1754
+* Vladimir Chalupecky: r1752
+* Pavel Holoborodko: r1648
+* Julien Schueller: r1650, r1651, r1748, r1749
+* Mathieu Faverge: r1658, r1662, r1663
+* Martin Köhler  Max Planck Institute for Dynamics of Complex Technical Systems): r1660 
+* Tracey Brendan: r1667, r1668
+* Andreas Noack (MIT): 1669
+* Berend Hasselman: r1671
+* Sébastien Villemot: r1672, r1733
+* Christoph Conrads: r1673
+* Elena Ivanova (Oracle): r1674, r1675, r1676
+* David Vowles: r1677, r1679
+* Viswanathan Elumalai (University of Pittsburgh): r1681
+* Mark Gates: r1739, r1750
+* nathanw: r1740
+* Nathan Whitehead: r1742, r1744
+
+
+5. Developer list
+-----------------
+
+.Principal Investigators
+
+    * Jim Demmel (University of California,  Berkeley, USA)
+    * Jack Dongarra (University of Tennessee and ORNL, USA)
+    * Julien Langou (University of Colorado Denver, USA)
+
+.LAPACK developers involved in this release
+
+    * Julie Langou (University of Tennessee, USA)
+    * Osni Marquez (University of California,  Berkeley, USA)
+    * Lawrence Mulholland (NAG Ltd.)
+    * Mark Gates (University of Tennessee, USA)
+    * Igor Kozachenko  (University of California,  Berkeley, USA)
+
+6. More details
+----------------
+
+
+7.  Bug Fix
+-----------
+
+link:errata_from_360_to_361.html[see here]
+
+// vim: set syntax=asciidoc:

@@ -102,7 +102,7 @@ Modified:
 .LAPACK developers involved in this release
 
     * Julie Langou (University of Tennessee, USA)
-    * Osni Marquez (University of California,  Berkeley, USA)
+    * Osni Marques (University of California,  Berkeley, USA)
     * Lawrence Mulholland (NAG Ltd.)
     * Mark Gates (University of Tennessee, USA)
     * Igor Kozachenko  (University of California,  Berkeley, USA)

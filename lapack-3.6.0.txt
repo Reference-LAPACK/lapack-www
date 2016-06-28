@@ -197,7 +197,7 @@ xGGHD3: blocked Hessenberg-triangular reduction routines, xGGHD3, for nonsymmetr
 
     * Julie Langou (University of Tennessee, USA)
     * Philippe Theveny (University of Colorado Denver, USA)
-    * Osni Marquez (University of California,  Berkeley, USA)
+    * Osni Marques (University of California,  Berkeley, USA)
     * Lawrence Mulholland (NAG Ltd.)
     * Piotr Luszczek (University of Tennessee, USA)
     * Yaohung Mike Tsai (University of Tennessee, USA)

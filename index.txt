@@ -143,14 +143,17 @@ and link to LAPACK Fortran libraries without the need of a vendor-supplied Fortr
 - You will get step by steps procedures Easy Windows Build.
 
 
-=== SVN Access
+=== GIT Access
 
-The LAPACK SVN repository is open for read-only for our users to be able to get
-the latest bug fixed.
+The LAPACK GIT (http://github.com/Reference-LAPACK) repositories are to open for read-only for our users.
 
-----
-svn co https://icl.cs.utk.edu/svn/lapack-dev/lapack/trunk
-----
+We currently have three GIT respositories:
+
+ - link:http://github.com/Reference-LAPACK/lapack[*lapack*] - LAPACK development repository : http://github.com/Reference-LAPACK/lapack
+ - link:http://github.com/Reference-LAPACK/lapack-release[*lapack-release*] - LAPACK official release branches : http://github.com/Reference-LAPACK/lapack-release
+ - link:http://github.com/Reference-LAPACK/lapack-www[*lapack-www*] - LAPACK website : http://github.com/Reference-LAPACK/lapack-www
+
+Please use our LAPACK development repository to get the latest bug fixed, submit issues or pull requests.
 
 == Support
 

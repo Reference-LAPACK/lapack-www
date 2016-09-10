@@ -2,6 +2,13 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn290 +[link:http://www.netlib.org/lapack/lawnspdf/lawn290.pdf[pdf]]+
+.2016 Dense Linear Algebra Software Packages Survey
+
+by *Jack Dongarra, Jim Demmel, Julien Langou and Julie Langou*
+
+UT-EECS-16-744 September 2016
+
 == lawn289 +[link:http://www.netlib.org/lapack/lawnspdf/lawn289.pdf[pdf]]+
 .Fault tolerance techniques for high-performance computing
 

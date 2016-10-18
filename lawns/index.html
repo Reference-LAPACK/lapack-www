@@ -1,0 +1,2880 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>LAWNs (LAPACK Working Notes)</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>LAWNs (LAPACK Working Notes)</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p><a href="lawn.bib">LAWNS bibtex</a></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn290_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn290_pdf_pdf_a_code">lawn290 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn290.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">2016 Dense Linear Algebra Software Packages Survey</div><p>by <strong>Jack Dongarra, Jim Demmel, Julien Langou and Julie Langou</strong></p></div>
+<div class="paragraph"><p>UT-EECS-16-744 September 2016</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn289_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn289_pdf_pdf_a_code">lawn289 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn289.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Fault tolerance techniques for high-performance computing</div><p>by <strong>Jack Dongarra, Thomas Herault and Yves Robert</strong></p></div>
+<div class="paragraph"><p>UT-EECS-15-734 May 2015</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn288_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn288_pdf_pdf_a_code">lawn288 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn288.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">PULSAR Users’ Guide</div><p>by <strong>Jack Dongarra, Jakub Kurzak, Piotr Luszczek, and Ichitaro Yamazaki</strong></p></div>
+<div class="paragraph"><p>UT-EECS-14-733 December 2014</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn287_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn287_pdf_pdf_a_code">lawn287 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn287.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Efficient checkpoint/verification patterns for silent error detection</div><p>by <strong>Anne Benoit, Saurabh K. Raina and Yves Robert</strong></p></div>
+<div class="paragraph"><p>UT-EECS-14-729 May 2014</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn286_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn286_pdf_pdf_a_code">lawn286 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn286.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Accelerating computation of eigenvectors in the nonsymmetric eigenvalue problem</div><p>by <strong>Mark Gates, Azzam Haidar, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-EECS-14-724 March 2014</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn285_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn285_pdf_pdf_a_code">lawn285 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn285.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Using Random Butterfly Transformations to Avoid Pivoting in Sparse Direct Methods</div><p>by <strong>Marc Baboulin, Xiaoye S. Li, and François-Henry Rouet</strong></p></div>
+<div class="paragraph"><p>Inria Research Report RR-8481 (Feb. 2014)</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn284_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn284_pdf_pdf_a_code">lawn284 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn284.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">FlexiBLAS - A flexible BLAS library with runtime exchangeable backends</div><p>by <strong>Martin Köhler, and Jens Saak</strong></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn283_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn283_pdf_pdf_a_code">lawn283 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn283.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">An Improved Parallel Singular Value Algorithm and Its Implementation for Multicore Hardware</div><p>by <strong>Azzam Haidar, Piotr Luszczek, Jakub Kurzak, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-EECS-13-720 October 2013</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn282_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn282_pdf_pdf_a_code">lawn282 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn282.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Designing LU-QR hybrid solvers for performance and stability</div><p>by <strong>Mathieu Faverge, Julien Herrmann, Julien Langou, Bradley Lowery, Yves Robert and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-EECS-13-719 October 2013</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn281_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn281_pdf_pdf_a_code">lawn281 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn281.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Optimal Checkpointing Period: Time vs. Energy</div><p>by <strong>Guillaume Aupy, Anne Benoit, Thomas Herault, Yves Robert and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-EECS-13-718 October 2013</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn280_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn280_pdf_pdf_a_code">lawn280 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn280.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On Algorithmic Variants of Parallel Gaussian Elimination: Comparison of Implementations in Terms of Performance and Numerical Properties</div><p>by <strong>Simplice Donfack, Jack Dongarra, Mathieu Faverge, Mark Gates, Jakub Kurzak, Piotr Luszczek, and Ichitaro Yamazaki</strong></p></div>
+<div class="paragraph"><p>UT-CS-13-715 July 2013</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn279_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn279_pdf_pdf_a_code">lawn279 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn279.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Transient Error Resilient Hessenberg Reduction on GPU-based Hybrid Architectures</div><p>by <strong>Yulu Jia, Piotr Luszczek, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-13-712 June 2013</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn278_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn278_pdf_pdf_a_code">lawn278 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn278.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On the Combination of Silent Error Detection and Checkpointing</div><p>by <strong>Guillaume Aupy, Anne Benoit, Thomas Hérault, Yves Robert, Frédéric Vivien and Dounia Zaidouni</strong></p></div>
+<div class="paragraph"><p>UT-CS-13-710 June 2013</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn277_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn277_pdf_pdf_a_code">lawn277 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn277.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Implementing a systolic algorithm for QR factorization on multicore clusters with PaRSEC</div><p>by <strong>Guillaume Aupy, Mathieu Faverge, Yves Robert, Jakub Kurzak, Piotr Luszczek, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-13-709 May 2013</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn276_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn276_pdf_pdf_a_code">lawn276 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn276.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Communication Avoiding Rank Revealing QR Factorization With Column Pivoting</div><p>by <strong>James W. Demmel, Laura Grigori, Ming Gu, and Hua Xiang</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2013-46 May 2013</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn275_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn275_pdf_pdf_a_code">lawn275 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn275.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">clMAGMA: High Performance Dense Linear Algebra with OpenCL</div><p>by <strong>Chongxiao Cao, Jack Dongarra, Peng Du, Mark Gates, Piotr Luszczek, and Stanimire Tomov</strong></p></div>
+<div class="paragraph"><p>UT-CS-13-706 Mar 2013</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn274_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn274_pdf_pdf_a_code">lawn274 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn274.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Revisiting the double checkpointing algorithm</div><p>by <strong>Jack Dongarra, Thomas Herault and Yves Robert</strong></p></div>
+<div class="paragraph"><p>UT-CS-13-705 Dec 2012</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn273_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn273_pdf_pdf_a_code">lawn273 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn273.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Efficient computation of condition estimates for linear least squares problems</div><p>by <strong>Marc Baboulin, Serge Gratton, Remi Lacroix and Alan Laub</strong></p></div>
+<div class="paragraph"><p>Inria Research Report 8065 Sep 2012</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn272_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn272_pdf_pdf_a_code">lawn272 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn272.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Providing GPU Capability to LU and QR within the ScaLAPACK Framework</div><p>by <strong>Peng Du, Stanimire Tomov, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-12-699 Sep 2012</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn271_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn271_pdf_pdf_a_code">lawn271 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn271.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Optimally packed chains of bulges in multishift QR algorithms</div><p>by      <strong>Lars Karlsson, and Daniel Kressner</strong></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn270_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn270_pdf_pdf_a_code">lawn270 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn270.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">How LAPACK library enables Microsoft Visual Studio support with CMake and LAPACKE</div><p>by      <strong>Julie Langou, Bill Hoffman, and Brad King</strong></p></div>
+<div class="paragraph"><p>UT-CS-12-698 Jul 2, 2012</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn269_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn269_pdf_pdf_a_code">lawn269 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn269.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Unified Model for Assessing Checkpointing Protocols at Extreme-Scale</div><p>by      <strong>George Bosilca, Aurélien Bouteiller, Elisabeth Brunet, Franck Cappello, Jack Dongarra, Amina Guermouche, Thomas Hérault, Yves Robert, Frédéric Vivien, and Dounia Zaidouni</strong></p></div>
+<div class="paragraph"><p>UT-CS-12-697 Jun 4, 2012</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn268_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn268_pdf_pdf_a_code">lawn268 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn268.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Combining Process Replication and Checkpointing for Resilience on Exascale Systems</div><p>by      <strong>Henri Casanova, Yves Robert, Frédéric Vivien, and Dounia Zaidouni</strong></p></div>
+<div class="paragraph"><p>UT-CS-12-696 Jun 4, 2012</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn267_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn267_pdf_pdf_a_code">lawn267 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn267.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Preliminary Results of Autotuning GEMM Kernels for the NVIDIA Kepler Architecture – GeForce GTX 680.</div><p>by      <strong>Jakub Kurzak, Piotr Luszczek, Stanimire Tomov, and Jack Dongarra</strong></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn266_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn266_pdf_pdf_a_code">lawn266 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn266.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">LU Factorization with Partial Pivoting for a Multi-CPU, Multi-GPU Shared Memory System.</div><p>by      <strong>Jakub Kurzak, Piotr Luszczek, Mathieu Faverge, and Jack Dongarra</strong></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>accepted to VECPAR&#8217;12</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn265_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn265_pdf_pdf_a_code">lawn265 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn265.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Using group replication for resilience on exascale systems.</div><p>by      <strong>Marin Bougeret, Henri Casanova, Yves Robert, Frédéric Vivien and Dounia Zaidouni</strong></p></div>
+<div class="paragraph"><p>INRIA Research report RR-7876, February 2012</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn264_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn264_pdf_pdf_a_code">lawn264 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn264.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Dense Linear Algebra on Distributed Heterogeneous Hardware with a Symbolic DAG Approach.</div><p>by      <strong>George Bosilca, Aurelien Bouteiller, Anthony Danalis, Thomas Herault, Piotr Luszczek, and Jack J. Dongarra</strong></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">To be published in</div>
+<div class="paragraph"><p>Title: <strong>Scalable Computing and Communications: Theory and Practice</strong></p></div>
+<div class="paragraph"><p>Editors: <strong>Samee U. Khan, Lizhe Wang, and Albert Y. Zomaya</strong></p></div>
+<div class="paragraph"><p>Publisher: <strong>John Wiley &amp; Sons</strong></p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn263_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn263_pdf_pdf_a_code">lawn263 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn263.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">LU factorization with panel rank revealing pivoting and its communication avoiding version</div><p>by      <strong>Amal Khabou, James W. Demmel, Laura Grigori, and Ming Gu</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-20112-XX, Janary 24, 2012.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn262_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn262_pdf_pdf_a_code">lawn262 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn262.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Using replication for resilience on exascale systems.</div><p>by      <strong>Marin Bougeret, Henri Casanova, Yves Robert, Frédéric Vivien and Dounia Zaidouni</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-691 Dec 10, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn261_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn261_pdf_pdf_a_code">lawn261 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn261.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A parallel tiled solver for dense symmetric indefinite systems on multicore architectures.</div><p>by      <strong>Marc Baboulin, Dulceneia Becker, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>ICL-UT-11-07, INRIA RR-7762 Dec 14, 2011</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>To appear in the proceedings of IPDPS 2012.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn260_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn260_pdf_pdf_a_code">lawn260 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn260.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">GPU-Accelerated Asynchronous Error Correction for Mixed Precision Iterative Refinement.</div><p>by      <strong>Hartwig Anzt, Piotr Luszczek, Jack Dongarra, and Vincent Heuveline</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-690, Dec 14, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn259_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn259_pdf_pdf_a_code">lawn259 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn259.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Achieving Numerical Accuracy and High Performance using Recursive Tile LU Factorization.</div><p>by      <strong>Jack Dongarra, Mathieu Faverge, Hatem Ltaief and Piotr Luszczek</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-688, Dec 9, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn258_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn258_pdf_pdf_a_code">lawn258 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn258.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Block-Asynchronous Relaxation Method for Graphics Processing Units.</div><p>by      <strong>Hartwig Anzt, Stanimire Tomov, Jack Dongarra and Vincent Heuveline</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-687, Dec 1, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn257_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn257_pdf_pdf_a_code">lawn257 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn257.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Hierarchical QR factorization algorithms for multi-core cluster systems.</div><p>by      <strong>Jack Dongarra, Mathieu Faverge, Thomas Herault, Julien Langou and Yves Robert</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-684, Oct 4, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn256_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn256_pdf_pdf_a_code">lawn256 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn256.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">High Performance Linear System Solver with Resilience to Multiple Soft Errors.</div><p>by      <strong>Peng Du, Piotr Luszczek and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-683, Oct 4, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn255_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn255_pdf_pdf_a_code">lawn255 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn255.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Improving communication performance in dense linear algebra via topology aware collectives.</div><p>by      <strong>Edgar Solomonik Abhinav Bhatele and James Demmel</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2011-92, Aug 15, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn254_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn254_pdf_pdf_a_code">lawn254 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn254.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Parallel Reduction to Condensed Forms for Symmetric Eigenvalue Problems using Aggregated Fine-Grained and Memory-Aware Kernels.</div><p>by      <strong>Azzam Haidar, Hatem Ltaief and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-677, Aug 5, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn253_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn253_pdf_pdf_a_code">lawn253 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn253.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Algorithm-based Fault Tolerance for Dense Matrix Factorizations.</div><p>by      <strong>Peng Du, Aurelien Bouteiller, George Bosilca, Thomas Herault and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-676, Aug 5, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn252_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn252_pdf_pdf_a_code">lawn252 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn252.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Soft Error Resilient QR Factorization for Hybrid System.</div><p>by      <strong>Peng Du, Piotr Luszczek, Stanimire Tomov, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-675, July 1, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn251_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn251_pdf_pdf_a_code">lawn251 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn251.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Profiling High Performance Dense Linear Algebra Algorithms on Multicore Architectures for Power and Energy Efficiency.</div><p>by      <strong>Hatem Ltaief, Piotr Luszczek, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-674, June 21, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn250_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn250_pdf_pdf_a_code">lawn250 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn250.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Efficient Support for Matrix Computations on Heterogeneous Multi-core and Multi-GPU Architectures.</div><p>by      <strong>Fengguang Song, Stanimire Tomov, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-668, June 16, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn249_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn249_pdf_pdf_a_code">lawn249 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn249.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Level-3 Cholesky Factorization Routines as Part of Many Cholesky Algorithms.</div><p>by      <strong>Fred G. Gustavson, Jerzy Wásniewski, Jack J. Dongarra, José R. Herrero and Julien Langou</strong></p></div>
+<div class="paragraph"><p>DTU/IMM-Technical-Report-2011-11.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Submitted at TOMS</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn248_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn248_pdf_pdf_a_code">lawn248 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn248.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Communication-optimal parallel 2.5D matrix multiplication and LU factorization algorithms.</div><p>by      <strong>Edgar Solomonik and James Demmel</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2011-72, Jun 7, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn247_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn247_pdf_pdf_a_code">lawn247 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn247.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">High Performance Bidiagonal Reduction using Tile Algorithms on Homogeneous Multicore Architectures.</div><p>by      <strong>Hatem Ltaief, Piotr Luszczek, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-673, May 18, 2011</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Submitted at TOMS</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn246_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn246_pdf_pdf_a_code">lawn246 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn246.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Accelerating linear system solutions using randomization techniques.</div><p>by      <strong>Marc Baboulin, Jack Dongarra, Julien Herrmann, and Stanimire Tomov</strong></p></div>
+<div class="paragraph"><p>INRIA RR-7616, May 15 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn245_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn245_pdf_pdf_a_code">lawn245 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn245.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Autotuning GEMMs for Fermi.</div><p>by      <strong>Jakub Kurzak, Stanimire Tomov, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-671, Apr 18, 2011</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>accepted to IEEE TPDS</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn244_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn244_pdf_pdf_a_code">lawn244 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn244.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Two-Stage Tridiagonal Reduction for Dense Symmetric Matrices using Tile Algorithms on Multicore Architectures.</div><p>by      <strong>Piotr Luszczek, Hatem Ltaief, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-670, Apr 18, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn243_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn243_pdf_pdf_a_code">lawn243 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn243.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Analysis of Dynamically Scheduled Tile Algorithms for Dense Linear Algebra on Multicore Architectures.</div><p>by      <strong>Azzam Haidar, Hatem Ltaief, Asim YarKhan and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-11-666, Mar 10, 2011</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Submitted at Concurrency and Computations.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn242_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn242_pdf_pdf_a_code">lawn242 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn242.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Fully Empirical Autotuned Dense QR Factorization For Multicore Architectures.</div><p>by      <strong>Emmanuel Agullo, Jack Dongarra, Rajib Nath and Stanimire Tomov</strong></p></div>
+<div class="paragraph"><p>INRIA-7526, Mar 9, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn241_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn241_pdf_pdf_a_code">lawn241 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn241.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Scalable Tile Communication-Avoiding QR Factorization on Multicore Cluster Systems.</div><p>by      <strong>Fengguang Song, Hatem Ltaief, Bilel Hadri and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-10-653, Mar 4, 2011</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Published at SC&#8217;10.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn240_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn240_pdf_pdf_a_code">lawn240 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn240.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Communication-Avoiding QR Decomposition for GPUs.</div><p>by      <strong>Michael Anderson, Grey Ballard, James Demmel and Kurt Keutzer</strong></p></div>
+<div class="paragraph"><p>update of UCB/EECS-2010-131, Feb 18, 2011</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>To appear in IPDPS&#8217;11</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn239_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn239_pdf_pdf_a_code">lawn239 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn239.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Communication bounds for heterogeneous architectures.</div><p>by      <strong>Grey Ballard, James Demmel, and Andrew Gearhart</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2011-13, Feb 11, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn238_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn238_pdf_pdf_a_code">lawn238 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn238.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Communication-optimal parallel 2.5D matrix multiplication and LU factorization algorithms.</div><p>by      <strong>Edgar Solomonik and James Demmel</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2011-10, Feb 9, 2011</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn237_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn237_pdf_pdf_a_code">lawn237 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn237.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Minimizing Communication for Eigenproblems and the Singular Value Decomposition.</div><p>by      <strong>Grey Ballard, James Demmel, and Ioana Dumitriu</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2010-136, Nov 13, 2010</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn236_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn236_pdf_pdf_a_code">lawn236 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn236.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A contribution to the conditioning of the total least squares problem.</div><p>by      <strong>Marc Baboulin and Serge Gratton</strong>
+INRIA, Nov 5, 2010.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn235_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn235_pdf_pdf_a_code">lawn235 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn235.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Reducing the time to tune parallel dense linear algebra routines with partial execution and performance modelling.</div><p>by      <strong>Jack Dongarra and Piotr Luszczek</strong></p></div>
+<div class="paragraph"><p>UT-CS-10-661, Oct 8, 2010.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn233_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn233_pdf_pdf_a_code">lawn233 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn233.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">QR Factorization on a Multicore Node Enhanced with Multiple GPU Accelerators.</div><p>by      <strong>Agullo, E., Augonnet, C., Dongarra, J., Faverge, M., Ltaief, H., Thibault, S. and Tomov, S.</strong></p></div>
+<div class="paragraph"><p>UT-CS-10-XXX, Oct, 2010.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Proceedings of IPDPS 2011</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn232_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn232_pdf_pdf_a_code">lawn232 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn232.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Distributed-Memory Task Execution and Dependence Tracking within DAGuE and the DPLASMA Project.</div><p>by      <strong>Bosilca, G., Bouteiller, A., Danalis, A, Faverge, M., Haidar, H., Herault, T., Kurzak, J., Langou, J., Lemarinier, P., Ltaief, H., Luszczek, P., YarKhan, A., Dongarra, J</strong></p></div>
+<div class="paragraph"><p>UT-CS-10-660, Sep 15, 2010.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn231_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn231_pdf_pdf_a_code">lawn231 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn231.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">DAGuE: A generic distributed DAG engine for high performance computing.</div><p>by      <strong>Bosilca, G., Bouteiller, A., Danalis, A., Herault, T., Lemarinier, P., Dongarra, J</strong></p></div>
+<div class="paragraph"><p>UT-CS-10-659, Sep 15, 2010.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn230_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn230_pdf_pdf_a_code">lawn230 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn230.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Faster, Cheaper, Better ‚Äì a Hybridization Methodology to Develop Linear Algebra Software for GPUs.</div><p>by      <strong>Emmanuel Agullo, Cedric Augonnet, Jack Dongarra, Hatem Ltaief, Raymond Namyst, Samuel Thibault, and Stanimire Tomov</strong></p></div>
+<div class="paragraph"><p>UT-CS-10-658, Sep 15, 2010.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>To appear in GPU Computing GEMs, vol.2</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn229_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn229_pdf_pdf_a_code">lawn229 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn229.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">An Implementation of the Tile QR Factorization for a GPU and Multiple CPUs.</div><p>by      <strong>Jakub Kurzak, Rajib Nath, Peng Du, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-10-657, Sep 15, 2010.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Submitted to    PARA&#8217;10</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn228_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn228_pdf_pdf_a_code">lawn228 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn228.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">From CUDA to OpenCL: Towards a Performance-portable Solution for Multi-platform GPU Programming.</div><p>by      <strong>Peng Du, Rick Weber, Piotr Luszczek, Stanimire Tomov, Gregory Peterson and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-10-656, Sep 6, 2010.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn227_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn227_pdf_pdf_a_code">lawn227 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn227.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">An Improved MAGMA GEMM for Fermi GPUs.</div><p>by      <strong>Rajib Nath, Stanimire Tomov, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-10-655, July 29, 2010.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn226_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn226_pdf_pdf_a_code">lawn226 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn226.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">CALU: a communication optimal LU factorization algorithm.</div><p>by      <strong>Laura Grigori, James W Demmel, and Hua Xiang</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2010-29, March 15, 2010.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Submitted to SIAM Journal on Matrix Analysis and Applications (SIMAX).</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn225_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn225_pdf_pdf_a_code">lawn225 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn225.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Dense Linear Algebra Solvers for Multicore with GPU Accelerators.</div><p>by      <strong>Stanimire Tomov, Rajib Nath, Hatem Ltaief, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-09-649, February 18, 2010.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Published In the Proceedings of IPDPS 2010: 24th IEEE International Parallel and Distributed Processing Symposium, Atlanta, GA, April 2010.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn224_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn224_pdf_pdf_a_code">lawn224 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn224.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">QR Factorization of Tall and Skinny Matrices in a Grid Computing Environment.</div><p>by      <strong>Emmanuel Agullo, Camille Coti, Jack Dongarra, Thomas Herault, and Julien Langou</strong></p></div>
+<div class="paragraph"><p>UT-CS-10-651, January 6, 2010.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Published In the Proceedings of IPDPS 2010: 24th IEEE International Parallel and Distributed Processing Symposium, Atlanta, GA, April 2010.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn223_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn223_pdf_pdf_a_code">lawn223 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn223.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Scalable High Performant Cholesky Factorization for Multicore with GPU Accelerators.</div><p>by      <strong>Hatem Ltaief, Stanimire Tomov, Rajib Nath, Peng Du, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-09-646, November 25, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn222_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn222_pdf_pdf_a_code">lawn222 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn222.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Enhancing Parallelism of Tile QR Factorization for Multicore Architectures.</div><p>by      <strong>Bilel Hadri, Hatem Ltaief, Emmanuel Agullo, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-09-645, September 4, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn221_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn221_pdf_pdf_a_code">lawn221 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn221.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Dynamic Task Scheduling for Linear Algebra Algorithms on Distributed-Memory Multicore Systems.</div><p>by      <strong>Fengguang Song, Asim YarKhan and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-09-638, April 13, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn220_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn220_pdf_pdf_a_code">lawn220 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn220.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Fully Dynamic Scheduler for Numerical Computing on Multicore Processors.</div><p>by      <strong>Jakub Kurzak and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-09-643, June 4, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn219_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn219_pdf_pdf_a_code">lawn219 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn219.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Accelerating the reduction to upper Hessenberg form through hybrid GPU-based computing.</div><p>by      <strong>Stanimire Tomov and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-09-642, May 24, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn218_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn218_pdf_pdf_a_code">lawn218 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn218.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Minimizing Communication in Linear Algebra.</div><p>by      <strong>Grey Ballard, James Demmel, Olga Holtz, and Oded Schwartz</strong>
+UCB/EECS-2009-62, May 15, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn217_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn217_pdf_pdf_a_code">lawn217 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn217.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Comparative Study of One-Sided Factorizations with Multiple Software Packages on Multi-Core Hardware.</div><p>by      <strong>Emmanuel Agullo, Bilel Hadri, Hatem Ltaief and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-09-640, April 28, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn216_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn216_pdf_pdf_a_code">lawn216 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn216.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A novel parallel QR algorithm for hybrid distributed memory HPC systems.</div><p>by      <strong>Robert Granat Bo Kagstrom and Daniel Kressner</strong></p></div>
+<div class="paragraph"><p>UMINF-09.06, April 6, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn215_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn215_pdf_pdf_a_code">lawn215 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn215.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Communication-optimal Parallel and Sequential Cholesky decomposition.</div><p>by      <strong>Grey Ballard, James Demmel, Olga Holtz, and Oded Schwartz</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2009-29, February 13, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn214_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn214_pdf_pdf_a_code">lawn214 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn214.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Scheduling Two-sided Transformations using Algorithms by-Tiles on Multicore Architectures.</div><p>by      <strong>Hatem Ltaief, Jakub Kurzak and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-09-637, February 11, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn213_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn213_pdf_pdf_a_code">lawn213 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn213.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Scheduling Linear Algebra Operations on Multicore Processors.</div><p>by      <strong>Jakub Kurzak, Hatem Ltaief, Jack Dongarra, and Rosa M. Badia</strong></p></div>
+<div class="paragraph"><p>UT-CS-09-636, February 5, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn212_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn212_pdf_pdf_a_code">lawn212 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn212.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Note on Auto-tuning GEMM for GPUs.</div><p>by      <strong>Yinan Li, Jack Dongarra, and Stanimire Tomov</strong></p></div>
+<div class="paragraph"><p>UT-CS-09-635, January 12, 2009.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn211_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn211_pdf_pdf_a_code">lawn211 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn211.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Level-3 Cholesky kernel subroutine of a fully portable High Performance minimal storage hybrid format Cholesky algorithm.</div><p>by      <strong>Fred G. Gustavson, Jerzy Wasniewski, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-08-634, December 1, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn210_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn210_pdf_pdf_a_code">lawn210 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn210.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Towards Dense Linear Algebra for Hybrid GPU Accelerated Manycore Systems.</div><p>by      <strong>Stanimire Tomov, Jack Dongarra, and Marc Baboulin</strong></p></div>
+<div class="paragraph"><p>UT-CS-08-632, October 17, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn209_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn209_pdf_pdf_a_code">lawn209 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn209.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Parallel Band Two-Sided Matrix Bidiagonalization for Multicore Architectures.</div><p>by      <strong>Hatem Ltaief, Jakub Kurzak, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-08-631, October 1, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn208_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn208_pdf_pdf_a_code">lawn208 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn208.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Parallel Block Hessenberg Reduction using Algorithms by Tiles for Multicore Architectures Revisited.</div><p>by      <strong>Hatem Ltaief, Jakub Kurzak, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-08-624, August 7, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn207_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn207_pdf_pdf_a_code">lawn207 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn207.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Using dual techniques to derive componentwise and mixed condition numbers for a linear functional of a linear least squares solution.</div><p>by      <strong>Marc Baboulin and Serge Gratton</strong></p></div>
+<div class="paragraph"><p>UT-CS-08-622, August 4, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn206_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn206_pdf_pdf_a_code">lawn206 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn206.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The Problem with the Linpack Benchmark Matrix Generator.</div><p>by      <strong>Jack Dongarra, and Julien Langou</strong></p></div>
+<div class="paragraph"><p>UCD-CCM-271, June 28, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn205_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn205_pdf_pdf_a_code">lawn205 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn205.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Algorithmic Based Fault Tolerance Applied to High Performance Computing.</div><p>by      <strong>George Bosilca, Remi Delmas, Jack Dongarra, and Julien Langou</strong></p></div>
+<div class="paragraph"><p>UT-CS-08-620, June 19, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn204_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn204_pdf_pdf_a_code">lawn204 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn204.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Communication-optimal parallel and sequential QR and LU factorizations.</div><p>by      <strong>James W. Demmel, Laura Grigori, Mark Frederick Hoemmen and Julien Langou</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2008-89, August 4, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn203_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn203_pdf_pdf_a_code">lawn203 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn203.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Non-Negative Diagonals and High Performance on Low-Profile Matrices from Householder QR.</div><p>by      <strong>James W. Demmel, Mark Hoemmen, Yozo Hida, and E. Jason Riedy</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2008-76, May 30, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn202_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn202_pdf_pdf_a_code">lawn202 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn202.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">LU, QR and Cholesky Factorizations using Vector Capabilities of GPUs.</div><p>by      <strong>Vasily Volkov and James W. Demmel</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2008-49, May 15, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn201_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn201_pdf_pdf_a_code">lawn201 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn201.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">QR Factorization for the CELL Processor</div><p>by      <strong>Jakub Kurzak and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-08-616, May 22, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn200_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn200_pdf_pdf_a_code">lawn200 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn200.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Some Issues in Dense Linear Algebra for Multicore and Special Purpose Architectures.</div><p>by      <strong>Marc Baboulin, Jack J. Dongarra and Stanimire Tomov</strong></p></div>
+<div class="paragraph"><p>UT-CS-08-615, May 6, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn199_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn199_pdf_pdf_a_code">lawn199 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn199.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Rectangular Full Packed Format for Cholesky&#8217;s Algorithm: Factorization, Solution and Inversion.</div><p>by      <strong>Fred G. Gustavson, Jerzy Wasniewski, Julien Langou and Jack J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-08-614, April 28, 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn198_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn198_pdf_pdf_a_code">lawn198 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn198.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Blocked Algorithms for the Reduction to Hessenberg-Triangular Form Revisited.</div><p>by      *Bo K√•gstr√∂m, Daniel Kressner, Enrique S. Quintana-Ort√≠, and Gregorio Quintana-Ort√≠*</p></div>
+<div class="paragraph"><p>February 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn197_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn197_pdf_pdf_a_code">lawn197 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn197.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Using GPUs to Accelerate the Bisection Algorithm for Finding Eigenvalues of Symmetric Tridiagonal Matrices.</div><p>by      <strong>Vasily Volkov and James W. Demmel</strong></p></div>
+<div class="paragraph"><p>UCB/EECS-2007-179, January 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn196_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn196_pdf_pdf_a_code">lawn196 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn196.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A global convergence proof of cyclic Jacobi methods with block rotations.</div><p>by      <strong>Zlatko Drmaƒç</strong></p></div>
+<div class="paragraph"><p>December 2007.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn195_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn195_pdf_pdf_a_code">lawn195 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn195.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">ScaLAPACK&#8217;s MRR Algorithm.</div><p>by      <strong>Christof V√∂mel</strong></p></div>
+<div class="paragraph"><p>November 2007.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn194_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn194_pdf_pdf_a_code">lawn194 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn194.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Refined Representation Tree for MRRR.</div><p>by      <strong>Christof V√∂mel</strong></p></div>
+<div class="paragraph"><p>November 2007.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn193_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn193_pdf_pdf_a_code">lawn193 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn193.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Computing the Conditioning of the Components of a Linear Least Squares Solution.</div><p>by      <strong>Marc Baboulin, Jack Dongarra, Serge Gratton, and Julien Langou</strong></p></div>
+<div class="paragraph"><p>UT-cs-07-604, September 2007.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn192_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn192_pdf_pdf_a_code">lawn192 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn192.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Parallel eigenvalue reordering in real Schur forms.</div><p>by      <strong>R. Granat, B. K√•gstr√∂m, D. Kressner</strong></p></div>
+<div class="paragraph"><p>September 2007.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn191_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn191_pdf_pdf_a_code">lawn191 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn191.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Class of Parallel Tiled Linear Algebra Algorithms for Multicore Architectures.</div><p>by      <strong>Alfredo Buttari, Julien Langou, Jakub Kurzak, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-07-600, September 7, 2007.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn190_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn190_pdf_pdf_a_code">lawn190 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn190.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><p>by      <strong>Alfredo Buttari, Julien Langou, Jakub Kurzak, and Jack Dongarra</strong>
+.Parallel Tiled QR Factorization for Multicore Architectures.</p></div>
+<div class="paragraph"><p>UT-CS-07-598, July 2007.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Published in Concurrency and Computation: Practice and Experience, volume 20, Issue 13, pages 1573-1590, Sep 2008, DOI: 10.1002/cpe.1301</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn189_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn189_pdf_pdf_a_code">lawn189 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn189.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Fast and Small Short Vector SIMD Matrix Multiplication Kernels for the CELL Processor.</div><p>by      <strong>Wesley Alvaro, Jakub Kurzak, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-08-609, January 2008.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn188_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn188_pdf_pdf_a_code">lawn188 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn188.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Extra-precise Iterative Refinement for Overdetermined Least Squares Problems.</div><p>by      <strong>James Demmel, Yozo Hida, Xiaoye S. Li, and E. Jason Riedy</strong></p></div>
+<div class="paragraph"><p>May 2007</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Published in ACM Transactions on Mathematical Software, Vol. 35, No. 4, 2009.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn187_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn187_pdf_pdf_a_code">lawn187 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn187.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">LAPACK 3.1 xHSEQR: Tuning and Implementation Notes on the Small Bulge Multi-shift QR Algorithm with Aggressive Early Deflation.</div><p>by      <strong>Ralph Byers</strong></p></div>
+<div class="paragraph"><p>May 2007</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn186_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn186_pdf_pdf_a_code">lawn186 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn186.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Fast Linear Algebra is Stable.</div><p>by      <strong>James Demmel, Ioana Dumitriu, and Olga Holtz</strong></p></div>
+<div class="paragraph"><p>May 2007</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Published in Numerische Mathematik, Volume 108, Issue 1 (October 2007), Pages: 59-91, Year of Publication: 2007, ISSN:0029-599X</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn185_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn185_pdf_pdf_a_code">lawn185 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn185.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Limitations of the PlayStation 3 for High Performance Cluster Computing.</div><p>by      <strong>Alfredo Buttari, Jack Dongarra, and Jakub Kurzak</strong></p></div>
+<div class="paragraph"><p>UT-CS-07-597, May 2007</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn184_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn184_pdf_pdf_a_code">lawn184 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn184.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Solving Systems of Linear Equations on the CELL Processor Using Cholesky Factorization.</div><p>by      <strong>Jakub Kurzak, Alfredo Buttari, and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-07-596, May 2007</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn183_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn183_pdf_pdf_a_code">lawn183 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn183.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Performance and Accuracy of LAPACK&#8217;s Symmetric Tridiagonal Eigensolvers.</div><p>by      <strong>James W. Demmel, Osni A. Marques, Beresford N. Parlett, and Christof V√∂mel</strong></p></div>
+<div class="paragraph"><p>April 2007</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn182_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn182_pdf_pdf_a_code">lawn182 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn182.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Testing Infrastructure for LAPACK&#8217;s Symmetric Eigensolvers.</div><p>by      <strong>James W. Demmel, Osni A. Marques, Beresford N. Parlett, and Christof V√∂mel</strong></p></div>
+<div class="paragraph"><p>April 2007</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn181_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn181_pdf_pdf_a_code">lawn181 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn181.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Prospectus for the Next LAPACK and ScaLAPACK Libraries.</div><p>by      <strong>James Demmel, Jack Dongarra, Beresford Parlett, William Kahan, Ming Gu, David Bindel
+Yozo Hida, Xiaoye Li, Osni Marques, E. Jason Riedy, Christof V√∂mel, Julien Langou,
+Piotr Luszczek, Jakub Kurzak, Alfredo Buttari, Julie Langou, and Stanimire Tomov</strong></p></div>
+<div class="paragraph"><p>UT-CS-07-592, February 2007</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn180_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn180_pdf_pdf_a_code">lawn180 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn180.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Computations to Enhance the Performance while Achieving the 64-bit Accuracy.</div><p>by      <strong>Alfredo Buttari, Jack Dongarra, Jakub Kurzak, Piotr Luszczek, and Stanimire Tomov</strong></p></div>
+<div class="paragraph"><p>UT-CS-06-584, November 2006.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn179_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn179_pdf_pdf_a_code">lawn179 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn179.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Parallel tools for solving incremental dense least squares problems. Application to space geodesy.</div><p>by      <strong>Marc Baboulin, Luc Giraud, Serge Gratton, and Julien Langou</strong></p></div>
+<div class="paragraph"><p>UT-CS-06-582, September 2006.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn178_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn178_pdf_pdf_a_code">lawn178 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn178.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Implementing Linear Algebra Routines on Multi-Core Processors with Pipelining and a Look Ahead</div><p>by      <strong>Jakub Kurzak and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-06-581, September 2006.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn177_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn177_pdf_pdf_a_code">lawn177 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn177.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Implementation of the Mixed-Precision High Performance LINPACK Benchmark on the CELL Processor</div><p>by      <strong>Jakub Kurzak and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-06-580, September 2006.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn176_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn176_pdf_pdf_a_code">lawn176 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn176.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On the failure of rank revealing QR factorization software - a case study</div><p>by      <strong>Zlatko Drmaƒç and Zvonimir Bujanoviƒá</strong></p></div>
+<div class="paragraph"><p>June 2006.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn175_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn175_pdf_pdf_a_code">lawn175 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn175.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Exploiting the Performance of 32 bit Floating Point Arithmetic in Obtaining 64 bit Accuracy (Revisiting Iterative Refinement for Linear Systems)</div><p>by      <strong>Julie Langou, Julien Langou, Piotr Luszczek, Jakub Kurzak, Alfredo Buttari and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>June 2006.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn174_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn174_pdf_pdf_a_code">lawn174 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn174.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Cache Efficient Biadiagonalization Using BLAS 2.5 Operators</div><p>by      <strong>G. W. Howell, J. W. Demmel, C. T. Fulton, S. Hammarling, and K. Marmol</strong></p></div>
+<div class="paragraph"><p>February 2006.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn173_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn173_pdf_pdf_a_code">lawn173 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn173.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Multishift Variants of the QZ Algorithm with Agressive Early Deflation</div><p>by      <strong>Bo K√•gstr√∂m and Daniel Kressner</strong></p></div>
+<div class="paragraph"><p>February 2006.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn172_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn172_pdf_pdf_a_code">lawn172 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn172.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Benefits oF IEEE-754 Features in Modern Symmetric Tridiagonal Eigensolvers</div><p>by      <strong>Osni A. Marques, E. Jason Riedy, and Christof V√∂mel</strong></p></div>
+<div class="paragraph"><p>Technical Report UCB/CSD-05-1414, September 2005.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn171_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn171_pdf_pdf_a_code">lawn171 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn171.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Block Algorithms for Reordering Standard and Generalized Schur Forms</div><p>by      <strong>Daniel Kressner</strong></p></div>
+<div class="paragraph"><p>September 2005.
+Updated February 2006.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn170_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn170_pdf_pdf_a_code">lawn170 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn170.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">New fast and accurate Jacobi SVD algorithm: II</div><p>by      <strong>Zlatko Drmac and Kresimir Veselic</strong></p></div>
+<div class="paragraph"><p>August 2005.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn169_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn169_pdf_pdf_a_code">lawn169 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn169.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">New fast and accurate Jacobi SVD algorithm: I</div><p>by      <strong>Zlatko Drmac and Kresimir Veselic</strong></p></div>
+<div class="paragraph"><p>August 2005.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn168_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn168_pdf_pdf_a_code">lawn168 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn168.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+PDSYEVR. ScaLAPACK‚Äôs parallel MRRR algorithm for the symmetric eigenvalue problem
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>by      <strong>Dominic Antonelli and Christof V√∂mel</strong></p></div>
+<div class="paragraph"><p>Technical Report UCB/CSD-05-1399, August 2005.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn167_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn167_pdf_pdf_a_code">lawn167 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn167.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Subset Computations with the MRRR algorithm</div><p>by      <strong>Osni A. Marques, Beresford N. Parlett, and Christof V√∂mel</strong></p></div>
+<div class="paragraph"><p>Technical Report UCB/CSD-05-1392, August 2005.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn166_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn166_pdf_pdf_a_code">lawn166 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn166.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Computing The Bidiagonal SVD Using Multiple Relatively Robust Representations</div><p>by      <strong>Paul R. Willems, Bruno Lang, and Christof V√∂mel</strong></p></div>
+<div class="paragraph"><p>UT-CS-05-551, April 2005.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn165_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn165_pdf_pdf_a_code">lawn165 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn165.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Error Bounds from Extra Precise Iterative Refinement</div><p>by      <strong>James Demmel, Yozo Hida, W. Kahan, Xiaoye S. Li, Soni Mukherjee, and E. Jason Riedy</strong></p></div>
+<div class="paragraph"><p>UT-CS-05-547, February 2005.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn164_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn164_pdf_pdf_a_code">lawn164 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn164.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">LAPACK 2005 Prospectus: Reliable and Scalable Software for Linear Algebra Computations on High End Computers</div><p>by      <strong>Jim Demmel and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-05-546, February 2005.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn163_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn163_pdf_pdf_a_code">lawn163 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn163.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">How the MRRR Algorithm Can Fail on Tight Eigenvalue Clusters</div><p>by      <strong>Beresford N. Parlett and Christof V√∂mel</strong></p></div>
+<div class="paragraph"><p>UT-CS-04-542, December, 2004.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn162_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn162_pdf_pdf_a_code">lawn162 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn162.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The Design and Implementation of the MRRR Algorithm</div><p>by      <strong>Inderjit S. Dhillon, Beresford N. Parlett, and Christof V√∂mel</strong></p></div>
+<div class="paragraph"><p>UT-CS-04-541, December, 2004.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Published in ACM Transactions on Mathematical Software (TOMS), Volume 32, Issue 4 (December 2006), Pages: 533-560, Year of Publication: 2006, ISSN:0098-3500</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn161_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn161_pdf_pdf_a_code">lawn161 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn161.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">LAPack-Style Codes for Level 2 and 3 Pivoted Cholesky Factorizations</div><p>by      <strong>Craig Lucas</strong></p></div>
+<div class="paragraph"><p>UT-CS-04-522, February 2004</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn160_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn160_pdf_pdf_a_code">lawn160 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn160.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Self Adapting Software for Numerical Linear Algebra and LAPACK for Clusters</div><p>by      <strong>Zizhong Chen, Jack Dongarra, Piotr Luszczek, and Kenneth Roche</strong></p></div>
+<div class="paragraph"><p>UT-CS-03-499, January 2003</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Published in Parallel Computing, Volume 29, Issues 11-12, November-December 2003, Pages 1723-1743</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn159_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn159_pdf_pdf_a_code">lawn159 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn159.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Finite-choice algorithm optimization in Conjugate Gradients</div><p>by      <strong>Jack Dongarra and Victor Eijkhout</strong></p></div>
+<div class="paragraph"><p>UT-CS-03-502, January 2003</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn158_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn158_pdf_pdf_a_code">lawn158 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn158.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">LAPACK3E&#8201;&#8212;&#8201;A Fortran 90-enhanced version of LAPACK</div><p>by      <strong>Edward Anderson</strong></p></div>
+<div class="paragraph"><p>UT-CS-02-497, December 2002</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn157_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn157_pdf_pdf_a_code">lawn157 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn157.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Self-adapting Numerical Software for Next Generation Applications</div><p>by      <strong>Jack Dongarra and Victor Eijkhout</strong></p></div>
+<div class="paragraph"><p>UT-CS-02-484, August 2002</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Published in International Journal of High Performance Computing Applications, Vol. 17, Year. 2, pages: 2-7, DOI: 10.1177</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn156_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn156_pdf_pdf_a_code">lawn156 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn156.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Polynomial acceleration of optimised multi-grid smoothers basic theory</div><p>by      <strong>Victor Eijkhout</strong></p></div>
+<div class="paragraph"><p>UT-CS-02-477, August 2002</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn155_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn155_pdf_pdf_a_code">lawn155 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn155.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">An implementation of the dqds algorithm positive case</div><p>by      <strong>Beresford N. Parlett and Osni A. Marques</strong></p></div>
+<div class="paragraph"><p>UT-CS-02-475, August 2002</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Published in Linear Algebra and Applications, year 1999, volume 309, page 2000</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn154_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn154_pdf_pdf_a_code">lawn154 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn154.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Orthogonal Eigenvectors and Relative Gaps</div><p>by      <strong>Inderjit S. Dhillon and Beresford N. Parlett</strong></p></div>
+<div class="paragraph"><p>UT-CS-02-474, August 2002</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn153_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn153_pdf_pdf_a_code">lawn153 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn153.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">New Complex Parallel Eigenvalue and Eigenvector Routines</div><p>by      <strong>M. Fahey</strong></p></div>
+<div class="paragraph"><p>UT-CS-01-471, August 2001.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn152_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn152_pdf_pdf_a_code">lawn152 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn152.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Implementation for LAPACK of a Block Algorithm for Matrix 1-Norm Estimation</div><p>by      <strong>S. Cheng and N. Higham</strong></p></div>
+<div class="paragraph"><p>UT-CS-01-470, August 2001.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn151_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn151_pdf_pdf_a_code">lawn151 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn151.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Automatic Determination of Matrix-Blocks</div><p>by      <strong>V. Eijkhout</strong></p></div>
+<div class="paragraph"><p>UT-CS-01-458, April 2001.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn150_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn150_pdf_pdf_a_code">lawn150 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn150.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Discontinuous Plane Rotations and the Symmetric Eigenvalue Problem</div><p>by      <strong>E. Anderson</strong></p></div>
+<div class="paragraph"><p>UT-CS-00-454, December 2000.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn149_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn149_pdf_pdf_a_code">lawn149 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn149.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Design, Implementation and Testing of Extended and Mixed Precision BLAS</div><p>by      <strong>X. Li, J. Demmel, D. Bailey, G. Henry, Y. Hida, J. Iskandar, W. Kahan, A. Kapur, M. Martin, T. Tung, D. J. Yoo</strong></p></div>
+<div class="paragraph"><p>UT-CS-00-451, October 2000.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn148_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn148_pdf_pdf_a_code">lawn148 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn148.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On Computing Givens rotations reliably and efficiently</div><p>by      <strong>D. Bindel, J. Demmel, W. Kahan, O. Marques</strong></p></div>
+<div class="paragraph"><p>UT-CS-00-449, October 2000.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn147_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn147_pdf_pdf_a_code">lawn147 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn147.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Automated Empirical Optimization of Software and the ATLAS Project</div><p>by      <strong>R. C. Whaley, A. Petitet, J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-00-448, September 2000.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn146_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn146_pdf_pdf_a_code">lawn146 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn146.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A recursive formulation of Cholesky factorization of a matrix in packed storage</div><p>by      <strong>B. Andersen, F. Gustavson and J. Wasniewski</strong></p></div>
+<div class="paragraph"><p>UT-CS-00-441, May 2000.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn145_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn145_pdf_pdf_a_code">lawn145 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn145.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The <em>weighted modification</em> incomplete factorisation method</div><p>by      <strong>V. Eijkhout</strong></p></div>
+<div class="paragraph"><p>UT-CS-99-436, Dec 1999.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn144_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn144_pdf_pdf_a_code">lawn144 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn144.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On the Existence Problem of Incomplete Factorisation Methods</div><p>by      <strong>V. Eijkhout</strong></p></div>
+<div class="paragraph"><p>UT-CS-99-435, Dec 1999.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn143_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn143_pdf_pdf_a_code">lawn143 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn143.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Comparison of Parallel Solvers for Diagonally Dominant and General Narrow-Banded Linear Systems II</div><p>by      <strong>P. Arbenz, A. Cleary, J. Dongarra, and M. Hegland</strong></p></div>
+<div class="paragraph"><p>UT-CS-99-415, May 1999.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn142_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn142_pdf_pdf_a_code">lawn142 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn142.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Comparison of Parallel Solvers for Diagonally Dominant and General Narrow-Banded Linear Systems</div><p>by      <strong>P. Arbenz, A. Cleary, J. Dongarra, and M. Hegland</strong></p></div>
+<div class="paragraph"><p>UT-CS-99-414, Feb 1999.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn141_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn141_pdf_pdf_a_code">lawn141 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn141.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Overview of Iterative Linear System Solver Packages</div><p>by      <strong>Victor Eijkhout</strong></p></div>
+<div class="paragraph"><p>UT-CS-98-411, Dec 1998.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn140_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn140_pdf_pdf_a_code">lawn140 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn140.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">NetSolve version 1.2: Design and Implementation</div><p>by      <strong>H. Casanova, J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-98-406, Nov 1998.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn139_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn139_pdf_pdf_a_code">lawn139 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn139.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Numerical Linear Algebra Problem Solving Environment Designer&#8217;s Perspective</div><p>by      <strong>A. Petitet, H. Casanova, J. Dongarra, Y. Robert &amp; R.C. Whaley</strong></p></div>
+<div class="paragraph"><p>UT-CS-98-405, Oct 1998.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn138_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn138_pdf_pdf_a_code">lawn138 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn138.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Testing Software for LAPACK90</div><p>by      <strong>J. Dongarra, W. Owczarz, J. Wasniewski, P. Yalamov</strong></p></div>
+<div class="paragraph"><p>UT-CS-98-401, Sept 1998.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn137_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn137_pdf_pdf_a_code">lawn137 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn137.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Installation Guide and Design of the HPF 1.1 interface to ScaLAPACK, SLHPF</div><p>by      <strong>L. S. Blackford, J. J. Dongarra, C. A. Papadopoulos and R. C. Whaley</strong></p></div>
+<div class="paragraph"><p>UT-CS-98-396, August 1998.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn136_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn136_pdf_pdf_a_code">lawn136 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn136.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">ScaLAPACK Evaluation and Performance at the DoD MSRCs</div><p>by      <strong>L. S. Blackford and R. C. Whaley</strong></p></div>
+<div class="paragraph"><p>UT-CS-98-388, April 1998.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn135_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn135_pdf_pdf_a_code">lawn135 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn135.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Packed Storage Extensions for ScaLAPACK</div><p>by      <strong>E. D&#8217;Azevedo and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-98-385, April 1998.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn134_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn134_pdf_pdf_a_code">lawn134 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn134.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">High Performance Linear Algebra Package&#8201;&#8212;&#8201;LAPACK90</div><p>by      <strong>J. Wasniewski and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-98-384, April 1998.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn133_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn133_pdf_pdf_a_code">lawn133 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn133.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Algorithmic Redistribution Methods for Block Cyclic Distributions</div><p>by      <strong>A. Petitet and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-98-383, March 1998.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn132_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn132_pdf_pdf_a_code">lawn132 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn132.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Parallelizing the Divide and Conquer Algorithm for the Symmetric Tridiagonal Eigenvalue Problem on Distributed Memory Architectures</div><p>by      <strong>F. Tisseur and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-98-382, March 1998.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn131_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn131_pdf_pdf_a_code">lawn131 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn131.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Automatically Tuned Linear Algebra Software</div><p>by      <strong>R. Whaley and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-366, December 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn130_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn130_pdf_pdf_a_code">lawn130 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn130.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Accurate SVDs of Structured Matrices</div><p>by      <strong>J. Demmel</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-375, October 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn129_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn129_pdf_pdf_a_code">lawn129 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn129.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A New Parallel Matrix Multiplication Algorithm on Distributed-Memory Concurrent Computers</div><p>by      <strong>J. Choi</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-369, September 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn128_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn128_pdf_pdf_a_code">lawn128 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn128.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Algorithmic Redistribution Methods for Block Cyclic Decompositions</div><p>by      <strong>A. Petitet</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-371, July 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn127_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn127_pdf_pdf_a_code">lawn127 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn127.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Sparse Gaussian Elimination on High Performance Computers</div><p>by      <strong>X. Li</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-368, June 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn126_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn126_pdf_pdf_a_code">lawn126 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn126.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Performance Improvements to LAPACK for the Cray Scientific Library</div><p>by      <strong>E. Anderson and M. Fahey</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-359, April 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn125_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn125_pdf_pdf_a_code">lawn125 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn125.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Implementation in ScaLAPACK of Divide-and-Conquer Algorithms for Banded and Tridiagonal Linear Systems</div><p>by      <strong>A. Cleary and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-358, April 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn124_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn124_pdf_pdf_a_code">lawn124 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn124.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">An Asynchronous Parallel Supernodal Algorithm for Sparse Gaussian Elimination</div><p>by      <strong>J. Demmel, J. Gilbert, and X. Li</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-357, April 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn123_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn123_pdf_pdf_a_code">lawn123 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn123.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Test Matrix Collection for Non-Hermitian Eigenvalue Problems</div><p>by      <strong>Z. Bai, D. Day, J. Demmel and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-355, March 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn122_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn122_pdf_pdf_a_code">lawn122 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn122.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A New Deflation Criterion for the QR Algorithm</div><p>by      <strong>M. Ahues and F. Tisseur</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-353, March 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn121_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn121_pdf_pdf_a_code">lawn121 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn121.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Parallel Implementation of the Nonsymmetric QR Algorithm for Distributed Memory Architectures</div><p>by      <strong>G. Henry, D. Watkins, and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-352, March 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn120_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn120_pdf_pdf_a_code">lawn120 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn120.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Scheduling Block-Cyclic Array Redistribution</div><p>by      <strong>F. Desprez, J. Dongarra, A. Petitet, C. Randriamaro and Y. Robert</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-349, February 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn119_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn119_pdf_pdf_a_code">lawn119 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn119.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Computing the Singular Value Decomposition with High Relative Accuracy</div><p>by      <strong>J. Demmel, M. Gu, S. Eisenstat, I. Slapnicar, K. Veselic and Z. Drmac</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-348, February 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn118_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn118_pdf_pdf_a_code">lawn118 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn118.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The Design and Implementation of the Parallel OUT-of-core ScaLAPACK LU, QR, and Cholesky Factorization Routines</div><p>by      <strong>J. J. Dongarra and E. F. D&#8217;Azevedo</strong></p></div>
+<div class="paragraph"><p>UT-CS-97-347, January 1997.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn117_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn117_pdf_pdf_a_code">lawn117 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn117.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Fortran 90 Interface for LAPACK</div><p>by      <strong>L. Susan Blackford, Jack J. Dongarra, Jeremy Du Croz, Sven Hammarling, Jerzy Wasniewski</strong></p></div>
+<div class="paragraph"><p>UT-CS-96-341, December 1996.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn116_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn116_pdf_pdf_a_code">lawn116 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn116.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Parallel Matrix Distributions: Have we been doing it all right?</div><p>by      <strong>M. Sidani and B. Harrod</strong></p></div>
+<div class="paragraph"><p>UT-CS-96-340, November 1996.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn115_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn115_pdf_pdf_a_code">lawn115 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn115.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On the Error Analysis and Implementation of Some Eigenvalue Decomposition and Singular Value Decomposition Algorithms</div><p>by      <strong>H. Ren</strong></p></div>
+<div class="paragraph"><p>UT-CS-96-336, September 1996.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn114_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn114_pdf_pdf_a_code">lawn114 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn114.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A BLAS-3 Version of the QR Factorization with Column Pivoting</div><p>by      <strong>G. Quintana-Orti, X. Sun, and C. Bischof</strong></p></div>
+<div class="paragraph"><p>UT-CS-96-334, August 1996.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn113_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn113_pdf_pdf_a_code">lawn113 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn113.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Block-Partitioned Algorithms for Solving the Linear Least Squares Problem</div><p>by      <strong>G. Quintana-Orti, E. S. Quintana-Orti, and A. Petitet</strong></p></div>
+<div class="paragraph"><p>UT-CS-96-333, July 1996.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn112_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn112_pdf_pdf_a_code">lawn112 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn112.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Practical Experience in the Dangers of Heterogeneous Computing</div><p>by      <strong>L. S. Blackford, A. Cleary, J. Demmel, I. Dhillon, J. Dongarra, S. Hammarling, A. Petitet, H. Ren, K. Stanley, and R. C. Whaley</strong></p></div>
+<div class="paragraph"><p>UT-CS-96-330, July 1996.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn111_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn111_pdf_pdf_a_code">lawn111 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn111.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Optimizing Matrix Multiply using PHiPAC: a Portable, High-Performance, ANSI C Coding Methodology</div><p>by      <strong>J. Bilmes, K. Asanovic, J. Demmel, D. Lam, and C.-W. Chin</strong></p></div>
+<div class="paragraph"><p>UT-CS-96-326, May 1996.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn110_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn110_pdf_pdf_a_code">lawn110 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn110.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Key Concepts For Parallel OUT-Of-Core LU Factorization</div><p>by      <strong>J. J. Dongarra, S. Hammarling, and D. W. Walker</strong></p></div>
+<div class="paragraph"><p>UT-CS-96-324, April 1996.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn109_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn109_pdf_pdf_a_code">lawn109 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn109.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">BLAS Technical Workshop</div><p>by      <strong>J. Dongarra, S. Hammarling, and S. Ostrouchov</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-317, November 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn108_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn108_pdf_pdf_a_code">lawn108 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn108.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">GEMM-Based Level 3 BLAS: Installation, Tuning and Use of the Model Implementations and the Performance Evaluation Benchmark</div><p>by      <strong>B. Kagstrom, P. Ling, and C. Van Loan</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-316, November 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn107_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn107_pdf_pdf_a_code">lawn107 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn107.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">GEMM-Based Level 3 BLAS: High-Performance Model Implementations and Performance Evaluation Benchmark</div><p>by      <strong>B. Kagstrom, P. Ling, and C. Van Loan</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-315, November 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn106_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn106_pdf_pdf_a_code">lawn106 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn106.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Templates for Linear Algebra Problems</div><p>by      <strong>Z. Bai, D. Day, J. Demmel, J. Dongarra, M. Gu, A. Ruhe, and H. van der Vorst</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-311, October 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn105_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn105_pdf_pdf_a_code">lawn105 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn105.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Stability of the Diagonal Pivoting Method with Partial Pivoting</div><p>by      <strong>N. J. Higham</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-309, October 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn104_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn104_pdf_pdf_a_code">lawn104 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn104.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Iterative Refinement and LAPACK</div><p>by      <strong>N. J. Higham</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-308, October 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn103_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn103_pdf_pdf_a_code">lawn103 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn103.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Supernodal Approach to Sparse Partial Pivoting</div><p>by      <strong>J. W. Demmel, S. C. Eisenstat, J. R. Gilbert, X. S. Li, and J. W. H. Liu</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-304, September 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn102_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn102_pdf_pdf_a_code">lawn102 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn102.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">IML++ v. 1.2: Iterative Methods Library Reference Guide</div><p>by      <strong>J. Dongarra, A. Lumsdaine, R. Pozo, and K. Remington</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-303, August 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn101_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn101_pdf_pdf_a_code">lawn101 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn101.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Proposal for a Fortran 90 Interface for LAPACK</div><p>by      <strong>J. J. Dongarra, J. Du Croz, S. Hammarling, J. Wasniewski, and A. Zemla</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-295, July 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn100_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn100_pdf_pdf_a_code">lawn100 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn100.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Proposal for a Set of Parallel Basic Linear Algebra Subprograms</div><p>by      <strong>J. Choi, J. Dongarra, S. Ostrouchov, A. Petitet, D. Walker and R. C. Whaley</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-292, May 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn99_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn99_pdf_pdf_a_code">lawn99 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn99.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Reverse Communication Interface for Linear Algebra Templates for Iterative Methods</div><p>by      <strong>J. Dongarra, V. Eijkhout, and A. Kalhan</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-291, May 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn98_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn98_pdf_pdf_a_code">lawn98 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn98.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">LAPACK++ V. 1.0: High Performance Linear Algebra Users' Guide</div><p>by      <strong>J. Dongarra, R. Pozo, and D. Walker</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-290, May 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn97_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn97_pdf_pdf_a_code">lawn97 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn97.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Modeling the Benefits of Mixed Data and Task Parallelism</div><p>by      <strong>S. Chakrabarti, J. Demmel, and D. Yelick</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-289, May 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn96_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn96_pdf_pdf_a_code">lawn96 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn96.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">SUMMA: Scalable Universal Matrix Multiplication Algorithm</div><p>by      <strong>R. A. van de Geijn and J. Watts</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-286, April 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn95_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn95_pdf_pdf_a_code">lawn95 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn95.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">ScaLAPACK: A Portable Linear Algebra Library for Distributed Memory Computers - Design Issues and Performance</div><p>by      <strong>J. Choi, J. Demmel, I. Dhillon, J. Dongarra, S. Ostrouchov, A. Petitet, K. Stanley, D. Walker, and R. C. Whaley</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-283, March 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn94_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn94_pdf_pdf_a_code">lawn94 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn94.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A User&#8217;s Guide to the BLACS v1.1</div><p>by      <strong>J. Dongarra and R. C. Whaley</strong>
+UPDATED: May 5, 1997 (VERSION 1.1).</p></div>
+<div class="paragraph"><p>UT-CS-95-281, March 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn93_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn93_pdf_pdf_a_code">lawn93 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn93.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Installation Guide for ScaLAPACK</div><p>by      <strong>J. Choi, J. Demmel, I. Dhillon, J. Dongarra, S. Ostrouchov, A. Petitet, K. Stanley, D. Walker, and R. C. Whaley</strong>
+UPDATED: August 31, 2001 (VERSION 1.7).</p></div>
+<div class="paragraph"><p>UT-CS-95-280, March, 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn92_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn92_pdf_pdf_a_code">lawn92 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn92.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The Design of a Parallel Dense Linear Algebra Software Library: Reduction to Hessenberg, Tridiagonal, and Bidiagonal Form</div><p>by      <strong>J. Choi, J. Dongarra, and D. Walker</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-275, February 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn91_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn91_pdf_pdf_a_code">lawn91 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn91.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The Spectral Decomposition of Nonsymmetric Matrices on Distributed Memory Computers</div><p>by      <strong>Z. Bai, J. Demmel, J. Dongarra, A. Petitet, H. Robinson, and K. Stanley</strong></p></div>
+<div class="paragraph"><p>UT-CS-95-273, January 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn90_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn90_pdf_pdf_a_code">lawn90 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn90.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Algorithm-Based Diskless Checkpointing for Fault Tolerant Matrix Operations</div><p>by      <strong>J. S. Plank, Y. Kim, and J. J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-268, December 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn89_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn89_pdf_pdf_a_code">lawn89 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn89.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Solving Secular Equations Stably and Efficiently</div><p>by      <strong>Ren-Cang Li</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-260, November, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn88_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn88_pdf_pdf_a_code">lawn88 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn88.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Efficient Computation of the Singular Value Decomposition with Applications to Least Squares Problems</div><p>by      <strong>Ming Gu, James Demmel, and Inderjit Dhillon</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-257, October, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn87_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn87_pdf_pdf_a_code">lawn87 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn87.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Computing Eigenspaces with Specified Eigenvalues of a Regular Matrix Pair (A,B) and Condition Estimation: Theory Algorithms and Software</div><p>by      <strong>B. Kagstrom and P. Poromaa</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-255, September, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn86_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn86_pdf_pdf_a_code">lawn86 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn86.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The Performance of Finding Eigenvalues and Eigenvectors of Dense Symmetric Matrices on Distributed Memory Computers</div><p>by      <strong>J. Demmel and K. Stanley</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-254, September, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn85_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn85_pdf_pdf_a_code">lawn85 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn85.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Relative Perturbation Theory: (II) Eigenspace Variations</div><p>by      <strong>Ren-Cang Li</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-253, September, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn84_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn84_pdf_pdf_a_code">lawn84 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn84.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Relative Perturbation Theory: (I) Eigenvalue Variations</div><p>by      <strong>Ren-Cang Li</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-252, September, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn83_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn83_pdf_pdf_a_code">lawn83 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn83.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Relative Perturbation Bounds for the Unitary Polar Factor</div><p>by      <strong>Ren-Cang Li</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-251, September, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn82_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn82_pdf_pdf_a_code">lawn82 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn82.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Call Conversion Interface (CCI) for LAPACK/ESSL</div><p>by      <strong>J. Dongarra and M. Kolatis</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-250, August, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn81_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn81_pdf_pdf_a_code">lawn81 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn81.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Quick Installation Guide for LAPACK on Unix Systems</div><p>by      <strong>S. Blackford and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-249, September, 1994.
+UPDATED: June 30, 1999. (VERSION 3.0)</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn80_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn80_pdf_pdf_a_code">lawn80 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn80.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The Design and Implementation of the ScaLAPACK LU, QR, and Cholesky Factorization Routines</div><p>by      <strong>J. Choi, J. J. Dongarra, S. Ostrouchov, A. P. Petitet, D. W. Walker, and R. C. Whaley</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-246, September, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn79_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn79_pdf_pdf_a_code">lawn79 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn79.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Parallelizing the QR Algorithm for the Unsymmetric Algebraic Eigenvalue Problem: Myths and Reality</div><p>by      <strong>Greg Henry and Robert van de Geijn</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-244, August, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn78_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn78_pdf_pdf_a_code">lawn78 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn78.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Computational variants of the CGS and BiCGstab methods</div><p>by      <strong>Victor Eijkhout</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-241, August, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn77_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn77_pdf_pdf_a_code">lawn77 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn77.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Basic Concepts for Distributed Sparse Linear Algebra Operations</div><p>by      <strong>Victor Eijkhout and Roldan Pozo</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-240, August, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn76_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn76_pdf_pdf_a_code">lawn76 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn76.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Algorithic Bombardment for the Iterative Solution of Linear Systems: A Poly-Iterative Approach</div><p>by      <strong>Richard Barrett, Michael Berry, Jack Dongarra, Victor Eijkhout, and Charles Romine</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-239, August, 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn75_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn75_pdf_pdf_a_code">lawn75 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn75.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">LAPACK-Style Algorithms and Software for Solving the Generalized Sylvester Equation and Estimating the Separating Between Regular Matrix Pairs</div><p>by      <strong>Bo Kagstrom and Peter Poromaa</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-237, July 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn74_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn74_pdf_pdf_a_code">lawn74 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn74.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Sparse Matrix Library in C++ for High Performance Architectures</div><p>by      <strong>J. Dongarra, A. Lumsdaine, X. Niu, R. Pozo, and K. Remington</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-236, July 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn73_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn73_pdf_pdf_a_code">lawn73 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn73.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Basic Linear Algebra Communication Subprograms: Analysis and Implementation Across Multiple Parallel Architectures</div><p>by      <strong>R. Clint Whaley</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-234, May 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn72_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn72_pdf_pdf_a_code">lawn72 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn72.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The Computation of Elementary Unitary Matrices</div><p>by      <strong>R. Lehoucq</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-233, October 1995.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn71_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn71_pdf_pdf_a_code">lawn71 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn71.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">IBM RS/6000-550 &amp; -590 Performance for Selected Routines in ESSL</div><p>by      <strong>Jack Dongarra and Michael Kolatis</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-231, April 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn70_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn70_pdf_pdf_a_code">lawn70 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn70.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On the Correctness of Parallel Bisection in Floating Point</div><p>by      <strong>James Demmel, Inderjit Dhillon, and Huan Ren</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-228, March 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn69_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn69_pdf_pdf_a_code">lawn69 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn69.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Serial Implementation of Cuppen&#8217;s Divide and Conquer Algorithm for the Symmetric Eigenvalue Problem</div><p>by      <strong>J. Rutter</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-225, March 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn68_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn68_pdf_pdf_a_code">lawn68 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn68.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Highly Parallel Algorithm for the Reduction of a Nonsymmetric Matrix to Block Upper-Hessenberg Form</div><p>by      <strong>Michael W. Berry, Jack J. Dongarra and Youngbae Kim</strong></p></div>
+<div class="paragraph"><p>UT-CS-94-221, February 1994.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn67_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn67_pdf_pdf_a_code">lawn67 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn67.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Performance Complexity of $LU$ Factorization with Efficient Pipelining and Overlap on a Multiprocessor</div><p>by      <strong>F. Desprez, J. Dongarra, and B. Tourancheau</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-218, December, 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn66_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn66_pdf_pdf_a_code">lawn66 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn66.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Characterization of Polynomial Iterative Methods</div><p>by      <strong>Victor Eijkhout</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-216, November 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn65_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn65_pdf_pdf_a_code">lawn65 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn65.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Parallel Matrix Transpose Algorithms on Distributed Memory Concurrent Computers</div><p>by      <strong>Jaeyoung Choi, Jack J. Dongarra, and David W. Walker</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-215, November, 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn64_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn64_pdf_pdf_a_code">lawn64 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn64.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Distributed Sparse Gaussian Elimination and Orthogonal Factorization</div><p>by      <strong>Padma Raghavan</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-203, August 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn63_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn63_pdf_pdf_a_code">lawn63 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn63.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Line and Plane Separators</div><p>by      <strong>Michael T. Heath and Padma Raghavan</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-202, August 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn62_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn62_pdf_pdf_a_code">lawn62 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn62.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Distributed Solution of Sparse Linear Systems</div><p>by      <strong>Michael T. Heath and Padma Raghavan</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-201, August 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn61_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn61_pdf_pdf_a_code">lawn61 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn61.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">An Object Oriented Design for High Performance Linear Algebra on Distributed Memory Architectures</div><p>by      <strong>J. Dongarra, R. Pozo, and D. Walker</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-200, August 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn60_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn60_pdf_pdf_a_code">lawn60 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn60.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Parallel Numerical Linear Algebra</div><p>by      <strong>James W. Demmel, Michael T. Heath, and Henk A. van der Vorst</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-192, March 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn59_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn59_pdf_pdf_a_code">lawn59 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn59.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Faster Numerical Algorithms via Exception Handling</div><p>by      <strong>James W. Demmel and Xiaoye Li</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-192, March 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn58_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn58_pdf_pdf_a_code">lawn58 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn58.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The Design of Linear Algebra Libraries for High Performance Computer</div><p>by      <strong>Jack Dongarra and David Walker</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-188, June 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn57_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn57_pdf_pdf_a_code">lawn57 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn57.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><p>lawn57.tgz
+.PUMMA: Parallel Universal Matrix Multiplication Algorithms on Distributed Memory Concurrent Computers</p></div>
+<div class="paragraph"><p>by      <strong>Jaeyoung Choi, Jack J. Dongarra, and David W. Walker</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-187, May 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn56_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn56_pdf_pdf_a_code">lawn56 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn56.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><p>lawn56.tgz
+.Reducing Communication Costs in the Conjugate Gradient Algorithm on Distributed Memory Multiprocessors</p></div>
+<div class="paragraph"><p>by      <strong>E.F. D&#8217;Azevedo, V.L. Eijkhout and C.H. Romine</strong></p></div>
+<div class="paragraph"><p>UT-CS-93-185, January 1993.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn55_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn55_pdf_pdf_a_code">lawn55 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn55.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">ScaLAPACK: A Scalable Linear Algebra for Distributed Memory Concurrent Computers</div><p>by      <strong>J. Choi, J. Dongarra, R. Pozo, and D. Walker</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-181, November 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn54_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn54_pdf_pdf_a_code">lawn54 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn54.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On Swapping Diagonal Blocks in Real Schur Form</div><p>by      <strong>Z. Bai and J.W. Demmel</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-182, October 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn53_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn53_pdf_pdf_a_code">lawn53 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn53.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Trading Off Parallelism and Numerical Stability</div><p>by      <strong>J.W. Demmel</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-179, June 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn52_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn52_pdf_pdf_a_code">lawn52 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn52.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Cartesian Parallel Nested Dissection Algorithm</div><p>by      <strong>Michael T. Heath and Padma Raghavan</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-178, June 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn51_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn51_pdf_pdf_a_code">lawn51 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn51.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Qualitative Properties of the Conjugate Gradient and Lanczos Methods in a Matrix Framework</div><p>by      <strong>Victor Eijkhout</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-170, May 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn50_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn50_pdf_pdf_a_code">lawn50 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn50.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Distributed Sparse Data Structures for Linear Algebra Operations</div><p>by      <strong>Victor Eijkhout</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-169, May 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn49_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn49_pdf_pdf_a_code">lawn49 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn49.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Specification for Floating Point Parallel Prefix</div><p>by      <strong>J. Demmel</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-167, May 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn48_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn48_pdf_pdf_a_code">lawn48 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn48.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On Computing Accurate Singular Values and Eigenvalues of Matrices with Acyclic Graphs</div><p>by      <strong>J. Demmel and W. Gragg</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-166, May 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn47_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn47_pdf_pdf_a_code">lawn47 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn47.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Open Problems in Numerical Linear Algebra</div><p>by      <strong>J. Demmel</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-164, May 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn46_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn46_pdf_pdf_a_code">lawn46 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn46.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Computing the Generalized Singular Value Decomposition</div><p>by      <strong>Z. Bai and J. Demmel</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-163, May 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn45_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn45_pdf_pdf_a_code">lawn45 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn45.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The Inherent Inaccuracy of Implicit Tridiagonal QR</div><p>by      <strong>J. Demmel</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-162, May 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn44_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn44_pdf_pdf_a_code">lawn44 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn44.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Performance of LAPACK: A Portable Library of Numerical Linear Algebra Routines</div><p>by      <strong>Edward Anderson and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-156, May 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn43_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn43_pdf_pdf_a_code">lawn43 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn43.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Look at Scalable Dense Linear Algebra Libraries</div><p>by      <strong>Jack Dongarra, Robert van de Geijn and David Walker</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-155, April, 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn42_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn42_pdf_pdf_a_code">lawn42 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn42.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Perturbation Theory and Backward Error for $AX-XB=C$</div><p>by      <strong>Nick Higham</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-153, April, 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn41_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn41_pdf_pdf_a_code">lawn41 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn41.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Installation Guide for LAPACK</div><p>by      <strong>Susan Blackford and Jack Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-151, March, 1992.
+Updated: June 30, 1999 (VERSION 3.0)</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn40_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn40_pdf_pdf_a_code">lawn40 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn40.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Block LU Factorization</div><p>by      <strong>James Demmel, Nick Higham, Rob Schreiber</strong></p></div>
+<div class="paragraph"><p>UT-CS-92-149, February 1992.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn39_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn39_pdf_pdf_a_code">lawn39 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn39.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On Designing Portable High Performance Numerical Libraries</div><p>by      <strong>James Demmel, Jack Dongarra, and W. Kahan</strong></p></div>
+<div class="paragraph"><p>UT-CS-91-141, July, 1991.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn38_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn38_pdf_pdf_a_code">lawn38 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn38.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On a Direct Algorithm for Computing Invariant Subspaces with Specified Eigenvalues</div><p>by      <strong>Z. Bai and J. Demmel</strong></p></div>
+<div class="paragraph"><p>UT-CS-91-139, November, 1991.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn37_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn37_pdf_pdf_a_code">lawn37 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn37.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Two Dimensional Basic Linear Algebra Communication Subprograms</div><p>by      <strong>Jack J. Dongarra and Robert A. van de Geijn</strong></p></div>
+<div class="paragraph"><p>UT-CS-91-138, October, 1991.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn36_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn36_pdf_pdf_a_code">lawn36 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn36.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Robust Triangular solvers</div><p>by      <strong>E. Anderson</strong></p></div>
+<div class="paragraph"><p>UT-CS-91-142, August, 1991.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn35_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn35_pdf_pdf_a_code">lawn35 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn35.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Implementation guide for LAPACK</div><p>by      <strong>E. Anderson, J. Dongarra, and S. Ostrouchov</strong></p></div>
+<div class="paragraph"><p>UT-CS-91-138, August 1991.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn34_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn34_pdf_pdf_a_code">lawn34 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn34.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Workshop on the BLACS</div><p>by      <strong>J. J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-91-134, May 1991.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn33_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn33_pdf_pdf_a_code">lawn33 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn33.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Robust Incremental Condition Estimation</div><p>by      <strong>C. Bischof, P.T.P. Tang</strong></p></div>
+<div class="paragraph"><p>UT-CS-91-133, May 1991.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn32_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn32_pdf_pdf_a_code">lawn32 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn32.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Generalized Incremental Condition Estimation</div><p>by      <strong>C. Bischof, P.T.P. Tang</strong></p></div>
+<div class="paragraph"><p>UT-CS-91-132, May 1991.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn31_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn31_pdf_pdf_a_code">lawn31 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn31.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Generalized QR Factorization and its Applications</div><p>by      <strong>E. Anderson, Z. Bai, J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-91-131, April 1991.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn30_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn30_pdf_pdf_a_code">lawn30 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn30.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Reduction to Condensed Form for the Eigenvalue Problem on Distributed Memory Architectures</div><p>by      <strong>J. Dongarra, R. van de Geijn</strong></p></div>
+<div class="paragraph"><p>UT-CS-91-130, April 1991.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn29_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn29_pdf_pdf_a_code">lawn29 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn29.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On Global Combine Operations</div><p>by      <strong>R. van de Geijn</strong></p></div>
+<div class="paragraph"><p>UT-CS-91-129, April 1991.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn28_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn28_pdf_pdf_a_code">lawn28 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn28.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The IBM RISC System/6000 and Linear Algebra Operations</div><p>by      <strong>J. Dongarra, P. Mayes, G. Radicati</strong></p></div>
+<div class="paragraph"><p>UT-CS-90-122, December 1990.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn27_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn27_pdf_pdf_a_code">lawn27 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn27.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Stability of Methods for Matrix Inversion</div><p>by      <strong>J. DuCroz, N. Higham</strong></p></div>
+<div class="paragraph"><p>UT-CS-90-119, October, 1990.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn26_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn26_pdf_pdf_a_code">lawn26 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn26.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Prospectus for an Extension to LAPACK: A Portable Linear Algebra Library for High-Performance Computers</div><p>by      <strong>E. Anderson, C. Bischof, J. Demmel, J. Dongarra, J. DuCroz, S. Hammarling, and W. Kahan</strong></p></div>
+<div class="paragraph"><p>UT-CS-90-118, November 1990.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn25_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn25_pdf_pdf_a_code">lawn25 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn25.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Numerical Considerations in Computing Invariant Subspaces</div><p>by      <strong>J. Dongarra, S. Hammarling, and J. Wilkinson</strong></p></div>
+<div class="paragraph"><p>UT-CS-90-117, October, 1990.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn24_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn24_pdf_pdf_a_code">lawn24 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn24.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">LAPACK Block Factorization Algorithms on the Intel iPSC/860</div><p>by      <strong>J. Dongarra and S. Ostrouchov</strong></p></div>
+<div class="paragraph"><p>UT-CS-90-115, October, 1990.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn23_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn23_pdf_pdf_a_code">lawn23 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn23.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Improved Error Bounds for Underdetermined System Solvers}</div><p>by      <strong>J. Demmel and N. Higham</strong></p></div>
+<div class="paragraph"><p>UT-CS-90-113, August 1990.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn22_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn22_pdf_pdf_a_code">lawn22 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn22.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Stability of Block Algorithms with Fast Level 3 BLAS</div><p>by      <strong>J. Demmel and N. Higham</strong></p></div>
+<div class="paragraph"><p>UT-CS-90-110, July 1990.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn21_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn21_pdf_pdf_a_code">lawn21 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn21.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Factorizations of Band Matrices Using Level 3 BLAS</div><p>by      <strong>Jeremy Du Croz, Peter Mayes, and Guiseppe Radicati</strong></p></div>
+<div class="paragraph"><p>UT-CS-90-109, July 1990.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn20_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn20_pdf_pdf_a_code">lawn20 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn20.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">LAPACK: A Portable Linear Algebra Library for High-Performance Computers</div><p>by      <strong>E. Anderson, Z. Bai, C. Bischof, J. Demmel, J. Dongarra, J. DuCroz, A. Greenbaum, S. Hammarling, A. McKenney, D. Sorensen</strong></p></div>
+<div class="paragraph"><p>UT-CS-90-105, May 1990.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn19_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn19_pdf_pdf_a_code_download_scanned_copy_with_figures_a_href_http_www_netlib_org_lapack_lawnspdf_lawn19_scan_pdf_pdf_scan_a">lawn19 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn19.pdf">pdf</a>]</code>, download scanned copy with figures +[<a href="http://www.netlib.org/lapack/lawnspdf/lawn19_scan.pdf">pdf scan</a>]</h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Evaluating Block Algorithm Variants in LAPACK</div><p>by      <strong>E. Anderson and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-90-103, April 1990.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn18_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn18_pdf_pdf_a_code">lawn18 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn18.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Implementation Guide for LAPACK</div><p>by      <strong>E. Anderson and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-90-101, April 1990.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn17_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn17_pdf_pdf_a_code">lawn17 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn17.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Experiments with QR/QL Methods for the Symmetric Tridiagonal Eigenproblem</div><p>by      <strong>A. Greenbaum and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-89-92, November 1989.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn16_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn16_pdf_pdf_a_code">lawn16 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn16.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Results from the Initial Release of LAPACK</div><p>by      <strong>E. Anderson and J. Dongarra</strong></p></div>
+<div class="paragraph"><p>UT-CS-89-89, November 1989. (Replaced by lawn 41 or 81!!)</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn15_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn15_pdf_pdf_a_code">lawn15 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn15.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Jacobi&#8217;s Method is More Accurate than QR</div><p>by      <strong>J. Demmel and K. Veselic</strong></p></div>
+<div class="paragraph"><p>UT-CS-89-88, October 1989.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn14_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn14_pdf_pdf_a_code">lawn14 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn14.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On Floating Point Errors in Cholesky</div><p>by      <strong>J. Demmel</strong></p></div>
+<div class="paragraph"><p>UT-CS-89-87, October 1989.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn13_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn13_pdf_pdf_a_code">lawn13 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn13.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On the Conditioning of the Nonsymmetric Eigenproblem: Theory and Software</div><p>by      <strong>Z. Bai, J. Demmel, and A. McKenney</strong></p></div>
+<div class="paragraph"><p>UT-CS-89-86, October 1989.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn12_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn12_pdf_pdf_a_code">lawn12 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn12.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Banded Cholosky Factorization Using Level 3 BLAS</div><p>by      <strong>Peter Mayes and Giuseppe Radicati</strong>
+ANL/MCS-TM-134, August 1989.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn11_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn11_pdf_pdf_a_code">lawn11 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn11.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">The Bidiagonal Singular Value Decomposition and Hamiltonian Mechanics</div><p>by      <strong>P. Deift, J. Demmel, L.-C. Li, and C. Tomei</strong>
+ANL, MCS-TM-133, August 1989.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn10_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn10_pdf_pdf_a_code">lawn10 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn10.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Installing and Testing the Initial Release of LAPACK --Unix and Non-Unix Versions</div><p>by      <strong>E. Anderson and J. Dongarra</strong>
+ANL, MCS-TM-130, May 1989.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn09_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn09_pdf_pdf_a_code">lawn09 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn09.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">A Test Matrix Generation Suite</div><p>by      <strong>J. Demmel and A. McKenney</strong>
+ANL, MCS-P69-0389, March 1989.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn08_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn08_pdf_pdf_a_code">lawn08 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn08.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">On a Block Implementation of Hessenberg Multishift QR Iteration</div><p>by      <strong>Z. Bai and J. Demmel</strong></p></div>
+<div class="paragraph"><p>ANL, MCS-TM-127, January 1989.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn07_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn07_pdf_pdf_a_code">lawn07 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn07.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Computing Accurate Eigensystems of Scaled Diagonally Dominant Matrices</div><p>by      <strong>J. Barlow and J. Demmel</strong></p></div>
+<div class="paragraph"><p>ANL, MCS-TM-126, December 1988.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn06_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn06_pdf_pdf_a_code">lawn06 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn06.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Tools to Aid in the Analysis of Memory Access Patterns for FORTRAN Programs</div><p>by      <strong>O. Brewer, J. Dongarra, and D. Sorensen</strong></p></div>
+<div class="paragraph"><p>ANL, MCS-TM-120, June 1988</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn05_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn05_pdf_pdf_a_code">lawn05 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn05.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Provisional Contents</div><p>by      <strong>C. Bischof, J. Demmel, J. Dongarra, J. Du Croz, A. Greenbaum, S. Hammarling, and D. Sorensen</strong></p></div>
+<div class="paragraph"><p>ANL, MCS-TM-38, September 1988</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn04_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn04_pdf_pdf_a_code">lawn04 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn04.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Guidelines for the Design of Symmetric Eigenroutines, SVD, and Iterative Refinement and Condition Estimation for Linear Systems</div><p>by      <strong>J. Demmel, J. Du Croz, S. Hammarling, and D. Sorensen</strong></p></div>
+<div class="paragraph"><p>ANL, MCS-TM-111, March 1988</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn03_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn03_pdf_pdf_a_code">lawn03 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn03.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Computing Small Singular Values of Bidiagonal Matrices with Guaranteed High Relative Accuracy</div><p>by      <strong>J. Demmel and W. Kahan</strong></p></div>
+<div class="paragraph"><p>ANL, MCS-TM-110, February 1988</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn02_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn02_pdf_pdf_a_code">lawn02 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn02.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Block Reduction of Matrices to Condensed Forms for Eigenvalue Computations</div><p>by      <strong>J. Dongarra, S. Hammarling, and D. Sorensen</strong></p></div>
+<div class="paragraph"><p>ANL, MCS-TM-99, September 1987</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lawn01_code_a_href_http_www_netlib_org_lapack_lawnspdf_lawn01_pdf_pdf_a_code">lawn01 <code>[<a href="http://www.netlib.org/lapack/lawnspdf/lawn01.pdf">pdf</a>]</code></h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Prospectus for the Development of a Linear Algebra Library for High-Performance Computers</div><p>by      <strong>J. Demmel, J. Dongarra, J. Du Croz, A. Greenbaum, S. Hammarling, and D. Sorensen</strong></p></div>
+<div class="paragraph"><p>ANL, MCS-TM-97, September 1987</p></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-09-10 14:40:33 PDT
+</div>
+</div>
+</body>
+</html>

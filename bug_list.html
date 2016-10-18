@@ -746,7 +746,7 @@ asciidoc.install(2);
 </div>
 </div>
 <div class="sect1">
-<h2 id="_strong_span_class_red_bug_159_span_strong_dstemr_related_to_splitting_of_a_tridiagonal_new_behavior_introduced_by_fix_to_bug_113"><strong><span class="red">bug 159</span></strong> DSTEMR - related to splitting of a tridiagonal - new behavior introduced by fix to bug #113</h2>
+<h2 id="_strong_span_class_red_bug_159_span_strong_dstemr_with_consolidates_bugs_113_and_126"><strong><span class="red">bug 159</span></strong> DSTEMR - with "consolidates bugs 113 and 126</h2>
 <div class="sectionbody">
 <div class="ulist"><ul>
 <li>
@@ -757,16 +757,6 @@ asciidoc.install(2);
 <li>
 <p>
 Present in LAPACK 3.6.0
-</p>
-</li>
-<li>
-<p>
-Bug reported by Ren-Cang Li in 2016 to Julien
-</p>
-</li>
-<li>
-<p>
-See email to LAPACK team
 </p>
 </li>
 <li>
@@ -843,12 +833,7 @@ Present in LAPACK 3.6.0
 </li>
 <li>
 <p>
-Bug reported by Ren-Cang Li in 2016 to Julien
-</p>
-</li>
-<li>
-<p>
-See email to LAPACK team
+Bug reported by Alexander Kobotov in 2015 to Julien
 </p>
 </li>
 <li>
@@ -1882,7 +1867,7 @@ Confirmed by Julie on July 9th 2015
 </div>
 </div>
 <div class="sect1">
-<h2 id="_strong_span_class_red_bug_126_span_strong_dstemr_related_to_some_splitting_of_the_tridiagonal"><strong><span class="red">bug 126</span></strong> :: DSTEMR -  related to some splitting of the tridiagonal</h2>
+<h2 id="_strong_span_class_red_bug_126_span_strong_dstemr_misbehaviour_of_dlarrf"><strong><span class="red">bug 126</span></strong> :: DSTEMR -  misbehaviour of DLARRF</h2>
 <div class="sectionbody">
 <div class="ulist"><ul>
 <li>
@@ -2339,6 +2324,16 @@ Links: <a href="https://bugs.r-project.org/bugzilla3/show_bug.cgi?id=15211">http
 <li>
 <p>
 The patch is attached to the bug: <a href="https://bugs.r-project.org/bugzilla3/attachment.cgi?id=1478">https://bugs.r-project.org/bugzilla3/attachment.cgi?id=1478</a>
+</p>
+</li>
+<li>
+<p>
+The fix consisted of setting NOFAIL=.false. in subroutine DLARRF.
+</p>
+</li>
+<li>
+<p>
+The above fix may lead subroutine DSTEMR return INFO&gt;0 for tridiagonal matrices with clusters of very tight eigenvalues
 </p>
 </li>
 <li>
@@ -5804,7 +5799,7 @@ xLAHRD will be removed at some point in the future from the distribution
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-06-18 14:10:09 PDT
+Last updated 2016-10-17 20:39:27 PDT
 </div>
 </div>
 </body>

@@ -22,11 +22,9 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
 
 
-== [red]*bug 159* DSTEMR - related to splitting of a tridiagonal - new behavior introduced by fix to bug #113
+== [red]*bug 159* DSTEMR - with "consolidates bugs 113 and 126
 * *CONFIRMED*
 * Present in LAPACK 3.6.0
-* Bug reported by Ren-Cang Li in 2016 to Julien
-* See email to LAPACK team
 * Assigned to Osni.
 * Osni: We have a new subroutine to replace the subroutine causing us trouble.  We will be sitting together (OM and Prof. Parlett) tomorrow to discuss how this will behave.
 * I expect the new version of the subroutine will fix bug 113
@@ -42,7 +40,9 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 == [red]*bug 158* problem with DC SVD least squares
 * *CONFIRMED*
 * Present in LAPACK 3.6.0
-* Bug reported by Ren-Cang Li in 2016 to Julien
+* Bug reported by Alexander Kobotov in 2015 to Julien
+* Problem of size ~22K with a large number of singular values close to 1.
+* dlasd7 fails to merge two sets of (very close) singular values together into a single sorted set, and subsequently dlasd4 (secular equation solver) fails to converge.
 * See email to LAPACK team
 * Assigned to Osni.
 
@@ -53,13 +53,13 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 * Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4748
 * Confirmed by Julie on July 9th 2015
 
-== [red]*bug 126* :: DSTEMR -  related to some splitting of the tridiagonal
+== [red]*bug 126* :: DSTEMR -  misbehaviour of DLARRF
 * *CONFIRMED* on Jun 24th 2015
 * Present in LAPACK 3.5.0
 * Bug reported by Miroslav Ilias on Jun 27th
 * Link: http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=2&t=1820
 * Assigned to Osni
-* 02/10/16 Osni: The bug is actually not related to splitting but rather a misbehaviour of dlarrf; see bug 113.
+* 02/10/16 Osni: The bug was originally thought to be related to splitting but is rather a misbehavior of DLARRF (in the presence of very tight eigenvalues); see bug 113.
 * SEE BUG 113 for all updates (will be closed along with 113)
 
 == [maroon]*bug116* :: ZGGEV fails but Matlab works

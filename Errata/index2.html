@@ -765,7 +765,7 @@ asciidoc.install(2);
 </div>
 </div>
 <div class="sect1">
-<h2 id="_strong_span_class_red_bug_159_span_strong_dstemr_related_to_splitting_of_a_tridiagonal_new_behavior_introduced_by_fix_to_bug_113"><strong><span class="red">bug 159</span></strong> DSTEMR - related to splitting of a tridiagonal - new behavior introduced by fix to bug #113</h2>
+<h2 id="_strong_span_class_red_bug_159_span_strong_dstemr_with_consolidates_bugs_113_and_126"><strong><span class="red">bug 159</span></strong> DSTEMR - with "consolidates bugs 113 and 126</h2>
 <div class="sectionbody">
 <div class="ulist"><ul>
 <li>
@@ -776,16 +776,6 @@ asciidoc.install(2);
 <li>
 <p>
 Present in LAPACK 3.6.0
-</p>
-</li>
-<li>
-<p>
-Bug reported by Ren-Cang Li in 2016 to Julien
-</p>
-</li>
-<li>
-<p>
-See email to LAPACK team
 </p>
 </li>
 <li>
@@ -862,7 +852,17 @@ Present in LAPACK 3.6.0
 </li>
 <li>
 <p>
-Bug reported by Ren-Cang Li in 2016 to Julien
+Bug reported by Alexander Kobotov in 2015 to Julien
+</p>
+</li>
+<li>
+<p>
+Problem of size ~22K with a large number of singular values close to 1.
+</p>
+</li>
+<li>
+<p>
+dlasd7 fails to merge two sets of (very close) singular values together into a single sorted set, and subsequently dlasd4 (secular equation solver) fails to converge.
 </p>
 </li>
 <li>
@@ -911,7 +911,7 @@ Confirmed by Julie on July 9th 2015
 </div>
 </div>
 <div class="sect1">
-<h2 id="_strong_span_class_red_bug_126_span_strong_dstemr_related_to_some_splitting_of_the_tridiagonal"><strong><span class="red">bug 126</span></strong> :: DSTEMR -  related to some splitting of the tridiagonal</h2>
+<h2 id="_strong_span_class_red_bug_126_span_strong_dstemr_misbehaviour_of_dlarrf"><strong><span class="red">bug 126</span></strong> :: DSTEMR -  misbehaviour of DLARRF</h2>
 <div class="sectionbody">
 <div class="ulist"><ul>
 <li>
@@ -941,7 +941,7 @@ Assigned to Osni
 </li>
 <li>
 <p>
-02/10/16 Osni: The bug is actually not related to splitting but rather a misbehaviour of dlarrf; see bug 113.
+02/10/16 Osni: The bug was originally thought to be related to splitting but is rather a misbehavior of DLARRF (in the presence of very tight eigenvalues); see bug 113.
 </p>
 </li>
 <li>
@@ -1045,7 +1045,7 @@ two outstanding issues: (1) how do we go to fix this?, (2) more LAPACK subroutin
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-06-18 15:56:54 PDT
+Last updated 2016-10-17 20:39:33 PDT
 </div>
 </div>
 </body>

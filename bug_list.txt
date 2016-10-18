@@ -4,11 +4,9 @@ LAPACK BUG LIST
 link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
 
-== [red]*bug 159* DSTEMR - related to splitting of a tridiagonal - new behavior introduced by fix to bug #113
+== [red]*bug 159* DSTEMR - with "consolidates bugs 113 and 126
 * *CONFIRMED*
 * Present in LAPACK 3.6.0
-* Bug reported by Ren-Cang Li in 2016 to Julien
-* See email to LAPACK team
 * Assigned to Osni.
 * Osni: We have a new subroutine to replace the subroutine causing us trouble.  We will be sitting together (OM and Prof. Parlett) tomorrow to discuss how this will behave.
 * I expect the new version of the subroutine will fix bug 113
@@ -24,8 +22,7 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 == [red]*bug 158* problem with DC SVD least squares
 * *CONFIRMED*
 * Present in LAPACK 3.6.0
-* Bug reported by Ren-Cang Li in 2016 to Julien
-* See email to LAPACK team
+* Bug reported by Alexander Kobotov in 2015 to Julien
 * Assigned to Osni.
 
 == [green]*bug 157* gesdd , gesvd, and bdsdc Workspace computation
@@ -251,7 +248,7 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 * Link http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=13&t=4745
 * Confirmed by Julie on July 9th 2015
 
-== [red]*bug 126* :: DSTEMR -  related to some splitting of the tridiagonal
+== [red]*bug 126* :: DSTEMR -  misbehaviour of DLARRF
 * *CONFIRMED* on Jun 24th
 * Present in LAPACK 3.5.0
 * Bug reported by Miroslav Ilias on Jun 27th
@@ -351,6 +348,8 @@ link:http://www.netlib.org/lapack/WishList/[Wishlist]
 * Assigned to Osni (UC Berkeley) on Feb 11th 2015
 * Links: https://bugs.r-project.org/bugzilla3/show_bug.cgi?id=15211
 * The patch is attached to the bug: https://bugs.r-project.org/bugzilla3/attachment.cgi?id=1478
+* The fix consisted of setting NOFAIL=.false. in subroutine DLARRF.
+* The above fix may lead subroutine DSTEMR return INFO>0 for tridiagonal matrices with clusters of very tight eigenvalues
 * Confirmed by Osni on Mon, 06 Apr 2015
 * Corrected by Osni on Mon May 4th 2015
 * Corrected by Osni on Oct 26th 2015

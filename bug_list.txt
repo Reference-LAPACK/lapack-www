@@ -4,7 +4,7 @@ LAPACK BUG LIST
 link:http://www.netlib.org/lapack/WishList/[Wishlist]
 
 
-== [red]*bug 159* DSTEMR - with "consolidates bugs 113 and 126
+== [red]*bug 159* DSTEMR - consolidates bugs 113 and 126
 * *CONFIRMED*
 * Present in LAPACK 3.6.0
 * Assigned to Osni.

@@ -302,7 +302,7 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
 === LAPACK, version 3.7.0
 
- - Download: http://www.netlib.org/lapack/lapack-3.6.1.tgz[lapack-3.7.0.tgz] 
+ - Download: http://www.netlib.org/lapack/lapack-3.7.0.tgz[lapack-3.7.0.tgz] 
  - link:lapack-3.7.0.html[LAPACK 3.7.0 Release Notes]
  - Updated:  December 24, 2016
 

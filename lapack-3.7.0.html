@@ -738,11 +738,11 @@ asciidoc.install();
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph"><p>Release date: 12/23.</p></div>
+<div class="paragraph"><p>Release date: 12/24/16.</p></div>
 <div class="paragraph"><p>This material is based upon work supported by the National Science Foundation
-and the Department of Energy under Grant No. NSF-OCI-1032861, NSF-CCF-00444486,
-NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127, DOE-DE-FC02-01ER25478,
-DOE-DE-FC02-06ER25768.</p></div>
+and the Department of Energy under Grant No. NSF ACI 1339797, NSF-OCI-1032861,
+NSF-CCF-00444486, NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127,
+DOE-DE-FC02-01ER25478, DOE-DE-FC02-06ER25768.</p></div>
 <div class="paragraph"><p>LAPACK is a software package provided by Univ. of Tennessee, Univ. of
 California, Berkeley, Univ. of Colorado Denver and NAG Ltd..</p></div>
 </div>
@@ -751,249 +751,261 @@ California, Berkeley, Univ. of Colorado Denver and NAG Ltd..</p></div>
 <h2 id="_1_support_and_questions">1. Support and questions:</h2>
 <div class="sectionbody">
 <div class="paragraph"><p><a href="http://icl.cs.utk.edu/lapack-forum/">http://icl.cs.utk.edu/lapack-forum/</a></p></div>
+<div class="paragraph"><p><a href="https://github.com/Reference-LAPACK/lapack/">https://github.com/Reference-LAPACK/lapack/</a></p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2_thanks">2. Thanks</h2>
+<h2 id="_2_lapack_3_7_0_what_8217_s_new">2. LAPACK 3.7.0: What&#8217;s new</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Thanks for bug-report/patches/suggestions to:</p></div>
-<div class="paragraph"><p>Forum users:</p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_3_lapack_3_7_0_what_8217_s_new">3. LAPACK 3.7.0: What&#8217;s new</h2>
+<h2 id="_2_1_linear_least_squares_minimum_norm_solution">2.1. Linear Least Squares / Minimum Norm solution</h2>
 <div class="sectionbody">
+<div class="paragraph"><p>A contribution from Syd Hashemi Ghermezi (UC Berkeley), Jim Demmel (UC Berkeley),
+with some help from Eugene Chereshnev (Intel) and Konstantin Arturov (Intel).</p></div>
 <div class="ulist"><ul>
 <li>
 <p>
-[Zlatko]
+New TP (triangle on top of trapezoid kernels for LQ factorization
 </p>
 </li>
 <li>
 <p>
-[Syd Hashemi Ghermezi and Jim Demmel, UC Berkeley] <strong>Linear Least Squares: Short and Wide LQ (SWLQ) and Tall and Skinny QR (TSQR)</strong>
+Short and Wide LQ (SWLQ) and Tall and Skinny QR (TSQR) factorization
 </p>
 </li>
 <li>
 <p>
-[Azzam Haidar (University of Tennessee)] <strong>Symmetric eigenvalue problem: Two-stage algorithm for reduction to tridiagonal form</strong> ?
+New interface for QR and LQ factorization is GEQR and GELQ
 </p>
 </li>
 <li>
 <p>
-[Azzam Haidar (University of Tennessee)] <strong>Singular value decomposition: Two-stage algorithm for reduction to bidiagonal form</strong>
+Corresponding Linear Least Squares / Minimum Norm solution driver (GETSLS)
 </p>
 </li>
 </ul></div>
 <div class="paragraph"><p>Added:</p></div>
 <div class="literalblock">
 <div class="content">
-<pre><code>SRC/chb2st_kernels.f
-SRC/chbev_2stage.f
-SRC/chbevd_2stage.f
-SRC/chbevx_2stage.f
-SRC/cheev_2stage.f
-SRC/cheevd_2stage.f
-SRC/cheevr_2stage.f
-SRC/cheevx_2stage.f
-SRC/chegv_2stage.f
-SRC/chetrd_2stage.f
-SRC/chetrd_hb2st.f
-SRC/chetrd_he2hb.f
-SRC/clarfy.f</code></pre>
+<pre><code>SRC/cgelq.f             SRC/dgelq.f             SRC/sgelq.f             SRC/zgelq.f
+SRC/cgelqt.f            SRC/dgelqt.f            SRC/sgelqt.f            SRC/zgelqt.f
+SRC/cgelqt3.f           SRC/dgelqt3.f           SRC/sgelqt3.f           SRC/zgelqt3.f
+SRC/cgemlq.f            SRC/dgemlq.f            SRC/sgemlq.f            SRC/zgemlq.f
+SRC/cgemlqt.f           SRC/dgemlqt.f           SRC/sgemlqt.f           SRC/zgemlqt.f
+SRC/cgemqr.f            SRC/dgemqr.f            SRC/sgemqr.f            SRC/zgemqr.f
+SRC/cgeqr.f             SRC/dgeqr.f             SRC/sgeqr.f             SRC/zgeqr.f
+SRC/cgetsls.f           SRC/dgetsls.f           SRC/sgetsls.f           SRC/zgetsls.f
+SRC/clamswlq.f          SRC/dlamswlq.f          SRC/slamswlq.f          SRC/zlamswlq.f
+SRC/clamtsqr.f          SRC/dlamtsqr.f          SRC/slamtsqr.f          SRC/zlamtsqr.f
+SRC/claswlq.f           SRC/dlaswlq.f           SRC/slaswlq.f           SRC/zlaswlq.f
+SRC/clatsqr.f           SRC/dlatsqr.f           SRC/slatsqr.f           SRC/zlatsqr.f
+SRC/ctplqt.f            SRC/dtplqt.f            SRC/stplqt.f            SRC/ztplqt.f
+SRC/ctplqt2.f           SRC/dtplqt2.f           SRC/stplqt2.f           SRC/ztplqt2.f
+SRC/ctpmlqt.f           SRC/dtpmlqt.f           SRC/stpmlqt.f           SRC/ztpmlqt.f</code></pre>
 </div></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>SRC/dlarfy.f
-SRC/dsb2st_kernels.f
-SRC/dsbev_2stage.f
-SRC/dsbevd_2stage.f
-SRC/dsbevx_2stage.f
-SRC/dsyev_2stage.f
-SRC/dsyevd_2stage.f
-SRC/dsyevr_2stage.f
-SRC/dsyevx_2stage.f
-SRC/dsygv_2stage.f
-SRC/dsytrd_2stage.f
-SRC/dsytrd_hb2st.f
-SRC/dsytrd_he2hb.f
-SRC/iparam2stage.f
-SRC/slarfy.f
-SRC/ssb2st_kernels.f
-SRC/ssbev_2stage.f
-SRC/ssbevd_2stage.f
-SRC/ssbevx_2stage.f
-SRC/ssyev_2stage.f
-SRC/ssyevd_2stage.f
-SRC/ssyevr_2stage.f
-SRC/ssyevx_2stage.f
-SRC/ssygv_2stage.f
-SRC/ssytrd_2stage.f
-SRC/ssytrd_hb2st.f
-SRC/ssytrd_he2hb.f
-SRC/zhb2st_kernels.f
-SRC/zhbev_2stage.f
-SRC/zhbevd_2stage.f
-SRC/zhbevx_2stage.f
-SRC/zheev_2stage.f
-SRC/zheevd_2stage.f
-SRC/zheevr_2stage.f
-SRC/zheevx_2stage.f
-SRC/zhegv_2stage.f
-SRC/zhetrd_2stage.f
-SRC/zhetrd_hb2st.f
-SRC/zhetrd_he2hb.f
-SRC/zlarfy.f</code></pre>
-</div></div>
+<div class="paragraph"><p>References:</p></div>
 <div class="ulist"><ul>
 <li>
 <p>
-[Ichitaro Yamazaki, University of Tennessee] <strong>Symmetric-indefinite Factorization: Aasen’s tridiagonalization</strong>
+Brian C. Gunter and Robert A. Van De Geijn, Parallel out-of-core computation
+and updating of the QR factorization, ACM Transactions on Mathematical
+Software, 31(1):60-78, 2005.
+</p>
+</li>
+<li>
+<p>
+James Demmel, Laura Grigori, Mark Hoemmen, and Julien Langou.
+Communication-Optimal Parallel and Sequential QR and LU Factorizations. SIAM J.
+Scientific Computing, 34(1):A206&#8212;A239, 2012.
 </p>
 </li>
 </ul></div>
-<div class="paragraph"><p>Reference: The algorithm that we implemented is described in: <a href="http://dl.acm.org/citation.cfm?id=1916462">http://dl.acm.org/citation.cfm?id=1916462</a></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_2_symmetric_indefinite_factorization_aasen_8217_s_tridiagonalization">2.2. Symmetric-indefinite Factorization: Aasen&#8217;s tridiagonalization</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>A contribution from Ichitaro Yamazaki (University of Tennessee).</p></div>
+<div class="paragraph"><p>This is Aasen&#8217;s factorization for symmetric-indefinite factorization.</p></div>
 <div class="paragraph"><p>Added:</p></div>
 <div class="literalblock">
 <div class="content">
-<pre><code>SRC/chesv_aa.f
-SRC/chetrf_aa.f
-SRC/chetrs_aa.f
-SRC/clahef_aa.f
-SRC/clasyf_aa.f
-SRC/csysv_aa.f
-SRC/csytrf_aa.f
-SRC/csytrs_aa.f
-SRC/dlasyf_aa.f
-SRC/dsysv_aa.f
-SRC/dsytrf_aa.f
-SRC/dsytrs_aa.f
-SRC/slasyf_aa.f
-SRC/ssysv_aa.f
-SRC/ssytrf_aa.f
-SRC/ssytrs_aa.f
-SRC/zhesv_aa.f
-SRC/zhetrf_aa.f
-SRC/zhetrs_aa.f
-SRC/zlahef_aa.f
-SRC/zlasyf_aa.f
-SRC/zsysv_aa.f
-SRC/zsytrf_aa.f
-SRC/zsytrs_aa.f</code></pre>
+<pre><code>SRC/chesv_aa.f       SRC/dsysv_aa.f       SRC/ssysv_aa.f        SRC/zhesv_aa.f
+SRC/chetrf_aa.f      SRC/dsytrf_aa.f      SRC/ssytrf_aa.f       SRC/zhetrf_aa.f
+SRC/chetrs_aa.f      SRC/dsytrs_aa.f      SRC/ssytrs_aa.f       SRC/zhetrs_aa.f
+SRC/clahef_aa.f      SRC/dlasyf_aa.f      SRC/slasyf_aa.f       SRC/zlahef_aa.f</code></pre>
 </div></div>
+<div class="paragraph"><p>References:</p></div>
 <div class="ulist"><ul>
 <li>
 <p>
-[Igor Kozachenko, Jim Demmel, UC Berkeley] <strong>Symmetric-indefinite Factorization: New storage format for L factor in Rook Pivoting and Bunch Kaufman of LDLT, storage format akin to LU, enables Level 3 BLAS TRS and TRI</strong>
-</p>
-</li>
-</ul></div>
-<div class="paragraph"><p>Added routines for new factorization code for symmetric indefinite (or Hermitian indefinite) matrices
-with bounded Bunch-Kaufman (rook) pivoting algorithm.
-( new storage format for factors U( or L ) and D, and pivoting information IPIV ).</p></div>
-<div class="paragraph"><p>factor L is stored explicitly in lower triangle of A;
-diagonal of D is stored on the diagonal of A;
-subdiagonal elements of D are stored in array E;
-IPIV format is the same as in *_ROOK routines.</p></div>
-<div class="paragraph"><p>Added DOUBLE PRECISION (symmetric indefinite matrices):</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>SRC/dsytf2_rk.f BLAS2 unblocked factorization
-SRC/dlasyf_rk.f BLAS3 auxiliary blocked partial factorization
-SRC/dsytrf_rk.f BLAS3 factorization
-SRC/dsytrs_3.f BLAS3 solver
-SRC/dsycon_3.f BLAS3 condition number estimator
-SRC/dsytri_3.f  BLAS3 inversion
-SRC/dsytri_3x.f BLAS3 inversion auxiliary
-SRC/dsysv_rk.f BLAS3 driver</code></pre>
-</div></div>
-<div class="paragraph"><p>Added REAL (symmetric indefinite matrices):</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>SRC/ssytf2_rk.f BLAS2 unblocked factorization
-SRC/slasyf_rk.f BLAS3 auxiliary blocked partial factorization
-SRC/ssytrf_rk.f BLAS3 factorization
-SRC/ssytrs_3.f BLAS3 solver
-SRC/ssycon_3.f BLAS3 condition number estimator
-SRC/ssytri_3.f  BLAS3 inversion
-SRC/ssytri_3x.f BLAS3 inversion auxiliary
-SRC/ssysv_rk.f BLAS3 driver</code></pre>
-</div></div>
-<div class="paragraph"><p>Added COMPLEX*16 (symmetric indefinite matrices):</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>SRC/zsytf2_rk.f BLAS2 unblocked factorization
-SRC/zlasyf_rk.f BLAS3 auxiliary blocked partial factorization
-SRC/zsytrf_rk.f BLAS3 factorization
-SRC/zsytrs_3.f BLAS3 solver
-SRC/zsycon_3.f BLAS3 condition number estimator
-SRC/zsytri_3.f  BLAS3 inversion
-SRC/zsytri_3x.f BLAS3 inversion auxiliary
-SRC/zsysv_rk.f BLAS3 driver</code></pre>
-</div></div>
-<div class="paragraph"><p>Added COMPLEX*16 (Hermitian indefinite matrices):</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>SRC/zhetf2_rk.f BLAS2 unblocked factorization
-SRC/zlahef_rk.f BLAS3 auxiliary blocked partial factorization
-SRC/zhetrf_rk.f BLAS3 factorization
-SRC/zhetrs_3.f BLAS3 solver
-SRC/zhecon_3.f BLAS3 condition number estimator
-SRC/zhetri_3.f  BLAS3 inversion
-SRC/zhetri_3x.f BLAS3 inversion auxiliary
-SRC/zhesv_rk.f BLAS3 driver</code></pre>
-</div></div>
-<div class="paragraph"><p>Added COMPLEX (symmetric indefinite matrices):</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>SRC/csytf2_rk.f BLAS2 unblocked factorization
-SRC/clasyf_rk.f BLAS3 auxiliary blocked partial factorization
-SRC/csytrf_rk.f BLAS3 factorization
-SRC/csytrs_3.f BLAS3 solver
-SRC/csycon_3.f BLAS3 condition number estimator
-SRC/csytri_3.f  BLAS3 inversion
-SRC/csytri_3x.f BLAS3 inversion auxiliary
-SRC/csysv_rk.f BLAS3 driver</code></pre>
-</div></div>
-<div class="paragraph"><p>Added COMPLEX (Hermitian indefinite matrices):</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>SRC/chetf2_rk.f BLAS2 unblocked factorization
-SRC/clahef_rk.f BLAS3 auxiliary blocked partial factorization
-SRC/chetrf_rk.f BLAS3 factorization
-SRC/chetrs_3.f BLAS3 solver
-SRC/checon_3.f BLAS3 condition number estimator
-SRC/chetri_3.f  BLAS3 inversion
-SRC/chetri_3x.f BLAS3 inversion auxiliary
-SRC/chesv_rk.f BLAS3 driver</code></pre>
-</div></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_4_external_contributors">4. External Contributors</h2>
-<div class="sectionbody">
-<div class="ulist"><ul>
-<li>
-<p>
-<a href="https://github.com/Reference-LAPACK/lapack/graphs/contributors">Contributor</a>
+Miroslav Rozloznik, Gil Shklarski, and Sivan Toledo, Partitioned triangular
+tridiagonalization, ACM Transactions on Mathematical Software,
+37(4), article 38, 16 pages, 2011
 </p>
 </li>
 <li>
 <p>
-<a href="log_contributor_3.7.0.txt">Contributor list with Short log</a>
+Jan Ole Aasen, On the reduction of a symmetric matrix to tridiagonal form,
+BIT, 11 (1971), pp. 233–242.
 </p>
 </li>
 </ul></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_5_thanks">5. Thanks</h2>
+<h2 id="_2_3_symmetric_indefinite_factorization_new_storage_format_for_l_factor_in_rook_pivoting_and_bunch_kaufman_of_ldlt">2.3. Symmetric-indefinite Factorization: New storage format for L factor in Rook Pivoting and Bunch Kaufman of LDLT</h2>
 <div class="sectionbody">
+<div class="paragraph"><p>A contribution from Igor Kozachenko and Jim Demmel (UC Berkeley).</p></div>
+<div class="paragraph"><p>This storage format is akin to LU and enables Level 3 BLAS TRS and TRI.  Added
+routines for new factorization code for symmetric indefinite ( or Hermitian
+indefinite ) matrices with bounded Bunch-Kaufman ( rook ) pivoting algorithm.
+New more efficient storage format for factors U (or L), block-diagonal matrix
+D, and pivoting information stored in IPIV: factor L is stored explicitly in
+lower triangle of A; diagonal of D is stored on the diagonal of A; subdiagonal
+elements of D are stored in array E; IPIV format is the same as in *_ROOK
+routines, but differs from SY Bunch-Kaufman routines (e.g. *SYTRF).  The
+factorization output of these new rook _RK routines is not compatible with the
+existing _ROOK routines and vice versa. This new factorization format is
+designed in such a way, that there is a possibility in the future to write new
+Bunch-Kaufman routines that conform to this new factorization format.  Then the
+future Bunch-Kaufman routines could share solver *TRS_3,inversion *TRI_3 and
+condition estimator *CON_3.</p></div>
+<div class="paragraph"><p>Added:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>SRC/dsytf2_rk.f     SRC/ssytf2_rk.f      SRC/zsytf2_rk.f     SRC/zhetf2_rk.f      SRC/csytf2_rk.f  SRC/chetf2_rk.f
+SRC/dlasyf_rk.f     SRC/slasyf_rk.f      SRC/zlasyf_rk.f     SRC/zlahef_rk.f      SRC/clasyf_rk.f  SRC/clahef_rk.f
+SRC/dsytrf_rk.f     SRC/ssytrf_rk.f      SRC/zsytrf_rk.f     SRC/zhetrf_rk.f      SRC/csytrf_rk.f  SRC/chetrf_rk.f
+SRC/dsytrs_3.f      SRC/ssytrs_3.f       SRC/zsytrs_3.f      SRC/zhetrs_3.f       SRC/csytrs_3.f   SRC/chetrs_3.f
+SRC/dsycon_3.f      SRC/ssycon_3.f       SRC/zsycon_3.f      SRC/zhecon_3.f       SRC/csycon_3.f   SRC/checon_3.f
+SRC/dsytri_3.f      SRC/ssytri_3.f       SRC/zsytri_3.f      SRC/zhetri_3.f       SRC/csytri_3.f   SRC/chetri_3.f
+SRC/dsytri_3x.f     SRC/ssytri_3x.f      SRC/zsytri_3x.f     SRC/zhetri_3x.f      SRC/csytri_3x.f  SRC/chetri_3x.f
+SRC/dsysv_rk.f      SRC/ssysv_rk.f       SRC/zsysv_rk.f      SRC/zhesv_rk.f       SRC/csysv_rk.f   SRC/chesv_rk.f</code></pre>
+</div></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_6_developer_list">6. Developer list</h2>
+<h2 id="_2_4_symmetric_eigenvalue_problem_two_stage_algorithm_for_reduction_to_tridiagonal_form">2.4. Symmetric eigenvalue problem: Two-stage algorithm for reduction to tridiagonal form</h2>
 <div class="sectionbody">
+<div class="paragraph"><p>A contribution from Azzam Haidar (University of Tennessee).</p></div>
+<div class="paragraph"><p>This is the two-stage algorithm for reduction to tridiagonal form. Based on an algorithm from Lang.</p></div>
+<div class="paragraph"><p>Added:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>SRC/chb2st_kernels.f    SRC/dsb2st_kernels.f    SRC/ssb2st_kernels.f    SRC/zhb2st_kernels.f
+SRC/chbev_2stage.f      SRC/dsbev_2stage.f      SRC/ssbev_2stage.f      SRC/zhbev_2stage.f
+SRC/chbevd_2stage.f     SRC/dsbevd_2stage.f     SRC/ssbevd_2stage.f     SRC/zhbevd_2stage.f
+SRC/chbevx_2stage.f     SRC/dsbevx_2stage.f     SRC/ssbevx_2stage.f     SRC/zhbevx_2stage.f
+SRC/cheev_2stage.f      SRC/dsyev_2stage.f      SRC/ssyev_2stage.f      SRC/zheev_2stage.f
+SRC/cheevd_2stage.f     SRC/dsyevd_2stage.f     SRC/ssyevd_2stage.f     SRC/zheevd_2stage.f
+SRC/cheevr_2stage.f     SRC/dsyevr_2stage.f     SRC/ssyevr_2stage.f     SRC/zheevr_2stage.f
+SRC/cheevx_2stage.f     SRC/dsyevx_2stage.f     SRC/ssyevx_2stage.f     SRC/zheevx_2stage.f
+SRC/chegv_2stage.f      SRC/dsygv_2stage.f      SRC/ssygv_2stage.f      SRC/zhegv_2stage.f
+SRC/chetrd_2stage.f     SRC/dsytrd_2stage.f     SRC/ssytrd_2stage.f     SRC/zhetrd_2stage.f
+SRC/chetrd_hb2st.F      SRC/dsytrd_sb2st.F      SRC/ssytrd_sb2st.F      SRC/zhetrd_hb2st.F
+SRC/chetrd_he2hb.f      SRC/dsytrd_sy2sb.f      SRC/ssytrd_sy2sb.f      SRC/zhetrd_he2hb.f
+SRC/clarfy.f            SRC/dlarfy.f            SRC/slarfy.f            SRC/zlarfy.f</code></pre>
+</div></div>
+<div class="paragraph"><p>References:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Christian H. Bischof, Bruno Lang, and Xiaobai Sun, A framework for symmetric
+band reduction, ACM Transactions on Mathematical Software, 26(4): 581-601,
+2000.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_5_improved_complex_jacobi_svd">2.5.  Improved Complex Jacobi SVD</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>A contribution from Zlatko Drmac (University of Zagreb).</p></div>
+<div class="paragraph"><p>(1) LWORK query added; (2) few modifications in pure one sided Jacobi (XGESVJ)
+to remove possible error in the really extreme cases (sigma_max close to
+overflow and sigma_min close to underflow) - note that XGESVJ is designed to
+compute the singular values in the full range; it was used (double complex) to
+compute SVD of certain factored Hankel matrices with the condition number
+1.0e616; (3) <code>same</code> modifications in the preconditioned Jacobi SVD (XGEJSV),
+the idea is also to extend the computational range, this brings assumptions on
+how other lapack routines behave under those extreme conditions.</p></div>
+<div class="paragraph"><p>Modified:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>SRC/cgejsv.f    SRC/zgejsv.f
+SRC/cgesvj.f    SRC/zgesvj.f
+SRC/cgsvj0.f    SRC/zgsvj0.f
+SRC/cgsvj1.f    SRC/zgsvj1.f</code></pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_6_lapacke_interfaces">2.6. LAPACKE interfaces</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>A contribution from Julie Langou (University of Tennessee).</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_developer_list">3. Developer list</h2>
+<div class="sectionbody">
+<div class="ulist"><div class="title">External Contributors</div><ul>
+<li>
+<p>
+Konstantin Arturov, Intel
+</p>
+</li>
+<li>
+<p>
+Eugene Chereshnev, Intel
+</p>
+</li>
+<li>
+<p>
+Zlatko Drmac, University of Zagreb
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">LAPACK developers involved in this release</div><ul>
+<li>
+<p>
+Mark Gates (University of Tennessee)
+</p>
+</li>
+<li>
+<p>
+Syd Hashemi Ghermezi (UC Berkeley)
+</p>
+</li>
+<li>
+<p>
+Azzam Haidar (University of Tennessee)
+</p>
+</li>
+<li>
+<p>
+Igor Kozachenko  (University of California,  Berkeley, USA)
+</p>
+</li>
+<li>
+<p>
+Julie Langou (University of Tennessee, USA)
+</p>
+</li>
+<li>
+<p>
+Osni Marques (University of California,  Berkeley, USA)
+</p>
+</li>
+<li>
+<p>
+Ichitaro Yamazaki (University of Tennessee)
+</p>
+</li>
+</ul></div>
 <div class="ulist"><div class="title">Principal Investigators</div><ul>
 <li>
 <p>
@@ -1011,47 +1023,94 @@ Julien Langou (University of Colorado Denver, USA)
 </p>
 </li>
 </ul></div>
-<div class="ulist"><div class="title">LAPACK developers involved in this release</div><ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_thanks">4. Thanks</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
 <li>
 <p>
-Julie Langou (University of Tennessee, USA)
+MathWorks: Penny Anderson, Amanda Barry, Mary Ann Freeman, Bobby Cheng,
+Duncan Po, Pat Quillen, Christine Tobler.
 </p>
 </li>
 <li>
 <p>
-Azzam Haidar (University of Tennessee, USA)
+Intel: Konstantin Arturov, Vladimír Chalupecký, Eugene Chereshnev
 </p>
 </li>
 <li>
 <p>
-Mark Gates (University of Tennessee, USA)
+ORACLE: Elena Ivanov.
 </p>
 </li>
 <li>
 <p>
-Ichitaro Yamazak  (University of Tennessee, USA)
+IBM: Peng HongBo, Joan McComb, and Yi LB Peng.
 </p>
 </li>
 <li>
 <p>
-Osni Marques (University of California,  Berkeley, USA)
+Cygwin: Marco Atzeri
 </p>
 </li>
 <li>
 <p>
-Igor Kozachenko  (University of California,  Berkeley, USA)
+GitHub Users: <a href="mailto:turboencabulator@github">turboencabulator@github</a>, <a href="mailto:cmoha@github">cmoha@github</a>, <a href="mailto:banzaiman@github">banzaiman@github</a>, <a href="mailto:advanpix@github">advanpix@github</a>,
+<a href="mailto:reeuwijk-altium@github">reeuwijk-altium@github</a>, <a href="mailto:brandimarte@github">brandimarte@github</a>, <a href="mailto:zerothi@github">zerothi@github</a>
+</p>
+</li>
+<li>
+<p>
+Christoph Conrads
+</p>
+</li>
+<li>
+<p>
+J. Kay Dewhurst (Max Planck Institute of Microstructure Physics)
+</p>
+</li>
+<li>
+<p>
+Kyle Guinn
+</p>
+</li>
+<li>
+<p>
+Berend Hasselman
+</p>
+</li>
+<li>
+<p>
+Pavel Holoborodko
+</p>
+</li>
+<li>
+<p>
+Hans Johnson (Univeristy of Iowa)
+</p>
+</li>
+<li>
+<p>
+Nick Papior
+</p>
+</li>
+<li>
+<p>
+Antonio Rojas
+</p>
+</li>
+<li>
+<p>
+Julien Schueller (Phimeca)
 </p>
 </li>
 </ul></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_7_more_details">7. More details</h2>
-<div class="sectionbody">
-</div>
-</div>
-<div class="sect1">
-<h2 id="_8_bug_fix">8.  Bug Fix</h2>
+<h2 id="_5_bug_fix">5.  Bug Fix</h2>
 <div class="sectionbody">
 <div class="ulist"><ul>
 <li>
@@ -1076,7 +1135,7 @@ Igor Kozachenko  (University of California,  Berkeley, USA)
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-23 17:03:01 PST
+Last updated 2016-12-24 05:37:02 PST
 </div>
 </div>
 </body>

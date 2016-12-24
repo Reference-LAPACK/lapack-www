@@ -1,12 +1,12 @@
 LAPACK 3.7.0
 ============
 
-Release date: 12/2016.
+Release date: 12/24/16.
 
 This material is based upon work supported by the National Science Foundation
-and the Department of Energy under Grant No. NSF-OCI-1032861, NSF-CCF-00444486,
-NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127, DOE-DE-FC02-01ER25478,
-DOE-DE-FC02-06ER25768.
+and the Department of Energy under Grant No. NSF ACI 1339797, NSF-OCI-1032861,
+NSF-CCF-00444486, NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127,
+DOE-DE-FC02-01ER25478, DOE-DE-FC02-06ER25768.
 
 LAPACK is a software package provided by Univ. of Tennessee, Univ. of
 California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
@@ -17,215 +17,183 @@ California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
 
 http://icl.cs.utk.edu/lapack-forum/
 
-2. Thanks
----------
+https://github.com/Reference-LAPACK/lapack/
 
-Thanks for bug-report/patches/suggestions to:
-
-
-Forum users:
-     
-
-3. LAPACK 3.7.0: What's new
+2. LAPACK 3.7.0: What's new
 ---------------------------
 
- * [Zlatko]
+2.1. Linear Least Squares / Minimum Norm solution
+-------------------------------------------------
 
- * [Syd Hashemi Ghermezi and Jim Demmel, UC Berkeley] *Linear Least Squares: Short and Wide LQ (SWLQ) and Tall and Skinny QR (TSQR)*
- 
- * [Azzam Haidar (University of Tennessee)] *Symmetric eigenvalue problem: Two-stage algorithm for reduction to tridiagonal form* ?
- 
- * [Azzam Haidar (University of Tennessee)] *Singular value decomposition: Two-stage algorithm for reduction to bidiagonal form* 
- 
- 
-Added:
+A contribution from Syd Hashemi Ghermezi (UC Berkeley), Jim Demmel (UC Berkeley),
+with some help from Eugene Chereshnev (Intel) and Konstantin Arturov (Intel).
 
-	 SRC/chb2st_kernels.f
-	 SRC/chbev_2stage.f
-	 SRC/chbevd_2stage.f
-	 SRC/chbevx_2stage.f
-	 SRC/cheev_2stage.f
-	 SRC/cheevd_2stage.f
-	 SRC/cheevr_2stage.f
-	 SRC/cheevx_2stage.f
-	 SRC/chegv_2stage.f
-	 SRC/chetrd_2stage.f
-	 SRC/chetrd_hb2st.f
-	 SRC/chetrd_he2hb.f
-	 SRC/clarfy.f
-	 
-	 SRC/dlarfy.f
-	 SRC/dsb2st_kernels.f
-	 SRC/dsbev_2stage.f
-	 SRC/dsbevd_2stage.f
-	 SRC/dsbevx_2stage.f
-	 SRC/dsyev_2stage.f
-	 SRC/dsyevd_2stage.f
-	 SRC/dsyevr_2stage.f
-	 SRC/dsyevx_2stage.f
-	 SRC/dsygv_2stage.f
-	 SRC/dsytrd_2stage.f
-	 SRC/dsytrd_hb2st.f
-	 SRC/dsytrd_he2hb.f
-	 
-	 SRC/iparam2stage.f
-	 
-	 SRC/slarfy.f
-	 SRC/ssb2st_kernels.f
-	 SRC/ssbev_2stage.f
-	 SRC/ssbevd_2stage.f
-	 SRC/ssbevx_2stage.f
-	 SRC/ssyev_2stage.f
-	 SRC/ssyevd_2stage.f
-	 SRC/ssyevr_2stage.f
-	 SRC/ssyevx_2stage.f
-	 SRC/ssygv_2stage.f
-	 SRC/ssytrd_2stage.f
-	 SRC/ssytrd_hb2st.f
-	 SRC/ssytrd_he2hb.f
-	 
-	 SRC/zhb2st_kernels.f
-	 SRC/zhbev_2stage.f
-	 SRC/zhbevd_2stage.f
-	 SRC/zhbevx_2stage.f
-	 SRC/zheev_2stage.f
-	 SRC/zheevd_2stage.f
-	 SRC/zheevr_2stage.f
-	 SRC/zheevx_2stage.f
-	 SRC/zhegv_2stage.f
-	 SRC/zhetrd_2stage.f
-	 SRC/zhetrd_hb2st.f
-	 SRC/zhetrd_he2hb.f 
-	 SRC/zlarfy.f
-
-
- * [Ichitaro Yamazaki, University of Tennessee] *Symmetric-indefinite Factorization: Aasen’s tridiagonalization*
-
-Reference: The algorithm that we implemented is described in: http://dl.acm.org/citation.cfm?id=1916462
+- New TP (triangle on top of trapezoid kernels for LQ factorization
+- Short and Wide LQ (SWLQ) and Tall and Skinny QR (TSQR) factorization
+- New interface for QR and LQ factorization is GEQR and GELQ
+- Corresponding Linear Least Squares / Minimum Norm solution driver (GETSLS)
 
 Added:
- 
-	 SRC/chesv_aa.f
-	 SRC/chetrf_aa.f
-	 SRC/chetrs_aa.f
-	 SRC/clahef_aa.f
-	 SRC/clasyf_aa.f
-	 SRC/csysv_aa.f
-	 SRC/csytrf_aa.f
-	 SRC/csytrs_aa.f
-	 
-	 SRC/dlasyf_aa.f
-	 SRC/dsysv_aa.f
-	 SRC/dsytrf_aa.f
-	 SRC/dsytrs_aa.f
-	 
-	 SRC/slasyf_aa.f
-	 SRC/ssysv_aa.f
-	 SRC/ssytrf_aa.f
-	 SRC/ssytrs_aa.f
-	 
-	 SRC/zhesv_aa.f
-	 SRC/zhetrf_aa.f
-	 SRC/zhetrs_aa.f
-	 SRC/zlahef_aa.f
-	 SRC/zlasyf_aa.f
-	 SRC/zsysv_aa.f
-	 SRC/zsytrf_aa.f
-	 SRC/zsytrs_aa.f
+
+	SRC/cgelq.f        	SRC/dgelq.f       	SRC/sgelq.f       	SRC/zgelq.f
+	SRC/cgelqt.f       	SRC/dgelqt.f      	SRC/sgelqt.f      	SRC/zgelqt.f
+	SRC/cgelqt3.f      	SRC/dgelqt3.f     	SRC/sgelqt3.f     	SRC/zgelqt3.f
+	SRC/cgemlq.f       	SRC/dgemlq.f      	SRC/sgemlq.f      	SRC/zgemlq.f
+	SRC/cgemlqt.f      	SRC/dgemlqt.f     	SRC/sgemlqt.f     	SRC/zgemlqt.f
+	SRC/cgemqr.f       	SRC/dgemqr.f      	SRC/sgemqr.f      	SRC/zgemqr.f
+	SRC/cgeqr.f        	SRC/dgeqr.f       	SRC/sgeqr.f       	SRC/zgeqr.f
+	SRC/cgetsls.f      	SRC/dgetsls.f     	SRC/sgetsls.f     	SRC/zgetsls.f
+	SRC/clamswlq.f     	SRC/dlamswlq.f    	SRC/slamswlq.f    	SRC/zlamswlq.f
+	SRC/clamtsqr.f     	SRC/dlamtsqr.f    	SRC/slamtsqr.f    	SRC/zlamtsqr.f
+	SRC/claswlq.f      	SRC/dlaswlq.f     	SRC/slaswlq.f     	SRC/zlaswlq.f
+	SRC/clatsqr.f      	SRC/dlatsqr.f     	SRC/slatsqr.f     	SRC/zlatsqr.f
+	SRC/ctplqt.f       	SRC/dtplqt.f      	SRC/stplqt.f      	SRC/ztplqt.f
+	SRC/ctplqt2.f      	SRC/dtplqt2.f     	SRC/stplqt2.f     	SRC/ztplqt2.f
+	SRC/ctpmlqt.f      	SRC/dtpmlqt.f     	SRC/stpmlqt.f     	SRC/ztpmlqt.f
 
 
-* [Igor Kozachenko, Jim Demmel, UC Berkeley] *Symmetric-indefinite Factorization: New storage format for L factor in Rook Pivoting and Bunch Kaufman of LDLT, storage format akin to LU, enables Level 3 BLAS TRS and TRI*
+References:
 
-Added routines for new factorization code for symmetric indefinite (or Hermitian indefinite) matrices
-with bounded Bunch-Kaufman (rook) pivoting algorithm.
-( new storage format for factors U( or L ) and D, and pivoting information IPIV ).
+* Brian C. Gunter and Robert A. Van De Geijn, Parallel out-of-core computation
+and updating of the QR factorization, ACM Transactions on Mathematical
+Software, 31(1):60-78, 2005.
 
-factor L is stored explicitly in lower triangle of A;
-diagonal of D is stored on the diagonal of A;
-subdiagonal elements of D are stored in array E;
-IPIV format is the same as in *_ROOK routines.
+* James Demmel, Laura Grigori, Mark Hoemmen, and Julien Langou.
+Communication-Optimal Parallel and Sequential QR and LU Factorizations. SIAM J. 
+Scientific Computing, 34(1):A206--A239, 2012.
 
-Added DOUBLE PRECISION (symmetric indefinite matrices):
+2.2. Symmetric-indefinite Factorization: Aasen's tridiagonalization
+--------------------------------------------------------------------
 
-    SRC/dsytf2_rk.f BLAS2 unblocked factorization
-    SRC/dlasyf_rk.f BLAS3 auxiliary blocked partial factorization
-    SRC/dsytrf_rk.f BLAS3 factorization
-    SRC/dsytrs_3.f BLAS3 solver
-    SRC/dsycon_3.f BLAS3 condition number estimator
-    SRC/dsytri_3.f  BLAS3 inversion
-    SRC/dsytri_3x.f BLAS3 inversion auxiliary
-    SRC/dsysv_rk.f BLAS3 driver
+A contribution from Ichitaro Yamazaki (University of Tennessee).
 
-Added REAL (symmetric indefinite matrices):
+This is Aasen's factorization for symmetric-indefinite factorization.
 
-    SRC/ssytf2_rk.f BLAS2 unblocked factorization
-    SRC/slasyf_rk.f BLAS3 auxiliary blocked partial factorization
-    SRC/ssytrf_rk.f BLAS3 factorization
-    SRC/ssytrs_3.f BLAS3 solver
-    SRC/ssycon_3.f BLAS3 condition number estimator
-    SRC/ssytri_3.f  BLAS3 inversion
-    SRC/ssytri_3x.f BLAS3 inversion auxiliary
-    SRC/ssysv_rk.f BLAS3 driver
+Added:
 
-Added COMPLEX*16 (symmetric indefinite matrices):
+	SRC/chesv_aa.f       SRC/dsysv_aa.f       SRC/ssysv_aa.f  	SRC/zhesv_aa.f
+	SRC/chetrf_aa.f      SRC/dsytrf_aa.f      SRC/ssytrf_aa.f 	SRC/zhetrf_aa.f
+	SRC/chetrs_aa.f      SRC/dsytrs_aa.f      SRC/ssytrs_aa.f 	SRC/zhetrs_aa.f
+	SRC/clahef_aa.f      SRC/dlasyf_aa.f      SRC/slasyf_aa.f 	SRC/zlahef_aa.f
 
-    SRC/zsytf2_rk.f BLAS2 unblocked factorization
-    SRC/zlasyf_rk.f BLAS3 auxiliary blocked partial factorization
-    SRC/zsytrf_rk.f BLAS3 factorization
-    SRC/zsytrs_3.f BLAS3 solver
-    SRC/zsycon_3.f BLAS3 condition number estimator
-    SRC/zsytri_3.f  BLAS3 inversion
-    SRC/zsytri_3x.f BLAS3 inversion auxiliary
-    SRC/zsysv_rk.f BLAS3 driver
+References:
 
-Added COMPLEX*16 (Hermitian indefinite matrices):
+* Miroslav Rozloznik, Gil Shklarski, and Sivan Toledo, Partitioned triangular
+tridiagonalization, ACM Transactions on Mathematical Software, 
+37(4), article 38, 16 pages, 2011
 
-    SRC/zhetf2_rk.f BLAS2 unblocked factorization
-    SRC/zlahef_rk.f BLAS3 auxiliary blocked partial factorization
-    SRC/zhetrf_rk.f BLAS3 factorization
-    SRC/zhetrs_3.f BLAS3 solver
-    SRC/zhecon_3.f BLAS3 condition number estimator
-    SRC/zhetri_3.f  BLAS3 inversion
-    SRC/zhetri_3x.f BLAS3 inversion auxiliary
-    SRC/zhesv_rk.f BLAS3 driver
-    
-Added COMPLEX (symmetric indefinite matrices):
+* Jan Ole Aasen, On the reduction of a symmetric matrix to tridiagonal form,
+BIT, 11 (1971), pp. 233–242.
 
-    SRC/csytf2_rk.f BLAS2 unblocked factorization
-    SRC/clasyf_rk.f BLAS3 auxiliary blocked partial factorization
-    SRC/csytrf_rk.f BLAS3 factorization
-    SRC/csytrs_3.f BLAS3 solver
-    SRC/csycon_3.f BLAS3 condition number estimator
-    SRC/csytri_3.f  BLAS3 inversion
-    SRC/csytri_3x.f BLAS3 inversion auxiliary
-    SRC/csysv_rk.f BLAS3 driver
-    
-Added COMPLEX (Hermitian indefinite matrices):
+2.3. Symmetric-indefinite Factorization: New storage format for L factor in Rook Pivoting and Bunch Kaufman of LDLT
+-------------------------------------------------------------------------------------------------------------------
 
-    SRC/chetf2_rk.f BLAS2 unblocked factorization
-    SRC/clahef_rk.f BLAS3 auxiliary blocked partial factorization
-    SRC/chetrf_rk.f BLAS3 factorization
-    SRC/chetrs_3.f BLAS3 solver
-    SRC/checon_3.f BLAS3 condition number estimator
-    SRC/chetri_3.f  BLAS3 inversion
-    SRC/chetri_3x.f BLAS3 inversion auxiliary
-    SRC/chesv_rk.f BLAS3 driver
+A contribution from Igor Kozachenko and Jim Demmel (UC Berkeley).
+
+This storage format is akin to LU and enables Level 3 BLAS TRS and TRI.  Added
+routines for new factorization code for symmetric indefinite ( or Hermitian
+indefinite ) matrices with bounded Bunch-Kaufman ( rook ) pivoting algorithm.
+New more efficient storage format for factors U (or L), block-diagonal matrix
+D, and pivoting information stored in IPIV: factor L is stored explicitly in
+lower triangle of A; diagonal of D is stored on the diagonal of A; subdiagonal
+elements of D are stored in array E; IPIV format is the same as in *_ROOK
+routines, but differs from SY Bunch-Kaufman routines (e.g. *SYTRF).  The
+factorization output of these new rook _RK routines is not compatible with the
+existing _ROOK routines and vice versa. This new factorization format is
+designed in such a way, that there is a possibility in the future to write new
+Bunch-Kaufman routines that conform to this new factorization format.  Then the
+future Bunch-Kaufman routines could share solver *TRS_3,inversion *TRI_3 and
+condition estimator *CON_3.
+
+Added:
+
+    SRC/dsytf2_rk.f     SRC/ssytf2_rk.f      SRC/zsytf2_rk.f     SRC/zhetf2_rk.f      SRC/csytf2_rk.f  SRC/chetf2_rk.f 
+    SRC/dlasyf_rk.f     SRC/slasyf_rk.f      SRC/zlasyf_rk.f     SRC/zlahef_rk.f      SRC/clasyf_rk.f  SRC/clahef_rk.f 
+    SRC/dsytrf_rk.f     SRC/ssytrf_rk.f      SRC/zsytrf_rk.f     SRC/zhetrf_rk.f      SRC/csytrf_rk.f  SRC/chetrf_rk.f 
+    SRC/dsytrs_3.f      SRC/ssytrs_3.f       SRC/zsytrs_3.f      SRC/zhetrs_3.f       SRC/csytrs_3.f   SRC/chetrs_3.f  
+    SRC/dsycon_3.f      SRC/ssycon_3.f       SRC/zsycon_3.f      SRC/zhecon_3.f       SRC/csycon_3.f   SRC/checon_3.f  
+    SRC/dsytri_3.f      SRC/ssytri_3.f       SRC/zsytri_3.f      SRC/zhetri_3.f       SRC/csytri_3.f   SRC/chetri_3.f  
+    SRC/dsytri_3x.f     SRC/ssytri_3x.f      SRC/zsytri_3x.f     SRC/zhetri_3x.f      SRC/csytri_3x.f  SRC/chetri_3x.f 
+    SRC/dsysv_rk.f      SRC/ssysv_rk.f       SRC/zsysv_rk.f      SRC/zhesv_rk.f       SRC/csysv_rk.f   SRC/chesv_rk.f  
+
+2.4. Symmetric eigenvalue problem: Two-stage algorithm for reduction to tridiagonal form
+----------------------------------------------------------------------------------------
+
+A contribution from Azzam Haidar (University of Tennessee).
+
+This is the two-stage algorithm for reduction to tridiagonal form. Based on an algorithm from Lang.
 
 
+Added:
+
+	SRC/chb2st_kernels.f    SRC/dsb2st_kernels.f  	SRC/ssb2st_kernels.f   	SRC/zhb2st_kernels.f
+	SRC/chbev_2stage.f      SRC/dsbev_2stage.f    	SRC/ssbev_2stage.f     	SRC/zhbev_2stage.f
+	SRC/chbevd_2stage.f     SRC/dsbevd_2stage.f   	SRC/ssbevd_2stage.f    	SRC/zhbevd_2stage.f
+	SRC/chbevx_2stage.f     SRC/dsbevx_2stage.f   	SRC/ssbevx_2stage.f    	SRC/zhbevx_2stage.f
+	SRC/cheev_2stage.f      SRC/dsyev_2stage.f    	SRC/ssyev_2stage.f     	SRC/zheev_2stage.f
+	SRC/cheevd_2stage.f     SRC/dsyevd_2stage.f   	SRC/ssyevd_2stage.f    	SRC/zheevd_2stage.f
+	SRC/cheevr_2stage.f     SRC/dsyevr_2stage.f   	SRC/ssyevr_2stage.f    	SRC/zheevr_2stage.f
+	SRC/cheevx_2stage.f     SRC/dsyevx_2stage.f   	SRC/ssyevx_2stage.f    	SRC/zheevx_2stage.f
+	SRC/chegv_2stage.f      SRC/dsygv_2stage.f    	SRC/ssygv_2stage.f     	SRC/zhegv_2stage.f
+	SRC/chetrd_2stage.f     SRC/dsytrd_2stage.f   	SRC/ssytrd_2stage.f    	SRC/zhetrd_2stage.f
+	SRC/chetrd_hb2st.F      SRC/dsytrd_sb2st.F    	SRC/ssytrd_sb2st.F     	SRC/zhetrd_hb2st.F
+	SRC/chetrd_he2hb.f      SRC/dsytrd_sy2sb.f    	SRC/ssytrd_sy2sb.f     	SRC/zhetrd_he2hb.f
+	SRC/clarfy.f            SRC/dlarfy.f          	SRC/slarfy.f           	SRC/zlarfy.f
 
 
-4. External Contributors
-------------------------
+References:
 
- * link:https://github.com/Reference-LAPACK/lapack/graphs/contributors[Contributor]
- * link:log_contributor_3.7.0.txt[Contributor list with Short log]
+* Christian H. Bischof, Bruno Lang, and Xiaobai Sun, A framework for symmetric
+band reduction, ACM Transactions on Mathematical Software, 26(4): 581-601,
+2000.
 
-5. Thanks
----------
+2.5.  Improved Complex Jacobi SVD
+---------------------------------
+
+A contribution from Zlatko Drmac (University of Zagreb).
+
+(1) LWORK query added; (2) few modifications in pure one sided Jacobi (XGESVJ)
+to remove possible error in the really extreme cases (sigma_max close to
+overflow and sigma_min close to underflow) - note that XGESVJ is designed to
+compute the singular values in the full range; it was used (double complex) to
+compute SVD of certain factored Hankel matrices with the condition number
+1.0e616; (3) `same` modifications in the preconditioned Jacobi SVD (XGEJSV),
+the idea is also to extend the computational range, this brings assumptions on
+how other lapack routines behave under those extreme conditions.
+
+Modified:
+
+	SRC/cgejsv.f   	SRC/zgejsv.f
+	SRC/cgesvj.f   	SRC/zgesvj.f
+	SRC/cgsvj0.f   	SRC/zgsvj0.f
+	SRC/cgsvj1.f   	SRC/zgsvj1.f
+
+2.6. LAPACKE interfaces
+-----------------------
+
+A contribution from Julie Langou (University of Tennessee).
 
 
-6. Developer list
+
+
+3. Developer list
 -----------------
+
+.External Contributors
+
+    * Konstantin Arturov, Intel 
+    * Eugene Chereshnev, Intel
+    * Zlatko Drmac, University of Zagreb
+
+.LAPACK developers involved in this release
+
+    * Mark Gates (University of Tennessee)
+    * Syd Hashemi Ghermezi (UC Berkeley)
+    * Azzam Haidar (University of Tennessee)
+    * Igor Kozachenko  (University of California,  Berkeley, USA)
+    * Julie Langou (University of Tennessee, USA)
+    * Osni Marques (University of California,  Berkeley, USA)
+    * Ichitaro Yamazaki (University of Tennessee)
 
 .Principal Investigators
 
@@ -233,24 +201,48 @@ Added COMPLEX (Hermitian indefinite matrices):
     * Jack Dongarra (University of Tennessee and ORNL, USA)
     * Julien Langou (University of Colorado Denver, USA)
 
-.LAPACK developers involved in this release
+4. Thanks
+---------
 
-    * Julie Langou (University of Tennessee, USA)
-    * Azzam Haidar (University of Tennessee, USA)
-    * Mark Gates (University of Tennessee, USA)
-    * Ichitaro Yamazak  (University of Tennessee, USA)
-    * Osni Marques (University of California,  Berkeley, USA)
-    * Igor Kozachenko  (University of California,  Berkeley, USA)
+* MathWorks: Penny Anderson, Amanda Barry, Mary Ann Freeman, Bobby Cheng,
+Duncan Po, Pat Quillen, Christine Tobler.
 
-7. More details
-----------------
+* Intel: Konstantin Arturov, Vladimír Chalupecký, Eugene Chereshnev
+
+* ORACLE: Elena Ivanov.
+
+* IBM: Peng HongBo, Joan McComb, and Yi LB Peng.
+
+* Cygwin: Marco Atzeri
+
+* GitHub Users: turboencabulator@github, cmoha@github, banzaiman@github, advanpix@github,
+reeuwijk-altium@github, brandimarte@github, zerothi@github
+
+* Christoph Conrads
+
+* J. Kay Dewhurst (Max Planck Institute of Microstructure Physics)
+
+* Kyle Guinn
+
+* Berend Hasselman
+
+* Pavel Holoborodko
+
+* Hans Johnson (Univeristy of Iowa)
+
+* Nick Papior 
+
+* Antonio Rojas
+
+* Julien Schueller (Phimeca)
 
 
-8.  Bug Fix
+5.  Bug Fix
 -----------
 
  * link:https://github.com/Reference-LAPACK/lapack/milestone/1?closed=1[Closed bugs]
  * link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&q=is%3Aissue%20is%3Aopen%20label%3A%22Type%3A%20Bug%22%20[Open bugs]
  * link:https://github.com/Reference-LAPACK/lapack/issues[All open issues]
-
+ 
+ 
 // vim: set syntax=asciidoc:

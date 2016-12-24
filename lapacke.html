@@ -940,10 +940,19 @@ name: <code>LAPACKE_dgeqrf</code>.</p></div>
 <div class="paragraph"><p>We will assume that our matrix is stored in column-major order in the <code>m</code>-by-<code>n</code> array <code>a</code>, which has
 a leading dimension of <code>lda</code>.  The variable declarations should be as follows:</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>    <span style="color: #008080">lapack_int</span> m<span style="color: #990000">,</span> n<span style="color: #990000">,</span> lda<span style="color: #990000">,</span> info<span style="color: #990000">;</span>
+    <span style="color: #009900">double</span> <span style="color: #990000">*</span>a<span style="color: #990000">,</span> <span style="color: #990000">*</span>tau<span style="color: #990000">;</span></tt></pre></div></div>
 <div class="paragraph"><p>The LAPACKE function call is then:</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>info <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">LAPACKE_dgeqrf</span></span><span style="color: #990000">(</span> LAPACK_COL_MAJOR<span style="color: #990000">,</span> m<span style="color: #990000">,</span> n<span style="color: #990000">,</span> a<span style="color: #990000">,</span> lda<span style="color: #990000">,</span> tau <span style="color: #990000">);</span></tt></pre></div></div>
 </div>
 <div class="sect2">
 <h3 id="_calling_code_cungqr_code">Calling <code>CUNGQR</code></h3>
@@ -960,10 +969,19 @@ a leading dimension of <code>lda</code>.  From the LAPACK documentation, the wor
 a length of at least <code>n</code>; the length of <code>work</code> is given in <code>lwork</code>.
 The variable declarations should be as follows:</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>   <span style="color: #008080">lapack_int</span> m<span style="color: #990000">,</span> n<span style="color: #990000">,</span> k<span style="color: #990000">,</span> lda<span style="color: #990000">,</span> lwork<span style="color: #990000">,</span> info<span style="color: #990000">;</span>
+   <span style="color: #008080">lapack_complex_float</span> <span style="color: #990000">*</span>a<span style="color: #990000">,</span> <span style="color: #990000">*</span>tau<span style="color: #990000">,</span> <span style="color: #990000">*</span>work<span style="color: #990000">;</span></tt></pre></div></div>
 <div class="paragraph"><p>The LAPACKE function call is then:</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>info <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">LAPACKE_cungqr_work</span></span><span style="color: #990000">(</span> LAPACK_COL_MAJOR<span style="color: #990000">,</span> m<span style="color: #990000">,</span> n<span style="color: #990000">,</span> k<span style="color: #990000">,</span> a<span style="color: #990000">,</span> lda<span style="color: #990000">,</span> tau<span style="color: #990000">,</span> work<span style="color: #990000">,</span> lwork <span style="color: #990000">);</span></tt></pre></div></div>
 </div>
 <div class="sect2">
 <h3 id="_calling_code_dgels_code">Calling <code>DGELS</code></h3>
@@ -1004,12 +1022,80 @@ as consecutive vectors of length 3.  The correct answer for this problem is the 
 are passed to the LAPACK routine, they must be dereferenced, since LAPACK is expecting arrays of type
 <code>double *</code>, <strong>not</strong> <code>double **</code>.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>
+<span style="font-style: italic"><span style="color: #9A1900">/* Calling DGELS using row-major order */</span></span>
+
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;stdio.h&gt;</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;lapacke.h&gt;</span>
+
+<span style="color: #009900">int</span> <span style="font-weight: bold"><span style="color: #000000">main</span></span> <span style="color: #990000">(</span><span style="color: #009900">int</span> argc<span style="color: #990000">,</span> <span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #009900">char</span> <span style="color: #990000">*</span> argv<span style="color: #990000">[])</span>
+<span style="color: #FF0000">{</span>
+   <span style="color: #009900">double</span> a<span style="color: #990000">[</span><span style="color: #993399">5</span><span style="color: #990000">][</span><span style="color: #993399">3</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">2</span><span style="color: #990000">,</span><span style="color: #993399">3</span><span style="color: #990000">,</span><span style="color: #993399">4</span><span style="color: #990000">,</span><span style="color: #993399">3</span><span style="color: #990000">,</span><span style="color: #993399">5</span><span style="color: #990000">,</span><span style="color: #993399">2</span><span style="color: #990000">,</span><span style="color: #993399">4</span><span style="color: #990000">,</span><span style="color: #993399">2</span><span style="color: #990000">,</span><span style="color: #993399">5</span><span style="color: #990000">,</span><span style="color: #993399">5</span><span style="color: #990000">,</span><span style="color: #993399">4</span><span style="color: #990000">,</span><span style="color: #993399">3</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+   <span style="color: #009900">double</span> b<span style="color: #990000">[</span><span style="color: #993399">5</span><span style="color: #990000">][</span><span style="color: #993399">2</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">10</span><span style="color: #990000">,-</span><span style="color: #993399">3</span><span style="color: #990000">,</span><span style="color: #993399">12</span><span style="color: #990000">,</span><span style="color: #993399">14</span><span style="color: #990000">,</span><span style="color: #993399">14</span><span style="color: #990000">,</span><span style="color: #993399">12</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #990000">,</span><span style="color: #993399">18</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+   <span style="color: #008080">lapack_int</span> info<span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>ldb<span style="color: #990000">,</span>nrhs<span style="color: #990000">;</span>
+   <span style="color: #009900">int</span> i<span style="color: #990000">,</span>j<span style="color: #990000">;</span>
+
+   m <span style="color: #990000">=</span> <span style="color: #993399">5</span><span style="color: #990000">;</span>
+   n <span style="color: #990000">=</span> <span style="color: #993399">3</span><span style="color: #990000">;</span>
+   nrhs <span style="color: #990000">=</span> <span style="color: #993399">2</span><span style="color: #990000">;</span>
+   lda <span style="color: #990000">=</span> <span style="color: #993399">3</span><span style="color: #990000">;</span>
+   ldb <span style="color: #990000">=</span> <span style="color: #993399">2</span><span style="color: #990000">;</span>
+
+   info <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">LAPACKE_dgels</span></span><span style="color: #990000">(</span>LAPACK_ROW_MAJOR<span style="color: #990000">,</span><span style="color: #FF0000">'N'</span><span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>nrhs<span style="color: #990000">,*</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,*</span>b<span style="color: #990000">,</span>ldb<span style="color: #990000">);</span>
+
+   <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>i<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>i<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>i<span style="color: #990000">++)</span>
+   <span style="color: #FF0000">{</span>
+      <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>j<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>j<span style="color: #990000">&lt;</span>nrhs<span style="color: #990000">;</span>j<span style="color: #990000">++)</span>
+      <span style="color: #FF0000">{</span>
+         <span style="font-weight: bold"><span style="color: #000000">printf</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"%lf "</span><span style="color: #990000">,</span>b<span style="color: #990000">[</span>i<span style="color: #990000">][</span>j<span style="color: #990000">]);</span>
+      <span style="color: #FF0000">}</span>
+      <span style="font-weight: bold"><span style="color: #000000">printf</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+   <span style="color: #FF0000">}</span>
+   <span style="font-weight: bold"><span style="color: #0000FF">return</span></span><span style="color: #990000">(</span>info<span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Alternatively, we can use column-major ordering for the matrices in this example,
 as shown below.  Here, the matrices are stored as static one-dimensional C arrays.
 These arrays have a leading dimension that is equal to the number of rows.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>
+<span style="font-style: italic"><span style="color: #9A1900">/* Calling DGELS using column-major order */</span></span>
+
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;stdio.h&gt;</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;lapacke.h&gt;</span>
+
+<span style="color: #009900">int</span> <span style="font-weight: bold"><span style="color: #000000">main</span></span> <span style="color: #990000">(</span><span style="color: #009900">int</span> argc<span style="color: #990000">,</span> <span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #009900">char</span> <span style="color: #990000">*</span> argv<span style="color: #990000">[])</span>
+<span style="color: #FF0000">{</span>
+   <span style="color: #009900">double</span> a<span style="color: #990000">[</span><span style="color: #993399">5</span><span style="color: #990000">*</span><span style="color: #993399">3</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">2</span><span style="color: #990000">,</span><span style="color: #993399">3</span><span style="color: #990000">,</span><span style="color: #993399">4</span><span style="color: #990000">,</span><span style="color: #993399">5</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">3</span><span style="color: #990000">,</span><span style="color: #993399">5</span><span style="color: #990000">,</span><span style="color: #993399">2</span><span style="color: #990000">,</span><span style="color: #993399">4</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">4</span><span style="color: #990000">,</span><span style="color: #993399">2</span><span style="color: #990000">,</span><span style="color: #993399">5</span><span style="color: #990000">,</span><span style="color: #993399">3</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+   <span style="color: #009900">double</span> b<span style="color: #990000">[</span><span style="color: #993399">5</span><span style="color: #990000">*</span><span style="color: #993399">2</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">10</span><span style="color: #990000">,</span><span style="color: #993399">12</span><span style="color: #990000">,</span><span style="color: #993399">14</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #990000">,</span><span style="color: #993399">18</span><span style="color: #990000">,-</span><span style="color: #993399">3</span><span style="color: #990000">,</span><span style="color: #993399">14</span><span style="color: #990000">,</span><span style="color: #993399">12</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+   <span style="color: #008080">lapack_int</span> info<span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>ldb<span style="color: #990000">,</span>nrhs<span style="color: #990000">;</span>
+   <span style="color: #009900">int</span> i<span style="color: #990000">,</span>j<span style="color: #990000">;</span>
+
+   m <span style="color: #990000">=</span> <span style="color: #993399">5</span><span style="color: #990000">;</span>
+   n <span style="color: #990000">=</span> <span style="color: #993399">3</span><span style="color: #990000">;</span>
+   nrhs <span style="color: #990000">=</span> <span style="color: #993399">2</span><span style="color: #990000">;</span>
+   lda <span style="color: #990000">=</span> <span style="color: #993399">5</span><span style="color: #990000">;</span>
+   ldb <span style="color: #990000">=</span> <span style="color: #993399">5</span><span style="color: #990000">;</span>
+
+   info <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">LAPACKE_dgels</span></span><span style="color: #990000">(</span>LAPACK_COL_MAJOR<span style="color: #990000">,</span><span style="color: #FF0000">'N'</span><span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>nrhs<span style="color: #990000">,</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>b<span style="color: #990000">,</span>ldb<span style="color: #990000">);</span>
+
+   <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>i<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>i<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>i<span style="color: #990000">++)</span>
+   <span style="color: #FF0000">{</span>
+      <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>j<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>j<span style="color: #990000">&lt;</span>nrhs<span style="color: #990000">;</span>j<span style="color: #990000">++)</span>
+      <span style="color: #FF0000">{</span>
+         <span style="font-weight: bold"><span style="color: #000000">printf</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"%lf "</span><span style="color: #990000">,</span>b<span style="color: #990000">[</span>i<span style="color: #990000">+</span>ldb<span style="color: #990000">*</span>j<span style="color: #990000">]);</span>
+      <span style="color: #FF0000">}</span>
+      <span style="font-weight: bold"><span style="color: #000000">printf</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+   <span style="color: #FF0000">}</span>
+   <span style="font-weight: bold"><span style="color: #0000FF">return</span></span><span style="color: #990000">(</span>info<span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 </div>
 </div>
 </div>
@@ -1024,9 +1110,99 @@ to check that <code>Q</code> is Hermitian.  The error <code>||Q<sup>H</sup> Q - 
 <code>CGEQRF</code> and <code>CUNGQR</code> to obtain the optimal size for the parameter <code>lwork</code>, which we use to
 allocate our own workspace in the array <code>work</code>.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>
+<span style="font-style: italic"><span style="color: #9A1900">/* Calling CGEQRF and CUNGQR to compute Q without workspace querying */</span></span>
+
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;stdio.h&gt;</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;stdlib.h&gt;</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;lapacke.h&gt;</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;cblas.h&gt;</span>
+<span style="color: #009900">int</span> <span style="font-weight: bold"><span style="color: #000000">main</span></span> <span style="color: #990000">(</span><span style="color: #009900">int</span> argc<span style="color: #990000">,</span> <span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #009900">char</span> <span style="color: #990000">*</span> argv<span style="color: #990000">[])</span>
+<span style="color: #FF0000">{</span>
+   <span style="color: #008080">lapack_complex_float</span> <span style="color: #990000">*</span>a<span style="color: #990000">,*</span>tau<span style="color: #990000">,*</span>r<span style="color: #990000">,</span>one<span style="color: #990000">,</span>zero<span style="color: #990000">;</span>
+   <span style="color: #008080">lapack_int</span> info<span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>lda<span style="color: #990000">;</span>
+   <span style="color: #009900">int</span> i<span style="color: #990000">,</span>j<span style="color: #990000">;</span>
+   <span style="color: #009900">float</span> err<span style="color: #990000">=</span><span style="color: #993399">0.0</span><span style="color: #990000">;</span>
+   m <span style="color: #990000">=</span> <span style="color: #993399">10</span><span style="color: #990000">;</span>   n <span style="color: #990000">=</span> <span style="color: #993399">5</span><span style="color: #990000">;</span>   lda <span style="color: #990000">=</span> m<span style="color: #990000">;</span>
+   one <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">lapack_make_complex_float</span></span><span style="color: #990000">(</span><span style="color: #993399">1.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">);</span>
+   zero<span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">lapack_make_complex_float</span></span><span style="color: #990000">(</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">);</span>
+   a <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">calloc</span></span><span style="color: #990000">(</span>m<span style="color: #990000">*</span>n<span style="color: #990000">,</span><span style="font-weight: bold"><span style="color: #0000FF">sizeof</span></span><span style="color: #990000">(</span>lapack_complex_float<span style="color: #990000">));</span>
+   r <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">calloc</span></span><span style="color: #990000">(</span>n<span style="color: #990000">*</span>n<span style="color: #990000">,</span><span style="font-weight: bold"><span style="color: #0000FF">sizeof</span></span><span style="color: #990000">(</span>lapack_complex_float<span style="color: #990000">));</span>
+   tau <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">calloc</span></span><span style="color: #990000">(</span>m<span style="color: #990000">,</span><span style="font-weight: bold"><span style="color: #0000FF">sizeof</span></span><span style="color: #990000">(</span>lapack_complex_float<span style="color: #990000">));</span>
+   <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>j<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>j<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>j<span style="color: #990000">++)</span>
+      <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>i<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>i<span style="color: #990000">&lt;</span>m<span style="color: #990000">;</span>i<span style="color: #990000">++)</span>
+         a<span style="color: #990000">[</span>i<span style="color: #990000">+</span>j<span style="color: #990000">*</span>m<span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">lapack_make_complex_float</span></span><span style="color: #990000">(</span>i<span style="color: #990000">+</span><span style="color: #993399">1</span><span style="color: #990000">,</span>j<span style="color: #990000">+</span><span style="color: #993399">1</span><span style="color: #990000">);</span>
+   info <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">LAPACKE_cgeqrf</span></span><span style="color: #990000">(</span>LAPACK_COL_MAJOR<span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>tau<span style="color: #990000">);</span>
+   info <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">LAPACKE_cungqr</span></span><span style="color: #990000">(</span>LAPACK_COL_MAJOR<span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>n<span style="color: #990000">,</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>tau<span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>j<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>j<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>j<span style="color: #990000">++)</span>
+      <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>i<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>i<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>i<span style="color: #990000">++)</span>
+         r<span style="color: #990000">[</span>i<span style="color: #990000">+</span>j<span style="color: #990000">*</span>n<span style="color: #990000">]=(</span>i<span style="color: #990000">==</span>j<span style="color: #990000">)?-</span>one<span style="color: #990000">:</span>zero<span style="color: #990000">;</span>
+   <span style="font-weight: bold"><span style="color: #000000">cblas_cgemm</span></span><span style="color: #990000">(</span>CblasColMajor<span style="color: #990000">,</span>CblasConjTrans<span style="color: #990000">,</span>CblasNoTrans<span style="color: #990000">,</span>
+               n<span style="color: #990000">,</span>n<span style="color: #990000">,</span>m<span style="color: #990000">,&amp;</span>one<span style="color: #990000">,</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,&amp;</span>one<span style="color: #990000">,</span>r<span style="color: #990000">,</span>n <span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>i<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>i<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>i<span style="color: #990000">++)</span>
+      <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>j<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>j<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>j<span style="color: #990000">++)</span>
+         err<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">MAX</span></span><span style="color: #990000">(</span>err<span style="color: #990000">,</span><span style="font-weight: bold"><span style="color: #000000">cabs</span></span><span style="color: #990000">(</span>r<span style="color: #990000">[</span>i<span style="color: #990000">+</span>j<span style="color: #990000">*</span>n<span style="color: #990000">]));</span>
+   <span style="font-weight: bold"><span style="color: #000000">printf</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"error=%e</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">,</span>err<span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #000000">free</span></span><span style="color: #990000">(</span>tau<span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #000000">free</span></span><span style="color: #990000">(</span>r<span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #000000">free</span></span><span style="color: #990000">(</span>a<span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #0000FF">return</span></span><span style="color: #990000">(</span>info<span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>
+<span style="font-style: italic"><span style="color: #9A1900">/*  Calling CGEQRF and CUNGQR to compute Q with workspace querying */</span></span>
+
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;stdio.h&gt;</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;stdlib.h&gt;</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;lapacke.h&gt;</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;cblas.h&gt;</span>
+
+<span style="color: #009900">int</span> <span style="font-weight: bold"><span style="color: #000000">main</span></span> <span style="color: #990000">(</span><span style="color: #009900">int</span> argc<span style="color: #990000">,</span> <span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #009900">char</span> <span style="color: #990000">*</span> argv<span style="color: #990000">[])</span>
+<span style="color: #FF0000">{</span>
+   <span style="color: #008080">lapack_complex_float</span> <span style="color: #990000">*</span>a<span style="color: #990000">,*</span>tau<span style="color: #990000">,*</span>r<span style="color: #990000">,*</span>work<span style="color: #990000">,</span>one<span style="color: #990000">,</span>zero<span style="color: #990000">,</span>query<span style="color: #990000">;</span>
+   <span style="color: #008080">lapack_int</span> info<span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>lwork<span style="color: #990000">;</span>
+   <span style="color: #009900">int</span> i<span style="color: #990000">,</span>j<span style="color: #990000">;</span>
+   <span style="color: #009900">float</span> err<span style="color: #990000">;</span>
+   m <span style="color: #990000">=</span> <span style="color: #993399">10</span><span style="color: #990000">;</span>   n <span style="color: #990000">=</span> <span style="color: #993399">5</span><span style="color: #990000">;</span>   lda <span style="color: #990000">=</span> m<span style="color: #990000">;</span>
+   one <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">lapack_make_complex_float</span></span><span style="color: #990000">(</span><span style="color: #993399">1.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">);</span>
+   zero<span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">lapack_make_complex_float</span></span><span style="color: #990000">(</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">);</span>
+   a <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">calloc</span></span><span style="color: #990000">(</span>m<span style="color: #990000">*</span>n<span style="color: #990000">,</span><span style="font-weight: bold"><span style="color: #0000FF">sizeof</span></span><span style="color: #990000">(</span>lapack_complex_float<span style="color: #990000">));</span>
+   r <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">calloc</span></span><span style="color: #990000">(</span>n<span style="color: #990000">*</span>n<span style="color: #990000">,</span><span style="font-weight: bold"><span style="color: #0000FF">sizeof</span></span><span style="color: #990000">(</span>lapack_complex_float<span style="color: #990000">));</span>
+   tau <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">calloc</span></span><span style="color: #990000">(</span>m<span style="color: #990000">,</span><span style="font-weight: bold"><span style="color: #0000FF">sizeof</span></span><span style="color: #990000">(</span>lapack_complex_float<span style="color: #990000">));</span>
+   <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>j<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>j<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>j<span style="color: #990000">++)</span>
+      <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>i<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>i<span style="color: #990000">&lt;</span>m<span style="color: #990000">;</span>i<span style="color: #990000">++)</span>
+         a<span style="color: #990000">[</span>i<span style="color: #990000">+</span>j<span style="color: #990000">*</span>m<span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">lapack_make_complex_float</span></span><span style="color: #990000">(</span>i<span style="color: #990000">+</span><span style="color: #993399">1</span><span style="color: #990000">,</span>j<span style="color: #990000">+</span><span style="color: #993399">1</span><span style="color: #990000">);</span>
+   info <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">LAPACKE_cgeqrf_work</span></span><span style="color: #990000">(</span>LAPACK_COL_MAJOR<span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>tau<span style="color: #990000">,&amp;</span>query<span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">);</span>
+   lwork <span style="color: #990000">=</span> <span style="color: #990000">(</span>lapack_int<span style="color: #990000">)</span>query<span style="color: #990000">;</span>
+   info <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">LAPACKE_cungqr_work</span></span><span style="color: #990000">(</span>LAPACK_COL_MAJOR<span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>n<span style="color: #990000">,</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>tau<span style="color: #990000">,&amp;</span>query<span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">);</span>
+   lwork <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">MAX</span></span><span style="color: #990000">(</span>lwork<span style="color: #990000">,(</span>lapack_int<span style="color: #990000">)</span>query<span style="color: #990000">);</span>
+   work <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">calloc</span></span><span style="color: #990000">(</span>lwork<span style="color: #990000">,</span><span style="font-weight: bold"><span style="color: #0000FF">sizeof</span></span><span style="color: #990000">(</span>lapack_complex_float<span style="color: #990000">));</span>
+   info <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">LAPACKE_cgeqrf_work</span></span><span style="color: #990000">(</span>LAPACK_COL_MAJOR<span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>tau<span style="color: #990000">,</span>work<span style="color: #990000">,</span>lwork<span style="color: #990000">);</span>
+   info <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">LAPACKE_cungqr_work</span></span><span style="color: #990000">(</span>LAPACK_COL_MAJOR<span style="color: #990000">,</span>m<span style="color: #990000">,</span>n<span style="color: #990000">,</span>n<span style="color: #990000">,</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>tau<span style="color: #990000">,</span>work<span style="color: #990000">,</span>lwork<span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>j<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>j<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>j<span style="color: #990000">++)</span>
+      <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>i<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>i<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>i<span style="color: #990000">++)</span>
+         r<span style="color: #990000">[</span>i<span style="color: #990000">+</span>j<span style="color: #990000">*</span>n<span style="color: #990000">]=(</span>i<span style="color: #990000">==</span>j<span style="color: #990000">)?-</span>one<span style="color: #990000">:</span>zero<span style="color: #990000">;</span>
+   <span style="font-weight: bold"><span style="color: #000000">cblas_cgemm</span></span><span style="color: #990000">(</span>CblasColMajor<span style="color: #990000">,</span>CblasConjTrans<span style="color: #990000">,</span>CblasNoTrans<span style="color: #990000">,</span>
+               n<span style="color: #990000">,</span>n<span style="color: #990000">,</span>m<span style="color: #990000">,&amp;</span>one<span style="color: #990000">,</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,</span>a<span style="color: #990000">,</span>lda<span style="color: #990000">,&amp;</span>one<span style="color: #990000">,</span>r<span style="color: #990000">,</span>n<span style="color: #990000">);</span>
+   err<span style="color: #990000">=</span><span style="color: #993399">0.0</span><span style="color: #990000">;</span>
+   <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>i<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>i<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>i<span style="color: #990000">++)</span>
+      <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span>j<span style="color: #990000">=</span><span style="color: #993399">0</span><span style="color: #990000">;</span>j<span style="color: #990000">&lt;</span>n<span style="color: #990000">;</span>j<span style="color: #990000">++)</span>
+         err<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">MAX</span></span><span style="color: #990000">(</span>err<span style="color: #990000">,</span><span style="font-weight: bold"><span style="color: #000000">cabs</span></span><span style="color: #990000">(</span>r<span style="color: #990000">[</span>i<span style="color: #990000">+</span>j<span style="color: #990000">*</span>n<span style="color: #990000">]));</span>
+   <span style="font-weight: bold"><span style="color: #000000">printf</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"error=%e</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">,</span>err<span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #000000">free</span></span><span style="color: #990000">(</span>work<span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #000000">free</span></span><span style="color: #990000">(</span>tau<span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #000000">free</span></span><span style="color: #990000">(</span>r<span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #000000">free</span></span><span style="color: #990000">(</span>a<span style="color: #990000">);</span>
+   <span style="font-weight: bold"><span style="color: #0000FF">return</span></span><span style="color: #990000">(</span>info<span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p></p></div>
 </div>
 </div>

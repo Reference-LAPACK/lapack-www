@@ -1,0 +1,268 @@
+Antonio Rojas (2):
+      Update cblas.pc.in
+      Update lapacke.pc.in
+
+Christoph Conrads (10):
+      Doc: fix xyyEQUB documentation
+      Remove dead assignments in xSYEQUB, xHEEQUB
+      Fix xSYEQUB, xHEEQUB formatting
+      Reduce workspace size of xSYEQUB, xHEEQUB
+      Doc: highlight what xPOEQUB actually does
+      Revert "Doc: highlight what xPOEQUB actually does"
+      Doc: fix typos in the xGEEQUB description
+      Doc: improve xPOEQUB description
+      Doc: fix typos in the xGBEQUB description
+      Doc: describe 2-by-1 CSD identity matrix dimension
+
+Elena Ivanova (3):
+      Unused var JDUM described in ./TESTING/EIG/serrgg.f
+      Mistake in the comments to CTREVC3 / ZTREVC3 (github issue #48)
+      Typos in comments in /SRC/cbbcsd.f (github issue #49)
+
+Eugene Chereshnev (1):
+      Fix incorrect call to GEMM in ctrevc3.f and ztrevc3.f: alpha should have complex type
+
+Hans Johnson (20):
+      STYLE: Change source template files to .in extension
+      BUG: Fix pathing to include files
+      COMP: Improve introspection and header configuration
+      BUG: path failure for find_package config files
+      STYLE: Remove trailing whitespace in CMake files
+      STYLE: Remove trailing whitespace in C files
+      STYLE: Remove trailing whitespace in MISC files
+      STYLE: Remove trailing whitespace in Fortran files
+      STYLE: Convert CMake-language commands to lower case
+      Remove CMake-language block-end command arguments
+      ENH: Set default build type to "Release"
+      COMP: Move to git for cdash testing
+      ENH: Update default ctest configuration options
+      COMP: Let travis CI builds submit to the dashboard
+      ENH: Fix travis build pathing
+      COMP: Prevent insource builds and inbuild installs
+      ENH: Improving the travis dashboard name
+      ENH: Only run python summary tests with compatible versions
+      COMP: Ignore nfs future file modification warning
+      ENH: Add LAPACKE_WITH_TMG to default testing
+
+Ichitaro Yamazaki (18):
+      Workspace query for ZHESV_AA.
+      Use short-name (K instead of J1+J-1) for clarity.
+      White space.
+      Argument checks for Aasen's.
+      White space.
+      Subroutine declarations for Aasen's.
+      first version of complex symmetric solvers.
+      typos in comments.
+      testers for complex symmetric Aasen's
+      add complex symmetric Aasen's into the tester.
+      some clean ups for Aasen's tester.
+      fixing lwork for Aasen's (lwork > 0).
+      insert argument check for Aasen's complex symmetric, and also check for     lwork > 0.
+      remove compiler warnings.
+      typos.
+      skip checking solution in tester since xSYTRI is not implemented to     compute condition number.
+      add Aasen's for complex symmetric into Makefiles.
+      remove RCONDC in testing.
+
+Julie (36):
+      Fix issue #8 reported by @matzeri on July 21st 2016
+      Fix #35 reported by @brandimarte
+      Adding Assen for SV, TRF, SV from @iyamazak@icl.utk.edu
+      Remove duplicate definitions
+      Merge branch 'tsqr' of git://github.com/sydha/lapack-1 into sydha-tsqr
+      merging with latest version
+      make sure no variable in indefined
+      Merge branch 'sydha-tsqr'     Some files needed to be merged.     Fix extra space, missing variable declaration
+      Updating CMAKE build for Tall skinny and short wide routines
+      Fix #80 from @reeuwijk-altium
+      Fix #81 reported by @reeuwijk-altium
+      Assen Routines:  Lwork Query for trs
+      Aasen sv and trs in LAPACKE
+      Changing Assen routines suffix from _Aassen to _aa
+      Merging changes
+      Name change for Aasen in LAPACKE plus adding TRS_AA
+      Added (S,D,C,Z) (SY,HE) routines, drivers for new rook code
+      First minor change to 2 stage contribution
+      Adding Aasen routines for complex symmetric matrix to CMake Build
+      merging: Various cleanups to makefiles #84
+      Polishing code...
+      Remove GOTO statment in iparam2stage.F
+      Adding complex symmetric Aasen routines to LAPACKE
+      Trying to fix Travis for Fortran build
+      Adding [SY/HE]TRS_3 to LAPACKE
+      Adding [SY/HE]SV_RK to LAPACKE
+      Adding [SY/HE]TRF_RK to LAPACKE
+      Adding [SY/HE]TRI_3 to LAPACKE
+      oops
+      Adding [SY/HE]CON_3 to LAPACKE
+      Fix typo
+      Adding 2stage to LAPACKE
+      Reverting commit for Travis fix
+      Fixing 2stage lapacke
+      Updating version on Version files
+      Updating version number on source file modified since 3.6.1
+
+Julien Langou (32):
+      Pull request from Hans Johnson. Move command directives from upper case to     lower case.  Remove replications of conditionals in the "else" "end" parts of     code blocks.
+      Merge branch 'FixInstalledPathingWithLib64' of https://github.com/hjmjohnson/lapack into hjmjohnson-FixInstalledPathingWithLib64
+      Merge branch 'hjmjohnson-FixInstalledPathingWithLib64'
+      Making FORTRAN compilers happy. Replacing STEMP by STEMP(1) in some subroutine     calls.  Reported by Hans Johnson. Thanks Hans.  Julien.
+      Add the flag `-assume protect_parens` for the Intel Fortran compiler
+      Lots of trailing whitespaces in the files of Syd. Cleaning this. No big deal.
+      working on issue https://github.com/Reference-LAPACK/lapack/issues/85
+      (minor) typo in the code zgetsls.f
+      correct a few typos in the Makefile of TESTING
+      print nine-character-long subroutine names (instead of 6-character-long) in TESTING/LIN/xerbla.f
+      defficient spells deficient
+      Bug reported by Peng HongBo, Joan McComb, and Yi LB Peng from IBM.     When M=0 or N=0, [C/Z]GESDD would not return the value 1 in WORK(1).     Fixing this by following [S/D]GESDD code.
+      Correct typos. See email from Berend Hasselman.
+      minor typo in DGEMQR
+      minor
+      minor
+      WORK needs to be at least of size 6
+      correction of previous commit: WORK needs actuallt to be of size at least 12
+      minor
+      remove MB and NB from the code, they are not used and this routine should be agnostic to them
+      correct WORKSPACE size for dgemqr
+      Merge branch 'master' of https://github.com/Reference-LAPACK/lapack
+      Fix Issue #95
+      fix #98
+      Merge branch 'master' of https://github.com/Reference-LAPACK/lapack
+      following up with 1c09a232b5d1314e2e13f36e081efe9f9406d17e     ( Correct the test suite accordingly. )
+      [ minor ] fix some missing EXTERNAL declarations
+      Merge branch 'master' of https://github.com/Reference-LAPACK/lapack
+      ( oops, forgot to commit ztrevc3.f in previous commit. )     ( related to commit: 58e4d0ec7e992c763a60813352407e8103cd3386 )
+      contribution from Zlatko Drmac
+      Follow up with ad5bc21cb50535d66d628a309d60128db96c8851
+      somewhat better description of the minimal workspace needed for a workspace query
+
+Julien Schueller (3):
+      Fix CBLAS testing
+      Enable CBLAS tests in Travis
+      Fix global options definition
+
+Kyle Guinn (1):
+      Improve pkgconfig file generation
+
+Mark Gates (5):
+      C is output
+      E is output since its contents are modified (destroyed)
+      make SY/HE imat match LAWN 41 (different than PO)
+      E is output since its contents are modified (destroyed)
+      Add explicit "On entry/exit" in docs
+
+Nick Papior (6):
+      bug: external definitions not called, removed
+      doc: a missing P in dgeqr2p documention
+      maint: removed unused variables
+      maint: removed unused variables in testing routines
+      bug: fixes always failing tests for *TREXC which was erroneous tests
+      test: added N<0 test for *TREXC
+
+OAM (4):
+      Update cheevr.f
+      Update dsyevr.f
+      Update ssyevr.f
+      Update zheevr.f
+
+Pavel Holoborodko (1):
+      Fixed comment as for minimum required size of WORK
+
+Renegade (4):
+      adding the 2stage symmetric eigenvalue routines drivers checking
+      some tuning
+      merging zhetrd_hb2st
+      removing GOTO
+
+Syd Hashemi (2):
+      Tall skinny and short wide routines
+      Tall skinny and short wide routines
+
+Sébastien Villemot (1):
+      Description: Fix various typos     Author: Sébastien Villemot <sebastien@debian.org>     Forwarded: yes, by email to lapack@cs.utk.edu on 2016-06-26
+
+Vladimir Chalupecky (7):
+      ?LALN2: fix doc for the D2 parameter
+      ?TREXC: fix documentation for LDQ parameter
+      ?TREXC: fix range checks for IFST and ILST
+      ?LAQR2: fix documentation about updated block of Z
+      LAPACKE_?trexc_work: check ldq conditionally on compq
+      ?TREVC?: fix definition of left eigenvectors in docs
+      LAPACKE: fix wrong direction in LAPACKE_?larfb_work
+
+Vladimír Chalupecký (1):
+      Fixes #92: xLASWP: bug for negative INCX
+
+cmoha (8):
+      bug: fixed compilation error
+      bug: fixed compilation error
+      fixed definition of some voids
+      Merge remote-tracking branch 'refs/remotes/Reference-LAPACK/master'
+      fix #3
+      fix #4
+      fix #5
+      redundant variables
+
+eugene.chereshnev (9):
+      Add lapacke interfaces for ?geqr, ?gelq, ?gemqr and ?gemlq
+      Add lapacke interfaces for ?getsls
+      Fix tests in accordance with interface changes
+      Fix ?GELQ and ?GEMLQ
+      Fix ?GEQR and ?GEMQR
+      Fix ?GETSLS
+      TESTING/LIN/*errtsqr.f: fix LDA in ?GEMQR calls
+      Fix ?LAMTSQR
+      Fix ?LAMSWLQ
+
+julielangou (25):
+      Merge pull request #2 from hjmjohnson/ImproveCMakeBuilding
+      Merge pull request #3 from hjmjohnson/FixFindPackgePaths
+      Merge pull request #5 from hjmjohnson/RemoveEndOfLineSpaces
+      Merge pull request #12 from hjmjohnson/MoveToGit
+      Merge pull request #13 from hjmjohnson/DefaultToRelease
+      Merge pull request #15 from hjmjohnson/PreventBadBuildConfigs
+      Merge pull request #19 from hjmjohnson/ImproveTravisNaming
+      Merge pull request #20 from hjmjohnson/FixNightlyTests
+      Merge pull request #21 from hjmjohnson/AddLAPACKETMGTesting
+      Merge pull request #24 from vladimir-ch/master
+      Merge pull request #33 from vladimir-ch/fix-doc-laqr2
+      Merge pull request #61 from cconrads-scicomp/improve-xSYEQUB
+      Merge pull request #62 from cconrads-scicomp/doc-fixes
+      Merge pull request #64 from cconrads-scicomp/xORCSD2BY1-doc
+      Merge pull request #75 from oamarques/patch-1
+      Merge pull request #76 from oamarques/patch-2
+      Merge pull request #77 from oamarques/patch-3
+      Merge pull request #78 from oamarques/patch-4
+      Merge pull request #73 from mgates3/latb4
+      Merge pull request #66 from turboencabulator/pkgconfig
+      Merge pull request #71 from advanpix/master
+      Merge pull request #86 from iyamazaki/lapack-aasen
+      Merge pull request #83 from haidarazzam/master
+      Merge pull request #89 from iyamazaki/lapack-aasen
+      Merge pull request #94 from cmoha/master
+
+konstantin.i.arturov (3):
+      Changes in TS QR API
+      Merge branch 'master' of https://github.com/karturov/lapack
+      Minor fix in Netlib test
+
+langou (18):
+      Merge pull request #9 from vladimir-ch/master
+      Merge pull request #28 from vladimir-ch/fix-trexc-n0
+      Merge pull request #31 from vladimir-ch/lapacke-trexc-ldq-check
+      Merge pull request #36 from eugenechereshnev/fix-trevc3-bug
+      Merge pull request #40 from zerothi/master
+      Merge pull request #45 from jschueller/testing
+      Merge pull request #39 from antonio-rojas/master
+      Merge pull request #50 from zerothi/unused
+      Merge pull request #51 from vladimir-ch/doc-trevc
+      Merge pull request #53 from zerothi/test-unused
+      Merge pull request #54 from zerothi/test-fail
+      Merge pull request #60 from vladimir-ch/fix-lapacke-dlarfb
+      Merge pull request #55 from cconrads-scicomp/master
+      Merge pull request #72 from mgates3/larcm
+      Merge pull request #87 from cmoha/patch-1
+      Merge pull request #93 from cmoha/patch-2
+      Merge pull request #97 from haidarazzam/2stage
+      Merge pull request #101 from karturov/master
+

@@ -1,0 +1,2184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>LAPACK Contributors</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>LAPACK Contributors</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_sponsor">Sponsor</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Since 2010, this material is based upon work supported by the National Science
+Foundation under Grant No. NSF-OCI-1032861. Any opinions, findings and
+conclusions or recommendations expressed in this material are those of the
+author(s) and do not necessarily reflect the views of the National Science
+Foundation (NSF). Until 2006, this material was based upon work supported by
+the National Science Foundation under Grant No. ASC-9313958, NSF-0444486 and
+DOE Grant No. DE-FG03-94ER25219. Any opinions, findings and conclusions or
+recommendations expressed in this material are those of the author(s) and do
+not necessarily reflect the views of the National Science Foundation (NSF) or
+the Department of Energy (DOE).</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contributing_institutions">Contributing institutions</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+University of Rousse; Bulgaria
+</p>
+</li>
+<li>
+<p>
+University of Zagreb; Croatia
+</p>
+</li>
+<li>
+<p>
+Danish Computing Center for Research and Education; Denmark
+</p>
+</li>
+<li>
+<p>
+Technical University of Denmark; Denmark
+</p>
+</li>
+<li>
+<p>
+Fernuniversitaet Hagen; Germany
+</p>
+</li>
+<li>
+<p>
+Technical University Aachen; Germany
+</p>
+</li>
+<li>
+<p>
+IBM ECSEC; Italia
+</p>
+</li>
+<li>
+<p>
+Universidad Jaime I; Spain
+</p>
+</li>
+<li>
+<p>
+Ume&aring; University; Sweden
+</p>
+</li>
+<li>
+<p>
+ETH Zurich; Switzerland
+</p>
+</li>
+<li>
+<p>
+Numerical Algorithms Group Ltd. (NAG); UK
+</p>
+</li>
+<li>
+<p>
+University of Manchester; UK
+</p>
+</li>
+<li>
+<p>
+Cray Research, Inc; US
+</p>
+</li>
+<li>
+<p>
+Duke University; US
+</p>
+</li>
+<li>
+<p>
+Georgia Institute of Technology; US
+</p>
+</li>
+<li>
+<p>
+IBM Watson Research Center; US
+</p>
+</li>
+<li>
+<p>
+Intel Corp., US
+</p>
+</li>
+<li>
+<p>
+Kitware, US
+</p>
+</li>
+<li>
+<p>
+Lawrence Berkeley National Laboratory; US
+</p>
+</li>
+<li>
+<p>
+Oak Ridge National Laboratory; US
+</p>
+</li>
+<li>
+<p>
+Randolph-Macon College; US
+</p>
+</li>
+<li>
+<p>
+Rice University; US
+</p>
+</li>
+<li>
+<p>
+University of California, Berkeley; US
+</p>
+</li>
+<li>
+<p>
+University of California, Davis; US
+</p>
+</li>
+<li>
+<p>
+University of Colorado Denver; US
+</p>
+</li>
+<li>
+<p>
+University of Kansas; US
+</p>
+</li>
+<li>
+<p>
+University of Kentucky; US
+</p>
+</li>
+<li>
+<p>
+University of Tennessee; US
+</p>
+</li>
+<li>
+<p>
+University of Washington; US
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contributor_list">Contributor list</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Ed Anderson                            (Cray Research Inc. and University of Tennessee; US),
+</p>
+</li>
+<li>
+<p>
+Chuck Atkins                           (Kitware; US),
+</p>
+</li>
+<li>
+<p>
+Zhaojun Bai                            (University of Kentucky and University of California, Davis; US),
+</p>
+</li>
+<li>
+<p>
+V. A. Barker                           (Technical University of Denmark; Denmark),
+</p>
+</li>
+<li>
+<p>
+Chris Bischof                          (Technical University Aachen; Germany),
+</p>
+</li>
+<li>
+<p>
+Susan Blackford                        (University of Tennessee; US),
+</p>
+</li>
+<li>
+<p>
+Zvonomir Bujanovic                     (University of Zagreb; Croatia),
+</p>
+</li>
+<li>
+<p>
+Karen Braman                           (University of Kansas; US),
+</p>
+</li>
+<li>
+<p>
+Ralph Byers                            (University of Kansas; US),
+</p>
+</li>
+<li>
+<p>
+Jim Demmel                             (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+Inderjit Dhillon                       (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+Jack Dongarra                          (University of Tennessee and Oak Ridge National Laboratory; US),
+</p>
+</li>
+<li>
+<p>
+Zlatko Drmac                           (University of Zagreb; Croatia),
+</p>
+</li>
+<li>
+<p>
+Peng Du                                (University of Tennessee; US),
+</p>
+</li>
+<li>
+<p>
+Jeremy Du Croz                         (Numerical Algorithms Group Ltd. (NAG); UK),
+</p>
+</li>
+<li>
+<p>
+Mark Fahey                             (University of Kentucky; US),
+</p>
+</li>
+<li>
+<p>
+Anne Greenbaum                         (University of Washington; US),
+</p>
+</li>
+<li>
+<p>
+Ming Gu                                (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+Fred Gustavson                         (IBM Watson Research Center; US),
+</p>
+</li>
+<li>
+<p>
+Deaglan Halligan                       (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+Sven Hammarling                        (Numerical Algorithms Group Ltd. (NAG); UK),
+</p>
+</li>
+<li>
+<p>
+Yozo Hida                              (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+Nick Higham                            (University of Manchester; UK),
+</p>
+</li>
+<li>
+<p>
+Bill Hoffman                           (Kitware; US),
+</p>
+</li>
+<li>
+<p>
+Intel MKL team                         (Intel Corp.; US),
+</p>
+</li>
+<li>
+<p>
+Bo Kagstr&ouml;m                       (Ume&aring; University; Sweden),
+</p>
+</li>
+<li>
+<p>
+Daniel Kressner                        (ETH Zurich; Switzerland),
+</p>
+</li>
+<li>
+<p>
+William Kahan                          (University of California, Berkeley ; US),
+</p>
+</li>
+<li>
+<p>
+Julie Langou,                          (University of Tennessee; US),
+</p>
+</li>
+<li>
+<p>
+Julien Langou                          (University of Colorado Denver; US),
+</p>
+</li>
+<li>
+<p>
+Craig Lucas,                           (University of Manchester and NAG Ltd., UK;),
+</p>
+</li>
+<li>
+<p>
+Piotr Luszczek,                        (University of Tennessee; US),
+</p>
+</li>
+<li>
+<p>
+Ren-Cang Li                            (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+Xiaoye Li                              (Lawrence Berkeley National Laboratory; US),
+</p>
+</li>
+<li>
+<p>
+M. Marinova                            (Danish Computing Center for Research and Education; Denmark),
+</p>
+</li>
+<li>
+<p>
+Osni Marques                           (Lawrence Berkeley National Laboratory; US),
+</p>
+</li>
+<li>
+<p>
+Peter Mayes                            (IBM ECSEC; Italia),
+</p>
+</li>
+<li>
+<p>
+Alan McKenney                          (no affiliation),
+</p>
+</li>
+<li>
+<p>
+Beresford Parlett                      (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+Antoine Petitet                        (University of Tennessee; US),
+</p>
+</li>
+<li>
+<p>
+Peter Poromaa                          (Ume&aring; University; Sweden),
+</p>
+</li>
+<li>
+<p>
+Enrique Quintana-Ort&iacute;           (Universidad Jaime I; Spain),
+</p>
+</li>
+<li>
+<p>
+Gregorio Quintana-Ort&iacute;          (Universidad Jaime I; Spain),
+</p>
+</li>
+<li>
+<p>
+Giuseppe Radicati                      (IBM ECSEC; Italia),
+</p>
+</li>
+<li>
+<p>
+Huan Ren                               (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+Jason Riedy                            (University of California, Berkeley; US; and Georgia Institute of Technology; US),
+</p>
+</li>
+<li>
+<p>
+Jeff Rutter                            (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+Edward Smyth                           (Numerical Algorithms Group Ltd. (NAG); UK),
+</p>
+</li>
+<li>
+<p>
+Danny Sorensen                         (Rice University; US),
+</p>
+</li>
+<li>
+<p>
+Ken Stanley                            (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+Xiaobai Sun                            (Duke University; US)
+</p>
+</li>
+<li>
+<p>
+Brian Sutton                           (Randolph-Macon College; US),
+</p>
+</li>
+<li>
+<p>
+Fran&ccedil;oise Tisseur               (University of Tennessee; US),
+</p>
+</li>
+<li>
+<p>
+Robert A. van de Geijn                 (University of Texas at Austin; US),
+</p>
+</li>
+<li>
+<p>
+Kresimir Veselic                       (Fernuniversitaet Hagen; Germany)
+</p>
+</li>
+<li>
+<p>
+Christof Voemel                        (University of California, Berkeley and Lawrence Berkeley National Laboratory; US).
+</p>
+</li>
+<li>
+<p>
+Meghanath Vishvanath                   (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+David Vu                               (University of California, Berkeley; US),
+</p>
+</li>
+<li>
+<p>
+Jerzy Wa&#347;niewski                  (Technical University of Denmark, Denmark),
+</p>
+</li>
+<li>
+<p>
+P. Yalamov                             (University of Rousse; Bulgaria).
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thanks_for_bug_report_patches_suggestions_to">Thanks for bug-report/patches/suggestions to:</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+LAPACK 3.3:
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>Allin Cottrell (Wake Forest University),
+Mathew Cross (NAG),
+Zlatko Drmac (University of Zagreb, Croatia),
+Victor Liu, (Stanford University, Palo Alto),
+the Numpy team,
+Bart Oldeman, (Montreal, Quebec)
+Stephan Ripke (Broad Institute, Boston),
+Ake Sandgren (HPC2N, Umea University),
+Clint Whaley (University of Texas at San Antonio).</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+LAPACK 3.2.2:
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>Marco Atzeri
+Guy Bencteux (CERMICS, France)
+Michael Chuvelev (Intel)
+Mathew Cross (NAG)
+William Gandler (NIH/CIT)
+Tim Hopkins
+"Jan"
+Ondra Kamenik
+Alexander V. Kobotov (Intel)
+Ashutosh Mahajan (Mathematics and Computer Science Division of Argonne National Labs)
+Lawrence Mulholland (NAG)
+Pat Quillen (MathWorks)
+Paul Roberts (NAG)
+Vasile Sima (National Institute for Research &amp; Development in Informatics, Romania)
+Sergei Steshenko
+Kevin Wadleigh
+Zbigniew</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+LAPACK 3.2.1:
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>Guy Bencteux (CERMICS, France)
+Edouard Canot (IRISA, France)
+Michael Chuvelev (Intel)
+"faber80"
+Bruno Pincon (ESIAL, France)
+Vasile Sima (National Institute for Research &amp; Development in Informatics, Romania)
+Christof Voemel
+Daniel Waggoner
+Igor Zhuravlov</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+LAPACK 3.2:
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>Patrick Alken (University of Colorado at Boulder, USA),
+Penny Anderson (MathWorks, MA, USA),
+Michael Baudin (Scilab, FR),
+Bobby Cheng (MathWorks, MA, USA),
+Michael Chuvelev (Intel, USA),
+Phil DeMier (IBM, USA),
+Michel Devel (UTINAM institute, University of Franche-Comte, UMR CNRSA, FR),
+Alan Edelmann (Massachusetts Institute of Technology, MA, USA),
+Carlo de Falco and all the Octave developers,
+Fernando Guevara (University of Utah, UT, USA),
+Christian Keil,
+Zbigniew Leyk (Wolfram, USA),
+Cleve Moler (MathWorks, MA, USA),
+Joao Moreira de Sa Coutinho,
+Lawrence Mulholland (NAG, UK),
+Duncan Po (MathWorks, MA, USA),
+Mick Pont (NAG, UK),
+Pat Quillen (MathWorks, MA, USA),
+Clint Whaley (University of Texas at San Antonio, TX, USA),
+Mikhail Wolfson (MIT, USA),
+Vittorio Zecca.</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+LAPACK 3.1.1:
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>Tobias Burns
+Daniel Kressner
+Michael Wimmer</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+LAPACK 3.1:
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>Eduardo Anglada (Universidad Autonoma de Madrid, Spain)
+David Barnes (University of Kent, England)
+Alberto Garcia (Universidad del Pais Vasco, Spain)
+Tim Hopkins (University of Kent, England)
+Javier Junquera (CITIMAC, Universidad de Cantabria, Spain)
+Mathworks: Penny Anderson, Bobby Cheng, Pat Quillen, Cleve Moler, Duncan Po, Bin Shi, Greg Wolodkin (MathWorks, USA)
+George McBane (Grand Valley State University, USA)
+Matyas Sustik (University of Texas at Austin, USA)
+Michael Wimmer (Universität Regensburg, Germany)
+Simon Wood (University of Bath, UK) and in more generally all the R developers</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_principal_investigators">Principal Investigators</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Jim Demmel                               (University of California, Berkeley; US; Since 1992),
+</p>
+</li>
+<li>
+<p>
+Jack Dongarra                            (University of Tennessee and Oak Ridge National Laboratory; US; Since 1992),
+</p>
+</li>
+<li>
+<p>
+Julien Langou                            (University of Colorado Denver; US; Since 2006).
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contributors_and_their_contributions">Contributors and their contributions</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>(single precision routine only for some fields)</p></div>
+<div class="sect2">
+<h3 id="_cs_decomposition_8201_8212_8201_sorcsd">CS Decomposition&#8201;&#8212;&#8201;SORCSD</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Brian Sutton, Randolph-Macon College; US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>A cuncsd    A dorcsd    A sorcsd      A zuncsd
+A cunbdb    A dorbdb    A sorbdb      A zunbdb
+A cbbcsd    A dbbcsd    A sbbcsd      A zbbcsd
+A clapmr    A dlapmr    A slampr      A zlapmr
+            A dlartgp   A slartgp
+            A dlartgs   A slartgs</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_secular_equation_solver_used_in_the_divide_and_conquer_algorithm_8201_8212_8201_slasd4">Secular Equation Solver (used in the Divide and Conquer Algorithm)&#8201;&#8212;&#8201;SLASD4</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Ren-Cang Li, Computer Science Division, University of California at Berkeley, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLASD4
+SLASD5</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_pivoted_cholesky">Pivoted Cholesky</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Craig Lucas,                           (University of Manchester and NAG Ltd., UK)
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>A SRC/cpstf2.f   A SRC/dpstf2.f   A SRC/spstf2.f   A SRC/zpstf2.f
+A SRC/cpstrf.f   A SRC/dpstrf.f   A SRC/spstrf.f   A SRC/zpstrf.f</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_machine_parameter_routine_8201_8212_8201_slamch">Machine Parameter Routine&#8201;&#8212;&#8201;SLAMCH</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Piotr Luszczek,                        (University of Tennessee; US),
+</p>
+</li>
+<li>
+<p>
+Jason Riedy                            (Georgia Institute of Technology; US),
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>M dlamch.f
+M slamch.f</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_condition_number_estimate_subroutine_8201_8212_8201_slacn2">Condition Number Estimate Subroutine&#8201;&#8212;&#8201;SLACN2</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Nick Higham, University of Manchester
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLACN2
+deprecated: SLACON (not thread safe)</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_general_purpose_auxiliary_routines">General purpose auxiliary routines</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Nick Higham, University of Manchester
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SCSUM1</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_level_3_blas_symmetric_indefinite_solve_and_symmetric_indefinite_inversion">Level-3 BLAS symmetric indefinite solve and symmetric indefinite inversion</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Julie Langou,                          (University of Tennessee; US),
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>M chesv.f        M dsysv.f         M ssysv.f       M zhesv.f
+A chetrs2.f      A dsytrs2.f       A ssytrs2.f     A zhetrs2.f
+A csyconv.f      A dsyconv.f       A ssyconv.f     A zsyconv.f
+A csyswapr.f     A dsyswapr.f      A ssyswapr.f    A zsyswapr.f
+A csytri2.f      A dsytri2.f       A ssytri2.f     A zsytri2.f
+A csytri2x.f     A dsytri2x.f      A ssytri2x.f    A zsytri2x.f</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_mixed_precision_iterative_refinement_subroutines_for_exploiting_fast_single_precision_hardware">Mixed precision iterative refinement subroutines for exploiting fast single precision hardware</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Julie Langou,                          (University of Tennessee; US),
+</p>
+</li>
+<li>
+<p>
+Julien Langou                            (University of Colorado Denver; US; 2006-).
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>A SRC/dsposv.f          A SRC/zcposv.f
+A SRC/dsgesv.f          A SRC/zcgesv.f</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_jacobi_svd_algorithm_8201_8212_8201_sgejsv_amp_sgesvj">Jacobi SVD Algorithm&#8201;&#8212;&#8201;SGEJSV &amp; SGESVJ</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Zlatko Drmac of the University of Zagreb
+</p>
+</li>
+<li>
+<p>
+Kresimir Veselic of the Fernuniversitaet Hagen
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SGEJSV
+SGESVJ
+SGSVJ0
+SGSVJ1</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_divide_amp_conquer_svd_algorithm_8201_8212_8201_sgesdd">Divide &amp; Conquer SVD Algorithm&#8201;&#8212;&#8201;SGESDD</h3>
+</div>
+<div class="sect2">
+<h3 id="_linear_least_squares_solver_based_on_divide_amp_conquer_svd_algorithm_8201_8212_8201_sgelsd">Linear Least Squares solver based on Divide &amp; Conquer SVD Algorithm&#8201;&#8212;&#8201;SGELSD</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Ming Gu, Computer Science Division, University of California at Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Huan Ren, Computer Science Division, University of California at Berkeley, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SBDSDC
+SLASD0
+SLASD1
+SLASD2
+SLASD3
+SLASD6
+SLASD7
+SLASD8
+SLASDA
+SLASDQ
+SLASDT
+SGESDD</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+Ming Gu, Computer Science Division, University of California at Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Ren-Cang Li, Computer Science Division, University of California at Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Osni Marques, LBNL/NERSC, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SGELSD, SLALS0, SLALSA, SLALASD</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_qr_factorization_with_column_pivoting_level_3_blas_8201_8212_8201_sgeqp3">QR factorization with column pivoting (Level 3 BLAS)&#8201;&#8212;&#8201;SGEQP3</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+G. Quintana Ort&iacute;, Depto. de Informatica, Universidad Jaime I, Spain
+</p>
+</li>
+<li>
+<p>
+X. Sun, Computer Science Dept., Duke University, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SGEQP3</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+G. Quintana Ort&iacute;, Depto. de Informatica, Universidad Jaime I, Spain
+</p>
+</li>
+<li>
+<p>
+X. Sun, Computer Science Dept., Duke University, US
+</p>
+</li>
+<li>
+<p>
+Z. Drmac and Z. Bujanovic, Dept. of Mathematics, University of Zagreb, Croatia.
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SGEQPF (deprecated), SLAQP2, SLAQPS</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_linear_least_squares_solver_based_on_qr_factorization_with_column_pivoting_8201_8212_8201_sgelsy">Linear Least Squares solver based on QR factorization with column pivoting&#8201;&#8212;&#8201;SGELSY</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+A. Petitet, Computer Science Dept., Univ. of Tenn., Knoxville, US
+</p>
+</li>
+<li>
+<p>
+E. Quintana Ort&iacute;, Depto. de Informatica, Universidad Jaime I, Spain
+</p>
+</li>
+<li>
+<p>
+G. Quintana Ort&iacute;, Depto. de Informatica, Universidad Jaime I, Spain
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SGELSY</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+A. Petitet, Computer Science Dept., Univ. of Tenn., Knoxville, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLARZ
+SLARZB
+SLARZT
+SLATRZ
+SORMR3
+SORMRZ
+STZRZF</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_nonsymmetric_eigenvalue_problem_8201_8212_8201_nep_8201_8212_8201_sgeev">Nonsymmetric Eigenvalue Problem&#8201;&#8212;&#8201;NEP&#8201;&#8212;&#8201;SGEEV</h3>
+<div class="sect3">
+<h4 id="_multishift_qr_algorithm_with_aggressive_early_deflation_8201_8212_8201_shseqr">Multishift QR algorithm with Aggressive Early Deflation&#8201;&#8212;&#8201;SHSEQR</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+Karen Braman                           (University of Kansas; US),
+</p>
+</li>
+<li>
+<p>
+Ralph Byers                            (University of Kansas; US),
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SHSEQR, SLAQR0, SLAQR1, SLAQR2, SLAQR3, SLAQR4, SLAQR5</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_generalized_schur_decomposition_reordering_8201_8212_8201_stgsen">Generalized Schur Decomposition Reordering&#8201;&#8212;&#8201;STGSEN</h3>
+</div>
+<div class="sect2">
+<h3 id="_generalized_sylvester_equation_solver_8201_8212_8201_stgsyl">Generalized Sylvester Equation Solver&#8201;&#8212;&#8201;STGSYL</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Bo Kagstr&ouml;m, Ume&aring; University; Sweden
+</p>
+</li>
+<li>
+<p>
+Peter Poromaa, Ume&aring; University; Sweden
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SGESC2
+SLATDF
+STGEX2
+STGEXC
+STGSEN
+STGSNA
+STGSY2
+STGSYL
+SGETC2</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_extra_precise_iterative_refinement_routines">Extra Precise Iterative Refinement Routines</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+James Demmel, Univ. of California, Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Deaglan Halligan, Univ. of California, Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Yozo Hida, Univ. of California, Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Jason Riedy, Univ. of California, Berkeley, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SGBEQUB
+SGBRFSX
+SGBSVXX
+SGEEQUB
+SGERFSX
+SGESVXX
+SLA_GBAMV
+SLA_GBRCOND
+SLA_GBRFSX_EXTENDED
+SLA_GBRPVGRW
+SLA_GEAMV
+SLA_GERCOND
+SLA_GERFSX_EXTENDED
+SLA_LIN_BERR
+SLA_PORCOND
+SLA_PORFSX_EXTENDED
+SLA_PORPVGRW
+SLA_RPVGRW
+SLA_SYAMV
+SLA_SYRCOND
+SLA_SYRFSX_EXTENDED
+SLA_SYRPVGRW
+SLA_WWADDW
+SLARSCL2
+SLASCL2
+SPOEQUB
+SPORFSX
+SPOSVXX
+SSYEQUB
+SSYRFSX
+SSYSVXX</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_rectangular_full_packed_format">Rectangular Full Packed Format</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Fred Gustavson of the IBM Watson Research Center
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLANSF
+STFSM
+STFTRI
+STFTTP
+STFTTR
+STPTTF
+SPFTRF
+SPFTRI
+SPFTRS
+STRTTF</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+Fred Gustavson of the IBM Watson Research Center
+</p>
+</li>
+<li>
+<p>
+Julien Langou of the Univ. of Colorado Denver
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>STRTTP</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+Julien Langou of the Univ. of Colorado Denver
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SSFRK
+STPTTR</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_symmetric_eigenvalue_problem_8201_8212_8201_sep">Symmetric Eigenvalue Problem&#8201;&#8212;&#8201;SEP</h3>
+<div class="sect3">
+<h4 id="_expert_routines">Expert routines</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+Mark Fahey, Department of Mathematics, Univ. of Kentucky, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLAGV2
+SSYGVD
+SSYGVX
+SSBGVD
+SSBGVX
+SSPGVD
+SSPGVX</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect3">
+<h4 id="_divide_amp_conquer_agorithm">Divide &amp; Conquer Agorithm</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+Jeff Rutter, Computer Science Division, University of California at Berkeley, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLAED0
+SLAED7
+SLAED8
+SLAED9
+SLAEDA</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+Jeff Rutter, Computer Science Division, University of California at Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Fran&ccedil;oise Tisseur, University of Tennessee.
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLAED1
+SLAED2
+SLAED3
+SSYEVD
+SSTEDC</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+Ren-Cang Li, Computer Science Division, University of California
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLAED4
+SLAED5
+SLAED6</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect3">
+<h4 id="_multiple_relatively_robust_representations_algorithm_8201_8212_8201_syevr">Multiple Relatively Robust Representations Algorithm&#8201;&#8212;&#8201;SYEVR</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+Beresford Parlett, University of California, Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Jim Demmel, University of California, Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Inderjit Dhillon, University of Texas, Austin, US
+</p>
+</li>
+<li>
+<p>
+Osni Marques, LBNL/NERSC, US
+</p>
+</li>
+<li>
+<p>
+Christof Voemel, University of California, Berkeley, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLAR1V
+SLARRA
+SLARRB
+SLARRC
+SLARRE
+SLARRF
+SLARRJ
+SLARRR
+SLARRV</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+W. Kahan, University of California, Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Beresford Parlett, University of California, Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Jim Demmel, University of California, Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Inderjit Dhillon, University of Texas, Austin, US
+</p>
+</li>
+<li>
+<p>
+Osni Marques, LBNL/NERSC, US
+</p>
+</li>
+<li>
+<p>
+Christof Voemel, University of California, Berkeley, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLARRD</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+Inderjit Dhillon, IBM Almaden, US
+</p>
+</li>
+<li>
+<p>
+Osni Marques, LBNL/NERSC, US
+</p>
+</li>
+<li>
+<p>
+Christof Voemel, LBNL/NERSC, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SSTEGR</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+Beresford Parlett, University of California, Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Jim Demmel, University of California, Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Inderjit Dhillon, University of Texas, Austin, US
+</p>
+</li>
+<li>
+<p>
+Osni Marques, LBNL/NERSC, US
+</p>
+</li>
+<li>
+<p>
+Christof Voemel, University of California, Berkeley, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SSTEMR</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+Osni Marques, LBNL/NERSC, US
+</p>
+</li>
+<li>
+<p>
+Christof Voemel, University of California, Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Jason Riedy, University of California, Berkeley, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLANEG</code></pre>
+</div></div>
+</li>
+<li>
+<p>
+Inderjit Dhillon, IBM Almaden, US
+</p>
+</li>
+<li>
+<p>
+Osni Marques, LBNL/NERSC, US
+</p>
+</li>
+<li>
+<p>
+Ken Stanley, Computer Science Division, University of California at Berkeley, US
+</p>
+</li>
+<li>
+<p>
+Jason Riedy, Computer Science Division, University of California at Berkeley, US
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SSTEVR
+SSYEVR</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect3">
+<h4 id="_dqds_algorithm">DQDS algorithm</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+Osni Marques of the Lawrence Berkeley National Laboratory
+</p>
+</li>
+<li>
+<p>
+Beresford Parlett of the Univ. of California at Berkeley
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SLASQ1
+SLASQ2
+SLASQ3
+SLASQ4
+SLASQ5
+SLASQ6</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cholesky_for_banded_matrices">Cholesky for banded matrices</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Peter Mayes, IBM ECSEC, Rome, March 23, 1989
+</p>
+</li>
+<li>
+<p>
+Giuseppe Radicati, IBM ECSEC, Rome, March 23, 1989
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>SPBTRF</code></pre>
+</div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_cmake_build_system">CMAKE Build system</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Chuck Atkins, Kitware, US
+</p>
+</li>
+<li>
+<p>
+Bill Hoffman, Kitware, US
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_lapack_95">LAPACK 95</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+V. A. Barker               (Technical University of Denmark; Denmark),
+</p>
+</li>
+<li>
+<p>
+Susan Blackford            (University of Tennessee; US),
+</p>
+</li>
+<li>
+<p>
+Jack Dongarra              (University of Tennessee and Oak Ridge National Laboratory; US),
+</p>
+</li>
+<li>
+<p>
+Jeremy Du Croz             (Numerical Algorithms Group Ltd. (NAG); UK),
+</p>
+</li>
+<li>
+<p>
+Sven Hammarling            (Numerical Algorithms Group Ltd. (NAG); UK),
+</p>
+</li>
+<li>
+<p>
+M. Marinova                (Danish Computing Center for Research and Education; Denmark),
+</p>
+</li>
+<li>
+<p>
+Jerzy Wa&#347;niewski      (Technical University of Denmark, Denmark),
+</p>
+</li>
+<li>
+<p>
+P. Yalamov                 (University of Rousse; Bulgaria).
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_variants_for_lu_qr_and_cholesky">Variants for LU, QR and Cholesky</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Peng Du                    (University of Tennsee, US)
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_c_interface_to_lapack">C Interface to LAPACK</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+MKL team
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-04-28 20:18:03 PDT
+</div>
+</div>
+</body>
+</html>

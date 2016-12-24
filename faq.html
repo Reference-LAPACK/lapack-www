@@ -1,0 +1,1212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>LAPACK FAQ</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>LAPACK FAQ</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_lapack">LAPACK</h2>
+<div class="sectionbody">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">If you have a problem or question not answered on this page, please take a look at <a href="http://icl.cs.utk.edu/lapack-forum"><strong>the LAPACK User Forum</strong></a></td>
+</tr></table>
+</div>
+<div class="sect2">
+<h3 id="_what_and_where_is_lapack">What and where is LAPACK?</h3>
+<div class="paragraph"><p>LAPACK provides routines for solving systems of simultaneous linear equations, least-squares solutions of linear systems of equations, eigenvalue problems, and singular value problems. The associated matrix factorizations (LU, Cholesky, QR, SVD, Schur, generalized Schur) are also provided, as are related computations such as reordering of the Schur factorizations and estimating condition numbers. Dense and banded matrices are handled, but not general sparse matrices. In all areas, similar functionality is provided for real and complex matrices, in both single and double precision.</p></div>
+<div class="paragraph"><p>LAPACK introduces new routines, as well as extending the functionality of existing routines. For detailed information on the latest improvement since LAPACK 3.0, see <a href="http://www.netlib.org/lapack/improvement.html">here</a>.</p></div>
+<div class="paragraph"><p>The LAPACK library is available from netlib at <a href="http://www.netlib.org/lapack/lapack.tgz">http://www.netlib.org/lapack/lapack.tgz</a> .
+It can be included in commercial software packages.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_what_and_where_are_the_lapack_vendors_implementations">What and where are the LAPACK Vendors' implementations?</h3>
+<div class="paragraph"><p>These optimized LAPACK libraries are provided by the computer vendor, by an independent software vendor (ISV) or by some Linux/BSD distributions (see list below). For further details, please contact your local vendor representative.</p></div>
+<div class="sect3">
+<h4 id="_lapack_vendor_library_list_last_update_april_18_2006">LAPACK vendor library List  (Last update: April 18, 2006)</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+AMD : <a href="http://developer.amd.com/acml.aspx">ACML</a>
+</p>
+</li>
+<li>
+<p>
+Apple : <a href="http://developer.apple.com/hardwaredrivers/ve/vector_libraries.html#LAPACK">Velocity Engine</a>
+</p>
+</li>
+<li>
+<p>
+Compaq : <a href="http://h18000.www1.hp.com/math/documentation/cxml/dxml.3dxml.html">CXML</a>
+</p>
+</li>
+<li>
+<p>
+Cray : <a href="http://docs.cray.com/books/004-2151-002//004-2151-002-manual.pdf">libsci manual, chapter 3</a>
+</p>
+</li>
+<li>
+<p>
+HP : <a href="http://www.hp.com/go/mlib">MLIB</a>
+</p>
+</li>
+<li>
+<p>
+IBM : ESSL / Parallel ESSL <a href="http://www-03.ibm.com/systems/p/software/essl.html">Overview</a>, <a href="http://publib.boulder.ibm.com/infocenter/clresctr/index.jsp?topic=/com.ibm.cluster.essl.doc/esslbooks.html">Documentation</a>
+</p>
+</li>
+<li>
+<p>
+Intel : <a href="https://software.intel.com/en-us/intel-mkl">MKL</a>
+</p>
+</li>
+<li>
+<p>
+NEC : <a href="http://www.sw.nec.co.jp/hpc/mediator/sxm_e/software/61.html">PDLIB/SX</a>
+</p>
+</li>
+<li>
+<p>
+SGI : <a href="http://www.sgi.com/products/software/scsl.html">SCSL</a>
+</p>
+</li>
+<li>
+<p>
+SUN : <a href="http://developers.sun.com/prodtech/cc/perflib_index.html">Sun Performance Library</a>
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect3">
+<h4 id="_high_level_interface">high-level interface</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://www.mathworks.com/company/newsletters/news_notes/clevescorner/winter2000.cleve.html">Matlab</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.gnu.org/software/octave/">Octave</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.nag.com/numeric/numerical_libraries.asp">NAG Numerical Librairies</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.maplesoft.com/">Maple</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.r-project.org/">R project</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.scilab.org/">Scilab</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.ceemple.com/">Ceemple</a>
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect3">
+<h4 id="_linux_distribution">Linux Distribution</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+Fedora, RedHat, Suse, Mandriva       <a href="http://rpmfind.net/linux/rpm2html/search.php?query=lapack">RPM</a>
+</p>
+</li>
+<li>
+<p>
+Debian        <a href="http://packages.debian.org/stable/libs/lapack">Lapack Debian package</a>
+</p>
+</li>
+<li>
+<p>
+Cygwin        Pick up <em>lapack</em> from the <em>Math</em> category during installation.
+</p>
+</li>
+<li>
+<p>
+Ubuntu        <a href="http://packages.ubuntulinux.org/breezy/source/lapack">Lapack Ubuntu package</a>
+</p>
+</li>
+<li>
+<p>
+Gentoo        <a href="http://packages.gentoo.org/search/?sstring=lapack">Lapack Gentoo package</a>
+</p>
+</li>
+<li>
+<p>
+Quantian      <a href="http://dirk.eddelbuettel.com/quantian.html">Lapack package</a>
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect3">
+<h4 id="_bsds">BSDs</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+OpenBSD, FreeBSD      <a href="http://www.freebsd.org/cgi/url.cgi?ports/math/lapack/pkg-descr">ports</a>
+</p>
+</li>
+<li>
+<p>
+NetBSD, Dragonfly BSD <a href="http://pkgsrc.se/math/lapack">pkgsrc</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_are_the_difference_between_lapack_and_eispack_and_linpack">What are the difference between LAPACK? and EISPACK and LINPACK</h3>
+<div class="paragraph"><p>The original goal of the LAPACK project was to make the widely used EISPACK and LINPACK libraries run efficiently on shared-memory vector and parallel processors. On these machines, LINPACK and EISPACK are inefficient because their memory access patterns disregard the multi-layered memory hierarchies of the machines, thereby spending too much time moving data instead of doing useful floating-point operations. LAPACK addresses this problem by reorganizing the algorithms to use block matrix operations, such as matrix multiplication, in the innermost loops. These block operations can be optimized for each architecture to account for the memory hierarchy, and so provide a transportable way to achieve high efficiency on diverse modern machines. We use the term "transportable" instead of "portable" because, for fastest possible performance, LAPACK requires that highly optimized block matrix operations be already implemented on each machine.</p></div>
+<div class="paragraph"><p>LAPACK routines are written so that as much as possible of the computation is performed by calls to the Basic Linear Algebra Subprograms (BLAS). While LINPACK and EISPACK are based on the vector operation kernels of the Level 1 BLAS, LAPACK was designed at the outset to exploit the Level 3 BLAS&#8201;&#8212;&#8201;a set of specifications for Fortran subprograms that do various types of matrix multiplication and the solution of triangular systems with multiple right-hand sides. Because of the coarse granularity of the Level 3 BLAS operations, their use promotes high efficiency on many high-performance computers, particularly if specially coded implementations are provided by the manufacturer.</p></div>
+<div class="paragraph"><p>Highly efficient machine-specific implementations of the BLAS are available for many modern high-performance computers. The BLAS enable LAPACK routines to achieve high performance with transportable software. Although a model Fortran implementation of the BLAS in available from netlib in the BLAS library, it is not expected to perform as well as a specially tuned implementation on most high-performance computers&#8201;&#8212;&#8201;on some machines it may give much worse performance&#8201;&#8212;&#8201;but it allows users to run LAPACK software on machines that do not offer any other implementation of the BLAS.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_are_there_legal_restrictions_on_the_use_of_lapack_software">Are there legal restrictions on the use of LAPACK software?</h3>
+<div class="paragraph"><p>LAPACK is a freely-available software package. It is available from netlib via anonymous ftp and the World Wide Web at <a href="http://www.netlib.org/lapack">http://www.netlib.org/lapack</a> . Thus, it can be included in commercial software packages (and has been). We only ask that proper credit be given to the authors.</p></div>
+<div class="paragraph"><p>Like all software, it is copyrighted. It is not trademarked, but we do ask the following:</p></div>
+<div class="paragraph"><p>If you modify the source for these routines we ask that you change the name of the routine and comment the changes made to the original.</p></div>
+<div class="paragraph"><p>We will gladly answer any questions regarding the software. If a modification is done, however, it is the responsibility of the person who modified the routine to provide support.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_how_do_i_reference_lapack_in_a_scientific_publication">How do I reference LAPACK in a scientific publication?</h3>
+<div class="paragraph"><p>We ask that you cite the LAPACK Users' Guide, Third Edition.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>@BOOK{laug,
+      AUTHOR = {Anderson, E. and Bai, Z. and Bischof, C. and
+                Blackford, S. and Demmel, J. and Dongarra, J. and
+                Du Croz, J. and Greenbaum, A. and Hammarling, S. and
+                McKenney, A. and Sorensen, D.},
+      TITLE = {{LAPACK} Users' Guide},
+      EDITION = {Third},
+      PUBLISHER = {Society for Industrial and Applied Mathematics},
+      YEAR = {1999},
+      ADDRESS = {Philadelphia, PA},
+      ISBN = {0-89871-447-8 (paperback)} }</code></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_what_revisions_have_been_made_since_the_last_release">What revisions have been made since the last release?</h3>
+<div class="paragraph"><p>For detailed information on the revisions since the previous public release, go to the <a href="http://www.netlib.org/lapack/release_notes.html">Release Notes Page</a>.</p></div>
+<div class="paragraph"><p>To keep updated with the LAPACK project, subscribe to the LAPACK announcement list (USERS CANNOT POST TO THIS LIST):</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://lists.cs.utk.edu/pipermail/lapack-announce">Archives</a>
+</p>
+</li>
+<li>
+<p>
+<a href="mailto:lapack-announce-subscribe@cs.utk.edu">Subscribe</a>
+</p>
+</li>
+<li>
+<p>
+<a href="mailto:lapack-announce-unsubscribe@cs.utk.edu">unsubscribe </a>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>This is a low-volume list that is used to announce new version of LAPACK, important updates, etc. The list is only for announcements, so only the LAPACK development team can post to the list. Posts from outside the LAPACK development team will be automatically discarded.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_when_is_the_next_scheduled_release_of_lapack">When is the next scheduled release of LAPACK?</h3>
+<div class="paragraph"><p>LAPACK, version 3.6.1 was released on June 2016. We expect to release LAPACK 3.7.0 by the end of 2016.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_where_can_i_find_more_information_about_lapack">Where can I find more information about LAPACK?</h3>
+<div class="paragraph"><p>A variety of working notes related to the development of the LAPACK library were published as LAPACK Working Notes and are available in postscript or pdf format at: <a href="http://www.netlib.org/lapack/lawns/downloads">http://www.netlib.org/lapack/lawns/downloads</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_where_can_i_find_the_lapack_users_guide">Where can I find the LAPACK Users' Guide?</h3>
+<div class="paragraph"><p><a href="http://www.netlib.org/lapack/lug">HTML version of the LAPACK Users' Guide, Third Edition</a></p></div>
+<div class="paragraph"><p>The printed version of the LAPACK Users' Guide, Third Edition is available from SIAM (Society for Industrial and Applied Mathematics). The list price is $39.00 and the SIAM Member Price is $31.20. The order code for the book is SE09. Contact SIAM for additional information.</p></div>
+<div class="paragraph"><p><a href="http://www.siam.org/">http://www.siam.org/</a></p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>service@siam.org
+fax: 215-386-7999
+phone: (USA) 800-447-SIAM
+(outside USA) 215-382-9800
+mail: SIAM, Customer Service, P. O. Box 7260, Philadelphia, PA 19104.</code></pre>
+</div></div>
+<div class="paragraph"><p>The royalties from the sales of this book are being placed in a fund to help students attend SIAM meetings and other SIAM related activities. This fund is administered by SIAM and qualified individuals are encouraged to write directly to SIAM for guidelines.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_is_there_a_c_interface_to_lapack">Is there a C interface to LAPACK?</h3>
+<div class="paragraph"><p><strong>Yes</strong>, see the link:Standard C language APIs for LAPACK section[<a href="http://www.netlib.org/lapack">http://www.netlib.org/lapack</a>].</p></div>
+</div>
+<div class="sect2">
+<h3 id="_why_aren_8217_t_blas_routines_included_when_i_download_an_lapack_routine">Why aren&#8217;t BLAS routines included when I download an LAPACK routine?</h3>
+<div class="paragraph"><p>It is assumed that you have a machine-specific optimized BLAS library already available on the architecture to which you are installing LAPACK. If this is not the case, you can download a Fortran77 reference implementation of the BLAS from netlib.</p></div>
+<div class="paragraph"><p>Although a model implementation of the BLAS in available from netlib in the blas directory, it is not expected to perform as well as a specially tuned implementation on most high-performance computers&#8201;&#8212;&#8201;on some machines it may give much worse performance&#8201;&#8212;&#8201;but it allows users to run LAPACK software on machines that do not offer any other implementation of the BLAS.</p></div>
+<div class="paragraph"><p>Alternatively, you can automatically generate an optimized BLAS library for your machine, using ATLAS
+<a href="http://www.netlib.org/atlas/">http://www.netlib.org/atlas/</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_is_there_an_lapack_rpm_available_for_redhat_linux">Is there an LAPACK rpm available for RedHat Linux?</h3>
+<div class="paragraph"><p>Yes! Refer to the</p></div>
+<div class="paragraph"><p><a href="http://www.netlib.org/lapack/rpms">http://www.netlib.org/lapack/rpms</a>
+directory on netlib for the LAPACK rpms for RedHat Linux.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_is_there_an_lapack_deb_file_available_for_debian_linux">Is there an LAPACK deb file available for Debian Linux?</h3>
+<div class="paragraph"><p>Yes! Refer to LAPACK deb file for Debian Linux.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_how_do_i_install_lapack_under_windows">How do I install LAPACK under Windows?</h3>
+<div class="paragraph"><p>please have a look at <a href="http://icl.cs.utk.edu/lapack-for-windows/lapack">LAPACK for Windows</a>. We provide pre-compiled libraries, and various builds like Visual Studio build, nmake by using cmake.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_the_naming_scheme_for_lapack_routines">What is the naming scheme for LAPACK routines?</h3>
+<div class="paragraph"><p>The name of each LAPACK routine is a coded specification of its function.</p></div>
+<div class="paragraph"><p>All driver and computational routines have names of the form XYYZZZ, where for some driver routines the 6th character is blank.</p></div>
+<div class="paragraph"><p>The <strong>first letter</strong>, X, indicates the data type as follows:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+S  REAL
+</p>
+</li>
+<li>
+<p>
+D  DOUBLE PRECISION
+</p>
+</li>
+<li>
+<p>
+C  COMPLEX
+</p>
+</li>
+<li>
+<p>
+Z  COMPLEX*16  or DOUBLE COMPLEX
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>The <strong>next two letters</strong>, YY, indicate the type of matrix (or of the most significant matrix). Most of these two-letter codes apply to both real and complex matrices; a few apply specifically to one or the other.</p></div>
+<div class="paragraph"><p>The <strong>last three letters</strong>, ZZZ, indicate the computation performed. For example, SGEBRD is a single precision routine that performs a bidiagonal reduction (BRD) of a real general matrix.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_how_do_i_find_a_particular_routine">How do I find a particular routine?</h3>
+<div class="paragraph"><p>Indexes of individual LAPACK driver and computational routines are available. These indexes contain brief descriptions of each routine.</p></div>
+<div class="paragraph"><p>LAPACK routines are available in four types: <strong>single precision real, double precision real, single precision complex, and double precision complex</strong>.</p></div>
+<div class="paragraph"><p><a href="http://www.netlib.org/lapack/single">LAPACK single precision real routines</a></p></div>
+<div class="paragraph"><p><a href="http://www.netlib.org/lapack/double">LAPACK double precision real routines</a></p></div>
+<div class="paragraph"><p><a href="http://www.netlib.org/lapack/complex">LAPACK single precision complex routines</a></p></div>
+<div class="paragraph"><p><a href="http://www.netlib.org/lapack/complex16">LAPACK double precision complex routines</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_are_there_routines_in_lapack_to_compute_determinants">Are there routines in LAPACK to compute determinants?</h3>
+<div class="paragraph"><p><strong>No</strong>. There are no routines in LAPACK to compute determinants. This is discussed in the "Accuracy and Stability" chapter in the LAPACK Users' Guide.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_are_there_routines_in_lapack_for_the_complex_symmetric_eigenproblem">Are there routines in LAPACK for the complex symmetric eigenproblem?</h3>
+<div class="paragraph"><p>About your question on the eigenvalue problem of a pair of complex symmetric matrices, there is no public domain software I know of for solving this problem directly. Three closest references are:
+in QMRpack (your can access it from www.netlib.org) there is a Lanczos method for finding a few eigenvalues/eigenvectors by exploring the complex symmetric structure.
+Back to few years ago, J. Cullum and &#8230; published a paper on using QR iteration to find all eigenvalues and eigenvectors of a complex symmtric tridiagonal matrix. The paper was published in SIAM J. Matrix Analysis and Applications.
+A couple of years ago, Bar-on published a paper in SIAM J. of Sci. Comp. for full dense complex symmetric eigenvalue problems. He discussed how to use a variant of Householder reduction for tridiagonalization.
+All these approaches try to explore the symmetric structure for saving in CPU time and storage. However, since there is no particular mathematical properties we can explore in a complex symmetric system, all above mentioned approaches are potentially numerical unstable! This also reflects why there is no high quality (black-box) math. software available.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_why_aren_8217_t_auxiliary_routines_listed_on_the_index">Why aren&#8217;t auxiliary routines listed on the index?</h3>
+<div class="paragraph"><p>For brevity, LAPACK auxiliary routines are not listed on the indexes of routines.</p></div>
+<div class="paragraph"><p>However, the routines are contained in the respective directories on netlib. If you download a routine with dependencies, these auxiliary routines should be included with your request. Or, if for some reason you wish to obtain an individual auxiliary routine, and you already know the name of the routine, you can request that routine. For example, if I would like to obtain dlacpy.f, I would connect to the URL:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>http://www.netlib.org/lapack/double/dlacpy.f</code></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_i_can_8217_t_get_a_program_to_work_what_should_i_do">I can&#8217;t get a program to work. What should I do?</h3>
+<div class="paragraph"><p>Technical questions should be directed to the authors at the <a href="http://icl.cs.utk.edu/lapack-forum">LAPACK User Forum</a> (preferred means of communication) or at <a href="mailto:lapack@cs.utk.edu">lapack@cs.utk.edu</a></p></div>
+<div class="paragraph"><p>Please tell us the type of machine on which the tests were run, the compiler and compiler options that were used, details of the BLAS library that was used, and a copy of the input file if appropriate.</p></div>
+<div class="paragraph"><p>Be prepared to answer the following questions:</p></div>
+<div class="paragraph"><p>Have you run the BLAS and LAPACK test suites?
+Have you checked the errata list on netlib?
+release_notes.html
+If you are using an optimized BLAS library, have you tried using the reference implementation from netlib?
+Machine-specific installation hints can be found in release_notes.html, as well as the Quick Installation Guide.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_how_can_i_unpack_lapack_tgz">How can I unpack lapack.tgz?</h3>
+<div class="listingblock">
+<div class="content">
+<pre><code>   gunzip -c lapack.tgz | tar xvf -</code></pre>
+</div></div>
+<div class="paragraph"><p>The compression program gzip (and gunzip) is Gnu software.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_where_do_i_find_details_of_the_lapack_test_suite_and_timing_suite">Where do I find details of the LAPACK Test Suite and Timing Suite?</h3>
+<div class="paragraph"><p>Full details of the LAPACK Test Suite and Timing Suite can be found in <a href="http://www.netlib.org/lapack/lawn41">HTML version of "LAPACK Installation Guide"</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_what_technical_support_for_lapack_is_available">What technical support for LAPACK is available?</h3>
+<div class="paragraph"><p>Technical questions and comments should be directed to the authors at the <a href="http://icl.cs.utk.edu/lapack-forum">LAPACK User Forum</a> (preferred means of communication) or at <a href="mailto:lapack@cs.utk.edu">lapack@cs.utk.edu</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_how_do_i_interpret_lapack_testing_failures">How do I interpret LAPACK testing failures?</h3>
+<div class="paragraph"><p>Installation hints for various architectures are maintained in the <a href="http://www.netlib.org/lapack/release_notes.html">http://www.netlib.org/lapack/release_notes.html</a> file on netlib. Click on "Machine-Specific Installation Hints".</p></div>
+<div class="paragraph"><p>The only known testing failures are in condition number estimation routines in the generalized nonsymmetric eigenproblem testing. Specifically in sgd.out, dgd.out, cgd.out and zgd.out. The cause for the failures of some test cases is that the mathematical algorithm used for estimating the condition numbers could over- or under-estimate the true values in a certain factor in some rare cases. Further details can be found in LAPACK Working Note 87.</p></div>
+<div class="paragraph"><p>In addition, LAPACK, version 3.0, introduced new routines which rely on IEEE-754 compliance. Refer to the Installation Guide for complete details. As a result, two settings were added to LAPACK/SRC/ilaenv.f to denote IEEE-754 compliance for NaN and infinity arithmetic, respectively. By default, ILAENV assumes an IEEE machine and does a test for IEEE-754 compliance. If you are installing LAPACK on a non-IEEE machine, you MUST modify ILAENV, as this test inside ILAENV will crash! Note that there are also specialized testing/timing versions of ILAENV located in LAPACK/TESTING/LIN/, LAPACK/TESTING/EIG/, LAPACK/TIMING/LIN/, and LAPACK/TIMING/EIG/, that must also be modified. Be aware that some compilers have IEEE-754 compliance by default, and some compilers require a separate compiler flag.</p></div>
+<div class="paragraph"><p>Testing failures can be divided into two categories. Minor testing failures, and major testing failures.
+A minor testing failure is one in which the test ratio reported in the LAPACK/TESTING/<strong>.out file slightly exceeds the threshold (specified in the associated LAPACK/TESTING/</strong>.in file). The cause of such failures can mainly be attributed to differences in the implementation of math libraries (square root, absolute value, complex division, complex absolute value, etc). These failures are negligible, and do not affect the proper functioning of the library.</p></div>
+<div class="paragraph"><p>A major testing failures is one in which the test ratio reported in the LAPACK/TESTING/<strong>.out file is on the order of E+06. This type of testing failure should be investigated. For a complete discussion of the comprehensive LAPACK testing suite, please refer to LAPACK Working Note 41. When a testing failure occurs, the output in the LAPACK/TESTING/</strong>.out file will tell the user which test criterion failed and for which type of matrix. It is important to note if the error only occurs with a specific matrix type, a specific precision, a specific test criterion, and the number of tests failed. There can be several possible causes of such failures:</p></div>
+<div class="paragraph"><p>compiler optimization bug
+bug in the optimized BLAS library
+bug in an LAPACK routine
+The first question/suggestion is, if you are using an optimized BLAS library, did you run the BLAS test suite? Also, have you tried linking to the reference implementation BLAS library to see if the error disappears? There is a reference implementation BLAS library included with the LAPACK distribution. This type of problem will typically cause a lot of test failures for only a specific matrix type.</p></div>
+<div class="paragraph"><p>A compiler optimization bug will typically also cause a lot of test failures for only a specific matrix type. If a compiler optimization problem is suspected, the user should recompile the entire library with no optimization and see if the error disappears. If the error disappears, then the user will need to pinpoint which routine causes the optimization problem. This search can be narrowed by noticing which precision caused the error and for which matrix type.</p></div>
+<div class="paragraph"><p>In some rare cases, naive implementations of functions such as complex absolute value and complex division can result in major testing failures. Refer to the discussion of the LAPACK/SRC/slabad.f and dlabad.f routines to restrict the range of representable numbers to be used in testing (LAPACK Working Note 41).</p></div>
+<div class="paragraph"><p>An isolated test failure that is not affected by the level of optimization or the BLAS library used, should be reported to the authors at the LAPACK User Forum (preferred means of communication) or at <a href="mailto:lapack@cs.utk.edu">lapack@cs.utk.edu</a></p></div>
+<div class="paragraph"><p>Installation hints for various architectures are maintained in the <a href="http://www.netlib.org/lapack/release_notes.html">http://www.netlib.org/lapack/release_notes.html</a> file on netlib. Click on "Machine-Specific Installation Hints".</p></div>
+</div>
+<div class="sect2">
+<h3 id="_problems_running_the_blas_test_suite_with_an_optimized_blas_library">Problems running the BLAS test suite with an optimized BLAS library?</h3>
+<div class="paragraph"><p>If you encounter difficulties running the BLAS Test Suite with an optimized BLAS library, it may be that you need to disable "input error checking" in the BLAS Test Suite. Most optimized BLAS libraries do NOT perform input error checking. To disable "input error checking" in the BLAS testers, you need to modify line 7 of the data files LAPACK/BLAS/*blat2.in and LAPACK/BLAS/*blat3.in by setting the "T" to "F".</p></div>
+<div class="paragraph"><p>F        LOGICAL FLAG, T TO TEST ERROR EXITS.
+1.25) Problems compiling dlamch.f?</p></div>
+<div class="paragraph"><p>The routine dlamch.f (and its dependent subroutines dlamc1, dlamc2, dlamc3, dlamc4, dlamc5) MUST be compiled without optimization. If you downloaded the entire lapack distribution this will be taken care of by the LAPACK/SRC/Makefile. However, if you downloaded a specific LAPACK routine plus dependencies, you need to take care that slamch.f (if you downloaded a single precision real or single precision complex routine) or dlamch.f (if you downloaded a double precision real or double precision complex routine) has been included.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_blas">BLAS</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_and_where_are_the_blas">What and where are the BLAS?</h3>
+<div class="paragraph"><p>The BLAS (Basic Linear Algebra Subprograms) are routines that provide standard building blocks for performing basic vector and matrix operations. The Level 1 BLAS perform scalar, vector and vector-vector operations, the Level 2 BLAS perform matrix-vector operations, and the Level 3 BLAS perform matrix-matrix operations. Because the BLAS are efficient, portable, and widely available, they are commonly used in the development of high quality linear algebra software, LAPACK for example.</p></div>
+<div class="paragraph"><p>The publications given in Section 3 define the specifications for the BLAS, and a Fortran77 reference implementation of the BLAS is located in the blas directory of Netlib, together with testing and timing software. For information on efficient versions of the BLAS, see Section 5.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_are_there_legal_restrictions_on_the_use_of_blas_reference_implementation_software">Are there legal restrictions on the use of BLAS reference implementation software?</h3>
+<div class="paragraph"><p>The reference BLAS is a freely-available software package. It is available from netlib via anonymous ftp and the World Wide Web. Thus, it can be included in commercial software packages (and has been). We only ask that proper credit be given to the authors.</p></div>
+<div class="paragraph"><p>Like all software, it is copyrighted. It is not trademarked, but we do ask the following:</p></div>
+<div class="paragraph"><p>If you modify the source for these routines we ask that you change the name of the routine and comment the changes made to the original.</p></div>
+<div class="paragraph"><p>We will gladly answer any questions regarding the software. If a modification is done, however, it is the responsibility of the person who modified the routine to provide support.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_publications_references_for_the_blas">Publications/references for the BLAS?</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+C. L. Lawson, R. J. Hanson, D. Kincaid, and F. T. Krogh, Basic Linear Algebra Subprograms for FORTRAN usage, ACM Trans. Math. Soft., 5 (1979), pp. 308&#8212;323.
+</p>
+</li>
+<li>
+<p>
+J. J. Dongarra, J. Du Croz, S. Hammarling, and R. J. Hanson, An extended set of FORTRAN Basic Linear Algebra Subprograms, ACM Trans. Math. Soft., 14 (1988), pp. 1&#8212;17.
+</p>
+</li>
+<li>
+<p>
+J. J. Dongarra, J. Du Croz, S. Hammarling, and R. J. Hanson, Algorithm 656: An extended set of FORTRAN Basic Linear Algebra Subprograms, ACM Trans. Math. Soft., 14 (1988), pp. 18&#8212;32.
+</p>
+</li>
+<li>
+<p>
+J. J. Dongarra, J. Du Croz, I. S. Duff, and S. Hammarling, A set of Level 3 Basic Linear Algebra Subprograms, ACM Trans. Math. Soft., 16 (1990), pp. 1&#8212;17.
+</p>
+</li>
+<li>
+<p>
+J. J. Dongarra, J. Du Croz, I. S. Duff, and S. Hammarling, Algorithm 679: A set of Level 3 Basic Linear Algebra Subprograms, ACM Trans. Math. Soft., 16 (1990), pp. 18&#8212;28.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>New BLAS</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+L. S. Blackford, J. Demmel, J. Dongarra, I. Duff, S. Hammarling, G. Henry, M. Heroux, L. Kaufman, A. Lumsdaine, A. Petitet, R. Pozo, K. Remington, R. C. Whaley, An Updated Set of Basic Linear Algebra Subprograms (BLAS), ACM Trans. Math. Soft., 28-2 (2002), pp. 135&#8212;151.
+</p>
+</li>
+<li>
+<p>
+J. Dongarra, Basic Linear Algebra Subprograms Technical Forum Standard, International Journal of High Performance Applications and Supercomputing, 16(1) (2002), pp. 1&#8212;111, and International Journal of High Performance Applications and Supercomputing, 16(2) (2002), pp. 115&#8212;199.
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_is_there_a_quick_reference_guide_to_the_blas_available">Is there a Quick Reference Guide to the BLAS available?</h3>
+<div class="paragraph"><p><strong>Yes</strong>, the Quick Reference Guide to the BLAS is available in postscript and pdf.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_are_optimized_blas_libraries_available_where_can_i_find_optimized_blas_libraries">Are optimized BLAS libraries available? Where can I find optimized BLAS libraries?</h3>
+<div class="paragraph"><p><strong>YES!</strong> Machine-specific optimized BLAS libraries are available for a variety of computer architectures. These optimized BLAS libraries are provided by the computer vendor or by an independent software vendor (ISV) (see list below). For further details, please contact your local vendor representative.</p></div>
+<div class="paragraph"><p>Alternatively, the user can download ATLAS to automatically generate an optimized BLAS library for his architecture. Some prebuilt optimized BLAS libraries are also available from the ATLAS site. Goto BLAS is also available for a given set of machines. Efficient versions of the Level 3 BLAS, based on an efficient matrix matrix multiplication routine, are provided by the GEMM-Based BLAS.</p></div>
+<div class="paragraph"><p>If all else fails, the user can download a Fortran77 reference implementation of the BLAS from netlib. However, keep in mind that this is a reference implementation and is not optimized.</p></div>
+<div class="paragraph"><p>BLAS vendor library available at <a href="http://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms#Implementations">http://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms#Implementations</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_is_there_a_c_interface_to_the_blas">Is there a C interface to the BLAS?</h3>
+<div class="paragraph"><p><strong>Yes</strong>, a C interface to the BLAS was defined in the <a href="http://www.netlib.org/blas/blast-forum">BLAS Technical Forum Standard</a>. The source code is  available <a href="http://www.netlib.org/blas/blast-forum/cblas.tgz">here</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_what_about_shared_memory_machines_are_there_multithreaded_versions_of_the_blas_available">What about shared memory machines? Are there multithreaded versions of the BLAS available?</h3>
+<div class="paragraph"><p><strong>ATLAS</strong>, <strong>MKL</strong>, <strong>Goto BLAS</strong> and most of the BLAS library available via vendors are multithreaded. These libraries can be used with LAPACK to take benefit of shared memory systems.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-12-03 14:49:21 PST
+</div>
+</div>
+</body>
+</html>

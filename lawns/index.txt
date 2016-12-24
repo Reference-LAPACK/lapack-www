@@ -2,6 +2,13 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn291 +[link:http://www.netlib.org/lapack/lawnspdf/lawn291.pdf[pdf]]+
+.On block-asynchronous execution on GPUs
+
+by *Hartwig Anzt, Jack Dongarra and Edmond Chow*
+
+UT-EECS-16-746 November 2016
+
 == lawn290 +[link:http://www.netlib.org/lapack/lawnspdf/lawn290.pdf[pdf]]+
 .2016 Dense Linear Algebra Software Packages Survey
 

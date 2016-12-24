@@ -9,7 +9,7 @@ LAPACK -- Linear Algebra PACKage
 [width="100%",cols="^,^,^",frame="none",grid="none"]
 |=======
 | image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] | 
-*Version 3.6.1* +
+*Version 3.7.0* +
  +
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
 mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
@@ -107,12 +107,12 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== LAPACK, version 3.6.1
+=== LAPACK, version 3.7.0
 =========================
- - Download: http://www.netlib.org/lapack/lapack-3.6.1.tgz[lapack-3.6.1.tgz] 
- - link:lapack-3.6.1.html[LAPACK 3.6.1 Release Notes]
- - Updated:  June 18, 2016
- - link:Errata/index2.html[LAPACK Errata] (Current known bugs)
+ - Download: http://www.netlib.org/lapack/lapack-3.7.0.tgz[lapack-3.7.0.tgz] 
+ - link:lapack-3.7.0.html[LAPACK 3.7.0 Release Notes]
+ - Updated:  Decemeber 24, 2016
+ - link:https://github.com/Reference-LAPACK/lapack/issues?q=is%3Aissue+is%3Aopen+label%3A%22Type%3A+Bug%22[LAPACK GitHub Open Bug] (Current known bugs)
 ==========================
 
 === Standard C language APIs for LAPACK
@@ -200,10 +200,14 @@ Please contribute to our link:http://www.netlib.org/lapack/WishList/[wishlist]
 if you feel some functionality or algorithms are missing by emailing the
 mailto:lapack@cs.utk.edu[LAPACK team].
 
-link:Errata/index2.html[Current LAPACK errata]
+link:https://github.com/Reference-LAPACK/lapack/issues[Current LAPACK errata]
 
 Here is the link:http://www.netlib.org/lapack/bug_list.html[list of the bugs]
-(corrected, confirmed and to be confirmed) since LAPACK 3.0.
+(corrected, confirmed and to be confirmed) between LAPACK 3.0 and LAPACK 3.6.1
+
+Here is the link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&q=is%3Aissue[list] 
+(corrected, confirmed and to be confirmed) since 3.6.1
+
 
 === FAQ
 
@@ -292,8 +296,15 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
   *Version 3.6.1: June 18, 2016*
 
+*Version 3.7.0: December 24, 2016*
 
 == Previous Release
+
+=== LAPACK, version 3.7.0
+
+ - Download: http://www.netlib.org/lapack/lapack-3.6.1.tgz[lapack-3.7.0.tgz] 
+ - link:lapack-3.7.0.html[LAPACK 3.7.0 Release Notes]
+ - Updated:  December 24, 2016
 
 === LAPACK, version 3.6.1
 

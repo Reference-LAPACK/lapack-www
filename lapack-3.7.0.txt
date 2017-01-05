@@ -207,7 +207,9 @@ A contribution from Julie Langou (University of Tennessee).
 * MathWorks: Penny Anderson, Amanda Barry, Mary Ann Freeman, Bobby Cheng,
 Duncan Po, Pat Quillen, Christine Tobler.
 
-* Intel: Konstantin Arturov, Vladimír Chalupecký, Eugene Chereshnev
+* Intel: Konstantin Arturov, Eugene Chereshnev
+
+* GoNum:  Vladimír Chalupecký
 
 * ORACLE: Elena Ivanov.
 

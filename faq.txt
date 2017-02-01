@@ -227,7 +227,7 @@ The compression program gzip (and gunzip) is Gnu software.
 
 === Where do I find details of the LAPACK Test Suite and Timing Suite?
 
-Full details of the LAPACK Test Suite and Timing Suite can be found in link:http://www.netlib.org/lapack/lawn41[HTML version of "LAPACK Installation Guide"]
+Full details of the LAPACK Test Suite and Timing Suite can be found in link:http://www.netlib.org/lapack/lawnspdf/lawn41.pdf[LAPACK Working Note 41:  LAPACK Installation Guide (VERSION 3.0)]
 
 === What technical support for LAPACK is available?
 

@@ -235,13 +235,9 @@ link:http://www.netlib.org/lapack/lug[HTML version of the LAPACK Users' Guide, T
 
 link:http://www.netlib.org/lapack/lapackqref.ps[LAPACK Quick Reference Guide to the Driver Routines (VERSION 3.0)]
 
-link:http://www.netlib.org/lapack/lawn81[HTML version of "Quick Installation Guide for LAPACK"]
+link:http://www.netlib.org/lapack/lawnspdf/lawn81.pdf[LAPACK Working Note 81: Quick Installation Guide for LAPACK on Unix Systems (25 pages) (VERSION 3.0)]
 
-link:http://www.netlib.org/lapack/lawns/lawn81.ps[LAPACK Working Note 81: Quick Installation Guide for LAPACK on Unix Systems (25 pages) (VERSION 3.0)]
-
-link:http://www.netlib.org/lapack/lawn41[HTML version of "LAPACK Installation Guide"]
-
-link:http://www.netlib.org/lapack/lawns/lawn41.ps[LAPACK Working Note 41:  LAPACK Installation Guide (VERSION 3.0)]
+link:http://www.netlib.org/lapack/lawnspdf/lawn41.pdf[LAPACK Working Note 41:  LAPACK Installation Guide (VERSION 3.0)]
 
 ==========================
 

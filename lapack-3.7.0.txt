@@ -209,7 +209,7 @@ Duncan Po, Pat Quillen, Christine Tobler.
 
 * Intel: Konstantin Arturov, Eugene Chereshnev
 
-* GoNum:  Vladimír Chalupecký
+* Gonum:  Vladimír Chalupecký
 
 * ORACLE: Elena Ivanov.
 

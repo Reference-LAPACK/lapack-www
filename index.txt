@@ -161,9 +161,10 @@ Please use our LAPACK development repository to get the latest bug fixed, submit
  - mailto:lapack@cs.utk.edu[Contact the LAPACK team]
  - link:http://icl.cs.utk.edu/lapack-forum/archives/[Archives of LAPACK mailing list]  
 
-Do not forget to check the
-link:Errata/index2.html[current LAPACK errata] to
-check current bug status.
+Do not forget to check our GitHub repository for Current and Fixed issues and Improvements
+
+ - link:https://github.com/Reference-LAPACK/lapack/issues[Current Issues]
+ - link:https://github.com/Reference-LAPACK/lapack/milestone/2?closed=1[Fixed issues and Improvements since last release]
  
 == Contributors
 
@@ -202,12 +203,11 @@ mailto:lapack@cs.utk.edu[LAPACK team].
 
 link:https://github.com/Reference-LAPACK/lapack/issues[Current LAPACK errata]
 
-Here is the link:http://www.netlib.org/lapack/bug_list.html[list of the bugs]
-(corrected, confirmed and to be confirmed) between LAPACK 3.0 and LAPACK 3.6.1
-
 Here is the link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&q=is%3Aissue[list] 
 (corrected, confirmed and to be confirmed) since 3.6.1
 
+Here is the link:http://www.netlib.org/lapack/bug_list.html[list of the bugs]
+(corrected, confirmed and to be confirmed) between LAPACK 3.0 and LAPACK 3.6.1
 
 === FAQ
 

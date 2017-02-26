@@ -206,7 +206,7 @@ However, the routines are contained in the respective directories on netlib. If 
 
 === I can't get a program to work. What should I do?
 
-Technical questions should be directed to the authors at the link:http://icl.cs.utk.edu/lapack-forum[LAPACK User Forum] (preferred means of communication) or at lapack@cs.utk.edu
+Technical questions should be directed to the authors at the link:http://icl.cs.utk.edu/lapack-forum[LAPACK User Forum] (preferred means of communication) or at lapack@icl.utk.edu
 
 Please tell us the type of machine on which the tests were run, the compiler and compiler options that were used, details of the BLAS library that was used, and a copy of the input file if appropriate.
 
@@ -231,7 +231,7 @@ Full details of the LAPACK Test Suite and Timing Suite can be found in link:http
 
 === What technical support for LAPACK is available?
 
-Technical questions and comments should be directed to the authors at the link:http://icl.cs.utk.edu/lapack-forum[LAPACK User Forum] (preferred means of communication) or at lapack@cs.utk.edu
+Technical questions and comments should be directed to the authors at the link:http://icl.cs.utk.edu/lapack-forum[LAPACK User Forum] (preferred means of communication) or at lapack@icl.utk.edu
 
 
 === How do I interpret LAPACK testing failures?
@@ -256,7 +256,7 @@ A compiler optimization bug will typically also cause a lot of test failures for
 
 In some rare cases, naive implementations of functions such as complex absolute value and complex division can result in major testing failures. Refer to the discussion of the LAPACK/SRC/slabad.f and dlabad.f routines to restrict the range of representable numbers to be used in testing (LAPACK Working Note 41).
 
-An isolated test failure that is not affected by the level of optimization or the BLAS library used, should be reported to the authors at the LAPACK User Forum (preferred means of communication) or at lapack@cs.utk.edu
+An isolated test failure that is not affected by the level of optimization or the BLAS library used, should be reported to the authors at the LAPACK User Forum (preferred means of communication) or at lapack@icl.utk.edu
 
 Installation hints for various architectures are maintained in the http://www.netlib.org/lapack/release_notes.html file on netlib. Click on "Machine-Specific Installation Hints".
 

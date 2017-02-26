@@ -1071,7 +1071,7 @@ All these approaches try to explore the symmetric structure for saving in CPU ti
 </div>
 <div class="sect2">
 <h3 id="_i_can_8217_t_get_a_program_to_work_what_should_i_do">I can&#8217;t get a program to work. What should I do?</h3>
-<div class="paragraph"><p>Technical questions should be directed to the authors at the <a href="http://icl.cs.utk.edu/lapack-forum">LAPACK User Forum</a> (preferred means of communication) or at <a href="mailto:lapack@cs.utk.edu">lapack@cs.utk.edu</a></p></div>
+<div class="paragraph"><p>Technical questions should be directed to the authors at the <a href="http://icl.cs.utk.edu/lapack-forum">LAPACK User Forum</a> (preferred means of communication) or at <a href="mailto:lapack@icl.utk.edu">lapack@icl.utk.edu</a></p></div>
 <div class="paragraph"><p>Please tell us the type of machine on which the tests were run, the compiler and compiler options that were used, details of the BLAS library that was used, and a copy of the input file if appropriate.</p></div>
 <div class="paragraph"><p>Be prepared to answer the following questions:</p></div>
 <div class="paragraph"><p>Have you run the BLAS and LAPACK test suites?
@@ -1094,7 +1094,7 @@ Machine-specific installation hints can be found in release_notes.html, as well 
 </div>
 <div class="sect2">
 <h3 id="_what_technical_support_for_lapack_is_available">What technical support for LAPACK is available?</h3>
-<div class="paragraph"><p>Technical questions and comments should be directed to the authors at the <a href="http://icl.cs.utk.edu/lapack-forum">LAPACK User Forum</a> (preferred means of communication) or at <a href="mailto:lapack@cs.utk.edu">lapack@cs.utk.edu</a></p></div>
+<div class="paragraph"><p>Technical questions and comments should be directed to the authors at the <a href="http://icl.cs.utk.edu/lapack-forum">LAPACK User Forum</a> (preferred means of communication) or at <a href="mailto:lapack@icl.utk.edu">lapack@icl.utk.edu</a></p></div>
 </div>
 <div class="sect2">
 <h3 id="_how_do_i_interpret_lapack_testing_failures">How do I interpret LAPACK testing failures?</h3>
@@ -1110,7 +1110,7 @@ bug in an LAPACK routine
 The first question/suggestion is, if you are using an optimized BLAS library, did you run the BLAS test suite? Also, have you tried linking to the reference implementation BLAS library to see if the error disappears? There is a reference implementation BLAS library included with the LAPACK distribution. This type of problem will typically cause a lot of test failures for only a specific matrix type.</p></div>
 <div class="paragraph"><p>A compiler optimization bug will typically also cause a lot of test failures for only a specific matrix type. If a compiler optimization problem is suspected, the user should recompile the entire library with no optimization and see if the error disappears. If the error disappears, then the user will need to pinpoint which routine causes the optimization problem. This search can be narrowed by noticing which precision caused the error and for which matrix type.</p></div>
 <div class="paragraph"><p>In some rare cases, naive implementations of functions such as complex absolute value and complex division can result in major testing failures. Refer to the discussion of the LAPACK/SRC/slabad.f and dlabad.f routines to restrict the range of representable numbers to be used in testing (LAPACK Working Note 41).</p></div>
-<div class="paragraph"><p>An isolated test failure that is not affected by the level of optimization or the BLAS library used, should be reported to the authors at the LAPACK User Forum (preferred means of communication) or at <a href="mailto:lapack@cs.utk.edu">lapack@cs.utk.edu</a></p></div>
+<div class="paragraph"><p>An isolated test failure that is not affected by the level of optimization or the BLAS library used, should be reported to the authors at the LAPACK User Forum (preferred means of communication) or at <a href="mailto:lapack@icl.utk.edu">lapack@icl.utk.edu</a></p></div>
 <div class="paragraph"><p>Installation hints for various architectures are maintained in the <a href="http://www.netlib.org/lapack/release_notes.html">http://www.netlib.org/lapack/release_notes.html</a> file on netlib. Click on "Machine-Specific Installation Hints".</p></div>
 </div>
 <div class="sect2">
@@ -1205,7 +1205,7 @@ J. Dongarra, Basic Linear Algebra Subprograms Technical Forum Standard, Internat
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-31 19:14:39 PST
+Last updated 2017-02-26 14:04:50 PST
 </div>
 </div>
 </body>

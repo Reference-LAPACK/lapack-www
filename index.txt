@@ -12,7 +12,7 @@ LAPACK -- Linear Algebra PACKage
 *Version 3.7.0* +
  +
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
-mailto:lapack@cs.utk.edu[*Contact the LAPACK team*] +
+mailto:lapack@icl.utk.edu[*Contact the LAPACK team*] +
  +
 mailto:lapack-announce-subscribe@eecs.utk.edu[*Get the latest LAPACK News*] +
  +
@@ -158,7 +158,7 @@ Please use our LAPACK development repository to get the latest bug fixed, submit
 == Support
 
  - link:http://icl.cs.utk.edu/lapack-forum[Browse the LAPACK/ScaLAPACK User Forum]
- - mailto:lapack@cs.utk.edu[Contact the LAPACK team]
+ - mailto:lapack@icl.utk.edu[Contact the LAPACK team]
  - link:http://icl.cs.utk.edu/lapack-forum/archives/[Archives of LAPACK mailing list]  
 
 Do not forget to check our GitHub repository for Current and Fixed issues and Improvements
@@ -181,7 +181,7 @@ guidelines.
 LAPACK Project Software Grant and Corporate Contributor License Agreement (``Agreement'') link:http://www.netlib.org/lapack/lapack-corporate-contributor-agrement.doc[[Download]] 
 
 Contributions are always welcome and can be sent to the
-mailto:lapack@cs.utk.edu[LAPACK team].
+mailto:lapack@icl.utk.edu[LAPACK team].
 
 == Documentation
 === Release Notes
@@ -199,7 +199,7 @@ improvement since LAPACK 3.0.]
 
 Please contribute to our link:http://www.netlib.org/lapack/WishList/[wishlist]
 if you feel some functionality or algorithms are missing by emailing the
-mailto:lapack@cs.utk.edu[LAPACK team].
+mailto:lapack@icl.utk.edu[LAPACK team].
 
 link:https://github.com/Reference-LAPACK/lapack/issues[Current LAPACK errata]
 
@@ -213,7 +213,7 @@ Here is the link:http://www.netlib.org/lapack/bug_list.html[list of the bugs]
 
 Consult LAPACK link:http://www.netlib.org/lapack/faq.html[Frequently Asked Questions].
 
-Please contribute to our FAQ if you feel some questions are missing by emailing the mailto:lapack@cs.utk.edu[LAPACK team].
+Please contribute to our FAQ if you feel some questions are missing by emailing the mailto:lapack@icl.utk.edu[LAPACK team].
 
 The link:http://icl.cs.utk.edu/lapack-forum[LAPACK User Forum] is also a good source to find answers.
 

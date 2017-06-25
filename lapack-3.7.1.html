@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="generator" content="AsciiDoc 8.6.9" />
-<title>LAPACK RELEASE NOTES</title>
+<title>LAPACK 3.7.1</title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
 
@@ -727,151 +727,155 @@ install: function(toclevels) {
 }
 
 }
-asciidoc.install();
+asciidoc.install(2);
 /*]]>*/
 </script>
 </head>
 <body class="article">
 <div id="header">
-<h1>LAPACK RELEASE NOTES</h1>
+<h1>LAPACK 3.7.1</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_1_latest_lapack_release">1. Latest LAPACK Release</h2>
+<div id="preamble">
 <div class="sectionbody">
-<div class="paragraph"><p><strong>Version:</strong> 3.7.0</p></div>
-<div class="paragraph"><p><strong>Release date:</strong> December 24, 2016</p></div>
-<div class="paragraph"><p><a href="lapack-3.7.0.html"><strong>LAPACK 3.7.0 Release Notes</strong></a></p></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_2_latest_lapack_errata">2. Latest LAPACK Errata</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>LAPACK has been tested on a variety of architectures.  However, keep in mind that we do not have access to every possible type of machine, and the regrettable bug report will appear.  We apologize for any inconvenience this may cause to our users, and strongly encourage users to post your query on the <a href="http://icl.cs.utk.edu/lapack-forum">LAPACK forum</a> if you suspect an abnormality.</p></div>
-<div class="paragraph"><p><a href="Errata/errata-lapack-3.6.1.html"><strong>LAPACK 3.7.0 Errata</strong></a></p></div>
-<div class="paragraph"><p><strong>NEW</strong> : bug are now tracked in our GitHub Repository</p></div>
-<div class="ulist"><ul>
-<li>
-<p>
-link:https://github.com/Reference-LAPACK/lapack/milestone/1?closed=1 [Closed bugs]
-</p>
-</li>
-<li>
-<p>
-link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&amp;q=is%3Aissue%20is%3Aopen%20label%3A%22Type%3A%20Bug%22%20 [Open bugs]
-</p>
-</li>
-<li>
-<p>
-link:https://github.com/Reference-LAPACK/lapack/issues [All open issues]
-</p>
-</li>
-</ul></div>
+<div class="paragraph"><p>Release date: 06/25/16.</p></div>
+<div class="paragraph"><p>This material is based upon work supported by the National Science Foundation
+and the Department of Energy under Grant No. NSF ACI 1339797, NSF-OCI-1032861,
+NSF-CCF-00444486, NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127,
+DOE-DE-FC02-01ER25478, DOE-DE-FC02-06ER25768.</p></div>
+<div class="paragraph"><p>LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California, Berkeley, Univ. of Colorado Denver and NAG Ltd..</p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_3_errata_for_lapack_users_guide_third_edition">3. Errata for LAPACK Users' Guide, Third Edition</h2>
+<h2 id="_1_support_and_questions">1. Support and questions:</h2>
 <div class="sectionbody">
-<div class="paragraph"><p><a href="html/errata.lug">Errata in LAPACK Users' Guide, Third Edition</a></p></div>
+<div class="paragraph"><p><a href="http://icl.cs.utk.edu/lapack-forum/">http://icl.cs.utk.edu/lapack-forum/</a></p></div>
+<div class="paragraph"><p><a href="https://github.com/Reference-LAPACK/lapack/">https://github.com/Reference-LAPACK/lapack/</a></p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_4_history_of_lapack_releases">4. History of LAPACK releases</h2>
+<h2 id="_2_lapack_3_7_1_what_8217_s_new">2. LAPACK 3.7.1: What&#8217;s new</h2>
 <div class="sectionbody">
-<div class="paragraph"><p><strong>Version 1.0 : February 29, 1992</strong></p></div>
-<div class="ulist"><ul>
-<li>
-<p>
-Revised, Version 1.0a:  June 30, 1992
-</p>
-</li>
-<li>
-<p>
-Revised, Version 1.0b:  October 31, 1992
-</p>
-</li>
-<li>
-<p>
-Revised, Version 1.1:   March 31, 1993
-</p>
-</li>
-</ul></div>
-<div class="paragraph"><p><strong>Version 2.0:   September 30, 1994</strong></p></div>
-<div class="paragraph"><p><strong>Version 3.0:   June 30, 1999</strong></p></div>
-<div class="ulist"><ul>
-<li>
-<p>
-Update, Version 3.0:  October 31, 1999
-</p>
-</li>
-<li>
-<p>
-Update, Version 3.0:  May 31, 2000
-</p>
-</li>
-</ul></div>
-<div class="paragraph"><p><strong>Version 3.1.0:  November 2006 <a href="lapack-3.1.0.changes">Release Notes for 3.1.0</a></strong></p></div>
-<div class="ulist"><ul>
-<li>
-<p>
-Version 3.1.1:  February 2007 <a href="lapack-3.1.1.changes">Release Notes for 3.1.1</a>
-</p>
-</li>
-</ul></div>
-<div class="paragraph"><p><strong>Version 3.2:    November 18, 2008 <a href="lapack-3.2.html">Release Notes for 3.2</a></strong></p></div>
-<div class="ulist"><ul>
-<li>
-<p>
-Version 3.2.1:  April 17, 2009 <a href="lapack-3.2.1.html">Release Notes for 3.2.1</a>
-</p>
-</li>
-<li>
-<p>
-Version 3.2.2:  June 30, 2010 <a href="lapack-3.2.2.html">Release Notes for 3.2.2</a>
-</p>
-</li>
-</ul></div>
-<div class="paragraph"><p><strong>Version 3.3.0:    November 14, 2010 <a href="lapack-3.3.0.html">Release Notes for 3.3.0</a></strong></p></div>
-<div class="ulist"><ul>
-<li>
-<p>
-Version 3.3.1: April 18, 2011 <a href="lapack-3.3.1.html">Release Notes for LAPACK 3.3.1 </a>
-</p>
-</li>
-</ul></div>
-<div class="paragraph"><p><strong>Version 3.4.0: November 11, 2011 <a href="lapack-3.4.0.html">Release Notes for LAPACK 3.4.0 </a></strong></p></div>
-<div class="ulist"><ul>
-<li>
-<p>
-Version 3.4.1: April 20, 2012 <a href="lapack-3.4.1.html">Release Notes for LAPACK 3.4.1 </a>
-</p>
-</li>
-<li>
-<p>
-Version 3.4.2: September 25, 2012 <a href="lapack-3.4.2.html">Release Notes for LAPACK 3.4.2 </a>
-</p>
-</li>
-</ul></div>
-<div class="paragraph"><p><strong>Version 3.5.0: November 16, 2013 <a href="lapack-3.5.0.html">Release Notes for LAPACK 3.5.0 </a></strong></p></div>
-<div class="paragraph"><p><strong>Version 3.6.0: November 15, 2015 <a href="lapack-3.6.0.html">Release Notes for LAPACK 3.6.0 </a></strong></p></div>
-<div class="paragraph"><p><strong>Version 3.6.1: June 18, 2016 <a href="lapack-3.7.0.html">Release Notes for LAPACK 3.6.1 </a></strong></p></div>
-<div class="paragraph"><p><strong>Version 3.7.0: December 24, 2016 <a href="lapack-3.7.0.html">Release Notes for LAPACK 3.7.0 </a></strong></p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_5_previous_releases">5. Previous releases</h2>
+<h2 id="_3_developer_list">3. Developer list</h2>
 <div class="sectionbody">
-<div class="paragraph"><p><a href="Errata/errata_3.3.0.html">Errata in LAPACK, version 3.3.0</a></p></div>
-<div class="paragraph"><p><a href="release_notes.v3.0.html">Errata in LAPACK, version 3.0</a></p></div>
-<div class="paragraph"><p><a href="release_notes.v2.0">Errata in LAPACK, version 2.0</a></p></div>
-<div class="paragraph"><p><a href="installation.hints">old Machine-specific Installation Hints</a></p></div>
+<div class="ulist"><div class="title">LAPACK developers involved in this release</div><ul>
+<li>
+<p>
+Julie Langou (University of Tennessee, USA)
+</p>
+</li>
+<li>
+<p>
+Osni Marques (University of California,  Berkeley, USA)
+</p>
+</li>
+<li>
+<p>
+Ichitaro Yamazaki (University of Tennessee)
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">Principal Investigators</div><ul>
+<li>
+<p>
+Jim Demmel (University of California,  Berkeley, USA)
+</p>
+</li>
+<li>
+<p>
+Jack Dongarra (University of Tennessee and ORNL, USA)
+</p>
+</li>
+<li>
+<p>
+Julien Langou (University of Colorado Denver, USA)
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_thanks">4. Thanks</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+MathWorks: Penny Anderson, Amanda Barry, Mary Ann Freeman, Bobby Cheng,
+Duncan Po, Pat Quillen, Christine Tobler.
+</p>
+</li>
+<li>
+<p>
+Intel: Kirana Bergstrom, Eugene Chereshnev
+</p>
+</li>
+<li>
+<p>
+Gonum:  Vladimír Chalupecký
+</p>
+</li>
+<li>
+<p>
+Julien Schueller (Phimeca)
+</p>
+</li>
+<li>
+<p>
+Sebastien Villemot (Debian)
+</p>
+</li>
+<li>
+<p>
+David Seifert (SoapGentoo)
+</p>
+</li>
+<li>
+<p>
+GitHub Users: <a href="mailto:andreasnoack@github">andreasnoack@github</a>, <a href="mailto:ashwinyes@github">ashwinyes@github</a>, <a href="mailto:balducci@github">balducci@github</a>, <a href="mailto:cezden@github">cezden@github</a>,
+<a href="mailto:fxcoudert@github">fxcoudert@github</a>, <a href="mailto:Gjacquenot@github">Gjacquenot@github</a>, <a href="mailto:iyamazaki@github">iyamazaki@github</a>, <a href="mailto:JeffreySax@github">JeffreySax@github</a>,
+<a href="mailto:marcoippolito@github">marcoippolito@github</a>, <a href="mailto:martin-frbg@github">martin-frbg@github</a>, <a href="mailto:michaelwimmer@github">michaelwimmer@github</a>, <a href="mailto:nareshkamboju@github">nareshkamboju@github</a>,
+<a href="mailto:neundorf@github">neundorf@github</a>, <a href="mailto:nickkolok@github">nickkolok@github</a>, <a href="mailto:nschloe@github">nschloe@github</a>, <a href="mailto:SuperFluffy@github">SuperFluffy@github</a>, <a href="mailto:thielema@github">thielema@github</a>,
+<a href="mailto:tiagofrepereira2012@github">tiagofrepereira2012@github</a>, <a href="mailto:tmijieux@github">tmijieux@github</a>, <a href="mailto:turboencabulator@github">turboencabulator@github</a>, <a href="mailto:zerothi@github">zerothi@github</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_bug_fix">5.  Bug Fix</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://github.com/Reference-LAPACK/lapack/milestone/2?closed=1">Closed bugs</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&amp;q=is%3Aissue%20is%3Aopen%20label%3A%22Type%3A%20Bug%22%20">Open bugs</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/Reference-LAPACK/lapack/issues">All open issues</a>
+</p>
+</li>
+</ul></div>
 </div>
 </div>
 </div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-26 14:30:37 PST
+Last updated 2017-06-24 23:05:47 PDT
 </div>
 </div>
 </body>

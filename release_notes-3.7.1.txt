@@ -5,22 +5,20 @@ LAPACK RELEASE NOTES
 1. Latest LAPACK Release 
 ------------------------
 
-*Version:* 3.7.0
+*Version:* 3.7.1
 
-*Release date:* December 24, 2016
+*Release date:* June 25, 2016
 
-link:lapack-3.7.0.html[*LAPACK 3.7.0 Release Notes*]
+link:lapack-3.7.1.html[*LAPACK 3.7.1 Release Notes*]
 
 
 2. Latest LAPACK Errata
 ------------------------
 LAPACK has been tested on a variety of architectures.  However, keep in mind that we do not have access to every possible type of machine, and the regrettable bug report will appear.  We apologize for any inconvenience this may cause to our users, and strongly encourage users to post your query on the http://icl.cs.utk.edu/lapack-forum[LAPACK forum] if you suspect an abnormality.
 
-link:Errata/errata-lapack-3.6.1.html[*LAPACK 3.7.0 Errata*]
-
 *NEW* : bug are now tracked in our GitHub Repository 
 
- * link:https://github.com/Reference-LAPACK/lapack/milestone/1?closed=1 [Closed bugs]
+ * link:https://github.com/Reference-LAPACK/lapack/milestone/2?closed=1 [Closed bugs]
  * link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&q=is%3Aissue%20is%3Aopen%20label%3A%22Type%3A%20Bug%22%20 [Open bugs]
  * link:https://github.com/Reference-LAPACK/lapack/issues [All open issues]
  

@@ -21,6 +21,7 @@ release_notes: release_notes.txt release_notes-3.3.0.txt release_notes-3.5.0.txt
 	asciidoc release_notes-3.6.0.txt
 	asciidoc release_notes-3.6.1.txt
 	asciidoc release_notes-3.7.0.txt
+	asciidoc release_notes-3.7.1.txt
 	asciidoc lapack-3.3.1.txt
 	asciidoc lapack-3.3.0.txt
 	asciidoc -a toc lapack-3.4.0.txt
@@ -30,6 +31,7 @@ release_notes: release_notes.txt release_notes-3.3.0.txt release_notes-3.5.0.txt
 	asciidoc -a toc lapack-3.6.0.txt
 	asciidoc -a toc lapack-3.6.1.txt
 	asciidoc -a toc lapack-3.7.0.txt
+	asciidoc -a toc lapack-3.7.1.txt
 	asciidoc -a toc lapacke.txt
 	asciidoc -a toc errata_from_331_to_340.txt
 	asciidoc -a toc errata_from_340_to_341.txt
@@ -37,6 +39,9 @@ release_notes: release_notes.txt release_notes-3.3.0.txt release_notes-3.5.0.txt
 	asciidoc -a toc errata_from_342_to_350.txt
 	asciidoc -a toc errata_from_350_to_360.txt
 	asciidoc -a toc errata_from_360_to_361.txt
+	scp release_notes-3.7.1.html release_notes-3.7.1.txt zoot.icl.utk.edu:/mnt/netlib/lapack
+	scp lapack-3.7.1.html lapack-3.7.1.txt zoot.icl.utk.edu:/mnt/netlib/lapack
+
 
 improvement.html: improvement.txt
 	asciidoc improvement.txt

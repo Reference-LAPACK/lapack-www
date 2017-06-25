@@ -2,6 +2,24 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn293 +[link:http://www.netlib.org/lapack/lawnspdf/lawn293.pdf[pdf]]+
+.PLASMA 17.1 Functionality Report
+
+by *Maksims Abalenkovs, Negin Bagherpour, Jack Dongarra, Mark Gates,
+ Azzam Haidar, Jakub Kurzak, Piotr Luszczek, Samuel Relton,
+ Jakub Sistek, David Stevens, Panruo Wu, Ichitaro Yamazaki, Asim YarKhan, and Mawussi Zounon*
+
+UT-EECS-17-751 June 2017
+
+== lawn292 +[link:http://www.netlib.org/lapack/lawnspdf/lawn292.pdf[pdf]]+
+.PLASMA 17 Performance Report
+
+by *Maksims Abalenkovs, Negin Bagherpour, Jack Dongarra, Mark Gates,
+ Azzam Haidar, Jakub Kurzak, Piotr Luszczek, Samuel Relton,
+ Jakub Sistek, David Stevens, Panruo Wu, Ichitaro Yamazaki, Asim YarKhan, and Mawussi Zounon*
+
+UT-EECS-17-750 June 2017
+
 == lawn291 +[link:http://www.netlib.org/lapack/lawnspdf/lawn291.pdf[pdf]]+
 .On block-asynchronous execution on GPUs
 

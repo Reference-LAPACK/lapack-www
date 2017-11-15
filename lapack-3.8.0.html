@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="generator" content="AsciiDoc 8.6.9" />
-<title>LAPACK 3.7.1</title>
+<title>LAPACK 3.8.0</title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
 
@@ -733,7 +733,7 @@ asciidoc.install(2);
 </head>
 <body class="article">
 <div id="header">
-<h1>LAPACK 3.7.1</h1>
+<h1>LAPACK 3.8.0</h1>
 <div id="toc">
   <div id="toctitle">Table of Contents</div>
   <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
@@ -742,7 +742,7 @@ asciidoc.install(2);
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph"><p>Release date: 06/25/17.</p></div>
+<div class="paragraph"><p>Release date: 11/12/17.</p></div>
 <div class="paragraph"><p>This material is based upon work supported by the National Science Foundation
 and the Department of Energy under Grant No. NSF ACI 1339797, NSF-OCI-1032861,
 NSF-CCF-00444486, NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127,
@@ -759,22 +759,83 @@ California, Berkeley, Univ. of Colorado Denver and NAG Ltd..</p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2_lapack_3_7_1_what_8217_s_new">2. LAPACK 3.7.1: What&#8217;s new</h2>
+<h2 id="_2_lapack_3_8_0_what_8217_s_new">2. LAPACK 3.8.0: What&#8217;s new</h2>
 <div class="sectionbody">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_1_symmetric_indefinite_factorization_aasen_8217_s_tridiagonalization_2_stage">2.1. Symmetric-indefinite Factorization: Aasen&#8217;s tridiagonalization 2 stage</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>A contribution from Ichitaro Yamazaki (University of Tennessee).</p></div>
+<div class="paragraph"><p>This is the blocked version of Aasen&#8217;s factorization for symmetric-indefinite factorization.
+The algorithm calling Level 3 BLAS.</p></div>
+<div class="paragraph"><p>Added:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>SRC/chesv_aa_2stage.f       SRC/dsysv_aa_2stage.f       SRC/ssysv_aa_2stage.f   SRC/zhesv_aa_2stage.f
+SRC/chetrf_aa_2stage.f      SRC/dsytrf_aa_2stage.f      SRC/ssytrf_aa_2stage.f  SRC/zhetrf_aa_2stage.f
+SRC/chetrs_aa_2stage.f      SRC/dsytrs_aa_2stage.f      SRC/ssytrs_aa_2stage.f  SRC/zhetrs_aa_2stage.f
+SRC/clahef_aa_2stage.f      SRC/dlasyf_aa_2stage.f      SRC/slasyf_aa_2stage.f  SRC/zlahef_aa_2stage.f
+SRC/csysv_aa_2stage.f       SRC/zsysv_aa_2stage.f
+SRC/csytrf_aa_2stage.f      SRC/zsytrf_aa_2stage.f
+SRC/csytrs_aa_2stage.f      SRC/zsytrs_aa_2stage.f</code></pre>
+</div></div>
+<div class="paragraph"><p>References:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Grey Ballard, Dulceneia Becker, James Demmel, Jack J. Dongarra, Alex
+Druinsky, Inon Peled, Oded Schwartz, Sivan Toledo, Ichitaro Yamazaki:
+Communication-Avoiding Symmetric-Indefinite Factorization. SIAM J.
+Matrix Analysis Applications 35(4): 1364-1406 (2014)
+</p>
+</li>
+<li>
+<p>
+Miroslav Rozloznik, Gil Shklarski, and Sivan Toledo, Partitioned triangular
+tridiagonalization, ACM Transactions on Mathematical Software,
+37(4), article 38, 16 pages, 2011
+</p>
+</li>
+<li>
+<p>
+Jan Ole Aasen, On the reduction of a symmetric matrix to tridiagonal form,
+BIT, 11 (1971), pp. 233–242.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_6_lapacke_interfaces">2.6. LAPACKE interfaces</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>A contribution from Julie Langou (University of Tennessee).</p></div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_3_developer_list">3. Developer list</h2>
 <div class="sectionbody">
-<div class="ulist"><div class="title">LAPACK developers involved in this release</div><ul>
+<div class="ulist"><div class="title">External Contributors</div><ul>
 <li>
 <p>
-Julie Langou (University of Tennessee, USA)
+Konstantin Arturov, Intel
 </p>
 </li>
 <li>
 <p>
-Osni Marques (University of California,  Berkeley, USA)
+Eugene Chereshnev, Intel
+</p>
+</li>
+<li>
+<p>
+Zlatko Drmac, University of Zagreb
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">LAPACK developers involved in this release</div><ul>
+<li>
+<p>
+Julie Langou (University of Tennessee, USA)
 </p>
 </li>
 <li>
@@ -814,36 +875,14 @@ Duncan Po, Pat Quillen, Christine Tobler.
 </li>
 <li>
 <p>
-Intel: Kirana Bergstrom, Eugene Chereshnev
+Intel: Eugene Chereshnev
 </p>
 </li>
 <li>
 <p>
-Gonum:  Vladimír Chalupecký
-</p>
-</li>
-<li>
-<p>
-Julien Schueller (Phimeca)
-</p>
-</li>
-<li>
-<p>
-Sebastien Villemot (Debian)
-</p>
-</li>
-<li>
-<p>
-David Seifert (SoapGentoo)
-</p>
-</li>
-<li>
-<p>
-GitHub Users: <a href="mailto:andreasnoack@github">andreasnoack@github</a>, <a href="mailto:ashwinyes@github">ashwinyes@github</a>, <a href="mailto:balducci@github">balducci@github</a>, <a href="mailto:cezden@github">cezden@github</a>,
-<a href="mailto:fxcoudert@github">fxcoudert@github</a>, <a href="mailto:Gjacquenot@github">Gjacquenot@github</a>, <a href="mailto:iyamazaki@github">iyamazaki@github</a>, <a href="mailto:JeffreySax@github">JeffreySax@github</a>,
-<a href="mailto:marcoippolito@github">marcoippolito@github</a>, <a href="mailto:martin-frbg@github">martin-frbg@github</a>, <a href="mailto:michaelwimmer@github">michaelwimmer@github</a>, <a href="mailto:nareshkamboju@github">nareshkamboju@github</a>,
-<a href="mailto:neundorf@github">neundorf@github</a>, <a href="mailto:nickkolok@github">nickkolok@github</a>, <a href="mailto:nschloe@github">nschloe@github</a>, <a href="mailto:SuperFluffy@github">SuperFluffy@github</a>, <a href="mailto:thielema@github">thielema@github</a>,
-<a href="mailto:tiagofrepereira2012@github">tiagofrepereira2012@github</a>, <a href="mailto:tmijieux@github">tmijieux@github</a>, <a href="mailto:turboencabulator@github">turboencabulator@github</a>, <a href="mailto:zerothi@github">zerothi@github</a>
+GitHub Users: Andreas Noack, Isuru Fernando, Kirana Bergstrom, Kyle Guinn
+Martin Kroeker, Nick Papior, Rao Garimella, Reinhold Gschweicher.Sébastien Villemo
+guozhong.zhuang
 </p>
 </li>
 </ul></div>
@@ -855,7 +894,7 @@ GitHub Users: <a href="mailto:andreasnoack@github">andreasnoack@github</a>, <a h
 <div class="ulist"><ul>
 <li>
 <p>
-<a href="https://github.com/Reference-LAPACK/lapack/milestone/2?closed=1">Closed bugs</a>
+<a href="https://github.com/Reference-LAPACK/lapack/milestone/1?closed=1">Closed bugs</a>
 </p>
 </li>
 <li>
@@ -875,7 +914,7 @@ GitHub Users: <a href="mailto:andreasnoack@github">andreasnoack@github</a>, <a h
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-25 14:14:08 PDT
+Last updated 2017-11-14 21:13:39 PST
 </div>
 </div>
 </body>

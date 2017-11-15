@@ -1,7 +1,7 @@
 LAPACK 3.7.1
 ============
 
-Release date: 06/25/16.
+Release date: 06/25/17.
 
 This material is based upon work supported by the National Science Foundation
 and the Department of Energy under Grant No. NSF ACI 1339797, NSF-OCI-1032861,

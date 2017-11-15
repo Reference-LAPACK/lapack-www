@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="generator" content="AsciiDoc 8.6.9" />
-<title>LAPACK 3.7.1</title>
+<title>Summary of improvements since LAPACK 3.0</title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
 
@@ -727,155 +727,487 @@ install: function(toclevels) {
 }
 
 }
-asciidoc.install(2);
+asciidoc.install();
 /*]]>*/
 </script>
 </head>
 <body class="article">
 <div id="header">
-<h1>LAPACK 3.7.1</h1>
-<div id="toc">
-  <div id="toctitle">Table of Contents</div>
-  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
-</div>
+<h1>Summary of improvements since LAPACK 3.0</h1>
 </div>
 <div id="content">
-<div id="preamble">
+<div class="sect1">
+<h2 id="_1_improvements_in_lapack_3_1_0">1. Improvements in LAPACK 3.1.0</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Release date: 06/25/17.</p></div>
-<div class="paragraph"><p>This material is based upon work supported by the National Science Foundation
-and the Department of Energy under Grant No. NSF ACI 1339797, NSF-OCI-1032861,
-NSF-CCF-00444486, NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127,
-DOE-DE-FC02-01ER25478, DOE-DE-FC02-06ER25768.</p></div>
-<div class="paragraph"><p>LAPACK is a software package provided by Univ. of Tennessee, Univ. of
-California, Berkeley, Univ. of Colorado Denver and NAG Ltd..</p></div>
+<div class="paragraph"><p>See <a href="lapack-3.1.0.changes">Release Notes for 3.1.0</a> for more details</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+<strong>Hessenberg QR algorithm with the small bulge multi-shift QR algorithm
+    together with aggressive early deflation.</strong> This is an implementation of the
+    2003 SIAM SIAG LA Prize winning algorithm of Braman, Byers and Mathias,
+    that significantly speeds up the nonsymmetric eigenproblem.
+</p>
+</li>
+<li>
+<p>
+<strong>Improvements of the Hessenberg reduction subroutines.</strong> These accelerate the
+    first phase of the nonsymmetric eigenvalue problem.
+</p>
+</li>
+<li>
+<p>
+<strong>New MRRR eigenvalue algorithms that also support subset computations.</strong>
+    These implementations of the 2006 SIAM SIAG LA Prize winning algorithm of
+    Dhillon and Parlett are also significantly more accurate than the version
+    in LAPACK 3.0.
+</p>
+</li>
+<li>
+<p>
+<strong>Mixed precision iterative refinement subroutines for exploiting fast single
+    precision hardware.</strong> On platforms like the Cell processor that do single
+    precision much faster than double, linear systems can be solved many times
+    faster. Even on commodity processors there is a factor of 2 in speed
+    between single and double precision. These are prototype routines in the
+    sense that their interfaces might changed based on user feedback.
+</p>
+</li>
+<li>
+<p>
+<strong>New partial column norm updating strategy for QR factorization with column
+    pivoting</strong>. This fixes a subtle numerical bug dating back to LINPACK that can
+    give completely wrong results.
+</p>
+</li>
+<li>
+<p>
+<strong>Thread safety:</strong> Removed all the SAVE and DATA statements (or provided
+    alternate routines without those statements), increasing reliability
+    on SMPs.
+</p>
+</li>
+<li>
+<p>
+<strong>Additional support for matrices with NaN/subnormal elements, optimization
+    of the balancing subroutines, improving reliability.</strong>
+</p>
+</li>
+</ol></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_1_support_and_questions">1. Support and questions:</h2>
+<h2 id="_2_improvements_in_lapack_3_1_1">2. Improvements in LAPACK 3.1.1</h2>
 <div class="sectionbody">
-<div class="paragraph"><p><a href="http://icl.cs.utk.edu/lapack-forum/">http://icl.cs.utk.edu/lapack-forum/</a></p></div>
-<div class="paragraph"><p><a href="https://github.com/Reference-LAPACK/lapack/">https://github.com/Reference-LAPACK/lapack/</a></p></div>
+<div class="paragraph"><p>See <a href="lapack-3.1.1.changes">Release Notes for 3.1.1</a> for more details</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+<strong>Add BLAS routines so that the BLAS provided is complete</strong>
+</p>
+</li>
+<li>
+<p>
+<strong>Provide 5 flavours of SECOND and DSECND and ddd the TIMER variable in the make.inc to chose which routine to use</strong>
+</p>
+</li>
+</ol></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2_lapack_3_7_1_what_8217_s_new">2. LAPACK 3.7.1: What&#8217;s new</h2>
+<h2 id="_2_improvements_in_lapack_3_2_0">2. Improvements in LAPACK 3.2.0</h2>
 <div class="sectionbody">
+<div class="paragraph"><p>See <a href="lapack-3.2.html">Release Notes for 3.2</a> for more details</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+<strong>Extra Precise Iterative Refinement:</strong> New linear solvers that
+  &#8220;guarantee&#8221; fully accurate answers (or give a warning that the
+  answer cannot be trusted).  The matrix types supported in this
+  release are: GE (general), SY (symmetric), PO (positive definite),
+  HE (Hermitian), and GB (general band) in all the relevant
+  precisions.
+</p>
+</li>
+<li>
+<p>
+<strong>XBLAS, or portable &#8220;extra precise BLAS&#8221;:</strong> Our new linear
+  solvers in (1) depend on these to perform iterative refinement.
+  The XBLAS will be released in a separate
+  package.
+</p>
+</li>
+<li>
+<p>
+<strong>Non-Negative Diagonals from Householder QR:</strong> The QR
+  factorization routines now guarantee that the diagonal is both real
+  and non-negative.  Factoring a uniformly random matrix now correctly
+  generates an orthogonal Q from the Haar distribution.
+</p>
+</li>
+<li>
+<p>
+<strong>High Performance QR and Householder Reflections on Low-Profile
+  Matrices:</strong> The auxiliary routines to apply Householder reflections
+  (e.g. DLARFB) automatically reduce the cost of QR from O(n<sup>3</sup>) to
+  O(n<sup>2</sup>+nb<sup>2</sup>) for matrices stored in a dense format for band
+  matrices with bandwidth b with no user interface changes.  Other
+  users of these routines can see similar benefits in particular on
+  &#8220;narrow profile&#8221; matrices.
+</p>
+</li>
+<li>
+<p>
+<strong>New fast and accurate Jacobi SVD:</strong> High accuracy SVD routine for
+  dense matrices, which can compute tiny singular values to many more
+  correct digits than xGESVD when the matrix has columns differing
+  widely in norm, and usually runs faster than xGESVD too.
+</p>
+</li>
+<li>
+<p>
+<strong>Routines for Rectangular Full Packed format:</strong> The RFP format
+  (SF, HF, PF, TF) enables efficient routines with optimal storage for
+  symmetric, Hermitian or triangular matrices.  Since these routines
+  utilize the Level 3 BLAS, they are generally much more efficient
+  than the existing packed storage routines (SP, HP, PP, TP).
+</p>
+</li>
+<li>
+<p>
+<strong>Pivoted Cholesky:</strong> The Cholesky factorization with diagonal
+  pivoting for symmetric positive semi-definite matrices.  Pivoting is
+  required for reliable rank detection.
+</p>
+</li>
+<li>
+<p>
+<strong>Mixed precision iterative refinement</strong> routines for exploiting
+  fast single precision hardware: On platforms like the Cell processor
+  that do single precision much faster than double, linear systems can
+  be solved many times faster. Even on commodity processors there is a
+  factor of 2 in speed between single and double precision.  The
+  matrix types supported in this release are: GE (general), PO
+  (positive definite).
+</p>
+</li>
+<li>
+<p>
+<strong>Some new variants added for the one sided factorization:</strong> LU
+  gets right-looking, left-looking, Crout and Recursive), QR gets
+  right-looking and left-looking, Cholesky gets left-looking,
+  right-looking and top-looking.  Depending on the computer
+  architecture (or speed of the underlying BLAS), one of these
+  variants may be faster than the original LAPACK implementation.
+</p>
+</li>
+<li>
+<p>
+<strong>More robust DQDS algorithm:</strong> Fixed some rare convergence
+  failures for the bidiagonal DQDS SVD routine.
+</p>
+</li>
+<li>
+<p>
+<strong>Better documentation for the multishift Hessenberg QR algorithm
+  with early aggressive deflation, and various improvements of the
+  code.</strong>
+</p>
+</li>
+</ol></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_3_developer_list">3. Developer list</h2>
+<h2 id="_3_improvements_in_lapack_3_2_1">3. Improvements in LAPACK 3.2.1</h2>
 <div class="sectionbody">
-<div class="ulist"><div class="title">LAPACK developers involved in this release</div><ul>
+<div class="paragraph"><p>See <a href="lapack-3.2.1.html">Release Notes for 3.2.1</a> for more details</p></div>
+<div class="olist arabic"><ol class="arabic">
 <li>
 <p>
-Julie Langou (University of Tennessee, USA)
+<strong>change xLARRD (MRRR routines) to deal with some matrices from Godunov</strong>
 </p>
 </li>
-<li>
-<p>
-Osni Marques (University of California,  Berkeley, USA)
-</p>
-</li>
-<li>
-<p>
-Ichitaro Yamazaki (University of Tennessee)
-</p>
-</li>
-</ul></div>
-<div class="ulist"><div class="title">Principal Investigators</div><ul>
-<li>
-<p>
-Jim Demmel (University of California,  Berkeley, USA)
-</p>
-</li>
-<li>
-<p>
-Jack Dongarra (University of Tennessee and ORNL, USA)
-</p>
-</li>
-<li>
-<p>
-Julien Langou (University of Colorado Denver, USA)
-</p>
-</li>
-</ul></div>
+</ol></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_4_thanks">4. Thanks</h2>
+<h2 id="_4_improvements_in_lapack_3_3_0">4. Improvements in LAPACK 3.3.0</h2>
 <div class="sectionbody">
+<div class="paragraph"><p>See <a href="lapack-3.3.0.html">Release Notes for 3.3.0</a> for more details</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+<strong>Standard C language APIs for LAPACK:</strong> The standard interfaces include
+  support for Fortran and C data formats (column-major and row-major) to ease
+  interoperability with, and migration of, Fortran code. Full LAPACK
+  functionality is now accessible in a C-friendly manner.  These new interfaces
+  are a key feature of the new LAPACK 3.3 release and the just released Intel
+  MKL 10.3 product. PLASMA 2.3 relies on it.
+</p>
+</li>
+<li>
+<p>
+<strong>Computing the complete CS decomposition:</strong> Compute the complete CS
+  decomposition of a partitioned unitary matrix.  The algorithm is designed
+  for numerical stability.  See: Brian D. Sutton.  Computing the complete CS
+  decomposition. Numer. Algorithms. 50 (2009), no. 1, 33â€“65.
+</p>
+</li>
+<li>
+<p>
+<strong>Level-3 BLAS symmetric indefinite solve and symmetric indefinite inversion</strong>:
+  This enables better performance for xSYTRF and xSYTRI.
+</p>
+</li>
+<li>
+<p>
+<strong>Thread safe xLAMCH</strong>: SLAMCH and DLAMCH were the only two routines not thread-safe
+  in LAPACK-3.2. This is fixed: all routines in LAPACK-3.3 are now thread-safe.
+</p>
+</li>
+</ol></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_improvements_in_lapack_3_3_1">4. Improvements in LAPACK 3.3.1</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>See <a href="lapack-3.3.1.html">Release Notes for 3.3.1</a> for more details</p></div>
+<div class="paragraph"><p><strong>Improve the CMAKE build system.</strong></p></div>
 <div class="ulist"><ul>
 <li>
 <p>
-MathWorks: Penny Anderson, Amanda Barry, Mary Ann Freeman, Bobby Cheng,
-Duncan Po, Pat Quillen, Christine Tobler.
+Added a FindBLAS module to easily search for and link against various optimized BLAS implementations
 </p>
 </li>
 <li>
 <p>
-Intel: Kirana Bergstrom, Eugene Chereshnev
+Added proper default compiler flags for various commercial Fortran compilers
 </p>
 </li>
 <li>
 <p>
-Gonum:  Vladimír Chalupecký
+Check for and disable SIGFPE handlers (LAPACK code handles these internally) on known compilers
 </p>
 </li>
 <li>
 <p>
-Julien Schueller (Phimeca)
+Remove testing drivers and BLAS source from nightly code coverage to get a more accurate representation of the LAPACK code getting exercised
 </p>
 </li>
 <li>
 <p>
-Sebastien Villemot (Debian)
+Suppress harmless warning messages for various platforms and compilers
 </p>
 </li>
 <li>
 <p>
-David Seifert (SoapGentoo)
+Added nightly builds (<a href="http://my.cdash.org/index.php?project=LAPACK">http://my.cdash.org/index.php?project=LAPACK</a>)
 </p>
 </li>
 <li>
 <p>
-GitHub Users: <a href="mailto:andreasnoack@github">andreasnoack@github</a>, <a href="mailto:ashwinyes@github">ashwinyes@github</a>, <a href="mailto:balducci@github">balducci@github</a>, <a href="mailto:cezden@github">cezden@github</a>,
-<a href="mailto:fxcoudert@github">fxcoudert@github</a>, <a href="mailto:Gjacquenot@github">Gjacquenot@github</a>, <a href="mailto:iyamazaki@github">iyamazaki@github</a>, <a href="mailto:JeffreySax@github">JeffreySax@github</a>,
-<a href="mailto:marcoippolito@github">marcoippolito@github</a>, <a href="mailto:martin-frbg@github">martin-frbg@github</a>, <a href="mailto:michaelwimmer@github">michaelwimmer@github</a>, <a href="mailto:nareshkamboju@github">nareshkamboju@github</a>,
-<a href="mailto:neundorf@github">neundorf@github</a>, <a href="mailto:nickkolok@github">nickkolok@github</a>, <a href="mailto:nschloe@github">nschloe@github</a>, <a href="mailto:SuperFluffy@github">SuperFluffy@github</a>, <a href="mailto:thielema@github">thielema@github</a>,
-<a href="mailto:tiagofrepereira2012@github">tiagofrepereira2012@github</a>, <a href="mailto:tmijieux@github">tmijieux@github</a>, <a href="mailto:turboencabulator@github">turboencabulator@github</a>, <a href="mailto:zerothi@github">zerothi@github</a>
+Standardized binary output locations to play nicely when building Windows DLLs
+</p>
+</li>
+<li>
+<p>
+Cleaned up CMake packaging to allow find_package(LAPACK) in applications
+</p>
+</li>
+<li>
+<p>
+Added missing link dependencies for test libraries
 </p>
 </li>
 </ul></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_5_bug_fix">5.  Bug Fix</h2>
+<h2 id="_5_improvements_in_lapack_3_4_0">5. Improvements in LAPACK 3.4.0</h2>
 <div class="sectionbody">
+<div class="paragraph"><p>See <a href="lapack-3.4.0.html">Release Notes for 3.4.0</a> for more details</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+<strong>xGEQRT: QR factorization (improved interface).</strong> Contribution by Rodney
+James (UC Denver). xGEQRT is analogous to xGEQRF with a modified interface which
+enables better performance when the blocked reflectors need to be reused. The
+companion subroutines xGEMQRT apply the reflectors.
+</p>
+</li>
+<li>
+<p>
+<strong>xGEQRT3: recursive QR factorization.</strong> Contribution by Rodney James (UC
+Denver). The recursive QR factorization enables cache-oblivious and enables high
+performance on tall and skinny matrices.
+</p>
+</li>
+<li>
+<p>
+<strong>xTPQRT: Communication-Avoiding QR sequential kernels.</strong> Contribution by
+Rodney James (UC Denver).  These subroutines are useful for updating a QR
+factorization and are used in sequential and parallel Communication Avoiding
+QR. These subroutines support the general case Triangle on top of Pentagon
+which includes as special cases so-called Triangle on top of Triangle and
+Triangle on top of Square. This is the right-looking version of the subroutines
+and the subroutines are blocked. The T matrices and the block size are part of
+the interface. The companion subroutines xTPMQRT apply the reflectors.
+</p>
+</li>
+<li>
+<p>
+<strong>CMAKE build system.</strong> We are striving to help our users install our
+libraries seamlessly on their machines.  The CMAKE team contributed to our
+effort to port LAPACK and ScaLAPACK under the CMAKE build system. Building
+under Windows has never been easier. This also allows us to release dll for
+Windows, so users no longer need a Fortran compiler to use LAPACK under
+Windows.
+</p>
+</li>
+<li>
+<p>
+<strong>Doxygen documentation.</strong> LAPACK routine documentation has never been more
+accessible. See <a href="http://www.netlib.org/lapack/explore-html/">http://www.netlib.org/lapack/explore-html/</a>.
+</p>
+</li>
+<li>
+<p>
+<strong>New website allowing for easier navigation.</strong>
+</p>
+</li>
+<li>
+<p>
+<strong>LAPACKE - Standard C language APIs for LAPACK.</strong> Since LAPACK 3.3.0, LAPACK
+includes new C interfaces. With the LAPACK 3.4.0 release, LAPACKE is directly
+integrated within the LAPACK library and has been enriched by the full set of
+LAPACK subroutines. See <a href="lapacke.html">here</a>.
+</p>
+</li>
+</ol></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_improvements_in_lapack_3_4_1">6. Improvements in LAPACK 3.4.1</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>See <a href="lapack-3.4.1.html">Release Notes for 3.4.1</a> for more details</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+<strong>BLAS test codes now using F90 machine epsilon, optimization now works</strong>
+</p>
+</li>
+<li>
+<p>
+<strong>Fix Thread safety issue.</strong> xLARFT routines modified so that V in now [in] only instead of [in/out], now thread safe
+</p>
+</li>
+<li>
+<p>
+<strong>LAPACK test suite modified so that all tests will pass with gfortran (and ifort with -O0, and hopefully others)</strong>
+</p>
+</li>
+</ol></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_7_improvements_in_lapack_3_4_2">7. Improvements in LAPACK 3.4.2</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>See <a href="lapack-3.4.2.html">Release Notes for 3.4.2</a> for more details</p></div>
 <div class="ulist"><ul>
 <li>
 <p>
-<a href="https://github.com/Reference-LAPACK/lapack/milestone/2?closed=1">Closed bugs</a>
-</p>
-</li>
-<li>
-<p>
-<a href="https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&amp;q=is%3Aissue%20is%3Aopen%20label%3A%22Type%3A%20Bug%22%20">Open bugs</a>
-</p>
-</li>
-<li>
-<p>
-<a href="https://github.com/Reference-LAPACK/lapack/issues">All open issues</a>
+<strong>Modified all of the matrix norm routines</strong>. Now, if a matrix contains a NaN, a NaN will be returned for all choices of norm.
+ Previously, if a matrix contained a NaN, the norm routines would not return necessarily a NaN. (They would return regular floating-point numbers in some cases.)
 </p>
 </li>
 </ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_8_improvements_in_lapack_3_5_0">8. Improvements in LAPACK 3.5.0</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>See <a href="lapack-3.5.0.html">Release Notes for 3.5.0</a> for more details</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+<strong>xSYSV_ROOK: LDL<sup>T</sup> with rook pivoting.</strong> Contribution by Craig Lucas (University
+of Manchester and NAG) and Sven Hammarling (NAG).  These subroutines enable
+better stability than the Bunch-Kaufman pivoting scheme currently used in
+LAPACK xSYSV solvers; also, the elements of L are bounded, which is important
+in some applications.  The computational time of xSYSV_ROOK is slightly higher than
+the one of xSYSV.
+</p>
+</li>
+<li>
+<p>
+<strong>2-by-1 CSD to be used for tall and skinny matrix with orthonormal columns</strong> (in LAPCK 3.4.0, we already integrated CSD of a full square orthogonal matrix)
+More info here: <a href="http://faculty.rmc.edu/bsutton/simultaneousbidiagonalization.html">http://faculty.rmc.edu/bsutton/simultaneousbidiagonalization.html</a> 
+</p>
+</li>
+<li>
+<p>
+<strong>New stopping criteria for balancing</strong>.
+</p>
+</li>
+<li>
+<p>
+<strong>New complex division algorithm</strong>.
+Following the algorithm of Michael Baudin, Robert L. Smith (see arxiv.1210.4539 )
+</p>
+</li>
+<li>
+<p>
+<strong>Other improvements:</strong>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+slasyf.f, clasyf.f, clahef.f, dlasyf.f, zlahef.f, zlasyf.f :: various improvements by Igor Kozachenko
+</p>
+</li>
+<li>
+<p>
+dhgeqz.f, shgeqz.f :: improvements by Duncan Po (MathWorks), committed by Rodney James
+</p>
+</li>
+<li>
+<p>
+dlasd4.f, slasd4.f :: improvements by Sergey Kuznetsov (Intel), committed by Rodney James
+</p>
+</li>
+<li>
+<p>
+clarfb.f, dlarfb.f, slarfb.f, zlarfb.f :: improvements by Rodney James
+</p>
+</li>
+</ul></div>
+</li>
+</ol></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_9_improvements_in_lapack_3_6_0">9. Improvements in LAPACK 3.6.0</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>See <a href="lapack-3.6.0.html">Release Notes for 3.6.0</a> for more details</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_10_improvements_in_lapack_3_7_0">10. Improvements in LAPACK 3.7.0</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>See <a href="lapack-3.7.0.html">Release Notes for 3.7.0</a> for more details</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_11_improvements_in_lapack_3_8_0">11. Improvements in LAPACK 3.8.0</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>See <a href="lapack-3.8.0.html">Release Notes for 3.8.0</a> for more details</p></div>
 </div>
 </div>
 </div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-25 14:14:08 PDT
+Last updated 2017-11-14 21:15:59 PST
 </div>
 </div>
 </body>

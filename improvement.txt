@@ -257,3 +257,8 @@ See link:lapack-3.6.0.html[Release Notes for 3.6.0] for more details
 
 See link:lapack-3.7.0.html[Release Notes for 3.7.0] for more details
 
+11. Improvements in LAPACK 3.8.0
+-------------------------------
+
+See link:lapack-3.8.0.html[Release Notes for 3.8.0] for more details
+

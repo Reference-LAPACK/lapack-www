@@ -9,7 +9,7 @@ LAPACK -- Linear Algebra PACKage
 [width="100%",cols="^,^,^",frame="none",grid="none"]
 |=======
 | image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] | 
-*Version 3.7.1* +
+*Version 3.8.0* +
  +
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
 mailto:lapack@icl.utk.edu[*Contact the LAPACK team*] +
@@ -107,11 +107,11 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== LAPACK, version 3.7.1
+=== LAPACK, version 3.8.0
 =========================
- - Download: http://www.netlib.org/lapack/lapack-3.7.1.tgz[lapack-3.7.1.tgz] 
- - link:lapack-3.7.1.html[LAPACK 3.7.1 Release Notes]
- - Updated:  June 25, 2015
+ - Download: http://www.netlib.org/lapack/lapack-3.8.0.tar.gz[lapack-3.8.0.tar.gz] 
+ - link:lapack-3.8.0.html[LAPACK 3.8.0 Release Notes]
+ - Updated:  November 12 2017
  - link:https://github.com/Reference-LAPACK/lapack/issues?q=is%3Aissue+is%3Aopen+label%3A%22Type%3A+Bug%22[LAPACK GitHub Open Bug] (Current known bugs)
 ==========================
 
@@ -295,16 +295,24 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 *Version 3.7.0: December 24, 2016*
 
   *Version 3.7.1: June 25 2017*
+  
+*Version 3.8.0: November 17, 2017*
 
 == Previous Release
 
+=== LAPACK, version 3.8.0
+
+ - Download: http://www.netlib.org/lapack/lapack-3.8.0.tar.gz[lapack-3.8.0.tar.gz] 
+ - link:lapack-3.8.0.html[LAPACK 3.8.0 Release Notes]
+ - Updated:  Nov 12, 2017
+ 
 === LAPACK, version 3.7.1
 
  - Download: http://www.netlib.org/lapack/lapack-3.7.1.tgz[lapack-3.7.1.tgz] 
  - link:lapack-3.7.1.html[LAPACK 3.7.1 Release Notes]
  - Updated:  June 25, 2017
  
- === LAPACK, version 3.7.0
+=== LAPACK, version 3.7.0
 
  - Download: http://www.netlib.org/lapack/lapack-3.7.0.tgz[lapack-3.7.0.tgz] 
  - link:lapack-3.7.0.html[LAPACK 3.7.0 Release Notes]

@@ -3,9 +3,6 @@
 link:lawn.bib[LAWNS bibtex]
 
 
-New robust ScaLAPACK routine for computing the QR factorization with column pivoting
-
-
 == lawn295 +[link:http://www.netlib.org/lapack/lawnspdf/lawn295.pdf[pdf]]+
 .New robust ScaLAPACK routine for computing the QR factorization with column pivoting
 by *Zvonimir Bujanovic and Zlatko Drmac*

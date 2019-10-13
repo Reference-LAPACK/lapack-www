@@ -2,6 +2,22 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+
+New robust ScaLAPACK routine for computing the QR factorization with column pivoting
+
+
+== lawn295 +[link:http://www.netlib.org/lapack/lawnspdf/lawn295.pdf[pdf]]+
+.New robust ScaLAPACK routine for computing the QR factorization with column pivoting
+by *Zvonimir Bujanovic and Zlatko Drmac*
+
+XXXXX  Oct 2019
+
+== lawn294 +[link:http://www.netlib.org/lapack/lawnspdf/lawn294.pdf[pdf]]+
+.Aasen’s Symmetric Indefinite Linear Solvers in LAPACK
+by *Ichitaro Yamazaki and Jack Dongarra*
+
+ICL-UT-17-13 Dec 2017
+
 == lawn293 +[link:http://www.netlib.org/lapack/lawnspdf/lawn293.pdf[pdf]]+
 .PLASMA 17.1 Functionality Report
 
@@ -888,7 +904,7 @@ UT-CS-06-580, September 2006.
 == lawn176 +[link:http://www.netlib.org/lapack/lawnspdf/lawn176.pdf[pdf]]+
 .On the failure of rank revealing QR factorization software - a case study
 
-by	*Zlatko Drmaƒç and Zvonimir Bujanoviƒá*
+by	*Zlatko Drmac and Zvonimir Bujanovic*
 
 June 2006.
 

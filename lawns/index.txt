@@ -2,12 +2,17 @@
 
 link:lawn.bib[LAWNS bibtex]
 
-
-== lawn295 +[link:http://www.netlib.org/lapack/lawnspdf/lawn295.pdf[pdf]]+
+== lawn296 +[link:http://www.netlib.org/lapack/lawnspdf/lawn296.pdf[pdf]]+
 .New robust ScaLAPACK routine for computing the QR factorization with column pivoting
 by *Zvonimir Bujanovic and Zlatko Drmac*
 
-XXXXX  Oct 2019
+ICL-UT-19-14  Oct 2019
+
+== lawn295 +[link:http://www.netlib.org/lapack/lawnspdf/lawn295.pdf[pdf]]+
+.Bidiagonal SVD Computation via an Associated Tridiagonal Eigenproblem
+by *Marques, Osni, James Demmel, and Paulo B. Vasconcelos*
+
+ICL-UT-18-02  Avr 2018
 
 == lawn294 +[link:http://www.netlib.org/lapack/lawnspdf/lawn294.pdf[pdf]]+
 .Aasen’s Symmetric Indefinite Linear Solvers in LAPACK

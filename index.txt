@@ -3,14 +3,15 @@ LAPACK -- Linear Algebra PACKage
 
 // :Author:    Julie_Langou_and_Julien_Langou
 // :Email:     <julie@cs.utk.edu,julien.langou@ucdenver.edu>
-// :Date:      2017/06/25
+// :Date:      2019/11/16
 // :Revision:  1
 
 [width="100%",cols="^,^,^",frame="none",grid="none"]
 |=======
 | image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] | 
-*Version 3.8.0* +
- +
+*Version 3.9.0* +
+link:https://github.com/Reference-LAPACK/lapack[*LAPACK on GitHub*] +
+link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
 mailto:lapack@icl.utk.edu[*Contact the LAPACK team*] +
  +
@@ -107,11 +108,11 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== LAPACK, version 3.8.0
+=== LAPACK, version 3.9.0
 =========================
- - Download: http://www.netlib.org/lapack/lapack-3.8.0.tar.gz[lapack-3.8.0.tar.gz] 
- - link:lapack-3.8.0.html[LAPACK 3.8.0 Release Notes]
- - Updated:  November 12 2017
+ - Download: https://github.com/Reference-LAPACK/lapack/archive/v3.9.0.tar.gz[lapack-3.9.0.tar.gz] 
+ - link:lapack-3.9.0.html[LAPACK 3.9.0 Release Notes]
+ - Updated:  November 21 2019
  - link:https://github.com/Reference-LAPACK/lapack/issues?q=is%3Aissue+is%3Aopen+label%3A%22Type%3A+Bug%22[LAPACK GitHub Open Bug] (Current known bugs)
 ==========================
 
@@ -145,18 +146,12 @@ and link to LAPACK Fortran libraries without the need of a vendor-supplied Fortr
 
 === GIT Access
 
-The LAPACK GIT (http://github.com/Reference-LAPACK) repositories are to open for read-only for our users.
+The LAPACK GIT (http://github.com/Reference-LAPACK/lapack) repository is open for read-only for our users. 
 
-We currently have three GIT respositories:
-
- - link:http://github.com/Reference-LAPACK/lapack[*lapack*] - LAPACK development repository : http://github.com/Reference-LAPACK/lapack
- - link:http://github.com/Reference-LAPACK/lapack-release[*lapack-release*] - LAPACK official release branches : http://github.com/Reference-LAPACK/lapack-release
- - link:http://github.com/Reference-LAPACK/lapack-www[*lapack-www*] - LAPACK website : http://github.com/Reference-LAPACK/lapack-www
-
-Please use our LAPACK development repository to get the latest bug fixed, submit issues or pull requests.
+	Please use our link:http://github.com/Reference-LAPACK/lapack[*LAPACK development repository*] to get the latest bug fixed, submit issues or pull requests.
 
 == Support
-
+ - link:https://github.com/Reference-LAPACK/lapack[*LAPACK on GitHub*]
  - link:http://icl.cs.utk.edu/lapack-forum[Browse the LAPACK/ScaLAPACK User Forum]
  - mailto:lapack@icl.utk.edu[Contact the LAPACK team]
  - link:http://icl.cs.utk.edu/lapack-forum/archives/[Archives of LAPACK mailing list]  
@@ -298,7 +293,15 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
   
 *Version 3.8.0: November 17, 2017*
 
+*Version 3.9.0: November 21, 2019*
+
 == Previous Release
+
+=== LAPACK, version 3.9.0
+
+ - Download: https://github.com/Reference-LAPACK/lapack/archive/v3.9.0.tar.gz[lapack-3.9.0.tar.gz] 
+ - link:lapack-3.9.0.html[LAPACK 3.9.0 Release Notes]
+ - Updated:  Nov 21, 2019
 
 === LAPACK, version 3.8.0
 

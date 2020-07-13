@@ -2,6 +2,12 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn297 +[link:http://www.netlib.org/lapack/lawnspdf/lawn297.pdf[pdf]]+
+.Prospectus for the Next LAPACK and ScaLAPACK Libraries: Basic ALgebra LIbraries for Sustainable Technology with Interdisciplinary Collaboration (BALLISTIC)
+by *Demmel, J., J. Dongarra, J. Langou, J. Langou, P. Luszczek, and M. Mahoney*
+
+ICL-UT-20-07  Jul 2020
+
 == lawn296 +[link:http://www.netlib.org/lapack/lawnspdf/lawn296.pdf[pdf]]+
 .New robust ScaLAPACK routine for computing the QR factorization with column pivoting
 by *Zvonimir Bujanovic and Zlatko Drmac*
@@ -1764,7 +1770,7 @@ by	*Jaeyoung Choi, Jack J. Dongarra, and David W. Walker*
 UT-CS-93-187, May 1993.
 
 == lawn56 +[link:http://www.netlib.org/lapack/lawnspdf/lawn56.pdf[pdf]]+
-lawn56.tgz 
+lawn56.tgz
 .Reducing Communication Costs in the Conjugate Gradient Algorithm on Distributed Memory Multiprocessors
 
 by	*E.F. D'Azevedo, V.L. Eijkhout and C.H. Romine*
@@ -2154,5 +2160,3 @@ ANL, MCS-TM-99, September 1987
 by	*J. Demmel, J. Dongarra, J. Du Croz, A. Greenbaum, S. Hammarling, and D. Sorensen*
 
 ANL, MCS-TM-97, September 1987
- 
-

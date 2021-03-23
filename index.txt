@@ -285,11 +285,11 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
 *Version 3.6.0: November 15, 2015*
 
-  *Version 3.6.1: June 18, 2016*
+  *Version 3.6.1: June 18, 2016
 
 *Version 3.7.0: December 24, 2016*
 
-  *Version 3.7.1: June 25 2017*
+  *Version 3.7.1: June 25 2017
   
 *Version 3.8.0: November 17, 2017*
 

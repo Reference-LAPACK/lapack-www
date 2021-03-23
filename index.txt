@@ -8,11 +8,11 @@ LAPACK -- Linear Algebra PACKage
 
 [width="100%",cols="^,^,^",frame="none",grid="none"]
 |=======
-| image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] | 
+| image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] |
 *Version 3.9.0* +
 link:https://github.com/Reference-LAPACK/lapack[*LAPACK on GitHub*] +
-link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
-link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] + 
+link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] +
+link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] +
 mailto:lapack@icl.utk.edu[*Contact the LAPACK team*] +
  +
 mailto:lapack-announce-subscribe@eecs.utk.edu[*Get the latest LAPACK News*] +
@@ -54,7 +54,7 @@ already implemented on each machine.
 LAPACK routines are written so that as much as possible of the computation is
 performed by calls to the Basic Linear Algebra Subprograms (BLAS).
 // While LINPACK and EISPACK are based on the vector operation kernels of the
-// Level 1 BLAS, 
+// Level 1 BLAS,
 LAPACK is designed at the outset to exploit the Level 3 BLAS -- a set of
 specifications for Fortran subprograms that do various types of matrix
 multiplication and the solution of triangular systems with multiple right-hand
@@ -110,7 +110,7 @@ routine to provide support.
 
 === LAPACK, version 3.9.0
 =========================
- - Download: https://github.com/Reference-LAPACK/lapack/archive/v3.9.0.tar.gz[lapack-3.9.0.tar.gz] 
+ - Download: https://github.com/Reference-LAPACK/lapack/archive/v3.9.0.tar.gz[lapack-3.9.0.tar.gz]
  - link:lapack-3.9.0.html[LAPACK 3.9.0 Release Notes]
  - Updated:  November 21 2019
  - link:https://github.com/Reference-LAPACK/lapack/issues?q=is%3Aissue+is%3Aopen+label%3A%22Type%3A+Bug%22[LAPACK GitHub Open Bug] (Current known bugs)
@@ -130,7 +130,7 @@ collaboration LAPACK and INTEL Math Kernel Library Team
 === LAPACK for Windows
 
 LAPACK is built under Windows using link:http://www.cmake.org[Cmake] the cross-platform, open-source build system.
-The new build system was developed in collaboration with Kitware Inc. 
+The new build system was developed in collaboration with Kitware Inc.
 
 A dedicated website (http://icl.cs.utk.edu/lapack-for-windows/lapack) is available for Windows users.
 
@@ -138,7 +138,7 @@ A dedicated website (http://icl.cs.utk.edu/lapack-for-windows/lapack) is availab
 
 - You will be able to download BLAS, LAPACK, LAPACKE pre-built libraries.
 
-- You will learn how you can directly run LAPACKE from VS Studio (just C code, no Fortran!!!). LAPACK now offers Windows users the ability to code in C using Microsoft Visual Studio 
+- You will learn how you can directly run LAPACKE from VS Studio (just C code, no Fortran!!!). LAPACK now offers Windows users the ability to code in C using Microsoft Visual Studio
 and link to LAPACK Fortran libraries without the need of a vendor-supplied Fortran compiler add-on. To get more information, please refer to link:http://www.netlib.org/lapack/lawnspdf/lawn270.pdf[lawn 270].
 
 - You will get step by steps procedures Easy Windows Build.
@@ -146,7 +146,7 @@ and link to LAPACK Fortran libraries without the need of a vendor-supplied Fortr
 
 === GIT Access
 
-The LAPACK GIT (http://github.com/Reference-LAPACK/lapack) repository is open for read-only for our users. 
+The LAPACK GIT (http://github.com/Reference-LAPACK/lapack) repository is open for read-only for our users.
 
 	Please use our link:http://github.com/Reference-LAPACK/lapack[*LAPACK development repository*] to get the latest bug fixed, submit issues or pull requests.
 
@@ -154,18 +154,18 @@ The LAPACK GIT (http://github.com/Reference-LAPACK/lapack) repository is open fo
  - link:https://github.com/Reference-LAPACK/lapack[*LAPACK on GitHub*]
  - link:http://icl.cs.utk.edu/lapack-forum[Browse the LAPACK/ScaLAPACK User Forum]
  - mailto:lapack@icl.utk.edu[Contact the LAPACK team]
- - link:http://icl.cs.utk.edu/lapack-forum/archives/[Archives of LAPACK mailing list]  
+ - link:http://icl.cs.utk.edu/lapack-forum/archives/[Archives of LAPACK mailing list]
 
 Do not forget to check our GitHub repository for Current and Fixed issues and Improvements
 
  - link:https://github.com/Reference-LAPACK/lapack/issues[Current Issues]
  - link:https://github.com/Reference-LAPACK/lapack/milestone/2?closed=1[Fixed issues and Improvements since last release]
- 
+
 == Contributors
 
 LAPACK is a community-wide effort.LAPACK relies on
 link:contributor-list.html[many contributors], and we would like to acknowledge
-their outstanding work. link:contributor-list.html[Here is the list of LAPACK contributors since 1992.] 
+their outstanding work. link:contributor-list.html[Here is the list of LAPACK contributors since 1992.]
 
 If you are wishing to contribute, please have a look at
 link:http://www.netlib.org/lapack-dev/lapack-coding/program-style.html[the
@@ -173,7 +173,7 @@ LAPACK Program Style]. This document has been written to facilitate
 contributions to LAPACK by documenting their design and implementation
 guidelines.
 
-LAPACK Project Software Grant and Corporate Contributor License Agreement (``Agreement'') link:http://www.netlib.org/lapack/lapack-corporate-contributor-agrement.doc[[Download]] 
+LAPACK Project Software Grant and Corporate Contributor License Agreement (``Agreement'') link:http://www.netlib.org/lapack/lapack-corporate-contributor-agrement.doc[[Download]]
 
 Contributions are always welcome and can be sent to the
 mailto:lapack@icl.utk.edu[LAPACK team].
@@ -198,7 +198,7 @@ mailto:lapack@icl.utk.edu[LAPACK team].
 
 link:https://github.com/Reference-LAPACK/lapack/issues[Current LAPACK errata]
 
-Here is the link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&q=is%3Aissue[list] 
+Here is the link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&q=is%3Aissue[list]
 (corrected, confirmed and to be confirmed) since 3.6.1
 
 Here is the link:http://www.netlib.org/lapack/bug_list.html[list of the bugs]
@@ -244,7 +244,7 @@ Please follow the instructions of the link:README-MANPAGES[README] to install th
 
 The LAPACK team would like to thank Sylvestre Ledru for helping us maintaing those manpages and Albert from the Doxygen team.
 
-=== *LAWNS*: LAPACK Working Notes 
+=== *LAWNS*: LAPACK Working Notes
 
 link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
@@ -285,12 +285,12 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
 *Version 3.6.0: November 15, 2015*
 
-  *Version 3.6.1: June 18, 2016
+  * Version 3.6.1: June 18, 2016
 
 *Version 3.7.0: December 24, 2016*
 
-  *Version 3.7.1: June 25 2017
-  
+  * Version 3.7.1: June 25 2017
+
 *Version 3.8.0: November 17, 2017*
 
 *Version 3.9.0: November 21, 2019*
@@ -299,67 +299,67 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
 === LAPACK, version 3.9.0
 
- - Download: https://github.com/Reference-LAPACK/lapack/archive/v3.9.0.tar.gz[lapack-3.9.0.tar.gz] 
+ - Download: https://github.com/Reference-LAPACK/lapack/archive/v3.9.0.tar.gz[lapack-3.9.0.tar.gz]
  - link:lapack-3.9.0.html[LAPACK 3.9.0 Release Notes]
  - Updated:  Nov 21, 2019
 
 === LAPACK, version 3.8.0
 
- - Download: http://www.netlib.org/lapack/lapack-3.8.0.tar.gz[lapack-3.8.0.tar.gz] 
+ - Download: http://www.netlib.org/lapack/lapack-3.8.0.tar.gz[lapack-3.8.0.tar.gz]
  - link:lapack-3.8.0.html[LAPACK 3.8.0 Release Notes]
  - Updated:  Nov 12, 2017
- 
+
 === LAPACK, version 3.7.1
 
- - Download: http://www.netlib.org/lapack/lapack-3.7.1.tgz[lapack-3.7.1.tgz] 
+ - Download: http://www.netlib.org/lapack/lapack-3.7.1.tgz[lapack-3.7.1.tgz]
  - link:lapack-3.7.1.html[LAPACK 3.7.1 Release Notes]
  - Updated:  June 25, 2017
- 
+
 === LAPACK, version 3.7.0
 
- - Download: http://www.netlib.org/lapack/lapack-3.7.0.tgz[lapack-3.7.0.tgz] 
+ - Download: http://www.netlib.org/lapack/lapack-3.7.0.tgz[lapack-3.7.0.tgz]
  - link:lapack-3.7.0.html[LAPACK 3.7.0 Release Notes]
  - Updated:  December 24, 2016
 
 === LAPACK, version 3.6.1
 
- - Download: http://www.netlib.org/lapack/lapack-3.6.1.tgz[lapack-3.6.1.tgz] 
+ - Download: http://www.netlib.org/lapack/lapack-3.6.1.tgz[lapack-3.6.1.tgz]
  - link:lapack-3.6.1.html[LAPACK 3.6.1 Release Notes]
  - Updated:  June 18, 2016
 
 === LAPACK, version 3.6.0
 
- - Download: http://www.netlib.org/lapack/lapack-3.6.0.tgz[lapack-3.6.0.tgz] 
+ - Download: http://www.netlib.org/lapack/lapack-3.6.0.tgz[lapack-3.6.0.tgz]
  - link:lapack-3.6.0.html[LAPACK 3.6.0 Release Notes]
  - Updated:  November 15, 2015
 
 === LAPACK, version 3.5.0
 
- - Download: http://www.netlib.org/lapack/lapack-3.5.0.tgz[lapack-3.5.0.tgz] 
+ - Download: http://www.netlib.org/lapack/lapack-3.5.0.tgz[lapack-3.5.0.tgz]
  - link:lapack-3.5.0.html[LAPACK 3.5.0 Release Notes]
  - Updated:  November 19, 2013
 
 === LAPACK, version 3.4.2
 
- - Download: http://www.netlib.org/lapack/lapack-3.4.2.tgz[lapack-3.4.2.tgz] 
+ - Download: http://www.netlib.org/lapack/lapack-3.4.2.tgz[lapack-3.4.2.tgz]
  - link:lapack-3.4.2.html[LAPACK 3.4.2 Release Notes]
  - Updated:  September 25, 2012
 
 === LAPACK, version 3.4.1
 
- - Download: http://www.netlib.org/lapack/lapack-3.4.1.tgz[lapack-3.4.1.tgz] 
+ - Download: http://www.netlib.org/lapack/lapack-3.4.1.tgz[lapack-3.4.1.tgz]
  - link:lapack-3.4.1.html[LAPACK 3.4.1 Release Notes]
  - Updated:  April 20, 2012
 
 === LAPACK, version 3.4.0
 
- - Download: http://www.netlib.org/lapack/lapack-3.4.0.tgz[lapack-3.4.0.tgz] 
+ - Download: http://www.netlib.org/lapack/lapack-3.4.0.tgz[lapack-3.4.0.tgz]
  - link:lapack-3.4.0.html[LAPACK 3.4.0 Release Notes]
  - Updated:  November 11, 2011
 
 === LAPACK, version 3.3.1
 
- - Download: http://www.netlib.org/lapack/lapack-3.3.1.tgz[lapack-3.3.1.tgz] 
+ - Download: http://www.netlib.org/lapack/lapack-3.3.1.tgz[lapack-3.3.1.tgz]
  - link:lapack-3.3.1.html[LAPACK 3.3.1 Release Notes]
  - Updated:  April 18, 2011
 
@@ -381,14 +381,14 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
  - link:lapack-3.2.1.html[LAPACK 3.2.1 Release Notes]
  - Updated:  April 17, 2009
 
-=== LAPACK version 3.2 with CMAKE package 
+=== LAPACK version 3.2 with CMAKE package
 
  - Download: http://www.netlib.org/lapack/lapack-3.2.1-CMAKE.tgz[lapack-3.2.1-CMAKE.tgz]
  - Download: http://www.netlib.org/lapack/lapack-3.2.1-CMAKE.zip[lapack-3.2.1-CMAKE.zip]
  - link:lapack-3.2.2.html[LAPACK 3.2.2 Release Notes]
  - Updated:  January 26, 2010
 
-=== LAPACK version 3.2 
+=== LAPACK version 3.2
 
  - Download: http://www.netlib.org/lapack/lapack-3.2.tgz[lapack-3.2.tgz]
  - link:lapack-3.2.html[LAPACK 3.2 Release Notes]
@@ -486,7 +486,7 @@ link:../java/f2j[JLAPACK]
 .C++ implementation of LAPACK
 LAPACK extensions for high performance linear algebra computations. This
 version includes support for solving linear systems using LU, Cholesky, and QR
-matrix factorizations. 
+matrix factorizations.
 link:../lapack\+\+[lapack++]
 by   mailto:pozo@cs.utk.edu[Roldan Pozo]
 

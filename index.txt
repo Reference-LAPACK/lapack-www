@@ -9,7 +9,7 @@ LAPACK -- Linear Algebra PACKage
 [width="100%",cols="^,^,^",frame="none",grid="none"]
 |=======
 | image:images/lapack1.jpg[LAPACK,scaledwidth="5%"] |
-*Version 3.9.0* +
+*Version 3.9.1* +
 link:https://github.com/Reference-LAPACK/lapack[*LAPACK on GitHub*] +
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] +
 link:http://icl.cs.utk.edu/lapack-forum[*Browse the LAPACK User Forum*] +
@@ -108,11 +108,11 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== LAPACK, version 3.9.0
+=== LAPACK, version 3.9.1
 =========================
- - Download: https://github.com/Reference-LAPACK/lapack/archive/v3.9.0.tar.gz[lapack-3.9.0.tar.gz]
- - link:lapack-3.9.0.html[LAPACK 3.9.0 Release Notes]
- - Updated:  November 21 2019
+ - Download: https://github.com/Reference-LAPACK/lapack/archive/v3.9.1.tar.gz[lapack-3.9.1.tar.gz]
+ - link:lapack-3.9.1.html[LAPACK 3.9.1 Release Notes]
+ - Updated:  April 1 2021
  - link:https://github.com/Reference-LAPACK/lapack/issues?q=is%3Aissue+is%3Aopen+label%3A%22Type%3A+Bug%22[LAPACK GitHub Open Bug] (Current known bugs)
 ==========================
 
@@ -295,7 +295,15 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
 *Version 3.9.0: November 21, 2019*
 
+  * Version 3.9.1: April 1, 2021
+
 == Previous Release
+
+=== LAPACK, version 3.9.1
+
+ - Download: https://github.com/Reference-LAPACK/lapack/archive/v3.9.1.tar.gz[lapack-3.9.1.tar.gz]
+ - link:lapack-3.9.1.html[LAPACK 3.9.1 Release Notes]
+ - Updated:  Apr 1, 2021
 
 === LAPACK, version 3.9.0
 

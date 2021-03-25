@@ -11,13 +11,18 @@ contributor-list.html: contributor-list.txt
 faq.html: faq.txt
 	asciidoc -a toc faq.txt
 
-release_notes: release_notes.txt release_notes-3.9.0.txt lapack-3.9.0.txt
+pre: release_notes.txt release_notes-3.9.1.txt lapack-3.9.1.txt
+	asciidoc release_notes-3.9.1.txt
+	asciidoc -a toc lapack-3.9.1.txt
+	asciidoc -a toc -a toc-title="Menu" index.txt
 
-	asciidoc release_notes-3.9.0.txt
-	asciidoc -a toc lapack-3.9.0.txt
-	
-	scp release_notes-3.9.0.html release_notes-3.9.0.txt julie@zoot.icl.utk.edu:/nfs/www/netlib/lapack
-	scp lapack-3.9.0.html lapack-3.9.0.txt julie@zoot.icl.utk.edu:/nfs/www/netlib/lapack
+release_notes: release_notes.txt release_notes-3.9.1.txt lapack-3.9.1.txt
+
+	asciidoc release_notes-3.9.1.txt
+	asciidoc -a toc lapack-3.9.1.txt
+
+	scp release_notes-3.9.1.html release_notes-3.9.1.txt julie@zoot.icl.utk.edu:/nfs/www/netlib/lapack
+	scp lapack-3.9.1.html lapack-3.9.1.txt julie@zoot.icl.utk.edu:/nfs/www/netlib/lapack
 
 
 improvement.html: improvement.txt
@@ -26,7 +31,7 @@ improvement.html: improvement.txt
 index: index.txt
 	asciidoc -a toc -a toc-title="Menu" index.txt
 	scp index.html index.txt julie@zoot.icl.utk.edu:/nfs/www/netlib/lapack
-	
+
 
 err: Errata/index2.txt Errata/index2.txt Errata/errata_scalapack.txt
 	@(cd Errata && make && cd ..)

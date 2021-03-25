@@ -1,0 +1,82 @@
+LAPACK 3.9.1
+============
+
+Release date: 04/01/21.
+
+This material is based upon work supported by the National Science Foundation
+and the Department of Energy under Grant No. NSF ACI 1339797, NSF-OCI-1032861,
+NSF-CCF-00444486, NSF-CNS 0325873, NSF-EIA 0122599, NSF-ACI-0090127,
+DOE-DE-FC02-01ER25478, DOE-DE-FC02-06ER25768.
+
+LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
+
+
+1. Support and questions:
+-------------------------
+
+http://icl.cs.utk.edu/lapack-forum/
+
+https://github.com/Reference-LAPACK/lapack/
+
+2. LAPACK 3.9.1: What's new
+---------------------------
+
+
+
+
+2.1. XXXXXX
+--------------------------------------------
+
+
+
+2.2 XXXXX
+-------------------------------------
+
+
+Contributors:
+
+
+
+3. Developer list
+-----------------
+
+.External Contributors
+
+    * ???
+
+.LAPACK developers involved in this release
+
+    * Weslley Da Silva Pereira (University of Colorado Denver, USA)
+    * Julie Langou (University of Tennessee, USA)
+    * Igor Kozachenko  (University of California,  Berkeley, USA)
+
+.Principal Investigators
+
+    * Jim Demmel (University of California,  Berkeley, USA)
+    * Jack Dongarra (University of Tennessee and ORNL, USA)
+    * Julien Langou (University of Colorado Denver, USA)
+
+4. Thanks
+---------
+
+
+* MathWorks: Penny Anderson, Amanda Barry, Mary Ann Freeman, Bobby Cheng,
+Duncan Po, Pat Quillen, Christine Tobler.
+
+* Intel: ??
+
+* GitHub Users: link:https://github.com/thijssteel[thijssteel], link:https://github.com/martin-frbg[martin-frbg], link:https://github.com/christoph-conrads[christoph-conrads], link:https://github.com/matcross[matcross], link:https://github.com/h-vetinari[h-vetinari], link:https://github.com/timleslie[timleslie], link:https://github.com/jschueller[jschueller], link:https://github.com/vladimir-ch[vladimir-ch], link:https://github.com/zerothi[zerothi], link:https://github.com/ludkinm[ludkinm], link:https://github.com/pdalgd[pdalgd], link:https://github.com/veprbl[veprbl], link:https://github.com/kirushyk[kirushyk], link:https://github.com/epsilon-0[epsilon-0], link:https://github.com/tenomoto[tenomoto], link:https://github.com/MaximeVdB[MaximeVdB], link:https://github.com/bradking[bradking], link:https://github.com/haampie[haampie], link:https://github.com/plunky[plunky], link:https://github.com/ilayn[ilayn], link:https://github.com/turboencabulator[turboencabulator], link:https://github.com/ye-luo[ye-luo], link:https://github.com/raovgarimella[raovgarimella], link:https://github.com/nforro[nforro], link:https://github.com/grisuthedragon[grisuthedragon]
+
+Github contribution details link:https://github.com/Reference-LAPACK/lapack/graphs/contributors?from=2019-11-22&to=2021-03-23&type=c[here]
+
+
+5.  Bug Fix
+-----------
+
+ * link:https://github.com/Reference-LAPACK/lapack/milestone/1?closed=1[Closed bugs]
+ * link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&q=is%3Aissue%20is%3Aopen%20label%3A%22Type%3A%20Bug%22%20[Open bugs]
+ * link:https://github.com/Reference-LAPACK/lapack/issues[All open issues]
+
+
+// vim: set syntax=asciidoc:

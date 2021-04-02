@@ -1,0 +1,94 @@
+#!/bin/sh
+PATH=/Users/Julie/Documents/Boulot/MyGitHub/lapack-www/admin:$PATH
+case $1 in
+
+
+-c)	#  creates ".depend" file for local directory, of the form
+	#	F file.c
+	#	D entrypoint1
+	#	R external1
+	#	R external2
+
+       # Jl remove local/ from /usr/local/tmp, create tmp file instead
+	   > .depend_tmp || exit
+
+	for FILE in *.f;do
+                if [ $FILE != '*.f' ]; then
+		  echo "F $FILE"
+		  OBJ=`echo $FILE|sed 's/\..$/.o/'`
+                  gfortran -c $FILE 1>&2
+                  nm $OBJ |       # the following works for SunOS 4.1.3 2 sun4c
+									sed -e 's/^.................//g' |
+									sed -e '/^s /d' |
+									sed -e '/^D /d' |
+									sed -e 's/^U _/R /p' |
+                  sed -e 's/^T _/D /p' |
+                  sed -e '/R _gfortran_/d' |
+            #     | skip_f2c_symbols
+									skip_posix |
+									sort -u
+                  rm $OBJ
+                  sed -n 's/^#[   ]*include[      ]*"\(.*\)" *$/R \1/p' $FILE
+		  echo ""
+                fi
+	done >> .depend_tmp
+
+	for FILE in *.c;do
+                if [ $FILE != '*.c' ]; then
+		  echo "F $FILE"
+		  OBJ=`echo $FILE|sed 's/\..$/.o/'`
+		  gcc -c $FILE 1>&2
+                  nm $OBJ |       # the following works for SunOS 4.1.3 2 sun4c
+                  sed -n 's/^.........//
+                          s/^U _/R /p
+                          s/^T _/D /p' |
+                  skip_posix | sort -u
+                  rm $OBJ
+                  sed -n 's/^#[   ]*include[      ]*"\(.*\)" *$/R \1/p' $FILE
+		  echo ""
+                fi
+	done >> .depend_tmp
+
+	ls *.h 2>/dev/null |
+		while read FILE;do echo "F $FILE";echo "";done >> .depend_tmp
+        mv .depend_tmp .depend
+	;;
+
+
+-t)	# prints filenames covering routines in $* for libraries in $LIBS
+	shift # get rid of -t
+	case $* in
+	all)	# *** return all files ***
+		for i in $LIBS;do
+			sed -n 's;^F ;'$i'/;p' $i/.depend
+		done | tr '\012' ' '
+		echo;;
+	*)	# ***cat .depend files for all LIBS, then search ***
+		# subtlety: have to add dir to F, hence make D explicit first.
+		U=
+		for i in $*; do U="$U $i $i"_; done
+		(for i in $LIBS; do
+			(cd $i
+			if test -r .depend; then
+				sed 's;^F \(.*\);F '$i'/\1\
+D \1;
+				  s;^R \([^/]*\)\.h$;R '$i'/\1.h;' .depend
+			else
+				ls | sed '/index/d
+					/readme/d
+					/disclaimer/d
+					/depend/d
+					s;^;F '$i'/;'
+			fi)
+		done) | getdepend $U | tr '\012' ' '
+		echo;;
+	esac
+	;;
+
+*)	echo $0 -c   ... to build .depend file for local directory
+	echo 'LIBS={directories} $0 -t {symbols}   ... for transitive closure'
+	exit 1
+	;;
+
+esac
+exit 0

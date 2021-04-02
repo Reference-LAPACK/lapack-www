@@ -71,16 +71,11 @@ however, its use is discouraged as it will not perform as well as a specifically
 tuned implementation.
 
 .Acknowledgments:
-Since 2010, this material is based upon work supported by the
-National Science Foundation under Grant No. NSF-OCI-1032861. Any opinions,
+This material is based upon work supported by the
+National Science Foundation and the Department of Energy (DOE). Any opinions,
 findings and conclusions or recommendations expressed in this material are
 those of the author(s) and do not necessarily reflect the views of the National
-Science Foundation (NSF). Until 2006, this material was based upon work
-supported by the National Science Foundation under Grant No. ASC-9313958,
-NSF-0444486 and DOE Grant No. DE-FG03-94ER25219. Any opinions, findings and
-conclusions or recommendations expressed in this material are those of the
-author(s) and do not necessarily reflect the views of the National Science
-Foundation (NSF) or the Department of Energy (DOE).
+Science Foundation (NSF) or the Department of Energy (DOE).
 
 The LAPACK project is also sponsored in part by http://www.mathworks.com/[MathWorks] and https://software.intel.com/en-us/intel-mkl[Intel] since many years.
 
@@ -110,7 +105,7 @@ routine to provide support.
 
 === LAPACK, version 3.9.1
 =========================
- - Download: https://github.com/Reference-LAPACK/lapack/archive/v3.9.1.tar.gz[lapack-3.9.1.tar.gz]
+ - Download: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.9.1.tar.gz[lapack-3.9.1.tar.gz]
  - link:lapack-3.9.1.html[LAPACK 3.9.1 Release Notes]
  - Updated:  April 1 2021
  - link:https://github.com/Reference-LAPACK/lapack/issues?q=is%3Aissue+is%3Aopen+label%3A%22Type%3A+Bug%22[LAPACK GitHub Open Bug] (Current known bugs)
@@ -301,7 +296,7 @@ link:http://www.netlib.org/lapack/lawns/index.html[LAWNS]
 
 === LAPACK, version 3.9.1
 
- - Download: https://github.com/Reference-LAPACK/lapack/archive/v3.9.1.tar.gz[lapack-3.9.1.tar.gz]
+ - Download: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.9.1.tar.gz[lapack-3.9.1.tar.gz]
  - link:lapack-3.9.1.html[LAPACK 3.9.1 Release Notes]
  - Updated:  Apr 1, 2021
 

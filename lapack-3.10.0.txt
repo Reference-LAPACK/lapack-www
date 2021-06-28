@@ -1,0 +1,162 @@
+LAPACK 3.10.0
+=============
+
+Release date: 06/28/21.
+
+This material is based upon work supported by the National Science Foundation
+and the Department of Energy.
+
+LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
+
+
+1. Support and questions:
+-------------------------
+
+http://icl.cs.utk.edu/lapack-forum/
+
+https://github.com/Reference-LAPACK/lapack/
+
+2. LAPACK 3.10.0: What's new
+---------------------------
+
+ * Download: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.10.0.tar.gz[lapack-3.10.0.tar.gz]
+
+This is a major release and also addressing multiple bug fixes.
+
+2.1. safe scaling
+-----------------
+Contribution by Ed Anderson
+
+  Modified SRC/la_constants.f90
+
+  Deleted BLAS/SRC/dnrm2.f      Added BLAS/SRC/dnrm2.f90
+  Deleted BLAS/SRC/dznrm2.f     Added BLAS/SRC/dznrm2.f90
+  Deleted BLAS/SRC/scnrm2.f     Added BLAS/SRC/scnrm2.f90
+  Deleted BLAS/SRC/snrm2.f      Added BLAS/SRC/snrm2.f90
+  Deleted BLAS/SRC/drotg.f      Added BLAS/SRC/drotg.f90
+  Deleted BLAS/SRC/zrotg.f      Added BLAS/SRC/zrotg.f90
+  Deleted BLAS/SRC/crotg.f      Added BLAS/SRC/crotg.f90
+  Deleted BLAS/SRC/srotg.f      Added BLAS/SRC/srotg.f90
+  Deleted SRC/dlassq.f          Added SRC/dlassq.f90
+  Deleted SRC/zlassq.f          Added SRC/zlassq.f90
+  Deleted SRC/classq.f          Added SRC/classq.f90
+  Deleted SRC/slassq.f          Added SRC/slassq.f90
+  Deleted SRC/dlartg.f          Added SRC/dlartg.f90
+  Deleted SRC/zlartg.f          Added SRC/zlartg.f90
+  Deleted SRC/clartg.f          Added SRC/clartg.f90
+  Deleted SRC/slartg.f          Added SRC/slartg.f90
+
+Edward Anderson stated in his paper https://doi.org/10.1145/3061665:
+
+The square root of a sum of squares is well known to be prone to overflow and underflow. Ad hoc scaling
+of intermediate results, as has been done in numerical software such as the BLAS and LAPACK, mostly
+avoids the problem, but it can still occur at extreme values in the range of representable numbers. More
+careful scaling, as has been implemented in recent versions of the standard algorithms, may come at the
+expense of performance or clarity. This work reimplements the vector 2-norm and the generation of Givens
+rotations from the Level 1 BLAS to improve their performance and design. In addition, support for negative
+increments is extended to the Level 1 BLAS operations on a single vector, and a comprehensive test suite
+for all the Level 1 BLAS is included.
+
+This contribution replaces the original xNRM2, xROTG, xLARTG, xLASSQ routines with Edward's safe scaling codes plus some minor modifications.
+
+Note: this code follows Fortran90 standard
+
+
+
+2.2. Implementation of the multishift QZ algorithm with AED
+------------------------------------------------------------
+Contribution by link:https://github.com/thijssteel[thijssteel]
+
+It is loosely based on my implementation of the *rational QZ algorithm* (https://github.com/thijssteel/multishift-multipole-rqz).
+
+It features:
+
+ - Agressive early deflation
+ - Multishift QZ sweeps using optimal packing of the bulges
+ - A new heuristic to select the number of positions in the sweep windows
+
+It does not feature:
+
+ - A windowed deflation of infinite eigenvalues (that is only useful if many infinite eigenvalues are to be deflated and in that case you should probably do some preprocessing anyway).
+All things considered this won't significantly reduce the runtime of generalised schur form calculations because the HT reduction is now dominant, but I hope be able to have a really fast implementation of that soon.
+
+
+Also *two accuracy improvements to xtgex2*:
+
+ - Daan Camps has proven in his dissertation that replacing the condition in xtgex2 when swapping 1x1 blocks can improve the accuracy. This condition and the respective error tolerances have been changed to reflect it.
+
+ - Also by Daan Camps, "SWAPPING 2 × 2 BLOCKS IN THE SCHUR AND GENERALIZED
+SCHUR FORM", shows that the accuracy of swapping 2x2 blocks can be improved by iterative refinement and by replacing the QR factorisation with an SVD based method. This PR only implements the first improvement as the paper does not mention how to avoid overflow.
+
+2.3 Householder Reconstruction
+------------------------------
+
+  new file:   SRC/cgetsqrhrt.f
+  new file:   SRC/clarfb_gett.f
+  new file:   SRC/cungtsqr_row.f
+  new file:   SRC/zgetsqrhrt.f
+  new file:   SRC/zlarfb_gett.f
+  new file:   SRC/zungtsqr_row.f
+
+  modified:   SRC/CMakeLists.txt
+  modified:   SRC/Makefile
+
+new file:   TESTING/LIN/cunhr_col02.f
+new file:   TESTING/LIN/zunhr_col02.f
+modified:   TESTING/LIN/cchkunhr_col.f
+modified:   TESTING/LIN/cunhr_col01.f
+modified:   TESTING/LIN/zchkunhr_col.f
+modified:   TESTING/LIN/zunhr_col01.f
+modified:   TESTING/LIN/CMakeLists.txt
+modified:   TESTING/LIN/Makefile
+
+2.4 Bug fixes
+-------------
+For details please see our Github repository
+
+ * link:https://github.com/Reference-LAPACK/lapack[LAPACK Github Repository]
+ * link:https://github.com/Reference-LAPACK/lapack/issues?q=is%3Aclosed+milestone%3A%22LAPACK+3.10.0%22[LAPACK 3.10.0 Milestone]
+
+
+3. Developer list
+-----------------
+
+.LAPACK developers involved in this release
+
+    * Weslley da Silva Pereira (University of Colorado Denver, USA)
+    * Julie Langou (University of Tennessee, USA)
+    * Igor Kozachenko  (University of California,  Berkeley, USA)
+
+.Principal Investigators
+
+    * Jim Demmel (University of California,  Berkeley, USA)
+    * Jack Dongarra (University of Tennessee and ORNL, USA)
+    * Julien Langou (University of Colorado Denver, USA)
+
+4. Thanks
+---------
+
+
+* MathWorks: Penny Anderson, Amanda Barry, Mary Ann Freeman, Bobby Cheng,
+Pat Quillen, Christine Tobler.
+
+* Ed Anderson
+
+* GitHub Users: link:https://github.com/thijssteel[thijssteel], link:https://github.com/jip[jip], link:https://github.com/eshpc[eshpc], link:https://github.com/martin-frbg[martin-frbg],
+ link:https://github.com/Matthew-Badin[Matthew-Badin],
+ link:https://github.com/msk[msk], link:https://github.com/ZTaylor39[ZTaylor39],
+ link:https://github.com/sergey-v-kuznetsov[sergey-v-kuznetsov], link:https://github.com/5tefan[5tefan]
+
+Github contribution details link:https://github.com/Reference-LAPACK/lapack/graphs/contributors?from=2021-03-23&to=2021-06-28&type=c[here]
+
+
+5.  Bug Fix
+-----------
+
+ * link:https://github.com/Reference-LAPACK/lapack/milestone/6?closed=1[Closed bugs]
+ * link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&q=is%3Aissue%20is%3Aopen%20label%3A%22Type%3A%20Bug%22%20[Open bugs]
+ * link:https://github.com/Reference-LAPACK/lapack/issues[All open issues]
+
+
+// vim: set syntax=asciidoc:

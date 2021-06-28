@@ -33,6 +33,27 @@ case $1 in
                 fi
 	done >> .depend_tmp
 
+	for FILE in *.f90;do
+                if [ $FILE != '*.f90' ]; then
+		  echo "F $FILE"
+		  OBJ=`echo $FILE|sed 's/f90/o/'`
+                  gfortran -c $FILE 1>&2
+                  nm $OBJ |       # the following works for SunOS 4.1.3 2 sun4c
+									sed -e 's/^.................//g' |
+									sed -e '/^s /d' |
+									sed -e '/^D /d' |
+									sed -e 's/^U _/R /p' |
+                  sed -e 's/^T _/D /p' |
+                  sed -e '/R _gfortran_/d' |
+            #     | skip_f2c_symbols
+									skip_posix |
+									sort -u
+                  rm $OBJ
+                  sed -n 's/^#[   ]*include[      ]*"\(.*\)" *$/R \1/p' $FILE
+		  echo ""
+                fi
+	done >> .depend_tmp
+
 	for FILE in *.c;do
                 if [ $FILE != '*.c' ]; then
 		  echo "F $FILE"

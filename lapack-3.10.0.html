@@ -806,13 +806,14 @@ expense of performance or clarity. This work reimplements the vector 2-norm and 
 rotations from the Level 1 BLAS to improve their performance and design. In addition, support for negative
 increments is extended to the Level 1 BLAS operations on a single vector, and a comprehensive test suite
 for all the Level 1 BLAS is included.</p></div>
-<div class="paragraph"><p>This PR replaces the original xNRM2, xROTG, xLARTG, xLASSQ routines with Edward&#8217;s safe scaling codes plus some minor modifications.</p></div>
+<div class="paragraph"><p>This contribution replaces the original xNRM2, xROTG, xLARTG, xLASSQ routines with Edward&#8217;s safe scaling codes plus some minor modifications.</p></div>
 <div class="paragraph"><p>Note: this code follows Fortran90 standard</p></div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_2_2_implementation_of_the_multishift_qz_algorithm_with_aed">2.2. Implementation of the multishift QZ algorithm with AED</h2>
 <div class="sectionbody">
+<div class="paragraph"><p>Contribution by <a href="https://github.com/thijssteel">thijssteel</a></p></div>
 <div class="paragraph"><p>It is loosely based on my implementation of the <strong>rational QZ algorithm</strong> (<a href="https://github.com/thijssteel/multishift-multipole-rqz">https://github.com/thijssteel/multishift-multipole-rqz</a>).</p></div>
 <div class="paragraph"><p>It features:</p></div>
 <div class="ulist"><ul>
@@ -860,6 +861,30 @@ SCHUR FORM", shows that the accuracy of swapping 2x2 blocks can be improved by i
 <div class="sect1">
 <h2 id="_2_3_householder_reconstruction">2.3 Householder Reconstruction</h2>
 <div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre><code>new file:   SRC/sorhr_col.f
+new file:   SRC/dorhr_col.f
+new file:   SRC/cunhr_col.f
+new file:   SRC/zunhr_col.f
+new file:   SRC/dorgtsqr.f
+new file:   SRC/sorgtsqr.f</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>new file:   SRC/dgetsqrhrt.f
+new file:   SRC/dlarfb_gett.f
+new file:   SRC/dorgtsqr_row.f
+new file:   SRC/sgetsqrhrt.f
+new file:   SRC/slarfb_gett.f
+new file:   SRC/sorgtsqr_row.f
+new file:   SRC/cgetsqrhrt.f
+new file:   SRC/clarfb_gett.f
+new file:   SRC/cungtsqr_row.f
+new file:   SRC/zgetsqrhrt.f
+new file:   SRC/zlarfb_gett.f
+new file:   SRC/zungtsqr_row.f</code></pre>
+</div></div>
 </div>
 </div>
 <div class="sect1">
@@ -973,7 +998,7 @@ GitHub Users: <a href="https://github.com/thijssteel">thijssteel</a>, <a href="h
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2021-06-28 10:18:38 PDT
+ 2021-06-28 10:32:31 PDT
 </div>
 </div>
 </body>

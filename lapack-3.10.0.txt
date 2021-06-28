@@ -92,24 +92,26 @@ SCHUR FORM", shows that the accuracy of swapping 2x2 blocks can be improved by i
 2.3 Householder Reconstruction
 ------------------------------
 
-  new file:   SRC/cgetsqrhrt.f
-  new file:   SRC/clarfb_gett.f
-  new file:   SRC/cungtsqr_row.f
-  new file:   SRC/zgetsqrhrt.f
-  new file:   SRC/zlarfb_gett.f
-  new file:   SRC/zungtsqr_row.f
+ new file:   SRC/sorhr_col.f
+ new file:   SRC/dorhr_col.f
+ new file:   SRC/cunhr_col.f
+ new file:   SRC/zunhr_col.f
+ new file:   SRC/dorgtsqr.f
+ new file:   SRC/sorgtsqr.f
 
-  modified:   SRC/CMakeLists.txt
-  modified:   SRC/Makefile
+ new file:   SRC/dgetsqrhrt.f
+ new file:   SRC/dlarfb_gett.f
+ new file:   SRC/dorgtsqr_row.f
+ new file:   SRC/sgetsqrhrt.f
+ new file:   SRC/slarfb_gett.f
+ new file:   SRC/sorgtsqr_row.f
+ new file:   SRC/cgetsqrhrt.f
+ new file:   SRC/clarfb_gett.f
+ new file:   SRC/cungtsqr_row.f
+ new file:   SRC/zgetsqrhrt.f
+ new file:   SRC/zlarfb_gett.f
+ new file:   SRC/zungtsqr_row.f
 
-new file:   TESTING/LIN/cunhr_col02.f
-new file:   TESTING/LIN/zunhr_col02.f
-modified:   TESTING/LIN/cchkunhr_col.f
-modified:   TESTING/LIN/cunhr_col01.f
-modified:   TESTING/LIN/zchkunhr_col.f
-modified:   TESTING/LIN/zunhr_col01.f
-modified:   TESTING/LIN/CMakeLists.txt
-modified:   TESTING/LIN/Makefile
 
 2.4 Bug fixes
 -------------

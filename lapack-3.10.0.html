@@ -771,12 +771,13 @@ Download: <a href="https://github.com/Reference-LAPACK/lapack/archive/refs/tags/
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2_1_safe_scaling">2.1. safe scaling</h2>
+<h2 id="_2_1_safe_scaling_algorithms">2.1. Safe scaling algorithms</h2>
 <div class="sectionbody">
 <div class="paragraph"><p>Contribution by Ed Anderson</p></div>
 <div class="literalblock">
 <div class="content">
-<pre><code>Modified SRC/la_constants.f90</code></pre>
+<pre><code>Added SRC/la_constants.f90
+Added SRC/la_xisnan.F90</code></pre>
 </div></div>
 <div class="literalblock">
 <div class="content">
@@ -807,7 +808,19 @@ rotations from the Level 1 BLAS to improve their performance and design. In addi
 increments is extended to the Level 1 BLAS operations on a single vector, and a comprehensive test suite
 for all the Level 1 BLAS is included.</p></div>
 <div class="paragraph"><p>This contribution replaces the original xNRM2, xROTG, xLARTG, xLASSQ routines with Edward&#8217;s safe scaling codes plus some minor modifications.</p></div>
-<div class="paragraph"><p>Note: this code follows Fortran90 standard</p></div>
+<div class="paragraph"><p>Note: this code follows Fortran90 standard.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+The new Fortran90 module <code>SRC/la_constants.f90</code> expands the functionality of <code>INSTALL/xLAMCH.f</code> by adding safe scaling constants.
+</p>
+</li>
+<li>
+<p>
+The new Fortran90 module <code>SRC/la_xisnan.F90</code> expands the functionality of <code>SRC/xISNAN.f</code> and <code>SRC/xLAISNAN.f</code> by adding the option of using the <code>ieee_is_nan</code> routine.
+</p>
+</li>
+</ul></div>
 </div>
 </div>
 <div class="sect1">
@@ -838,7 +851,6 @@ A new heuristic to select the number of positions in the sweep windows
 <li>
 <p>
 A windowed deflation of infinite eigenvalues (that is only useful if many infinite eigenvalues are to be deflated and in that case you should probably do some preprocessing anyway).
-All things considered this won&#8217;t significantly reduce the runtime of generalised schur form calculations because the HT reduction is now dominant, but I hope be able to have a really fast implementation of that soon.
 </p>
 </li>
 </ul></div>
@@ -851,8 +863,7 @@ Daan Camps has proven in his dissertation that replacing the condition in xtgex2
 </li>
 <li>
 <p>
-Also by Daan Camps, "SWAPPING 2 × 2 BLOCKS IN THE SCHUR AND GENERALIZED
-SCHUR FORM", shows that the accuracy of swapping 2x2 blocks can be improved by iterative refinement and by replacing the QR factorisation with an SVD based method. This PR only implements the first improvement as the paper does not mention how to avoid overflow.
+Also by Daan Camps, "SWAPPING 2 × 2 BLOCKS IN THE SCHUR AND GENERALIZED SCHUR FORM", shows that the accuracy of swapping 2x2 blocks can be improved by iterative refinement and by replacing the QR factorisation with an SVD based method. Only the first improvement was implemented as the paper does not mention how to avoid overflow.
 </p>
 </li>
 </ul></div>
@@ -885,11 +896,16 @@ new file:   SRC/zgetsqrhrt.f
 new file:   SRC/zlarfb_gett.f
 new file:   SRC/zungtsqr_row.f</code></pre>
 </div></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_2_4_bug_fixes">2.4 Bug fixes</h2>
-<div class="sectionbody">
+<div class="paragraph"><p>2.4 Change in the return behavior of GESDD</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>GESDD now returns with INFO = -4 if A has a NaN entry.
+In version 3.9.0 and master, GESDD would call `exit(0)` instead of returning an error code on some matrices.
+See https://github.com/Reference-LAPACK/lapack/issues/469#issue-781977643
+
+
+2.5 Bug fixes</code></pre>
+</div></div>
 <div class="paragraph"><p>For details please see our Github repository</p></div>
 <div class="ulist"><ul>
 <li>
@@ -903,6 +919,18 @@ new file:   SRC/zungtsqr_row.f</code></pre>
 </p>
 </li>
 </ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_6_notes_about_compiler_dependency">2.6 Notes about compiler dependency</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Some LAPACK routines rely on trustworthy complex division and ABS routines in the FORTRAN compiler.
+This [link](<a href="https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivisionFound.txt">https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivisionFound.txt</a>) lists the COMPLEX*16 algorithms that contain compiler dependent complex divisions of the form</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>REAL / COMPLEX   or   COMPLEX / COMPLEX</code></pre>
+</div></div>
+<div class="paragraph"><p>See <a href="https://github.com/Reference-LAPACK/lapack/issues/575">https://github.com/Reference-LAPACK/lapack/issues/575</a> and <a href="https://github.com/Reference-LAPACK/lapack/issues/577">https://github.com/Reference-LAPACK/lapack/issues/577</a> for a more complete discussion on this topic.</p></div>
 </div>
 </div>
 <div class="sect1">
@@ -998,7 +1026,7 @@ GitHub Users: <a href="https://github.com/thijssteel">thijssteel</a>, <a href="h
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2021-06-28 10:32:31 PDT
+ 2021-06-28 13:07:43 PDT
 </div>
 </div>
 </body>

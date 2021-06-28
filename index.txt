@@ -103,7 +103,7 @@ the routine and comment the changes made to the original.
 is done, however, it is the responsibility of the person who modified the
 routine to provide support.
 
-=== LAPACK, version 3.9.1
+=== LAPACK, version 3.10.0
 =========================
  - Download: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.10.0.tar.gz[lapack-3.10.0.tar.gz]
  - link:lapack-3.10.0.html[LAPACK 3.10.0 Release Notes]

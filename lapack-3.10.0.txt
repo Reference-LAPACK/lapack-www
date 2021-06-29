@@ -112,6 +112,14 @@ Also *two accuracy improvements to xtgex2*:
  new file:   SRC/zlarfb_gett.f
  new file:   SRC/zungtsqr_row.f
 
+GETSQRHRT is a QR factorization routine for tall-skinny matrices.
+It is based on LATSQR, but returns the Q and R factors in the same format as
+GEQRT, i.e. using  the compact WY representation of Q.
+This is the same format used by other LAPACK routines that depend on QR factorizations.
+GETSQRHRT uses ORGTSQR_ROW (which in turn calls LARFB_GETT) to construct
+an orthonormal matrix from a TSQR factorization, which is a more efficient version
+of ORGTSQR.
+
 
 2.4 Change in the return behavior of GESDD
 ---------------------------------------------------------
@@ -133,7 +141,7 @@ For details please see our Github repository
 -----------------------------------
 
 Some LAPACK routines rely on trustworthy complex division and ABS routines in the FORTRAN compiler.
-This [link](https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivisionFound.txt) lists the COMPLEX*16 algorithms that contain compiler dependent complex divisions of the form
+This [link](https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivisionFound.txt) lists the LAPACK COMPLEX*16 algorithms that contain compiler dependent complex divisions of the form
 
      REAL / COMPLEX   or   COMPLEX / COMPLEX
 

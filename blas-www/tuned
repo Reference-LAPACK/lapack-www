@@ -1,0 +1,10 @@
+For efficient computation using linpack or lapack, it is important that
+you replace the "reference implementation" Fortran BLAS by a version
+tuned to your computer architecture.  Your vendor may already have
+supplied such a library, since it is crucial to their competitive
+benchmarking.  Here we collect random notes about known versions.
+
+IBM/360 assembler blas1 are available by "send blas.ibm from toms".
+
+SGI     As of IRIX 4.0, link with "f77 -mp -lblas".
+

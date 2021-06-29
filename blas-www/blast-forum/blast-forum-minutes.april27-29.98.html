@@ -1,0 +1,408 @@
+<HTML><HEAD>
+<TITLE>BLAST Forum MINUTES</TITLE>
+ 
+<CENTER><H2>BLAST Forum MINUTES</H2></CENTER>
+ 
+<CENTER><H2>April 27-29, 1998</H2></CENTER>
+ 
+<CENTER><H2>Cray Research Inc., Eagan, MN</H2></CENTER></HEAD>
+
+<BODY>
+ 
+<UL>
+<LI> Twenty-three people attended the <a href="http://www.netlib.org/utk/papers/blast-forum.html">BLAST Forum</a> in Eagan, MN on April 27-29, 1998.
+The meeting was hosted by Cray Research Inc.
+</UL>
+<HR>
+<H2><B>April 27, 1998</B></H2>
+<P>
+Jack opened the meeting, and everyone introduced themselves.  He then turned
+over the floor to Mike Heroux, who outlined the schedule and the meeting of
+subgroups.
+Jack then outlined the tentative agenda for organizing the breakout
+sessions for the morning and the group reports of sessions in the afternoon.
+On Tuesday morning, several attendees will be addressing the forum with issues
+that they feel have not been addressed yet.  And on Tuesday afternoon, we will
+start the reading of chapters.  The BLAS Extensions discussion was moved to
+Monday afternoon.  On Wednesday, more breakout sessions and group reports,
+and the meeting will end around lunchtime.</P>
+<P>
+Jack then reviewed the rules of order, and the goals of the forum.  The main
+goals of the forum are to formulate ideas for the future in light of modern
+technology development, and to produce a document of standards to enable linear
+algebra to interoperate efficiently and easily. Iterative and sparse direct
+methods require additional functionality not in traditional BLAS.  The outcome
+of the forum should be a document basis for the standards of implementations.
+-- a piece of paper not a piece of software.  We will try to provide reference
+implementations, but the goal is not to produce software.  He then outlined
+the number of BLAS meetings that have occurred, an overview of the original
+subgroups, and talked about the organization of the document.  We are getting
+close to finishing.  Two more meeting were proposed, and then the Forum will
+conclude with a report of our findings.
+We are at the end of NSF funding for travel, there is only funding for partial
+support for this meetings travel.  We need to decide on where
+we should publish the document.  The proposed sites for the final two meetings
+are Washington D.C hosted by NIST, and Starksville, Mississippi hosted by MSU.
+</P>
+<P>
+We then discussed breaking into sessions.  The morning session will encompass
+breakout groups for the Dense and Band chapter, the Sparse chapter, Language
+Bindings, and Extended Precision.  And later the C interface to the BLAS, the
+Fortran95 interface to the BLAS, the Interval BLAS, and possibly the
+Distributed Memory BLAS, and BLAS Extensions, will meet.</P>
+<P>
+Lunch was at noon, and a tour of the Graphics Lab at 1-1:30pm.  We then
+continued group discussions from 1:30-2:30pm.</P>
+<P>
+Group reports began at 2:30pm.  Presentations were made for Dense/Band BLAS,
+the C interface for the BLAS, the F95 interface for the BLAS, Extended
+Precision, Interval Arithmetic, Language Bindings, and Sparse BLAS.</P>
+<P>
+Sven Hammarling of NAG began with the summary of the Dense/Band chapter.  The
+tables for functionality had been updated and Antoine Petitet of UT presented
+his Language Independent Specification (LIS) section and the proposed
+modifications suggested by the subgroup.  Debate ensued on how precise the
+LIS interface should be, and what will be addressed in the Language Dependent
+Specification (LDS) to be derived from the LIS section.  Jerzy Wasniewski
+of UNI-C proposed the addition of an INFO parameter which should be declared
+as INOUT.  A lively discussion began on the issue of error-checking in this
+document and how much should not be specified and left to the implementation
+of the vendor.  A straw vote was taken on the proposed LIS interface.  The
+basic forms were:</P>
+<OL>
+<LI> BLAS_DOT( n, x, incx, y, incy, r )
+<LI> BLAS_DOT( x, y, r)
+<LI> BLAS_DOT( n, x, y, ix, iy, r)
+<LI> BLAS_DOT(n, x, ix, incx, y, iy, incy, r)
+</OL>
+<P>
+A total of twenty-one people were present for the straw vote.  One person voted
+for option (1), nine people voted for option (2), zero people voted for
+option (3), and eleven people voted for option (4).  A straw vote was then
+taken on the allowance of INCX=0 in the routines.
+Eleven people voted yes, eight people voted no, and two people abstained.  Then
+we started discussing the need for a straw vote on the inclusion of INFO in
+the LIS specification, and how this INFO would be used, in an environmental
+routine perhaps or directly required in the calling sequence (in the case of
+a Fortran77 interface).   Error-checking was in strong debate and how to
+provide a ''light'' interface to allow for no checking if desired.  The
+attendees were very divided on this issue.  As a result, the straw vote was
+to be postponed until Tuesday morning.</P>
+<P>
+Next Clint Whaley of UT presented briefly the C interface, and the issue of
+error-handling was again addressed.  What should be said in the document
+about error-handling?  Should we be precise or sufficiently vague to allow
+the vendor freedom?  It was decided to be vague and the last sentence of
+section B.2.8 was deleted.</P>
+<P>
+Roldan Pozo of NIST next presented the Sparse BLAS summary.  Mike Heroux
+is adding an LIS specification to the chapter,  a system handle-based
+representation is also being added.  Linda Kaufman of Bell Labs addressed
+the issue of the need for gather and scatter specifications in the Sparse
+chapter.  The jagged and ellpack storage formats were removed from the
+document.  Linda Kaufman of Bell Labs proposed that we need a conversion
+ability from one storage format to another.  In the Sparse BLAS chapter,
+only two operations are supported -- sparse matrix times a dense vector, and
+a triangular solve.</P>
+<P>
+Sven Hammarling of NAG briefly addressed the Fortran95 interface to the
+Legacy BLAS.</P>
+<P>
+The meeting adjourned for the day at 5:30pm.</P>
+<P>
+<HR>
+<H2><B>April 28, 1998</B></H2>
+<P>
+Tuesday began at 9:00am with the conclusion of the LIS discussion
+for the Dense and
+Band Chapter, the Extended Precision summary, Interval Arithmetic, and Language
+Bindings.  At 11:00am, there were presentations by Ed Anderson of
+Cray to address an issue about the Distributed Memory BLAS, Bruce Greer of
+Intel to talk about 64-bit architectures, Claus Bendtsen of UNI-C to talk about
+the C++ interface to the BLAS, Gary Howell to discuss his Level 2.5 BLAS
+proposals, Roldan Pozo to talk about the Java BLAS, Clint Whaley to talk
+about the ATLAS BLAS, and Jack Dongarra to discuss the need for Environmental
+routines.  At 12Noon we will have lunch and then a tour of the computer
+room at 12:45--1:30pm.</P>
+<P>
+First, Antoine Petitet of UT addressed the need to take a straw vote on the
+INFO parameter issue in the LIS for the Dense and Band chapter.  Option (1)
+was that INFO does not appear in the LIS and may be accommodated through the
+use of an environmental routine or such mechanism.  Option (2) says that INFO
+appears in the LIS specification of the routine.  As discussion and confusion
+ensued, it was then pointed out that we were really addressing the question
+of:  Should we have recoverable errors or not?  Thirteen people voted for
+option (1), and five people voted for option (2).</P>
+<P>
+And then we needed to decide on the matrix notation and multi-vector notation
+in LIS for the Dense and Band chapter.  The following matrix notation was
+suggested:</P>
+<PRE>
+        BLAS_xxx( m, n, A, ia, ja )
+</PRE>
+<P>
+It was asked if we should include a stride (LDA-like) in the LIS?  The majority
+felt that this should be specified in the LDS.  A vote was taken on this
+proposed LIS, and one person was against, and thirteen people were in favor.
+A mathematical formula should be included for each routine's LIS.</P>
+<P>
+Next, we voted on the LIS description for a multi-vector.</P>
+<PRE>
+        BLAS_xxx( n, k, x, ix, incx )
+</PRE>
+<P>
+Where ix is an array of size ix(k), and incx is an integer.  It was decided
+that a stride (ix) should be allowed for each vector in the collection.
+A straw vote was taken and sixteen were in favor of this LIS, and two people
+were against.</P>
+<P>
+Next, Linda Kaufman of Bell Labs presented the BLAS Extensions ideas.  She
+wanted to stress the need for a C interface for the extensions, as well as the
+Legacy BLAS.  She wanted an order indicating the priority for the extensions.
+The criterion for a BLAS routine was discussed.  It must be frequently used
+and need to be highly optimized, and there could be a third requirement that
+it is difficult to write in a higher level language.  She then addressed the
+issue of sorting and should we have a sorting parameter or a different routine
+name, and should it be active, passive, or active and passive.  We
+should take a look at the LAPACK calling sequence for xLASRT.  The LAPACK
+routine xLASRT has a character parameter to specify an increasing or decreasing
+sort, and the array is sorted on output from the routine.  She concluded with
+a reiteration of the need for scatter and gather to be specified in the Sparse
+chapter for the Level 1 Sparse BLAS.</P>
+<P>
+At 11am, Jim Demmel of the University of California, Berkeley presented a
+summary of the Extended Precision proposal.  He presented some performance
+figures for some example code on various platforms.  His issues for managing
+complexity/utility in the Extra Precision BLAS are:</P>
+<OL>
+<LI> No new ``first class'' data types
+<LI> Orthogonal to rest of BLAS design
+<LI> PREC describes internal precision only, as runtime parameter
+<LI> Include a modest amount of mixed precision?
+<LI> Shall versus should?
+<LI> Environmental inquiries?
+</OL>
+<P>
+He presented a list of minimal versus maximal number of routines to include
+in the proposal:</P>
+<OL>
+<LI> DOT
+<LI> GEMM SYRK GEMV TRSV, and other MM, MV, or SV routines
+<LI> all Level 2 and 3 BLAS,
+<LI> mixed precision
+<LI> BLAS extensions
+<LI> Sparse, Distributed Memory, or Interval routines?
+</OL>
+<P>
+Where should we draw the line on how many routines to include?
+Reference implementation and test code will be provided.  Regarding shall
+versus should, Jim proposed that we supply a reference implementation for
+everything except the BLAS extensions and Sparse Distributed and Interval.
+</P>
+<P>
+At 1:45pm, Chenyi presented the Interval BLAS.  Only the Level 1 Interval
+BLAS are included in the proposal.  He briefly described the language
+binding issues and naming scheme.  Should function names be prefixed by
+INTERVAL, INT, or ITV, or I, or what?  He will distribute a reference
+implementation.  The functionality for the Interval BLAS need to be
+included in the functionality tables of Chapter 1 of the BLAS document.
+Should the set operation routines also be included in the Functionality
+tables?</P>
+<P>
+Antoine Petitet of UT did not present for the distributed memory BLAS
+subgroup since there was not time for the group to meet, and many of the
+issues in the Dense and Band chapter must be resolved before they can be
+written for the Distributed Memory chapter.  And likewise, the language
+bindings did not wish to address the group.</P>
+<P>
+At 2:15pm, we began a series of brief 10 minute presentations.
+Ed Anderson spoke
+briefly on the continuity between dense and sparse BLAS, and proposed a
+different data distribution to be specified.  A block major format whereby
+contiguous nbxnb blocks are stored contiguously in memory.  Clint Whaley
+of UT pointed out that this is the same type of distribution that is
+used in ATLAS BLAS, and could be accommodated through the descriptor in
+ScaLAPACK.  Bruce Greer of Intel next gave a presentation on 64-bit arithmetic.
+Claus Bendtsen of UNI-C proposed a C++ interface to the BLAS.  It was decided
+to have a subgroup meeting the next morning to discuss this C++ implementation.
+Gary Howell of Florida Tech next presented the BLAS 2.5.  Roldan Pozo of NIST
+presented a proposal for the Java BLAS.  Clint Whaley of UT presented the
+ATLAS BLAS.  Jack Dongarra of UT/ORNL then spoke about Environmental Inquiry
+functions.  The question posed was:
+Should we compile a list of environmental routines to query for
+machine characteristics such as the number of floating point registers,
+number of floating point units, number of caches, cache size, type of cache,
+cache line size, cycle time, page size, size of TLB, cycles for floating point
+operations, number of processors, fused multiply/add, cycles from memory to
+stages in the cache, pre-fetch, bandwidth to/from memory, latency from
+memory/cache? The answer was affirmative.</P>
+<P>
+A short break was taken at 4:30pm, and then Clint Whaley of UT presented the
+third reading of the C interface to the Legacy BLAS.  There were fourteen
+eligible voters, which included Univ. of Tennessee, NAG, UNI-C, Univ. of Notre
+Dame, Intel, HP/Convex, Cray, Bell Labs, Univ. of California at Berkeley,
+Florida Tech, Univ. of Houston, Tera, NEC, and NIST.  The votes were as
+follows:</P>
+<UL>
+<LI>    Section 3.2:  (third reading) 13 in favor, 0 opposed.
+<LI>    Section 3.2.1:  (third reading) 14 in favor, 0 opposed.
+<LI>    Section 3.2.2:  (third reading) A binding vote of if we should allow
+                        N=0 was taken.  Eight voted in favor, 2 opposed, and
+                        there were four abstentions.
+<LI>    Section 3.2.3: (third reading) 14 in favor, 0 opposed.
+<LI>    Section 3.2.4: (third reading) 14 in favor, 0 opposed.
+<LI>    Section 3.2.5: (third reading) 13 in favor,  0 opposed, 1 abstention.
+<LI>    Section 3.2.6: (third reading) 13 in favor, 1 abstention.
+<LI>    Section 3.2.7: (second reading) Too much disagreement.
+<LI>    Section 3.2.8: (first reading) 14 in favor, 0 opposed.
+<LI>    Section 3.2.9: (third reading) delayed.
+</UL>
+<P>
+The meeting adjourned at 6:15pm.</P>
+<P>
+<HR>
+<H2><B>April 29, 1998</B></H2>
+<P>
+The first order of business was which
+subgroups should meet prior to continuing the readings and the date for the
+next Forum meeting.   We need to have readings at the next meeting of the
+Dense chapter, Sparse chapter, Language Bindings, Distributed Memory chapter,
+Extended Precision chapter, and the Interval chapter.  It is possible that the
+Interval BLAS and Distributed Memory BLAS will be put into the Journal of
+Development.</P>
+<P>
+It was decided that the next meeting would occur sometime in the first week
+of October, and the final meeting would occur sometime in December.  And
+should the next meeting be at NIST or MSU?  It was reiterated
+that we need to finish these meetings by the end of the year.  It was then
+suggested by Roldan Pozo of NIST that we have a ``virtual'' meeting in July
+since there will be so much time between this meeting and the next meeting.
+Perhaps we could do a ``first reading'' of some of the chapters on-line?  A
+unanimous vote was taken on the move to hold a ``virtual'' meeting.  It
+was then decided that all chapters would be due by July 1, a reading and
+commenting period of two weeks would occur from July 1-14, and then the authors
+of the chapter would incorporate all comments for one week, July 14-21, and
+voting on the chapters would occur between July 21-August 4.  The number of
+eligible voters needs to be determined, and a majority of votes from eligible
+voters should be received for each chapter.  Otherwise, the vote would not be
+valid.  The chair for each subgroup can ask for straw votes on topics, and
+should assemble a ballot for voting.  The ballot should list each section of
+the chapter, and give the voter space to vote in favor or against, and allow
+for comments.  After the voting period, the chair from each subgroup will
+post the results to blast-comm.</P>
+<P>
+A straw vote was taken on the location of the next meeting.  Seventeen
+people voted for Washington D.C., and there were four abstentions.  Three
+people were opposed to holding the meeting over the weekend.  We will plan
+to hold the next meeting in Washington D. C. around the first week of
+October.</P>
+<P>
+And at 9:30-10:30am, subgroups assembled to discuss the C++ interface,
+C interface, Dense and Band BLAS.  After these subgroup meeting we
+finished the reading of the C interface section of the Legacy BLAS
+chapter, and then proceeded with the first reading of the Fortran95
+interface section of the chapter.</P>
+<P>
+A general questions about language bindings was addressed.
+It was proposed that the storage format for a dense matrix be defined
+as a multi-vector.  The question was then asked how this would impact
+the Fortran77 interface?  The consensus was that it was fine to define
+a matrix as a multi-vector in the LIS, and that how this was handled
+in the LDS was left up to the implementor.  Thus, the Fortran77 interface
+is not impacted.</P>
+<P>
+Next we resumed the reading of the C interface to the BLAS.  Thirteen
+eligible voters were in attendance.  The subgroup meeting discussed the
+cblas.h include file issues.  So the second reading of that section was
+deemed ready for a reading.</P>
+<UL>
+<LI>    Section 3.2.9:  (third reading) 13 in favor, 0 opposed.
+<LI>    Section 3.2.8:  (second reading) 13 in favor, 0 opposed.
+<LI>    Section 3.2.7:  (second reading) Section was too restrictive
+                         previously.  13 in favor, 0 opposed.
+</UL>
+<P>
+Sven Hammarling of NAG next addressed the first reading of the Fortran95
+interface to the BLAS.  Modifications were suggested for each section,
+but general votes were taken.</P>
+<UL>
+<LI>    Section B.5.1:  (first reading) 13 in favor, 0 opposed.
+<LI>    Section B.5.2:  (first reading) 13 in favor, 0 opposed.
+<LI>    Section B.5.3:  (first reading) 13 in favor, 0 opposed.
+<LI>    Section B.5.4:  (first reading)  (up to Level 1 BLAS section)
+                        13 in favor, 0 opposed.
+<LI>    Section B.5.4:  (first reading) (Level 1 BLAS section)  Missing
+                         rotm, rotmg, and some routines are not included
+                         because they are intrinsics or can be handled with
+                         array notation in the language.  Should we allow
+                         interfacing to complex LAPACK routines, when the
+                         complex version of a BLAS routine does not exist?
+                         Or should we stick to strictly the Legacy BLAS?
+</UL>
+<P>
+It was suggested that we add the addition of CROT and CROTG to the Extensions
+section of the Legacy BLAS chapter.  And then provide an interface for this
+``extension'' routine.  The same would be done in the C interface section
+of the chapter.  A straw vote was taken to include these as extensions.
+Thirteen people voted in favor, and no one opposed or abstained.</P>
+<UL>
+<LI>    Section B.5.4: (first reading) (Level 2 and 3 BLAS section)
+                       13 in favor, 0 opposed.
+<LI>    Section B.5.4: (first reading) (Level 2 and 3 BLAS packing section)
+                       12 in favor, 0 opposed. One of the eligible voters had
+                       already left.
+<LI>    Section B.5.4: (first reading) (Level 2 and 3 Band)
+                       12 in favor, 0 opposed.
+</UL>
+<P>
+A tentative straw vote was taken on the namespace issue of f95blas as prefix.
+Fourteen people voted for the prefix, one person opposed, and one person
+abstained.</P>
+<UL>
+<LI>    Section B.5.5: (new section) 12 in favor, 0 opposed.
+<LI>    Section B.5.5: (first reading) (Error checking) INFO discussion,
+                       too cumbersome.  Back to subcommittee.
+<LI>    Remove section B.6, make it into an ``Advice to Implementor''.
+</UL>
+<P>
+A straw vote was then proposed by Jim Demmel.  He proposed a set of language
+bindings for the extended precision routines. For Fortran77 and C, add _X,
+and PREC as final argument.  Twelve people voted in favor of this
+language binding.  There were no abstentions or oppositions.</P>
+<P>
+Bruce Greer of Intel then suggested a round of applause to thank Cray Research
+and Mike Heroux for hosting the meeting, and Sven Hammarling officially
+closed the meeting at 1:30pm.</P>
+<P>
+List of attendees:</P>
+<P>
+Attendees list for the April 27-29, 1998 BLAST Forum Meeting</P>
+<PRE>
+Ed Anderson          SGI/Cray             eca@cray.com
+Claus Bendtsen       UNI-C, Denmark       claus.bendtsen@uni-c.dk
+Susan Blackford      UT, Knoxville        susan@cs.utk.edu
+Andrew Chapman       NEC                  achapman@atcc.necsyl.com
+Jim Demmel           UC Berkeley          demmel@cs.berkeley.edu
+Theresa Do           SGI/Cray             tdo@cray.com
+Jack Dongarra        UT / ORNL            dongarra@cs.utk.edu
+Bruce Greer          Intel                bruce_s_greer@ccm.jf.intel.com
+Sven Hammarling      NAG, UK              sven@nag.co.uk
+Mike Heroux          SGI/Cray             mike.heroux@cray.com
+Gary Howell          Florida Tech         howell@zach.fit.edu
+Chenyi Hu            Univ of Houston      chu@uh.edu
+Guangye Li           SGI/Cray             gli@cray.com
+Hsin-Ying Lin        HP Convex Tech. Ctr. lin@rsn.hp.com
+Linda Kaufman        Bell Labs            lck@bell-labs.com
+Kristi Maschhoff     Tera Computer        kristyn@tera.com
+Brian McCandless     SLAC/Notre Dame      bmccandl@slac.stanford.edu
+Antoine Petitet      UT, Knoxville        petitet@cs.utk.edu
+Roldan Pozo          NIST                 pozo@nist.gov
+Karin Remington      NIST                 kremington@nist.gov
+Shane Story          Intel                shane.story@intel.com
+Jerzy Wasniewski     UNI-C, Denmark       jerzy.wasniewski@uni-c.dk
+Clint Whaley         UT, Knoxville        rwhaley@cs.utk.edu
+</PRE>
+<P>
+Susan Blackford and Brian McCandless agreed to take minutes for
+the meeting.</P>
+</BODY></HTML>

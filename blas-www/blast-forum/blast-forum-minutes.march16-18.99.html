@@ -1,0 +1,413 @@
+<HTML><HEAD>
+<TITLE>BLAST Forum MINUTES</TITLE>
+ 
+<CENTER><H2>BLAST Forum MINUTES</H2></CENTER>
+ 
+<CENTER><H2>March 16-18, 1999</H2></CENTER>
+
+<CENTER><H2>Ramada Inn and Suites, Oak Ridge, TN</H2></CENTER></HEAD>
+ 
+<BODY>
+ 
+<UL>
+<LI>Fifteen people attended the <a href="http://www.netlib.org/utk/papers/blast-forum.html">BLAST Forum</a> in Oak Ridge, TN, on March
+16-18, 1999.  The meeting was hosted by the University of Tennessee.
+</UL>
+<HR> 
+<H2><B>Tuesday, March 16, 1999</B></H2>
+<P>
+The meeting began at 9:00am.  Everyone introduced themselves and a draft
+agenda was presented.
+</P>
+<UL>
+<LI>    9:00am-11:00am  Chapter 3 (Sparse BLAS)
+<LI>   11:00am-2:00pm   Chapter 5 (Interval BLAS)
+<LI>    2:00pm-3:00pm   Chapter 1 (Introduction)
+<LI>    3:00pm-4:00pm   Chapter 2 (Dense and Band BLAS)
+<LI>    4:00pm-5:00pm   Chapter 4 (Extended and Mixed Precision BLAS)
+</UL>
+<P>
+A move was taken to also include the beginning discussion of the model
+implementations in this first day of the meeting.</P>
+<P>
+At the opening of the meeting 8 eligible voters were present -- Sandia,
+UT, NAG, UC Berkeley, NIST, HP/Convex, Notre Dame, and Mississippi State.
+<P>
+Mike Heroux took the floor to discuss Sparse BLAS chapter.  There were
+mostly minor editorial comments.   All references to Fortran 90/95 should
+be standardized to Fortran95.
+<P>
+<UL>
+<LI> Section 3.1 comments. Need comment that the Fortran77 interface would look
+                        like Fortran95 example.  It was asked that a note
+                        be included to specify which packages use certain
+                        storage schemes, etc.  Finite element methods.
+              Vote 8/0/0. 
+<LI>  Section 3.2 comments. Need to add DOT, AXPBY, consistency in tables.
+                        3rd column, GE, SY, etc.
+              Vote 8/0/0.
+<LI>  Section 3.3 comments. Need to specify ordered sets or non-ordered sets. 
+              Vote 8/0/0.
+<LI>  Section 3.4 comments. 1-based for Fortran, 0-based for C.
+                        Add integer for base in calling sequence.
+              Vote 8/0/0.
+<LI>  Section 3.5 Vote 8/0/0.
+<LI>  Section 3.5.1 Vote 8/0/0.
+<LI>  Section 3.5.2 Vote 8/0/0.
+<LI>  Section 3.5.3 Vote 8/0/0.
+<LI>  Section 3.6   Vote 8/0/0.<br>
+          Comments. Module definitions should be moved to an Appendix.  Why
+                    is it called Annex instead of Appendix?
+                    Debate for F95 interface.  How to make it work if data
+                    structure passed is assumed shape or assumed size.  Mandate
+                    a copy.  Do not support array subsections.  If we do a
+                    forced data copy, then subsection will work.  To be fully
+                    f95 compliant, must force a copy.  ISTAT=0 in F95 is not
+                    legal, failure to create. Maybe 3 values for ISTAT.
+                    Explicit value of ISTAT to force a copy.  ISTAT < 0.
+                    Modify 3.6 as amended.
+<LI> Section 3.7 Vote 8/0/0.
+<LI> Section 3.7.3 Vote 8/0/0.
+<LI> Section 3.8 comments. Adding text on creation routines, debate on sparse
+                        triangular solve, allow side parameter?
+              Vote 8/0/0.
+</UL>
+<P>
+A break was taken at 11am.</P>
+<P>
+After the break, discussion began on model implementations.  First, Andrew
+Lumsdaine presented the MTL library, and how it could be used to produce
+the model implementation.</P>
+<P>
+A number of questions were raised:</P>
+<OL>
+<LI> Should the reference implementation be generic and readable, or
+     performance oriented?  We want a model implementation to
+     be portable.  But since the model implementation of the BLAST document 
+     wil be so large, will the vendors optimize it?  Or should we provide a
+     reasonably optimal model implementation?
+<LI> Should we have one kernel implementation in C and then have wrappers
+     in Fortran77 and Fortran95 on top of this?  Or three separate 
+     implementations?
+<LI> Testing software must test the numerics of the operations as well
+     as the interfaces.  Numerical testing of the extended and mixed
+     precision BLAS is particularly complex.
+<LI> Consistency of model implementations for separate chapters?
+</OL>
+<P>
+It was felt that C++ language is volatile for a model implementation.  As
+MTL could also generate C code, this would be preferable.  And what about
+test code?  As it stands, most of the testing in MTL are software engineering
+tests.  Numerical testing would need to be added.</P>
+<P>
+A break was taken at 12:20pm.</P>
+<P>
+Discussion continued at 1:30pm.  Chao Yang of NEC arrived, and this
+increased the number of eligible voters to 9.</P>
+<P>
+Jim Demmel then presented his proposed implementation scheme for the BLAS
+standard using m4.  Numerical testing is a complex issue, particularly for
+the extended and mixed precision BLAS.  Should the BLAST forum deliver
+"readable" source code or not?</P>
+<P>
+A break was taken at 2:30pm.</P>
+<P>
+Chenyi Hu had arrived and this brought our list of eligible voters to 10.
+Chenyi then presented the revisions that had been made to the Interval BLAS 
+chapter since the "virtual" meeting and voting.  Numerous suggestions were
+made on revisions.  Questions were raised about the meaning of the CONVERT
+routines, and what is specified.  Rename to round-out.  Have convert and
+roundout!   We need an FPINFO_I routine, and the number of digits specified 
+in its interface.  Some of this is being discussed in the Interval arithmetic
+group and Fortran 2000.  The format of the C bindings was discussed,
+particularly the use of struct, and its impact on performance.  All other
+chapters have chosen to not use struct's in the implementation due to issues
+of non-contiguous storage and thus performance.  Two groups have agreed to do
+model implementations in C++ and Fortran95.  They have the TOMS package for
+Fortran77 implementation.  Jim had various ideas for test software for the
+interval BLAS.  Chenyi will incorporate the modifications and present them at
+the meeting on the following day.</P>
+<P>
+A break was taken at 3:45pm.</P>
+<P>
+At 4pm, we then began the discussion of Chapter 1.
+<UL>
+<LI>  Section 1.1 comments.  Wordsmithing. Vote 10/0/0.<br>
+  All remaining sections vote 10/0/0.<br>
+  Overall comments.<br>
+<UL>
+<LI> In section 1.2 "Motivation", we need to add a
+    paragraph for each chapter.  As it stands, it is too chapter 2--
+    centric.  It was agreed that the authors of chapters 3, 4, and 5
+    would supply Susan with a paragraph motivating each chapter.
+
+<LI> In section 1.4.1, more notation should be added.  And the table
+    of matrix types "GE, GB, etc" should be inserted here, as it
+    applies to several chapters. 
+
+<LI> As a general rule it was decided that the intersection of information
+    pertaining to all chapters will be listed in Chapter 1, and the
+    union of this information will be moved to an Appendix.  The Appendix
+    will be divided according to chapters.
+
+<LI> In section 1.4.2, the table of operator arguments specifying named
+    constants etc will be moved to the appendix, as well as the "Example"
+    text following it.  
+
+<LI> Section 1.5 "Numerical Accuracy" will be rewritten for each chapter.
+    Jim will provide this rewrite to Susan.
+
+<LI>  Section 1.6.1 "Scalar and Vector Operations", table 1.1, the absolute
+    value notation will be changed.  Table 1.2 will be renamed to "Generate
+    Transformations".  A forward reference will be inserted to specify that
+    the details of the data structures will be discussed in later sections.
+
+<LI> Section 1.6.2 "Matrix-Vector Operations" The storage of Q needs to be
+    specified, and horizontal lines must be added to table 1.5 for combine
+    operations.  
+
+<LI> Section 1.6.4 "Environmental Enquiry" table removed.  Only first
+    sentence remaining.
+
+<LI> Section 1.7 "Language Bindings".  A note on the consideration of C++
+    and Java, and that these bindings will be considered in a later forum.
+</UL>
+</UL>
+<P>
+The meeting was adjourned at 5pm.</P>
+<HR>
+<H2><B>Wednesday, March 17, 1999</B></H2>
+<P>
+The meeting began at 9am with a summary of the previous day.  A tentative
+agenda for the day will be:</P>
+<UL>
+<LI>  Numerical Accuracy sections readings
+<LI>  Reading of Chapter 2 (Dense and Band BLAS)
+<LI>  Re-reading of Chapter 5 (with yesterday's revisions)
+<LI>  Model Implementations
+<LI>  JOD discussion
+</UL>
+<P>
+and then on Thursday, we will decide how to do the last re-working of the
+document, and the announcement of the draft of the BLAST document.</P>
+<P>
+Jim presented his proposed rewrites for the numerical accuracy sections for 
+chapters 1, 2, 3, 4, and 5.  Vote 10/0/0.  He also briefly mentioned the
+issue that the IEEE 754 standard does not agree with the wording in SLAMCH,
+and this must be consistency.  Will be discussed later.</P>
+<P>
+At 10am, we then began the discussion of Chapter 2.</P>
+<UL>
+<LI> Section 2.1 comments. Move GE GB table to Chapter 1.
+<LI>  Section 2.1.1 comments. See appendix for definitions of vector norms  Move
+         table of vector norms to appendix.  Clarify abs value notation in
+         Table 2.1.  Add third column to tables for DOT, NORM, names, etc.
+<LI>  Section 2.1.2 comments. Add third column to tables.  We need to define how              Q is stored, Householder transformation, SLASR and SLARTV combine.
+<LI>  Section 2.1.3 comments. Remove GBMVT from table 2.5.  Table of matrix norms
+          moved to appendix.  Add 4th column to tables 2.6, 2.7, 2.8.
+<LI>  Section 2.1.4 is now Jim's new section.
+  Vote Section 2.1 10/0/0.
+</UL>
+<P>
+A break was taken at 11am.</P>
+<P>
+After the break, discussion continued on Chapter 2.
+<UL>
+<LI>  Section 2.2 comments.  Section 2.2.1 we softened the sentence about must
+          not have a name conflict to should not.
+          Moved GB table to Chapter 1.  Add a section after 2.2.1 to talk
+          about Aliasing, and a section entitled Matrix Storage Schemes.  This
+          storage section will be from the C interface version, and all will
+          reference to it.  The Aliasing section will say something like
+          "Correctness only if output arguments are not aliased (association
+          of arguments".  In the subsection "Indexing" we should substitute
+          the word "index" instead of "displacement".  Section 2.2.2, first
+          sentence deleted.  Under "Design of Fortran95 interface" and 
+          "data type" we deleted sentence in parentheses.  The table of
+          arguments under "different argument lists" is deleted and forward
+          references added to table in page 27.  Question about "x(ix)"
+          notation in "Assumed-shape arrays", will be addresed with multiple
+          instances discussion offline.  In "Derived Types", the first
+          sentence is deleted.  The "Operator arguments and CMACH values"
+          is moved to the Appendix.  In the "Format of the Fortran95
+          bindings", remove verbosity of KIND,WP discussion.  Add "default"
+          column to table of optional arguments, and add a label to the
+          table.  In "Error Handling", we will have a global statement about
+          error handling in Chapter 1 to address all chapters.  An error-
+          handling routine will be supplied and it shall check the consistency
+          of input dimensions.  
+     Vote 10/0/0.
+<LI>  Section 2.2.3.  Similar changes to Fortran 77 discussion as mentioned
+          for Fortran95 discussion.  Under matrix storage schemes, we
+          will reference the main section, and specify that Fortran
+          interface only supports column-major.
+     Vote 10/0/0.
+<LI>  Section 2.2.4.  Similar changes as discussed for Fortran 95 and
+          Fortran 77 sections.  Rework beginning sentence about "most
+          platforms".  Insert reference for gcc.  Should we explicitly
+          say "overlapping" in aliasing discussion.  Stronger statement
+          for aliasing?  In "array arguments", we should explicitly say
+          that this means no 2-D array arguments in C.  Similar text
+          moved to appendix.  In "Format of the C bindings", error in
+          table of SCALAR specification.  There must be a separate
+          spec for SCALAR IN and SCALAR IN/OUT.  
+     Vote 10/0/0.
+<LI>  Section 2.3 comments.  Add cross reference sections to "Overview".
+          Remove GBMVT.  Corrections to bindings.  Outstanding issues
+          for Jacobi routine, and multiple instances.  PERMUTE routine
+          should permit negative INCP in Fortran77 interface.
+     Vote on Sections 2.3.1-2.3.6.  10/0/0.
+</UL>
+<P>
+A break was taken at 12:30pm.</P>
+<P>
+We reconvened at 1:30pm and continued discussion of Chapter 2.</P>
+<UL>
+<LI> Section 2.3.7 comments.  Break GE,GB,SY,SB,SP,TR,TB,TP_ACC into
+          separate specifications. No TRANS allowed in GB,TR,TB,TP.
+          Remove HE,HB,HP_ACC specs. 
+     Vote 8/0/0.
+<LI>  Section 2.3.8 comments.  GBMM should have a SIDE argument.  Delay
+          ORM discussion until clarification.
+     Vote 8/0/0.
+<LI>  Section 2.3.9 comments.  GE_PERMUTE needs INCP in Fortran77 and C
+          interfaces.
+     Vote 8/0/0.
+<LI>  Remove sections 2.4 and 2.5.  Brief note that they are to appear.
+  Nuke sections 2.6 and 2.7.  A footnote instead on appropriate
+  routines.
+</UL>
+<P>          
+A break was taken at 3:00pm.</P>
+<P>
+We resumed at 3:30pm, and Chenyi presented the revisions to Chapter 5.
+All bindings must be examined for questions of "empty intervals"., and minor
+typographical corrections to various sections.</P>
+<P>
+<UL>
+<LI> Section 5.1.1 Vote 9/0/0.
+<LI> Section 5.1.2 Vote 9/0/0.
+<LI> Section 5.1.3 Vote 9/0/0.
+<LI>   Section 5.2 comments.  Add 3rd column to tables.  
+           Vote 9/0/0.
+<LI> Section 5.3 comments.  Need to insert Numerical Accuracy section from
+           Jim.  Section 5.3.4 is not ready for a vote.
+       Vote on section 5.3.1-5.3.3, 9/0/0.
+<LI> Section 5.4 comments.  Add cross-references for overview sections.
+       Vote on 5.4.1, 9/0/0.
+       Vote on 5.4.2-5.4.9, 9/0/0.
+<LI> Section 5.4.10-11 comments.  Discussion of empty intervals and how these
+           impact the bindings.  All bindings should be examined for what
+           happens when an empty interval is encountered.  Possibly return
+           a boolean LOGICAL to flag if empty was detected.  
+           An empty interval propogates like a NaN.
+       No vote taken on sections 5.4.10-5.4.11.
+<LI>   Section 5.4.13 comments. Need to add discussion of FPINFO_I.  And add
+           reference the Interval BLAS webpage.
+</UL>
+<P>
+The meeting was adjourned at 5:15pm.</P>
+<HR>
+<H2><B>Thursday, March 18, 1999</B></H2>
+<P>
+The meeting began at 9:30am.  The tentative agenda for the day will be:
+<UL>
+<LI>    Error returns for language bindings, multiple instances summary, Jacobi
+    routine summary, and IEEE vs SLAMCH issue for Chapter 2.
+<LI>    Reading of Chapter 4.
+<LI>    Model Implementations
+<LI>    Decide how to do last re-working
+<LI>    JOD discussion
+<LI>    Profiling
+<LI>    Announcement of draft (May 31st to the world for comments?)
+</UL>
+<P>
+The tentative schedule for the BLAST document is as follows:</P>
+<UL>
+<LI>    April 14 -- Susan will have incorporated global changes to 
+                Chapters 1-5, and then submit chapters to the authors
+                for specific revisions.
+<LI>    May 15   -- Authors will return chapters to Susan
+<LI>    May 31   -- Announcement of BLAST document on na.digest.
+<LI>    August 1-31 -- last virtual meeting and commenting on chapters.
+<LI>    Sept 1   -- publication of BLAST document (like MPI report, freely
+                available)
+</UL>
+<P>
+Jim discussed Chapter 4 modifications.  All F95 bindings will be suffixed
+by _X to avoid confusion with Chapter 2.  The default value for OPTIONAL
+argument PREC was discussed.  Section 4.6 is removed.  
+  Vote on Chapter 4, 7/0/0.
+A sentence needs to be added to Chapter 1 to emphasize that the goals for
+Chapters 4 and 5 are different.</P>
+<P>
+At 10:30am, the format of the proposed routine for applying multiple
+Givens rotations (ORM) was discussed, as well as the format for the
+Jacobi routine.  The proposals will be checked with Linda before
+inclusion.  A discussion of error returns began.  The major point
+of contention was whether or not to allow a var args interface for the
+C error-handling routine.  Should we have compatible error return for 
+Fortran and C.  Leave it the way it is, or change it?  Or have both possible
+error returns in C?</P>
+<OL>
+<LI> BLAS_ERROR ( name, -info, string )
+<LI> BLAS_ERROR ( name, -info, string, ... )  has a variable number of 
+   arguments, you can call with null.
+</OL>
+<P>
+Vote for #1 for both languages.   6/0/0.  Names not clear.  F_BLASERROR
+and C_BLASERROR?</P>
+<P>
+Model implementations and test software were again discussed, as well as
+the issue of profiling as done in MPI.  It was proposed that a template for
+GEMM in Fortran95, Fortran 77, and C be circulated to demonstrate how
+leading comments should be done.  And also, provide a template for how
+the testing software should be organized.  Portabililty and how the wrappers
+should be done.   Produce testing software incrementally?  The testing
+software is the major weight of the effort.</P>
+<P>
+The consensus was that each chapter is responsible for its model
+implementation.  The quantity of routines and thus the time and resources
+of producing a model implementation and test suite is formidable.</P>
+<P>
+Jim Demmel and his m4 effort should continue to develop their model
+implementation for Chapter 4, and Andrew Lumsdaine and his MTL library should
+produce a model implementation.  Using m4 and MTL to produce the model
+implementations will be the quickest way.  Readability will be sacrificed
+as time and resources are the major constraints.  Multiple efforts.  Perhaps
+use pretty printers to improve the format and readability of the generated
+code.  Macro processing must be used to produce the volume of routines.
+</P>
+<a href="http://www.cs.berkeley.edu/~demmel/BLAST/">http://www.cs.berkeley.edu/~demmel/BLAST/</a>
+and
+<a href="http://www.lsc.nd.edu/research/mtl/">http://www.lsc.nd.edu/research/mtl/</a>
+<P>
+The kernel should be written in C because some routines will need malloc,
+but it was pointed out that it most convenient to write the complex arithmetic
+routines in Fortran.  It is not easy to see how the mixing of languages
+will be avoided. It was suggested to produce the
+C interface first and then concern with other languages and interfaces.
+<P>
+The meeting was adjourned at 1pm.</P>
+<P>
+Attendees list for the March 16-18, 1999 BLAST Forum Meeting</P>
+<PRE> 
+Susan Blackford      UT, Knoxville        susan@cs.utk.edu
+Jim Demmel           UC Berkeley          demmel@cs.berkeley.edu
+Jack Dongarra        UT / ORNL            dongarra@cs.utk.edu
+Sven Hammarling      NAG, UK              sven@nag.co.uk
+Mike Heroux          Sandia Nat Lab       mheroux@cs.sandia.gov
+Jeff Horner          UT                   jhorner@cs.utk.edu
+Chenyi Hu            UH-DT                chu@uh.edu
+John Liu             HP (MSG)             jliu@rsn.hp.com
+Andrew Lumsdaine     UND                  lumsdaine.1@nd.edu
+Antoine Petitet      UT                   petitet@cs.utk.edu
+Roldan Pozo          NIST                 pozo@nist.gov
+Avi Purkayastha      Miss State U.        avijit@erc.msstate.edu
+Jeremy Siek          UND                  jsiek@lsc.nd.edu
+Clint Whaley         UT, Knoxville        rwhaley@cs.utk.edu
+Chao Yang            NEC                  cyang@atcc.necsyl.com
+</PRE>
+<P> 
+Susan Blackford agreed to take minutes for the meeting.</P>
+</BODY></HTML>

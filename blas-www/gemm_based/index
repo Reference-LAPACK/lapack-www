@@ -1,0 +1,46 @@
+file	blas/gemm_based/ssgemmbased.tgz
+for     The Superscalar GEMM-based Level 3 BLAS library is a further
+,       development of the GEMM-based Level 3 BLAS targeted towards 
+,       superscalar processors.
+prec	double
+size	61 kB
+
+file	blas/gemm_based/dbench.tgz
+for	performance evaluation of Level 3 BLAS kernel programs
+prec	double
+size	314 kB
+
+file	blas/gemm_based/dgbl3b.tgz
+for	Level 3 BLAS tuned for single processors with caches
+prec	double
+size	207 kB
+
+file	blas/gemm_based/sbench.tgz
+for	performance evaluation of Level 3 BLAS kernel programs
+prec	single
+size	314 kB
+
+file	blas/gemm_based/sgbl3b.tgz
+for	Level 3 BLAS tuned for single processors with caches
+prec	single
+size	207 kB
+
+file	blas/gemm_based/zbench.tgz
+for	performance evaluation of Level 3 BLAS kernel programs
+prec	doublecomplex
+size	418 kB
+
+file	blas/gemm_based/zgbl3b.tgz
+for	Level 3 BLAS tuned for singlecomplex processors with caches
+prec	doublecomplex
+size	260 kB
+
+file	blas/gemm_based/cbench.tgz
+for	performance evaluation of Level 3 BLAS kernel programs
+prec	singlecomplex
+size	418 kB
+
+file	blas/gemm_based/cgbl3b.tgz
+for	Level 3 BLAS tuned for singlecomplex processors with caches
+prec	singlecomplex
+size	260 kB

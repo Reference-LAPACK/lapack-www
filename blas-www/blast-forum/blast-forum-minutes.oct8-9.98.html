@@ -1,0 +1,451 @@
+<HTML><HEAD>
+<TITLE>BLAST Forum MINUTES</TITLE>
+ 
+<CENTER><H2>BLAST Forum MINUTES</H2></CENTER>
+ 
+<CENTER><H2>October 8-9, 1998</H2></CENTER>
+ 
+<CENTER><H2>NIST, Washington, D.C.</H2></CENTER></HEAD>
+
+<BODY>
+ 
+<UL>
+<LI> Fifteen people attended the <a href="http://www.netlib.org/utk/papers/blast-forum.html">BLAST Forum</a> in Washington, D.C. on October 8-9, 1998.
+The meeting was hosted by NIST.
+</UL>
+<HR>
+<H2><B>October 8, 1998</B></H2>
+<P>
+Jack opened the meeting at 9am and we began by addressing fundamental
+questions about the structure of the document, as well as stressing the 
+importance of reference implementations for all proposed routines.
+These fundamental questions were:</P>
+<UL>
+<LI>  1a. Is the BLAST document standard too big?  (Not just in the number of
+      pages of the document, but in the effort required for vendors to
+      implement it.)
+<LI>  1b. If so, what can we do to reduce the size, or to make it more
+      manageable?
+<LI>  2. Structure of the document -- do we want to keep the LIS and LDS
+      separate or combine?  Do we want to delete the LIS to condense
+      the document?
+<LI>  3. What data respresentation do we want for matrices (e.g. double*,
+      double**?  row, column major?)  We need to have a consistent
+      representation used in all chapters.
+<LI>  4. Various sections of the BLAST proposal utilize "generic" or
+      abstract matrix types (e.g. the SYS format, and User Level
+      interface in the Sparse BLAS).  In particular, dense and banded
+      matrices are a special case of this.  Should the BLAS support
+      these generic interfaces across the board?
+</UL>
+<P>
+We began with a cursory discussion of the points #3 and #4.  We need
+a consistent representation of matrices for all chapters.  As it
+stands, that is not the case.  And, the user level sparse BLAS proposal
+is matrix-type neutral.  In particular, dense and banded matrices are a
+special case of this.  Should the BLAS support these generic interfaces
+across the board?</P>
+<P>
+Concerning point #1, the majority of the BLAST attendees felt that the
+document is too long.  It was then asked if we want to reduce the
+functionality?  Yes, however, we want the Legacy BLAS to be a subset
+of this new proposal.  The options to support were:</P>
+<UL>
+<LI> a. Existing BLAS + missing w/old style
+<LI> b. New interface for BLAS and complete coverage
+<LI> c. New interface for BLAS minus legacy
+</UL>
+<P>
+Several of the vendors felt that the users would prefer the first option (a).
+However, the Forum attendees prefer the second option (b).</P>
+<P>
+It was then suggested that maybe we should only do a limited set of bindings? 
+Only F90 and C?  Only C and Fortran77?</P>
+<P>
+Roldan Pozo of NIST took the floor to discuss an idea for a condensed
+LIS/LDS proposal.  An example of this proposal was to be drawn up during
+lunch break.</P>
+<P>
+A straw vote was then proposed on whether to remove Appendix B2 (Extensions)?
+and move these routines into Chapter2?  If we don't have F77 language support
+in the new routines, then we would need to keep this Extensions section. </P>
+<P>
+A straw vote was then taken on which languages to support in the document
+</P>
+<UL>
+<LI> C binding -- passed 16/0/0.
+<LI> F77 binding -- passed 14/2/0.
+<LI> F95 binding -- passed 11/2/1.
+</UL>
+<P>
+Considering time constraints for the Forum and the possible changes to the
+Java language, a straw vote was then taken to not include C++ and Java
+language bindings in this document -- passed 12/0/0.  These bindings
+could be discussed at a future Forum.</P>
+<P>
+It was then suggested that we should take binding formal votes on these
+issues.  Ten eligible voters were present -- UT, NAG, HP/Convex, Tera, NEC,
+Berkeley, AT&T, Florida, NIST, and Intel.  One additional eligible voter
+appeared later in the meeting -- University of Houston.</P>
+<P>
+Formal votes were then taken on:</P>
+<UL>
+<LI> C binding -- passed 10/0/0.
+<LI> F77 binding -- passed 9/1/0.
+<LI> F95 binding -- passed 8/2/0.
+<LI> No more bindings -- passed 10/0/0.
+<LI> Do we keep Appendix B2 (extensions)? Failed 3/6/1.
+<LI> New complete interface (option (b))?  Passed 10/0/0.
+</UL>
+<P>
+What do we do about LIS?   This issue was postponed until after lunch.</P>
+<P>
+Now vote on data representation?  Should it be set in the standard
+or different for each binding? Fixed data structure or separate possible
+data structures for each language?  This issue was postponed until
+after lunch.</P>
+<P>
+At 12Noon, break for lunch.</P>
+<P>
+After lunch, (1pm-2pm) work began on deriving this new condensed LIS/LDS
+combined representation.</P>
+<P>
+Roldan then presented the new structure at 2pm.  And since the f95  
+interface differs significantly, should or should it not be listed
+with the C and Fortran77 interfaces?</P>
+<P>
+The pros and cons of row/column storage allowance for Fortran77 were then
+discussed.  Should an ORDER parameter be mandated?  A formal vote -- failed
+1/9/0.</P>
+<P>
+It was then proposed to put all 3 bindings together and then have separate
+notes for each with cross references.  We should allow the op(A) and op(B)
+notation, and the ordering of bindings shall be F95, F77, C.  Formal
+votes were taken:</P>
+<UL>
+<LI> Vote on op(A) notation --Passed 10/1/0.
+<LI> Vote on binding order (F95, F77, C) -- Passed 10/1/0.
+<LI> Vote on underlining output and in/out arguments -- Failed 5/6/0.
+</UL>
+<P>
+The motivation for all of these options was to make the document shorter.</P>
+<P>
+And now we were back to the discussion of the functionality in the
+tables, and we began with discussing Table 2.1 (Reduction Operations). 
+Votes were taken on the following:</P>
+<UL>
+<LI> Straw vote to keep the top line of inner product definition -- Passed 9/3/3.
+<LI> Straw vote to keep 2nd line -- Failed 0/15/0.
+<LI> Straw vote on keeping first 2 lines -- Indeterminant 6/?/?.
+<LI> Straw vote on keeping only 1 line -- Indeterminant 6/?/?.
+<LI> Formal vote, do you want 2 lines -- Failed 2/8/1.
+<LI> Formal vote on Vector norms for 1 and 2 -- Passed 11/0/0.
+<LI> Formal vote on Sum -- Passed 11/0/0.
+
+<LI> Remove max/min abs value location, and only have max/min value and 
+    location?  A formal vote was taken to only keep the last four
+    statements -- Passed 11/0/0.
+
+<LI> Formal Vote on keeping sum of squares -- Passed 10/0/0.
+
+<LI> Formal vote on keeping Givens rotations -- Passed 11/0/0.
+<LI> Formal vote on not having modified Givens? Postponed until more reading.
+<LI> Formal vote on keeping Jacobi, Householder -- Passed 10/0/1.
+</UL>
+<P>
+A brief break at 3:50pm.</P>
+<P>
+Discussion now began on Table 2.2 (Vector Operations).</P>
+<UL>
+<LI> Formal vote on removing first line -- Passed 11/0/0.
+<LI> Formal vote on removing second line -- Passed 10/1/0.
+<LI> Formal vote on remove cojugate copy -- Passed 8/2/1.
+<LI> Formal vote to remove conjugate -- Passed 9/0/2.
+<LI> Formal vote to remove scale -- Passed 8/1/2.
+<LI> Formal vote to add new scale (x = x/alpha) -- Passed 7/1/3.
+<LI> Formal vote to remove sums -- Passed 10/1/0.
+<LI> Formal vote to remove first 2 axpys -- Passed 10/1/0.
+<LI> Formal vote to eliminate abs -- Passed 11/0/0.
+<LI> Formal vote to remove elementwise multiply and divide -- Passed 7/2/2.
+<LI> Formal vote to keep plane rotation -- Passed 11/0/0.
+</UL>
+<P>
+Discussion now began on Table 2.3:</P>
+<UL>
+<LI> Formal vote on remove copy -- Passed 7/0/4.
+<LI> Formal vote on remove swap -- Failed 0/8/3.
+<LI> Formal vote on keeping sorting -- Passed 11/0/0.
+<LI> Formal vote to add scatter/gather,  postponed...
+</UL>
+<P>
+This process was then postponed until the next day, and the issue of
+data representation was again addressed.  Should we support two interfaces --
+high level and generic interface?  A handle would be passed as an
+argument to every routine.  This object-based approach would greatly
+reduce the number of routines.</P>
+<P>
+Clint Whaley of UT then took the floor about data representation of matrices
+in C.  The pros and cons of </P>
+<UL>
+<LI> double *A
+<LI>  double **A
+</UL>
+<P>
+were then discussed briefly.  It was stressed that this issue must
+be voted on before this meeting is concluded. </P>
+<P>
+The meeting adjourned for the day at 6:00pm.</P>
+<HR>   
+<H2><B>October 9, 1998</B></H2>
+<P>
+Jack opened the meeting at 9:00am and began discussing the planning for the
+next meeting (3 days in duration) for either December 7-9 or December 14-16.
+</P>
+<P>
+And then Linda Kaufman of Bell Labs started with Level 2 BLAS routine
+deletions and Table 2.4 (matrix vector operations):</P>
+<UL>
+<LI> Formal vote on delete first line for MV product -- Passed 9/1/0.
+</UL>
+<P>
+Discussion on triangular solve functionality, differs between Dense chapter
+and Sparse chapter.  Let's keep x <- alpha*T^(-1)*x, and
+                     y <-- alpha*T^(-1)*x + beta*y (for sparse).</P>
+<UL>
+<LI> Formal vote on keep only 2 lines -- Passed 10/0/1.
+</UL>
+<P>
+Discussion then began on the rank1 updates...</P>
+<P>
+Gary Howell then stood up and addressed the SY_MVER and TR_MV2 routines,
+and their need in the functionality tables.  We need an easier 
+description that encapsulates w=Ax and z=A^T*y.</P>
+<P>
+And then Linda continued with Table 2.4: </P>
+<UL>
+<LI> Formal vote on first 3 reps for rank1 updates -- Passed 11/0/0.
+<LI> Next to vote on application of Q (xORMQR, etc), leave as auxiliary
+routines.  Givens. Reference implementation on SLASR.
+
+<LI> Formal vote on remove Householder and make it SLASR.  Only need
+     overwrite version.  Passed 11/0/0.
+</UL>
+<P>
+Break at 10:30am.  After the break, we would then address the Sparse chapter
+and the generic interface, Tables 2.5-2.8, Interval BLAS, Extended Precision
+BLAS, storage format, and the date for the next meeting.</P>
+<P>
+At 10:50am we addressed the Sparse chapter.  There are five Level 1 operations,
+nine storage formats, and two Level 2/3 operations.  A total of 171 functions
+per precision.   Roldan Pozo of NIST proposed a modified layout for Sparse
+BLAS, so that we only have 13 routines (down from 171), we can initialize
+directly from 9 formats, same interface for C and Fortran, no DESCRA, no
+get/set matrix-property functions, does not require C/F90 structures, can
+add "Lite" interface later with no mods, and integrates User/Toolkit Level.
+He presented an example of matrix vector multiply with coordinate storage.
+</P>
+<P>
+Linda Kaufman of Bell Labs proposed that we need to add a new storage
+format (symmetric structure) for finite element methods.  Jim Demmel of
+UC Berkeley seconded that proposal.</P>
+<P>
+Roldan then addressed the issue of generic interfaces.  It is more difficult
+for dense matrices, since you would need to create a new handle for each
+submatrix access.  Generic versions of MV and MM would apply to dense 
+matrices too.  And the subject of "hinting" functions was discussed.  Do we
+want this functionality in low-level computational kernels?  Do we want two
+levels of interface?  Low-level and generic interface?</P>
+<P>
+Clint Whaley of UT proposed that for performance considerations, if we have a
+high-level generic interface, we would need to specify the order of magnitude
+(1 time, 1000 times) that an operation will happen.  You can optimize better
+if given that amount of information.  And then the question arose if this
+flag should be a number or a yes/no flag.</P>
+<P>
+A formal vote was suggested on a generic interface to only the sparse creation
+routine.  Does it apply to dense?  Some attendees thought it only applied to
+sparse because we only do it on creation.  There is no creation routine for 
+dense.</P>
+<P>
+A formal vote was then suggested on whether to have handles for sparse
+matrices.  Do we allow both interfaces to be visible to the user, or just the
+top-level generic interface?  </P>
+<UL>
+<LI>
+      Formal vote on presence of generic interface -- Indeterminant 4/1/4.
+      Thrown out.  Reformulate question and revote.
+<LI>
+      Formal vote on should we have a low-level interface that is visible
+      to the user -- Passed 10/0/0.
+<LI>  Formal vote on should we have a high-level plus low-level interface
+      -- Passed 5/2/3.
+<LI>  Formal vote for return value from creation routine to notify if can reuse
+        the matrix from creation (copied) -- Passed 8/0/1.
+<LI>  Formal vote on integer parameter for "hinting" to creation routine --
+      postponed.  This idea needs further investigation.
+<LI>  Formal vote on is it a good idea for hinting -- Passed 8/0/1.
+</UL>
+<P>
+At 12Noon we took a short break for lunch.</P>
+<P>
+At 12:30pm, Chenyi Hu of Univ of Houston talked about the comments he
+received on the Interval BLAS chapter.  He addressed the addition of more
+references and functionality/performance versus simplicity.</P>
+<UL>
+<LI>
+     Formal vote on keeping as close as possible to Level 1 BLAS (nouveau)
+     -- Passed 10/0/0.
+
+<LI> Formal vote on keeping "set operations involving interval vectors" table
+     (Table 5.2).  Union has been removed, and keep INT_CANCEL.  Passed 8/0/1.
+</UL>
+<P>
+In the current document, we do not address the storage of interval endpoints.
+The reference implementation stores all left endpoints and then
+stores all right endpoints.  We need more information.  It complicates
+the interface and complicates Levels 2 and 3 even more.  Currently there is
+a C++ reference implementation, but since C++ was voted out of this 
+document, he will produce a C interface.  A Fortran95 interface is also
+in progress.</P>
+<P>
+Jack briefly spoke at 12:55pm to solidify the date and place of the next
+meeting.  UT or Berkeley? The date was set for Dec 14,15,16, and will be
+hosted by the Univ of Tennessee in Knoxville.  And what about updating
+the document?  And the reference implementations? The tables in Chapter 1
+will have a column to specify applicability to dense, sparse, extended,
+or interval BLAS.  UT, NAG, and Bell Labs are responsible for updating
+Chapters 1 and 2 of the document.  NIST and Sandia will update the
+sparse chapter.  UC Berkeley will updated the Extended Precision
+chapter, and the Univ of Houston will update the Interval BLAS chapter.
+NAG is also responsible for updating the "Fortran 95 interface to the
+Legacy BLAS" section of the appendix.</P>
+<P>
+We will require a reference implementation and test suite for all
+proposed routines.  Should we set a deliverable date for the reference
+implementations?  We should have something by the March SIAM meeting
+in San Antonio, if at all possible.  There will be a minisymposium
+for the 25-th anniversary of the BLAS at that meeting.</P>
+<P>
+Jim Demmel gave a brief (2 min.) presentation of recently developed
+test cases for the Extended Precision routines, which involve
+using Hadamard matrices to generate an operation exhibiting perfect
+cancellation.</P>
+<P>
+A formal vote was called on the storage format question (for dense matrices):
+<UL>
+<LI> Support (double *) dense format?   Passed 10/0/0.
+<LI> Support (double **) dense format?  Failed 0/10/0.
+</UL>
+<P>
+Formal votes on functionality from Table 2.5:</P>
+<UL>
+<LI>
+l. 30    "Matrix Set"        Remove functionality?              9/1/0
+<LI>
+l. 31    "Matrix Norms"      Keep functionality?               10/0/0
+<LI>
+l. 32    "Matrix abs.val."   Include as a "norm"?               4/1/5
+<LI>
+l. 33    "Matrix scaling"    Remove (fold in to add&scale)?    10/0/0
+<LI>
+l. 34-36 "Diagonal scaling"  Keep only functionality in l.34?   5/3/2
+<LI>
+l. 37-38 "Matrx add&scale"   Include:  A <- alpha*A + beta*B    7/1/2
+                             Include:  C <- alpha*A + beta*B    4/2/4
+                             Include:
+                                C <- alpha*op(A) + beta*op(B)   1/3/6
+<LI> 
+   (From old table?)         Keep elementwise multiply?         0/9/1
+<LI>
+   (From old table?)         Keep elementwise divide?           0/9/1
+</UL>
+<P> 
+Formal votes on functionality from Table 2.7:</P>
+<UL>
+<LI> 
+l. 20    "Matrix copy"       Remove B <- A ?                    6/4/0
+<LI>
+l. 21    "Matrix transpose"  Keep  A <- A^T and B <- A^T ?      4/0/6
+                             Keep  A <- A^T ONLY for square A?  9/0/1
+<LI>
+l. 22-23 "Get/Put submatrix" Remove all functionality?          7/1/1
+<LI>
+l. 24    "Permute matrix"    Keep A <- P*A and A <- A*P ?       7/0/2
+                             (with "bells and whistles" T.D.B.)
+<LI>
+l. 25    "Permute matrix"    Keep A <- Q*A*P?                   0/8/1
+<LI>
+l. 26    "Diagonal extract"  Keep ?                             0/9/0
+</UL>
+<P> 
+Voting was deferred on Multiple Instance functionality (Table 2.8).
+</P>
+<P> 
+Formal votes on functionality from Table 2.6:</P>
+<UL>
+<LI>
+l.  1    "M-M product"       Keep l. 1 functionality(separate)? 1/4/4
+<LI>
+l.  1-3  "M-M product"       Keep functionality, but folded
+                             into GEMM?                         9/0/0
+<LI>
+    (From old table?)        Remove functionality of GEMM where
+                             only the lower triangular part of
+                             C is changed?                      6/0/3
+<LI>
+l. 4-7   "Tri. mult.&slv."   Keep all four lines?               8/0/1
+<LI>
+l. 8-11  "Symm k&k2 updates" Keep line 8 ?                      6/1/2
+                             Keep line 9 ?                      6/0/3
+                             Keep line 10 ?                     8/1/0
+                             Keep line 11:                      8/1/0
+                             C<-(alphaAJ)*B^T+B(alphaAJ)^T+betaC  deferred for
+                                                                  more info
+<LI>
+l. 12-16 "Application of Q"  Remove all Householder appl.?      7/1/1
+<LI>
+l. 12-16 "Application of Q"  Remove all Givens appl.?           4/1/4
+</UL>
+<P> 
+Outline of some outstanding "homework":</P>
+<UL> 
+<LI> <> Talk to Ken about whether Gary's simplest proposal is sufficient.
+ 
+<LI> <> Decide on permutation representation.
+ 
+<LI> <> Decide on how to use parameter(s) to give "hints", esp. in sparse.
+ 
+<LI> <> Generate sample formats for tables and function "prototype" defns.
+ 
+<LI> <> Investigate deferred item in M-M symm rank k updates.
+ 
+<LI> <> Investigate whether there is broad support for multiple instance
+        functionality.
+</UL>
+<P>
+The meeting adjourned at 3:00pm.
+</P>
+List of attendees:</P>
+<P>
+Attendees list for the October 8-9, 1998 BLAST Forum Meeting</P>
+<PRE>
+Susan Blackford      UT, Knoxville        susan@cs.utk.edu
+Jim Demmel           UC Berkeley          demmel@cs.berkeley.edu
+Jack Dongarra        UT / ORNL            dongarra@cs.utk.edu
+Bruce Greer          Intel                bruce_s_greer@ccm.jf.intel.com
+Sven Hammarling      NAG, UK              sven@nag.co.uk
+Gary Howell          Florida Tech         howell@zach.fit.edu
+Chenyi Hu            Univ of Houston      chu@uh.edu
+Hsin-Ying Lin        HP Convex Tech. Ctr. lin@rsn.hp.com
+Linda Kaufman        Bell Labs            lck@research.bell-labs.com
+Kristi Maschhoff     Tera Computer        kristyn@tera.com
+Antoine Petitet      UT, Knoxville        petitet@cs.utk.edu
+Roldan Pozo          NIST                 pozo@nist.gov
+Karin Remington      NIST                 kremington@nist.gov
+Clint Whaley         UT, Knoxville        rwhaley@cs.utk.edu
+Chao Yang            NEC                  cyang@atcc.necsyl.com
+</PRE>
+<P>
+Susan Blackford and Karin Remington agreed to take minutes for
+the meeting.</P>
+</BODY></HTML>

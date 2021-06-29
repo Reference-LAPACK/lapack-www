@@ -1,0 +1,231 @@
+<HTML><HEAD>
+<TITLE>BLAST Forum MINUTES</TITLE>
+ 
+<CENTER><H2>BLAST Forum MINUTES</H2></CENTER>
+ 
+<CENTER><H2>February 27-28, 1997</H2></CENTER>
+ 
+<CENTER><H2>Clarion Hotel, Dallas, TX</H2></CENTER></HEAD>
+ 
+<BODY>
+ 
+<UL>
+<LI>Thirty-two people attended the <a href="http://www.netlib.org/utk/papers/blast-forum.html">BLAST Forum</a> in Dallas, TX on
+February 27-28, 1997.  The meeting was hosted by HP/Convex.
+</UL>
+<HR>
+<H2><B>February 27, 1997</B></H2>
+<P>
+Jack Dongarra opened the meeting by welcoming everyone and inviting
+everyone to introduce themselves.  He then reviewed the technical
+``rules of order'' for the first and second readings of proposals, as
+well as the voting procedures for the meeting.  Tony Skjellum
+suggested that we integrate all of the proposals into one unified
+document, similar in style to the MPI proposal.  This issue was
+discussed in further detail later in the meeting.</P>
+<P>
+The following presentations were made:</P>
+<UL>
+<LI>BLAS Functionality -- Sven Hammarling and Linda Kaufman
+<LI>Sparse BLAS -- Roldan Pozo
+<LI>BLAS Lite -- Tony Skjellum
+<LI>Parallel BLAS -- Antoine Petitet
+<LI>Interval BLAS -- Chenyi Hu
+<LI>C Interface to the BLAS -- Clint Whaley
+<LI>Language binding issues -- Andrew Lumsdaine
+</UL>
+<P>
+BLAS functionality was the first to be addressed.  Sven Hammarling of
+NAG gave a brief overview of the Functionality proposal that has been
+available via the BLAST Forum homepage, as well as addressing several
+email messages from users pertaining to desired ``new'' routines.  He
+stressed the areas of the proposal that still need to be written,
+specifically the introductory background motivation, performance
+issues, numerical stability, as well as justification for the new
+proposed functionality.  Any new functionality that is proposed should
+have a clear justification identifying the applications where this
+operation is needed.  Several attendees debated if some of the
+information contained in the proposal is not strictly
+``functionality'' issues, but rather language independent
+specifications as well as language bindings.  It was proposed that
+some of the information in the tables of proposed routines be
+reorganized into separate sections on these issues.</P>
+<P>
+Linda Kaufman of Bell Labs then spoke about her recent revisions to
+the proposal, namely adding priorities to each of the new proposed
+routines.  Mimi Celis of SGI and Sven Hammarling of NAG directed
+attention to the standardization efforts of the VSIP (Vector, Signal
+and Image Processing) community.  Roldan Pozo of NIST proposed a study
+to see the use of BLAS in applications.  He stressed an effort to
+clearly justify what is included and what is not included in order to
+realistically accomplish our goals.  Several of the application
+developers present in the meeting voiced that they felt the
+``Functionality'' proposal does accurately reflect the needs of their
+users.  However, it was also pointed out that there are those in the
+numerical analysis community who will never rewrite their codes in
+terms of the BLAS.  And in some cases, it is too expensive to rewrite
+optimized existing application programs such as NASTRAN and GAUSSIAN
+in terms of the BLAS.  Some vendors have inserted BLAS calls inside
+these codes, while others have chosen to optimize them in different
+ways.</P>
+<P>
+Tony Skjellum of Mississippi State emphasized that most programmers
+develop their algorithms first in ``matlab-type'' environments.  The
+use of standards in numerical analysis programming could be increased
+by promoting a ``BLAST toolbox'' in Matlab, or more strongly encourage
+the use of LAPACK and the BLAS inside of Matlab.</P>
+<P>
+After a break, Roldan Pozo of NIST presented the sparse BLAS proposal
+that is available on the BLAST Forum homepage.  He discussed the roles
+and functionality of the Sparse BLAS, as well as open issues in their
+development.  Again it was voiced that several of the issues discussed
+were not primarily functionality issues but language binding issues.
+Concern was also expressed by several attendees due to the sheer
+volume of routines proposed.  In order for a sparse BLAS to be more
+readily accepted, the number of proposed routines may need to be
+reduced.</P>
+<P>
+After Roldan's presentation, a break-out session for the meeting of
+subgroups was held.  The following subgroups met: functionality,
+sparse BLAS, parallel BLAS, lite BLAS, and the C interface to the
+BLAS.</P>
+<HR>
+<H2><B>February 28, 1997</B></H2>
+<P>
+Jack Dongarra opened the morning session with a brief summary of the
+previous day's discussions.</P>
+<P>
+Tony Skjellum began the morning discussions with an overview of his
+thoughts on the presentation of our ``proposals'' for the BLAST work,
+specifically organization of a unified document for the BLAST
+proposal instead of separate ``proposals''.  The document would primarily
+contain separate chapters on functionality, language independent
+specifications, and language binding issues.  Interleaved in these
+sections would be information pertaining to the sequential, sparse,
+parallel, etc.  Several attendees voiced concern at this one proposal idea
+instead of separate proposals.  Specifically, if a user or vendor
+is only interested in information pertaining to the sparse BLAS, he
+would still need to read the entire document.  Richard Hanson of VNI
+suggested that we have an ``implementation'' chapter or appendix
+to ease the integration job for the vendors.  Linda Kaufman of Bell
+Labs further suggested a ``tutorial'' or ``quick reference guide''
+for each of the different standards proposed.  Jack Dongarra of UT
+stressed the importance of a reference implementation that should
+be included with the standard.</P>
+<P>
+Following this discussion, Tony Skjellum presented the BLAS Lite
+proposal that is available on the BLAST Forum homepage.  Several
+vendors expressed concern about the volume of routines that are
+proposed.  It was suggested that a more extensive performance
+evaluation of the Lite BLAS be conducted before a decision is made on
+their inclusion in the standardization effort.  Concern was raised
+about the portability of the Lite BLAS since they are in effect a
+``cache-based'' BLAS.  Andrew Lumsdaine and Brian McCandless, who have
+implemented preliminary versions of the BLAS Lite routines, promised
+to make their results available to the BLAST Forum in a timely
+fashion.</P>
+<P>
+Antoine Petitet of UT led discussion on the issues involved in
+developing a set of parallel BLAS.  A note discussing the issues
+is available on the BLAST Forum homepage.</P>
+<P>
+Chenyi Hu of the University of Houston, Downtown, presented a few
+slides on the needs of the Interval BLAS community.  It was suggested
+that a separate section for the Interval BLAS be included in the
+BLAST proposal.</P>
+<P>
+After lunch, Clint Whaley of UT summarized what is contained in the
+``C Interface to the Existing BLAS'' proposal available on the BLAS
+Forum homepage.  He also discussed what occurred in the ``break-out''
+session the previous day.  Jesse Bennett of Texas Instruments also
+gave a brief presentation on what he perceives as user needs for the
+CBLAS.  The majority of opinions from vendors supported the view that
+the operations should be ``row-major'', and that character arguments
+should be handled as enumerated types.  Mimi Celis of SGI specifically
+said that SGI had introduced a C interface for the BLAS which was
+``column-major'' and the C users refused to use it.  It was then
+suggested that it may be possible to present a ``row-major'' interface
+to the existing BLAS through careful manipulation of the transpose in
+calculations.  An attendee thought that this is the way that Digital
+Corporation presented a ``row-major'' interface, and this is under
+investigation.  Again the VSIP standardization effort was mentioned in
+regards to two-dimensional arrays in Fortran versus C.  Mimi Celis of
+SGI stated that in the VSIP effort it is assumed that two-dimensional
+arrays in C are contiguous.  Email conversation on these topics (as
+well as the issue of a ``complex'' data type) were encouraged.</P>
+<P>
+Andrew Lumsdaine next spoke about the question of the organization of
+the Forum, the presentation of the proposal document, the varied user
+base, and his recommendations for how we should proceed.  Concern was
+again raised for the user who is only interested in one aspect of the
+standard and must read the entire document.  A straw vote was taken to
+ascertain if we should try to integrate the BLAST proposal into one
+unified document.  Appendices for a ``tutorial'' and ``reference
+implementation'' will be included.  The vote was unanimous to
+integrate the proposals into one unified document.  Twenty-two people
+were present for the vote.</P>
+<P>
+A summary of the meeting was then provided by Jack Dongarra.  He focused
+on the specific tasks of writing several needed chapters for the
+BLAST proposal.  Namely:</P>
+<UL>
+<LI>New BLAS -- Sven/Linda/Roldan/Karin/Antoine
+<LI>LiteBLAS -- Tony/Andrew/Puri/...
+<LI>LegacyBLAS -- Clint/...
+</UL>
+<P>
+The document will be established on the net, and individual chapters
+will be available for downloading in latex format.</P>
+<P>
+The global editors for the BLAST proposal are Andrew Lumsdaine and
+Tony Skjellum.</P>
+<P>
+The tentative date of the next forum meeting is:</P>
+<UL>
+<LI>May 11-12, 1997 in Portland, OR
+</UL>
+<P>
+and will be hosted by Intel Corporation, with a preliminary deadline
+of April 30, 1997 for subgroup progress.</P>
+<P>
+The meeting was then adjourned by Jack Dongarra at 3:00 PM.</P>
+<P>
+Attendees list for the February 27-28, 1997 BLAST Forum Meeting</P>
+<PRE>
+Puri Bangalore       Miss. State Univ.         puri@cs.msstate.edu
+Jesse Bennett        Texas Instruments         jesse@seas.smu.edu
+Susan Blackford      Univ. of TN, Knoxville    susan@cs.utk.edu
+Mimi Celis           SGI                       celis@sgi.com
+Andrew Chapman       NEC Systems Laboratory    chapman@hstc.necsyl.com
+Isom Crawford        HP/Convex                 isom@rsn.hp.com
+Dave Dodson          HP/Convex                 dodson@rsn.hp.com
+Jack Dongarra        Univ. of TN / ORNL        dongarra@cs.utk.edu
+Paul Dressel         HP/Convex                 dressel@rsn.hp.com
+Cormac Garvey        NEC Systems Laboratory    garvey@hstc.necsyl.com
+Ian Gladwell         SMU                       gladwell@seas.smu.edu
+Bruce Greer          Intel                     bruce_s_greer@ccm.jf.intel.com
+John Gunnels         Univ. of TX, Austin       gunnels@cs.utexas.edu 
+Sven Hammarling      NAG, UK                   sven@nag.co.uk
+Richard Hanson       VNI                       hanson@houston.vni.com
+Chenyi Hu            Univ. of Houston/Downtown chu@uh.edu
+Linda Kaufman        Bell Labs                 lck@lucent.com
+Jim Koehler          HP/Convex                 koehler@convex.hp.com
+Hsin-Ying Lin        HP Convex Technology Ctr. lin@rsn.hp.com
+John Liu             HP/Convex                 jliu@rsn.hp.com
+Andrew Lumsdaine     Univ. of Notre Dame       Lumsdaine.1@nd.edu
+Brian McCandless     Univ. of Notre Dame       bmccandl@nd.edu
+Joan McComb          IBM Poughkeepsie          mccomb@vnet.ibm.com
+Jim Nagy             SMU                       jnagy@mail.smu.edu
+Antoine Petitet      Univ. of TN               petitet@cs.utk.edu
+Roldan Pozo          NIST                      pozo@nist.gov
+Karin Remington      NIST                      karin@cam.nist.gov 
+Tony Skjellum        Miss. State Univ.         tony@cs.msstate.edu
+Shane Story          Intel                     shane@ibeam.jf.intel.com 
+Kevin Wadleigh       HP/Convex                 wadleigh@rsn.hp.com
+Clint Whaley         Univ. of TN, Knoxville    rwhaley@cs.utk.edu
+Guodong Zhang        HP/Convex                 zhang@rsn.hp.com
+</PRE>
+<P>
+Susan Blackford and Andrew Lumsdaine agreed to take minutes for
+the meetings.</P>
+</BODY></HTML>

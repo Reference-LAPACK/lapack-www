@@ -1,0 +1,83 @@
+  FAQ
+======
+
+BLAS Frequently Asked Questions (FAQ)
+
+lapack@icl.utk.edu | http://icl.cs.utk.edu/lapack-forum/[Sca/LAPACK User Forum] | http://www.netlib.org/blas/[Home]
+
+
+Many thanks to the netlib_maintainers@netlib.org for their help. 
+
+
+== 1)[[What is the BLAS?]]What and where are the BLAS?
+
+The BLAS (Basic Linear Algebra Subprograms) are routines that provide standard building blocks for performing basic vector and matrix operations. The Level 1 BLAS perform scalar, vector and vector-vector operations, the Level 2 BLAS perform matrix-vector operations, and the Level 3 BLAS perform matrix-matrix operations. Because the BLAS are efficient, portable, and widely available, they are commonly used in the development of high quality linear algebra software, http://www.netlib.org/lapack/[LAPACK] for example.
+
+== 2)[[Are there legal restrictions on the use of BLAS reference implementation software?]] Are there legal restrictions on the use of BLAS reference implementation software?
+
+The reference BLAS is a freely-available software package. It is available from netlib via anonymous ftp and the World Wide Web. Thus, it can be included in commercial software packages (and has been). We only ask that proper credit be given to the authors.
+
+Like all software, it is copyrighted. It is not trademarked, but we do ask the following:
+
+* If you modify the source for these routines we ask that you change the name of the routine and comment the changes made to the original.
+
+* We will gladly answer any questions regarding the software. If a modification is done, however, it is the responsibility of the person who modified the routine to provide support.
+
+== 3)[[Publications/references for the BLAS?]] Publications/references for the BLAS?
+
+1. C. L. Lawson, R. J. Hanson, D. Kincaid, and F. T. Krogh, Basic Linear Algebra Subprograms for FORTRAN usage, http://dl.acm.org/citation.cfm?doid=355841.355847[ACM Trans. Math. Soft., 5 (1979)], pp. 308--323.
+2. J. J. Dongarra, J. Du Croz, S. Hammarling, and R. J. Hanson, An extended set of FORTRAN Basic Linear Algebra Subprograms, http://dl.acm.org/citation.cfm?doid=42288.42291[ACM Trans. Math. Soft., 14 (1988)], pp. 1--17.
+3. J. J. Dongarra, J. Du Croz, S. Hammarling, and R. J. Hanson, Algorithm 656: An extended set of FORTRAN Basic Linear Algebra Subprograms, http://dl.acm.org/citation.cfm?doid=42288.42292[ACM Trans. Math. Soft., 14 (1988)], pp. 18--32.
+4. J. J. Dongarra, J. Du Croz, I. S. Duff, and S. Hammarling, A set of Level 3 Basic Linear Algebra Subprograms, http://dl.acm.org/citation.cfm?doid=77626.79170[ACM Trans. Math. Soft., 16 (1990)], pp. 1--17.
+5. J. J. Dongarra, J. Du Croz, I. S. Duff, and S. Hammarling, Algorithm 679: A set of Level 3 Basic Linear Algebra Subprograms, http://dl.acm.org/citation.cfm?doid=77626.77627[ACM Trans. Math. Soft., 16 (1990)], pp. 18--28.
+
+New BLAS
+
+1. L. S. Blackford, J. Demmel, J. Dongarra, I. Duff, S. Hammarling, G. Henry, M. Heroux, L. Kaufman, A. Lumsdaine, A. Petitet, R. Pozo, K. Remington, R. C. Whaley, An Updated Set of Basic Linear Algebra Subprograms (BLAS), http://toms.acm.org/V28.html[ACM Trans. Math. Soft., 28-2 (2002)], pp. 135--151.
+2. J. Dongarra, Basic Linear Algebra Subprograms Technical Forum Standard, International Journal of High Performance Applications and Supercomputing, 16(1) (2002), pp. 1--111, and International Journal of High Performance Applications and Supercomputing, 16(2) (2002), pp. 115--199.
+
+== 4)[[Is there a Quick Reference Guide to the BLAS available?]] Is there a Quick Reference Guide to the BLAS available?
+
+Yes, the Quick Reference Guide to the BLAS is available in http://www.netlib.org/blas/blasqr.ps[postscript] and http://www.netlib.org/blas/blasqr.pdf[pdf.]
+
+== 5)[[Are optimized BLAS libraries available? Where can I find vendor supplied BLAS?]]Are optimized BLAS libraries available? Where can I find optimized BLAS libraries?
+
+YES! Machine-specific optimized BLAS libraries are available for a variety of computer architectures. These optimized BLAS libraries are provided by the computer vendor or by an independent software vendor (ISV) (see list below). For further details, please contact your local vendor representative.
+
+Two platform independant and free library alternatives are available:
+
+ - http://math-atlas.sourceforge.net/[ATLAS] automatically generates an optimized BLAS library for his architecture. Some prebuilt optimized BLAS libraries are also available from the ATLAS site.
+
+ - http://www.openblas.net[OpenBLAS] (a fork of GotoBLAS) is a free open-source alternative to the vendor BLAS implementations.  It is packaged on many end-user Linux distributions such as Ubuntu, and is thus readily available for users who perform calculations on their personal computers.  Its speed is decent and fairly competitive with Vendor BLAS e.g. MKL.
+
+If all else fails, the user can download a http://www.netlib.org/blas/blas.tgz[Fortran77 reference implementation of the BLAS] from netlib. However, keep in mind that this is a reference implementation and is not optimized.
+
+ .BLAS vendor library List Last updated: Aug 15, 2017 
+[options="header"]
+|=========================
+|Vender |URL
+|AMD |http://developer.amd.com/tools-and-sdks/cpu-development/amd-core-math-library-acml/[ACML]
+|Apple |https://developer.apple.com/library/mac/navigation/#section=Frameworks&topic=Accelerate[Accelerate framework]
+|Arm |https://developer.arm.com/products/software-development-tools/hpc/arm-performance-libraries[Arm Performance Libraries]
+|Compaq |http://h18000.www1.hp.com/math/documentation/cxml/dxml.3dxml.html[CXML]
+|Cray |http://h18000.www1.hp.com/math/documentation/cxml/dxml.3dxml.html[libsci]
+|HP |http://h21007.www2.hp.com/portal/site/dspp/menuitem.863c3e4cbcdc3f3515b49c108973a801/?ciid=c008a8ea6ce02110a8ea6ce02110275d6e10RCRD[MLIB]
+|IBM |http://publib16.boulder.ibm.com/pseries/en_US/infocenter/base/aix43.htm[ESSL]
+|Intel |https://software.intel.com/en-us/intel-mkl[MKL]
+|NEC |http://jpn.nec.com/index.html?redirectfrom=/hpc/mediator/sxm_e/software/61.html[PDLIB/SX]
+|SGI |http://www.sgi.com/products/software/scsl.html[SCSL]
+|SUN |http://www.oracle.com/technetwork/java/index.html[Sun Performance Library]
+|==========================
+
+== 6)[[Where can I find Java BLAS?]] Where can I find Java BLAS?
+
+Yes, Java BLAS are available. Refer to the following URLs: http://icl.cs.utk.edu/f2j/[Java LAPACK] and http://math.nist.gov/javanumerics/[JavaNumerics] The JavaNumerics webpage provides a focal point for information on numerical computing in Java.
+
+
+== 7)[[What about shared memory machines? Are there multithreaded versions of the BLAS available?]] What about shared memory machines? Are there multithreaded versions of the BLAS available?
+
+ATLAS, Goto BLAS (two threads only) and most of the BLAS library available via vendors are multithreaded.
+
+
+
+lapack@icl.utk.edu   | http://icl.cs.utk.edu/lapack-forum/[ScaLAPACK User Forum] | http://www.netlib.org/blas/[Home]

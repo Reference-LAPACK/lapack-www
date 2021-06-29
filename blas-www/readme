@@ -1,0 +1,19 @@
+
+1. comments on machine constants.
+
+i1mach, r1mach, d1mach were introduced in the PORT library;
+They represent values checked by extensive testing and are not naive counts
+of "how many bits in a word".  Because some machines use extended precision
+registers (and others have "dirty" corners in floating point space, trying
+to calculate such quantities directly is problematical.  When practical,
+we replace machine constants in the various netlib libraries by calls
+to *1mach and keep these three routines up to date.
+
+
+2. comments on double complex
+
+If you get error messages from your compiler, chances are that double
+complex intrisic functions are spelled differently on your system.
+Since this didn't make it into the Fortran77 standard, vendors adopted
+incompatible conventions.
+

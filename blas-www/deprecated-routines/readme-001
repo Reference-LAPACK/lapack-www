@@ -1,0 +1,72 @@
+Subject:        [Lapack] Re: discrepancy in source code?
+Date:   Mon, 12 Apr 2004 13:21:30 -0400
+
+
+
+Hello
+
+I would like some clarification on a discrepancy I found. A call to
+dtrsm in dgelub appears to be missing a parameter. The subroutine dtrsm
+requires 11 parameters to call. In subroutine dgelub, when call is made
+to dtrsm only 10 parameters are passed. Thanks ahead of time.
+
+
+  From _http://www.netlib.org/blas/dgelub.f_
+
+*        Compute superdiagonal block of U.
+*
+          CALL DTRSM ('Left','Lower','No transpose','Unit',
+      $               J-1,JB,A(1,1),LDA,A(1,J),LDA)
+
+
+Though in _http://www.netlib.org/blas/dtrsm.f_
+
+       SUBROUTINE DTRSM ( SIDE, UPLO, TRANSA, DIAG, M, N, ALPHA, A, LDA,
+      $                   B, LDB )
+
+
+------- Comment #1 From Julien Langou 2005-02-04 14:58 [reply] -------
+
+Subject: Re: [Lapack] Re: discrepancy in source code?
+Date: Tue, 13 Apr 2004 15:42:24 +0100
+From: 
+To: 
+
+Dear David,
+
+That certainly looks like a bug.  I would recommend that you use an LAPACK
+routine instead of dgelub; DGETRF is the equivalent LAPACK routine.
+
+Best wishes,
+
+Sven Hammarling.
+
+
+
+
+------- Comment #2 From Julien Langou 2005-02-04 14:58 [reply] -------
+
+Date: Wed, 14 Apr 2004 11:04:24 -0400
+From: Edward Anderson 
+To: 
+Subject: Re: Fwd: [Lapack] Re: discrepancy in source code?
+
+Dear Dr. Hochmann:
+
+This isn't a bug in LAPACK because dgelub is not an LAPACK routine.  It
+appears to be an early prototype for the LAPACK factorization routine
+DGETRF.  This routine is certainly buggy and it and dgelu.f should be
+deleted from netlib.  As Sven pointed out, you should use the LAPACK
+routine instead.
+
+My hard copy of the Argonne technical report describing the Level 3 BLAS
+has a hand-written note that says ALPHA was added to the argument list
+for xTRMM and xTRSM in June, 1988.  The argument ALPHA is present in the
+Argonne report (my copy is dated July 19, 1988) and in the TOMS version
+which appeared in 1990, and it should be present in all software
+developed since then.
+
+   --Ed Anderson
+
+
+

@@ -1,0 +1,328 @@
+<HTML><HEAD>
+<TITLE>BLAST Forum MINUTES</TITLE>
+
+<CENTER><H2>BLAST Forum MINUTES</H2></CENTER>
+
+<CENTER><H2>February 19-20, 1996</H2></CENTER>
+
+<CENTER><H2>Embassy Suites, Nashville, TN</H2></CENTER></HEAD>
+
+<BODY>
+
+<UL>
+<LI>Twenty-four people attended the
+<a href="http://www.netlib.org/utk/papers/blast-forum.html">BLAST Forum</a>
+in Nashville, TN on February 19-20, 1996.
+<LI> Susan Ostrouchov and Andrew Lumsdaine agreed to take minutes for the
+meetings.
+</UL>
+<HR>
+<H2><B>February 19, 1996</B></H2>
+<P>
+Jack Dongarra opened the meeting by welcoming everyone and inviting
+everyone to introduce themselves.  He then gave a brief summary of the
+<a href="http://www.netlib.org/utk/papers/sblas-meeting.html"> BLAS
+Technical Workshop</a> held in November, 1995 in Knoxville, TN, and
+the Birds-Of-A-Feather session held at SuperComputing '95 in San
+Diego, CA.</P>
+<P>
+The discussion began with the question ``What do we want to
+accomplish?''.  Basic functionality was stressed along with who will
+benefit from our efforts.  Our efforts should leverage from existing
+technology and provide backward compatibility.  No particular
+programming language will be primary, instead we will discuss syntax
+and semantics that apply to Fortran 77, Fortran 90, C, and C++.  We
+discussed portability and efficiency and at what levels of the
+interface each is most important.  It was proposed that we need to
+provide testing software and specifications for BLAS routines in
+general.  It would be good to supply reference implementations
+of what is agreed on as we identify and define the interface.
+Matrix creation routines were proposed for the parallel
+BLAS, and ``multiple instances'' routines were proposed for the dense
+serial BLAS.  The inclusion of interval BLAS was also proposed.</P>
+<P>
+Jack Dongarra then displayed a slide from Mike Heroux about an update
+to the
+<a href="http://www.cray.com/PUBLIC/APPS/SERVICES/ALGORITHMS/spblastk.ps">
+Sparse BLAS Toolkit.</a>
+<P>
+The idea of ``layering'' of the BLAS packages
+in a hierarchical view of development was presented.
+We propose to build an object-based interface on the top of the Lite
+BLAS.  A straw vote was taken on the issue of whether the user
+interface should be object-based or lite-based.  Thirteen people
+voted to discuss both issues together, zero people voted to discuss
+solely object-based, and ten people voted to discuss solely
+lite-based BLAS. </P>
+<P>
+BLAS Lite would provide a highly efficient set of computational kernels for
+basic linear algebra operations.  The interface would be light weight 
+in the sense that they would have little overhead and provide for
+good performance on all problem sizes, in particular small size problems.</P>
+<P>
+The interface would have</P>
+<UL>
+<LI>  No run-time function overloading with additional arguments.
+      (Such an interface could be provided on top of this layer.)
+<LI>  No error-checking should be performed.
+<LI>  No character string arguments should be allowed.
+<LI>  Code should be inlineable.
+<LI>  Software should allow caching of reusable structure information.
+<LI>  Separate interface for stride 1 operations is needed.
+</UL>
+<P>
+Jack Dongarra proposed that the rules for the meeting be adopted 
+that are similar to those that were established for the MPI and 
+HPF Forum meetings.  For a preliminary set of forum rules for discussion see:
+<a href="http://www.netlib.org/utk/papers/blast-forum-rules.html">
+rules</a></P>
+<P>
+Issues of advertising and mailing lists were also discussed.
+It was decided that an aggressive strategy should be used to encourage 
+more application programmers and hardware and software vendors to attend.</P>
+<P>
+It was decided to restrict discussion to 3 primary meta-subgroups:</P>
+<UL>
+<LI> abstract functionality
+<LI> BLAS Lite
+<LI> object-based BLAS
+</UL>
+<P>
+Barry Smith presented a discussion on abstract functionality for all
+versions of the BLAS.  His basic question was ``What should the BLAS
+be?''.  He chose to ignore the issues specific to dense, sparse, or
+parallel BLAS, and instead discuss the general functionality issues
+pertaining to the different types.  A second question was: ``Is
+functionality directly related to parallelism?''.  Again the issue of
+``multiple instances'' was discussed.  There are different ways of
+classifying functionality -- BLAS-like and tensor notation.  Should we
+extend our classification of the BLAS to a different notation?</P>
+<P>
+It was concluded that we need input from the user community on the
+most needed functionality.  We will create a web page to present our
+proposed functionality and ask for comments and suggestions.</P>
+<P>
+After a break, Andrew Lumsdaine presented a proposal for an object-based
+interface for the BLAS.  He began by asking</P>
+<UL>
+<LI> What are the objects?
+<LI> What attributes should they have?
+<LI> What functionality should they have?
+</UL>
+<P>
+Some of the key questions that were addressed were:</P>
+<OL>
+<LI> Is a vector a matrix or something else?
+<LI> Are sparsity, symmetry, triangular attributes or should they be different
+types?
+</OL>
+<P>
+On question #1, Robert van de Geijn strongly suggested that vectors
+and matrices should be considered separately.  He proposed that we
+consider vectors, multi-vectors, matrices and multi-matrices.  This
+view was seconded was several people in the audience including those
+proposing the inclusion of ``multiple instances'' routines in the
+BLAS.</P>
+<P>
+On question #2, Barry Smith suggested that we consider them as both,
+and proposed that we prepare a list of attributes.</P>
+<P>
+During the discussion of the object-based interface, Andrew Lumsdaine
+mentioned that it may be important to consider the effects of new
+parts of the ANSI C++ standard, especially the Standard Template
+Library.</P>
+<P>
+It was also proposed that we create and provide class libraries.  We
+should propose class definitions for each language, and these will
+live on top of the same kernels.  We would be restricted by the shared
+features of all four languages.  The ``lite'' kernels are language
+independent, and only at the higher level do the interfaces need to
+interact with the specifics of the language.</P>
+<P>
+It was then asked what storage formats should be supported.  Should
+the formats be explicit (since different formats offer different
+performance at different stages), and should the functions be
+``objectified'', i.e., persistent functions?  It was decided that we
+should allow matrix free formats, and allow arbitrary block sizes.</P>
+<P>
+And finally, Anne Trefethen presented her remarks on library development
+as it was done in the CMSSL library at Thinking Machines.  She presented
+object-based examples, shifts, poly-shifts (shifts from multiple
+dimensions), matrix extraction, and partitioned gather/scatter.</P>
+<P>
+After dinner, Robert van de Geijn presented a brief session to discuss
+his ideas on matrix distribution in the parallel setting.</P>
+<HR>
+<H2><B>February 20, 1996</B></H2>
+<P>
+Jack Dongarra opened the morning session with a summary of the
+previous day's discussions.  The first topic of the morning was a
+continuation of the discussion of the object-based BLAS interface,
+which was again led by Andrew Lumsdaine.  During this session, the
+discussion was focused on categorizing important issues to be
+addressed regarding objet-based BLAS.  Besides those from the previous
+object-based BLAS session, the following issues were raised:</P>
+<UL>
+<LI> Who are the users of the object-based BLAS?
+<LI> Sub-matrices should be able to be extracted easily.
+<LI> A means for expressing blocking must be provided.  Blocking
+     issues can be due to application, algorithm, and architecture,
+     and all three types of blocking need to be considered, as well as
+     other types of spatial and temporal locality that might impact
+     performance.
+<LI> A generalization of the blocking specification would be the
+     provision of a general "hints" interface.  Kaufman stressed the
+     importance of providing good defaults for such an interface. 
+<LI> A clean and efficient interface for building and accessing
+     objects must be provided.  One particular case that was discussed
+     by van de Geijn was that of elemental construction.
+<LI> Hierarchical definitions of vectors and matrices should be
+     supported.
+<LI> Proper indexing abstractions, both for sequential and distributed
+     objects, are important.  This issue is related to blocking
+     and submatrix extraction.
+<LI> What language interfaces should be provided, and what syntax and
+     semantics should be associated?
+<LI> What properties will the matrix and vector objects have?  Will
+     they be mutable?
+<LI> The issue of multiple instances was again discussed and must
+     clearly be supported.  One issue to be resolved is how regular or
+     irregular multiple instance problems may be.
+</UL>
+<P>
+Next, Robert van de Geijn presented an overview of hp-adaptive methods in
+order to illustrate some of the issues that arise in real
+applications.  (The need for involvement from the applications
+community was a recurring theme throughout the meeting.)  One new
+issue that was brought up by Robert's example was the need for
+providing matrices that can be dynamically sized.  </P>
+<P>
+After a short break, the meeting resumed and Barry Smith began with an
+overview of his impressions of the previous day's discussions.  He
+presented a chart to illustrate the interactions between the so-called
+lite level, the object-based level, the language bindings, and the
+BLAS compatibility layer.  Interacting with all of these was the
+specification of functionality.</P>
+<P>
+Barry then presented an example of lite-level and object-level
+code to illustrate what he perceived to be the important differences.
+He stressed the importance of clearly distinguishing between the two
+levels in terms of their requirements.  Anne Trefethen raised the important
+point that even though the forum is initially considering the design
+of sequential functions that it is extremely important to consider the
+impact of our design decisions on future use of the functions by
+parallel libraries (in particular the parallel BLAS).</P>
+<P>
+Some discussion of language interfaces followed and there was some
+debate about what the F77 and C interfaces should look like.  van de
+Geijn presented an example of a F77 parallel Cholesky factorization
+using an object-flavored library.  Some of the Fortran programmers in
+the audience were not comfortable with the programming practices used
+in the example and were not certain whether an object-based interface
+would find wide acceptance in the F77 community.  Barry Smith then suggested
+that perhaps an object-based interface for F77 should not be
+supported.  Lumsdaine mentioned that in the MPI Forum, such issues are
+handled by letting interested parties work on the areas that are of
+concern to them, i.e., if someone wants F77 support, they should
+propose the interface and participate in the BLAST forum.</P>
+<P>
+Following lunch, Linda Kaufman led a discussion of BLAS functionality.
+The primary issues discussed were</P>
+<UL>
+<LI> Generalizing certain vector operations (e.g., AXPY) to the
+     matrix case.  There was general agreement that this was sensible
+     in the dense case. 
+<LI> Householder transformations should be supported.
+<LI> The necessity of supporting multiple instances.  Again, the issue
+     of how regular a collection of problems would have to be to be
+     considered a multiple instance was discussed.  Tensors were
+     mentioned as possibly being an appropriate mathematical tool for
+     discussing multiple instance problems.
+<LI> Operations of the form A*B*C might be considered for support.
+</UL>
+<P>
+Thread safety was also raised as a concern.</P>
+<P>
+Sven Hammarling next discussed a proposal from Demmel and Kahan for
+extended precision BLAS.  This was felt to be a difficult issue
+because of the need for hardware support in order to obtain high
+performance.  On the other hand, the proposal was felt to be a
+reasonable one.</P>
+<P>
+Support for interval arithmetic was also discussed.  Jack Dongarra
+asked Chenyi Hu briely introduced interval computing. Hu suggested to
+establish an interval BLAS subgroup.</P>
+<P>
+Dongarra wrapped up the meeting by establishing the following
+subgroups and their leaders:</P>
+<UL>
+<LI> Functionality -- Sven Hammarling and Barry Smith
+<LI> Lite -- Tony Skjellum and Barry Smith
+<LI> Object-based -- Andrew Lumsdaine and Anne Trefethen
+</UL>
+<P>
+Mailing lists would be setup for these subgroups as well as a general 
+mailing list and a mailing list for people who have attended the Forum.</P>
+<UL>
+<LI>  blast-comm@cs.utk.edu
+<LI>  blast-core@cs.utk.edu
+<LI>  blast-function@cs.utk.edu
+<LI>  blast-lite@cs.utk.edu
+<LI>  blast-ob@cs.utk.edu
+<LI>  blast-lang@cs.utk.edu
+<LI>  blast-parallel@cs.utk.edu
+<LI>  blast-ds@cs.utk.edu
+<LI>  blast-sparse@cs.utk.edu
+<LI>  blast-ext@cs.utk.edu
+</UL>
+<P>
+A Web page will be set up and advertised and will be used to gather
+comments on the forum discussions.  In particular, we are interested
+in finding out what functionality the user community feels to be
+important.</P>
+<P>
+The dates of the next forum meetings are:</P>
+<UL>
+<LI> April 12 @ Copper Mountain (not a working meeting)
+<LI> May 20-22 (exact place and date to be decided within 2 weeks)
+<LI> Aug. 12-14
+<LI> Oct. 9-11 @ Coeur d'Alene (not a working meeting)
+<LI> Nov. 18-22 SuperComputing '96
+</UL>
+
+<P>
+Jack Dongarra mentioned that he would investigate possibilities for travel
+funds (similar to MPI). These travel funds are intended to partially reimburse
+travel for US academic participation.</P>
+<P>
+The meeting was then adjourned by Jack Dongarra at 3:00 PM.</P>
+<P>
+Attendees list for the February 19-20, 1996 BLAST Forum Meeting</P>
+<PRE>
+Satish Balay         ANL                       balay@mcs.anl.gov
+Puri Bangalore       Miss. State Univ.         puri@cs.msstate.edu
+Phil Bording         Univ. of Texas, Austin    bording@utig.ig.utexas.edu
+Andrew Cleary        Univ. of TN               cleary@cs.utk.edu
+John Dempsey         SUNY Albany               dempsey@cs.albany.edu
+Jack Dongarra        Univ. of TN / ORNL        dongarra@cs.utk.edu
+Bruce Greer          Intel -- WTL              bruce_s_greer@ccm.jf.intel.com
+Sven Hammarling      NAG, UK / Univ. of TN     hammarli@cs.utk.edu
+Chenyi Hu            Univ. of Houston-Downtown chu@uh.edu
+Naoki Iwata          NEC Systems Laboratory    iwata@hstc.necsyl.com
+Chandrika Kamath     DEC                       kamath@caldec.enet.dec.com
+Linda Kaufman        Bell Labs                 lck@research.att.com
+Hsin-Ying Lin        HP Convex Technology Ctr. lin@rsn.hp.com
+Andrew Lumsdaine     Univ. of Notre Dame       Andrew.Lumsdaine@nd.edu
+Joan McComb          IBM Poughkeepsie          mccomb@vnet.ibm.com
+Esmond Ng            ORNL                      ngeg@ornl.gov
+Susan Ostrouchov     Univ. of TN               susan@cs.utk.edu
+Antoine Petitet      Univ. of TN               petitet@cs.utk.edu
+Padma Raghavan       Univ. of TN               padma@cs.utk.edu
+Barry Smith          ANL                       bsmith@mcs.anl.gov
+Anne Trefethen       Cornell Theory Center     aet@tc.cornell.edu
+Robert van de Geijn  Univ. of Texas, Austin    rvdg@cs.utexas.edu
+Jerzy Wasniewski     UNI-C, Denmark            jerzy.wasniewski@uni-c.dk
+Clint Whaley         Univ. of TN               rwhaley@cs.utk.edu
+Yuan-Jye Jason Wu    ANL                       jwu@mcs.anl.gov
+</PRE>
+</BODY></HTML>

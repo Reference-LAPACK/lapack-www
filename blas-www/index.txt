@@ -1,0 +1,506 @@
+ BLAS (Basic Linear Algebra Subprograms)
+========================================
+
+Questions/comments? lapack@icl.utk.edu
+
+Contact us get the lastest news
+
+link:old-index.html[BLAS(Legacy Website)]
+link:faq.html[FAQ]
+
+== Presentation:
+
+The BLAS (Basic Linear Algebra Subprograms) are routines that provide standard building blocks for performing basic vector and matrix operations. The Level 1 BLAS perform scalar, vector and vector-vector operations, the Level 2 BLAS perform matrix-vector operations, and the Level 3 BLAS perform matrix-matrix operations. Because the BLAS are efficient, portable, and widely available, they are commonly used in the development of high quality linear algebra software, http://www.netlib.org/lapack/[LAPACK] for example.
+
+=== Acknowledgments:
+
+This material is based upon work supported by the National Science Foundation under Grant No. ASC-9313958 and DOE Grant No. DE-FG03-94ER25219. Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation (NSF) or the Department of Energy (DOE).
+
+=== History
+
+[width="100%", frame="none", grid="none", cols="4,1"]
+|=======================
+|Discover the great history behind BLAS. On April 2004 an oral history interview was conducted as part of the http://history.siam.org/oralhistories.htm[SIAM project on the history of software for scientific computing and numerical analysis]. This interview is being conducted with Professor Jack Dongarra in his office at the University of Tennessee. The interviewer is Thomas Haigh. +
+http://history.siam.org/pdfs2/Dongarra_%20returned_SIAM_copy.pdf[Download Interview] +
+Enjoy!|image:Jack-SIAM-Interview.jpg["Jack Dongarra - SIAM Interview",width=300,link="http://history.siam.org/pdfs2/Dongarra_%20returned_SIAM_copy.pdf"]
+|=======================
+
+== Software:
+
+=== Licensing:
+
+The reference BLAS is a freely-available software package. It is available from netlib via anonymous ftp and the World Wide Web. Thus, it can be included in commercial software packages (and has been). We only ask that proper credit be given to the authors.
+
+Like all software, it is copyrighted. It is not trademarked, but we do ask the following:
+
+* If you modify the source for these routines we ask that you change the name of the routine and comment the changes made to the original.
+
+* We will gladly answer any questions regarding the software. If a modification is done, however, it is the responsibility of the person who modified the routine to provide support.
+
+=== REFERENCE BLAS Version 3.10.0
+
+ * Download http://www.netlib.org/blas/blas-3.10.0.tgz[blas-3.10.0.tgz]
+
+ * Updated June 2021
+
+ * http://www.netlib.org/blas/blasqr.pdf[Quick Reference Guide]
+
+image:BLAS-snapshot.jpg[
+"BLAS Quick Reference Guide",width=1000,
+link="blasqr.pdf"]
+
+=== CBLAS
+
+ * Download http://www.netlib.org/blas/blast-forum/cblas.tgz[cblas.tgz]
+
+ * Header file: http://www.netlib.org/blas/cblas.h[cblas.h]
+
+=== Level 3 BLAS tuned for single processors with caches
+
+ * Download http://www.netlib.org/blas/gemm_based/ssgemmbased.tgz[ssgemmbased.tgz]
+
+ * Written by Kagstrom B., Ling P., and Van Loan C.
+
+ * http://www.netlib.org/blas/gemm_based/[High Performance GEMM-Based Level-3 BLAS Webpage] - Fortran (High Performance Computing II, 1991, North-Holland)
+
+===  Extended precision Level 2 BLAS routines
+
+ * Download http://www.netlib.org/blas/ecblas2.f[ecblas2.f]
+
+=== BLAS for windows
+The reference BLAS is included inside the LAPACK package. Please refer tools built under Windows using http://www.cmake.org/[Cmake] the cross-platform, open-source build system. The new build system was developed in collaboration with Kitware Inc.
+
+A dedicated website (http://icl.cs.utk.edu/lapack-for-windows/lapack/) is available for Windows users.
+
+image:LAPACK_for_Windows.jpg[
+"BLAS Quick Reference Guide",width=250,
+link="http://icl.cs.utk.edu/lapack-for-windows/lapack"]
+
+* You will find information about your configuration need.
+
+* You will be able to download BLAS pre-built libraries.
+
+=== GIT Access
+
+The LAPACK GIT (http://github.com/Reference-LAPACK) repositories are to open for read-only for our users. The latest version of BLAS is included in LAPACK package.
+
+Please use our LAPACK development repository to get the latest bug fixed, submit issues or pull requests.
+
+=== The netlib family and its cousins
+
+[width="100%", frame="none", grid="none", cols="1,2"]
+|=======================
+|http://www.netlib.org/blas/[Basic Linear Algebra Subprograms] (BLAS)
+|http://www.netlib.org/lapack[LAPACK]
+|https://bitbucket.org/icl/blaspp[BLAS++]
+|https://bitbucket.org/icl/lapackpp[LAPACK++]
+|http://icl.cs.utk.edu/plasma/[PLASMA]
+|http://icl.cs.utk.edu/magma/[MAGMA]
+|http://www.netlib.org/clapack/[CLAPACK] (no longer maintained)
+|http://www.netlib.org/eispack/[EISPACK] (no longer maintained)
+|http://www.netlib.org/linpack/[LINPACK] (no longer maintained)
+|=======================
+
+
+== Support
+If you have any issue (install, performance), just post your questions on the http://icl.cs.utk.edu/lapack-forum/[the LAPACK User Forum].
+You can also send us an email at lapack@icl.utk.edu
+
+
+== Documentation
+
+http://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms[Checkout the BLAS Wikipedia page]
+
+=== BLAS Technical Forum
+The BLAS Technical Forum standard is a specification of a set of kernel routines for linear algebra, historically called the Basic Linear Algebra Subprograms.
+http://www.netlib.org/blas/blast-forum/
+
+=== Optimized BLAS Library
+Machine-specific optimized BLAS libraries are available for a variety of computer architectures. These optimized BLAS libraries are provided by the computer vendor or by an independent software vendor (ISV) . For further details, please see our link:faq.html[FAQs].
+
+Alternatively, the user can download http://math-atlas.sourceforge.net/[ATLAS] to automatically generate an optimized BLAS library for his architecture. Some prebuilt optimized BLAS libraries are also available from the ATLAS site.
+
+If all else fails, the user can download a http://www.netlib.org/blas/blas.tgz[Fortran77 reference implementation of the BLAS] from netlib. However, keep in mind that this is a reference implementation and is not optimized.
+
+BLAS vendor library List Last updated: July 20, 2005
+
+== BLAS Routines
+
+:ICAMAX: http://www.netlib.org/lapack/explore-html/d0/d73/group__aux__blas_ga8b093706b1e37c2ddfdd0a830fe21159.html
+:IDAMAX: http://www.netlib.org/lapack/explore-html/d0/d73/group__aux__blas_ga285793254ff0adaf58c605682efb880c.html
+:ISAMAX: http://www.netlib.org/lapack/explore-html/d0/d73/group__aux__blas_ga16c36ed9a25ca6e68931c4a00d2778e5.html
+:IZAMAX: http://www.netlib.org/lapack/explore-html/d0/d73/group__aux__blas_ga231a2ed6ff4a8e4b69a7f03e2167bdee.html
+:LSAME: http://www.netlib.org/lapack/explore-html/d0/d73/group__aux__blas_gada799b40a93f1fd2c6d1a86a95f21631.html
+:XERBLA: http://www.netlib.org/lapack/explore-html/d0/d73/group__aux__blas_ga377ee61015baf8dea7770b3a404b1c07.html
+:XERBLA_ARRAY: http://www.netlib.org/lapack/explore-html/d0/d73/group__aux__blas_ga45f1b23f68dd586f20299b80d1c9288d.html
+
+=== LEVEL 1
+
+
+:CROTG: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga7a6687e52657bef3d876b03391a06d2c.html
+:DNRM2: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_gab5393665c8f0e7d5de9bd1dd2ff0d9d0.html
+:DROTG: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_gaafa91c51f75df6c3f2182032a221c2db.html
+:DZNRM2: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga7f9f9febc6dc1836c9f5e7c1aa00b743.html
+:SASUM: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_gafc5e1e8d9f26907c0a7cf878107f08cf.html
+:SAXPY: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_gad2a52de0e32a6fc111931ece9b39726c.html
+:SCABS1: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga351f01fdf3baa8e6a71d56ded46b126d.html
+:SCASUM: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_gadd7d12f994e4868ca9998b054707d934.html
+:SCNRM2: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_gaee5779d5d216a7cd8cf83488fb6bb175.html
+:SCOPY: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga24785e467bd921df5a2b7300da57c469.html
+:SDOT: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga37a14d8598319955b711af0d64a6f56e.html
+:SDSDOT: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_gaddc89585ced76065053abffb322c5a22.html
+:SNRM2: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_gad179c1611098b5881f147d39afb009b8.html
+:SROT: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga0ce1ab4726eb7ad925cbd89f100d5ce0.html
+:SROTG: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga55d839ab27a662d848390a2bbe3ee9d3.html
+:SROTM: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga5633344a5729b4f0167aa441dcf95a9c.html
+:SROTMG: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga97ce4e31b77723a3b60fb3f479f61316.html
+:SSCAL: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga3252f1f70b29d59941e9bc65a6aefc0a.html
+:SSWAP: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga0a2eaca94b4941dbc351157126cbb0f6.html
+:ZROTG: http://www.netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga97ce56a6808661b36ab62269393ac10e.html
+* *Single*
+
+  - link:{SROTG}[SROTG] - setup Givens rotation
+  - link:{SROTMG}[SROTMG] - setup modified Givens rotation
+  - link:{SROT}[SROT] - apply Givens rotation
+  - link:{SROTM}[SROTM] - apply modified Givens rotation
+  - link:{SSWAP}[SSWAP] - swap x and y
+  - link:{SSCAL}[SSCAL] - x = a*x
+  - link:{SCOPY}[SCOPY] - copy x into y
+  - link:{SAXPY}[SAXPY] - y = a*x + y
+  - link:{SDOT}[SDOT] - dot product
+  - link:{SDSDOT}[SDSDOT] - dot product with extended precision accumulation
+  - link:{SNRM2}[SNRM2] - Euclidean norm
+  - link:{SCNRM2}[SCNRM2]- Euclidean norm
+  - link:{SASUM}[SASUM] - sum of absolute values
+  - link:{ISAMAX}[ISAMAX] - index of max abs value
+
+:DASUM: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_ga7372361a44de0649813750b3280c58cc.html
+:DAXPY: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_ga8f99d6a644d3396aa32db472e0cfc91c.html
+:DCABS1: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_ga53914429b84cb315da483e71e27ed5c1.html
+:DCOPY: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_ga21cdaae1732dea58194c279fca30126d.html
+:DDOT: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_ga75066c4825cb6ff1c8ec4403ef8c843a.html
+:DROT: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_ga54d516b6e0497df179c9831f2554b1f9.html
+:DROTM: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_ga0d579faa55a493933032c5dcddbe5f4f.html
+:DROTMG: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_ga13e351a3dfafa2cd8dc5302dcf53f69a.html
+:DSCAL: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_ga793bdd0739bbd0e0ec8655a0df08981a.html
+:DSDOT: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_ga32d6fccb43cb13feafc23825f2685ba0.html
+:DSWAP: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_gaca2757ba2c3b2c6fc5d729b50345fac0.html
+:DTRSV: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_gad2a01dd62718b28e35b752dbad8474ab.html
+:DZASUM: http://www.netlib.org/lapack/explore-html/de/da4/group__double__blas__level1_ga60d5c8001b317c929778670a15013eb4.html
+
+* *Double*
+
+  - link:{DROTG}[DROTG] - setup Givens rotation
+  - link:{DROTMG}[DROTMG] - setup modified Givens rotation
+  - link:{DROT}[DROT] - apply Givens rotation
+  - link:{DROTM}[DROTM] - apply modified Givens rotation
+  - link:{DSWAP}[DSWAP] - swap x and y
+  - link:{DSCAL}[DSCAL] - x = a*x
+  - link:{DCOPY}[DCOPY] - copy x into y
+  - link:{DAXPY}[DAXPY] - y = a*x + y
+  - link:{DDOT}[DDOT] - dot product
+  - link:{DSDOT}[DSDOT] - dot product with extended precision accumulation
+  - link:{DNRM2}[DNRM2] - Euclidean norm
+  - link:{DZNRM2}[DZNRM2] - Euclidean norm
+  - link:{DASUM}[DASUM] - sum of absolute values
+  - link:{IDAMAX}[IDAMAX] - index of max abs value
+
+:CAXPY: http://www.netlib.org/lapack/explore-html/da/df6/group__complex__blas__level1_ga9605cb98791e2038fd89aaef63a31be1.html
+:CCOPY: http://www.netlib.org/lapack/explore-html/da/df6/group__complex__blas__level1_ga6113a670d3df40b1b081af52af8c29e1.html
+:CDOTC: http://www.netlib.org/lapack/explore-html/da/df6/group__complex__blas__level1_ga0f02c96fa8498b4aa6b144deee725c0d.html
+:CDOTU: http://www.netlib.org/lapack/explore-html/da/df6/group__complex__blas__level1_gadd72f1b633553acc77250e32bc704a78.html
+:CSCAL: http://www.netlib.org/lapack/explore-html/da/df6/group__complex__blas__level1_gab2d569bbfe6356599c69c057ecc2b3f7.html
+:CSROT: http://www.netlib.org/lapack/explore-html/da/df6/group__complex__blas__level1_gaf660f9cda67820f314f36c9668272987.html
+:CSSCAL: http://www.netlib.org/lapack/explore-html/da/df6/group__complex__blas__level1_ga7ac1991bb0c9da7b63fd64c999d6b859.html
+:CSWAP: http://www.netlib.org/lapack/explore-html/da/df6/group__complex__blas__level1_gaa50b533bbd2eceac1f59dbc780d7a182.html
+
+* *Complex*
+
+  - link:{CROTG}[CROTG] - setup Givens rotation
+  - link:{CSROT}[CSROT] - apply Givens rotation
+  - link:{CSWAP}[CSWAP] - swap x and y
+  - link:{CSCAL}[CSCAL] - x = a*x
+  - link:{CSSCAL}[CSSCAL] - x = a*x
+  - link:{CCOPY}[CCOPY] - copy x into y
+  - link:{CAXPY}[CAXPY] - y = a*x + y
+  - link:{CDOTU}[CDOTU] - dot product
+  - link:{CDOTC}[CDOTC] - dot product, conjugating the first vector
+  - link:{SCASUM}[SCASUM] - sum of absolute values
+  - link:{ICAMAX}[ICAMAX] - index of max abs value
+
+:ZAXPY: http://www.netlib.org/lapack/explore-html/d2/df9/group__complex16__blas__level1_ga51cb4e3c658f121bdfb5f29a6c0a0bfb.html
+:ZCOPY: http://www.netlib.org/lapack/explore-html/d2/df9/group__complex16__blas__level1_gad9555fe739d307171aa5abedd291631a.html
+:ZDOTC: http://www.netlib.org/lapack/explore-html/d2/df9/group__complex16__blas__level1_ga45b00bad9285ff50cd86e97dfb04facd.html
+:ZDOTU: http://www.netlib.org/lapack/explore-html/d2/df9/group__complex16__blas__level1_ga25e3992c589a478c5affcc975c6c7b08.html
+:ZDROT: http://www.netlib.org/lapack/explore-html/d2/df9/group__complex16__blas__level1_ga8309dac8c495a5c833a3253074f7018a.html
+:ZDSCAL: http://www.netlib.org/lapack/explore-html/d2/df9/group__complex16__blas__level1_ga26b12037cfbbebe5bde3faadc557e30b.html
+:ZSCAL: http://www.netlib.org/lapack/explore-html/d2/df9/group__complex16__blas__level1_gaceea1208dcd46b6e5468fbfb53b9281b.html
+:ZSWAP: http://www.netlib.org/lapack/explore-html/d2/df9/group__complex16__blas__level1_ga13a187010a0cae1fef2820072404e857.html
+
+* *Double Complex*
+
+  - link:{ZROTG}[ZROTG] - setup Givens rotation
+  - link:{ZDROT}[ZDROT] - apply Givens rotation
+  - link:{ZSWAP}[ZSWAP] - swap x and y
+  - link:{ZSCAL}[ZSCAL] - x = a*x
+  - link:{ZDSCAL}[ZDSCAL] - x = a*x
+  - link:{ZCOPY}[ZCOPY] - copy x into y
+  - link:{ZAXPY}[ZAXPY] - y = a*x + y
+  - link:{ZDOTU}[ZDOTU] - dot product
+  - link:{ZDOTC}[ZDOTC] - dot product, conjugating the first vector
+  - link:{DZASUM}[DZASUM] - sum of absolute values
+  - link:{IZAMAX}[IZAMAX] - index of max abs value
+
+=== LEVEL 2
+
+
+:SGBMV: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_ga1677e779273da82f0e61504afd07264e.html
+:SGEMV: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_gafc92361b74c6d41c7e5afa0aa5d13ec9.html
+:SGER: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_ga408fbda62b1284363c01d7595da11292.html
+:SSBMV: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_gad8eb1004e944af8112a6e69f668ac53b.html
+:SSPMV: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_gad1af0d0777da05d1c27ea99a69c8017c.html
+:SSPR: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_ga13dca9a765471c68248e8e00190f4d4d.html
+:SSPR2: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_gafa776cb448d7c8bc8acfaf7f6d283959.html
+:SSYMV: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_gabbe9933ddf6f0137156d4f2491f2afdb.html
+:SSYR: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_ga7b8a99048765ed2bf7c1e770bff0b622.html
+:SSYR2: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_gafeb94d36b0bb94a6f87a0576e339434d.html
+:STBMV: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_gab1000098b0929f8256ced0ab89141b31.html
+:STBSV: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_ga0b99dd14ccf41601cd3fcfd0675535dd.html
+:STPMV: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_ga7bbe5634d34a5fcb12d877e700e0ac86.html
+:STPSV: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_gae6fb0355e398779dc593ced105ce373d.html
+:STRMV: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_ga2ff27ee8951accd778cd785023f71ac0.html
+:STRSV: http://www.netlib.org/lapack/explore-html/d6/d30/group__single__blas__level2_ga59aeaec580e854d68c43c47e951637fe.html
+
+* *Single*
+
+  - link:{SGEMV}[SGEMV] - matrix vector multiply
+  - link:{SGBMV}[SGBMV] - banded matrix vector multiply
+  - link:{SSYMV}[SSYMV] - symmetric matrix vector multiply
+  - link:{SSBMV}[SSBMV] - symmetric banded matrix vector multiply
+  - link:{SSPMV}[SSPMV] - symmetric packed matrix vector multiply
+  - link:{STRMV}[STRMV] - triangular matrix vector multiply
+  - link:{STBMV}[STBMV] - triangular banded matrix vector multiply
+  - link:{STPMV}[STPMV] - triangular packed matrix vector multiply
+  - link:{STRSV}[STRSV] - solving triangular matrix problems
+  - link:{STBSV}[STBSV] - solving triangular banded matrix problems
+  - link:{STPSV}[STPSV] - solving triangular packed matrix problems
+  - link:{SGER}[SGER] - performs the rank 1 operation A := alpha*x*y' + A
+  - link:{SSYR}[SSYR] - performs the symmetric rank 1 operation A := alpha*x*x' + A
+  - link:{SSPR}[SSPR] - symmetric packed rank 1 operation  A := alpha*x*x' + A
+  - link:{SSYR2}[SSYR2] - performs the symmetric rank 2 operation, A := alpha*x*y' + alpha*y*x' + A
+  - link:{SSPR2}[SSPR2] - performs the symmetric packed rank 2 operation,	A := alpha*x*y' + alpha*y*x' + A
+
+
+:DGBMV: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga0dc187c15a47772440defe879d034888.html
+:DGEMV: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_gadd421a107a488d524859b4a64c1901a9.html
+:DGER: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga458222e01b4d348e9b52b9343d52f828.html
+:DSBMV: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga5c7ca036c788c5fd42e04ade0dc92d44.html
+:DSPMV: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_gab746575c4f7dd4eec72e8110d42cefe9.html
+:DSPR: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga22adb497a4f41eabc6a8dcac6f326183.html
+:DSPR2: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga16318e7e16083b395bd959b0cc93e803.html
+:DSYMV: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga6ab49c8fa5e2608d9545483045bf3d03.html
+:DSYR: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga35ca25bb135cd7bfdd5d6190b1aa4d07.html
+:DSYR2: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_gae96880c53b8eaee70bbef273b905715f.html
+:DTBMV: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga9f64da9e0125c712672fd89d166d3b9c.html
+:DTBSV: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga7edc75158ea82b6d06c4b847de6996fa.html
+:DTPMV: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga1d9a8ecfddfea2c84e73e28e1ebb74cf.html
+:DTPSV: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga0fff73e765a7655a67da779c898863f1.html
+:DTRMV: http://www.netlib.org/lapack/explore-html/d7/d15/group__double__blas__level2_ga596c2acd9f81df6608bd5ed97e193897.html
+
+* *Double*
+
+  - link:{DGEMV}[DGEMV] - matrix vector multiply
+  - link:{DGBMV}[DGBMV] - banded matrix vector multiply
+  - link:{DSYMV}[DSYMV] - symmetric matrix vector multiply
+  - link:{DSBMV}[DSBMV] - symmetric banded matrix vector multiply
+  - link:{DSPMV}[DSPMV] - symmetric packed matrix vector multiply
+  - link:{DTRMV}[DTRMV] - triangular matrix vector multiply
+  - link:{DTBMV}[DTBMV] - triangular banded matrix vector multiply
+  - link:{DTPMV}[DTPMV] - triangular packed matrix vector multiply
+  - link:{DTRSV}[DTRSV] - solving triangular matrix problems
+  - link:{DTBSV}[DTBSV] - solving triangular banded matrix problems
+  - link:{DTPSV}[DTPSV] - solving triangular packed matrix problems
+  - link:{DGER}[DGER] - performs the rank 1 operation A := alpha*x*y' + A
+  - link:{DSYR}[DSYR] - performs the symmetric rank 1 operation A := alpha*x*x' + A
+  - link:{DSPR}[DSPR] - symmetric packed rank 1 operation  A := alpha*x*x' + A
+  - link:{DSYR2}[DSYR2] - performs the symmetric rank 2 operation,	A := alpha*x*y' + alpha*y*x' + A
+  - link:{DSPR2}[DSPR2] - performs the symmetric packed rank 2 operation,	A := alpha*x*y' + alpha*y*x' + A
+
+
+:CGBMV: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_ga50fe7a70e7ae8f9ede50acd6747510d7.html
+:CGEMV: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_ga0983da08821bec7701e90fb1e65c8cd7.html
+:CGERC: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_ga35e2f0f20e014b9f0ec090a6eb3def22.html
+:CGERU: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_gab21c402efadfa2023cfbc06911506e42.html
+:CHBMV: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_ga426c198e1c8863d9ecbdbe16efa0f6cf.html
+:CHEMV: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_gac23d51cad7f51484371119bb6e3fb1f3.html
+:CHER: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_gafa73370c613ec8f157771992010809ac.html
+:CHER2: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_gaa59d93fbbd8d0b1be4a51634cb437cc1.html
+:CHPMV: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_gad1dc14308bf0c1c8d9ba6ee068ac4d60.html
+:CHPR: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_gac98100eee08124fb7a5d55effbb85a65.html
+:CHPR2: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_ga537b8bcd05cbe626ebce0fbc8d66a2d6.html
+:CTBMV: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_ga2483c6533c8a24ff715137629f939074.html
+:CTBSV: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_ga47f0128bb830b67b37b285af34eaad5f.html
+:CTPMV: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_gafb7324ce48931e58b392dd6eef9a286c.html
+:CTPSV: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_ga1afdec04246cf2d0cb650ec237296ef3.html
+:CTRMV: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_ga62930e76219d094e424db1712a5356cb.html
+:CTRSV: http://www.netlib.org/lapack/explore-html/d6/dee/group__complex__blas__level2_ga38ae7f5a40e16fd315011faddf4412cc.html
+
+* *Complex*
+
+  - link:{CGEMV}[CGEMV] - matrix vector multiply
+  - link:{CGBMV}[CGBMV] - banded matrix vector multiply
+  - link:{CHEMV}[CHEMV] - hermitian matrix vector multiply
+  - link:{CHBMV}[CHBMV] - hermitian banded matrix vector multiply
+  - link:{CHPMV}[CHPMV] - hermitian packed matrix vector multiply
+  - link:{CTRMV}[CTRMV] - triangular matrix vector multiply
+  - link:{CTBMV}[CTBMV] - triangular banded matrix vector multiply
+  - link:{CTPMV}[CTPMV] - triangular packed matrix vector multiply
+  - link:{CTRSV}[CTRSV] - solving triangular matrix problems
+  - link:{CTBSV}[CTBSV] - solving triangular banded matrix problems
+  - link:{CTPSV}[CTPSV] - solving triangular packed matrix problems
+  - link:{CGERU}[CGERU] - performs the rank 1 operation A := alpha*x*y' + A
+  - link:{CGERC}[CGERC] - performs the rank 1 operation A := alpha*x*conjg( y' ) + A
+  - link:{CHER}[CHER] - hermitian rank 1 operation A := alpha*x*conjg(x') + A
+  - link:{CHPR}[CHPR] - hermitian packed rank 1 operation A := alpha*x*conjg( x' ) + A
+  - link:{CHER2}[CHER2] - hermitian rank 2 operation
+  - link:{CHPR2}[CHPR2] - hermitian packed rank 2 operation
+
+
+:ZGBMV: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_gab289624f8fdc44e20c5ab79f9cc1f631.html
+:ZGEMV: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_gafaeb2abd9fffa7442b938dc384aeaf47.html
+:ZGERC: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_ga88dcc222d4bdf735fb9ff1bdbb0d8f82.html
+:ZGERU: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_ga7d9c75aa8d9865d271db9ced1d08d097.html
+:ZHBMV: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_ga6f0283c18c02df85b4d4ad5e9f37c61d.html
+:ZHEMV: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_ga0a0a44bede5155c38da7cbca20880662.html
+:ZHER: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_gab493f9f41552f058ed4f75e7d182ed65.html
+:ZHER2: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_gac1d92c5939cc624b2fd9e832121a0fd4.html
+:ZHPMV: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_gad4a66a9d545e2f11dd6ca5a666cc5316.html
+:ZHPR: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_ga449f8a34be469eab7caf327caa086711.html
+:ZHPR2: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_ga44a6afc0e18dc1b5d50bf12b79129843.html
+:ZTBMV: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_ga2eb62f52e98a997e5f88f86d53cd0d4f.html
+:ZTBSV: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_ga20d3fa0fe7cc708608dc658c743bfcab.html
+:ZTPMV: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_gaed33e3470ec372c730960b6038d1e037.html
+:ZTPSV: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_ga8e2b6e006861da3d455817cf928d9972.html
+:ZTRMV: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_ga5a60882e2e5a7d604f2f16c1e0d8f4b4.html
+:ZTRSV: http://www.netlib.org/lapack/explore-html/dc/dc1/group__complex16__blas__level2_ga99cc66f0833474d6607e6ea7dbe2f9bd.html
+
+* *Double Complex*
+
+  - link:{ZGEMV}[ZGEMV] - matrix vector multiply
+  - link:{ZGBMV}[ZGBMV] - banded matrix vector multiply
+  - link:{ZHEMV}[ZHEMV] - hermitian matrix vector multiply
+  - link:{ZHBMV}[ZHBMV] - hermitian banded matrix vector multiply
+  - link:{ZHPMV}[ZHPMV] - hermitian packed matrix vector multiply
+  - link:{ZTRMV}[ZTRMV] - triangular matrix vector multiply
+  - link:{ZTBMV}[ZTBMV] - triangular banded matrix vector multiply
+  - link:{ZTPMV}[ZTPMV] - triangular packed matrix vector multiply
+  - link:{ZTRSV}[ZTRSV] - solving triangular matrix problems
+  - link:{ZTBSV}[ZTBSV] - solving triangular banded matrix problems
+  - link:{ZTPSV}[ZTPSV] - solving triangular packed matrix problems
+  - link:{ZGERU}[ZGERU] - performs the rank 1 operation A := alpha*x*y' + A
+  - link:{ZGERC}[ZGERC] - performs the rank 1 operation A := alpha*x*conjg( y' ) + A
+  - link:{ZHER}[ZHER] - hermitian rank 1 operation A := alpha*x*conjg(x') + A
+  - link:{ZHPR}[ZHPR] - hermitian packed rank 1 operation A := alpha*x*conjg( x' ) + A
+  - link:{ZHER2}[ZHER2] - hermitian rank 2 operation
+  - link:{ZHPR2}[ZHPR2] - hermitian packed rank 2 operation
+
+
+=== LEVEL 3
+
+
+:SGEMM: http://www.netlib.org/lapack/explore-html/db/dc9/group__single__blas__level3_gafe51bacb54592ff5de056acabd83c260.html
+:SSYMM: http://www.netlib.org/lapack/explore-html/db/dc9/group__single__blas__level3_ga8e8391a9873114d97e2b63e39fe83b2e.html
+:SSYR2K: http://www.netlib.org/lapack/explore-html/db/dc9/group__single__blas__level3_ga6ee4760a413296c246b1ecbc1ac985a0.html
+:SSYRK: http://www.netlib.org/lapack/explore-html/db/dc9/group__single__blas__level3_gae953a93420ca237670f5c67bbde9d9ff.html
+:STRMM: http://www.netlib.org/lapack/explore-html/db/dc9/group__single__blas__level3_ga5a8ec25aba550c224cf6941fca7a2c98.html
+:STRSM: http://www.netlib.org/lapack/explore-html/db/dc9/group__single__blas__level3_ga9893cceb3ffc7ce400eee405970191b3.html
+
+* *Single*
+
+  - link:{SGEMM}[SGEMM] - matrix matrix multiply
+  - link:{SSYMM}[SSYMM] - symmetric matrix matrix multiply
+  - link:{SSYRK}[SSYRK] - symmetric rank-k update to a matrix
+  - link:{SSYR2K}[SSYR2K] - symmetric rank-2k update to a matrix
+  - link:{STRMM}[STRMM] - triangular matrix matrix multiply
+  - link:{STRSM}[STRSM] - solving triangular matrix with multiple right hand sides
+
+
+:DGEMM: http://www.netlib.org/lapack/explore-html/d1/d54/group__double__blas__level3_gaeda3cbd99c8fb834a60a6412878226e1.html
+:DSYMM: http://www.netlib.org/lapack/explore-html/d1/d54/group__double__blas__level3_ga253c8edb8b21d1b5b1783725c2a6b692.html
+:DSYR2K: http://www.netlib.org/lapack/explore-html/d1/d54/group__double__blas__level3_ga51f6c38a43599163e670f0f6f5645587.html
+:DSYRK: http://www.netlib.org/lapack/explore-html/d1/d54/group__double__blas__level3_gae0ba56279ae3fa27c75fefbc4cc73ddf.html
+:DTRMM: http://www.netlib.org/lapack/explore-html/d1/d54/group__double__blas__level3_gaf07edfbb2d2077687522652c9e283e1e.html
+:DTRSM: http://www.netlib.org/lapack/explore-html/d1/d54/group__double__blas__level3_ga6a0a7704f4a747562c1bd9487e89795c.html
+
+* *Double*
+
+  - link:{DGEMM}[DGEMM] - matrix matrix multiply
+  - link:{DSYMM}[DSYMM] - symmetric matrix matrix multiply
+  - link:{DSYRK}[DSYRK] - symmetric rank-k update to a matrix
+  - link:{DSYR2K}[DSYR2K] - symmetric rank-2k update to a matrix
+  - link:{DTRMM}[DTRMM] - triangular matrix matrix multiply
+  - link:{DTRSM}[DTRSM] - solving triangular matrix with multiple right hand sides
+
+:CGEMM: http://www.netlib.org/lapack/explore-html/db/def/group__complex__blas__level3_gac4e11e8e8a4b0c802d2229b08da341f6.html
+:CHEMM: http://www.netlib.org/lapack/explore-html/db/def/group__complex__blas__level3_gad2d1853a142397404eae974b6574ece3.html
+:CHER2K: http://www.netlib.org/lapack/explore-html/db/def/group__complex__blas__level3_gaf5266b622e0fbbd972cfc2df3061984f.html
+:CHERK: http://www.netlib.org/lapack/explore-html/db/def/group__complex__blas__level3_gade9f14cf41f0cefea7918d716f3e1c20.html
+:CSYMM: http://www.netlib.org/lapack/explore-html/db/def/group__complex__blas__level3_ga2490eea9e962fd69b9902e22aaa3a634.html
+:CSYR2K: http://www.netlib.org/lapack/explore-html/db/def/group__complex__blas__level3_gaa8320d51ded07cd3038db237fd400547.html
+:CSYRK: http://www.netlib.org/lapack/explore-html/db/def/group__complex__blas__level3_ga1b4f63daf04fdf3061bd25dfec0d3e84.html
+:CTRMM: http://www.netlib.org/lapack/explore-html/db/def/group__complex__blas__level3_gad7c297c05b482699b6d60a29c8d4a165.html
+:CTRSM: http://www.netlib.org/lapack/explore-html/db/def/group__complex__blas__level3_gaf33844c7fd27e5434496d2ce0c1fc9d4.html
+
+* *Complex*
+
+  - link:{CGEMM}[CGEMM] - matrix matrix multiply
+  - link:{CSYMM}[CSYMM] - symmetric matrix matrix multiply
+  - link:{CHEMM}[CHEMM] - hermitian matrix matrix multiply
+  - link:{CSYRK}[CSYRK] - symmetric rank-k update to a matrix
+  - link:{CHERK}[CHERK] - hermitian rank-k update to a matrix
+  - link:{CSYR2K}[CSYR2K] - symmetric rank-2k update to a matrix
+  - link:{CHER2K}[CHER2K] - hermitian rank-2k update to a matrix
+  - link:{CTRMM}[CTRMM] - triangular matrix matrix multiply
+  - link:{CTRSM}[CTRSM] - solving triangular matrix with multiple right hand sides
+
+:ZGEMM: http://www.netlib.org/lapack/explore-html/dc/d17/group__complex16__blas__level3_ga4ef748ade85e685b8b2241a7c56dd21c.html
+:ZHEMM: http://www.netlib.org/lapack/explore-html/dc/d17/group__complex16__blas__level3_ga6c1fde6c797cc1032c19242662f370f2.html
+:ZHER2K: http://www.netlib.org/lapack/explore-html/dc/d17/group__complex16__blas__level3_ga7610d30107c40b4009d5c9359d9c6c28.html
+:ZHERK: http://www.netlib.org/lapack/explore-html/dc/d17/group__complex16__blas__level3_ga71e68893445a523b923411ebf4c22582.html
+:ZSYMM: http://www.netlib.org/lapack/explore-html/dc/d17/group__complex16__blas__level3_ga263a46a500f5c7f04bee1b75ea7f64f6.html
+:ZSYR2K: http://www.netlib.org/lapack/explore-html/dc/d17/group__complex16__blas__level3_gabe5914922259539af5fa20f324a58add.html
+:ZSYRK: http://www.netlib.org/lapack/explore-html/dc/d17/group__complex16__blas__level3_ga3faec48d92afecad0a791157278b184c.html
+:ZTRMM: http://www.netlib.org/lapack/explore-html/dc/d17/group__complex16__blas__level3_gafa941b30529f8c06ffb6a1b2e09e0abd.html
+:ZTRSM: http://www.netlib.org/lapack/explore-html/dc/d17/group__complex16__blas__level3_gac571a0a6d43e969990456d0676edb786.html
+
+* *Double Complex*
+
+  - link:{ZGEMM}[ZGEMM] - matrix matrix multiply
+  - link:{ZSYMM}[ZSYMM] - symmetric matrix matrix multiply
+  - link:{ZHEMM}[ZHEMM] - hermitian matrix matrix multiply
+  - link:{ZSYRK}[ZSYRK] - symmetric rank-k update to a matrix
+  - link:{ZHERK}[ZHERK] - hermitian rank-k update to a matrix
+  - link:{ZSYR2K}[ZSYR2K] - symmetric rank-2k update to a matrix
+  - link:{ZHER2K}[ZHER2K] - hermitian rank-2k update to a matrix
+  - link:{ZTRMM}[ZTRMM] - triangular matrix matrix multiply
+  - link:{ZTRSM}[ZTRSM] - solving triangular matrix with multiple right hand sides
+
+===  Extended precision Level 2 BLAS routines
+
+- SUBROUTINE http://www.netlib.org/blas/ecgemv.f[ECGEMV] ( TRANS, M, N, ALPHA, A, LDA, X, INCX, BETA, Y, INCY )
+- SUBROUTINE http://www.netlib.org/blas/ecgbmv.f[ECGBMV] ( TRANS, M, N, KL, KU, ALPHA, A, LDA, X, INCX, BETA, Y, INCY )
+- SUBROUTINE http://www.netlib.org/blas/echemv.f[ECHEMV] ( UPLO, N, ALPHA, A, LDA, X, INCX,BETA, Y, INCY )
+- SUBROUTINE http://www.netlib.org/blas/echbmv.f[ECHBMV] ( UPLO, N, K, ALPHA, A, LDA, X, INCX,BETA, Y, INCY )
+- SUBROUTINE http://www.netlib.org/blas/echpmv.f[ECHPMV] ( UPLO, N, ALPHA, AP, X, INCX, BETA, Y, INCY )
+- SUBROUTINE http://www.netlib.org/blas/ectrmv.f[ECTRMV] ( UPLO, TRANS, DIAG, N, A, LDA, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ectbmv.f[ECTBMV] ( UPLO, TRANS, DIAG, N, K, A, LDA, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ectpmv.f[ECTPMV] ( UPLO, TRANS, DIAG, N, AP, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ectrsv.f[ECTRSV] ( UPLO, TRANS, DIAG, N, A, LDA, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ectbsv.f[ECTBSV] ( UPLO, TRANS, DIAG, N, K, A, LDA, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ectpsv.f[ECTPSV] ( UPLO, TRANS, DIAG, N, AP, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ecgeru.f[ECGERU] ( M, N, ALPHA, X, INCX, Y, INCY, A, LDA )
+- SUBROUTINE http://www.netlib.org/blas/ecgerc.f[ECGERC] ( M, N, ALPHA, X, INCX, Y, INCY, A, LDA )
+- SUBROUTINE http://www.netlib.org/blas/echer.f[ECHER] ( UPLO, N, ALPHA, X, INCX, A, LDA )
+- SUBROUTINE http://www.netlib.org/blas/echpr.f[ECHPR] ( UPLO, N, ALPHA, X, INCX, AP )
+- SUBROUTINE http://www.netlib.org/blas/echer2.f[ECHER2] ( UPLO, N, ALPHA, X, INCX, Y, INCY, A, LDA )
+- SUBROUTINE http://www.netlib.org/blas/echpr2.f[ECHPR2] ( UPLO, N, ALPHA, X, INCX, Y, INCY, AP )

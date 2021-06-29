@@ -1,0 +1,17 @@
+#!/bin/sh
+# This is a shell archive (produced by GNU sharutils 4.2).
+# To extract the files from this archive, save it to some FILE, remove
+# everything before the `!/bin/sh' line above, then type `sh FILE'.
+#
+echo
+echo This shar file is simply a place-holder to point out that the
+echo shar file you attempted to download has been converted to
+echo tar-gzip format.
+echo
+echo To find the new file, look on Netlib for a file with the same
+echo prefix but with a suffix of \".tgz\". For example, \"foo.shar\"
+echo would have been converted to \"foo.tgz\".
+echo 
+echo Please contact netlib_maintainers\@netlib.org if you have any
+echo questions.
+echo

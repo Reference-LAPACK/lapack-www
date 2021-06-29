@@ -1,0 +1,15 @@
+Prebuilt reference implementation Fortran 77 BLAS libraries are provided
+for a variety of architectures.
+
+   http://www.netlib.org/blas/archives/
+
+#       ****
+#       NOTE:  The BLAS archives available here are NOT optimal! 
+#       ****   They should ONLY be used if a vendor-specific BLAS
+#              library is not available for your architecture.
+
+#              The reference implementation Fortran 77 BLAS may be
+#              obtained from: 
+#              http://www.netlib.org/blas/blas.tgz
+
+#       Questions/comments should be directed to lapack@cs.utk.edu.

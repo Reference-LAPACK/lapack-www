@@ -1,0 +1,397 @@
+<HTML><HEAD>
+<TITLE>BLAST Forum MINUTES</TITLE>
+ 
+<CENTER><H2>BLAST Forum MINUTES</H2></CENTER>
+ 
+<CENTER><H2>December 3-5, 1997</H2></CENTER>
+ 
+<CENTER><H2>Hilton Hotel, Knoxville, TN</H2></CENTER></HEAD>
+ 
+<BODY>
+ 
+<UL>
+<LI>Twenty people attended the <a href="http://www.netlib.org/utk/papers/blast-forum.html">BLAST Forum</a> in Knoxville, TN on December 3-5, 1997.  The
+meeting was hosted by the University of Tennessee.
+</UL>
+<HR>
+<H2><B>December 3, 1997</B></H2>
+<P>
+Everyone assembled and we began with lunch.</P>
+<P>
+At 1:00pm, Jack Dongarra opened the meeting by welcoming everyone
+and inviting everyone to introduce themselves.  He then reviewed the
+``rules of order'' for the first and second readings of proposals, as
+well as the voting procedures for the meeting.  The structure of the
+overall BLAS document was briefly reviewed.  Each chapter is self-contained
+consisting of sections on overview, functionality, language independent
+specificiation, language dependent specification, and the reference
+implementation, benchmarking, verification, and validation.
+Debate ensued on whether Extensions should be included in the Dense
+chapter or the Legacy BLAS appendix/chapter.  It was stressed that
+this list of extensions should be restricted to 2-3 routines.</P>
+<P>
+A straw vote was taken on the inclusion of the Extensions in Legacy BLAS
+appendix or restrict it to the "Dense and Band BLAS" chapter.  Mike Heroux 
+presented the motion, and Tony seconded the motion.  Of 20 attendees,
+10 attendees voted in favor of its inclusion in the Legacy BLAS
+chapter, 7 attendees opposed, and 3 attendees abstained.</P>
+<P>
+At 2:00pm, Jim Demmel presented a detailed discussion of the proposed
+Extended Precision BLAS.  He outlined the contents of the proposal, beginning
+with the motivation behind the need for such routines, presenting
+specific examples, and proposed language bindings.
+Lengthy discussion took place regarding the language bindings, with
+particular concerns raised about the combinatorial explosion of
+functions required to handle all possible combinations of precisions
+that could occur for the arguments to functions in the
+extended precision BLAS.  Further
+discussion was deferred to the upcoming break-out session, and communication
+via the email reflector.</P>
+<P>
+A short coffee break occurred at 3:45pm.</P>
+<P>
+The meeting was reconvened at 4:00pm, and broke into subgroups.  Two
+subgroups met at 4:00-5:00pm, and two subgroups met at 5:00-6:00pm.  The
+Functionality, Extensions, and Dense and Band BLAS, were combined into one
+subgroup, which met at 4:00pm.  The Sparse BLAS subgroup also met at 4:00pm.
+At 5:00pm, the Extended Precision subgroup and C subgroup met.  Due to conflict
+of interest, the Distributed Memory and F90 subgroups were postponed until
+after dinner or tomorrow.</P>
+<P>
+The meeting adjourned at 6:00pm.</P>
+<P>
+<HR>
+<H2><B>December 4, 1997</B></H2>
+<P>
+At 9:00am, a plenary presentation of the results of yesterday's
+break-out sessions occurred.</P>
+<P>
+Linda Kaufmann presented a summary of discussions regarding 
+The Functionality/Extensions/Dense BLAS session.  The sub-group
+reviewed Chapters 1
+and 2 of the document and tried to outline what should be deleted
+from the tables due to lack of justification, what sections should
+be combined, etc.  Specifically, it was said that all entries in the
+tables of Chapter 1 must appear as part of the functionality in one
+of the chapters.  If an entry does not appear, it will be deleted
+from the tables in Chapter 1.</P>
+<P>
+Gary Howell of Florida Tech proposed the introduction of elementary similarity
+transformations into the functionality.  His rationale was that implementing
+elementary similarity transformations in terms of matrix vector multiplies
+and rank
+one updates is possible but INEFFICIENT in that the entire active part of
+the matrix is repeatedly accessed unnecessarily.  It was decided to
+continue this discussion via the mail reflectors.</P>
+<P>
+Householder transformations were again suggested as a top priority
+new BLAS routine due to their necessity in Hessenberg reduction.  Sequences
+of Householder transformations (some of same length, some of different
+length) were also proposed as a very important addition due to its
+application in QR bulge chasing.  Sequential Givens (application: QR) were
+also desired, such as in LAPACK auxiliary routine xLASR.  Simultaneous
+Givens transformations (reduction to tridiagonal form) (xLARTV, replaced
+by DROT) were also suggested.  Linda Kaufman then presented a summary of
+the list of vendor extensions to the BLAS.  Namely, IxAMIN and a routine
+to return the Index of the element of minimum magnitude.</P>
+<P>
+Roldan Pozo of NIST and Mike Heroux of Cray then presented a summary of
+the Sparse BLAS subgroup.  Roldan began by suggesting a delay in the
+first reading of document until the addition of user-level text.  A
+preliminary discussion of the functionality subset occurred during the
+break-out session and focused on Level 3 BLAS as well as preconditioned
+iterative methods.  As for storage formats, it was suggested to support
+a data-neutral interface, as well as storage-specific interfaces.  These
+storage formats would be extendable at the User Level, and the core formats
+would be utilized at the Toolkit level.  Example language bindings for C
+and Fortran77 were included in the draft of the proposal, as well as the
+reference implementation contained in the Toolkit.  There seemed to be
+little support for a low-level interface.</P>
+<P>
+Mike Heroux of SGI/Cray then discussed Sparse functionality, specifically
+in the Toolkit.  Permutations had not been included in the overall 
+functionality definitions in Chapter 1, and should now be included 
+in Chapter1.  He reiterated the principle goal for the sparse BLAS,
+namely, efficient computation of the most common sparse ops
+in the most common data structures, for preconditioned Krylov methods.
+He also discussed some open issues in the development of
+Toolkit kernels.</P>
+<P>
+Jim Demmel of UC Berkeley then presented the summary of the Extended
+Precision subgroup.  Concern was raised over the volume of routines,
+and it was stressed that only a subset of routines would be implemented
+for a given architecture.  The necessity for environmental inquiry
+routines was discussed.
+</P>
+<P>
+Coffee break at 11:00am.</P>
+<P>
+At 11:15am, Antoine Petitet presented the summary of the
+Distributed Memory BLAS subgroup.  The subgroup proposed to 
+Reuse interface design of dense part of scalapackto
+extend sequential BLAS interface to distributed memory interface.
+The proposal specifically allows for implementations that can be used
+in a heterogeneous environment.
+</P>
+<P>
+As a side note, a discussion began on the increased use of
+Fortran90, and the need for a possible "F90 Conventions" section with
+examples in the Introduction chapter (Chapter 1).  It was then suggested that
+it would be a good idea to include a section in Chapter 1 outlining
+the programming conventions used in all language interfaces --
+Fortran77, Fortran90, C, and C++.  These summaries would explain the
+features of each language that are utilized, and if there are
+assumptions made, these assumptions would be stated here.  In this
+way, the user would be better prepared for the language binding
+sections of the document.</P>
+<P>
+At 11:30am, Tony Skjellum gave an overview of comments on the 
+formation of the BLAS Lite document.  He expected
+that the BLAS Lite chapter be
+in final form by the next meeting.  He stressed the need for a fuller
+API into the chapter format, test for coverage, show how to do
+traditional BLAS in terms of the Lite/Thin BLAS, and offer a model
+implementation for the PPro or SPARC.  The chapter will be kept in the 
+Journal
+of Development due to the controversial nature of the Lite/Tiny BLAS.
+The Lite/Tiny BLAS are not for intended for every level of user.  They
+are designed to get people into the BLAS mode who are now adverse to any
+library.  Their existence should reflect what people who develop high
+performance BLAS actually do.  They currently address vector and RISC 
+architectures, and it is anticipated that they include programmable cache
+and emerging PIM.  L/T is not necessarily implemented as a library -- inline
+assembly language, preprocessing, compiler support, etc.  The term "thin"
+refers to no "or"s in the code, and "lite" refers to the fact that the
+subroutines operate on fixed block sizes.  He then listed some potential
+environmental inquiry routines.</P>
+<P>
+In summary, the three components of the L/T are:  environmental
+routines, routines to manipulate blocks, and computational routines which
+operate on fixed block sizes.  The Lite/Thin BLAS are now officially
+known as the Basic Linear Algebra Instruction Set (BLAIS).</P>
+<P>
+Lunch break...</P>
+<P>
+After lunch, Clint Whaley of UT presented the summary of the C interface
+to the BLAS subgroup, and initiated a second reading of the document.
+The main issue discussed was the tester.  Should we have a formal
+definition of the tester in the BLAS document?  A starting point for the
+C-BLAS tester was obtained from D. Manley at Digital Corporation.
+Theresa Do of Cray and Bruce Greer of Intel volunteered to help
+coordinate the tester.  The second issue that was addressed was the
+location of the Legacy BLAS chapter.  Should it appear as an appendix
+or as a chapter, appearing before the Journal of Development?  The
+majority felt that the Legacy BLAS chapter should be separate
+and not subject to the format specifications of the main chapters.
+Thus, it will remain an appendix.</P>
+<P>
+Voting next occurred on the modified sections of the Legacy BLAS
+chapter/appendix related to the C interface to the existing BLAS.
+There were 8 eligible voters:  UT, NAG, Cray, NIST, NEC, HP/Convex,
+Intel, and Bell Labs.</P>
+<P>
+<UL>
+<LI>Section 3.2.1, 8 votes in favor
+<LI>Section 3.2.2, 8 votes in favor
+<LI>Section 3.2.3, 8 votes in favor
+<LI>Section 3.2.4, 7 votes in favor, one abstention (HP/Convex)
+<LI>Section 3.2.5, 7 votes in favor, one abstention (NIST)<BR>
+    This "C interface to the BLAS" chapter will have another reading at
+    the next meeting to review grammatical modifications.  In Section 3.2.5,
+    the discussion of suffixing names with _sub and putting the return value
+    at the end of the calling sequence is an issue that also needs to be
+    discussed in the Language Bindings, and also applies to the proposed Extra
+    Precise BLAS routines as well.
+<LI>Section 3.2.6, 8 votes in favor<BR>
+    The voting on Section 3.2.8 is delayed.  This section addresses
+    error-checking and the semantics of XERBLA and is still unresolved.
+<LI>Section 3.2.9, 8 votes in favor
+</UL>
+<P>
+Coffee break at 3pm.</P>
+<P>
+At 3pm we began discussion of Language Issues, Data-Neutral Interface,
+Environmental Enquiries, and Name Space.</P>
+<P>
+Jim Demmel of UC Berkeley began discussion of the Language Issues.  
+There was general agreement that C++ and F90 should be supported.
+Concern
+was raised that data types would be specified that would not be present 
+in certain languages, such as C and F77.  Support for Java also was
+viewed favorably with a suggestion by Tony Skjellum that Java BLAS
+might be appropriate for the JOD (pending a concrete proposal).
+
+There was discussion of data neutral interfaces.  At the last BLAS
+meeting, Andrew Lumsdasine and Tony Skjellum suggested use of data
+neutral interfaces to hide format, precision, etc.  Several
+participants expressed interest in handle based operations.  Iain Duff
+pointed out that this is already done in sparse BLAS proposal.  Some
+outstanding issues concern translation to and from internal format,
+handles as an expressive abstraction, and data format hiding for
+performance.  It was suggested that there is a role for both data
+neutral interfaces and data format explicit interfaces.  Concern was
+expressed that users should be able to access lower level routines.
+Finally, the mechanics of language specific bindings was discussed.  
+</P>
+<P>
+The conclusion of the Language Issues discussion was that Jim will work
+on a Fortran90 interface, with a Fortran77 interface to a subset of
+the routines, as well as C and C++ interface.
+</P>
+<P>
+Tony Skjellum led a discussion about environmental inquiry
+functionality.  There are two primary areas of the forum concerned
+with environmental inquiry -- BLAIS and extended precision BLAS.
+It was agreed that Tony will lead the task of comprising the list of
+needed routines, with help from Jack Dongarra of UT.</P>
+<P>
+Antoine Petitet had proposed that we next discuss Namespace issues.</P>
+<P>
+A coffee break followed, and then we broke into the following break-out
+sessions:  Functionality/Extensions/Dense BLAS, Sparse, and BLAIS.</P>
+<P>
+The meeting adjourned at 6:00pm.</P>
+<P>
+<HR>
+<H2><B>December 5, 1997</B></H2>
+<P>
+The meeting began at 9:00am with break-out sessions --
+Functionality/Dense, Sparse, Extra Precise, Distributed-Memory,
+and C/F90 interfaces.</P>
+<P>
+At 10:30am, the subgroups presented their progress.</P>
+<P>
+The Functionality subgroup consolidated new entries for tables in
+Chapter 1 and Chapter 2.  It was reiterated that any entry in a table
+in Chapter 1 must be mentioned somewhere in the document.  If an entry has
+no use in defining the functionality of any of the chapters, then it
+must be removed from the tables of Chapter 1.  Gary Howell of Florida
+Tech proposed the addition of elementary similarity transformations to the
+functionality tables, and volunteered to help with their inclusion.  Due
+to the possible instability of such routines, it was felt that further
+discussion of their inclusion should be addressed via the mailing list.
+It was also asked if the functionality of the routines will be 0-based
+or 1-based.  This offset from the beginning element is controversial
+but must be resolved.  The first reading of Chapter 2 will occur at the
+next meeting (April, 1998).</P>
+<P>
+Roldan Pozo of NIST and Mike Heroux of Cray then summarized the
+findings of the Sparse BLAS subgroup.  The proposed functionality of
+the Sparse BLAS has been reduced to exclude external permutations.
+Integrity checks will be limited, and conversions will be limited.
+The subset of functionality will concentrate on matrix multiply and
+triangular solve.  The example bindings in the draft will be Fortran90
+and C++.  A functionality table needs to be included in the Sparse
+chapter, and this functionality also reflected in the overall
+functionality of Chapter 1.</P>
+<P>
+Roldan Pozo of NIST then asked the question "Should the Level 1 Sparse
+BLAS be included in the proposal for the sake of completeness?"  He
+asked for a straw vote on this idea.  No actual show of hands was
+taken but the majority felt that the Level 1 Sparse BLAS should not
+be mentioned in this document, mainly for fear of conflicting with
+the "standard" already defined for these routines.</P>
+<P>
+Sven Hammarling of NAG then briefly spoke on the proposed Fortran90
+interface to the BLAS.  The reference implementation would accomodate
+the Legacy --> Thin --> Thick interfaces.  The "thick" interface refers
+to one with error-checking.  He urged the need for comments on the draft
+of the proposal included in the Legacy BLAS chapter of the document.  It
+was reiterated that a "Conventions" section for Fortran90, as well as
+for Fortran77, C, and C++, will be added to Chapter 1 in order to
+better explain the features of each language that are utilized in
+the respective language bindings.  A first reading of this chapter was
+proposed for the next meeting.</P>
+<P>
+Jim Demmel of UCB then summarized the Precise BLAS/Extended Precision
+BLAS (XBLAS) proposal.  The reference implementation will follow the
+current design of the Fortran90 interface.  He then discussed specific
+language bindings for the routines in Fortran90, Fortran77, and C.  A
+first reading of this chapter was proposed for the next meeting.</P>
+<P>
+Antoine Petitet of NEC summarized the findings of the distributed-memory
+BLAS.  He stressed the need to define the functionality so that a 
+subset can be extracted.  Currently, language bindings for C and
+Fortran77 are proposed.  Concern was raised over a Fortran90 interface
+if this is not supported in MPI.  Some of the attendees responded that
+a Fortran90 interface is now supported in MPI (as this is used by 
+Visual Numerics).</P>
+<P>
+<HR>
+<P>
+In preparation for the first readings, each of these chapters should have
+a prioritized list of the functionality.  Concern was then raised on
+whether the reference implementation should encompass all proposed
+routines or only the prioritized list?  And should a reference implementation
+be provided for each language binding?  The general concensus was that
+the reference implementation should be included for each language
+supported.</P>
+<P>
+This "prioritizing" discussion also brought up the danger of defining
+a standard with optional sections.  Participants fear proposing
+a standard that is not clearly-defined and has optional sections.  The
+example cited was the HPF effort, and the fact that no two HPF compilers
+have the same subset of HPF directives.</P>
+<P>
+The forum participants prefer to have one clearly-defined standard with no
+optional sections.</P>
+<HR>
+<P>
+Jack Dongarra of UT then addressed the closing discussion for the meeting
+and reviewed the tentative dates for the next two meetings.  He stressed
+that the forum is responsible for specifying the semantics and syntax of
+the BLAS.</P>
+<P>
+The tentative date of the next forum meeting is:</P>
+<UL>
+<LI>April, 1998 
+</UL>
+<P>
+and will be hosted by NIST in Washington, D.C..  The exact date of the
+meeting will be provided soon.  First readings of the following
+documents will occur at this meeting</P>
+<UL>
+<LI>Dense and Banded BLAS
+<LI>Sparse BLAS
+<LI>Extended Precision (Extra Precise) BLAS
+<LI>Distributed Memory BLAS
+<LI>Fortran90 interface (as part of Legacy Chapter)
+</UL>
+<P>
+A second reading of the "C interface to the BLAS" in the Legacy
+BLAS chapter will also occur at the April 1998 meeting.</P>
+<P>
+A preliminary deadline of mid-March 1998 is set for subgroup progress.</P>
+<P>
+The next meeting would then be tentatively scheduled for August, 1998 at CRI
+in Eagan, MN.</P>
+<P>
+The meeting was then adjourned by Jack Dongarra at 12Noon.</P>
+<P>
+Attendees list for the December 3-5, 1997 BLAST Forum Meeting</P>
+<PRE>
+Susan Blackford      UT, Knoxville        susan@cs.utk.edu
+Clay Breshears       CEWES/Rice U.        clay@turing.wes.hpc.mil
+Jim Demmel           UC Berkeley          demmel@cs.berkeley.edu
+Theresa Do           SGI/Cray             tdo@cray.com
+Jack Dongarra        UT / ORNL            dongarra@cs.utk.edu
+Iain Duff            RAL/CERFACS          isd@rl.ac.uk
+Cormac Garvey        NEC                  garvey@atcc.necsyl.com
+Bruce Greer          Intel                bruce_s_greer@ccm.jf.intel.com
+Sven Hammarling      NAG, UK              sven@nag.co.uk
+Greg Henry           Intel                ghenry@cs.utk.edu
+Mike Heroux          SGI/Cray             mike.heroux@cray.com
+Gary Howell          Florida Tech         howell@zach.fit.edu
+Linda Kaufman        Bell Labs            lck@bell-labs.com
+Hsin-Ying Lin        HP Convex Tech. Ctr. lin@rsn.hp.com
+Andrew Lumsdaine     Univ. of Notre Dame  Lumsdaine.1@nd.edu
+Antoine Petitet      NEC                  petitet@ccrl-nece.technopark.gmd.de
+Roldan Pozo          NIST                 pozo@nist.gov
+Tony Skjellum        Miss. State Univ.    tony@cs.msstate.edu
+Francoise Tisseur    UT, Knoxville        ftisseur@cs.utk.edu
+Clint Whaley         UT, Knoxville        rwhaley@cs.utk.edu
+</PRE>
+<P>
+Susan Blackford and Andrew Lumsdaine agreed to take minutes for
+the meetings.</P>
+</BODY></HTML>

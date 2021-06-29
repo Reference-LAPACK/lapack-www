@@ -1,0 +1,316 @@
+<HTML><HEAD>
+<TITLE>BLAST Forum MINUTES</TITLE>
+ 
+<CENTER><H2>BLAST Forum MINUTES</H2></CENTER>
+ 
+<CENTER><H2>December 14-16, 1998</H2></CENTER>
+ 
+<CENTER><H2>LBL, Berkeley, CA</H2></CENTER></HEAD>
+ 
+<BODY>
+ 
+<UL>
+<LI> Seventeen people attended the <a href="http://www.netlib.org/utk/papers/blast-forum.html">BLAST Forum</a> in Berkeley, CA, on December
+14-16, 1998.  The meeting was hosted by the University of California
+at Berkeley and Lawrence Berkeley Laboratory.
+</UL>
+<HR>
+<H2><B>December 14, 1998</B></H2>
+<P>
+The meeting began at 9:30am.  List of 10 eligible voters: NAG, UT, UC Berkeley,
+Bell Labs, HP/Convex, Tera, NIST, Univ of Notre Dame, Sandia, Univ of Houston.
+</P>
+<P>
+A tentative agenda for the meeting shall be:</P>
+<UL>
+<LI>   Chapter 1:  we need to vote on multiple instances table.
+<LI>   Chapter 2:  first reading on bindings. Issues to discuss:
+   <UL>
+      <LI>         -- naming conventions
+      <LI>         -- vote on F95 binding
+      <LI>         -- should we have band and packed MM routines?
+   </UL>
+<LI>   Chapter 3:  first reading on the bindings
+<LI>   Chapter 4:  first reading on the bindings
+<LI>   Chapter 5:  first reading on the bindings
+</UL>
+<P>
+It was also stressed that we need volunteers for reference implementations
+and test codes.  Subgroups met to discuss individual chapters.</P>
+<P>
+At 11am, the naming convention issue was addressed.  We need to decide on
+cblas_ prefix.  Different name for the new stuff, or change the name in the
+appendix?  A straw vote was taken.</P>
+<OL>
+<LI>  Proposal is for F95, gemm( -- ) module f95_blas<BR>
+                F77, F_DGEMM( -- )<BR>
+                C,   c_dgemm( -- )<BR>
+                c legacy,  cblas_dgemm( -- )<BR>
+    Straw vote 9 in favor, 
+
+<LI>  Proposal for f95 f95blas_<BR>
+                 F77 F77BLAS_<BR>
+                 C   cblas_<BR>
+                 clegacy ?<BR>
+    Straw vote 2 in favor,
+
+<LI>  Proposal for f95  blas_<BR>
+                 f77  FBLAS_<BR>
+                 C    <BR>
+                 C legacy <BR>
+    Straw vote 0 in favor
+
+<LI>  Proposal for f95blasv2_<BR>
+                 f77blasv2_<BR>
+                 cblasv2_<BR>
+    Straw vote 2 in favor
+</OL>
+<P>
+We then began a second reading of Chapter 1.  Specific "wording" revisions were 
+suggested for each section, and those revisions have been incorporated
+into the chapter.  We need to add bibliographical references for F77 and C
+standards to this chapter.  Formal votes were taken on:</P>
+<UL>
+<LI>   Section 1.1 -- 10/0/0.
+<LI>   Section 1.2 -- 10/0/0.
+<LI>   Section 1.6 -- 10/0/0.<BR>
+                  Addition of "I" in the last column of the tables
+                  for appropriate routines.
+                  Removal of third column from all tables.
+<LI>   Section 1.6.1 --
+       <UL>
+          <LI>      Table 1.1 : 10/0/0.
+          <LI>      Table 1.2 : 10/0/0.<BR>
+                                Replace "axpy and axpy-like" with
+                                "scaled vector addition".
+          <LI>      Table 1.3 : 10/0/0.
+       </UL>
+<LI>   Section 1.6.2 -- Table 1.4 : 9/1/0.<BR>
+                                Removal of " + beta*y" forms of
+                                triangular solve.  Removal of "combined
+                                low rank" routines. 
+<LI>   Section 1.6.3 --
+       <UL>
+            <LI>    Table 1.5 : 9/0/1.
+            <LI>    Table 1.6 : 10/0/0.
+                                Removal of " + beta*y" forms from
+                                triangular solve.  Delay voting on
+                                C <-- (alpha*A*J)B^T + B(alpha*A*J)^T+beta*C.
+            <LI>    Table 1.7 : 10/0/0.
+            <LI>    Table 1.8 : Vote to keep "multiple inner products" -- 1/6/3.
+                                Vote to keep "multiple max abs value" -- 1/6/4.
+                                Vote to keep "gen mult Givens rots" -- 3/0/7.
+                                Move this function to Table 1.1.
+                                Vote to remove "mult axpys" -- 5/0/3.
+                                Vote to keep "mult plane rots" -- 1/1/8.
+                                Move this function to Table 1.6.
+                                "Multiple swap" was removed.
+       </UL>
+</UL>
+<P>
+Chapter 2 was then addressed.  Should we have band and
+packed MM routines?  But for performance, we need different storage.
+A straw vote was taken on having this functionality-- 13/0/1.
+Specific "wording" revisions were suggested for each section, and those
+revisions have been incorporated into the chapter.  Formal votes were taken on:
+</P>
+<UL>
+<LI> Combine sections 2.1.1 and 2.1.2 -- 9/0/0.  Add table of contents to this
+                    into section.  Insert forward references for
+                    location of respective bindings into each section.
+<LI> Section 2.2.1 --
+     <UL>
+       <LI> Table 2.1 : 9/0/0.  Insert "mult Givens rots" into this
+                                table.
+       <LI> Table 2.2 : 9/0/1.  Renaming of "axpy and axpy-like" to
+                                "scaled vector accumulation and addition".
+                                Removal of "combined axpy and dot product".
+                                Insert "apply mult plane rots" to this table.
+       <LI> Table 2.3 : 10/0/0.  Reinsertion of "copy" functionality
+                                was voted 9/1/0.
+     </UL>
+<LI> Section 2.2.2 -- Table 2.4 : 9/0/1.  "Combined" routines to be discussed
+                                later in the meeting.
+<LI> Section 2.2.3 --
+     <UL>
+       <LI> Table 2.5 : 7/0/3.  Vote to re-add C <-- alpha*A+beta*B
+                                was 8/0/2.
+       <LI> Table 2.6 : 10/0/0.
+       <LI> Table 2.7 : 9/1/0.  Vote to re-add matrix copy.
+                                A <-- B.  9/0/1.
+                                A <-- B^T. 9/1/0.
+                                Vote to rm GB from matrix transpose -- 6/1/3.
+     </UL>
+<LI> Section 2.2.4 -- Removed, 8/1/1.  References to be added to appropriate
+                    sections where multiple instance routines were added
+                    to existing tables.
+<LI> Section 2.2.5 -- Discussion deferred until conference call later.
+<LI> Section 2.3.1 -- Add table of contents to detail contents of each
+                    section.
+<LI> Section 2.3.2 -- Formal vote on naming conventions in favor of gemm,
+                    f_sgemm, c_sgemm 8/0/1.
+<LI> Section 2.3.3 -- 9/0/0.  Reiteration that F77 and F95 are 1-based
+                    and C is 0-based.
+<LI> Section 2.3.4 -- Rewrite necessary.  Jim Demmel will work on this
+                    section.  We need mathematical content here to define
+                    what is a norm, absolute value of a complex number,
+                    define norms for vectors and matrices.  Combine SLASR
+                    and SLARTV functionality into one routine.
+<LI> Section 2.3.5 -- 9/0/1.
+<LI> Section 2.3.6 -- Mimick to section 2.3.7.
+<LI> Section 2.3.8 -- Nuked.
+<LI> Section 2.3.9 -- Keep only first sentence.  Nuke the rest. 9/0/0.
+<LI> Section 2.3.10 -- Reword to say "All error-handling is language
+                    dependent."  9/0/1.
+<LI> Section 2.3.11 -- Section needs to be strengthened.  Jim Demmel will
+                    rewrite.
+<LI> Section 2.4   -- 7/0/3.
+<LI> Section 2.4.1 -- 7/0/3. Rename to "Indexing".  Need to discuss displacements.
+<LI> section 2.4.2 through 2.4.7 -- removal of key arguments interface.
+<LI> Section 2.5.2 -- 9/0/1.  Rename to "Indexing", and add displacements.
+<LI> Section 2.5.3 -- 9/0/1.
+<LI> Section 2.5.4 -- 8/0/0 vote to move this section to "Notation and
+                    Conventions" section.  Add discussion of storage
+                    conventions when column-major vs row-major -- vote 6/4/1..
+                    Discussion of row-major ordering for packed and 
+                    band storage routines.
+                    Add a separate header for "triangular band".
+<LI> Section 2.5.5 -- 10/0/0.
+<LI> Section 2.5.6 -- 9/0/1.  Error-handling routine XERBLA (BLAS_ERROR) which
+                    is passed a string and defaults to printing a message and
+                    stop execution. User can modify.
+<LI> Section 2.6 -- 9/0/0.
+<LI> Section 2.6.1 -- Rename to "Indexing" and add displacement info.
+<LI> Section 2.6.3 -- Add reference to J92 ? committee.
+<LI> Section 2.6.8 -- Add "Matrix Storage Schemes" immediately preceding
+                    this section to state that column-major storage is
+                    as discussed in Fortran77 section, and here is what
+                    row-wise storage looks like.
+<LI> Section 2.7 -- All language bindings will have the same textual 
+                  description as in the tables.  Collapse DOT, DOTU,
+                  and DOTC into one routine using CONJ parameter.
+<LI> Section 2.10 -- Similarly, GER, GERU, and GERC are combined.
+</UL>
+<P>
+At 3:30pm, we began discussion of the Extended Precision chapter.
+Jim gave an overview of the chapter, and then Dave Bailey discussed
+the implementation of extended precision BLAS.</P>
+<P>
+At 4:30pm, Sven addressed the F95 choice of interface decision.
+Optional arguments or key arguments.  Decision delayed until the next
+day.</P>
+<P>
+The meeting adjourned at 5pm.</P>
+<HR>
+<H2><B>December 15, 1998</B></H2>
+<P>
+The meeting began at 9am.  Discussion continued on Chapter 2.
+We need to document the abs value of complex numbers.  We debated
+the readdition of matrix copy.  Combine functionality of slasr and
+slartv.</P>
+<P>
+At 1:15pm, we began discussion on the Sparse BLAS chapter.</P>
+<P>
+We took a vote to remove the unnecessary "const" from in front of 
+certain parameters.  Vote was 8/0/2.  This affects Chapters 2 and 3, and the 
+Legacy BLAS chapter.</P>
+<P>
+We took a straw vote on the framework of Sparse BLAS chapter.
+Vote was 10/0/2.</P>
+<P>
+We then readdressed the key-args versus optional args issue.  A straw
+vote was taken was take on those in favor of key arguments interface
+-- 6/2/6.  A formal vote was taken on those in favor of OPTIONAL
+arguments with derived types for operator arguments -- 8/1/1.</P>
+<P>
+At 4pm, we had a conference call with Ken Stanley to discuss the 
+inclusion of GEMVT and TRMVT interfaces in Chapter 2 (section 2.2.5).  It was
+decided that TRMVT was mature enough and should be included, whereas the
+interface for GEMVT was still under discussion.  </P>
+<P>
+The meeting adjourned at 5pm.</P>
+<HR>
+<H2><B>December 16, 1998</B></H2>
+<P>
+The meeting began at 8:30am with the discussion of the Interval BLAS
+chapter.  Chenyi began by reviewing the changes that were made since
+the last meeting.  It was decided that the motivational section should
+be moved to the end of the chapter as an appendix, and should be
+expanded to include more information on why it is important and 
+include an example.  Restructuring of sections to resemble other
+chapters. </P>
+<P>
+Jim Demmel then led the discussion on the voting of the chapter.
+Discussion began on the discussion of machine constants in the
+chapter.  The definition of overflow is not defined, and delegated to
+another committee.  Some of the issues seemed more compiler-related
+rather than BLAST committee related.</P>
+<P>
+The definition of an empty interval (Section 5.2.3, Special Intervals) needs
+a more concrete specification.  Section 5.2.3, the implementation of an empty
+interval is language dependent.  Formal vote on allowing the definition of an
+empty interval to be language dependent, 9/0/0.</P>
+<P>
+<UL>
+<LI> Section 5.2.2, 9/0/0.
+<LI> Section 5.2.1, 9/0/0.
+</UL>
+<P>
+Naming conventions, suffix _i to be added at the end of the name, e.g.,
+f_sgemm_i.  Formal vote, 8/0/0.
+Remove discussion of extended precision routines in this chapter.  Major
+revisions necessary in Section 5.4 and 5.5.</P>
+<P>
+The forum then began general discussion.  It was agreed to have another
+on-line meeting at the end of January.  The final meeting will be
+on March 16--18, 1999 in Knoxville, Tennessee.</P>
+<P>
+Jim Demmel then discussed test software for the extended precision
+chapter and the need for an environmental inquiry function.  However,
+the parameters needed in this environmental inquiry routine for the
+extended precision routines are more complex than for the routines
+in the other chapters.  So it was decided to have two separate
+inquiry routines instead of making one general routine.  This would avoid the 
+unnecessary complication for the other chapters.  </P>
+<UL>
+<LI> FPINFO( cmach, prec )
+<LI> FPINFO_X( cmach, prec, routine )
+</UL>
+<P>
+It was also stated that Strassen's algorithm is allowed in Chapter 2
+(Dense and Banded BLAS) but not in Chapter 4 (Extended and Mixed
+Precision BLAS).</P>
+<P>
+Jim Demmel and Susan Blackford then discussed specific revisions to
+Chapter 2 over lunch.  One specific revision suggested was to divide
+Table 2.1 (Reduction Operations) into two tables, one for reduction operations
+and one for rotation operations.  And for the "dot product" routines (DOT,
+DOTU, DOTC), only one routine is needed.  An additional CONJ parameter will
+be added to accomodate the complex conjugate version of the routine.  The
+same logic will be applied to GER, GERU, GERC.</P>
+<P>
+The meeting adjourned at 12:30pm.</P>
+<P>
+Attendees list for the December 14-16, 1998 BLAST Forum Meeting
+<PRE> 
+David Bailey         LBL, NERSC           dhbailey@lbl.gov
+Puri Bangalore       MSU-ERC              puri@erc.msstate.edu
+Susan Blackford      UT, Knoxville        susan@cs.utk.edu
+Jim Demmel           UC Berkeley          demmel@cs.berkeley.edu
+Jack Dongarra        UT / ORNL            dongarra@cs.utk.edu
+Sven Hammarling      NAG, UK              sven@nag.co.uk
+Mike Heroux          Sandia Nat Lab       mheroux@cs.sandia.gov
+Mary Beth Hribar     Tera Computer        marybeth@tera.com
+Chenyi Hu            UH-DT                chu@uh.edu
+Rich Lee             UND                  llee@lsc.nd.edu
+Sherry Li            LBL, NERSC           xiaoye@nersc.gov
+Hsin-Ying Lin        HP Convex Tech. Ctr. lin@rsn.hp.com
+Andrew Lumsdaine     UND                  lumsdaine.1@nd.edu
+Linda Kaufman        Bell Labs            lck@bell-labs.com
+Roldan Pozo          NIST                 pozo@nist.gov
+Jeremy Siek          UND                  jsiek@lsc.nd.edu
+Clint Whaley         UT, Knoxville        rwhaley@cs.utk.edu
+</PRE>
+<P> 
+Susan Blackford agreed to take minutes for the meeting.</P>
+</BODY></HTML>

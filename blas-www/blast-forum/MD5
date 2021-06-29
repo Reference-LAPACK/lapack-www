@@ -1,0 +1,116 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+
+# netlib-utk master Fri Jan 21 03:10:18 EST 2011
+Gm/Wan8cxqVJC1E3zycVzg	Entry.f90
+nf1QIV5+XE161TWT4WRRJg	SparseBLAS.f90
+aKW9EV0l/x1HjFrJ7dsjZw	SparseBLAS1.f90
+p2yzptWa/xGBEZNuPGJbdQ	acknowledgements.html
+W/ysoUr07SQ+wcBCuhVKdw	appendix.pdf
+YN1BGzPcEutFf23JYrSI0A	appendix.ps
+V0dfH20rg3Nsemw8Zh/M/A	blas-bib.pdf
+YiaMOHGt1DgTinBV4w/KtA	blas-bib.ps
+UhfzXuhy6JnaTdbqH+jhaQ	blas-index.pdf
+cwrVyW8jTlqxPzL6oktBPA	blas-index.ps
+o2xS8Mn+QTdR6WFaf3AzNQ	blas-report.pdf
+XFJlM4DvB4wzZmB3C9qHLg	blas-report.ps
+enbaxg8tDi6tGOUeH4ThhA	blas-report.tgz
+OijzXLPAsLA0TEJMY5BuPQ	blas.h
+Eh0aOyF46f0d5LkLooc8oA	blas_dense.f90
+6n6Zv587ZT0dVqU6t2dSlA	blas_dense.h
+8D8Y/T+/8nOIU4qiBdsvAA	blas_dense_fpinfo.f90
+mGCxdmnDT5jUd3THt/DP3w	blas_dense_gen_trans.f90
+U2zvC43nKU2W/DOWkoKLfQ	blas_dense_mat_mat_op.f90
+9KrHgBKBLwsHzxCvtkXoMQ	blas_dense_mat_mat_op.f90_BEFORE_2008_OCT_27.f90
+D+46BmkdLaH5paZ7eFvK1g	blas_dense_mat_mov.f90
+nP22byVbttMsbr5yOTUTTw	blas_dense_mat_op.f90
+Y7X5mK7GHnpIUrcg1TFhoQ	blas_dense_mat_vec_op.f90
+bQLYgbnWiVX3niK8yci9Kg	blas_dense_proto.h
+sr7HyDN8G/Zlc5P1SZPQig	blas_dense_red_op.f90
+EPfq8CC2BsujmBYNcVA4ag	blas_dense_vec_mov.f90
+BVAbWjc53nCPskp3cWWlIw	blas_dense_vec_op.f90
+Tx5I2Hf0Zqh0Sc8uNKQBZA	blas_enum.h
+A3bJ8ybtFIefVsigKSoTOQ	blas_extended.f90
+RDGDIiHSQ1S1fHn8f3wBjA	blas_extended.h
+LG+Ap3jW/WZejcYlJHEytA	blas_extended_mat_mat_op.f90
+gssnxYgoihr4vDYwJ+vyGg	blas_extended_mat_vec_op.f90
+oZseRSe5W+PwSmbiJwAM7A	blas_extended_proto.h
+QdMcGaqs1gZ1cnMaiPhPUg	blas_extended_red_op.f90
++Dgj8h9f8GC3drwBh7ouLg	blas_extended_vec_op.f90
+q2AnFvwzuMCh8neSIV6t2w	blas_malloc.dec22.05.h
+wx1fMZB38k6zXhRieoJtfA	blas_malloc.h
+5+xdQMjfmuKU9Vk1vuklZA	blas_namedconstants.h
+xtevR8s8k9XnDtkC7qG4kw	blas_operator_arguments.f90
+zt8+wvGGnFnwp4m544BZDQ	blas_operator_arguments.f90.bak
+b2Jh+xMsKzVgMbGM8x1N7w	blas_operator_arguments.mod
+HHE+z8vnO9bWCuJ1jJ6FIA	blas_precision.f90
+78xDPBeWdD8EaLjT+TYOgA	blas_sparse.f90
+HPYzhiJBTy/oEw6hx5/ggA	blas_sparse.h
+OYhJzZzF/hP6gDL8/wJhyQ	blas_sparse_namedconstants.f90
+S+XCtYAOwnD/LtAcFo6nwg	blas_sparse_proto.f90
+w3m8e96i8PuMA84kk13G5A	blas_sparse_proto.h
+VGrtvX43cQpVIfO2w5H0MA	blas_sparse_proto.h_2005_09_01
+PKZ2m+k1PMbMJQkp6tejog	blaspaper1.pdf
++B0Mw5+jpp3vMg68cDAc+g	blaspaper1.ps
+MBzoKkKA0pia5aJxgXkEsw	blast-agenda-1297.html
+lZabRlov6hOOXhpHS+a1/g	blast-feb96.html
+UwP/9PJ0eHkF01dGqGwEYw	blast-forum-agenda-498
+QD5ObnS8ANiwTweGtiC6kA	blast-forum-minutes.april27-29.98.html
+yXN3XvRQOrwNT1dfTckjKQ	blast-forum-minutes.aug14-15.97.html
+gXhn+0YFKsr+Jf4Q//SB4Q	blast-forum-minutes.dec14-16.98.html
+Qy5UqMuNaKWLTxqequlmxA	blast-forum-minutes.dec3-5.97.html
+wrQbuneeA5veLkZDIjLbgQ	blast-forum-minutes.feb19-20.html
+Ps2eO6mop3HMJwPTXmZ8OA	blast-forum-minutes.feb27-28.97.html
+Fe7F0KQrZnMaYghGyOxoig	blast-forum-minutes.march16-18.99.html
+DrGY/7C+kjkdeAZN+p2rLw	blast-forum-minutes.may20-21.html
+AjurfEFmI+KZGsVubv5iag	blast-forum-minutes.nov7-8.96.html
+QXBCEkfN6fd6NYzlmHLS7w	blast-forum-minutes.oct8-9.98.html
+E3wclpeSDGDKm7+v1z1gpg	blast-forum-nov7-8.html
+MU8wvCxU78Zm+i/KQzAQZA	blast-forum-rules.html
+uEUmFVby8liAlH1Z+jiNjA	blast-forum.html
+gZM9vJbqk5iW42idH1ZXEw	blast-forum.html.bak
+kuefVQXRa0+Uef0NylD7MQ	blast-forum.may20-22.html
+obZAxFZVfI2n407IMBLC6g	cblas.h
+mxnGSLLp22qPg3oN8kI65Q	cblas.tar.gz
+J0VUtVtuXvakho/jkAw7+Q	cblas.tar.gz_2003_02_24
+Hogw9iLSESI5pKioO4Qgmg	cblas.tgz
+ZXR7ZZ2UZbblE0Ltqw4CgQ	cblas.tgz_2003_02_24
+cWMpZGrJM1kqfL2+rp09Bg	cblas.tgz_20_jan_2011
+XVyCF0aMUjFcyIq+ffVJhQ	chapter1.pdf
+9xAGAjiaBcB3YVy94xzeDQ	chapter1.ps
+0m9HCes5q3xUvGIahpFXqQ	chapter2.pdf
+7CDS+ZKvNixLA8mMXu+VRQ	chapter2.ps
+iBgHpURxt6s+rXKNhbiZ7Q	chapter3.pdf
++9Y/wejxCqV42/9U5Yw0Hw	chapter3.ps
+z2AJKOu4D4bIxaHSaU4nrw	chapter4.pdf
+/ehDNQXW1aMUNdGpSbmuJg	chapter4.ps
+PZQZhNmzJI7xppdIBpqx8g	chapter5.pdf
+aYgcyGliGGOVOuGcaDKB8Q	chapter5.ps
+Bg/mYIWHoU4pWavE/K2xcA	cinterface.pdf
+buAynty5JsPvXVgQqEFKDA	cinterface.ps
+vmxia/B7F6Qs69a+WKmRaw	denseblas.h
+8J0hMU1xakLg/UwEznwlqg	directions.html
+D2ETRHY3iRIJxJ2cUuvi9w	distmemblas.pdf
+D7NcMVbfk8y4h7OIL6b3tA	distmemblas.ps
+9CRvEupGQmB4SUajYTgS1g	environmental.pdf
+T+H8jFqAc8lt56+ckLUUEA	environmental.ps
+7I2AG3Sv0C/F8iuhrwVqcg	extendedblas.h
+YuYwPSw2LYOBCtGndZrxdw	f90thinblas.tar.gz
+92qmUJrUCpX1MMqjdcVnVw	f95thinblas.pdf
+w8OSJAJjOvha/5iWYsJS2w	f95thinblas.ps
+LDMd2VMQ3XBQSkNrf6OCFg	f_denseblas.h
+LDMd2VMQ3XBQSkNrf6OCFg	f_extendedblas.h
+LDMd2VMQ3XBQSkNrf6OCFg	f_sparseblas.h
+ukOjCok4QIOg7l/13vTaMw	index
+uEUmFVby8liAlH1Z+jiNjA	index.html
+stZuu+BlKiNLksQ5v0AZ1w	index.html_2004_01_28
+eYaUOnXABfYN7k1h5mFJig	sparseblas.h
+
+-----BEGIN PGP SIGNATURE-----
+Version: 2.6.2
+
+iQCVAwUBTTk/duFlxDEfrjtlAQHFEgP/YwN5rfVfadGUdv6vgVVqBWErItQAPxAN
+5daYq7VAtaenN/eAOm9OrLunwlIwhbeR6YfVkgGfs9v91SBmWruvvvs7dxfXz5E9
+rMGJ+xuhNQYrMW6h7QFXFxXTrrAOnPYQdU8CLhrxu4kGQLWs8J8q4BrGKQXZVQU9
+fLx2IJqRz2E=
+=/SgV
+-----END PGP SIGNATURE-----

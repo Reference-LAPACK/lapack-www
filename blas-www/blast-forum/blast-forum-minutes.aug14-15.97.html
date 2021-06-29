@@ -1,0 +1,278 @@
+<HTML><HEAD>
+<TITLE>BLAST Forum MINUTES</TITLE>
+
+<CENTER><H2>BLAST Forum MINUTES</H2></CENTER>
+ 
+<CENTER><H2>August 14-15, 1997</H2></CENTER> 
+ 
+<CENTER><H2>Benson Hotel, Portland, OR</H2></CENTER></HEAD>
+
+<BODY>
+
+<UL>
+<LI>Twenty people attended the <a href="http://www.netlib.org/utk/papers/blast-forum.html">BLAST Forum</a> in Portland, OR on
+February 27-28, 1997.  The meeting was hosted by Intel Corporation.
+</UL>
+<HR>
+<H2><B>August 14, 1997</B></H2>
+<P>
+Jack Dongarra opened the meeting by welcoming everyone and inviting
+everyone to introduce themselves.  He then reviewed the ``rules of
+order'' for the first and second readings of proposals, as well as the
+voting procedures for the meeting.  The strategy for dividing the
+attendees into breakout sessions was then discussed.  A poll was taken
+to see how many attendees were interested in each of the proposed
+sessions.</P>
+<P>
+It was decided that discussion of the ``BLAS Extensions'' and ``C
+Interface to the Legacy BLAS'' would be combined into one group.
+Discussion of the ``BLAS Lite/Thin'' and ``Environmental routines''
+would similarly be combined.</P>
+<P>
+It was then decided to have a brief discussion of the unified BLAS
+document, which was prepared by Puri and Sven over the past two days
+prior to the meeting.  The structure/presentation of the document was
+a topic of lively debate.  About half of the attendees preferred a
+unified document for the BLAST proposal instead of separate
+``proposals'' or stand-alone chapters.  The proposed document format
+(accepted by vote of the forum at the previous meeting) primarily
+contains separate chapters on functionality, language independent
+specifications, and language binding issues.  Interleaved in these
+sections would be information pertaining to the sequential, sparse,
+parallel, etc.  However, several attendees voiced concern at this
+interleaved proposal idea instead of self-contained chapters.
+Specifically, if a user or vendor is only interested in information
+pertaining to the sparse BLAS, he or she would still need to read the
+entire document.  As the debate continued, it was decided to continue
+the discussion after the break-out sessions.</P>
+<P>
+The following discussion groups met in the morning session:</P>
+<UL>
+<LI>BLAS Functionality -- Sven Hammarling
+<LI>BLAS Extensions and C interface to the Legacy BLAS -- Susan
+    Blackford and Clint Whaley
+<LI>Sparse BLAS -- Roldan Pozo
+<LI>Language binding issues -- Andrew Lumsdaine
+</UL>
+<P>
+After lunch, the following discussion groups met for the afternoon
+session:</P>
+<UL>
+<LI>BLAS Lite and Environmental Routines -- Tony Skjellum and Jack
+    Dongarra
+<LI>Parallel BLAS -- Antoine Petitet
+<LI>Interval BLAS -- Chenyi Hu
+</UL>
+
+<HR>
+<P>
+At 3:00pm, a plenary presentation of the results of the day's break-out
+sessions occurred.</P>
+<P>
+The BLAS Functionality session decided that the justification/priority
+column of the tables will be deleted and instead the justification for
+each routine will be included in the text of the document.  The tables
+referring specifically to Sparse BLAS functionality will be deferred
+to the Sparse BLAS chapter/proposal.  The first reading of the
+Functionality chapter/proposal will occur at the next meeting.</P>
+<P>
+The Legacy BLAS session decided that the chapter/proposal will include
+the C interface to the BLAS, the Fortran90 interface to the BLAS, and
+the extensions to the BLAS.  These latter two sections will be added
+to the Legacy BLAS chapter in order to increase the number of
+short-term deliverables, and will be available for a first reading at
+the next meeting.  The ``Extensions'' list will be kept as short as
+possible.  Vendors were asked to provide a list of BLAS extensions
+that they have incorporated into their optimized BLAS libraries in
+order to see some commonality of needs in the vendor's applications
+community.  Multiple instance routines will not be included as part of
+the extensions to the BLAS, and will instead be discussed as part of
+the ``New BLAS'' in a separate section of the proposal. The C
+interface to the BLAS was also discussed section by section in
+preparation for the first reading later in the meeting.  A ``row
+major'' and a ``column major'' interface will be provided, and
+character arguments will be handled as enumerated types.  The only
+topics of contention were Section 5.1.4 ``Handling of complex data
+types'', and Section 5.1.5 ``Return values of complex functions''.
+Compatibility with the C9X standard effort was stressed.</P>
+<P>
+When the Sparse BLAS chapter/proposal was addressed, a first reading
+of the document was suggested as their were no ``new'' decisions made
+at the break-out session, merely re-explaining of some previous design
+decisions, and some suggestions to make the presentation of the
+document clearer.  This first reading suggestion was opposed as
+several attendees felt that the user interface issue had not been
+fully addressed.  Thus, the language binding issue of free format or
+``data neutral'' versus specific data formats for the user interface
+of the software was addressed.  The ``data-neutral'' user level
+interface is not necessarily meant to replace the ``concrete
+routines'' that are already in place, but can be viewed as an opaque
+interface whereby someone else can implement their specific data
+formats.  This is exactly what Iain Duff proposed with the User Level
+Sparse BLAS and the issue may be addressed (if there is interest).</P>
+<P>
+The Language Bindings discussion centered on a handle-based language
+interface, whereby the software has an opaque ``data neutral'' interface 
+and the user is free to choose the storage format or data distribution
+of his choice, and the software converts his format to the format used
+within the software.  Concern was raised at the performance cost of
+this opaque interface at the low-level BLAS routines, as it would
+require the re-organization/redistribution of data that could be more
+costly than the operation itself.  The forum attendees were divided on
+the issue of ``Do the majority of users want the option of a more opaque
+data-neutral interface or do they prefer to stay with more traditional
+storage formats?''</P>
+<P>
+The BLAST Lite/Thin and Environmental Routines discussion was next
+addressed.  It was decided that the BLAS Lite/Thin would be included
+in the ``Journal of Development'' appendix of the document until
+this standardization effort has achieved more maturity.  Further
+study is needed on the issue of environmental routines.</P>
+<P>
+The Interval BLAS session summarized the needs of the Interval BLAS 
+community addressed in its proposal.  Several attendees asked for 
+applications that justify these needed operations.  It was suggested
+that the Interval BLAS requires further development and maturation
+before it can be considered for inclusion in the document.  At present
+the Interval BLAS discussion will be contained in the ``Journal of
+Development''.</P>
+<P>
+The Parallel BLAS discussion re-addressed the issues of developing a
+standard for distributed-memory dense BLAS operations.  It was
+suggested that to avoid confusion with threaded and shared-memory BLAS
+efforts, the effort should not be called Parallel BLAS, but instead
+distributed-memory BLAS.  It was proposed that this effort should
+define a specific set of functionality needed for distributed-memory
+operations, and perhaps add functions for distribution parameter
+queries, divide-and-conquer task queue management, and data generation
+for input/output.  There should be no alignment restrictions in the
+proposed routines, and a Cartesian or block-cyclic mapping plus
+replication should be supported for data distribution.  (The document
+may say Cartesian, but a particular implementation may be restricted
+to a subset of general Cartesian.)  The language binding issue of user
+interface was again discussed as some attendees felt that a specific
+data distribution should not be specified.  It was further summarized
+that operations derived from the Functionality document are
+intra-context only, but general tools are provided to allow for
+expressing inter-context operations.  This set of intra-context
+operations for general redistribution needs to be specified.
+Coherency and repeatability requirements need to also be addressed, as
+well as the issue of interoperability.  In short, the interface to the
+distributed-memory BLAS should resemble the serial interface as
+closely as possible.  As a result of the discussion, several attendees
+pointed out that we need to address the issue of thread-safety
+(repeatability) in the serial dense BLAS.</P>
+<HR>
+<H2><B>August 15, 1997</B></H2>
+<P>
+Jack Dongarra opened the morning session with a brief overview of 
+the agenda for the day.  A tentative date for the next meeting was
+first discussed, following by the first reading of the C interface
+to the BLAS section of the Legacy BLAS proposal/chapter, and finally
+the discussion of the organization/unification of the BLAS document.</P>
+<P>
+The C Interface to the BLAS proposal was presented as a first reading.
+A formal vote was taken on each section of the document.  Nine eligible
+voters were in attendance -- Univ. of Tenn., NAG, NIST, Cray, HP/Convex,
+Intel, NEC, Univ. of Houston, and Univ. of Notre Dame.  A unanimous vote
+of all nine in favor of each section was produced, with only minor
+modifications suggested for various sections.  It was proposed that
+Section 5.2 would become an appendix, a section would be produced on
+error-handling, and the prototypes from the header file would be included
+as an appendix.</P>
+<P>
+Finally, the question of the presentation of the proposal document was
+again addressed.  Concern was again raised for the user who is only
+interested in one aspect of the standard and must read the entire
+document.  A straw vote was taken to ascertain if we should try to
+integrate the BLAST proposal into one unified document.  Seventeen
+people were present for the vote.  Six attendees voted in favor of the
+unified document instead of separate ``proposals'' or stand-alone
+chapters.  This document (hereafter referred to as FORM A) primarily
+contains separate chapters on functionality, language independent
+specifications, and language binding issues.  Interleaved in these
+sections would be information pertaining to the sequential, sparse,
+parallel, etc.  Eight attendees voted in favor of the BLAS document
+with separate self-contained chapters (hereafter referred to as FORM
+B) for each of the various flavors of BLAS.  Concern was raised for
+the difficulty of maintaining consistency throughout the document if
+chapters remain separate.  Three attendees abstained from the straw
+vote.</P>
+<P>
+Discussion continued and a formal vote was taken on the organization/format
+of the BLAS document.  Ten eligible voters were present -- representing
+the Univ. of Tenn., NAG, NIST, Cray, HP/Convex, Intel, NEC, Univ. of
+Houston, Univ. of Notre Dame, and Mississippi State Univ..  Four
+attendees voted in favor of FORM A, and six attendees voted in favor
+of FORM B.</P>
+<P>
+It was decided that a draft format for FORM B would be circulated
+in a timely manner.</P>
+<P>
+A summary of the meeting was then provided by Jack Dongarra; he
+reviewed the tentative schedule for the next meeting, and thanked
+Shane Story and Intel Corporation for hosting the meeting.</P>
+<P>
+Several of the BLAS chapters (Legacy BLAS, Functionality, and Sparse
+BLAS) may be ready for a first reading at the next meeting, and it was
+decided that several of the proposed BLAS additions are not developed
+enough to consider inclusion in the document as separate chapters,
+instead they will be included in the Appendix entitled ``Journal of
+Development'' until they are deemed mature enough to be included in
+the standardization effort.  An issue that must be decided at the next
+meeting will be the language binding issue of an opaque ``data
+neutral'' user interface versus a specific pre-defined ``concrete''
+interface for the specification of data formats in the Sparse BLAS and
+the specification of data distribution in the Parallel BLAS.</P>
+<P> 
+The ``Journal of Development'' for the BLAS Technical Forum
+contains proposals considered for the BLAS Forum
+but not included for any of several reasons, including: </P>
+<UL> 
+<LI>lack of time to complete within the time frame of BLAST Forum, or
+<LI>lack of consensus on the syntax, semantics, or pragmatics 
+    of the proposed feature. 
+</UL>
+<P> 
+In most cases it was felt that the features in this ``Journal of
+Development'' represented capabilities that should be considered.
+The BLAS Techinical Forum decided that these proposals should 
+be preserved as input to a potential future BLAST Forum process.</P>
+<P>
+The tentative date of the next forum meeting is:</P>
+<UL>
+<LI>Dec. 3-5, 1997 in Knoxville, TN
+</UL>
+<P>
+and will be hosted by the University of Tennessee, with a preliminary
+deadline of November 19, 1997 for subgroup progress.</P>
+<P>
+The meeting was then adjourned by Jack Dongarra at 12:30 PM.</P>
+<P>
+Attendees list for the August 14-15, 1997 BLAST Forum Meeting</P>
+<PRE>
+Puri Bangalore       Miss. State Univ.         puri@cs.msstate.edu
+Susan Blackford      Univ. of TN, Knoxville    susan@cs.utk.edu
+Andrew Chapman       NEC Systems Laboratory    chapman@hstc.necsyl.com
+Theresa Do           Cray/SGI                  tdo@cray.com
+Jack Dongarra        Univ. of TN / ORNL        dongarra@cs.utk.edu
+Roger Golliver       Intel
+Bruce Greer          Intel                     bruce_s_greer@ccm.jf.intel.com
+John Gunnels         Univ. of TX, Austin       gunnels@cs.utexas.edu 
+Sven Hammarling      NAG, UK                   sven@nag.co.uk
+Greg Henry           Intel                     ghenry@cs.utk.edu
+Chenyi Hu            Univ. of Houston/Downtown chu@uh.edu
+Hsin-Ying Lin        HP Convex Technology Ctr. lin@rsn.hp.com
+Andrew Lumsdaine     Univ. of Notre Dame       Lumsdaine.1@nd.edu
+Kristi Maschhoff     Tera Computers            kristi@tera.com
+Antoine Petitet      Univ. of TN               petitet@cs.utk.edu
+Roldan Pozo          NIST                      pozo@nist.gov
+Jeremy Siek          Univ. of Notre Dame       jsiek@nd.edu
+Tony Skjellum        Miss. State Univ.         tony@cs.msstate.edu
+Shane Story          Intel                     shane@ibeam.jf.intel.com 
+Clint Whaley         Univ. of TN, Knoxville    rwhaley@cs.utk.edu
+</PRE>
+<P>
+Susan Blackford and Andrew Lumsdaine agreed to take minutes for
+the meetings.</P>
+</BODY></HTML>

@@ -1,0 +1,111 @@
+
+
+
+                        GEMM-Based Level 3 BLAS
+
+
+                        Bo Kagstrom and Per Ling
+                    Department of Computing Science
+                            Umea University
+                         S-901 87 Umea, Sweden
+
+                            Charles Van Loan
+                     Department of Computer Science
+                           Cornell University
+                      Ithaca, New York 14853-7501
+
+
+
+   1. High Performance Model Implementations
+
+   The GEMM-Based Level 3 BLAS concept utilizes the fact that it is
+   possible to formulate the Level 3 BLAS operations in terms of the
+   Level 3 operation for general matrix multiply and add, _GEMM, and
+   some Level 1 and Level 2 BLAS operations.
+      The GEMM-Based Level 3 BLAS model implementations are written in
+   Fortran 77 and designed to be highly efficient on machines with a
+   memory hierarchy. They are primarily intended for a single processor
+   on machines with local or global caches and micro processors with
+   on-chip caches. But they can also be parallelized using a
+   parallelizing compiler or parallel underlying BLAS kernels. All
+   routines are effectively structured to reduce data traffic in a
+   memory hierarchy.
+      The user supplies underlying routines, the Level 3 BLAS routine
+   _GEMM and some Level 1 and Level 2 BLAS kernels. If they are
+   efficiently optimized for the target machine, the GEMM-Based Level 3
+   BLAS model implementations offer:
+
+      o   efficient use of vector instructions (compound instructions,
+          chaining, etc.), through _GEMM, Level 1 and Level 2 BLAS
+          routines.
+
+      o   vector register reuse, through _GEMM and Level 2 BLAS
+          routines.
+
+      o   efficient cache reuse, through internal blocking, use of local
+          arrays, and through _GEMM.
+
+      o   column-wise referencing, for problems that would cause severe
+          performance degradation with row-wise referencing (except for
+          reference patterns in underlying BLAS routines).
+
+      o   parallelism, through automatic parallelization by a compiler,
+          or by using parallel underlying BLAS kernels.
+
+      o   a Level 3 BLAS library based on unconventional underlying
+          matrix multiply algorithms like, for example, Strassens or
+          Winograds algorithms.
+
+
+   2. GEMM-Based Level 3 BLAS Benchmark
+
+   The GEMM-Based Level 3 BLAS Benchmark is a tool for performance
+   evaluation of Level 3 BLAS implementations. With the announcement of
+   LAPACK, the need for high performance Level 3 BLAS became apparent.
+   LAPACK is based on calls to Level 3 BLAS routines. This benchmark
+   measures and compares performance of user-supplied and permanently
+   built-in Level 3 BLAS kernels. The built-in GEMM-Based Level 3 BLAS
+   kernels provide a lower limit on the performance to be expected from
+   a highly optimized Level 3 BLAS library.
+      The user-supplied Level 3 BLAS implementations are linked with the
+   benchmark program. When the program executes, timings are performed
+   according to specifications given in an input file. The user may
+   design his/her own tests or use the enclosed input files. The
+   following output results are optionally presented:
+
+      A.  A collected mean value result, calculated from the performance
+          results of each of the user-supplied routines.
+
+      B.  Tables, showing performance results in megaflops for each
+          routine and problem configuration and performance comparisons
+          between different routines.
+
+   The purpose of (A) is to provide a performance measure for Level 3
+   BLAS kernels covering each of the routines and a significant problem
+   suit. The result should be easy to compare between different
+   implementations and different machines. We propose two standard tests
+   with different problem configurations, _MARK01 and _MARK02, which are
+   enclosed as input files.
+      The tables in (B) are intended for program developers and others
+   who are interested in detailed performance information and
+   performance comparisons between the routines.
+      All routines are written in Fortran 77 for portability. No changes
+   should be necessary to run the program correctly on different target
+   machines.
+
+
+   For further information see:
+
+   Kagstrom B. and Van Loan C. "GEMM-Based Level-3 BLAS", Tech. rep.
+       CTC91TR47, Department of Computer Science, Cornell University,
+       Dec. 1989.
+
+   Kagstrom B., Ling P. and Van Loan C. "High Performance GEMM-Based
+       Level-3 BLAS: Sample Routines for Double Precision Real Data",
+       in High Performance Computing II, Durand M. and El Dabaghi F.,
+       eds., Amsterdam, 1991, North-Holland, pp 269-281.
+
+   Kagstrom B., Ling P. and Van Loan C. "Portable High Performance
+       GEMM-Based Level 3 BLAS, in R. F. Sincovec et al, eds., Parallel
+       Processing for Scientific Computing, SIAM Publications, 1993,
+       pp 339-346.

@@ -896,16 +896,20 @@ new file:   SRC/zgetsqrhrt.f
 new file:   SRC/zlarfb_gett.f
 new file:   SRC/zungtsqr_row.f</code></pre>
 </div></div>
-<div class="paragraph"><p>2.4 Change in the return behavior of GESDD</p></div>
-<div class="listingblock">
-<div class="content">
-<pre><code>GESDD now returns with INFO = -4 if A has a NaN entry.
-In version 3.9.0 and master, GESDD would call `exit(0)` instead of returning an error code on some matrices.
-See https://github.com/Reference-LAPACK/lapack/issues/469#issue-781977643
-
-
-2.5 Bug fixes</code></pre>
-</div></div>
+<div class="paragraph"><p>GETSQRHRT is a QR factorization routine for tall-skinny matrices. It is based on LATSQR, but returns the Q and R factors in the same format as GEQRT, i.e. using  the compact WY representation of Q.</p></div>
+<div class="paragraph"><p>This is the same format used by other LAPACK routines that depend on QR factorizations. GETSQRHRT uses ORGTSQR_ROW (which in turn calls LARFB_GETT) to construct an orthonormal matrix from a TSQR factorization, which is a more efficient version of ORGTSQR.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_4_change_in_the_return_behavior_of_gesdd">2.4 Change in the return behavior of GESDD</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>GESDD now returns with INFO = -4 if A has a NaN entry.</p></div>
+<div class="paragraph"><p>In version 3.9.0 and master, GESDD would call <code>exit(0)</code> instead of returning an error code on some matrices. See <a href="https://github.com/Reference-LAPACK/lapack/issues/469#issue-781977643">Issue #469</a></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_5_bug_fixes">2.5 Bug fixes</h2>
+<div class="sectionbody">
 <div class="paragraph"><p>For details please see our Github repository</p></div>
 <div class="ulist"><ul>
 <li>
@@ -925,12 +929,12 @@ See https://github.com/Reference-LAPACK/lapack/issues/469#issue-781977643
 <h2 id="_2_6_notes_about_compiler_dependency">2.6 Notes about compiler dependency</h2>
 <div class="sectionbody">
 <div class="paragraph"><p>Some LAPACK routines rely on trustworthy complex division and ABS routines in the FORTRAN compiler.
-This [link](<a href="https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivisionFound.txt">https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivisionFound.txt</a>) lists the COMPLEX*16 algorithms that contain compiler dependent complex divisions of the form</p></div>
+This [link](<a href="https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivisionFound.txt">https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivisionFound.txt</a>) lists the LAPACK COMPLEX*16 algorithms that contain compiler dependent complex divisions of the form</p></div>
 <div class="literalblock">
 <div class="content">
 <pre><code>REAL / COMPLEX   or   COMPLEX / COMPLEX</code></pre>
 </div></div>
-<div class="paragraph"><p>See <a href="https://github.com/Reference-LAPACK/lapack/issues/575">https://github.com/Reference-LAPACK/lapack/issues/575</a> and <a href="https://github.com/Reference-LAPACK/lapack/issues/577">https://github.com/Reference-LAPACK/lapack/issues/577</a> for a more complete discussion on this topic.</p></div>
+<div class="paragraph"><p>See <a href="https://github.com/Reference-LAPACK/lapack/issues/575">Issue #575</a> and <a href="https://github.com/Reference-LAPACK/lapack/issues/577">Issue #577</a> for a more complete discussion on this topic.</p></div>
 </div>
 </div>
 <div class="sect1">
@@ -1026,7 +1030,7 @@ GitHub Users: <a href="https://github.com/thijssteel">thijssteel</a>, <a href="h
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2021-06-28 13:07:43 PDT
+ 2021-06-29 09:13:48 PDT
 </div>
 </div>
 </body>

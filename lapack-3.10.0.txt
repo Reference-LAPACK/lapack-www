@@ -112,22 +112,16 @@ Also *two accuracy improvements to xtgex2*:
  new file:   SRC/zlarfb_gett.f
  new file:   SRC/zungtsqr_row.f
 
-GETSQRHRT is a QR factorization routine for tall-skinny matrices.
-It is based on LATSQR, but returns the Q and R factors in the same format as
-GEQRT, i.e. using  the compact WY representation of Q.
-This is the same format used by other LAPACK routines that depend on QR factorizations.
-GETSQRHRT uses ORGTSQR_ROW (which in turn calls LARFB_GETT) to construct
-an orthonormal matrix from a TSQR factorization, which is a more efficient version
-of ORGTSQR.
+GETSQRHRT is a QR factorization routine for tall-skinny matrices. It is based on LATSQR, but returns the Q and R factors in the same format as GEQRT, i.e. using  the compact WY representation of Q.
 
+This is the same format used by other LAPACK routines that depend on QR factorizations. GETSQRHRT uses ORGTSQR_ROW (which in turn calls LARFB_GETT) to construct an orthonormal matrix from a TSQR factorization, which is a more efficient version of ORGTSQR.
 
 2.4 Change in the return behavior of GESDD
----------------------------------------------------------
+------------------------------------------
 
-GESDD now returns with INFO = -4 if A has a NaN entry.
-In version 3.9.0 and master, GESDD would call `exit(0)` instead of returning an error code on some matrices.
-See https://github.com/Reference-LAPACK/lapack/issues/469#issue-781977643
+GESDD now returns with INFO = -4 if A has a NaN entry. 
 
+In version 3.9.0 and master, GESDD would call `exit(0)` instead of returning an error code on some matrices. See link:https://github.com/Reference-LAPACK/lapack/issues/469#issue-781977643[Issue #469]
 
 2.5 Bug fixes
 -------------
@@ -145,7 +139,7 @@ This [link](https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivi
 
      REAL / COMPLEX   or   COMPLEX / COMPLEX
 
-See https://github.com/Reference-LAPACK/lapack/issues/575 and https://github.com/Reference-LAPACK/lapack/issues/577 for a more complete discussion on this topic.
+See link:https://github.com/Reference-LAPACK/lapack/issues/575[Issue #575] and link:https://github.com/Reference-LAPACK/lapack/issues/577[Issue #577] for a more complete discussion on this topic.
 
 
 3. Developer list

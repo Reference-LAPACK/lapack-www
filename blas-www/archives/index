@@ -1,0 +1,60 @@
+#	BLAS/ARCHIVES directory
+#	==================
+
+#	This subdirectory contains pre-built reference implementation
+#       Fortran 77 BLAS libraries for various architectures.
+
+#       ****
+#       NOTE:  The BLAS archives available here are NOT optimal! 
+#       ****   They should only be used if a vendor-specific BLAS
+#              library is not available for your architecture.
+
+#              The reference implementation Fortran 77 BLAS may be
+#              obtained from: 
+#              http://www.netlib.org/blas/blas.tgz
+
+#       Questions/comments should be directed to lapack@cs.utk.edu.
+
+file    blas/archives/readme
+for     README
+size    574 bytes
+
+#       ################################################################
+#       # Pre-Built reference implementation Fortran 77 BLAS Libraries #
+#       ################################################################
+
+file    blas/archives/blas_alpha.tgz
+for     Fortran 77 BLAS compiled for DEC ALPHA.
+,	OSF1 zoot V4.0 878 alpha
+size	353188 bytes
+
+file    blas/archives/blas_hppa.tgz
+for     BLAS compiled for HP 9000.
+,       HP-UX gadget A.09.05 A 9000/735 2013146488 two-user license
+size    241992 bytes
+
+file    blas/archives/blas_irix64-64.tgz
+for     Fortran 77 BLAS compiled for SGI R10000, 64-bit.
+,	IRIX64 picasso 6.5 05190004 IP28
+size	871029 bytes
+
+file    blas/archives/blas_irix64-n32.tgz
+for     Fortran 77 BLAS compiled for SGI R10000, 32-bit.
+,	IRIX64 picasso 6.5 05190004 IP28
+size	699345 bytes
+
+file    blas/archives/blas_linux.tgz
+for     Fortran 77 BLAS compiled for Intel/LINUX.
+,       Linux torc0 2.0.34 #1 Tue Jun 23 02:10:50 EDT 1998 i686 unknown
+size    159214 bytes
+
+file    blas/archives/blas_rs6k.tgz
+for     LAPACK compiled for IBM RS/6000.
+,       AIX austin 1 4 000005721C00
+size    254488 bytes
+
+file    blas/archives/blas_solaris.tgz
+for     Fortran 77 BLAS compiled for Sun Solaris.
+,	SunOS nala 5.5.1 Generic_103640-23 sun4u sparc SUNW,Ultra-2
+size    289032 bytes
+

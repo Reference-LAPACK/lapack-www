@@ -1,0 +1,346 @@
+ BLAS (Basic Linear Algebra Subprograms)
+========================================
+
+Questions/comments? lapack@icl.utk.edu
+
+Contact us get the lastest news
+
+link:old-index.html[BLAS(Legacy Website)]
+link:faq.html[FAQ]
+ 
+== Presentation:
+
+The BLAS (Basic Linear Algebra Subprograms) are routines that provide standard building blocks for performing basic vector and matrix operations. The Level 1 BLAS perform scalar, vector and vector-vector operations, the Level 2 BLAS perform matrix-vector operations, and the Level 3 BLAS perform matrix-matrix operations. Because the BLAS are efficient, portable, and widely available, they are commonly used in the development of high quality linear algebra software, http://www.netlib.org/lapack/[LAPACK] for example.
+
+=== Acknowledgments: 
+
+This material is based upon work supported by the National Science Foundation under Grant No. ASC-9313958 and DOE Grant No. DE-FG03-94ER25219. Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation (NSF) or the Department of Energy (DOE).
+
+=== History
+
+[width="100%", frame="none", grid="none", cols="4,1"]
+|=======================
+|Discover the great history behind BLAS. On April 2004 an oral history interview was conducted as part of the http://history.siam.org/oralhistories.htm[SIAM project on the history of software for scientific computing and numerical analysis]. This interview is being conducted with Professor Jack Dongarra in his office at the University of Tennessee. The interviewer is Thomas Haigh. +
+http://history.siam.org/pdfs2/Dongarra_%20returned_SIAM_copy.pdf[Download Interview] +
+Enjoy!|image:Jack-SIAM-Interview.jpg["Jack Dongarra - SIAM Interview",width=300,link="http://history.siam.org/pdfs2/Dongarra_%20returned_SIAM_copy.pdf"]
+|=======================
+
+== Software:
+
+=== Licensing:
+
+The reference BLAS is a freely-available software package. It is available from netlib via anonymous ftp and the World Wide Web. Thus, it can be included in commercial software packages (and has been). We only ask that proper credit be given to the authors.
+
+Like all software, it is copyrighted. It is not trademarked, but we do ask the following:
+
+* If you modify the source for these routines we ask that you change the name of the routine and comment the changes made to the original.
+
+* We will gladly answer any questions regarding the software. If a modification is done, however, it is the responsibility of the person who modified the routine to provide support.
+
+=== REFERENCE BLAS Version 3.8.0
+
+ * Download http://www.netlib.org/blas/blas-3.8.0.tgz[blas-3.8.0.tgz]
+	
+ * Updated November 2017
+	
+ * http://www.netlib.org/blas/blasqr.pdf[Quick Reference Guide]
+
+image:BLAS-snapshot.jpg[
+"BLAS Quick Reference Guide",width=1000,
+link="blasqr.pdf"]
+
+=== CBLAS
+
+ * Download http://www.netlib.org/blas/blast-forum/cblas.tgz[cblas.tgz]
+	 
+ * Header file: http://www.netlib.org/blas/cblas.h[cblas.h]
+
+=== Level 3 BLAS tuned for single processors with caches
+
+ * Downlaod http://www.netlib.org/blas/gemm_based/ssgemmbased.tgz[ssgemmbased.tgz]
+ 
+ * Written by Kagstrom B., Ling P., and Van Loan C.
+ 
+ * http://www.netlib.org/blas/gemm_based/[High Performance GEMM-Based Level-3 BLAS Webpage] - Fortran (High Performance Computing II, 1991, North-Holland)
+
+===  Extended precision Level 2 BLAS routines
+
+ * Download http://www.netlib.org/blas/ecblas2.f[ecblas2.f]
+
+=== BLAS for windows
+The reference BLAS is included inside the LAPACK package. Please refer tools built under Windows using http://www.cmake.org/[Cmake] the cross-platform, open-source build system. The new build system was developed in collaboration with Kitware Inc.
+
+A dedicated website (http://icl.cs.utk.edu/lapack-for-windows/lapack/) is available for Windows users.
+
+image:LAPACK_for_Windows.jpg[
+"BLAS Quick Reference Guide",width=250,
+link="http://icl.cs.utk.edu/lapack-for-windows/lapack"]
+
+* You will find information about your configuration need.
+
+* You will be able to download BLAS pre-built libraries.
+
+=== GIT Access
+
+The LAPACK GIT (http://github.com/Reference-LAPACK) repositories are to open for read-only for our users. The latest version of BLAS is included in LAPACK package. 
+
+We currently have three GIT respositories:
+
+ - link:http://github.com/Reference-LAPACK/lapack[*lapack*] - LAPACK development repository : http://github.com/Reference-LAPACK/lapack
+ - link:http://github.com/Reference-LAPACK/lapack-release[*lapack-release*] - LAPACK official release branches : http://github.com/Reference-LAPACK/lapack-release
+ - link:http://github.com/Reference-LAPACK/lapack-www[*lapack-www*] - LAPACK website : http://github.com/Reference-LAPACK/lapack-www
+
+Please use our LAPACK development repository to get the latest bug fixed, submit issues or pull requests.
+
+=== The netlib family and its cousins
+
+[width="100%", frame="none", grid="none", cols="1,2"]
+|=======================
+|http://www.netlib.org/blas/[Basic Linear Algebra Subprograms] (BLAS)
+|http://www.netlib.org/lapack[LAPACK]
+|https://bitbucket.org/icl/blaspp[BLAS++]
+|https://bitbucket.org/icl/lapackpp[LAPACK++]
+|http://icl.cs.utk.edu/plasma/[PLASMA]
+|http://icl.cs.utk.edu/magma/[MAGMA]
+|http://www.netlib.org/clapack/[CLAPACK] (no longer maintained)
+|http://www.netlib.org/eispack/[EISPACK] (no longer maintained)
+|http://www.netlib.org/linpack/[LINPACK] (no longer maintained)
+|=======================
+
+
+== Support
+If you have any issue (install, performance), just post your questions on the http://icl.cs.utk.edu/lapack-forum/[the LAPACK User Forum].
+You can also send us an email at lapack@icl.utk.edu
+
+
+== Documentation
+
+http://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms[Checkout the BLAS Wikipedia page]
+
+=== BLAS Technical Forum
+The BLAS Technical Forum standard is a specification of a set of kernel routines for linear algebra, historically called the Basic Linear Algebra Subprograms.
+http://www.netlib.org/blas/blast-forum/
+
+=== Optimized BLAS Library
+Machine-specific optimized BLAS libraries are available for a variety of computer architectures. These optimized BLAS libraries are provided by the computer vendor or by an independent software vendor (ISV) . For further details, please see our link:faq.html[FAQs].
+
+Alternatively, the user can download http://math-atlas.sourceforge.net/[ATLAS] to automatically generate an optimized BLAS library for his architecture. Some prebuilt optimized BLAS libraries are also available from the ATLAS site.
+
+If all else fails, the user can download a http://www.netlib.org/blas/blas.tgz[Fortran77 reference implementation of the BLAS] from netlib. However, keep in mind that this is a reference implementation and is not optimized.
+
+BLAS vendor library List Last updated: July 20, 2005  
+
+== BLAS Routines
+
+=== LEVEL 1 
+
+  * SINGLE
+ 
+  - http://www.netlib.org/lapack/explore-html/d7/d26/srotg_8f.html[SROTG] - setup Givens rotation
+  - http://www.netlib.org/lapack/explore-html/dd/d48/srotmg_8f.html[SROTMG] - setup modified Givens rotation
+  - http://www.netlib.org/lapack/explore-html/db/d6c/srot_8f.html[SROT] - apply Givens rotation
+  - http://www.netlib.org/lapack/explore-html/d6/d0f/srotm_8f.html[SROTM] - apply modified Givens rotation
+  - http://www.netlib.org/lapack/explore-html/d9/da9/sswap_8f.html[SSWAP] - swap x and y
+  - http://www.netlib.org/lapack/explore-html/d9/d04/sscal_8f.html[SSCAL] - x = a*x
+  - http://www.netlib.org/lapack/explore-html/de/dc0/scopy_8f.html[SCOPY] - copy x into y
+  - http://www.netlib.org/lapack/explore-html/d8/daf/saxpy_8f.html[SAXPY] - y = a*x + y
+  - http://www.netlib.org/lapack/explore-html/d0/d16/sdot_8f.html[SDOT] - dot product
+  - http://www.netlib.org/lapack/explore-html/d9/d47/sdsdot_8f.html[SDSDOT] - dot product with extended precision accumulation
+  - http://www.netlib.org/lapack/explore-html/d7/df1/snrm2_8f.html[SNRM2] - Euclidean norm
+  - http://www.netlib.org/lapack/explore-html/db/d66/scnrm2_8f.html[SCNRM2]- Euclidean norm
+  - http://www.netlib.org/lapack/explore-html/df/d1f/sasum_8f.html[SASUM] - sum of absolute values
+  - http://www.netlib.org/lapack/explore-html/d6/d44/isamax_8f.html[ISAMAX] - index of max abs value
+  
+  * DOUBLE
+  
+  - http://www.netlib.org/lapack/explore-html/de/d13/drotg_8f.html[DROTG] - setup Givens rotation
+  - http://www.netlib.org/lapack/explore-html/df/deb/drotmg_8f.html[DROTMG] - setup modified Givens rotation
+  - http://www.netlib.org/lapack/explore-html/dc/d23/drot_8f.html[DROT] - apply Givens rotation
+  - http://www.netlib.org/lapack/explore-html/d8/d7b/drotm_8f.html[DROTM] - apply modified Givens rotation
+  - http://www.netlib.org/lapack/explore-html/db/dd4/dswap_8f.html[DSWAP] - swap x and y
+  - http://www.netlib.org/lapack/explore-html/d4/dd0/dscal_8f.html[DSCAL] - x = a*x
+  - http://www.netlib.org/lapack/explore-html/da/d6c/dcopy_8f.html[DCOPY] - copy x into y
+  - http://www.netlib.org/lapack/explore-html/d9/dcd/daxpy_8f.html[DAXPY] - y = a*x + y
+  - http://www.netlib.org/lapack/explore-html/d5/df6/ddot_8f.html[DDOT] - dot product
+  - http://www.netlib.org/lapack/explore-html/dc/d01/dsdot_8f.html[DSDOT] - dot product with extended precision accumulation
+  - http://www.netlib.org/lapack/explore-html/da/d7f/dnrm2_8f.html[DNRM2] - Euclidean norm
+  - http://www.netlib.org/lapack/explore-html/d9/d19/dznrm2_8f.html[DZNRM2] - Euclidean norm
+  - http://www.netlib.org/lapack/explore-html/de/d05/dasum_8f.html[DASUM] - sum of absolute values
+  - http://www.netlib.org/lapack/explore-html/dd/de0/idamax_8f.html[IDAMAX] - index of max abs value
+  
+  * COMPLEX
+  
+  - http://www.netlib.org/lapack/explore-html/dc/de6/crotg_8f.html[CROTG] - setup Givens rotation
+  - http://www.netlib.org/lapack/explore-html/d1/dbb/csrot_8f.html[CSROT] - apply Givens rotation
+  - http://www.netlib.org/lapack/explore-html/d1/d44/cswap_8f.html[CSWAP] - swap x and y
+  - http://www.netlib.org/lapack/explore-html/dc/d81/cscal_8f.html[CSCAL] - x = a*x
+  - http://www.netlib.org/lapack/explore-html/de/d5e/csscal_8f.html[CSSCAL] - x = a*x
+  - http://www.netlib.org/lapack/explore-html/d9/dfb/ccopy_8f.html[CCOPY] - copy x into y
+  - http://www.netlib.org/lapack/explore-html/de/da2/caxpy_8f.html[CAXPY] - y = a*x + y
+  - http://www.netlib.org/lapack/explore-html/d7/d7b/cdotu_8f.html[CDOTU] - dot product
+  - http://www.netlib.org/lapack/explore-html/dd/db2/cdotc_8f.html[CDOTC] - dot product, conjugating the first vector
+  - http://www.netlib.org/lapack/explore-html/db/d53/scasum_8f.html[SCASUM] - sum of absolute values
+  - http://www.netlib.org/lapack/explore-html/dd/d51/icamax_8f.html[ICAMAX] - index of max abs value
+   
+  * DOUBLE COMLPEX
+ 
+  - http://www.netlib.org/lapack/explore-html/dc/dfe/zrotg_8f.html[ZROTG] - setup Givens rotation
+  - http://www.netlib.org/lapack/explore-html/d4/de9/zdrot_8f.html[ZDROTF] - apply Givens rotation
+  - http://www.netlib.org/lapack/explore-html/d3/dc0/zswap_8f.html[ZSWAP] - swap x and y
+  - http://www.netlib.org/lapack/explore-html/d2/d74/zscal_8f.html[ZSCAL] - x = a*x
+  - http://www.netlib.org/lapack/explore-html/dd/d76/zdscal_8f.html[ZDSCAL] - x = a*x
+  - http://www.netlib.org/lapack/explore-html/d6/d53/zcopy_8f.html[ZCOPY] - copy x into y
+  - http://www.netlib.org/lapack/explore-html/d7/db2/zaxpy_8f.html[ZAXPY] - y = a*x + y
+  - http://www.netlib.org/lapack/explore-html/db/d2d/zdotu_8f.html[ZDOTU] - dot product
+  - http://www.netlib.org/lapack/explore-html/d6/db8/zdotc_8f.html[ZDOTC] - dot product, conjugating the first vector
+  - http://www.netlib.org/lapack/explore-html/df/d0f/dzasum_8f.html[DZASUM] - sum of absolute values
+  -	http://www.netlib.org/lapack/explore-html/d0/da5/izamax_8f.html[IZAMAX] - index of max abs value
+
+=== LEVEL 2
+
+  * Single
+
+  - http://www.netlib.org/lapack/explore-html/db/d58/sgemv_8f.html[SGEMV] - matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d6/d46/sgbmv_8f.html[SGBMV] - banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d2/d94/ssymv_8f.html[SSYMV] - symmetric matrix vector multiply
+  -	http://www.netlib.org/lapack/explore-html/d3/da1/ssbmv_8f.html[SSBMV] - symmetric banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d8/d68/sspmv_8f.html[SSPMV] - symmetric packed matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/de/d45/strmv_8f.html[STRMV] - triangular matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d6/d7d/stbmv_8f.html[STBMV] - triangular banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/db/db1/stpmv_8f.html[STPMV] - triangular packed matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d0/d2a/strsv_8f.html[STRSV] - solving triangular matrix problems
+  - http://www.netlib.org/lapack/explore-html/d0/d1f/stbsv_8f.html[STBSV] - solving triangular banded matrix problems
+  - http://www.netlib.org/lapack/explore-html/d0/d7c/stpsv_8f.html[STPSV] - solving triangular packed matrix problems
+  - http://www.netlib.org/lapack/explore-html/db/d5c/sger_8f.html[SGER] - performs the rank 1 operation A := alpha*x*y' + A
+  - http://www.netlib.org/lapack/explore-html/d6/dac/ssyr_8f.html[SSYR] - performs the symmetric rank 1 operation A := alpha*x*x' + A
+  - http://www.netlib.org/lapack/explore-html/d2/d9b/sspr_8f.html[SSPR] - symmetric packed rank 1 operation  A := alpha*x*x' + A
+  - http://www.netlib.org/lapack/explore-html/db/d99/ssyr2_8f.html[SSYR2] - performs the symmetric rank 2 operation, A := alpha*x*y' + alpha*y*x' + A
+  - http://www.netlib.org/lapack/explore-html/db/d3e/sspr2_8f.html[SSPR2] - performs the symmetric packed rank 2 operation,	A := alpha*x*y' + alpha*y*x' + A
+  
+  * Double
+
+  - http://www.netlib.org/lapack/explore-html/dc/da8/dgemv_8f.html[DGEMV] - matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d2/d3f/dgbmv_8f.html[DGBMV] - banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d8/dbe/dsymv_8f.html[DSYMV] - symmetric matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d8/d1e/dsbmv_8f.html[DSBMV] - symmetric banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d4/d85/dspmv_8f.html[DSPMV] - symmetric packed matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/dc/d7e/dtrmv_8f.html[DTRMV] - triangular matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/df/d29/dtbmv_8f.html[DTBMV] - triangular banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/dc/dcd/dtpmv_8f.html[DTPMV] - triangular packed matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d6/d96/dtrsv_8f.html[DTRSV] - solving triangular matrix problems
+  - http://www.netlib.org/lapack/explore-html/d4/dcf/dtbsv_8f.html[DTBSV] - solving triangular banded matrix problems
+  - http://www.netlib.org/lapack/explore-html/d9/d84/dtpsv_8f.html[DTPSV] - solving triangular packed matrix problems
+  - http://www.netlib.org/lapack/explore-html/dc/da8/dger_8f.html[DGER] - performs the rank 1 operation A := alpha*x*y' + A
+  - http://www.netlib.org/lapack/explore-html/d3/d60/dsyr_8f.html[DSYR] - performs the symmetric rank 1 operation A := alpha*x*x' + A
+  - http://www.netlib.org/lapack/explore-html/dd/dba/dspr_8f.html[DSPR] - symmetric packed rank 1 operation  A := alpha*x*x' + A
+  - http://www.netlib.org/lapack/explore-html/de/d41/dsyr2_8f.html[DSYR2] - performs the symmetric rank 2 operation,	A := alpha*x*y' + alpha*y*x' + A
+  - http://www.netlib.org/lapack/explore-html/dd/d9e/dspr2_8f.html[DSPR2] - performs the symmetric packed rank 2 operation,	A := alpha*x*y' + alpha*y*x' + A
+
+  * Complex
+
+  - http://www.netlib.org/lapack/explore-html/d4/d8a/cgemv_8f.html[CGEMV] - matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d0/d75/cgbmv_8f.html[CGBMV] - banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d7/d51/chemv_8f.html[CHEMV] - hermitian matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/db/dc2/chbmv_8f.html[CHBMV] - hermitian banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d2/d06/chpmv_8f.html[CHPMV] - hermitian packed matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/df/d78/ctrmv_8f.html[CTRMV] - triangular matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d3/dcd/ctbmv_8f.html[CTBMV] - triangular banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d4/dbb/ctpmv_8f.html[CTPMV] - triangular packed matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d4/dc8/ctrsv_8f.html[CTRSV] - solving triangular matrix problems
+  - http://www.netlib.org/lapack/explore-html/d9/d5f/ctbsv_8f.html[CTBSV] - solving triangular banded matrix problems
+  - http://www.netlib.org/lapack/explore-html/d8/d56/ctpsv_8f.html[CTPSV] - solving triangular packed matrix problems
+  - http://www.netlib.org/lapack/explore-html/db/d5f/cgeru_8f.html[CGERU] - performs the rank 1 operation A := alpha*x*y' + A
+  - http://www.netlib.org/lapack/explore-html/dd/d84/cgerc_8f.html[CGERC] - performs the rank 1 operation A := alpha*x*conjg( y' ) + A
+  - http://www.netlib.org/lapack/explore-html/d3/d6d/cher_8f.html[CHER] - hermitian rank 1 operation A := alpha*x*conjg(x') + A
+  - http://www.netlib.org/lapack/explore-html/db/dcd/chpr_8f.html[CHPR] - hermitian packed rank 1 operation A := alpha*x*conjg( x' ) + A
+  - http://www.netlib.org/lapack/explore-html/db/d87/cher2_8f.html[CHER2] - hermitian rank 2 operation
+  - http://www.netlib.org/lapack/explore-html/d6/d44/chpr2_8f.html[CHPR2] - hermitian packed rank 2 operation
+  
+  * Double Complex 
+  
+  - http://www.netlib.org/lapack/explore-html/db/d40/zgemv_8f.html[ZGEMV] - matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d9/d46/zgbmv_8f.html[ZGBMV] - banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d0/ddd/zhemv_8f.html[ZHEMV] - hermitian matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d3/d1a/zhbmv_8f.html[ZHBMV] - hermitian banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d0/d60/zhpmv_8f.html[ZHPMV] - hermitian packed matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d0/dd1/ztrmv_8f.html[ZTRMV] - triangular matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d3/d39/ztbmv_8f.html[ZTBMV] - triangular banded matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d2/d9e/ztpmv_8f.html[ZTPMV] - triangular packed matrix vector multiply
+  - http://www.netlib.org/lapack/explore-html/d1/d2f/ztrsv_8f.html[ZTRSV] - solving triangular matrix problems
+  - http://www.netlib.org/lapack/explore-html/d4/d5a/ztbsv_8f.html[ZTBSV] - solving triangular banded matrix problems
+  - http://www.netlib.org/lapack/explore-html/da/d57/ztpsv_8f.html[ZTPSV] - solving triangular packed matrix problems
+  - http://www.netlib.org/lapack/explore-html/d7/d12/zgeru_8f.html[ZGERU] - performs the rank 1 operation A := alpha*x*y' + A
+  - http://www.netlib.org/lapack/explore-html/d3/dad/zgerc_8f.html[ZGERC] - performs the rank 1 operation A := alpha*x*conjg( y' ) + A
+  - http://www.netlib.org/lapack/explore-html/de/d0e/zher_8f.html[ZHER] - hermitian rank 1 operation A := alpha*x*conjg(x') + A
+  - http://www.netlib.org/lapack/explore-html/de/de1/zhpr_8f.html[ZHPR] - hermitian packed rank 1 operation A := alpha*x*conjg( x' ) + A
+  - http://www.netlib.org/lapack/explore-html/da/d8a/zher2_8f.html[ZHER2] - hermitian rank 2 operation
+  - http://www.netlib.org/lapack/explore-html/d5/d52/zhpr2_8f.html[ZHPR2] - hermitian packed rank 2 operation
+
+
+=== LEVEL 3
+  
+  * Single
+  
+  - http://www.netlib.org/lapack/explore-html/d4/de2/sgemm_8f.html[SGEMM] - matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/d7/d42/ssymm_8f.html[SSYMM] - symmetric matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/d0/d40/ssyrk_8f.html[SSYRK] - symmetric rank-k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/df/d3d/ssyr2k_8f.html[SSYR2K] - symmetric rank-2k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/df/d01/strmm_8f.html[STRMM] - triangular matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/d2/d8b/strsm_8f.html[STRSM] - solving triangular matrix with multiple right hand sides
+  
+  * Double
+
+  - http://www.netlib.org/lapack/explore-html/d7/d2b/dgemm_8f.html[DGEMM] - matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/d8/db0/dsymm_8f.html[DSYMM] - symmetric matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/dc/d05/dsyrk_8f.html[DSYRK] - symmetric rank-k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/d1/dec/dsyr2k_8f.html[DSYR2K] - symmetric rank-2k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/dd/d19/dtrmm_8f.html[DTRMM] - triangular matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/de/da7/dtrsm_8f.html[DTRSM] - solving triangular matrix with multiple right hand sides
+  
+  * Complex
+  
+  - http://www.netlib.org/lapack/explore-html/d6/d5b/cgemm_8f.html[CGEMM] - matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/db/d59/csymm_8f.html[CSYMM] - symmetric matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/d3/d66/chemm_8f.html[CHEMM] - hermitian matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/d3/d6a/csyrk_8f.html[CSYRK] - symmetric rank-k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/d8/d52/cherk_8f.html[CHERK] - hermitian rank-k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/de/d7e/csyr2k_8f.html[CSYR2K] - symmetric rank-2k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/d1/d82/cher2k_8f.html[CHER2K] - hermitian rank-2k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/d4/d9b/ctrmm_8f.html[CTRMM] - triangular matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/de/d30/ctrsm_8f.html[CTRSM] - solving triangular matrix with multiple right hand sides
+
+  * Double Complex
+
+  - http://www.netlib.org/lapack/explore-html/d7/d76/zgemm_8f.html[ZGEMM] - matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/df/d51/zsymm_8f.html[ZSYMM] - symmetric matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/d6/d3e/zhemm_8f.html[ZHEMM] - hermitian matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/de/d54/zsyrk_8f.html[ZSYRK] - symmetric rank-k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/d1/db1/zherk_8f.html[ZHERK] - hermitian rank-k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/df/d20/zsyr2k_8f.html[ZSYR2K] - symmetric rank-2k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/d7/dfa/zher2k_8f.html[ZHER2K] - hermitian rank-2k update to a matrix
+  - http://www.netlib.org/lapack/explore-html/d8/de1/ztrmm_8f.html[ZTRMM] - triangular matrix matrix multiply
+  - http://www.netlib.org/lapack/explore-html/d1/d39/ztrsm_8f.html[ZTRSM] - solving triangular matrix with multiple right hand sides
+
+===  Extended precision Level 2 BLAS routines
+
+- SUBROUTINE http://www.netlib.org/blas/ecgemv.f[ECGEMV] ( TRANS, M, N, ALPHA, A, LDA, X, INCX, BETA, Y, INCY )
+- SUBROUTINE http://www.netlib.org/blas/ecgbmv.f[ECGBMV] ( TRANS, M, N, KL, KU, ALPHA, A, LDA, X, INCX, BETA, Y, INCY )
+- SUBROUTINE http://www.netlib.org/blas/echemv.f[ECHEMV] ( UPLO, N, ALPHA, A, LDA, X, INCX,BETA, Y, INCY )
+- SUBROUTINE http://www.netlib.org/blas/echbmv.f[ECHBMV] ( UPLO, N, K, ALPHA, A, LDA, X, INCX,BETA, Y, INCY )
+- SUBROUTINE http://www.netlib.org/blas/echpmv.f[ECHPMV] ( UPLO, N, ALPHA, AP, X, INCX, BETA, Y, INCY )
+- SUBROUTINE http://www.netlib.org/blas/ectrmv.f[ECTRMV] ( UPLO, TRANS, DIAG, N, A, LDA, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ectbmv.f[ECTBMV] ( UPLO, TRANS, DIAG, N, K, A, LDA, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ectpmv.f[ECTPMV] ( UPLO, TRANS, DIAG, N, AP, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ectrsv.f[ECTRSV] ( UPLO, TRANS, DIAG, N, A, LDA, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ectbsv.f[ECTBSV] ( UPLO, TRANS, DIAG, N, K, A, LDA, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ectpsv.f[ECTPSV] ( UPLO, TRANS, DIAG, N, AP, X, INCX )
+- SUBROUTINE http://www.netlib.org/blas/ecgeru.f[ECGERU] ( M, N, ALPHA, X, INCX, Y, INCY, A, LDA )
+- SUBROUTINE http://www.netlib.org/blas/ecgerc.f[ECGERC] ( M, N, ALPHA, X, INCX, Y, INCY, A, LDA )
+- SUBROUTINE http://www.netlib.org/blas/echer.f[ECHER] ( UPLO, N, ALPHA, X, INCX, A, LDA )
+- SUBROUTINE http://www.netlib.org/blas/echpr.f[ECHPR] ( UPLO, N, ALPHA, X, INCX, AP )
+- SUBROUTINE http://www.netlib.org/blas/echer2.f[ECHER2] ( UPLO, N, ALPHA, X, INCX, Y, INCY, A, LDA )
+- SUBROUTINE http://www.netlib.org/blas/echpr2.f[ECHPR2] ( UPLO, N, ALPHA, X, INCX, Y, INCY, AP )
+
+
+
+

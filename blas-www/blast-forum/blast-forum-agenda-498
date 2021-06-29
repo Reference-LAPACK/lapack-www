@@ -1,0 +1,78 @@
+ 
+Subject: BLAS Technical Forum
+ 
+We will plan to start the meeting with at 9:00 am on Monday,
+April 27th and by 3:00 on Wednesday, April 29th.  There will
+be no registration fee, and lunch is provided on April 27-29.
+
+Refer to the BLAS Technical Forum webpage for complete details.
+   http://www.netlib.org/utk/papers/blast-forum.html
+
+Monday
+9:00 - 9:30 General session and discussion
+9:30 - 10:30 parallel breakout sessions
+             BLAS Functionality, Sven Hammarling
+             BLAS Extensions, Susan Blackford/Linda Kaufman
+             Sparse BLAS, Roldan Pozo
+             Language Binding Issues, Andrew Lumsdaine
+             Extended Precision (Extra Precise) BLAS, Jim Demmel
+10:30 - 11:00 Coffee Break
+11:00 - 12:00 parallel breakout sessions
+             C Interface to the BLAS, Clint Whaley
+             Lightweight BLAS Fortran 90 Interface, Sven Hammarling
+             Interval Arithmetic, Chenyi Hu
+             Environmental routines, Jack Dongarra
+             Parallel BLAS, Antoine Petitet
+12:00 - 1:30 Lunch
+1:30 - 5:00 group session: reports and discussion
+             BLAS Functionality, Sven Hammarling
+             BLAS Extensions, Susan Blackford/Linda Kaufman
+             Sparse BLAS, Roldan Pozo
+             C Interface to the BLAS, Clint Whaley
+             Lightweight BLAS Fortran 90 Interface, Sven Hammarling
+             Extended Precision (Extra Precise) BLAS, Jim Demmel
+             Interval Arithmetic, Chenyi Hu
+             Environmental Routines, Jack Dongarra
+             Parallel BLAS, Antoine Petitet
+             Language Binding Issues, Andrew Lumsdaine
+
+The plan is to have first readings of the following chapters:  
+Extensions to the BLAS
+Extended Precision (Extra Precise) BLAS
+Distributed memory BLAS
+Fortran90 interface (as part of Legacy chapter)
+Sparse BLAS
+and a second reading of the C interface to the Legacy BLAS.
+
+
+Tuesday
+8:00  - 9:00  Breakfast
+9:00 - 10:30 parallel breakout sessions determined by needs
+10:30 - 11:00 Coffee Break
+11:00 - 12:00 group session: Readings, reports and discussion
+12:00 -  1:30 Lunch
+1:30 - 3:00 group session: Readings, reports and discussion
+3:00 - 3:30 Coffee Break
+3:30 - 5:00 group session: Readings, reports and discussion
+Dinner hosted by SGI/Cray (time to be determined)
+
+Wednesday
+8:00  - 9:00  Breakfast
+9:00 - 9:30 General session and discussion
+9:30 - 10:30 parallel breakout sessions
+             BLAS Functionality, Sven Hammarling
+             BLAS Extensions, Susan Blackford
+             Sparse BLAS, Roldan Pozo
+             Language Binding Issues, Andrew Lumsdaine
+             Extended Precision (Extra Precise) BLAS, Jim Demmel
+11:00 - 12:00 parallel breakout sessions
+10:30 - 11:00 Coffee Break
+             C Interface to the BLAS, Clint Whaley
+             Lightweight BLAS Fortran 90 Interface, Sven Hammarling
+             Interval Arithmetic, Chenyi Hu
+             Environmental routines, Jack Dongarra
+             Parallel BLAS, Antoine Petitet
+
+12:00 - 1:30 Lunch
+1:30 - 3:00 group session: Readings, reports, and discussion as needed
+3:00 end of meeting

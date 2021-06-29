@@ -1,0 +1,235 @@
+<html>
+<head>
+<title>BLAS FAQ</title>
+</head>
+<body>
+<center>
+<h1> BLAS Frequently Asked Questions (FAQ) </h1>
+<h2>
+<i>
+<a href="mailto:lapack@cs.utk.edu"><address>lapack@cs.utk.edu</address></a>
+</i>
+</h2>
+</center>
+<p>
+<IMG SRC="http://www.netlib.org/scalapack/html/gif/blue.gif"></p>
+<p>
+<i>
+Many thanks to the <a href="http://www.netlib.org/utk/icl/maintainers.html">
+netlib_maintainers@netlib.org</a> from whose FAQ list I have patterned
+this list for the BLAS.
+</i>
+</p>
+
+<p>
+<IMG SRC="http://www.netlib.org/scalapack/html/gif/blue.gif"></p>
+
+<h2>
+Table of Contents
+</h2>
+
+   <dl>
+    <a href="#1.1"> <dd>1.1)  What are the BLAS?</a>
+    <a href="#1.2"> <dd>1.2)  Publications/references for the BLAS?</a>
+    <a href="#1.3"> <dd>1.3)  Is there a Quick Reference Guide to the BLAS available?</a>
+    <a href="#1.4"> <dd>1.4)  Are optimized BLAS libraries available?</a>
+    <a href="#1.5"> <dd>1.5)  Where can I find vendor supplied BLAS?</a>
+    <a href="#1.6"> <dd>1.6)  Where can I find the Intel BLAS for Linux?</a>
+    <a href="#1.7"> <dd>1.7)  Are prebuilt BLAS libraries available from Netlib?</a>
+   </dl>
+
+<p>
+<IMG SRC="http://www.netlib.org/scalapack/html/gif/blue.gif"></p>
+<h2>
+1)  BLAS 
+</h2>
+
+<p>
+<strong>
+<a name="1.1">
+    1.1) What are the BLAS?<br>
+</a>
+</strong>
+
+<p>
+The BLAS (Basic Linear Algebra Subprograms) are high quality
+"building block" routines for performing basic vector and matrix
+operations.  Level 1 BLAS do vector-vector operations, Level 2
+BLAS do matrix-vector operations, and Level 3 BLAS do
+matrix-matrix operations.  Because the BLAS are efficient,
+portable, and widely available, they're commonly used in the
+development of high quality linear algebra software,
+<a href="http://www.netlib.org/linpack/">LINPACK</a> and
+<a href="http://www.netlib.org/lapack/">LAPACK</a> for example.  
+<p>
+A Fortran77 reference implementation of the BLAS is located in the
+<a href="http://www.netlib.org/blas/">blas directory</a> of Netlib.
+
+<p>
+<strong>
+<a name="1.2">
+    1.2) Publications/references for the BLAS?<br>
+</a>
+</strong>
+
+<p>
+<ol>
+<li>
+C. L. Lawson, R. J. Hanson, D. Kincaid, and F. T. Krogh, <i>Basic
+Linear Algebra Subprograms for FORTRAN usage</i>, ACM Trans. Math.
+Soft., 5 (1979), pp. 308--323.<p>
+
+<li>
+J. J. Dongarra, J. Du Croz, S. Hammarling, and R. J. Hanson, <i>An
+extended set of FORTRAN Basic Linear Algebra Subprograms</i>, ACM Trans.
+Math. Soft., 14 (1988), pp. 1--17.<p>
+
+<li>
+J. J. Dongarra, J. Du Croz, S. Hammarling, and R. J. Hanson,
+<i>Algorithm 656: An extended set of FORTRAN Basic Linear Algebra
+Subprograms</i>, ACM Trans. Math. Soft., 14 (1988), pp. 18--32.<p>
+
+<li>
+J. J. Dongarra, J. Du Croz, I. S. Duff, and S. Hammarling, <i>A set of
+Level 3 Basic Linear Algebra Subprograms</i>, ACM Trans. Math. Soft.,
+16 (1990), pp. 1--17.<p>
+
+<li>
+J. J. Dongarra, J. Du Croz, I. S. Duff, and S. Hammarling, <i>Algorithm
+679: A set of Level 3 Basic Linear Algebra Subprograms</i>, ACM Trans.
+Math. Soft., 16 (1990), pp. 18--28.<p>
+</ol>
+
+<p>
+<strong>
+<a name="1.3">
+    1.3)  Is there a Quick Reference Guide to the BLAS available?<br>
+</a>
+</strong>
+ 
+<p>
+Yes, there is a postscript version of the <a href="http://www.netlib.org/blas/blasqr.ps">Quick Reference Guide to the BLAS</a> available.
+
+<p>
+<strong>
+<a name="1.4">
+    1.4)  Are optimized BLAS libraries available?<br>
+</a>
+</strong>
+ 
+<p>
+YES!  Machine-specific optimized BLAS libraries are available for
+a variety of computer architectures.  These optimized BLAS libraries
+are provided by the computer vendor or by an independent software
+vendor (ISV).  For further details, please contact your local vendor
+representative.  </p>
+<p>
+Optimized BLAS libraries are <b>NOT</b> provided on netlib.</p>
+<p>
+However, if a machine-specific optimized <b>BLAS</b> library is not
+available on the architecture to which you are installing <b>LAPACK</b>,
+you can download a <a href="http://www.netlib.org/blas/blas.tgz">Fortran77
+reference implementation of the BLAS</a> from netlib.</p>
+
+<p>
+<strong>
+<a name="1.5">
+    1.5)  Where can I find vendor supplied BLAS?<br>
+</a>
+</strong>
+<p>
+BLAS Vendor List <BR>
+Last updated: November 13, 1998 <BR>
+<HR><TABLE BORDER="1" CELLPADDING="3">
+  <TR><TD ALIGN=LEFT><BOLD><H3> Vendor </H3></TD>
+  <TD ALIGN=LEFT><BOLD><H3> URL </H3></BOLD></TD></TR>
+
+
+  <TR><TD ALIGN=LEFT> Cray </TD>
+  <TD ALIGN=LEFT>
+  <A HREF="http://www.cray.com/products/applications/directory/codes/LIBSCI.html">
+  http://www.cray.com/products/applications/directory/codes/LIBSCI.html
+  </A></TD></TR>
+
+  <TR><TD ALIGN=LEFT> DEC </TD>
+  <TD ALIGN=LEFT>
+  <A HREF="http://www.digital.com/info/hpc/software/dxml.html">
+  http://www.digital.com/info/hpc/software/dxml.html
+  </A></TD></TR>
+
+  <TR><TD ALIGN=LEFT> HP </TD>
+  <TD ALIGN=LEFT>
+  <A HREF="http://www.hp.com/esy/systems_networking/tech_servers/products/library.html">
+  http://www.hp.com/esy/systems_networking/tech_servers/products/library.html
+  </A></TD></TR>
+
+  <TR><TD ALIGN=LEFT> IBM </TD>
+  <TD ALIGN=LEFT>
+  <A HREF="http://www.rs6000.ibm.com/software/Apps/essl.html">
+  http://www.rs6000.ibm.com/software/Apps/essl.html
+  <BR>
+  <A HREF="http://www.rs6000.ibm.com/software/sp_products/esslpara.html">
+  http://www.rs6000.ibm.com/software/sp_products/esslpara.html
+  </A></TD></TR>
+
+  <TR><TD ALIGN=LEFT> Intel </TD>
+  <TD ALIGN=LEFT>
+  <A HREF="http://www.intel.com/design/perftool/perflibst/mkl/mklperf.htm">
+  http://www.intel.com/design/perftool/perflibst/mkl/mklperf.htm (NT)
+  </A></TD></TR>
+
+  <TR><TD ALIGN=LEFT> SGI </TD>
+  <TD ALIGN=LEFT>
+  <A HREF="http://www.sgi.com/software/scsl.html">
+  http://www.sgi.com/software/scsl.html
+  </A></TD></TR>
+
+  <TR><TD ALIGN=LEFT> SUN </TD>
+  <TD ALIGN=LEFT>
+  <A HREF="http://www.sun.com/workshop/literature/ProductGuide/SWP.SW/PML.html
+">
+  http://www.sun.com/workshop/literature/ProductGuide/SWP.SW/PML.html
+  </A></TD></TR>
+
+</TABLE>
+</p>
+ 
+<p>
+<strong>
+<a name="1.6">
+    1.6)  Where can I find the Intel BLAS for Linux?<br>
+</a>
+</strong>
+<p>
+Yes, the Intel BLAS for Linux are now available!  Refer to the following
+URL:
+<a href="http://www.cs.utk.edu/~ghenry/distrib">Intel BLAS for Linux</a>.
+</p>
+ 
+<p>
+<strong>
+<a name="1.7">
+    1.7)  Are prebuilt BLAS libraries available from Netlib?<br>
+</a>
+</strong>
+ 
+<p>
+No.  It is assumed that you have a machine-specific optimized <b>BLAS</b>
+library already available on the architecture to which you are installing
+<b>LAPACK</b>.  If this is not the case, you can download a
+<a href="http://www.netlib.org/blas/blas.tgz">Fortran77 reference implementation of the BLAS</a> from netlib.
+<p>
+Although a model implementation of the BLAS in available
+from netlib in the <a href="http://www.netlib.org/blas/">blas directory</a>,
+it is not expected to perform as well as a specially
+tuned implementation on most high-performance computers -- on some machines
+it may give much worse performance -- but it allows users to run LAPACK
+software on machines that do not offer any other implementation of the
+BLAS.
+
+<p>
+<IMG SRC="http://www.netlib.org/scalapack/html/gif/blue.gif"></p>
+<a href="mailto:lapack@cs.utk.edu"><address>lapack@cs.utk.edu</address></a>
+
+</body>
+</html>

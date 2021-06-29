@@ -1,0 +1,179 @@
+<HTML><HEAD>
+<TITLE>BLAST Forum MINUTES</TITLE>
+
+<CENTER><H2>BLAST Forum MINUTES</H2></CENTER>
+
+<CENTER><H2>May 20-21, 1996</H2></CENTER>
+
+<CENTER><H2>Embassy Suites, Atlanta, GA</H2></CENTER></HEAD>
+
+<BODY>
+
+<UL>
+<LI>Seventeen people attended the
+<a href="http://www.netlib.org/utk/papers/blast-forum.html">BLAST
+Forum</a>
+in Atlanta, GA on May 20-21, 1996.
+</UL>
+<HR>
+<H2><B>May 20, 1996</B></H2>
+<P>
+Jack Dongarra opened the meeting by welcoming everyone and inviting
+everyone to introduce themselves.  He then gave a brief summary of the
+previous BLAS workshops, and asked which subgroups should meet at this
+workshop.  It was decided that the following subgroups would be
+discussed:</P>
+<UL>
+<LI>BLAS Functionality
+<LI>BLAS Lite
+<LI>BLAS Object-Based 
+</UL>
+<P>
+BLAS functionality was the first to be addressed.  The discussion
+focused on the draft of the Functionality proposal that Barry Smith of
+ANL and Sven Hammarling of NAG had written and made available via the
+BLAS Forum homepage.  Sven gave a brief overview of the proposal and
+invited comments and suggestions.  Several attendees voiced their
+opinions on the proposal, and each of the lists of proposed routines
+were discussed, as well as possible additions.  Revised lists were to
+be prepared that night and presented the following day.  Anne
+Trefethen volunteered to expand the ``multiple instances'' section for
+the proposal.</P>
+<P>
+No particular programming language will be primary in the discussion
+of functionality, instead we will discuss syntax and semantics for
+Fortran 77, Fortran 90, C, and C++.  We shall provide reference
+implementations for the proposed BLAS routines in each language.</P>
+<P>
+There are different ways of classifying functionality -- BLAS-like and
+tensor notation.  Andrew Lumsdaine led a discussion explaining the
+proposed tensor notation.  An open question for the forum is whether
+one or both of the classification schemes should be used.</P>
+<P>
+After a break, the BLAS Lite were discussed.  Two versions of the BLAS
+Lite were proposed.  One (debugging) version with error-checking, and
+another (performance) version without error-checking.  To provide good
+performance on all problem sizes, separate interfaces for stride 1
+operations may be provided, as well as separate routines for small
+(block) problems, e.g., matrix multiplies of size 2, 3, 4, and 5.</P>
+<P>
+Puri Bangalore raised the issue of specifying time and space (CPU and
+memory) complexity for various routines.  This sort of specification
+is clearly useful for users of the routines, especially when the user
+might want to choose between various routines that provide similar
+functionality but which have different CPU/memory usage.  However, it
+is not clear that many of the proposed BLAS functions admit
+implementations that have differing CPU/memory complexity.  The
+obvious exceptions are xNRM2 (Euclidean vector norm) and matrix
+multiply.  An open question here is whether we should give options for
+varying degrees of accuracy depending upon time and space
+considerations.  Specifically, should a fast version of
+xNRM2 or a Strassen matrix multiply be provided?</P>
+<HR>
+<H2><B>May 21, 1996</B></H2>
+<P>
+Jack Dongarra opened the morning session with a summary of the
+previous day's discussions.  The first topic of the morning was the
+discussion of the object-based BLAS interface, led by Andrew Lumsdaine.</P>
+<P>
+During the discussion of the object-based interface, Andrew Lumsdaine
+mentioned that it may be important to consider the effects of new
+parts of the ANSI C++ standard, especially the Standard Template
+Library.  He stressed the composition (templates) approach to building
+the library instead of the inheritance approach.</P>
+<P>
+After a short break, Sven Hammarling spoke on the proposed revisions
+to the Functionality proposal.  Specifically, updated tables of 
+routines were presented.</P>
+<P>
+Anne Trefethen gave input on the needed ``multiple instance'' routines.</P>
+<P>
+The Lite BLAS were again discussed.  Puri Bangalore opened the
+discussion by asking which data types, matrix types, and storage
+formats should be supported.  Puri provided a list as a starting point
+and several attendees suggested additions.</P>
+<P>
+The issue of error checking was introduced.  Puri suggested that all
+functions should return an error code.  Barry Smith pointed out that
+in the BLAS Lite there are very few errors that can occur.  It was
+then suggested that each BLAS function might have two entry points, in
+similar fashion to MPI.</P>
+<P>
+Puri then raised the thorny issue of indexing, in particular, whether
+indexing should be 0 based (as in C) or 1 based (as in Fortran).  For
+dense linear algebra this is not a real problem, but it is a problem
+when user data maintains explicit indexing information (as in
+compressed sparse storage schemes).  Suggested options for indexing
+were to support both via run-time or compile-time schemes or to make
+the index support language-dependent.</P>
+<P>
+Next, Puri asked whether a stride argument is needed.  Sven indicated
+that stride arguments are convenient and are required by some
+algorithms.</P>
+<P>
+Puri also addressed guidelines to implementors and discussed these
+four issues:</P>
+<OL>
+<LI>specification for time and space complexities for the different functions
+<LI>options for fast/sloppy and accurate implementions, if possible
+<LI>provision of a poly-algorithmic interface through the object-based or
+object-oriented BLAS layer
+<LI>use of temporary storage or buffer inside a BLAS function call.
+</OL>
+<P>
+The vendors expressed concern about the amount of work that these
+guidelines might impose upon them. It was clarified that this was intended
+to be mostly documentation, rather than additional implementation work.
+Puri suggested that the implementors were free to do what is best for
+their architecture, but as a library writer or user one would like to
+know what has been done, at least in terms of memory usage if extra memory
+is allocated within a function.</P>
+<P>
+After a lunch break, Barry Smith spoke of sample implementations of
+the BLAS Lite.  Proposed calling sequences for routines were
+discussed, as well as the necessity for reference implementations of
+some of the routines.  Barry volunteered for ANL to implement the C
+and C++ versions of the routines.  The University
+of Tennessee will provide Fortran 90 reference implementations for some
+of the routines.</P>
+<P> 
+Jack Dongarra wrapped up the meeting by suggesting that the
+Functionality proposal be finished by summer.  Andrew Lumsdaine will
+also draft an Object-based BLAS proposal.  Both proposals will be
+available on the Web page, and comments/suggestions from the user
+community are welcome.</P>
+<P>
+The dates of the next forum meetings are:</P>
+<UL>
+<LI> Aug. 12-14 possible date depending on what's accomplished over the summer
+<LI> Oct. 9-11  SIAM Sparse Matrix Meeting @ Coeur d'Alene (not a working
+meeting)
+<LI> Nov. 18-22 SuperComputing '96
+</UL>
+<P>
+The meeting was then adjourned by Jack Dongarra at 3:30 PM.</P>
+<P>
+Attendees list for the May 20-21, 1996 BLAST Forum Meeting</P>
+<PRE>
+Satish Balay         ANL                       balay@mcs.anl.gov
+Puri Bangalore       Miss. State Univ.         puri@cs.msstate.edu
+Andrew Cleary        Univ. of TN               cleary@cs.utk.edu
+Jack Dongarra        Univ. of TN / ORNL        dongarra@cs.utk.edu
+Sven Hammarling      NAG, UK / Univ. of TN     hammarli@cs.utk.edu
+Hidehiko Hasegawa    ULIS, Tsukuba, Japan      hasegawa@ulis.ac.jp
+Satomi Hasegawa      Hitachi                   75207.2076@Compuserve.com
+Naoki Iwata          NEC Systems Laboratory    iwata@hstc.necsyl.com
+Chandrika Kamath     DEC                       kamath@caldec.enet.dec.com
+Guangye Li           Cray Research             gli@cray.com
+Hsin-Ying Lin        HP Convex Technology Ctr. lin@rsn.hp.com
+Andrew Lumsdaine     Univ. of Notre Dame       Andrew.Lumsdaine@nd.edu
+Joan McComb          IBM Poughkeepsie          mccomb@vnet.ibm.com
+Susan Ostrouchov     Univ. of TN               susan@cs.utk.edu
+Antoine Petitet      Univ. of TN               petitet@cs.utk.edu
+Barry Smith          ANL                       bsmith@mcs.anl.gov
+Anne Trefethen       Cornell Theory Center     aet@tc.cornell.edu
+</PRE>
+<P>
+Susan Ostrouchov and Andrew Lumsdaine agreed to take minutes for
+the meetings.</P>
+</BODY></HTML>

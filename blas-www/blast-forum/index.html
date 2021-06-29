@@ -1,0 +1,411 @@
+<html>
+<head>
+<TITLE>BLAS Techical Forum</TITLE>
+</head>
+<body>
+<HR NOSHADE>
+<center>
+<h1>BLAS Technical Forum</h1>
+</center>
+<TABLE HSPACE=0 VSPACE=0 WIDTH=100% BORDER=0 CELLSPACING=1 CELLPADDING=0>
+<TR>
+<TD ALIGN=LEFT>
+<A HREF     = "./acknowledgements.html">Acknowledgements</A>
+</TD>
+<TD ALIGN=CENTER>
+<A HREF     = "mailto:lapack@cs.utk.edu">lapack@cs.utk.edu</A>
+</TD>
+<TD ALIGN=RIGHT>
+<A HREF="http://www.netlib.org/master_counts2.html#blas/blast-forum"># Accesses</A>
+</TD>
+</TR>
+</TABLE>
+<HR NOSHADE><BR>
+
+<P>
+The final draft of the BLAS Technical Forum standard is available.<br>
+<p>
+
+<center>
+<H2><FONT color="red">BLAS Technical Forum Standard</FONT></H2>
+</center>
+<center>
+<table border=10 cellpadding=10>
+<tr>
+<td align=left><strong>Complete document -- </strong><a href="./blas-report.pdf">pdf</a>/<a href="./blas-report.ps">ps</a></td>
+</tr>
+<tr>
+<td align=center><strong>Individual Chapters</strong></td>
+</tr>
+<tr>
+<td align=left><strong>Chapter 1: Introduction -- </strong><a href="./chapter1.pdf">pdf</a>/<a href="./chapter1.ps">ps</a></td>
+</tr>
+<td align=left><strong>Chapter 2: Dense and Banded BLAS -- </strong><a href="./chapter2.pdf">pdf</a>/<a href="./chapter2.ps">ps</a></td>
+</tr>
+<td align=left><strong>Chapter 3: Sparse BLAS -- </strong><a href="./chapter3.pdf">pdf</a>/<a href="./chapter3.ps">ps</a></td>
+</tr>
+<td align=left><strong>Chapter 4: Extended and Mixed-Precision BLAS -- </strong><a href="./chapter4.pdf">pdf</a>/<a href="./chapter4.ps">ps</a></td>
+</tr>
+<td align=left><strong>Appendix -- </strong><a href="./appendix.pdf">pdf</a>/<a href="./appendix.ps">ps</a></td>
+</tr>
+<td align=left><strong>Legacy BLAS:  C Interface to the Legacy BLAS -- </strong><a href="./cinterface.pdf">pdf</a>/<a href="./cinterface.ps">ps</a></td>
+</tr>
+<td align=left><strong>Journal of Development:  Environmental Routines -- </strong><a href="./environmental.pdf">pdf</a>/<a href="./environmental.ps">ps</a></td>
+</tr>
+<td align=left><strong>Journal of Development:  Distributed-Memory BLAS -- </strong><a href="./distmemblas.pdf">pdf</a>/<a href="./distmemblas.ps">ps</a></td>
+</tr>
+<td align=left><strong>Journal of Development:  Fortran 95 Thin BLAS -- </strong><a href="./f95thinblas.pdf">pdf</a>/<a href="./f95thinblas.ps">ps</a></td>
+</tr>
+<td align=left><strong>Journal of Development:  Interval BLAS -- </strong><a href="./chapter5.pdf">pdf</a>/<a href="./chapter5.ps">ps</a></td>
+</tr>
+<td align=left><strong>Bibliography -- </strong><a href="./blas-bib.pdf">pdf</a>/<a href="./blas-bib.ps">ps</a></td>
+</tr>
+<td align=left><strong>Index -- </strong><a href="./blas-index.pdf">pdf</a>/<a href="./blas-index.ps">ps</a></td>
+</tr>
+</table>
+Acrobat version 4.0 is needed to view the PDF files (it's free at
+<A HREF=http://www.adobe.com/prodindex/acrobat/readstep.html>the Adobe
+website</A>). The PS files use postscript version 2.0.
+</center>
+
+<hr>
+<center>
+<H2><FONT COLOR="red">Reference Implementations</FONT></H2>
+</center>
+
+<p>
+Reference implementations and test suites for the routines in Fortran95,
+Fortran77, and C, are in preparation.
+<ul>
+<li>
+<a href="http://www.netlib.org/toms/818"><b>Reference implementation for the Fortran 95 interface to the Sparse BLAS</b></a><FONT COLOR="red"> (December, 2000)</FONT>
+
+<li>
+<a href="http://www.netlib.org/xblas/"><b>Reference implementation for the C interface to the Extended and Mixed Precision BLAS</b></a><FONT COLOR="red"> (January, 2001)</FONT>
+
+<li>
+<a href="/blas/blast-forum/cblas.tgz"><b>Reference implementation for the C interface to the Legacy BLAS</b></a><FONT COLOR="red"> (March, 1999)</FONT>
+<ul>
+<li><a href="/blas/blast-forum/cblas.h">cblas.h</a>
+</ul>
+<li>
+<a href="http://www.nag.co.uk/numeric/F95_BLAS_proposal/F95_BLAS_proposal.html"><b>Reference implementation for the Fortran95 interface to the Legacy BLAS</b></a>
+</ul>
+
+<hr>
+<p>
+<center>
+<H2><FONT COLOR="red">Modules and Include Files</FONT></H2>
+</center>
+
+<p>
+Fortran 95
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_dense.f90"><b>blas_dense.f90</b></a> -- Fortran 95 module for Chapter 2
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_operator_arguments.f90"><b>blas_operator_arguments.f90</b></a> -- Fortran 95 module of derived types for Chapters 2 and 4
+<li>
+<a href="/blas/blast-forum/blas_precision.f90"><b>blas_precision.f90</b></a> -- Fortran 95 module of precisions for Chapters 2 and 4
+<li>
+<a href="/blas/blast-forum/blas_dense_red_op.f90"><b>blas_dense_red_op.f90</b></a> -- Fortran 95 module of reduction operations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_gen_trans.f90"><b>blas_dense_gen_trans.f90</b></a> -- Fortran 95 module of generate transformations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_vec_op.f90"><b>blas_dense_vec_op.f90</b></a> -- Fortran 95 module of vector operations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_vec_mov.f90"><b>blas_dense_vec_mov.f90</b></a> -- Fortran 95 module of data movement with vectors routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_mat_vec_op.f90"><b>blas_dense_mat_vec_op.f90</b></a> -- Fortran 95 module of matrix-vector operations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_mat_op.f90"><b>blas_dense_mat_op.f90</b></a> -- Fortran 95 module of matrix operations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_mat_mat_op.f90"><b>blas_dense_mat_mat_op.f90</b></a> -- Fortran 95 module of matrix-matrix operations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_mat_mov.f90"><b>blas_dense_mat_mov.f90</b></a> -- Fortran 95 module of data movement with matrices routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_fpinfo.f90"><b>blas_dense_fpinfo.f90</b></a> -- Fortran 95 module of environmental enquiry routine for Chapter 2
+
+</ul>
+</ul>
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_sparse.f90"><b>blas_sparse.f90</b></a> -- Fortran 95 module for Chapter 3
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_sparse_namedconstants.f90"><b>blas_sparse_namedconstants.f90</b></a> -- Fortran 95 module of named constants for Chapter 3
+</ul>
+</ul>
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_extended.f90"><b>blas_extended.f90</b></a> -- Fortran 95 module for Chapter 4
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_extended_red_op.f90"><b>blas_extended_red_op.f90</b></a> -- Fortran 95 module of reduction operations routines for Chapter 4
+<li>
+<a href="/blas/blast-forum/blas_extended_vec_op.f90"><b>blas_extended_vec_op.f90</b></a> -- Fortran 95 module of vector operations routines for Chapter 4
+</ul>
+</ul>
+Fortran 77
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_namedconstants.h"><b>blas_namedconstants.h</b></a> -- Fortran 77 include file for the values of named constants
+</ul>
+C
+<ul>
+<li>
+<a href="/blas/blast-forum/blas.h"><b>blas.h</b></a> -- C include file containing the value of enumerated types and all prototypes for Chapters 2, 3, and 4
+</li>
+</ul>
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_dense.h"><b>blas_dense.h</b></a> -- C include file for Chapter 2 (containing blas_enum.h + blas_dense_proto.h)
+<li>
+<a href="/blas/blast-forum/blas_sparse.h"><b>blas_sparse.h</b></a> -- C include file for Chapter 3 (containing blas_enum.h + blas_malloc.h + blas_sparse_proto.h)
+<li>
+<a href="/blas/blast-forum/blas_extended.h"><b>blas_extended.h</b></a> -- C include file for Chapter 4 (containing blas_enum.h + blas_malloc.h + blas_extended_proto.h)
+</ul>
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_enum.h"><b>blas_enum.h</b></a> -- C include file for the value of enumerated types
+<li>
+<a href="/blas/blast-forum/blas_malloc.h"><b>blas_malloc.h</b></a> -- C include file for the BLAS malloc functions
+<li>
+<a href="/blas/blast-forum/blas_dense_proto.h"><b>blas_dense_proto.h</b></a> -- C include file containing the prototypes for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_sparse_proto.h"><b>blas_sparse_proto.h</b></a> -- C include file containing the prototypes for Chapter 3
+<li>
+<a href="/blas/blast-forum/blas_extended_proto.h"><b>blas_extended_proto.h</b></a> -- C include file containing the prototypes for Chapter 4
+</ul>
+</p>
+
+<hr>
+<p>
+<center>
+<H2><FONT COLOR="red">Related Papers/Documentation</FONT></H2>
+</center>
+
+<p>
+<ul>
+<li><a HREF="./blaspaper1.ps"><b>An Updated Set of Basic Linear Algebra Subprograms (BLAS)</b></a>, L. S. Blackford,
+J. Demmel, J. Dongarra, I. Duff, S. Hammarling, G. Henry, M. Heroux, L.
+Kaufman, A. Lumsdaine, A. Petitet, R. Pozo, K. Remington, R. C. Whaley,
+Volume 28 ,  Issue 2, June 2002, pp 135 - 151, ACM TOMS, ISSN 0098-3500.
+<ul>
+<li>
+<a href="./blaspaper1.pdf"><b>PDF version</b></a>
+</ul>
+
+<br>
+
+<li><a HREF="./blas-report.ps"><b>Basic Linear Algebra Subprograms Technical Forum Standard</b></a>, International
+Journal of High Performance Applications and Supercomputing, Volume 16,
+Number 1, Spring 2002.
+<ul>
+<li>
+<a href="./blas-report.pdf"><b>PDF version</b></a>
+</ul>
+
+<br>
+
+<li><a HREF="http://www.netlib.org/lapack/lawns/lawn148.ps">
+<b>On Computing Givens rotations reliably and efficiently</b></a>,
+D. Bindel, J. Demmel, W. Kahan, O. Marques, University of Tennessee 
+Technical Report CS-00-449, October, 2000. (submitted to ACM TOMS)
+<ul>
+<li>
+<a href="/lapack/lawnspdf/lawn148.pdf"><b>PDF version</b></a>
+</ul>
+
+<br>
+
+<li><a HREF="http://www.netlib.org/lapack/lawns/lawn149.ps">
+<b>Design, Implementation and Testing of Extended and Mixed Precision BLAS</b></a>,
+X. Li, J. Demmel, D. Bailey, G. Henry, Y. Hida, J. Iskandar,
+W. Kahan, A. Kapur, M. Martin, T. Tung, D. J. Yoo, University of Tennessee 
+Technical Report CS-00-451, October, 2000. (submitted to ACM TOMS)
+<ul>
+<li>
+<a href="/lapack/lawnspdf/lawn149.pdf"><b>PDF version</b></a>
+</ul>
+</ul>
+</p>
+
+<!--
+<hr>
+<p>
+<center>
+<H2><FONT COLOR="red">Goals</FONT></H2>
+</center>
+
+<p>
+
+The existing BLAS have proven to be very effective in assisting portable,
+efficient software for sequential, vector and shared memory 
+high-performance computers.  
+We have decided to establish a Forum to consider expanding the BLAS
+in a number of ways in light of modern software, language, and
+hardware developments.
+<p>
+
+Goals:</p>
+<UL>
+<li>
+  Stimulate thought,
+<li>
+  Discussion, 
+<li> 
+  Functionality and
+<li>
+  Future development of a set of standards for basic matrix
+  data structures,
+<li>
+  Both dense and sparse,
+<li>
+  Calling sequences for a set of low-level computational kernels for 
+  the parallel and sequential settings.
+</UL>
+<P>
+
+Major aims of these standards is to enable linear algebra
+libraries (both public domain and commercial) to interoperate
+efficiently and easily.
+ 
+ 
+Numerical methods for dense matrices on parallel computers require high
+efficiency kernels that provide functionality similar to that in
+traditional BLAS on sequential machines.
+We have begun the forum with a discussion of
+the  need for a light weight interface to much of the functionality
+of traditional BLAS. In addition, iterative and sparse direct methods
+require additional functionality not in traditional BLAS.
+
+
+<p>
+Who should be viewed as the end users of the interfaces developed by the
+forum? computer vendors (both hardware and software), 
+average application programmers, higher level library writers?
+We would like to get your input on these questions as well as
+what you would like to see in a set of basic operations for linear algebra.
+-->
+<hr>
+
+<p>
+<center>
+<a name="1"><H2><FONT COLOR="red">Minutes from the meetings</FONT></H2></a>
+</center>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.march16-18.99.html">Minutes from the March 16-18, 1999</a>
+BLAST Forum Meeting at Ramada Inn and Suites, Oak Ridge, TN
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.dec14-16.98.html">Minutes from the December 14-16, 1998</a>
+BLAST Forum Meeting at LBL, Berkeley, CA.
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.oct8-9.98.html">Minutes from the October 8-9, 1998</a>
+BLAST Forum Meeting at NIST, Washington, D.C..
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.april27-29.98.html">Minutes from the April 27-29, 1998</a>
+BLAST Forum Meeting at Cray Research, Eagan, MN.
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.dec3-5.97.html">
+Minutes from the December 3-5, 1997</a>
+BLAST Forum Meeting at Hilton Hotel, Knoxville, TN.
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.aug14-15.97.html">
+Minutes from the August 14-15, 1997</a>
+BLAST Forum Meeting at Benson Hotel, Portland, OR.
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.feb27-28.97.html">
+Minutes from the February 27-28, 1997
+</a>
+BLAST Forum Meeting at Clarion Hotel, Dallas, TX.
+</p>
+
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.nov7-8.96.html">
+Minutes from the November 7-8, 1996
+</a>
+BLAST Forum Meeting at Cray Research, Eagan, MN.
+</p>
+
+
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.may20-21.html">
+Minutes from the May 20-21, 1996 
+</a>
+BLAST Forum Meeting in Atlanta.
+
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.feb19-20.html">
+Minutes from the February 19-20, 1996 
+</a>
+BLAST Forum Meeting in Nashville.
+
+<p>
+<a href="http://www.netlib.org/utk/papers/sblas-meeting.html">
+Information
+from the BLAS Technical Workshop held on November 13-14, 1995 
+</a>
+at the University of Tennessee, Knoxville.
+<p>
+<hr>
+
+<!--
+<p>
+For a preliminary set of forum rules see:
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-rules.html">
+rules</a>
+
+A number of  mailing lists have been set up.
+The mail is being archived on netlib in directory blast.
+ 
+The mailing lists are
+<UL>
+<LI>  lapack@cs.utk.edu    -- general mailing list to all
+<LI>  blast-funct@cs.utk.edu  -- for discussion of what functions should be included
+<LI>  blast-lite@cs.utk.edu  -- for discussion of a ``light'' weight interface for the BLAS
+<LI>  blast-parallel@cs.utk.edu  -- for discussion of parallel processing
+<LI>  blast-sparse@cs.utk.edu  -- for discussion of sparse operations
+<LI>  blast-lb@cs.utk.edu  -- for discussion of language bindings
+<LI>  blast-nearterm@cs.utk.edu  -- for discussion of short term goals
+</UL>
+
+<!-- 
+To subscribe yourself, send a message of the form
+  <pre>subscribe blast-comm</pre>
+to majordomo@cs.utk.edu.
+ 
+<p>
+To unsubscribe yourself, send a message of the form
+  <pre>unsubscribe blast-comm</pre>
+to majordomo@cs.utk.edu.
+--> 
+<p>
+To send mail to the list simply:
+  <pre>mail lapack@cs.utk.edu</pre>
+ 
+<p>
+The mail is being archived in netlib under directory blast.
+-->
+
+<HR NOSHADE>
+<CENTER>
+<A HREF = "index.html">            [Home]</A>
+<A HREF = "mailto:blast-comm@cs.utk.edu"> [Contact]</A>
+</CENTER>
+<HR NOSHADE>
+
+<HR>
+
+<pre>
+####################################################################
+</pre>
+</body>
+</html>

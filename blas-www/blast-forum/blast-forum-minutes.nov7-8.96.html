@@ -1,0 +1,306 @@
+<HTML><HEAD>
+<TITLE>BLAST Forum MINUTES</TITLE>
+ 
+<CENTER><H2>BLAST Forum MINUTES</H2></CENTER>
+ 
+<CENTER><H2>November 7-8, 1996</H2></CENTER>
+ 
+<CENTER><H2>Cray Research, Eagan, MN</H2></CENTER></HEAD>
+ 
+<BODY>
+ 
+<UL>
+<LI>Twenty-eight people attended the <a href="http://www.netlib.org/utk/papers/blast-forum.html">BLAST Forum</a> in Eagan, MN on
+November 7-8, 1996.
+</UL>
+<HR>
+<H2><B>November 7, 1996</B></H2>
+<P>
+Mike Heroux and Jack Dongarra opened the meeting by welcoming everyone and
+inviting everyone to introduce themselves.  It was then asked if we
+should continue the BLAST Forum meetings?  The consensus was that
+we wish to continue the meetings but that we need the subgroups to be
+more focused and more active.</P>
+<P>
+The following presentations were made:</P>
+<UL>
+<LI>BLAS Functionality -- Sven Hammarling
+<LI>BLAS Lite -- Tony Skjellum
+<LI>Fortran90 BLAS Lite -- Sven Hammarling
+<LI>Parallel BLAS -- Jack Dongarra
+<LI>Sparse BLAS -- Roldan Pozo and Karin Remington
+<LI>Extensions to existing BLAS -- Linda Kaufman
+<LI>Language binding issues -- Andrew Lumsdaine
+</UL>
+<P>
+BLAS functionality was the first to be addressed.  Sven Hammarling of
+NAG gave a brief overview of the Functionality proposal that has been
+available via the BLAS Forum homepage.  Tony Skjellum argued that the
+present form of the proposal is too broad and that it should be more
+sharply focused on functionality.  Issues such as implementations,
+performance, and language interfaces should be covered separate
+proposals.  Linda Kaufman suggested, and several others concurred,
+that each of the proposed ``new'' BLAS routines should be assigned a
+priority indicating the importance of its inclusion.  Most
+participants felt that routines to generate Givens rotations and
+Householder transforms should have top priority.  As the discussion
+continued it was decided that this topic would be best addressed at
+the subgroup meeting and the results presented at the general meeting
+of all participants.</P>
+<P>
+Tony Skjellum then led the discussion on the proposal for the BLAS
+Lite.  Some notational confusion ensued surrounding the definition of
+``lite'' versus ``thin''.  In future discussions, ``lite'' will refer
+to low-level primitive functions, whereas ``thin'' will refer to
+interfaces that do not provide overloaded functionality.  The BLAS Lite as
+presented by Skjellum are intended to be basic low-level building
+blocks for constructing portable high-performance linear algebra
+functions.  Key compiler and processor technologies such as inlining,
+data prefetching, unrolling, and so forth, would be exploited to
+obtain both high-performance and portability.  Two versions of the
+BLAS Lite were proposed.  One (debugging) version with error-checking,
+and another (performance) version without error-checking.  To provide
+good performance on all problem sizes, separate interfaces for stride
+1 operations may be provided, as well as separate routines for small
+(block) problems, e.g., matrix multiplies of size 16.</P>
+<P>
+After a break, Sven Hammarling next proposed the Fortran 90 interface
+to the BLAS Lite.  He reviewed the motivations of the project which
+are no error checking, no character arguments, and no run-time tests.
+He then presented the Fortran90 interface with its use of generic
+interfaces, assumed shape arrays, optional arguments, and modules.
+He proposed the combining of the Level 2 and 3 BLAS into a generic
+interface.</P>
+<P>
+Jack Dongarra then led discussion on a proposed interface for the
+Parallel BLAS and stressed the need to establish a standard in this
+area.  This proposed object-based interface allows the accommodation
+of different data distributions and is not restricted to
+two-dimensional data distribution.  It was pointed out that a new
+descriptor type could be assigned for the physically based matrix
+distribution (PBMD), thereby allowing a different vector distribution
+if the process grid is two-dimensional.  Tony Skjellum contended that
+one could obtain high-performance via redistribution of data (at the
+cost of extra memory).  Mike Heroux commented that for many customers,
+there is no memory to spare.  Mike Heroux of Cray and Sven Hammarling
+of NAG seconded this need to address standards for the parallel BLAS.</P>
+<P>
+Roldan Pozo and Karin Remington of NIST next presented the NIST Sparse
+BLAS Toolkit.  They stressed the need for user feedback, and presented
+their observations of sparse BLAS work.  These observations were that
+there was no performance difference between ``thin'' and ``fat''
+interfaces.  The ``thin'' interface yields over 1,200 functions.
+Based on the higher flop rates obtained using block structured
+matrices, Roldan and Karin concluded that performance is more a factor
+of matrix structure rather than algorithmic tweaks --- in fact, it is
+typically best to transform the matrix into block structure first.
+Andrew Lumsdaine brought up issues of performance and contended that
+abstraction does not per se hurt performance and that a complete C++
+implementation could obtain performance better than the NIST model
+implementation.  Detailed performance information for the NIST Sparse
+BLAS implementation is available on the web.  Issues of sparse
+benchmarks then arose, with Tony Skjellum suggesting that a careful
+study be made.</P>
+<HR>
+<H2><B>November 8, 1996</B></H2>
+<P>
+Mike Heroux and Jack Dongarra opened the morning session with a
+continuation of the presentations from the preceding day.</P>
+<P>
+Linda Kaufman and Andy Anda presented their ideas for extensions to
+the existing BLAS and defined a priority for each of the proposed
+routines.  Linda expressed her fear that too many routines are being
+proposed as extensions, and suggested that each routine be
+prioritized.  Linda felt that the most important routines were for
+Householder transformations, SAMAXs, WAXPYs, simultaneous ISAMAXs,
+simultaneous SAXPYs, simultaneous SVDs, and simultaneous Givens
+transformations.  She then presented a variety of applications for
+sparse matrices in which she stressed that a lot of users do not want
+to explicitly store the sparse matrix.  Andy Anda stressed the need
+for routines to generate and apply rotations.</P>
+<P>
+Andrew Lumsdaine next spoke about language bindings and their need
+between applications and language interfaces, as well as at the lower
+level between the library and the BLAS.  The path to these bindings
+specifies the functionality, abstractions, language independent
+functions, and the question of interoperability between languages.
+However, he stressed that language binding issues should be
+considered toward the end of the process of these meetings.  They
+cannot be adequately addressed at the beginning.</P>
+<P>
+The meeting then took a short break as the participants were invited
+to tour the Cray machine room.</P>
+<P>
+After lunch, the meeting continued with vendor presentations.  Specifically,
+the following vendors:</P>
+<UL>
+<LI>NAG -- Sven Hammarling
+<LI>Cray -- Theresa Do and Sandra Carney
+<LI>Digital -- Chandrika Kamath
+<LI>HP/Convex -- Hsin-Ying Lin
+<LI>Intel -- Shane Story
+<LI>NEC -- Cormac Garvey
+<LI>IBM -- Joan McComb
+</UL>
+<P>    
+The vendors expressed concern about the volume of routines that
+are proposed, and the necessity of reference implementations and
+documentation for each of the proposed routines.</P>
+<P>
+Sven Hammarling of NAG presented a brief synopsis of the contents
+of the NAG Fortran Library, Fortran90 Library, C Library, and the
+Parallel Library.  He stressed that the BLAS have been vital to
+the portability of the libraries that they offer their customers,
+and further cited the need for standardization of the PBLAS as
+parallel packages are increasingly being requested by users.  He
+also cited the need for standardization of FFTs.</P>
+<P>
+Theresa Do and Sandra Carney of Cray Research spoke of the 
+Silicon Cray Scientific Library and the need for standards for
+single PE performance.  Sandra further presented a comparison
+of sparse storage schemes, and which ones are used most often
+by users.  She also suggested that the future is evolving toward
+random sparse matrices.</P>
+<P>
+Chandrika Kamath of Digital Equipment Corporation presented an overview
+of the DXML package.  She stressed that users wanted pre-defined storage
+schemes for sparse matrices used in iterative solvers. While experienced
+users were comfortable with a matrix-free formulation, and even requested
+such an interface, novice users had difficulty understanding the concept.</P>
+<P>
+Hsin-Ying Lin of HP/Convex Corporation spoke of the MLib library
+for HP S-class computers.  He stressed that the priorities of the math
+software library group are application driven due to limited resources.
+He listed these priorities in the order of importance as: DGEMM/DGEMV,
+dot products, saxpys, blas-1 operations, sparse BLAS, FFT/convolutions,
+LAPACK, and SCILIB/Skyline.  He stressed the need for reference
+implementations and complete documentation for new proposals.</P>
+<P>
+Shane Story of Intel Corporation spoke of the math library for Intel
+MP node machines provided by their Independent Software Vendor (ISV)
+-- Kuck and Associates.  Basically, Intel does not support a math
+libraries group anymore, and instead hires third-party vendors to
+write software for their machines.  They plan to tune existing
+libraries for their machines, and not provide any additional
+functionality.</P>
+<P>
+Cormac Garvey of NEC primarily discussed mathematical software
+targeted for the NEC SX-4 class of machines.  He stressed that
+third-party applications and public domain software are driven by
+customer requirements.  He attends the BLAST forums to be aware of
+the new standards that are developing.  They plan to support
+Fortran77, Fortran90, C, C++, HPF, and MPI applications in their
+libraries.  And in the future they plan to support sparse BLAS
+and parallel BLAS.  He prefers an approach to the meetings looking
+at applications.  And he asked the question of why aren't third-party
+software developers using BLAS?  He felt that we need participation
+by more ISVs.</P>
+<P>
+Joan McComb of IBM spoke of the ESSL and PESSL mathematical packages
+available for their machines.  The priorities of their math library
+development are focused on the demands of the customers' applications.
+She primarily focused on the customers' request for HPF support, and
+with this the need for standardization of the parallel BLAS.</P>
+<P>
+Summaries of the meeting were then provided by Mike Heroux, Tony Skjellum,
+and Jack Dongarra.</P>
+<P>
+Mike Heroux summarized by presenting his library development
+perspectives.  He felt that we should consider the following points:</P>
+<OL>
+<LI>What is the value of the BLAS?
+<LI>Where are the BLAS used?
+<LI>Impact if no BLAS?
+<LI>Old applications versus new applications?
+<LI>Alternative standardization?
+</OL>
+<P>
+He stressed that we should consider the value added by the BLAS, specifically
+in providing performance with immature compilers.  The BLAS are primarily
+used in computational chemistry and eigenvalue computations, and
+have a modest use in finite-element (FEM) codes.  They are used
+little elsewhere in third-party codes.  As for the impact if there
+were no BLAS, he suggested that the impact would not be as great as
+we would like.  He felt that the major impact of no BLAS would be
+the improvement of optimization in compilers.  As for the need
+for BLAS in old applications versus new applications, he stressed
+that we need to see what's useful in a broad spectrum of codes.  There
+are dangers in using current applications as a target.  And finally,
+he suggested that perhaps we should consider alternative standardizations.</P>
+<P>
+Tony Skjellum presented sample implementations of the BLAS Lite to
+help clarify the previous day's confusion on ``lite'' and ``thin''.
+He also suggested that we eliminate plenary meetings and that we only
+need to meet in subcommittees.  He was concerned that there are not
+enough application developers, so these technical forums do not
+adequately represent their views.  We need participation in these
+meetings by ISVs.  The ISVs do not use the BLAS or LAPACK, and the
+hardware vendors are increasingly using these third-party code
+organizations to supply software for their machines.  Should we limit
+the scope/focus of these meetings to only linear algebra kernels?  He
+suggested an application-based study of the needs of the community.</P>
+<P>
+Jack Dongarra wrapped up the meeting by suggesting that the following
+subgroups and subgroup leaders should meet, communicate with the
+ISVs and application developers, and bring their proposals back to
+the plenary committee.</P>
+<UL>
+<LI>Functionality -- Sven Hammarling and Mike Heroux
+<LI>Lite  -- Tony Skjellum
+<LI>Parallel -- Jack Dongarra
+<LI>Sparse -- Roldan Pozo
+<LI>Language bindings -- Andrew Lumsdaine
+<LI>Near-term contributions -- Clint Whaley and Linda Kaufman
+</UL>
+<P>
+The former major domo mailing aliases will be reset with the existing
+members being put into the blast-comm alias.  The new major domo
+mailing aliases shall be:  blast-funct, blast-lite, blast-parallel,
+blast-sparse, blast-lb, blast-nearterm.</P>
+<P>
+The global editors are Andrew Lumsdaine and Tony Skjellum.</P>
+<P>
+The tentative date of the next forum meeting is:</P>
+<UL>
+<LI>February 28, 1997 at HP/Convex in Dallas, TX
+</UL>
+<P>
+with a preliminary deadline of January 15, 1997 for subgroup progress.</P>
+<P>
+The meeting was then adjourned by Mike Heroux and Jack Dongarra at 2:30 PM.</P>
+<P>
+Attendees list for the November 7-8, 1996 BLAST Forum Meeting</P>
+<PRE>
+Andy Anda                                      anda@cs.umn.edu 
+Ed Anderson          Cray Research             eca@cray.com
+Puri Bangalore       Miss. State Univ.         puri@cs.msstate.edu
+Susan Blackford      Univ. of TN, Knoxville    susan@cs.utk.edu
+Sandra Carney        Cray Research             carney@cray.com
+Samar Choudhary      Cray Research             choudh@cray.com
+Edmond Chow          Univ. of MN               chow@cs.umn.edu 
+Theresa Do           Cray Research             tdo@cray.com
+Jack Dongarra        Univ. of TN / ORNL        dongarra@cs.utk.edu
+Cormac Garvey        NEC Systems Laboratory    garvey@hstc.necsyl.com
+John Gunnels         Univ. of TX, Austin       gunnels@cs.utexas.edu 
+Sven Hammarling      NAG, UK                   sven@nag.co.uk
+Mike Heroux          Cray Research             mike.heroux@cray.com 
+Linda Kaufman        Bell Labs                 lck@lucent.com
+Chandrika Kamath     DEC                       kamath@caldec.enet.dec.com
+Guangye Li           Cray Research             gli@cray.com
+Hsin-Ying Lin        HP Convex Technology Ctr. lin@rsn.hp.com
+Andrew Lumsdaine     Univ. of Notre Dame       Lumsdaine.1@nd.edu
+Brian McCandless     Univ. of Notre Dame       bmccandl@nd.edu
+Joan McComb          IBM Poughkeepsie          mccomb@vnet.ibm.com
+Tom Oppe             Cray Research             oppe@cray.com 
+Roldan Pozo          NIST                      pozo@nist.gov
+Karin Remington      NIST                      karin@cam.nist.gov 
+Tony Skjellum        Miss. State Univ.         tony@cs.msstate.edu
+Shane Story          Intel                     shane@ibeam.jf.intel.com 
+Chuck Swanson        Cray Research             cds@cray.com
+Robert van de Geijn  Univ. of TX, Austin       rvdg@cs.utexas.edu
+Clint Whaley         Univ. of TN, Knoxville    rwhaley@cs.utk.edu
+</PRE>
+<P>
+Susan Blackford and Andrew Lumsdaine agreed to take minutes for
+the meetings.</P>
+</BODY></HTML>

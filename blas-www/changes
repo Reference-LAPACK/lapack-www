@@ -1,0 +1,12 @@
+Wed Jun 26 17:59:11 EDT 1991  ehg, dmg
+modified /netlib/cor/d1mach.f to use integer small(2), etc., with a comment
+suggesting integer small(4) for the Eclipse and PDP11.
+
+Thu Jun 27 07:09:09 EDT 1991
+Changed name of ?blat?.f to ?blat? and removed from dependencies file.  (The
+test program includes a special version of xerbla.)
+
+13 Aug 1992  ehg
+ecblas2.f	changed KPLUS to KPLUS1 at lines 4759 and 4778
+		in response to mail from Steve Moulton  moulton@cs.utk.edu
+

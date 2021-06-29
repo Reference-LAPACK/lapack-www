@@ -1,0 +1,23 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+
+# netlib-utk master Fri May 14 03:10:54 EDT 1999
+aXIfdxTqQ/gLErXszZylcg	blas_alpha.tgz
+p5o2ytmxBvJP0T2z2g3x6g	blas_hppa.tgz
+pLP0i8euZyKiHgnzg2DHyA	blas_irix64-64.tgz
+FqMZsnHHx5tYC1FyPG6FjA	blas_irix64-n32.tgz
+lfGwWGusKUv+rxci80GA1A	blas_linux.tgz
+6xDXUDOcigxwDhJtjgn59Q	blas_rs6k.tgz
+X+UZcwjee1tLCqTuT6YHdg	blas_solaris.tgz
+nJks8wDedHHnYDSCd1kXuQ	index
+kAd0oL81OwWBzs3WFG/7xw	index.html
+M6CwkMXxPYdo0vjwCD29NA	readme
+
+-----BEGIN PGP SIGNATURE-----
+Version: 2.6.2
+
+iQCVAwUBNzvMheFlxDEfrjtlAQFqGwP/XJTP2xL8/JHaSF3DglHwcYzQJ1OGE9Fs
+PIRjyMS2juibqxM/HayPI/UtBSaqqFBlImscyJLsd4vXJ6aWYFv9b2Pn45bwNb3s
+/2WGkHYwViAv5cQ+khdKnZtCPzqUqSjD4JMVdsYXxhdlre/V2V6P7uy6gxlog0oI
+xSPI1tQnkJE=
+=z6p8
+-----END PGP SIGNATURE-----

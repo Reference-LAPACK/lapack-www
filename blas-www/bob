@@ -1,0 +1,27 @@
+<p>
+<ol>
+<li>
+C. L. Lawson, R. J. Hanson, D. Kincaid, and F. T. Krogh, <i>Basic
+Linear Algebra Subprograms for FORTRAN usage</i>, <a href="http://www.acm.org/toms/V5.html#v5n3">ACM Trans. Math.
+Soft., 5 (1979)</a>, pp. 308--323.<p>
+
+<li>
+J. J. Dongarra, J. Du Croz, S. Hammarling, and R. J. Hanson, <i>An
+extended set of FORTRAN Basic Linear Algebra Subprograms</i>, <a href="http://www.acm.org/toms/V14.html">ACM Trans.
+Math. Soft., 14 (1988)</a>, pp. 1--17.<p>
+
+<li>
+J. J. Dongarra, J. Du Croz, S. Hammarling, and R. J. Hanson,
+<i>Algorithm 656: An extended set of FORTRAN Basic Linear Algebra
+Subprograms</i>, <a href="http://www.acm.org/toms/V14.html">ACM Trans. Math. Soft., 14 (1988)</a>, pp. 18--32.<p>
+
+<li>
+J. J. Dongarra, J. Du Croz, I. S. Duff, and S. Hammarling, <i>A set of
+Level 3 Basic Linear Algebra Subprograms</i>, <a href="http://www.acm.org/toms/V16.html">ACM Trans. Math. Soft.,
+16 (1990)</a>, pp. 1--17.<p>
+
+<li>
+J. J. Dongarra, J. Du Croz, I. S. Duff, and S. Hammarling, <i>Algorithm
+679: A set of Level 3 Basic Linear Algebra Subprograms</i>, <a href="http://www.acm.org/toms/V16.html">ACM Trans.
+Math. Soft., 16 (1990)</a>, pp. 18--28.<p>
+</ol>

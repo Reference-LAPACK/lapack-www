@@ -1,0 +1,11832 @@
+%!PS-Adobe-1.0
+%%DocumentFonts: 
+%%Creator: eroff/eps
+%%CreationDate: Mon Aug 22 14:46:26 1988
+%%Pages: (atend)
+%%EndComments
+save
+
+0.1000 dup scale
+/inch { 720.0000 mul } bind def
+/stm usertime def
+/pgc statusdict begin pagecount end def
+clippath pathbbox pop pop exch pop 0 exch translate
+clippath pathbbox /pgtop exch def pop pop pop
+/ps { print flush } bind def
+/lineWidthScale 1.0 def
+/page { showpage restore save home } bind def
+/home { newpath 0 pgtop moveto } bind def
+/mf { statusdict /manualfeed true put } bind def
+/af { statusdict /manualfeed false put } bind def
+af
+0 0 moveto
+2 setlinecap
+/y { neg 0 exch rmoveto } bind def
+/X { currentpoint exch pop moveto } bind def
+/Y { pgtop exch sub currentpoint pop exch moveto } bind def
+/s { show } bind def
+/l { neg rlineto currentpoint stroke moveto } bind def
+/c {
+2 div /rad exch def currentpoint /y0 exch def /x0 exch def
+newpath x0 rad add y0 rad 0 360 arc stroke
+x0 rad add rad add y0 moveto
+ } bind def
+/a {
+/y2 exch neg def /x2 exch def /y1 exch neg def /x1 exch def
+x1 y1 rmoveto currentpoint
+currentpoint
+x2 x2 mul y2 y2 mul add sqrt
+y1 neg x1 neg atan
+y2 x2 atan
+newpath arc stroke moveto x2 y2 rmoveto
+} bind def
+/e {
+currentlinewidth /elw exch def
+gsave
+2 div /yrad exch def 2 div /xrad exch def
+currentpoint /y0 exch def /x0 exch def
+x0 xrad add y0 translate
+xrad yrad scale
+newpath 0 0 1 0 360 arc
+elw xrad div setlinewidth
+stroke
+grestore
+elw setlinewidth
+x0 xrad add xrad add y0 moveto
+} bind def
+/spln {
+rcurveto currentpoint stroke moveto
+} bind def
+/ft { /fonttype exch def /xsiz exch def /ysiz exch def /sl exch def
+ fonttype [ xsiz pt 0 sl sin sl cos div ysiz pt mul ysiz pt 0 0 ]
+ makefont setfont
+ lineWidthScale xsiz mul 5.0 div setlinewidth } bind def
+/doImage {{currentfile rasterString
+readhexstring pop} image} bind def
+/pt { 10 mul } bind def
+
+0.375 0.000000 add inch 0.25 inch translate
+/savematrix matrix currentmatrix def
+/roman-8-dict 20 dict def	% Local storage
+/roman-8-mappings [
+8#260 /Adieresis 8#265 /Aring 8#276 /Aacute 8#300 /Agrave
+8#311 /Acircumflex 8#314 /Atilde 8#321 /Ccedilla 8#322 /Edieresis
+8#323 /Eacute 8#324 /Egrave 8#325 /Ecircumflex 8#326 /Idieresis
+8#327 /Iacute 8#330 /Igrave 8#331 /Icircumflex 8#332 /Ntilde
+8#333 /Odieresis 8#334 /Oacute 8#335 /Ograve 8#336 /Ocircumflex
+8#337 /Otilde 8#340 /Scaron 8#342 /Udieresis 8#344 /Uacute
+8#345 /Ugrave 8#346 /Ydieresis 8#347 /adieresis 8#354 /aring
+8#355 /aacute 8#356 /agrave 8#357 /acircumflex 8#360 /atilde
+8#362 /ccedilla 8#363 /edieresis 8#364 /eacute 8#366 /egrave
+8#367 /ecircumflex 8#374 /idieresis 8#375 /iacute 8#376 /igrave
+8#220 /icircumflex 8#221 /ntilde 8#222 /odieresis 8#223 /oacute
+8#224 /ograve 8#225 /ocircumflex 8#226 /otilde 8#227 /scaron
+8#230 /udieresis 8#231 /uacute 8#232 /ugrave 8#233 /ucircumflex
+8#234 /ydieresis 8#235 /Ucircumflex
+] def
+/AddRoman-8 {
+	roman-8-dict begin
+		/roman-8-mappings exch def
+		/newName exch def
+		/oldName exch def
+		/oldDict oldName findfont def
+		/newDict oldDict maxlength dict def
+		oldDict {
+			exch dup /FID ne
+			{
+				dup /Encoding eq
+				{
+					exch dup length array copy
+					newDict 3 1 roll put
+				}
+				{
+					exch newDict 3 1 roll put
+				} ifelse
+			}
+			{
+				pop pop
+			} ifelse
+		} forall
+		newDict /FontName newName put
+		0 2 roman-8-mappings length 1 sub {
+			dup
+			roman-8-mappings exch get
+			exch 1 add roman-8-mappings exch get
+			newDict /Encoding get 3 1 roll put
+		} for
+		newName newDict definefont pop
+	end
+} bind def
+/BracketFontDict 9 dict def /$workingdict 10 dict def
+BracketFontDict begin
+/FontType 3 def
+/FontName (Bracket) cvn def
+/FontMatrix [ 0.001 0 0 0.001 0 0] def
+/FontBBox [ -50 -250 1000 1000 ] def
+/Encoding 256 array def 0 1 255 { Encoding exch /.notdef put } for
+Encoding
+dup 65 /Cbv put
+dup 66 /Clt put
+dup 67 /Clk put
+dup 68 /Clb put
+dup 69 /Crt put
+dup 70 /Crk put
+dup 71 /Crb put
+dup 72 /Clc put
+dup 73 /Clf put
+dup 74 /Crc put
+dup 75 /Crf put
+dup 76 /Cbr put
+dup 77 /Crn put
+dup 78 /Cci put
+dup 79 /C|| put
+dup 80 /C^^ put
+dup 81 /Cr1 put
+dup 82 /Cr2 put
+pop
+/CharProcs 24 dict dup begin
+/setC { 0 -50 -250 500 1000 setcachedevice} bind def
+/C.bv {220 -250 moveto 0 1000 rlineto
+60 0 rlineto 0 -1000 rlineto fill } bind def
+/C.cbar { 750 moveto 180 0 rlineto 0 -60 rlineto -180 0 rlineto fill } bind def
+/C.fbar { -250 moveto 180 0 rlineto 0 60 rlineto -180 0 rlineto fill } bind def
+/C.brk.end { 1 setlinewidth moveto rlineto rcurveto
+reversepath 60 0 rlineto rlineto rcurveto fill } bind def
+/C.setl {dup dtransform exch round exch idtransform pop setlinewidth } bind def
+/Cbv {
+500 setC
+C.bv
+} bind def
+/Clt {
+500 setC
+ 0 150 50 210 140 250
+ 0 730
+ 0 150 50 250 200 250
+ 0 750
+ 220 -250
+ C.brk.end
+
+} bind def
+/Clk {
+500 setC
+ 1 setlinewidth
+ 220 -250 moveto
+ 0 400 rlineto
+ 0 50 -50 100 -100 100 rcurveto
+ 50 0 100 50 100 100 rcurveto
+ 0 400 rlineto
+ 60 0 rlineto
+ 0 -400 rlineto
+ 0 -50 -50 -100 -100 -100 rcurveto
+ 50 0 100 -50 100 -100 rcurveto
+ 0 -400 rlineto
+ closepath fill
+
+} bind def
+/Clb {
+500 setC
+ 0 -150 50 -210 140 -250
+ 0 -730
+ 0 -150 50 -250 200 -250
+ 0 -750
+ 220 750
+ C.brk.end
+
+} bind def
+/Crt {
+500 setC
+ 0 150 -50 250 -200 250
+ 0 750
+ 0 150 -50 210 -140 250
+ 0 730
+ 220 -250
+ C.brk.end
+
+} bind def
+/Crk {
+500 setC
+ 1 setlinewidth
+ 220 -250 moveto
+ 0 400 rlineto
+ 0 50 50 100 100 100 rcurveto
+ -50 0 -100 50 -100 100 rcurveto
+ 0 400 rlineto
+ 60 0 rlineto
+ 0 -400 rlineto
+ 0 -50 50 -100 100 -100 rcurveto
+ -50 0 -100 -50 -100 -100 rcurveto
+ 0 -400 rlineto
+ fill
+
+} bind def
+/Crb {
+500 setC
+ 0 -150 -50 -250 -200 -250
+ 0 -750
+ 0 -150 -50 -210 -140 -250
+ 0 -730
+ 220 750
+ C.brk.end
+
+} bind def
+/Clc {
+500 setC
+ C.bv
+ 280
+ C.cbar
+
+} bind def
+/Clf {
+500 setC
+ C.bv 280 C.fbar
+
+} bind def
+/Crc {
+500 setC
+ C.bv 40 C.cbar
+
+} bind def
+/Crf {
+500 setC
+ C.bv 40 C.fbar
+
+} bind def
+/Cbr {
+0 0 -50 -250 0 1000 setcachedevice
+ 40 C.setl
+ 0 -250 moveto
+ 0 1000 rlineto
+ stroke
+
+} bind def
+/Crn {
+500 setC
+ 40 C.setl
+ 0 770 moveto
+ 500 0 rlineto
+ stroke
+
+} bind def
+/Cci {
+1000 0 -50 -250 1000 1000 setcachedevice
+ 40 C.setl
+ 500 250
+ 400
+ 0 360 arc
+ stroke
+
+} bind def
+/C|| {
+170 0 -50 -250 170 1000 setcachedevice
+
+
+} bind def
+/C^^ {
+80 0 -50 -250 80 1000 setcachedevice
+
+
+} bind def
+/Cr1 {
+800 0 -50 -250 800 1000 setcachedevice
+ 40 C.setl
+ 0 setlinejoin
+ 700 180 moveto -650 currentlinewidth add 0 rlineto 200 -200 rlineto
+ 50 360 moveto 650 currentlinewidth sub 0 rlineto -200 200 rlineto
+ stroke
+
+} bind def
+/Cr2 {
+800 0 -50 -250 800 1000 setcachedevice
+ 40 C.setl
+ 2 setlinejoin
+ 217 18 moveto
+
+ -150 150 rlineto 150 150 rlineto -150 -150 rlineto
+ 633 0 rlineto
+ 50 360 moveto
+ 633 0 rlineto
+ -150 150 rlineto 150 -150 rlineto -150 -150 rlineto
+ stroke
+
+} bind def
+end def
+/BuildChar
+{
+	$workingdict begin
+	/charcode exch def
+	/fontdict exch def
+	fontdict /CharProcs get begin
+	fontdict /Encoding get
+	charcode get load
+	gsave
+	0 setlinecap 0 setgray newpath
+	exec
+	grestore
+	end end
+} bind def end
+/BracketFont BracketFontDict definefont pop
+/f.ZD /ZapfDingbats findfont def
+/f.S /Symbol findfont def
+/f.S2 /BracketFont findfont def
+
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 10 10 f.R ft
+save
+home
+%%EndProlog
+
+0 Y
+720 X
+840 Y
+3060 X(.)s
+720 X
+2160 Y
+2192 X(ARGONNE)s
+2705 X(NATIONAL)s
+3245 X(LABORATORY)s
+720 X
+2280 Y
+2556 X(9700)s
+2781 X(South)s
+3040 X(Cass)s
+3254 X(Avenue)s
+720 X
+2400 Y
+2568 X(Argonne,)s
+2967 X(Illinois)s
+3301 X(60439)s
+720 X
+2952 Y
+2642 X
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 12 12 f.B ft(A)s
+2758 X(Set)s
+2948 X(of)s
+3078 X(Level)s
+3388 X(3)s
+720 X
+3192 Y
+2147 X(Basic)s
+2451 X(Linear)s
+2828 X(Algebra)s
+3271 X(Subprograms)s
+720 X
+3672 Y
+1504 X
+0.0 11 11 f.B ft(Jack)s
+1752 X(Dongarra,)s
+2265 X(Jeremy)s
+2638 X(Du)s
+2807 X(Croz,)s
+3093 X(Iain)s
+3312 X(Du)s
+/Cff {  (f) show xsiz pt 20 div neg 0 rmoveto (f) s
+ } bind def
+
+Cff
+3548 X(and)s
+3755 X(Sven)s
+4010 X(Hammarling)s
+720 X
+4512 Y
+2152 X
+0.0 10 10 f.R ft(Mathematics)s
+2693 X(and)s
+2862 X(Computer)s
+3287 X(Science)s
+3622 X(Division)s
+720 X
+4872 Y
+2775 X(Preprint)s
+3122 X(No.)s
+3294 X(1)s
+720 X
+5736 Y
+2803 X(August)s
+3117 X(1988)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 10 10 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+840 Y
+3060 X(.)s
+720 X
+2160 Y
+2856 X
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 11 11 f.B ft(Abstract)s
+720 X
+2640 Y
+0.0 10 10 f.R ft(This)s
+930 X(paper)s
+1184 X(describes)s
+1588 X(a)s
+1665 X(set)s
+1809 X(of)s
+1925 X(Level)s
+2185 X(3)s
+2268 X(Basic)s
+2523 X(Linear)s
+2816 X(Algebra)s
+3170 X(Subprograms)s
+3736 X(\(Level)s
+4029 X(3)s
+4112 X(BLAS\).)s
+4459 X(The)s
+4647 X(Level)s
+4907 X(3)s
+4990 X(BLAS)s
+5279 X(are)s
+720 X
+2760 Y(targeted)s
+1069 X(at)s
+1169 X(matrix-matrix)s
+1751 X(operations)s
+2194 X(with)s
+2399 X(the)s
+2548 X(aim)s
+2725 X(of)s
+2835 X(providing)s
+3251 X(more)s
+3483 X(e)s
+/CFi {  (f) show xsiz pt 20 div neg 0 rmoveto (\256) s
+ } bind def
+
+CFi(cient,)s
+3857 X(but)s
+4012 X(portable,)s
+4391 X(implementations)s
+5085 X(of)s
+5195 X(algo-)s
+720 X
+2880 Y(rithms)s
+1008 X(on)s
+1140 X(high-performance)s
+1886 X(computers,)s
+2359 X(especially)s
+2790 X(those)s
+3033 X(with)s
+3243 X(hierarchical)s
+3745 X(memory)s
+4110 X(and)s
+4287 X(parallel)s
+4619 X(processing)s
+5079 X(capabil-)s
+720 X
+3000 Y(ity.)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 10 10 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+840 Y
+2642 X
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 12 12 f.B ft(A)s
+2758 X(Set)s
+2948 X(of)s
+3078 X(Level)s
+3388 X(3)s
+720 X
+1080 Y
+2147 X(Basic)s
+2451 X(Linear)s
+2828 X(Algebra)s
+3271 X(Subprograms)s
+720 X
+1320 Y
+2685 X
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(Jack)s
+2912 X(Dongarra)s
+3380 X(*)s
+720 X
+1500 Y
+2080 X
+0.0 10 10 f.R ft(Mathematics)s
+2621 X(and)s
+2790 X(Computer)s
+3215 X(Science)s
+3550 X(Division)s
+720 X
+1620 Y
+2395 X(Argonne)s
+2769 X(National)s
+3138 X(Laboratory)s
+720 X
+1740 Y
+2392 X(Argonne,)s
+2791 X(Illinois)s
+3100 X(60439-4801)s
+720 X
+1980 Y
+2628 X
+0.0 11 11 f.I ft(Jeremy)s
+2970 X(Du)s
+3132 X(Croz)s
+720 X
+2160 Y
+2302 X
+0.0 10 10 f.R ft(Numerical)s
+2748 X(Algorithms)s
+3229 X(Group)s
+3509 X(Ltd.)s
+720 X
+2280 Y
+2639 X(Wilkinson)s
+3081 X(House)s
+720 X
+2400 Y
+2646 X(Jordan)s
+2937 X(Hill)s
+3118 X(Road)s
+720 X
+2520 Y
+2627 X(Oxford)s
+2940 X(OX2)s
+3159 X(8DR)s
+720 X
+2760 Y
+2862 X
+0.0 11 11 f.I ft(Iain)s
+3067 X(Du)s
+/Cff {  (f) show xsiz pt 20 div neg 0 rmoveto (f) s
+ } bind def
+
+Cff
+720 X
+2940 Y
+2243 X
+0.0 10 10 f.R ft(Computer)s
+2668 X(Science)s
+3003 X(and)s
+3172 X(Systems)s
+3531 X(Division)s
+720 X
+3060 Y
+2665 X(Harwell)s
+3011 X(Laboratory)s
+720 X
+3180 Y
+2566 X(Oxfordshire)s
+3073 X(OX11)s
+3342 X(ORA)s
+720 X
+3420 Y
+2590 X
+0.0 11 11 f.I ft(Sven)s
+2824 X(Hammarling)s
+720 X
+3600 Y
+2302 X
+0.0 10 10 f.R ft(Numerical)s
+2748 X(Algorithms)s
+3229 X(Group)s
+3509 X(Ltd.)s
+720 X
+3720 Y
+2639 X(Wilkinson)s
+3081 X(House)s
+720 X
+3840 Y
+2646 X(Jordan)s
+2937 X(Hill)s
+3118 X(Road)s
+720 X
+3960 Y
+2627 X(Oxford)s
+2940 X(OX2)s
+3159 X(8DR)s
+720 X
+4440 Y
+900 X(Abstract)s
+1266 X(\320)s
+1394 X(This)s
+1600 X(paper)s
+1849 X(describes)s
+2248 X(a)s
+2320 X(set)s
+2459 X(of)s
+2570 X(Level)s
+2825 X(3)s
+2903 X(Basic)s
+3153 X(Linear)s
+3442 X(Algebra)s
+3792 X(Subprograms)s
+4354 X(\(Level)s
+4643 X(3)s
+4722 X(BLAS\).)s
+5065 X(The)s
+720 X
+4560 Y
+900 X(Level)s
+1159 X(3)s
+1241 X(BLAS)s
+1529 X(are)s
+1682 X(targeted)s
+2035 X(at)s
+2139 X(matrix-matrix)s
+2726 X(operations)s
+3174 X(with)s
+3384 X(the)s
+3538 X(aim)s
+3719 X(of)s
+3833 X(providing)s
+4253 X(more)s
+4489 X(e)s
+/CFi {  (f) show xsiz pt 20 div neg 0 rmoveto (\256) s
+ } bind def
+
+CFi(cient,)s
+4867 X(but)s
+5026 X(port-)s
+720 X
+4680 Y
+900 X(able,)s
+1134 X(implementations)s
+1844 X(of)s
+1971 X(algorithms)s
+2443 X(on)s
+2587 X(high-performance)s
+3345 X(computers,)s
+3830 X(especially)s
+4273 X(those)s
+4528 X(with)s
+4750 X(hierarchical)s
+720 X
+4800 Y
+900 X(memory)s
+1258 X(and)s
+1427 X(parallel)s
+1751 X(processing)s
+2203 X(capability.)s
+720 X
+5240 Y
+0.0 11 11 f.B ft(1.)s
+831 X(Introduction)s
+720 X
+5460 Y
+970 X
+0.0 11 11 f.R ft(In)s
+1100 X(1973)s
+1359 X(Hanson,)s
+1761 X(Krogh,)s
+2108 X(and)s
+2305 X(Lawson)s
+2691 X(wrote)s
+2979 X(an)s
+3121 X(article)s
+3433 X(in)s
+3558 X(the)s
+3732 X(SIGNUM)s
+4205 X(Newsletter)s
+4719 X(\(Vol.)s
+5016 X(8,)s
+5139 X(no.)s
+5317 X(4,)s
+720 X
+5620 Y(page)s
+959 X(16\))s
+1137 X(describing)s
+1626 X(the)s
+1792 X(advantages)s
+2310 X(of)s
+2433 X(adopting)s
+2850 X(a)s
+2930 X(set)s
+3084 X(of)s
+3207 X(basic)s
+3464 X(routines)s
+3850 X(for)s
+4009 X(problems)s
+4450 X(in)s
+4568 X(linear)s
+4849 X(algebra.)s
+5230 X(The)s
+720 X
+5780 Y(original)s
+1094 X(basic)s
+1351 X(linear)s
+1632 X(algebra)s
+1985 X(subprograms,)s
+2612 X(now)s
+2833 X(commonly)s
+3336 X(referred)s
+3711 X(to)s
+3829 X(as)s
+3952 X(the)s
+4118 X(BLAS)s
+4432 X(and)s
+4622 X(fully)s
+4862 X(described)s
+5314 X(in)s
+720 X
+5940 Y(\(Lawson)s
+1133 X
+0.0 11 11 f.I ft(et)s
+1242 X(al.)s
+0.0 11 11 f.R ft(,)s
+1414 X(1979a)s
+1712 X(and)s
+1900 X(Lawson)s
+2277 X
+0.0 11 11 f.I ft(et)s
+2386 X(al.)s
+0.0 11 11 f.R ft(,)s
+2558 X(1979b\),)s
+2927 X(have)s
+3163 X(been)s
+3399 X(very)s
+3623 X(successful)s
+4103 X(and)s
+4291 X(have)s
+4527 X(been)s
+4763 X(used)s
+4994 X(in)s
+5110 X(a)s
+5187 X(wide)s
+720 X
+6100 Y(range)s
+994 X(of)s
+1117 X(software)s
+1525 X(including)s
+1973 X(LINPACK)s
+2509 X(\(Dongarra)s
+2990 X
+0.0 11 11 f.I ft(et)s
+3102 X(al.)s
+0.0 11 11 f.R ft(,)s
+3277 X(1979\))s
+3566 X(and)s
+3757 X(many)s
+4034 X(of)s
+4158 X(the)s
+4325 X(algorithms)s
+4829 X(published)s
+5290 X(by)s
+720 X
+6260 Y(the)s
+899 X(ACM)s
+1195 X(Transactions)s
+1800 X(on)s
+1955 X(Mathematical)s
+2603 X(Software.)s
+3071 X(In)s
+3206 X(particular,)s
+3697 X(they)s
+3930 X(are)s
+4106 X(an)s
+4253 X(aid)s
+4431 X(to)s
+4561 X(clarity,)s
+4913 X(portability,)s
+720 X
+6420 Y(modularity)s
+1243 X(and)s
+1441 X(maintenance)s
+2034 X(of)s
+2165 X(software;)s
+2612 X(and)s
+2810 X(they)s
+3039 X(have)s
+3285 X(become)s
+3665 X(a)s
+3754 X
+0.0 11 11 f.I ft(de)s
+3898 X(facto)s
+4159 X
+0.0 11 11 f.R ft(standard)s
+4571 X(for)s
+4739 X(the)s
+4914 X(elementary)s
+720 X
+6580 Y(vector)s
+1032 X(operations.)s
+1584 X(An)s
+1757 X(excellent)s
+2191 X(discussion)s
+2689 X(of)s
+2819 X(the)s
+2992 X
+0.0 11 11 f.I ft(raison)s
+3313 X(d')s
+3443 X(^)s
+3443 X(etre)s
+3652 X
+0.0 11 11 f.R ft(of)s
+3782 X(the)s
+3955 X(BLAS)s
+4276 X(is)s
+4389 X(given)s
+4672 X(in)s
+4825 X(\(Dodson)s
+5242 X(and)s
+720 X
+6680 Y
+0.0 8 8 f.R ft
+/Cru {  0 ysiz pt 5 div 2 copy rmoveto
+ (_) show
+ neg rmoveto
+ } bind def
+
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+Cru
+720 X
+6790 Y
+0.0 9 9 f.R ft(*)s
+809 X(Work)s
+1059 X(supported)s
+1459 X(in)s
+1574 X(part)s
+1759 X(by)s
+1894 X(the)s
+2049 X(Applied)s
+2384 X(Mathematical)s
+2924 X(Sciences)s
+3284 X(subprogram)s
+3759 X(of)s
+3879 X(the)s
+4034 X(O)s
+CFi(ce)s
+4300 X(of)s
+4420 X(Energy)s
+720 X
+6900 Y(Research,)s
+1096 X(U.)s
+1207 X(S.)s
+1303 X(Department)s
+1751 X(of)s
+1849 X(Energy,)s
+2155 X(under)s
+2383 X(Contract)s
+2716 X(W-31-109-Eng-38.)s
+720 X
+7120 Y(Typeset)s
+1028 X(on)s
+1141 X(August)s
+1424 X(22,)s
+1560 X(1988.)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 9 9 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2968 X
+0.0 11 11 f.R ft(- 2 -)s
+720 X
+880 Y(Lewis,)s
+1044 X(1985\).)s
+720 X
+1100 Y
+970 X(An)s
+1142 X(extended)s
+1575 X(set)s
+1735 X(of)s
+1864 X(Fortran)s
+2225 X(BLAS)s
+2545 X(aimed)s
+2851 X(at)s
+2968 X(matrix-vector)s
+3602 X(operations)s
+4097 X(\(Level)s
+4420 X(2)s
+4513 X(BLAS\))s
+4870 X(were)s
+5120 X(subse-)s
+720 X
+1260 Y(quently)s
+1082 X(proposed)s
+1516 X(by)s
+1658 X(Dongarra,)s
+2130 X(Du)s
+2296 X(Croz,)s
+2569 X(Hammarling)s
+3156 X(and)s
+3346 X(Hanson)s
+3741 X(\(Dongarra)s
+4221 X
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(et)s
+4332 X(al.)s
+0.0 11 11 f.R ft(,)s
+4505 X(1988a,)s
+4832 X(1988b\).)s
+5230 X(The)s
+720 X
+1420 Y(Level)s
+997 X(2)s
+1080 X(BLAS)s
+1390 X(were)s
+1629 X(proposed)s
+2059 X(in)s
+2173 X(order)s
+2431 X(to)s
+2545 X(support)s
+2903 X(the)s
+3065 X(development)s
+3661 X(of)s
+3781 X(software)s
+4186 X(that)s
+4380 X(would)s
+4684 X(be)s
+4816 X(both)s
+5041 X(portable)s
+720 X
+1580 Y(and)s
+906 X(e)s
+/CFi {  (f) show xsiz pt 20 div neg 0 rmoveto (\256) s
+ } bind def
+
+CFi(cient)s
+1287 X(across)s
+1588 X(a)s
+1664 X(wide)s
+1905 X(range)s
+2175 X(of)s
+2294 X(machine)s
+2693 X(architectures,)s
+3307 X(with)s
+3531 X(emphasis)s
+3968 X(on)s
+4106 X(vector-processing)s
+4912 X(machines.)s
+720 X
+1800 Y
+970 X(Many)s
+1257 X(of)s
+1379 X(the)s
+1544 X(frequently)s
+2025 X(used)s
+2257 X(algorithms)s
+2759 X(of)s
+2881 X(numerical)s
+3350 X(linear)s
+3630 X(algebra)s
+3982 X(can)s
+4164 X(be)s
+4298 X(coded)s
+4590 X(so)s
+4719 X(that)s
+4915 X(the)s
+5081 X(bulk)s
+5309 X(of)s
+720 X
+1960 Y(the)s
+883 X(computation)s
+1462 X(is)s
+1565 X(performed)s
+2049 X(by)s
+2187 X(calls)s
+2416 X(to)s
+2530 X(Level)s
+2807 X(2)s
+2890 X(BLAS)s
+3200 X(routines;)s
+3613 X(e)s
+CFi(ciency)s
+4066 X(can)s
+4245 X(then)s
+4462 X(be)s
+4593 X(obtained)s
+4999 X(by)s
+5137 X(utiliz-)s
+720 X
+2120 Y(ing)s
+901 X(tailored)s
+1276 X(implementations)s
+2050 X(of)s
+2181 X(the)s
+2355 X(Level)s
+2644 X(2)s
+2740 X(BLAS)s
+3063 X(routines.)s
+3486 X(On)s
+3661 X(vector-processing)s
+4480 X(machines)s
+4935 X(one)s
+5134 X(of)s
+5266 X(the)s
+720 X
+2280 Y(aims)s
+958 X(of)s
+1079 X(such)s
+1309 X(implementations)s
+2072 X(is)s
+2175 X(to)s
+2290 X(keep)s
+2525 X(the)s
+2688 X(vector)s
+2990 X(lengths)s
+3337 X(as)s
+3457 X(long)s
+3682 X(as)s
+3802 X(possible,)s
+4220 X(and)s
+4407 X(in)s
+4522 X(most)s
+4766 X(algorithms)s
+5266 X(the)s
+720 X
+2440 Y(results)s
+1040 X(are)s
+1205 X(computed)s
+1671 X(one)s
+1863 X(vector)s
+2170 X(\(row)s
+2410 X(or)s
+2535 X(column\))s
+2935 X(at)s
+3048 X(a)s
+3130 X(time.)s
+3416 X(In)s
+3541 X(addition,)s
+3964 X(on)s
+4108 X(vector)s
+4415 X(register)s
+4777 X(machines)s
+5225 X(per-)s
+720 X
+2600 Y(formance)s
+1178 X(is)s
+1298 X(increased)s
+1756 X(by)s
+1912 X(reusing)s
+2281 X(the)s
+2460 X(results)s
+2792 X(of)s
+2928 X(a)s
+3021 X(vector)s
+3339 X(register,)s
+3740 X(and)s
+3943 X(not)s
+4129 X(storing)s
+4480 X(the)s
+4659 X(vector)s
+4977 X(back)s
+5228 X(into)s
+720 X
+2760 Y(memory.)s
+720 X
+2980 Y
+970 X(Unfortunately,)s
+1651 X(this)s
+1849 X(approach)s
+2287 X(to)s
+2412 X(software)s
+2827 X(construction)s
+3409 X(is)s
+3522 X(often)s
+3786 X(not)s
+3966 X(well)s
+4194 X(suited)s
+4496 X(to)s
+4621 X(computers)s
+5117 X(with)s
+5352 X(a)s
+720 X
+3140 Y(hierarchy)s
+1179 X(of)s
+1317 X(memory)s
+1730 X(\(such)s
+2014 X(as)s
+2152 X(global)s
+2474 X(memory,)s
+2915 X(cache)s
+3209 X(or)s
+3347 X(local)s
+3607 X(memory,)s
+4048 X(and)s
+4253 X(vector)s
+4573 X(registers\))s
+5026 X(and)s
+5230 X(true)s
+720 X
+3300 Y(parallel-processing)s
+1635 X(computers.)s
+2202 X(\(For)s
+2473 X(a)s
+2603 X(description)s
+3174 X(of)s
+3348 X(many)s
+3675 X(advanced-computer)s
+4620 X(architectures)s
+5261 X(see)s
+720 X
+3460 Y(\(Dongarra)s
+1221 X(and)s
+1431 X(Du)s
+/Cff {  (f) show xsiz pt 20 div neg 0 rmoveto (f) s
+ } bind def
+
+Cff(,)s
+1712 X(1987\).\))s
+2112 X(For)s
+2317 X(those)s
+2601 X(architectures)s
+3211 X(it)s
+3325 X(is)s
+3451 X(often)s
+3728 X(preferable)s
+4221 X(to)s
+4359 X(partition)s
+4784 X(the)s
+4970 X(matrix)s
+5309 X(or)s
+720 X
+3620 Y(matrices)s
+1119 X(into)s
+1319 X(blocks)s
+1634 X(and)s
+1820 X(to)s
+1934 X(perform)s
+2314 X(the)s
+2476 X(computation)s
+3054 X(by)s
+3192 X(matrix-matrix)s
+3830 X(operations)s
+4315 X(on)s
+4453 X(the)s
+4615 X(blocks.)s
+4958 X(By)s
+5115 X(organ-)s
+720 X
+3780 Y(izing)s
+971 X(the)s
+1136 X(computation)s
+1717 X(in)s
+1834 X(this)s
+2025 X(fashion)s
+2379 X(we)s
+2537 X(provide)s
+2903 X(for)s
+3061 X(full)s
+3245 X(reuse)s
+3505 X(of)s
+3626 X(data)s
+3838 X(while)s
+4112 X(the)s
+4276 X(block)s
+4550 X(is)s
+4654 X(held)s
+4873 X(in)s
+4989 X(the)s
+5153 X(cache)s
+720 X
+3940 Y(or)s
+853 X(local)s
+1108 X(memory.)s
+1544 X(This)s
+1782 X(approach)s
+2224 X(avoids)s
+2553 X(excessive)s
+3015 X(movement)s
+3522 X(of)s
+3656 X(data)s
+3881 X(to)s
+4010 X(and)s
+4211 X(from)s
+4467 X(memory)s
+4876 X(and)s
+5077 X(gives)s
+5352 X(a)s
+720 X
+4100 Y
+0.0 11 11 f.I ft(surface-to-volume)s
+1555 X
+0.0 11 11 f.R ft(e)s
+Cff(ect)s
+1835 X(for)s
+2000 X(the)s
+2172 X(ratio)s
+2411 X(of)s
+2540 X(operations)s
+3035 X(to)s
+3159 X(data)s
+3379 X(movement.)s
+3937 X(In)s
+4066 X(addition,)s
+4493 X(on)s
+4640 X(architectures)s
+5235 X(that)s
+720 X
+4260 Y(provide)s
+1083 X(for)s
+1238 X(parallel)s
+1594 X(processing,)s
+2119 X(parallelism)s
+2635 X(can)s
+2814 X(be)s
+2946 X(exploited)s
+3384 X(in)s
+3499 X(two)s
+3693 X(ways:)s
+3978 X(\(1\))s
+4134 X(operations)s
+4620 X(on)s
+4759 X(distinct)s
+5113 X(blocks)s
+720 X
+4420 Y(may)s
+938 X(be)s
+1070 X(performed)s
+1554 X(in)s
+1669 X(parallel;)s
+2057 X(and)s
+2244 X(\(2\))s
+2400 X(within)s
+2711 X(the)s
+2874 X(operations)s
+3359 X(on)s
+3497 X(each)s
+3724 X(block,)s
+4024 X(scalar)s
+4306 X(or)s
+4425 X(vector)s
+4726 X(operations)s
+5211 X(may)s
+720 X
+4580 Y(be)s
+851 X(performed)s
+1334 X(in)s
+1448 X(parallel.)s
+720 X
+4800 Y
+970 X(The)s
+1169 X(Level)s
+1447 X(3)s
+1531 X(BLAS)s
+1842 X(speci\256ed)s
+2261 X(here)s
+2477 X(are)s
+2638 X(targeted)s
+3019 X(at)s
+3127 X(the)s
+3290 X(matrix-matrix)s
+3929 X(operations)s
+4415 X(required)s
+4808 X(for)s
+4964 X(these)s
+5218 X(pur-)s
+720 X
+4960 Y(poses.)s
+1024 X(If)s
+1128 X(the)s
+1294 X(vectors)s
+1642 X(and)s
+1832 X(matrices)s
+2235 X(involved)s
+2652 X(are)s
+2816 X(of)s
+2939 X(order)s
+3201 X
+0.0 11 11 f.I ft(n)s
+0.0 11 11 f.R ft(,)s
+3316 X(then)s
+3537 X(the)s
+3703 X(original)s
+4077 X(BLAS)s
+4391 X(include)s
+4746 X(operations)s
+5235 X(that)s
+720 X
+5120 Y(are)s
+892 X(of)s
+1023 X(order)s
+1293 X
+0.0 11 11 f.I ft(O)s
+1390 X
+0.0 11 11 f.R ft(\()s
+0.0 11 11 f.I ft(n)s
+1490 X
+0.0 11 11 f.R ft(\),)s
+1594 X(the)s
+1768 X(extended)s
+2203 X(or)s
+2334 X(Level)s
+2623 X(2)s
+2718 X(BLAS)s
+3040 X(provide)s
+3416 X(operations)s
+3914 X(of)s
+4046 X(order)s
+4317 X
+0.0 11 11 f.I ft(O)s
+4414 X
+0.0 11 11 f.R ft(\()s
+0.0 11 11 f.I ft(n)s
+5076 Y
+4518 X
+0.0 8 8 f.R ft(2)s
+5120 Y
+4567 X
+0.0 11 11 f.R ft(\),)s
+4672 X(and)s
+4871 X(the)s
+5046 X(routines)s
+720 X
+5280 Y(speci\256ed)s
+1150 X(here)s
+1377 X(provide)s
+1752 X(operations)s
+2249 X(of)s
+2380 X(order)s
+2650 X
+0.0 11 11 f.I ft(O)s
+2747 X
+0.0 11 11 f.R ft(\()s
+0.0 11 11 f.I ft(n)s
+5236 Y
+2851 X
+0.0 8 8 f.R ft(3)s
+5280 Y
+2900 X
+0.0 11 11 f.R ft(\);)s
+3007 X(hence)s
+3301 X(our)s
+3487 X(use)s
+3673 X(of)s
+3804 X(the)s
+3977 X(term)s
+4217 X(Level)s
+4505 X(3)s
+4599 X(BLAS.)s
+4976 X(Section)s
+5345 X(9)s
+720 X
+5440 Y(illustrates)s
+1176 X(how)s
+1394 X(an)s
+1526 X(algorithm)s
+1983 X(for)s
+2139 X(Cholesky)s
+2584 X(factorization)s
+3166 X(can)s
+3346 X(be)s
+3478 X(implemented)s
+4081 X(by)s
+4220 X(calls)s
+4450 X(to)s
+4565 X(the)s
+4728 X(Level)s
+5006 X(3)s
+5090 X(BLAS.)s
+720 X
+5600 Y(Such)s
+972 X(implementations)s
+1738 X(can,)s
+1949 X(we)s
+2108 X(believe,)s
+2483 X(be)s
+2617 X(portable)s
+3007 X(across)s
+3311 X(a)s
+3390 X(wide)s
+3634 X(variety)s
+3969 X(of)s
+4091 X(vector)s
+4395 X(and)s
+4584 X(parallel)s
+4943 X(computers)s
+720 X
+5760 Y(and)s
+915 X(also)s
+1129 X(e)s
+CFi(cient)s
+1519 X(\(assuming)s
+2008 X(that)s
+2210 X(e)s
+CFi(cient)s
+2600 X(implementations)s
+3371 X(of)s
+3499 X(the)s
+3670 X(Level)s
+3956 X(3)s
+4048 X(BLAS)s
+4367 X(are)s
+4537 X(available\).)s
+5034 X(There)s
+5326 X(is)s
+720 X
+5920 Y(certainly)s
+1152 X(considerable)s
+1754 X(evidence)s
+2191 X(for)s
+2367 X(the)s
+2550 X(e)s
+CFi(ciency)s
+3024 X(of)s
+3164 X(such)s
+3414 X(algorithms)s
+3934 X(on)s
+4093 X(particular)s
+4560 X(machines)s
+5022 X(\(see,)s
+5273 X(for)s
+720 X
+6080 Y(example,)s
+1150 X(the)s
+1315 X(references)s
+1792 X(cited)s
+2036 X(in)s
+2153 X(Section)s
+2514 X(9\);)s
+2667 X(the)s
+2832 X(question)s
+3236 X(of)s
+3359 X(portability)s
+3850 X(has)s
+4028 X(been)s
+4266 X(much)s
+4542 X(less)s
+4739 X(studied)s
+5089 X(but,)s
+5290 X(by)s
+720 X
+6240 Y(proposing)s
+1188 X(a)s
+1264 X(standard)s
+1663 X(set)s
+1813 X(of)s
+1932 X(building)s
+2328 X(blocks,)s
+2671 X(we)s
+2826 X(hope,)s
+3095 X(to)s
+3209 X(encourage)s
+3685 X(research)s
+4075 X(into)s
+4275 X(this)s
+4463 X(aspect.)s
+720 X
+6460 Y
+970 X(The)s
+1169 X(scope)s
+1447 X(of)s
+1567 X(the)s
+1730 X(Level)s
+2008 X(3)s
+2092 X(BLAS)s
+2403 X(is)s
+2506 X(intentionally)s
+3092 X(limited.)s
+3490 X(No)s
+3653 X(routines)s
+4036 X(are)s
+4197 X(included)s
+4605 X(for)s
+4762 X(matrix)s
+5079 X(factori-)s
+720 X
+6620 Y(zation,)s
+1066 X(for)s
+1243 X(example;)s
+1695 X(these)s
+1970 X(are)s
+2152 X(currently)s
+2597 X(provided)s
+3036 X(by)s
+3195 X(LINPACK)s
+3720 X(\(Dongarra)s
+4217 X
+0.0 11 11 f.I ft(et)s
+4345 X(al.)s
+0.0 11 11 f.R ft(,)s
+4536 X(1979\),)s
+4869 X(and)s
+5076 X(will)s
+5297 X(be)s
+720 X
+6780 Y(included)s
+1135 X(in)s
+1258 X(a)s
+1343 X(new)s
+1562 X(linear)s
+1848 X(algebra)s
+2206 X(package)s
+2600 X(currently)s
+3032 X(under)s
+3318 X(development,)s
+3950 X(which)s
+4255 X(will)s
+4464 X(use)s
+4647 X(block)s
+4929 X(algorithms)s
+720 X
+6940 Y(and)s
+908 X(calls)s
+1139 X(to)s
+1255 X(Level)s
+1534 X(3)s
+1619 X(BLAS)s
+1931 X(wherever)s
+2366 X(possible)s
+2757 X(\(Demmel)s
+3201 X
+0.0 11 11 f.I ft(et)s
+3310 X(al.)s
+0.0 11 11 f.R ft(,)s
+3482 X(1987\).)s
+3824 X(Nor)s
+4024 X(are)s
+4186 X(the)s
+4349 X(Level)s
+4627 X(3)s
+4711 X(BLAS)s
+5022 X(intended)s
+720 X
+7100 Y(to)s
+850 X(be)s
+997 X(a)s
+1089 X(comprehensive)s
+1796 X(set)s
+1962 X(of)s
+2097 X(routines)s
+2495 X(for)s
+2666 X(elementary)s
+3196 X(matrix)s
+3527 X(algebra.)s
+3949 X(They)s
+4219 X(are)s
+4396 X(intended)s
+4819 X(primarily)s
+5273 X(for)s
+720 X
+7260 Y(software)s
+1124 X(developers)s
+1626 X(and)s
+1812 X(to)s
+1926 X(a)s
+2002 X(lesser)s
+2279 X(extent)s
+2575 X(for)s
+2730 X(experienced)s
+3285 X(applications)s
+3844 X(programmers.)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2968 X(- 3 -)s
+720 X
+880 Y
+970 X(The)s
+1171 X(details)s
+1489 X(of)s
+1611 X(this)s
+1802 X(paper)s
+2075 X(are)s
+2238 X(concerned)s
+2717 X(speci\256cally)s
+3248 X(with)s
+3475 X(de\256ning)s
+3867 X(a)s
+3946 X(set)s
+4099 X(of)s
+4221 X(subroutines)s
+4759 X(for)s
+4917 X(use)s
+5094 X(in)s
+5211 X(For-)s
+720 X
+1040 Y(tran)s
+918 X(77)s
+1056 X(programs.)s
+1526 X(However,)s
+1982 X(the)s
+2144 X(essential)s
+2550 X(features)s
+2923 X(could)s
+3195 X(be)s
+3326 X(adapted)s
+3694 X(to)s
+3808 X(other)s
+4061 X(programming)s
+4687 X(languages.)s
+720 X
+1260 Y
+970 X(In)s
+1101 X(a)s
+1189 X(companion)s
+1717 X(paper)s
+1999 X(\(Dongarra)s
+2487 X
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(et)s
+2606 X(al.)s
+0.0 11 11 f.R ft(,)s
+2789 X(1987\))s
+3086 X(we)s
+3254 X(present)s
+3611 X(a)s
+3700 X(model)s
+4016 X(implementation)s
+4748 X(of)s
+4880 X(the)s
+5055 X(Level)s
+5345 X(3)s
+720 X
+1420 Y(BLAS)s
+1034 X(in)s
+1152 X(Fortran)s
+1507 X(77)s
+1649 X(\(extended)s
+2112 X(to)s
+2230 X(include)s
+2585 X(a)s
+2665 X(COMPLEX*16)s
+3388 X(data)s
+3602 X(type\),)s
+3886 X(and)s
+4075 X(also)s
+4283 X(a)s
+4362 X(set)s
+4515 X(of)s
+4637 X(rigorous)s
+5034 X(test)s
+5218 X(pro-)s
+720 X
+1580 Y(grams.)s
+720 X
+1900 Y
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 11 11 f.B ft(2.)s
+831 X(Scope)s
+1134 X(of)s
+1253 X(the)s
+1427 X(Level)s
+1711 X(3)s
+1794 X(BLAS)s
+720 X
+2120 Y
+970 X
+0.0 11 11 f.R ft(The)s
+1171 X(routines)s
+1556 X(described)s
+2006 X(here)s
+2224 X(have)s
+2461 X(been)s
+2698 X(derived)s
+3058 X(in)s
+3176 X(a)s
+3256 X(fairly)s
+3525 X(obvious)s
+3906 X(manner)s
+4266 X(from)s
+4511 X(some)s
+4775 X(of)s
+4898 X(the)s
+5064 X(Level)s
+5345 X(2)s
+720 X
+2280 Y(BLAS,)s
+1059 X(by)s
+1198 X(replacing)s
+1634 X(the)s
+1796 X(vectors)s
+2140 X
+0.0 11 11 f.I ft(x)s
+2216 X
+0.0 11 11 f.R ft(and)s
+2402 X
+0.0 11 11 f.I ft(y)s
+2478 X
+0.0 11 11 f.R ft(with)s
+2702 X(matrices)s
+3101 X
+0.0 11 11 f.I ft(B)s
+3196 X
+0.0 11 11 f.R ft(and)s
+3382 X
+0.0 11 11 f.I ft(C)s
+0.0 11 11 f.R ft(.)s
+3512 X(The)s
+3710 X(advantage)s
+4181 X(in)s
+4295 X(keeping)s
+4670 X(the)s
+4832 X(design)s
+5147 X(of)s
+5266 X(the)s
+720 X
+2440 Y(software)s
+1140 X(as)s
+1275 X(consistent)s
+1759 X(as)s
+1894 X(possible)s
+2299 X(with)s
+2539 X(that)s
+2748 X(of)s
+2883 X(the)s
+3061 X(Level)s
+3354 X(2)s
+3453 X(BLAS)s
+3779 X(is)s
+3897 X(that)s
+4106 X(it)s
+4212 X(will)s
+4428 X(be)s
+4575 X(easier)s
+4873 X(for)s
+5044 X(users)s
+5314 X(to)s
+720 X
+2600 Y(remember)s
+1191 X(the)s
+1353 X(calling)s
+1680 X(sequences)s
+2151 X(and)s
+2337 X(parameter)s
+2801 X(conventions.)s
+720 X
+2820 Y
+970 X(In)s
+1089 X(real)s
+1280 X(arithmetic)s
+1753 X(the)s
+1915 X(operations)s
+2400 X(proposed)s
+2830 X(for)s
+2985 X(the)s
+3147 X(Level)s
+3424 X(3)s
+3507 X(BLAS)s
+3817 X(have)s
+4051 X(the)s
+4213 X(following)s
+4669 X(forms.)s
+720 X
+3140 Y(a\))s
+832 X(Matrix-matrix)s
+1482 X(products)s
+720 X
+3520 Y
+1270 X
+0.0 11 11 f.I ft(C)s
+1381 X
+0.0 11 11 f.S ft(\254)s
+1518 X(a)s
+0.0 11 11 f.I ft(AB)s
+1758 X
+0.0 11 11 f.S ft(+)s
+1847 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+3740 Y
+1270 X(C)s
+1381 X
+0.0 11 11 f.S ft(\254)s
+1518 X(a)s
+0.0 11 11 f.I ft(A)s
+3696 Y
+1667 X
+0.0 8 8 f.I ft(T)s
+3740 Y
+1721 X
+0.0 11 11 f.I ft(B)s
+1825 X
+0.0 11 11 f.S ft(+)s
+1914 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+3960 Y
+1270 X(C)s
+1381 X
+0.0 11 11 f.S ft(\254)s
+1518 X(a)s
+0.0 11 11 f.I ft(AB)s
+3916 Y
+1734 X
+0.0 8 8 f.I ft(T)s
+3960 Y
+1816 X
+0.0 11 11 f.S ft(+)s
+1905 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+4180 Y
+1270 X(C)s
+1381 X
+0.0 11 11 f.S ft(\254)s
+1518 X(a)s
+0.0 11 11 f.I ft(A)s
+4136 Y
+1667 X
+0.0 8 8 f.I ft(T)s
+4180 Y
+1721 X
+0.0 11 11 f.I ft(B)s
+4136 Y
+1801 X
+0.0 8 8 f.I ft(T)s
+4180 Y
+1883 X
+0.0 11 11 f.S ft(+)s
+1972 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+4560 Y
+0.0 11 11 f.R ft(Note)s
+973 X(that)s
+1178 X(these)s
+1443 X(operations)s
+1940 X(are)s
+2112 X(more)s
+2377 X(accurately)s
+2865 X(described)s
+3325 X(as)s
+3457 X(matrix-matrix)s
+4108 X(multiply-and-add)s
+4912 X(operations;)s
+720 X
+4720 Y(they)s
+937 X(include)s
+1288 X(rank-)s
+0.0 11 11 f.I ft(k)s
+1594 X
+0.0 11 11 f.R ft(updates)s
+1957 X(of)s
+2076 X(a)s
+2152 X(general)s
+2501 X(matrix.)s
+720 X
+5040 Y(b\))s
+839 X(Rank-)s
+0.0 11 11 f.I ft(k)s
+1183 X
+0.0 11 11 f.R ft(and)s
+1369 X(rank-2)s
+0.0 11 11 f.I ft(k)s
+1730 X
+0.0 11 11 f.R ft(updates)s
+2093 X(of)s
+2212 X(a)s
+2288 X(symmetric)s
+2780 X(matrix:)s
+720 X
+5260 Y
+1270 X
+0.0 11 11 f.I ft(C)s
+1381 X
+0.0 11 11 f.S ft(\254)s
+1518 X(a)s
+0.0 11 11 f.I ft(AA)s
+5216 Y
+1734 X
+0.0 8 8 f.I ft(T)s
+5260 Y
+1816 X
+0.0 11 11 f.S ft(+)s
+1905 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+5480 Y
+1270 X(C)s
+1381 X
+0.0 11 11 f.S ft(\254)s
+1518 X(a)s
+0.0 11 11 f.I ft(A)s
+5436 Y
+1667 X
+0.0 8 8 f.I ft(T)s
+5480 Y
+1721 X
+0.0 11 11 f.I ft(A)s
+1825 X
+0.0 11 11 f.S ft(+)s
+1914 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+5700 Y
+1270 X(C)s
+1381 X
+0.0 11 11 f.S ft(\254)s
+1518 X(a)s
+0.0 11 11 f.I ft(AB)s
+5656 Y
+1734 X
+0.0 8 8 f.I ft(T)s
+5700 Y
+1816 X
+0.0 11 11 f.S ft(+)s
+1905 X(a)s
+0.0 11 11 f.I ft(BA)s
+5656 Y
+2121 X
+0.0 8 8 f.I ft(T)s
+5700 Y
+2203 X
+0.0 11 11 f.S ft(+)s
+2292 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+5920 Y
+1270 X(C)s
+1381 X
+0.0 11 11 f.S ft(\254)s
+1518 X(a)s
+0.0 11 11 f.I ft(A)s
+5876 Y
+1667 X
+0.0 8 8 f.I ft(T)s
+5920 Y
+1721 X
+0.0 11 11 f.I ft(B)s
+1825 X
+0.0 11 11 f.S ft(+)s
+1914 X(a)s
+0.0 11 11 f.I ft(B)s
+5876 Y
+2063 X
+0.0 8 8 f.I ft(T)s
+5920 Y
+2117 X
+0.0 11 11 f.I ft(A)s
+2221 X
+0.0 11 11 f.S ft(+)s
+2310 X(b)s
+0.0 11 11 f.I ft(C)s
+7920 Y
+page
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2968 X
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft(- 4 -)s
+720 X
+880 Y(c\))s
+832 X(Multiplying)s
+1388 X(a)s
+1464 X(matrix)s
+1779 X(by)s
+1917 X(a)s
+1993 X(triangular)s
+2447 X(matrix:)s
+720 X
+1100 Y
+1270 X
+0.0 11 11 f.I ft(B)s
+1374 X
+0.0 11 11 f.S ft(\254)s
+1511 X(a)s
+0.0 11 11 f.I ft(TB)s
+720 X
+1320 Y
+1270 X(B)s
+1374 X
+0.0 11 11 f.S ft(\254)s
+1511 X(a)s
+0.0 11 11 f.I ft(T)s
+1276 Y
+1655 X
+0.0 8 8 f.I ft(T)s
+1320 Y
+1709 X
+0.0 11 11 f.I ft(B)s
+720 X
+1540 Y
+1270 X(B)s
+1374 X
+0.0 11 11 f.S ft(\254)s
+1511 X(a)s
+0.0 11 11 f.I ft(BT)s
+720 X
+1760 Y
+1270 X(B)s
+1374 X
+0.0 11 11 f.S ft(\254)s
+1511 X(a)s
+0.0 11 11 f.I ft(BT)s
+1716 Y
+1722 X
+0.0 8 8 f.I ft(T)s
+720 X
+2140 Y
+0.0 11 11 f.R ft(d\))s
+839 X(Solving)s
+1211 X(triangular)s
+1665 X(systems)s
+2042 X(of)s
+2161 X(equations)s
+2610 X(with)s
+2834 X(multiple)s
+3230 X(right-hand)s
+3715 X(sides:)s
+720 X
+2360 Y
+1270 X
+0.0 11 11 f.I ft(B)s
+1374 X
+0.0 11 11 f.S ft(\254)s
+1511 X(a)s
+0.0 11 11 f.I ft(T)s
+2316 Y
+1655 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+2360 Y
+1748 X
+0.0 11 11 f.I ft(B)s
+720 X
+2580 Y
+1270 X(B)s
+1374 X
+0.0 11 11 f.S ft(\254)s
+1511 X(a)s
+0.0 11 11 f.I ft(T)s
+2536 Y
+1655 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.I ft(T)s
+2580 Y
+1753 X
+0.0 11 11 f.I ft(B)s
+720 X
+2800 Y
+1270 X(B)s
+1374 X
+0.0 11 11 f.S ft(\254)s
+1511 X(a)s
+0.0 11 11 f.I ft(BT)s
+2756 Y
+1722 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+720 X
+3020 Y
+1270 X
+0.0 11 11 f.I ft(B)s
+1374 X
+0.0 11 11 f.S ft(\254)s
+1511 X(a)s
+0.0 11 11 f.I ft(BT)s
+2976 Y
+1722 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.I ft(T)s
+720 X
+3300 Y
+970 X
+0.0 11 11 f.R ft(Here)s
+1210 X
+0.0 11 11 f.S ft(a)s
+1308 X
+0.0 11 11 f.R ft(and)s
+1495 X
+0.0 11 11 f.S ft(b)s
+1585 X
+0.0 11 11 f.R ft(are)s
+1746 X(scalars,)s
+2100 X
+0.0 11 11 f.I ft(A)s
+0.0 11 11 f.R ft(,)s
+2224 X
+0.0 11 11 f.I ft(B)s
+2320 X
+0.0 11 11 f.R ft(and)s
+2507 X
+0.0 11 11 f.I ft(C)s
+2611 X
+0.0 11 11 f.R ft(are)s
+2773 X(rectangular)s
+3294 X(matrices)s
+3695 X(\(in)s
+3847 X(some)s
+4109 X(cases)s
+4369 X(square)s
+4684 X(and)s
+4872 X(symmetric\),)s
+720 X
+3460 Y(and)s
+906 X
+0.0 11 11 f.I ft(T)s
+996 X
+0.0 11 11 f.R ft(is)s
+1098 X(an)s
+1229 X(upper)s
+1506 X(or)s
+1625 X(lower)s
+1902 X(triangular)s
+2356 X(matrix)s
+2671 X(\(and)s
+2893 X(non-singular)s
+3476 X(in)s
+3590 X(\(d\)\).)s
+720 X
+3680 Y
+970 X(Analogous)s
+1489 X(operations)s
+1989 X(are)s
+2164 X(proposed)s
+2609 X(in)s
+2738 X(complex)s
+3159 X(arithmetic:)s
+3678 X(conjugate)s
+4147 X(transposition)s
+4759 X(is)s
+4876 X(speci\256ed)s
+5309 X(as)s
+720 X
+3840 Y(well)s
+940 X(as)s
+1062 X(simple)s
+1386 X(transposition,)s
+2013 X(and)s
+2201 X(additional)s
+2671 X(operations)s
+3158 X(in)s
+3274 X(\(b\))s
+3431 X(provide)s
+3796 X(for)s
+3953 X(updates)s
+4318 X(of)s
+4439 X(a)s
+4517 X(Hermitian)s
+4992 X(matrix)s
+5309 X(as)s
+720 X
+4000 Y(follows:)s
+720 X
+4220 Y
+1270 X
+0.0 11 11 f.I ft(C)s
+1353 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(a)s
+0.0 11 11 f.I ft(AA)s
+4176 Y
+1734 X
+0.0 8 8 f.I ft(H)s
+4220 Y
+1801 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+4440 Y
+1270 X(C)s
+1353 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(a)s
+0.0 11 11 f.I ft(A)s
+4396 Y
+1667 X
+0.0 8 8 f.I ft(H)s
+4440 Y
+1734 X
+0.0 11 11 f.I ft(A)s
+1810 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+4660 Y
+0.0 11 11 f.R ft(with)s
+944 X
+0.0 11 11 f.S ft(a)s
+1041 X
+0.0 11 11 f.R ft(and)s
+1227 X
+0.0 11 11 f.S ft(b)s
+1316 X
+0.0 11 11 f.R ft(real,)s
+1535 X(and)s
+720 X
+4885 Y
+1270 X
+0.0 11 11 f.I ft(C)s
+1353 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(a)s
+0.0 11 11 f.I ft(AB)s
+4841 Y
+1734 X
+0.0 8 8 f.I ft(H)s
+4885 Y
+1801 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(a)s
+4811 Y
+1924 X
+0.0 11 11 f.R ft
+/Cru {  0 ysiz pt 5 div 2 copy rmoveto
+ (_) show
+ neg rmoveto
+ } bind def
+
+Cru
+1927 X
+Cru
+4885 Y
+1987 X
+0.0 11 11 f.I ft(BA)s
+4841 Y
+2134 X
+0.0 8 8 f.I ft(H)s
+4885 Y
+2201 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+5110 Y
+1270 X(C)s
+1353 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(a)s
+0.0 11 11 f.I ft(A)s
+5066 Y
+1667 X
+0.0 8 8 f.I ft(H)s
+5110 Y
+1734 X
+0.0 11 11 f.I ft(B)s
+1810 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(a)s
+5036 Y
+1933 X
+0.0 11 11 f.R ft
+Cru
+1936 X
+Cru
+5110 Y
+1996 X
+0.0 11 11 f.I ft(B)s
+5066 Y
+2076 X
+0.0 8 8 f.I ft(H)s
+5110 Y
+2143 X
+0.0 11 11 f.I ft(A)s
+2219 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+5330 Y
+0.0 11 11 f.R ft(with)s
+944 X
+0.0 11 11 f.S ft(b)s
+1033 X
+0.0 11 11 f.R ft(real.)s
+720 X
+5650 Y
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 11 11 f.B ft(3.)s
+831 X(Naming)s
+1232 X(Conventions)s
+720 X
+5870 Y
+970 X
+0.0 11 11 f.R ft(The)s
+1172 X(name)s
+1441 X(of)s
+1564 X(a)s
+1644 X(Level)s
+1925 X(3)s
+2012 X(BLAS)s
+2327 X(routine)s
+2671 X(follows)s
+3034 X(the)s
+3201 X(conventions)s
+3765 X(of)s
+3889 X(the)s
+4056 X(Level)s
+4338 X(2)s
+4426 X(BLAS.)s
+4769 X(The)s
+4972 X(\256rst)s
+5177 X(char-)s
+720 X
+6030 Y(acter)s
+959 X(in)s
+1073 X(the)s
+1235 X(name)s
+1500 X(denotes)s
+1863 X(the)s
+2025 X(Fortran)s
+2376 X(data)s
+2586 X(type)s
+2803 X(of)s
+2922 X(the)s
+3084 X(matrix,)s
+3427 X(as)s
+3546 X(follows:)s
+720 X
+6430 Y
+1724 X(S)s
+1968 X(REAL)s
+720 X
+6590 Y
+1724 X(D)s
+1968 X(DOUBLE)s
+2441 X(PRECISION)s
+720 X
+6750 Y
+1724 X(C)s
+1968 X(COMPLEX)s
+720 X
+6910 Y
+1724 X(Z)s
+1968 X(COMPLEX*16)s
+2687 X(or)s
+2806 X(DOUBLE)s
+3279 X(COMPLEX)s
+3833 X(\(if)s
+3964 X(available\))s
+720 X
+7290 Y(Characters)s
+1215 X(two)s
+1408 X(and)s
+1594 X(three)s
+1840 X(in)s
+1954 X(the)s
+2116 X(name)s
+2381 X(refer)s
+2613 X(to)s
+2727 X(the)s
+2889 X(kind)s
+3113 X(of)s
+3232 X(matrix)s
+3547 X(involved,)s
+3988 X(as)s
+4107 X(follows:)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2968 X(- 5 -)s
+720 X
+960 Y
+2120 X(GE)s
+2431 X(All)s
+2600 X(matrices)s
+2999 X(are)s
+3159 X(general)s
+3508 X(rectangular)s
+720 X
+1120 Y
+2120 X(HE)s
+2431 X(One)s
+2641 X(of)s
+2760 X(the)s
+2922 X(matrices)s
+3321 X(is)s
+3423 X(Hermitian)s
+720 X
+1280 Y
+2120 X(SY)s
+2431 X(One)s
+2641 X(of)s
+2760 X(the)s
+2922 X(matrices)s
+3321 X(is)s
+3423 X(symmetric)s
+720 X
+1440 Y
+2120 X(TR)s
+2431 X(One)s
+2641 X(of)s
+2760 X(the)s
+2922 X(matrices)s
+3321 X(is)s
+3423 X(triangular)s
+720 X
+1820 Y(The)s
+918 X(fourth)s
+1214 X(and)s
+1400 X(\256fth,)s
+1640 X(and)s
+1826 X(in)s
+1940 X(one)s
+2126 X(case)s
+2341 X(sixth,)s
+2612 X(characters)s
+3081 X(in)s
+3195 X(the)s
+3357 X(name)s
+3622 X(denote)s
+3942 X(the)s
+4104 X(type)s
+4321 X(of)s
+4440 X(operation,)s
+4910 X(as)s
+5029 X(follows:)s
+720 X
+2060 Y
+1545 X(MM)s
+1918 X(Matrix-matrix)s
+2568 X(product)s
+720 X
+720 X
+2380 Y
+1545 X(RK)s
+1918 X(Rank-)s
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(k)s
+2262 X
+0.0 11 11 f.R ft(update)s
+2582 X(of)s
+2701 X(a)s
+2777 X(symmetric)s
+3269 X(or)s
+3388 X(Hermitian)s
+3861 X(matrix)s
+720 X
+720 X
+2700 Y
+1545 X(R2K)s
+1918 X(Rank-2)s
+0.0 11 11 f.I ft(k)s
+2317 X
+0.0 11 11 f.R ft(update)s
+2637 X(of)s
+2756 X(a)s
+2832 X(symmetric)s
+3324 X(or)s
+3443 X(Hermitian)s
+3916 X(matrix)s
+720 X
+720 X
+3020 Y
+1545 X(SM)s
+1918 X(Solve)s
+2197 X(a)s
+2273 X(system)s
+2607 X(of)s
+2726 X(linear)s
+3003 X(equations)s
+3452 X(for)s
+3607 X(a)s
+3683 X(matrix)s
+3998 X(of)s
+4117 X(right-hand)s
+720 X
+3180 Y
+1918 X(sides)s
+720 X
+3560 Y(The)s
+925 X(permitted)s
+1381 X(combinations)s
+2009 X(are)s
+2176 X(indicated)s
+2613 X(in)s
+2735 X(Table)s
+3020 X(3.1.)s
+3250 X(In)s
+3377 X(the)s
+3547 X(\256rst)s
+3755 X(column,)s
+4149 X(under)s
+4434 X
+0.0 11 11 f.I ft(complex)s
+0.0 11 11 f.R ft(,)s
+4862 X(the)s
+5032 X(initial)s
+5326 X(C)s
+720 X
+3720 Y(may)s
+941 X(be)s
+1076 X(replaced)s
+1477 X(by)s
+1619 X(Z.)s
+1746 X(In)s
+1869 X(the)s
+2035 X(second)s
+2370 X(column,)s
+2759 X(under)s
+3039 X
+0.0 11 11 f.I ft(real)s
+0.0 11 11 f.R ft(,)s
+3275 X(the)s
+3440 X(initial)s
+3729 X(S)s
+3822 X(may)s
+4042 X(be)s
+4176 X(replaced)s
+4576 X(by)s
+4717 X(D.)s
+4883 X(See)s
+5072 X(Appen-)s
+720 X
+3880 Y(dix)s
+889 X(B)s
+991 X(for)s
+1146 X(the)s
+1308 X(full)s
+1489 X(subroutine)s
+1981 X(calling)s
+2308 X(sequences.)s
+720 X
+4100 Y
+970 X(The)s
+1174 X(collection)s
+1641 X(of)s
+1766 X(routines)s
+2154 X(can)s
+2339 X(be)s
+2476 X(thought)s
+2847 X(of)s
+2972 X(as)s
+3097 X(being)s
+3375 X(divided)s
+3739 X(into)s
+3945 X(four)s
+4162 X(separate)s
+4554 X(parts:)s
+4861 X
+0.0 11 11 f.I ft(real)s
+0.0 11 11 f.R ft(,)s
+5101 X
+0.0 11 11 f.I ft(double)s
+720 X
+4260 Y(precision)s
+0.0 11 11 f.R ft(,)s
+1192 X
+0.0 11 11 f.I ft(complex)s
+0.0 11 11 f.R ft(,)s
+1619 X(and)s
+1812 X
+0.0 11 11 f.I ft(complex*16)s
+0.0 11 11 f.R ft(.)s
+2432 X(The)s
+2637 X(routines)s
+3025 X(can)s
+3210 X(be)s
+3347 X(written)s
+3692 X(in)s
+3812 X(ANSI)s
+4102 X(standard)s
+4507 X(Fortran)s
+4864 X(77,)s
+5036 X(with)s
+5266 X(the)s
+720 X
+4420 Y(exception)s
+1175 X(of)s
+1295 X(the)s
+1458 X(routines)s
+1841 X(that)s
+2035 X(use)s
+2210 X(COMPLEX*16)s
+2930 X(variables.)s
+3410 X(These)s
+3700 X(routines)s
+4083 X(are)s
+4244 X(included)s
+4652 X(for)s
+4809 X(completeness)s
+720 X
+4580 Y(and)s
+912 X(for)s
+1073 X(their)s
+1308 X(usefulness)s
+1799 X(on)s
+1943 X(those)s
+2209 X(systems)s
+2592 X(that)s
+2791 X(support)s
+3155 X(this)s
+3349 X(data)s
+3565 X(type;)s
+3819 X(but)s
+3993 X(because)s
+4371 X(they)s
+4593 X(do)s
+4736 X(not)s
+4910 X(conform)s
+5314 X(to)s
+720 X
+4740 Y(the)s
+882 X(Fortran)s
+1233 X(standard,)s
+1660 X(they)s
+1877 X(may)s
+2094 X(not)s
+2263 X(be)s
+2394 X(available)s
+2817 X(on)s
+2955 X(all)s
+3093 X(machines.)s
+720 X
+5060 Y(The)s
+918 X(combinations)s
+1539 X(provided)s
+1957 X(are:)s
+720 X
+5220 Y
+2852 X(Table)s
+3129 X(3.1)s
+720 X
+5460 Y
+1983 X(Complex)s
+2555 X(Real)s
+2925 X(MM)s
+3286 X(RK)s
+3604 X(R2K)s
+3977 X(SM)s
+720 X
+720 X
+5780 Y
+2075 X(CGE)s
+2552 X(SGE)s
+2995 X(*)s
+720 X
+720 X
+6100 Y
+2077 X(CSY)s
+2554 X(SSY)s
+2995 X(*)s
+3335 X(*)s
+3680 X(*)s
+720 X
+720 X
+6420 Y
+2075 X(CHE)s
+2995 X(*)s
+3335 X(*)s
+3680 X(*)s
+720 X
+720 X
+6740 Y
+2077 X(CTR)s
+2554 X(STR)s
+2995 X(*)s
+4029 X(*)s
+720 X
+7120 Y(However,)s
+1176 X(note)s
+1393 X(that)s
+1586 X(rank-)s
+0.0 11 11 f.I ft(k)s
+1892 X
+0.0 11 11 f.R ft(updates)s
+2255 X(of)s
+2374 X(general)s
+2723 X(matrices)s
+3122 X(are)s
+3282 X(provided)s
+3700 X(by)s
+3838 X(the)s
+4000 X(GEMM)s
+4370 X(routines.)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2968 X(- 6 -)s
+720 X
+880 Y
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 11 11 f.B ft(4.)s
+831 X(Argument)s
+1340 X(Conventions)s
+720 X
+1100 Y
+970 X
+0.0 11 11 f.R ft(We)s
+1152 X(follow)s
+1470 X(a)s
+1549 X(convention)s
+2068 X(for)s
+2226 X(the)s
+2391 X(argument)s
+2836 X(lists)s
+3046 X(similar)s
+3383 X(to)s
+3500 X(that)s
+3696 X(for)s
+3854 X(the)s
+4019 X(Level)s
+4299 X(2)s
+4386 X(BLAS,)s
+4728 X(with)s
+4956 X(the)s
+5122 X(neces-)s
+720 X
+1260 Y(sary)s
+930 X(adaptations.)s
+1486 X(The)s
+1684 X(order)s
+1942 X(of)s
+2061 X(arguments)s
+2546 X(is)s
+2648 X(as)s
+2767 X(follows:)s
+720 X
+1580 Y
+888 X(a\))s
+1000 X(Arguments)s
+1516 X(specifying)s
+2001 X(options)s
+720 X
+1740 Y
+888 X(b\))s
+1007 X(Arguments)s
+1523 X(de\256ning)s
+1912 X(the)s
+2074 X(sizes)s
+2315 X(of)s
+2434 X(the)s
+2596 X(matrices)s
+720 X
+1900 Y
+888 X(c\))s
+1000 X(Input)s
+1260 X(scalar)s
+720 X
+2060 Y
+888 X(d\))s
+1007 X(Description)s
+1547 X(of)s
+1666 X(input)s
+1921 X(matrices)s
+720 X
+2220 Y
+888 X(e\))s
+1000 X(Input)s
+1260 X(scalar)s
+1542 X(\(associated)s
+2056 X(with)s
+2280 X(input-output)s
+2853 X(matrix\))s
+720 X
+2380 Y
+888 X(f\))s
+988 X(Description)s
+1528 X(of)s
+1647 X(the)s
+1809 X(input-output)s
+2382 X(matrix)s
+720 X
+2700 Y(Note)s
+961 X(that)s
+1154 X(not)s
+1323 X(every)s
+1593 X(category)s
+1997 X(is)s
+2099 X(present)s
+2443 X(in)s
+2557 X(each)s
+2784 X(of)s
+2903 X(the)s
+3065 X(routines.)s
+720 X
+2920 Y
+970 X(The)s
+1195 X(arguments)s
+1707 X(that)s
+1927 X(specify)s
+2298 X(options)s
+2678 X(are)s
+2865 X(character)s
+3318 X(arguments)s
+3830 X(with)s
+4081 X(the)s
+4270 X(names)s
+4605 X(SIDE,)s
+4932 X(TRANSA,)s
+720 X
+3080 Y(TRANSB,)s
+1211 X(TRANS,)s
+1628 X(UPLO)s
+1943 X(and)s
+2129 X(DIAG.)s
+720 X
+3300 Y
+970 X(SIDE)s
+1242 X(is)s
+1344 X(used)s
+1573 X(by)s
+1711 X(the)s
+1873 X(routines)s
+2255 X(as)s
+2374 X(follows:)s
+720 X
+3700 Y
+1312 X(Value)s
+1738 X(Meaning)s
+720 X
+3750 Y
+1312 X
+0.0 11 11 f.S ft(_)s
+1343 X(_______________________________________________________________)s
+720 X
+3910 Y
+1312 X
+0.0 11 11 f.R ft(`L')s
+1738 X(Multiply)s
+2153 X(general)s
+2502 X(matrix)s
+2817 X(by)s
+2955 X(symmetric,)s
+3475 X(Hermitian)s
+3948 X(or)s
+4067 X(triangular)s
+4521 X(matrix)s
+720 X
+4070 Y
+1738 X(on)s
+1876 X(the)s
+2038 X(left.)s
+720 X
+4230 Y
+1312 X(`R')s
+1738 X(Multiply)s
+2153 X(general)s
+2502 X(matrix)s
+2817 X(by)s
+2955 X(symmetric,)s
+3475 X(Hermitian)s
+3948 X(or)s
+4067 X(triangular)s
+4521 X(matrix)s
+720 X
+4390 Y
+1738 X(on)s
+1876 X(the)s
+2038 X(right.)s
+720 X
+4830 Y
+970 X(TRANSA,)s
+1466 X(TRANSB)s
+1929 X(and)s
+2115 X(TRANS)s
+2504 X(are)s
+2664 X(used)s
+2893 X(by)s
+3031 X(the)s
+3193 X(routines)s
+3575 X(as)s
+3694 X(follows:)s
+720 X
+5070 Y
+1721 X(Value)s
+2147 X(Meaning)s
+720 X
+5120 Y
+1721 X
+0.0 11 11 f.S ft(_)s
+1758 X(________________________________________________)s
+720 X
+5280 Y
+1721 X
+0.0 11 11 f.R ft(`N')s
+2147 X(Operate)s
+2520 X(with)s
+2744 X(the)s
+2906 X(matrix.)s
+720 X
+5440 Y
+1721 X(`T')s
+2147 X(Operate)s
+2520 X(with)s
+2744 X(the)s
+2906 X(transpose)s
+3348 X(of)s
+3467 X(the)s
+3629 X(matrix.)s
+720 X
+5600 Y
+1721 X(`C')s
+2147 X(Operate)s
+2520 X(with)s
+2744 X(the)s
+2906 X(conjugate)s
+3360 X(transpose)s
+3802 X(of)s
+3921 X(the)s
+4083 X(matrix.)s
+720 X
+5820 Y(In)s
+839 X(the)s
+1001 X(real)s
+1192 X(case)s
+1407 X(the)s
+1569 X(values)s
+1877 X(`T')s
+2044 X(and)s
+2230 X(`C')s
+2404 X(have)s
+2638 X(the)s
+2800 X(same)s
+3053 X(meaning.)s
+720 X
+6040 Y
+970 X(UPLO)s
+1296 X(is)s
+1409 X(used)s
+1649 X(by)s
+1798 X(the)s
+1971 X(Hermitian,)s
+2483 X(symmetric,)s
+3014 X(and)s
+3211 X(triangular)s
+3676 X(matrix)s
+4002 X(routines)s
+4395 X(to)s
+4520 X(specify)s
+4875 X(whether)s
+5266 X(the)s
+720 X
+6200 Y(upper)s
+997 X(or)s
+1116 X(lower)s
+1393 X(triangle)s
+1756 X(is)s
+1858 X(being)s
+2130 X(referenced)s
+2616 X(as)s
+2735 X(follows:)s
+720 X
+6440 Y
+2523 X(Value)s
+2949 X(Meaning)s
+720 X
+6490 Y
+2523 X
+0.0 11 11 f.S ft(_)s
+2552 X(___________________)s
+720 X
+6650 Y
+2523 X
+0.0 11 11 f.R ft(`U')s
+2949 X(Upper)s
+3250 X(triangle)s
+720 X
+6810 Y
+2523 X(`L')s
+2949 X(Lower)s
+3262 X(triangle)s
+720 X
+7090 Y
+970 X(DIAG)s
+1280 X(is)s
+1391 X(used)s
+1629 X(by)s
+1777 X(the)s
+1949 X(triangular)s
+2413 X(matrix)s
+2738 X(routines)s
+3130 X(to)s
+3254 X(specify)s
+3608 X(whether)s
+3998 X(the)s
+4170 X(matrix)s
+4495 X(is)s
+4607 X(unit)s
+4817 X(triangular,)s
+5309 X(as)s
+720 X
+7250 Y(follows:)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2968 X(- 7 -)s
+720 X
+960 Y
+2421 X(Value)s
+2847 X(Meaning)s
+720 X
+1010 Y
+2421 X
+0.0 11 11 f.S ft(_)s
+2433 X(_______________________)s
+720 X
+1170 Y
+2421 X
+0.0 11 11 f.R ft(`U')s
+2847 X(Unit)s
+3071 X(triangular)s
+720 X
+1330 Y
+2421 X(`N')s
+2847 X(Non-unit)s
+3272 X(triangular)s
+720 X
+1550 Y(When)s
+1009 X(DIAG)s
+1310 X(is)s
+1412 X(supplied)s
+1813 X(as)s
+1932 X(`U',)s
+2139 X(the)s
+2301 X(diagonal)s
+2707 X(elements)s
+3125 X(are)s
+3285 X(not)s
+3454 X(referenced.)s
+720 X
+1770 Y
+970 X(Thus,)s
+1255 X(UPLO)s
+1579 X(and)s
+1774 X(DIAG)s
+2084 X(have)s
+2327 X(the)s
+2499 X(same)s
+2762 X(values)s
+3080 X(and)s
+3276 X(meanings)s
+3735 X(as)s
+3864 X(for)s
+4029 X(the)s
+4201 X(Level)s
+4488 X(2)s
+4581 X(BLAS;)s
+4932 X(TRANSA,)s
+720 X
+1930 Y(TRANSB)s
+1202 X(and)s
+1407 X(TRANS)s
+1815 X(have)s
+2068 X(the)s
+2249 X(same)s
+2521 X(values)s
+2848 X(and)s
+3053 X(meanings)s
+3521 X(as)s
+3659 X(TRANS)s
+4067 X(in)s
+4200 X(the)s
+4381 X(Level)s
+4677 X(2)s
+4778 X(BLAS,)s
+5134 X(where)s
+720 X
+2090 Y(TRANSA)s
+1188 X(and)s
+1374 X(TRANSB)s
+1837 X(apply)s
+2109 X(to)s
+2223 X(the)s
+2385 X(matrices)s
+2784 X(A)s
+2891 X(or)s
+3010 X(B,)s
+3140 X(respectively.)s
+720 X
+2310 Y
+970 X(We)s
+1175 X(recommend)s
+1746 X(that)s
+1965 X(the)s
+2153 X(equivalent)s
+2664 X(lower-case)s
+3190 X(characters)s
+3685 X(be)s
+3842 X(accepted)s
+4277 X(with)s
+4527 X(the)s
+4715 X(same)s
+4994 X(meaning,)s
+720 X
+2470 Y(although,)s
+1172 X(because)s
+1556 X(they)s
+1784 X(are)s
+1955 X(not)s
+2135 X(included)s
+2551 X(in)s
+2675 X(the)s
+2847 X(standard)s
+3256 X(Fortran)s
+3617 X(character)s
+4053 X(set,)s
+4241 X(their)s
+4480 X(use)s
+4664 X(may)s
+4891 X(not)s
+5070 X(be)s
+5211 X(sup-)s
+720 X
+2630 Y(ported)s
+1028 X(on)s
+1166 X(all)s
+1304 X(systems.)s
+1709 X(See)s
+1895 X(Section)s
+2253 X(7)s
+2336 X(of)s
+2483 X(\(Dongarra)s
+2959 X
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(et)s
+3066 X(al.)s
+0.0 11 11 f.R ft(,)s
+3236 X(1988a\))s
+3568 X(for)s
+3723 X(further)s
+4048 X(discussion.)s
+720 X
+2850 Y
+970 X(The)s
+1171 X(sizes)s
+1415 X(of)s
+1537 X(the)s
+1702 X(matrices)s
+2104 X(are)s
+2267 X(determined)s
+2791 X(by)s
+2933 X(the)s
+3099 X(arguments)s
+3588 X(M,)s
+3746 X(N,)s
+3885 X(and)s
+4075 X(K.)s
+4214 X(It)s
+4313 X(is)s
+4419 X(permissible)s
+4958 X(to)s
+5076 X(call)s
+5266 X(the)s
+720 X
+3010 Y(routines)s
+1113 X(with)s
+1348 X(M)s
+1485 X(or)s
+1615 X(N)s
+1733 X(=)s
+1834 X(0,)s
+1955 X(in)s
+2079 X(which)s
+2385 X(case)s
+2610 X(the)s
+2782 X(routines)s
+3174 X(exit)s
+3377 X(immediately)s
+3965 X(without)s
+4340 X(referencing)s
+4874 X(their)s
+5113 X(matrix)s
+720 X
+3170 Y(arguments.)s
+1246 X(If)s
+1359 X(M)s
+1498 X(and)s
+1697 X(N)s
+1817 X(>)s
+1920 X(0,)s
+2044 X(but)s
+2226 X(K)s
+2346 X(=)s
+2450 X(0,)s
+2575 X(the)s
+2751 X(operation)s
+3207 X(reduces)s
+3582 X(to)s
+3710 X
+0.0 11 11 f.I ft(C)s
+3793 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(b)s
+0.0 11 11 f.I ft(C)s
+4135 X
+0.0 11 11 f.R ft(\(this)s
+4373 X(applies)s
+4726 X(to)s
+4854 X(the)s
+5030 X(GEMM,)s
+720 X
+3330 Y(SYRK,)s
+1074 X(HERK,)s
+1433 X(SYR2K,)s
+1842 X(and)s
+2032 X(HER2K)s
+2417 X(routines\).)s
+2866 X(The)s
+3067 X(input-output)s
+3643 X(matrix)s
+3961 X(\()s
+4028 X
+0.0 11 11 f.I ft(B)s
+4126 X
+0.0 11 11 f.R ft(for)s
+4284 X(the)s
+4449 X(TR)s
+4621 X(routines,)s
+5034 X
+0.0 11 11 f.I ft(C)s
+5139 X
+0.0 11 11 f.R ft(other-)s
+720 X
+3490 Y(wise\))s
+985 X(is)s
+1087 X(always)s
+1419 X
+0.0 11 11 f.I ft(m)s
+1507 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+1679 X
+0.0 11 11 f.R ft(if)s
+1774 X(rectangular,)s
+2321 X(and)s
+2507 X
+0.0 11 11 f.I ft(n)s
+2571 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+2715 X
+0.0 11 11 f.R ft(if)s
+2810 X(square.)s
+720 X
+3710 Y
+970 X(The)s
+1170 X(description)s
+1688 X(of)s
+1809 X(the)s
+1973 X(matrix)s
+2290 X(consists)s
+2669 X(of)s
+2790 X(the)s
+2954 X(array)s
+3207 X(name)s
+3474 X(\(A,)s
+3647 X(B)s
+3751 X(or)s
+3872 X(C\))s
+4012 X(followed)s
+4432 X(by)s
+4572 X(the)s
+4736 X(leading)s
+5089 X(dimen-)s
+720 X
+3870 Y(sion)s
+932 X(of)s
+1051 X(the)s
+1213 X(array)s
+1464 X(as)s
+1583 X(declared)s
+1980 X(in)s
+2094 X(the)s
+2256 X(calling)s
+2583 X(\(sub\)program)s
+3207 X(\(LDA,)s
+3524 X(LDB)s
+3772 X(or)s
+3891 X(LDC\).)s
+720 X
+4090 Y
+970 X(The)s
+1168 X(scalars)s
+1493 X(always)s
+1825 X(have)s
+2059 X(the)s
+2221 X(dummy)s
+2586 X(argument)s
+3028 X(names)s
+3336 X(ALPHA)s
+3730 X(and)s
+3916 X(BETA.)s
+720 X
+4310 Y
+970 X(The)s
+1168 X(following)s
+1624 X(values)s
+1932 X(of)s
+2051 X(arguments)s
+2536 X(are)s
+2696 X(invalid:)s
+720 X
+4630 Y
+888 X(Any)s
+1105 X(value)s
+1370 X(of)s
+1489 X(the)s
+1651 X(character)s
+2077 X(arguments)s
+2562 X(SIDE,)s
+2862 X(TRANSA,)s
+3358 X(TRANSB,)s
+3849 X(TRANS,)s
+720 X
+4790 Y
+1028 X(UPLO,)s
+1371 X(or)s
+1490 X(DIAG,)s
+1819 X(whose)s
+2127 X(meaning)s
+2533 X(is)s
+2635 X(not)s
+2804 X(speci\256ed.)s
+720 X
+4950 Y
+888 X(M)s
+1014 X(<)s
+1104 X(0)s
+720 X
+5110 Y
+888 X(N)s
+995 X(<)s
+1085 X(0)s
+720 X
+5270 Y
+888 X(K)s
+995 X(<)s
+1085 X(0)s
+720 X
+5430 Y
+888 X(LDA)s
+1141 X(<)s
+1231 X(the)s
+1393 X(number)s
+1756 X(of)s
+1875 X(rows)s
+2116 X(in)s
+2230 X(the)s
+2392 X(matrix)s
+2707 X
+0.0 11 11 f.I ft(A)s
+0.0 11 11 f.R ft(.)s
+720 X
+5590 Y
+888 X(LDB)s
+1136 X(<)s
+1226 X(the)s
+1388 X(number)s
+1751 X(of)s
+1870 X(rows)s
+2111 X(in)s
+2225 X(the)s
+2387 X(matrix)s
+2702 X
+0.0 11 11 f.I ft(B)s
+0.0 11 11 f.R ft(.)s
+720 X
+5750 Y
+888 X(LDC)s
+1136 X(<)s
+1226 X(the)s
+1388 X(number)s
+1751 X(of)s
+1870 X(rows)s
+2111 X(in)s
+2225 X(the)s
+2387 X(matrix)s
+2702 X
+0.0 11 11 f.I ft(C)s
+0.0 11 11 f.R ft(.)s
+720 X
+6070 Y(If)s
+828 X(a)s
+912 X(routine)s
+1259 X(is)s
+1369 X(called)s
+1667 X(with)s
+1900 X(an)s
+2040 X(invalid)s
+2383 X(value)s
+2657 X(for)s
+2821 X(any)s
+3016 X(of)s
+3144 X(its)s
+3286 X(arguments,)s
+3808 X(then)s
+4034 X(it)s
+4133 X(must)s
+4385 X(report)s
+4683 X(the)s
+4854 X(fact)s
+5054 X(and)s
+5249 X(ter-)s
+720 X
+6230 Y(minate)s
+1052 X(execution)s
+1510 X(of)s
+1633 X(the)s
+1799 X(routine.)s
+2198 X(In)s
+2321 X(the)s
+2487 X(model)s
+2794 X(implementation)s
+3517 X(\(see)s
+3724 X(Appendix)s
+4189 X(B\),)s
+4359 X(each)s
+4590 X(routine,)s
+4961 X(on)s
+5103 X(detect-)s
+720 X
+6390 Y(ing)s
+896 X(an)s
+1034 X(error,)s
+1308 X(calls)s
+1545 X(a)s
+1629 X(common)s
+2050 X(error)s
+2297 X(handling)s
+2718 X(routine)s
+3065 X(XERBLA,)s
+3569 X(passing)s
+3935 X(to)s
+4057 X(it)s
+4155 X(the)s
+4325 X(name)s
+4598 X(of)s
+4725 X(the)s
+4895 X(routine)s
+5242 X(and)s
+720 X
+6550 Y(the)s
+886 X(number)s
+1253 X(of)s
+1376 X(the)s
+1542 X(\256rst)s
+1746 X(argument)s
+2192 X(which)s
+2492 X(is)s
+2598 X(in)s
+2715 X(error.)s
+3013 X(Specialized)s
+3549 X(implementations)s
+4314 X(may)s
+4534 X(call)s
+4723 X(system-speci\256c)s
+720 X
+6710 Y(exception-handling)s
+1595 X(and)s
+1781 X(diagnostic)s
+2261 X(facilities.)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2968 X(- 8 -)s
+720 X
+880 Y
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 11 11 f.B ft(5.)s
+831 X(Storage)s
+1218 X(Conventions)s
+720 X
+1100 Y
+970 X
+0.0 11 11 f.R ft(All)s
+1142 X(matrices)s
+1544 X(are)s
+1707 X(stored)s
+2006 X(conventionally)s
+2690 X(in)s
+2807 X(a)s
+2886 X(two-dimensional)s
+3657 X(array)s
+3912 X(with)s
+4140 X(matrix-element)s
+4842 X
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(a)s
+1122 Y
+0.0 8 8 f.I ft(i)s
+0.0 8 8 f.R ft(,)s
+4951 X
+0.0 8 8 f.I ft(j)s
+1100 Y
+5014 X
+0.0 11 11 f.R ft(stored)s
+5314 X(in)s
+720 X
+1260 Y(array-element)s
+1375 X(A\(I,J\);)s
+1713 X(there)s
+1980 X(is)s
+2103 X(no)s
+2262 X(provision)s
+2727 X(for)s
+2903 X(packed)s
+3261 X(storage)s
+3626 X(for)s
+3802 X(symmetric,)s
+4342 X(Hermitian)s
+4835 X(or)s
+4974 X(triangular)s
+720 X
+1420 Y(matrices.)s
+720 X
+1640 Y
+970 X(For)s
+1162 X(symmetric)s
+1665 X(and)s
+1862 X(Hermitian)s
+2346 X(matrices,)s
+2785 X(only)s
+3021 X(the)s
+3195 X(upper)s
+3484 X(triangle)s
+3859 X(\(UPLO=`U'\))s
+4471 X(or)s
+4602 X(the)s
+4776 X(lower)s
+5065 X(triangle)s
+720 X
+1800 Y(\(UPLO=`L'\))s
+1308 X(is)s
+1410 X(stored.)s
+720 X
+2020 Y
+970 X(For)s
+1191 X(triangular)s
+1685 X(matrices,)s
+2152 X(the)s
+2355 X(argument)s
+2838 X(UPLO)s
+3194 X(serves)s
+3536 X(to)s
+3691 X(de\256ne)s
+4028 X(whether)s
+4449 X(the)s
+4652 X(matrix)s
+5008 X(is)s
+5151 X(upper)s
+720 X
+2180 Y(\(UPLO=`U'\))s
+1320 X(or)s
+1439 X(lower)s
+1716 X(\(UPLO=`L'\))s
+2304 X(triangular.)s
+720 X
+2400 Y
+970 X(For)s
+1153 X(a)s
+1231 X(Hermitian)s
+1706 X(matrix)s
+2023 X(the)s
+2187 X(imaginary)s
+2662 X(parts)s
+2905 X(of)s
+3026 X(the)s
+3190 X(diagonal)s
+3598 X(elements)s
+4018 X(are)s
+4180 X(of)s
+4301 X(course)s
+4616 X(zero,)s
+4862 X(and)s
+5051 X(thus)s
+5266 X(the)s
+720 X
+2560 Y(imaginary)s
+1200 X(parts)s
+1447 X(of)s
+1572 X(the)s
+1740 X(corresponding)s
+2401 X(Fortran)s
+2758 X(array)s
+3015 X(elements)s
+3439 X(need)s
+3679 X(not)s
+3854 X(be)s
+3991 X(set,)s
+4175 X(but)s
+4350 X(are)s
+4516 X(assumed)s
+4928 X(to)s
+5048 X(be)s
+5185 X(zero.)s
+720 X
+2720 Y(In)s
+842 X(the)s
+1007 X(HERK)s
+1337 X(and)s
+1526 X(HER2K)s
+1911 X(routines)s
+2296 X(these)s
+2553 X(imaginary)s
+3030 X(parts)s
+3275 X(will)s
+3479 X(be)s
+3614 X(set)s
+3768 X(to)s
+3886 X(zero)s
+4105 X(on)s
+4247 X(return,)s
+4568 X(except)s
+4885 X(when)s
+5154 X
+0.0 11 11 f.S ft(b)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(=)s
+0.0 11 11 f.R ft( 1)s
+720 X
+2880 Y(and)s
+906 X
+0.0 11 11 f.S ft(a)s
+1003 X
+0.0 11 11 f.R ft(or)s
+1122 X
+0.0 11 11 f.I ft(k)s
+1179 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(=)s
+0.0 11 11 f.R ft( 0,)s
+1420 X(in)s
+1534 X(which)s
+1830 X(case)s
+2045 X(the)s
+2207 X(routines)s
+2589 X(exit)s
+2782 X(immediately.)s
+720 X
+3200 Y
+0.0 11 11 f.B ft(6.)s
+831 X(Speci\256cation)s
+1459 X(of)s
+1578 X(the)s
+1752 X(Level)s
+2036 X(3)s
+2119 X(BLAS)s
+720 X
+3420 Y
+970 X
+0.0 11 11 f.R ft(Type)s
+1223 X(and)s
+1409 X(dimension)s
+1896 X(for)s
+2051 X(variables)s
+2474 X(occurring)s
+2921 X(in)s
+3035 X(the)s
+3197 X(subroutine)s
+3689 X(speci\256cations)s
+4315 X(are)s
+4475 X(as)s
+4594 X(follows:)s
+720 X
+3740 Y
+1000 X(INTEGER)s
+1609 X(M,)s
+1763 X(N,)s
+1898 X(K,)s
+2033 X(LDA,)s
+2314 X(LDB,)s
+2590 X(LDC)s
+720 X
+3900 Y
+1000 X(CHARACTER*1)s
+1805 X(SIDE,)s
+2105 X(UPLO,)s
+2448 X(TRANSA,)s
+2944 X(TRANSB,)s
+3435 X(TRANS,)s
+3852 X(DIAG)s
+720 X
+4220 Y(For)s
+901 X(routines)s
+1283 X(whose)s
+1591 X(\256rst)s
+1791 X(letter)s
+2044 X(is)s
+2146 X(an)s
+2277 X(S:)s
+720 X
+4540 Y
+1000 X(REAL)s
+1343 X(ALPHA,)s
+1765 X(BETA)s
+720 X
+4700 Y
+1000 X(REAL)s
+1343 X(A\(LDA,*\),)s
+1858 X(B\(LDB,*\),)s
+2363 X(C\(LDC,*\))s
+720 X
+5020 Y(For)s
+901 X(routines)s
+1283 X(whose)s
+1591 X(\256rst)s
+1791 X(letter)s
+2044 X(is)s
+2146 X(a)s
+2222 X(D:)s
+720 X
+5340 Y
+1000 X(DOUBLE)s
+1473 X(PRECISION)s
+2098 X(ALPHA,)s
+2520 X(BETA)s
+720 X
+5500 Y
+1000 X(DOUBLE)s
+1473 X(PRECISION)s
+2098 X(A\(LDA,*\),)s
+2613 X(B\(LDB,*\),)s
+3118 X(C\(LDC,*\))s
+720 X
+5820 Y(For)s
+901 X(routines)s
+1283 X(whose)s
+1591 X(\256rst)s
+1791 X(letter)s
+2044 X(is)s
+2146 X(a)s
+2222 X(C:)s
+720 X
+6140 Y
+1000 X(COMPLEX)s
+1582 X(ALPHA,)s
+2004 X(BETA)s
+720 X
+6300 Y
+1000 X(COMPLEX)s
+1582 X(A\(LDA,*\),)s
+2097 X(B\(LDB,*\),)s
+2602 X(C\(LDC,*\))s
+720 X
+6620 Y(except)s
+1033 X(that)s
+1226 X(for)s
+1381 X(CHERK)s
+1782 X(the)s
+1944 X(scalars)s
+2269 X
+0.0 11 11 f.S ft(a)s
+2366 X
+0.0 11 11 f.R ft(and)s
+2552 X
+0.0 11 11 f.S ft(b)s
+2641 X
+0.0 11 11 f.R ft(are)s
+2801 X(real,)s
+3020 X(so)s
+3146 X(the)s
+3308 X(\256rst)s
+3508 X(declaration)s
+4022 X(above)s
+4311 X(is)s
+4413 X(replaced)s
+4810 X(by)s
+720 X
+6940 Y
+1000 X(REAL)s
+1343 X(ALPHA,)s
+1765 X(BETA)s
+720 X
+7260 Y(and)s
+906 X(for)s
+1061 X(CHER2K)s
+1517 X
+0.0 11 11 f.S ft(a)s
+1614 X
+0.0 11 11 f.R ft(is)s
+1716 X(complex)s
+2122 X(and)s
+2308 X
+0.0 11 11 f.S ft(b)s
+2397 X
+0.0 11 11 f.R ft(is)s
+2499 X(real,)s
+2718 X(so)s
+2844 X(this)s
+3032 X(is)s
+3134 X(replaced)s
+3531 X(by)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2968 X(- 9 -)s
+720 X
+880 Y
+1000 X(COMPLEX)s
+1582 X(ALPHA)s
+720 X
+1040 Y
+1000 X(REAL)s
+1427 X(BETA)s
+720 X
+1360 Y(For)s
+901 X(routines)s
+1283 X(whose)s
+1591 X(\256rst)s
+1791 X(letter)s
+2044 X(is)s
+2146 X(a)s
+2222 X(Z:)s
+720 X
+1680 Y
+832 X(COMPLEX*16)s
+1579 X(ALPHA,)s
+2001 X(BETA)s
+2370 X(or)s
+2645 X(DOUBLE)s
+3118 X(COMPLEX)s
+3700 X(ALPHA,)s
+4122 X(BETA)s
+720 X
+1840 Y
+832 X(COMPLEX*16)s
+1579 X(A\(LDA,*\))s
+2645 X(DOUBLE)s
+3118 X(COMPLEX)s
+3700 X(A\(LDA,*\))s
+720 X
+2000 Y
+832 X(COMPLEX*16)s
+1579 X(B\(LDB,*\))s
+2645 X(DOUBLE)s
+3118 X(COMPLEX)s
+3700 X(B\(LDB,*\))s
+720 X
+2160 Y
+832 X(COMPLEX*16)s
+1579 X(C\(LDC,*\))s
+2645 X(DOUBLE)s
+3118 X(COMPLEX)s
+3700 X(C\(LDC,*\))s
+720 X
+2480 Y(except)s
+1033 X(that)s
+1226 X(for)s
+1381 X(ZHERK)s
+1775 X(the)s
+1937 X(scalars)s
+2262 X
+0.0 11 11 f.S ft(a)s
+2359 X
+0.0 11 11 f.R ft(and)s
+2545 X
+0.0 11 11 f.S ft(b)s
+2634 X
+0.0 11 11 f.R ft(are)s
+2794 X(real,)s
+3013 X(so)s
+3139 X(the)s
+3301 X(\256rst)s
+3501 X(declaration)s
+4015 X(above)s
+4304 X(is)s
+4406 X(replaced)s
+4803 X(by)s
+720 X
+2800 Y
+1000 X(DOUBLE)s
+1473 X(PRECISION)s
+2098 X(ALPHA,)s
+2520 X(BETA)s
+720 X
+3120 Y(and)s
+906 X(for)s
+1061 X(ZHER2K)s
+1510 X
+0.0 11 11 f.S ft(a)s
+1607 X
+0.0 11 11 f.R ft(is)s
+1709 X(complex)s
+2115 X(and)s
+2301 X
+0.0 11 11 f.S ft(b)s
+2390 X
+0.0 11 11 f.R ft(is)s
+2492 X(real,)s
+2711 X(so)s
+2837 X(this)s
+3025 X(is)s
+3127 X(replaced)s
+3524 X(by)s
+720 X
+3440 Y
+1000 X(COMPLEX*16)s
+1887 X(ALPHA)s
+720 X
+3600 Y
+1000 X(DOUBLE)s
+1473 X(PRECISION)s
+2070 X(BETA)s
+720 X
+3920 Y
+748 X(a\))s
+860 X(General)s
+1233 X(matrix-matrix)s
+1871 X(products:)s
+720 X
+4240 Y
+804 X(_GEMM)s
+1229 X(\(TRANSA,)s
+1761 X(TRANSB,)s
+2252 X(M,)s
+2406 X(N,)s
+2541 X(K,)s
+2676 X(ALPHA,)s
+3098 X(A,)s
+3233 X(LDA,)s
+3514 X(B,)s
+3644 X(LDB,)s
+3920 X(BETA,)s
+4263 X(C,)s
+4393 X(LDC\))s
+720 X
+4560 Y
+804 X(Operation)s
+1270 X(\()s
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(C)s
+1408 X
+0.0 11 11 f.R ft(is)s
+1510 X(always)s
+1842 X
+0.0 11 11 f.I ft(m)s
+1930 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+0.0 11 11 f.R ft(\):)s
+720 X
+4960 Y
+2129 X(TRANSA)s
+2597 X(=`N')s
+3135 X(TRANSA)s
+3603 X(=`T')s
+4139 X(TRANSA)s
+4607 X(=)s
+4697 X(`C')s
+720 X
+720 X
+5280 Y
+1196 X(TRANSB)s
+1659 X(=`N')s
+2060 X
+0.0 11 11 f.I ft(C)s
+2171 X
+0.0 11 11 f.S ft(\254)s
+2308 X(a)s
+0.0 11 11 f.I ft(AB)s
+2548 X
+0.0 11 11 f.S ft(+)s
+2637 X(b)s
+0.0 11 11 f.I ft(C)s
+3045 X(C)s
+3156 X
+0.0 11 11 f.S ft(\254)s
+3293 X(a)s
+0.0 11 11 f.I ft(A)s
+5236 Y
+3442 X
+0.0 8 8 f.I ft(T)s
+5280 Y
+3496 X
+0.0 11 11 f.I ft(B)s
+3600 X
+0.0 11 11 f.S ft(+)s
+3689 X(b)s
+0.0 11 11 f.I ft(C)s
+4060 X(C)s
+4171 X
+0.0 11 11 f.S ft(\254)s
+4308 X(a)s
+0.0 11 11 f.I ft(A)s
+5236 Y
+4457 X
+0.0 8 8 f.I ft(H)s
+5280 Y
+4524 X
+0.0 11 11 f.I ft(B)s
+4628 X
+0.0 11 11 f.S ft(+)s
+4717 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+5440 Y
+2060 X(A)s
+2155 X
+0.0 11 11 f.R ft(is)s
+2257 X
+0.0 11 11 f.I ft(m)s
+2345 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+0.0 11 11 f.R ft(,)s
+2510 X
+0.0 11 11 f.I ft(B)s
+2605 X
+0.0 11 11 f.R ft(is)s
+2707 X
+0.0 11 11 f.I ft(k)s
+2764 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+3045 X(A)s
+3140 X
+0.0 11 11 f.R ft(is)s
+3242 X
+0.0 11 11 f.I ft(k)s
+3299 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+0.0 11 11 f.R ft(,)s
+3495 X
+0.0 11 11 f.I ft(B)s
+3590 X
+0.0 11 11 f.R ft(is)s
+3692 X
+0.0 11 11 f.I ft(k)s
+3749 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+4060 X(A)s
+4155 X
+0.0 11 11 f.R ft(is)s
+4257 X
+0.0 11 11 f.I ft(k)s
+4314 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+0.0 11 11 f.R ft(,)s
+4510 X
+0.0 11 11 f.I ft(B)s
+4605 X
+0.0 11 11 f.R ft(is)s
+4707 X
+0.0 11 11 f.I ft(k)s
+4764 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+720 X
+720 X
+5760 Y
+1196 X
+0.0 11 11 f.R ft(TRANSB)s
+1659 X(=`T')s
+2060 X
+0.0 11 11 f.I ft(C)s
+2171 X
+0.0 11 11 f.S ft(\254)s
+2308 X(a)s
+0.0 11 11 f.I ft(AB)s
+5716 Y
+2524 X
+0.0 8 8 f.I ft(T)s
+5760 Y
+2606 X
+0.0 11 11 f.S ft(+)s
+2695 X(b)s
+0.0 11 11 f.I ft(C)s
+3045 X(C)s
+3156 X
+0.0 11 11 f.S ft(\254)s
+3293 X(a)s
+0.0 11 11 f.I ft(A)s
+5716 Y
+3442 X
+0.0 8 8 f.I ft(T)s
+5760 Y
+3496 X
+0.0 11 11 f.I ft(B)s
+5716 Y
+3576 X
+0.0 8 8 f.I ft(T)s
+5760 Y
+3658 X
+0.0 11 11 f.S ft(+)s
+3747 X(b)s
+0.0 11 11 f.I ft(C)s
+4060 X(C)s
+4171 X
+0.0 11 11 f.S ft(\254)s
+4308 X(a)s
+0.0 11 11 f.I ft(A)s
+5716 Y
+4457 X
+0.0 8 8 f.I ft(H)s
+5760 Y
+4524 X
+0.0 11 11 f.I ft(B)s
+5716 Y
+4604 X
+0.0 8 8 f.I ft(T)s
+5760 Y
+4686 X
+0.0 11 11 f.S ft(+)s
+4775 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+5920 Y
+2060 X(A)s
+2155 X
+0.0 11 11 f.R ft(is)s
+2257 X
+0.0 11 11 f.I ft(m)s
+2345 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+0.0 11 11 f.R ft(,)s
+2510 X
+0.0 11 11 f.I ft(B)s
+2605 X
+0.0 11 11 f.R ft(is)s
+2707 X
+0.0 11 11 f.I ft(n)s
+2771 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+3045 X(A)s
+3140 X
+0.0 11 11 f.R ft(is)s
+3242 X
+0.0 11 11 f.I ft(k)s
+3299 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+0.0 11 11 f.R ft(,)s
+3495 X
+0.0 11 11 f.I ft(B)s
+3590 X
+0.0 11 11 f.R ft(is)s
+3692 X
+0.0 11 11 f.I ft(n)s
+3756 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+4060 X(A)s
+4155 X
+0.0 11 11 f.R ft(is)s
+4257 X
+0.0 11 11 f.I ft(k)s
+4314 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+0.0 11 11 f.R ft(,)s
+4510 X
+0.0 11 11 f.I ft(B)s
+4605 X
+0.0 11 11 f.R ft(is)s
+4707 X
+0.0 11 11 f.I ft(n)s
+4771 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+720 X
+720 X
+6240 Y
+1196 X
+0.0 11 11 f.R ft(TRANSB)s
+1659 X(=)s
+1749 X(`C')s
+2060 X
+0.0 11 11 f.I ft(C)s
+2171 X
+0.0 11 11 f.S ft(\254)s
+2308 X(a)s
+0.0 11 11 f.I ft(AB)s
+6196 Y
+2524 X
+0.0 8 8 f.I ft(H)s
+6240 Y
+2619 X
+0.0 11 11 f.S ft(+)s
+2708 X(b)s
+0.0 11 11 f.I ft(C)s
+3045 X(C)s
+3156 X
+0.0 11 11 f.S ft(\254)s
+3293 X(a)s
+0.0 11 11 f.I ft(A)s
+6196 Y
+3442 X
+0.0 8 8 f.I ft(T)s
+6240 Y
+3496 X
+0.0 11 11 f.I ft(B)s
+6196 Y
+3576 X
+0.0 8 8 f.I ft(H)s
+6240 Y
+3671 X
+0.0 11 11 f.S ft(+)s
+3760 X(b)s
+0.0 11 11 f.I ft(C)s
+4060 X(C)s
+4171 X
+0.0 11 11 f.S ft(\254)s
+4308 X(a)s
+0.0 11 11 f.I ft(A)s
+6196 Y
+4457 X
+0.0 8 8 f.I ft(H)s
+6240 Y
+4524 X
+0.0 11 11 f.I ft(B)s
+6196 Y
+4604 X
+0.0 8 8 f.I ft(H)s
+6240 Y
+4699 X
+0.0 11 11 f.S ft(+)s
+4788 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+6400 Y
+2060 X(A)s
+2155 X
+0.0 11 11 f.R ft(is)s
+2257 X
+0.0 11 11 f.I ft(m)s
+2345 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+0.0 11 11 f.R ft(,)s
+2510 X
+0.0 11 11 f.I ft(B)s
+2605 X
+0.0 11 11 f.R ft(is)s
+2707 X
+0.0 11 11 f.I ft(n)s
+2771 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+3045 X(A)s
+3140 X
+0.0 11 11 f.R ft(is)s
+3242 X
+0.0 11 11 f.I ft(k)s
+3299 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+0.0 11 11 f.R ft(,)s
+3495 X
+0.0 11 11 f.I ft(B)s
+3590 X
+0.0 11 11 f.R ft(is)s
+3692 X
+0.0 11 11 f.I ft(n)s
+3756 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+4060 X(A)s
+4155 X
+0.0 11 11 f.R ft(is)s
+4257 X
+0.0 11 11 f.I ft(k)s
+4314 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+0.0 11 11 f.R ft(,)s
+4510 X
+0.0 11 11 f.I ft(B)s
+4605 X
+0.0 11 11 f.R ft(is)s
+4707 X
+0.0 11 11 f.I ft(n)s
+4771 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+720 X
+6780 Y
+804 X
+0.0 11 11 f.R ft(\(In)s
+959 X(the)s
+1121 X(real)s
+1312 X(case)s
+1527 X(the)s
+1689 X(values)s
+1997 X(`T')s
+2164 X(and)s
+2350 X(`C')s
+2524 X(have)s
+2758 X(the)s
+2920 X(same)s
+3173 X(meaning.\))s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2941 X(- 10 -)s
+720 X
+880 Y
+748 X(b\))s
+867 X(Matrix-matrix)s
+1517 X(products)s
+1923 X(where)s
+2217 X(one)s
+2403 X(matrix)s
+2718 X(is)s
+2820 X(real)s
+3011 X(or)s
+3130 X(complex)s
+3536 X(symmetric)s
+4028 X(or)s
+4147 X(complex)s
+4553 X(Hermitian:)s
+720 X
+1200 Y
+804 X(_SYMM)s
+1224 X(\(SIDE,)s
+1560 X(UPLO,)s
+1903 X(M,)s
+2057 X(N,)s
+2192 X(ALPHA,)s
+2614 X(A,)s
+2749 X(LDA,)s
+3030 X(B,)s
+3160 X(LDB,)s
+3436 X(BETA,)s
+3779 X(C,)s
+3909 X(LDC\))s
+720 X
+1360 Y
+804 X(_HEMM)s
+1229 X(\(SIDE,)s
+1565 X(UPLO,)s
+1908 X(M,)s
+2062 X(N,)s
+2197 X(ALPHA,)s
+2619 X(A,)s
+2754 X(LDA,)s
+3035 X(B,)s
+3165 X(LDB,)s
+3441 X(BETA,)s
+3784 X(C,)s
+3914 X(LDC\))s
+720 X
+1680 Y
+804 X(Operation)s
+1270 X(\()s
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(C)s
+1408 X
+0.0 11 11 f.R ft(is)s
+1510 X(always)s
+1842 X
+0.0 11 11 f.I ft(m)s
+1930 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+0.0 11 11 f.R ft(,)s
+2102 X
+0.0 11 11 f.I ft(A)s
+2197 X
+0.0 11 11 f.R ft(is)s
+2299 X(symmetric)s
+2791 X(for)s
+2946 X(the)s
+3108 X(_SYMM)s
+3528 X(routines,)s
+720 X
+1840 Y
+804 X(and)s
+990 X(Hermitian)s
+1463 X(for)s
+1618 X(the)s
+1780 X(_HEMM)s
+2205 X(routines\):)s
+720 X
+2080 Y
+2384 X(SIDE)s
+2656 X(=`L')s
+3258 X(SIDE)s
+3530 X(=`R')s
+720 X
+720 X
+2400 Y
+2265 X
+0.0 11 11 f.I ft(C)s
+2376 X
+0.0 11 11 f.S ft(\254)s
+2513 X(a)s
+0.0 11 11 f.I ft(AB)s
+2753 X
+0.0 11 11 f.S ft(+)s
+2842 X(b)s
+0.0 11 11 f.I ft(C)s
+3142 X(C)s
+3253 X
+0.0 11 11 f.S ft(\254)s
+3390 X(a)s
+0.0 11 11 f.I ft(BA)s
+3630 X
+0.0 11 11 f.S ft(+)s
+3719 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+2560 Y
+2265 X(A)s
+2360 X
+0.0 11 11 f.R ft(is)s
+2462 X
+0.0 11 11 f.I ft(m)s
+2550 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+3142 X(B)s
+3237 X
+0.0 11 11 f.R ft(is)s
+3339 X
+0.0 11 11 f.I ft(m)s
+3427 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+720 X
+2720 Y
+2265 X(B)s
+2360 X
+0.0 11 11 f.R ft(is)s
+2462 X
+0.0 11 11 f.I ft(m)s
+2550 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+3142 X(A)s
+3237 X
+0.0 11 11 f.R ft(is)s
+3339 X
+0.0 11 11 f.I ft(n)s
+3403 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+720 X
+3100 Y
+748 X
+0.0 11 11 f.R ft(c\))s
+860 X(Rank-)s
+0.0 11 11 f.I ft(k)s
+1204 X
+0.0 11 11 f.R ft(updates)s
+1567 X(of)s
+1686 X(a)s
+1762 X(real)s
+1953 X(or)s
+2072 X(complex)s
+2478 X(symmetric)s
+2970 X(or)s
+3089 X(complex)s
+3495 X(Hermitian)s
+3968 X(matrix:)s
+720 X
+3420 Y
+804 X(_SYRK)s
+1181 X(\(UPLO,)s
+1560 X(TRANS,)s
+1977 X(N,)s
+2112 X(K,)s
+2247 X(ALPHA,)s
+2669 X(A,)s
+2804 X(LDA,)s
+3085 X(BETA,)s
+3428 X(C,)s
+3558 X(LDC\))s
+720 X
+3580 Y
+804 X(_HERK)s
+1186 X(\(UPLO,)s
+1565 X(TRANS,)s
+1982 X(N,)s
+2117 X(K,)s
+2252 X(ALPHA,)s
+2674 X(A,)s
+2809 X(LDA,)s
+3090 X(BETA,)s
+3433 X(C,)s
+3563 X(LDC\))s
+720 X
+3900 Y
+804 X(Operation)s
+1270 X(\()s
+0.0 11 11 f.I ft(C)s
+1408 X
+0.0 11 11 f.R ft(is)s
+1510 X(always)s
+1842 X
+0.0 11 11 f.I ft(n)s
+1906 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+0.0 11 11 f.R ft(\):)s
+720 X
+4220 Y
+804 X(For)s
+985 X(_SYRK)s
+1362 X(routines)s
+1744 X(\()s
+0.0 11 11 f.I ft(C)s
+1882 X
+0.0 11 11 f.R ft(is)s
+1984 X(symmetric\))s
+720 X
+4460 Y
+2204 X(TRANS)s
+2593 X(=`N')s
+3149 X(TRANS)s
+3538 X(=`T')s
+720 X
+720 X
+4780 Y
+2120 X
+0.0 11 11 f.I ft(C)s
+2231 X
+0.0 11 11 f.S ft(\254)s
+2368 X(a)s
+0.0 11 11 f.I ft(AA)s
+4736 Y
+2584 X
+0.0 8 8 f.I ft(T)s
+4780 Y
+2666 X
+0.0 11 11 f.S ft(+)s
+2755 X(b)s
+0.0 11 11 f.I ft(C)s
+3055 X(C)s
+3166 X
+0.0 11 11 f.S ft(\254)s
+3303 X(a)s
+0.0 11 11 f.I ft(A)s
+4736 Y
+3452 X
+0.0 8 8 f.I ft(T)s
+4780 Y
+3506 X
+0.0 11 11 f.I ft(A)s
+3610 X
+0.0 11 11 f.S ft(+)s
+3699 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+4940 Y
+2120 X(A)s
+2215 X
+0.0 11 11 f.R ft(is)s
+2317 X
+0.0 11 11 f.I ft(n)s
+2381 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+3055 X(A)s
+3150 X
+0.0 11 11 f.R ft(is)s
+3252 X
+0.0 11 11 f.I ft(k)s
+3309 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+720 X
+5320 Y
+804 X
+0.0 11 11 f.R ft(For)s
+985 X(_HERK)s
+1367 X(routines)s
+1749 X(\()s
+0.0 11 11 f.I ft(C)s
+1887 X
+0.0 11 11 f.R ft(is)s
+1989 X(Hermitian\))s
+720 X
+5560 Y
+2197 X(TRANS)s
+2586 X(=`N')s
+3152 X(TRANS)s
+3541 X(=`C')s
+720 X
+720 X
+5880 Y
+2107 X
+0.0 11 11 f.I ft(C)s
+2218 X
+0.0 11 11 f.S ft(\254)s
+2355 X(a)s
+0.0 11 11 f.I ft(AA)s
+5836 Y
+2571 X
+0.0 8 8 f.I ft(H)s
+5880 Y
+2666 X
+0.0 11 11 f.S ft(+)s
+2755 X(b)s
+0.0 11 11 f.I ft(C)s
+3055 X(C)s
+3166 X
+0.0 11 11 f.S ft(\254)s
+3303 X(a)s
+0.0 11 11 f.I ft(A)s
+5836 Y
+3452 X
+0.0 8 8 f.I ft(H)s
+5880 Y
+3519 X
+0.0 11 11 f.I ft(A)s
+3623 X
+0.0 11 11 f.S ft(+)s
+3712 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+6040 Y
+2107 X(A)s
+2202 X
+0.0 11 11 f.R ft(is)s
+2304 X
+0.0 11 11 f.I ft(n)s
+2368 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+3055 X(A)s
+3150 X
+0.0 11 11 f.R ft(is)s
+3252 X
+0.0 11 11 f.I ft(k)s
+3309 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+720 X
+6420 Y
+0.0 11 11 f.R ft(\(In)s
+878 X(the)s
+1043 X(real)s
+1237 X(case)s
+1455 X(the)s
+1620 X(values)s
+1932 X(`T')s
+2103 X(and)s
+2293 X(`C')s
+2471 X(have)s
+2709 X(the)s
+2875 X(same)s
+3132 X(meaning.)s
+3570 X(In)s
+3693 X(the)s
+3859 X(complex)s
+4269 X(case)s
+4488 X(TRANS)s
+4881 X(=)s
+4975 X(`C')s
+5153 X(is)s
+5259 X(not)s
+720 X
+6580 Y(allowed)s
+1095 X(in)s
+1209 X(_SYRK,)s
+1614 X(and)s
+1800 X(TRANS)s
+2189 X(=)s
+2279 X(`T')s
+2446 X(is)s
+2548 X(not)s
+2717 X(allowed)s
+3092 X(in)s
+3206 X(_HERK.\))s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2941 X(- 11 -)s
+720 X
+880 Y(d\))s
+839 X(Rank-2)s
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(k)s
+1238 X
+0.0 11 11 f.R ft(updates)s
+1601 X(of)s
+1720 X(a)s
+1796 X(real)s
+1987 X(or)s
+2106 X(complex)s
+2512 X(symmetric)s
+3004 X(or)s
+3123 X(complex)s
+3529 X(Hermitian)s
+4002 X(matrix:)s
+720 X
+1200 Y
+776 X(_SYR2K)s
+1208 X(\()s
+1272 X(UPLO,)s
+1615 X(TRANS,)s
+2032 X(N,)s
+2167 X(K,)s
+2302 X(ALPHA,)s
+2724 X(A,)s
+2859 X(LDA,)s
+3140 X(B,)s
+3270 X(LDB,)s
+3546 X(BETA,)s
+3889 X(C,)s
+4019 X(LDC\))s
+720 X
+1360 Y
+776 X(_HER2K)s
+1213 X(\()s
+1277 X(UPLO,)s
+1620 X(TRANS,)s
+2037 X(N,)s
+2172 X(K,)s
+2307 X(ALPHA,)s
+2729 X(A,)s
+2864 X(LDA,)s
+3145 X(B,)s
+3275 X(LDB,)s
+3551 X(BETA,)s
+3894 X(C,)s
+4024 X(LDC\))s
+720 X
+1680 Y
+776 X(Operation)s
+1242 X(\()s
+0.0 11 11 f.I ft(C)s
+1380 X
+0.0 11 11 f.R ft(is)s
+1482 X(always)s
+1814 X
+0.0 11 11 f.I ft(n)s
+1878 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+0.0 11 11 f.R ft(\))s
+720 X
+2000 Y
+776 X(For)s
+957 X(_SYR2K)s
+1389 X(routines)s
+1771 X(\()s
+0.0 11 11 f.I ft(C)s
+1909 X
+0.0 11 11 f.R ft(is)s
+2011 X(symmetric\))s
+720 X
+2240 Y
+2006 X(TRANS)s
+2395 X(=`N')s
+3343 X(TRANS)s
+3732 X(=`T')s
+720 X
+720 X
+2560 Y
+1729 X
+0.0 11 11 f.I ft(C)s
+1840 X
+0.0 11 11 f.S ft(\254)s
+1977 X(a)s
+0.0 11 11 f.I ft(AB)s
+2516 Y
+2193 X
+0.0 8 8 f.I ft(T)s
+2560 Y
+2275 X
+0.0 11 11 f.S ft(+)s
+2364 X(a)s
+0.0 11 11 f.I ft(BA)s
+2516 Y
+2580 X
+0.0 8 8 f.I ft(T)s
+2560 Y
+2662 X
+0.0 11 11 f.S ft(+)s
+2751 X(b)s
+0.0 11 11 f.I ft(C)s
+3051 X(C)s
+3162 X
+0.0 11 11 f.S ft(\254)s
+3299 X(a)s
+0.0 11 11 f.I ft(A)s
+2516 Y
+3448 X
+0.0 8 8 f.I ft(T)s
+2560 Y
+3502 X
+0.0 11 11 f.I ft(B)s
+3606 X
+0.0 11 11 f.S ft(+)s
+3695 X(a)s
+0.0 11 11 f.I ft(B)s
+2516 Y
+3844 X
+0.0 8 8 f.I ft(T)s
+2560 Y
+3898 X
+0.0 11 11 f.I ft(A)s
+4002 X
+0.0 11 11 f.S ft(+)s
+4091 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+2720 Y
+1729 X(A)s
+1824 X
+0.0 11 11 f.R ft(and)s
+2010 X
+0.0 11 11 f.I ft(B)s
+2105 X
+0.0 11 11 f.R ft(are)s
+2265 X
+0.0 11 11 f.I ft(n)s
+2329 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+3051 X(A)s
+3146 X
+0.0 11 11 f.R ft(and)s
+3332 X
+0.0 11 11 f.I ft(B)s
+3427 X
+0.0 11 11 f.R ft(are)s
+3587 X
+0.0 11 11 f.I ft(k)s
+3644 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+720 X
+3100 Y
+776 X
+0.0 11 11 f.R ft(For)s
+957 X(_HER2K)s
+1394 X(routines)s
+1776 X(\()s
+0.0 11 11 f.I ft(C)s
+1914 X
+0.0 11 11 f.R ft(is)s
+2016 X(Hermitian\))s
+720 X
+3340 Y
+1993 X(TRANS)s
+2382 X(=`N')s
+3353 X(TRANS)s
+3742 X(=`C')s
+720 X
+720 X
+3665 Y
+1703 X
+0.0 11 11 f.I ft(C)s
+1814 X
+0.0 11 11 f.S ft(\254)s
+1951 X(a)s
+0.0 11 11 f.I ft(AB)s
+3621 Y
+2167 X
+0.0 8 8 f.I ft(H)s
+3665 Y
+2262 X
+0.0 11 11 f.S ft(+)s
+2351 X(a)s
+3591 Y
+2357 X
+0.0 11 11 f.R ft
+/Cru {  0 ysiz pt 5 div 2 copy rmoveto
+ (_) show
+ neg rmoveto
+ } bind def
+
+Cru
+2360 X
+Cru
+3665 Y
+2420 X
+0.0 11 11 f.I ft(BA)s
+3621 Y
+2567 X
+0.0 8 8 f.I ft(H)s
+3665 Y
+2662 X
+0.0 11 11 f.S ft(+)s
+2751 X(b)s
+0.0 11 11 f.I ft(C)s
+3051 X(C)s
+3162 X
+0.0 11 11 f.S ft(\254)s
+3299 X(a)s
+0.0 11 11 f.I ft(A)s
+3621 Y
+3448 X
+0.0 8 8 f.I ft(H)s
+3665 Y
+3515 X
+0.0 11 11 f.I ft(B)s
+3619 X
+0.0 11 11 f.S ft(+)s
+3708 X(a)s
+3591 Y
+3714 X
+0.0 11 11 f.R ft
+Cru
+3717 X
+Cru
+3665 Y
+3777 X
+0.0 11 11 f.I ft(B)s
+3621 Y
+3857 X
+0.0 8 8 f.I ft(H)s
+3665 Y
+3924 X
+0.0 11 11 f.I ft(A)s
+4028 X
+0.0 11 11 f.S ft(+)s
+4117 X(b)s
+0.0 11 11 f.I ft(C)s
+720 X
+3825 Y
+1703 X(A)s
+1798 X
+0.0 11 11 f.R ft(and)s
+1984 X
+0.0 11 11 f.I ft(B)s
+2079 X
+0.0 11 11 f.R ft(are)s
+2239 X
+0.0 11 11 f.I ft(n)s
+2303 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(k)s
+3051 X(A)s
+3146 X
+0.0 11 11 f.R ft(and)s
+3332 X
+0.0 11 11 f.I ft(B)s
+3427 X
+0.0 11 11 f.R ft(are)s
+3587 X
+0.0 11 11 f.I ft(k)s
+3644 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+720 X
+4205 Y
+0.0 11 11 f.R ft(\(In)s
+878 X(the)s
+1043 X(real)s
+1237 X(case)s
+1455 X(the)s
+1620 X(values)s
+1932 X(`T')s
+2103 X(and)s
+2293 X(`C')s
+2471 X(have)s
+2709 X(the)s
+2875 X(same)s
+3132 X(meaning.)s
+3570 X(In)s
+3693 X(the)s
+3859 X(complex)s
+4269 X(case)s
+4488 X(TRANS)s
+4881 X(=)s
+4975 X(`C')s
+5153 X(is)s
+5259 X(not)s
+720 X
+4365 Y(allowed)s
+1095 X(in)s
+1209 X(_SYR2K,)s
+1669 X(and)s
+1855 X(TRANS)s
+2244 X(=)s
+2334 X(`T')s
+2501 X(is)s
+2603 X(not)s
+2772 X(allowed)s
+3147 X(in)s
+3261 X(_HER2K.\))s
+720 X
+4685 Y
+748 X(e\))s
+860 X(Triangular)s
+1350 X(matrix-matrix)s
+1988 X(products:)s
+720 X
+5005 Y
+804 X(_TRMM)s
+1224 X(\(SIDE,)s
+1560 X(UPLO,)s
+1903 X(TRANSA,)s
+2399 X(DIAG,)s
+2728 X(M,)s
+2882 X(N,)s
+3017 X(ALPHA,)s
+3439 X(A,)s
+3574 X(LDA,)s
+3855 X(B,)s
+3985 X(LDB\))s
+720 X
+5325 Y
+804 X(Operation)s
+1270 X(\()s
+0.0 11 11 f.I ft(B)s
+1401 X
+0.0 11 11 f.R ft(is)s
+1503 X(always)s
+1835 X
+0.0 11 11 f.I ft(m)s
+1923 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+0.0 11 11 f.R ft(,)s
+2095 X
+0.0 11 11 f.I ft(A)s
+2190 X
+0.0 11 11 f.R ft(is)s
+2292 X(triangular\):)s
+720 X
+5725 Y
+1998 X(TRANSA)s
+2466 X(=`N')s
+3048 X(TRANSA)s
+3516 X(=`T')s
+4088 X(TRANSA)s
+4556 X(=`C')s
+720 X
+720 X
+6045 Y
+1254 X(SIDE)s
+1526 X(=`L')s
+1899 X
+0.0 11 11 f.I ft(B)s
+2003 X
+0.0 11 11 f.S ft(\254)s
+2140 X(a)s
+0.0 11 11 f.I ft(AB)s
+2943 X(B)s
+3047 X
+0.0 11 11 f.S ft(\254)s
+3184 X(a)s
+0.0 11 11 f.I ft(A)s
+6001 Y
+3333 X
+0.0 8 8 f.I ft(T)s
+6045 Y
+3387 X
+0.0 11 11 f.I ft(B)s
+3987 X(B)s
+4091 X
+0.0 11 11 f.S ft(\254)s
+4228 X(a)s
+0.0 11 11 f.I ft(A)s
+6001 Y
+4377 X
+0.0 8 8 f.I ft(H)s
+6045 Y
+4444 X
+0.0 11 11 f.I ft(B)s
+720 X
+6205 Y
+1899 X(A)s
+1994 X
+0.0 11 11 f.R ft(is)s
+2096 X(triangular)s
+2550 X
+0.0 11 11 f.I ft(m)s
+2638 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+2943 X(A)s
+3038 X
+0.0 11 11 f.R ft(is)s
+3140 X(triangular)s
+3594 X
+0.0 11 11 f.I ft(m)s
+3682 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+3987 X(A)s
+4082 X
+0.0 11 11 f.R ft(is)s
+4184 X(triangular)s
+4638 X
+0.0 11 11 f.I ft(m)s
+4726 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+720 X
+720 X
+6525 Y
+1254 X
+0.0 11 11 f.R ft(SIDE)s
+1526 X(=`R')s
+1899 X
+0.0 11 11 f.I ft(B)s
+2003 X
+0.0 11 11 f.S ft(\254)s
+2140 X(a)s
+0.0 11 11 f.I ft(BA)s
+2943 X(B)s
+3047 X
+0.0 11 11 f.S ft(\254)s
+3184 X(a)s
+0.0 11 11 f.I ft(BA)s
+6481 Y
+3400 X
+0.0 8 8 f.I ft(T)s
+6525 Y
+3987 X
+0.0 11 11 f.I ft(B)s
+4091 X
+0.0 11 11 f.S ft(\254)s
+4228 X(a)s
+0.0 11 11 f.I ft(BA)s
+6481 Y
+4444 X
+0.0 8 8 f.I ft(H)s
+720 X
+6685 Y
+1899 X
+0.0 11 11 f.I ft(A)s
+1994 X
+0.0 11 11 f.R ft(is)s
+2096 X(triangular)s
+2550 X
+0.0 11 11 f.I ft(n)s
+2614 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+2943 X(A)s
+3038 X
+0.0 11 11 f.R ft(is)s
+3140 X(triangular)s
+3594 X
+0.0 11 11 f.I ft(n)s
+3658 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+3987 X(A)s
+4082 X
+0.0 11 11 f.R ft(is)s
+4184 X(triangular)s
+4638 X
+0.0 11 11 f.I ft(n)s
+4702 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+720 X
+7065 Y
+804 X
+0.0 11 11 f.R ft(\(In)s
+959 X(the)s
+1121 X(real)s
+1312 X(case)s
+1527 X(the)s
+1689 X(values)s
+1997 X(`T')s
+2164 X(and)s
+2350 X(`C')s
+2524 X(have)s
+2758 X(the)s
+2920 X(same)s
+3173 X(meaning.\))s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2941 X(- 12 -)s
+720 X
+880 Y
+748 X(f\))s
+848 X(Solution)s
+1251 X(of)s
+1370 X(triangular)s
+1824 X(systems)s
+2201 X(of)s
+2320 X(equations:)s
+720 X
+1200 Y
+804 X(_TRSM)s
+1188 X(\(SIDE,)s
+1524 X(UPLO,)s
+1867 X(TRANSA,)s
+2363 X(DIAG,)s
+2692 X(M,)s
+2846 X(N,)s
+2981 X(ALPHA,)s
+3403 X(A,)s
+3538 X(LDA,)s
+3819 X(B,)s
+3949 X(LDB\))s
+720 X
+1520 Y
+804 X(Operation)s
+1270 X(\()s
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(B)s
+1401 X
+0.0 11 11 f.R ft(is)s
+1503 X(always)s
+1835 X
+0.0 11 11 f.I ft(m)s
+1923 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+0.0 11 11 f.R ft(,)s
+2095 X
+0.0 11 11 f.I ft(A)s
+2190 X
+0.0 11 11 f.R ft(is)s
+2292 X(triangular\):)s
+720 X
+1920 Y
+1998 X(TRANSA)s
+2466 X(=`N')s
+3048 X(TRANSA)s
+3516 X(=`T')s
+4088 X(TRANSA)s
+4556 X(=`C')s
+720 X
+720 X
+2240 Y
+1254 X(SIDE)s
+1526 X(=`L')s
+1899 X
+0.0 11 11 f.I ft(B)s
+2003 X
+0.0 11 11 f.S ft(\254)s
+2140 X(a)s
+0.0 11 11 f.I ft(A)s
+2196 Y
+2289 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+2240 Y
+2382 X
+0.0 11 11 f.I ft(B)s
+2943 X(B)s
+3047 X
+0.0 11 11 f.S ft(\254)s
+3184 X(a)s
+0.0 11 11 f.I ft(A)s
+2196 Y
+3333 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.I ft(T)s
+2240 Y
+3431 X
+0.0 11 11 f.I ft(B)s
+3987 X(B)s
+4091 X
+0.0 11 11 f.S ft(\254)s
+4228 X(a)s
+0.0 11 11 f.I ft(A)s
+2196 Y
+4377 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.I ft(H)s
+2240 Y
+4488 X
+0.0 11 11 f.I ft(B)s
+720 X
+2400 Y
+1899 X(A)s
+1994 X
+0.0 11 11 f.R ft(is)s
+2096 X(triangular)s
+2550 X
+0.0 11 11 f.I ft(m)s
+2638 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+2943 X(A)s
+3038 X
+0.0 11 11 f.R ft(is)s
+3140 X(triangular)s
+3594 X
+0.0 11 11 f.I ft(m)s
+3682 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+3987 X(A)s
+4082 X
+0.0 11 11 f.R ft(is)s
+4184 X(triangular)s
+4638 X
+0.0 11 11 f.I ft(m)s
+4726 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(m)s
+720 X
+720 X
+2720 Y
+1254 X
+0.0 11 11 f.R ft(SIDE)s
+1526 X(=`R')s
+1899 X
+0.0 11 11 f.I ft(B)s
+2003 X
+0.0 11 11 f.S ft(\254)s
+2140 X(a)s
+0.0 11 11 f.I ft(BA)s
+2676 Y
+2356 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+2720 Y
+2943 X
+0.0 11 11 f.I ft(B)s
+3047 X
+0.0 11 11 f.S ft(\254)s
+3184 X(a)s
+0.0 11 11 f.I ft(BA)s
+2676 Y
+3400 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.I ft(T)s
+2720 Y
+3987 X
+0.0 11 11 f.I ft(B)s
+4091 X
+0.0 11 11 f.S ft(\254)s
+4228 X(a)s
+0.0 11 11 f.I ft(BA)s
+2676 Y
+4444 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.I ft(H)s
+720 X
+2880 Y
+1899 X
+0.0 11 11 f.I ft(A)s
+1994 X
+0.0 11 11 f.R ft(is)s
+2096 X(triangular)s
+2550 X
+0.0 11 11 f.I ft(n)s
+2614 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+2943 X(A)s
+3038 X
+0.0 11 11 f.R ft(is)s
+3140 X(triangular)s
+3594 X
+0.0 11 11 f.I ft(n)s
+3658 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+3987 X(A)s
+4082 X
+0.0 11 11 f.R ft(is)s
+4184 X(triangular)s
+4638 X
+0.0 11 11 f.I ft(n)s
+4702 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(n)s
+720 X
+3260 Y
+804 X
+0.0 11 11 f.R ft(\(In)s
+959 X(the)s
+1121 X(real)s
+1312 X(case)s
+1527 X(the)s
+1689 X(values)s
+1997 X(`T')s
+2164 X(and)s
+2350 X(`C')s
+2524 X(have)s
+2758 X(the)s
+2920 X(same)s
+3173 X(meaning.\))s
+720 X
+3740 Y
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 11 11 f.B ft(7.)s
+831 X(Numerical)s
+1352 X(Stability)s
+720 X
+3960 Y
+970 X
+0.0 11 11 f.R ft(Although)s
+1416 X(it)s
+1508 X(is)s
+1612 X(intended)s
+2020 X(that)s
+2215 X(the)s
+2379 X(Level)s
+2658 X(3)s
+2743 X(BLAS)s
+3056 X(be)s
+3190 X(implemented)s
+3795 X(as)s
+3917 X(e)s
+/CFi {  (f) show xsiz pt 20 div neg 0 rmoveto (\256) s
+ } bind def
+
+CFi(ciently)s
+4387 X(as)s
+4509 X(possible,)s
+4929 X(it)s
+5022 X(is)s
+5127 X(essen-)s
+720 X
+4120 Y(tial)s
+890 X(that)s
+1084 X(e)s
+CFi(ciency)s
+1538 X(should)s
+1861 X(not)s
+2031 X(be)s
+2163 X(achieved)s
+2580 X(at)s
+2688 X(the)s
+2851 X(cost)s
+3057 X(of)s
+3177 X(sacri\256cing)s
+3663 X(numerical)s
+4129 X(stability.)s
+4569 X(This)s
+4793 X(is)s
+4895 X(particularly)s
+720 X
+4280 Y(important)s
+1176 X(since)s
+1429 X(the)s
+1591 X(Level)s
+1868 X(3)s
+1951 X(BLAS)s
+2261 X(are)s
+2421 X(intended)s
+2827 X(to)s
+2941 X(be)s
+3073 X(used)s
+3303 X(as)s
+3423 X(building)s
+3820 X(blocks)s
+4136 X(in)s
+4251 X(higher-level)s
+4809 X(algorithms)s
+5309 X(of)s
+720 X
+4440 Y(linear)s
+1013 X(algebra.)s
+1406 X(If)s
+1522 X(the)s
+1700 X(Level)s
+1993 X(3)s
+2092 X(BLAS)s
+2418 X(themselves)s
+2949 X(were)s
+3203 X(unstable,)s
+3640 X(they)s
+3872 X(would)s
+4190 X(destroy)s
+4556 X(the)s
+4733 X(stability)s
+5132 X(of)s
+5266 X(the)s
+720 X
+4600 Y(algorithms)s
+1219 X(that)s
+1412 X(call)s
+1598 X(them.)s
+720 X
+4920 Y
+0.0 11 11 f.B ft(8.)s
+859 X(Rationale)s
+720 X
+5140 Y
+970 X
+0.0 11 11 f.R ft(In)s
+1094 X(the)s
+1261 X(design)s
+1581 X(of)s
+1705 X(all)s
+1848 X(levels)s
+2137 X(of)s
+2261 X(BLAS,)s
+2604 X(one)s
+2795 X(of)s
+2919 X(the)s
+3086 X(main)s
+3339 X(concerns)s
+3760 X(is)s
+3867 X(to)s
+3986 X(keep)s
+4226 X(both)s
+4456 X(the)s
+4624 X(calling)s
+4957 X(sequences)s
+720 X
+5300 Y(simple)s
+1048 X(and)s
+1240 X(the)s
+1408 X(range)s
+1684 X(of)s
+1809 X(options)s
+2168 X(limited,)s
+2543 X(while)s
+2820 X(at)s
+2932 X(the)s
+3099 X(same)s
+3357 X(time)s
+3586 X(maintaining)s
+4145 X(su)s
+CFi(cient)s
+4581 X(functionality.)s
+5204 X(This)s
+720 X
+5460 Y(clearly)s
+1045 X(implies)s
+1398 X(a)s
+1474 X(compromise,)s
+2073 X(and)s
+2259 X(a)s
+2335 X(good)s
+2583 X(decision)s
+2977 X(is)s
+3080 X(vital)s
+3305 X(if)s
+3401 X(the)s
+3564 X(BLAS)s
+3875 X(are)s
+4036 X(to)s
+4151 X(be)s
+4283 X(accepted)s
+4693 X(as)s
+4813 X(a)s
+4890 X(useful)s
+5187 X(stan-)s
+720 X
+5620 Y(dard.)s
+970 X(In)s
+1089 X(this)s
+1277 X(section)s
+1616 X(we)s
+1771 X(discuss)s
+2117 X(the)s
+2279 X(reasoning)s
+2733 X(behind)s
+3060 X(some)s
+3320 X(of)s
+3439 X(the)s
+3601 X(decisions)s
+4038 X(we)s
+4193 X(have)s
+4427 X(made.)s
+720 X
+5840 Y
+970 X(The)s
+1175 X(three)s
+1428 X(basic)s
+1688 X(matrix-matrix)s
+2333 X(operations)s
+2825 X(were)s
+3071 X(chosen)s
+3410 X(because)s
+3790 X(they)s
+4014 X(occur)s
+4291 X(in)s
+4413 X(a)s
+4497 X(wide)s
+4746 X(range)s
+5024 X(of)s
+5151 X(linear)s
+720 X
+6000 Y(algebra)s
+1071 X(applications:)s
+1691 X(this)s
+1881 X(is)s
+1985 X(consistent)s
+2455 X(with)s
+2681 X(the)s
+2845 X(criteria)s
+3184 X(used)s
+3415 X(for)s
+3572 X(the)s
+3736 X(Level)s
+4014 X(1)s
+4098 X(and)s
+4285 X(Level)s
+4563 X(2)s
+4647 X(BLAS.)s
+5014 X(We)s
+5194 X(have)s
+720 X
+6160 Y(again)s
+987 X(aimed)s
+1285 X(at)s
+1394 X(a)s
+1472 X(reasonable)s
+1969 X(compromise)s
+2543 X(between)s
+2938 X(a)s
+3017 X(much)s
+3292 X(larger)s
+3577 X(number)s
+3943 X(of)s
+4065 X(routines)s
+4450 X(each)s
+4680 X(performing)s
+5204 X(only)s
+720 X
+6320 Y(one)s
+912 X(type)s
+1135 X(of)s
+1260 X(operation)s
+1708 X(\(e.g.,)s
+1965 X
+0.0 11 11 f.I ft(B)s
+2041 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+6276 Y
+2281 X
+0.0 8 8 f.I ft(T)s
+6320 Y
+2335 X
+0.0 11 11 f.I ft(B)s
+0.0 11 11 f.R ft(\),)s
+2500 X(and)s
+2692 X(a)s
+2774 X(smaller)s
+3131 X(number)s
+3500 X(of)s
+3625 X(routines)s
+4013 X(with)s
+4243 X(a)s
+4325 X(more)s
+4584 X(complicated)s
+5154 X(set)s
+5309 X(of)s
+720 X
+6480 Y(options.)s
+1109 X(There)s
+1399 X(are)s
+1567 X(in)s
+1689 X(fact,)s
+1917 X(in)s
+2040 X(each)s
+2276 X(precision,)s
+2743 X(6)s
+2835 X(real)s
+3035 X(routines)s
+3426 X(performing)s
+3956 X(altogether)s
+4431 X(48)s
+4578 X(di)s
+/Cff {  (f) show xsiz pt 20 div neg 0 rmoveto (f) s
+ } bind def
+
+Cff(erent)s
+4986 X(combina-)s
+720 X
+6640 Y(tions)s
+966 X(of)s
+1088 X(options,)s
+1472 X(and)s
+1661 X(9)s
+1747 X(complex)s
+2156 X(routines)s
+2541 X(performing)s
+3065 X(altogether)s
+3534 X(81)s
+3674 X(di)s
+Cff(erent)s
+4075 X(combinations)s
+4698 X(of)s
+4819 X(options.)s
+5230 X(The)s
+720 X
+6800 Y(number)s
+1083 X(of)s
+1202 X(routines)s
+1584 X(is)s
+1686 X(much)s
+1958 X(smaller)s
+2309 X(than)s
+2526 X(in)s
+2640 X(the)s
+2802 X(Level)s
+3079 X(2)s
+3162 X(BLAS.)s
+720 X
+7020 Y
+970 X(The)s
+1169 X(routines)s
+1552 X(that)s
+1746 X(we)s
+1902 X(have)s
+2138 X(speci\256ed)s
+2558 X(are)s
+2720 X(not)s
+2891 X(intended)s
+3299 X(as)s
+3420 X(high-level)s
+3895 X(matrix)s
+4212 X(algebra)s
+4563 X(routines,)s
+4975 X(but)s
+5146 X(rather)s
+720 X
+7180 Y(as)s
+839 X(tools)s
+1082 X(for)s
+1237 X(the)s
+1399 X(construction)s
+1970 X(of)s
+2089 X(such)s
+2318 X(routines.)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2941 X(- 13 -)s
+720 X
+880 Y
+970 X(In)s
+1093 X(almost)s
+1419 X(every)s
+1693 X(case,)s
+1940 X(where)s
+2238 X(appropriate,)s
+2796 X(we)s
+2955 X(include)s
+3310 X(operations)s
+3800 X(involving)s
+4256 X(a)s
+4337 X(matrix)s
+4657 X(and)s
+4848 X(its)s
+4986 X(transpose)s
+720 X
+1040 Y(\(the)s
+920 X(only)s
+1146 X(exceptions)s
+1645 X(are)s
+1806 X(the)s
+1969 X(_SYMM)s
+2390 X(and)s
+2577 X(_HEMM)s
+3003 X(routines\).)s
+3450 X(We)s
+3630 X(could)s
+3903 X(ask)s
+4078 X(the)s
+4241 X(user)s
+4452 X(to)s
+4567 X(transpose)s
+5010 X(the)s
+5173 X(input)s
+720 X
+1200 Y(matrix)s
+1047 X(but)s
+1228 X(feel)s
+1431 X(that)s
+1636 X(this)s
+1836 X(would)s
+2151 X(be)s
+2295 X(an)s
+2439 X(imposition,)s
+2981 X(particularly)s
+3527 X(if)s
+3635 X(the)s
+3810 X(BLAS)s
+4133 X(routine)s
+4485 X(is)s
+4600 X(being)s
+4885 X(called)s
+5187 X(from)s
+720 X
+1360 Y(deep)s
+955 X(within)s
+1266 X(the)s
+1429 X(user's)s
+1719 X(code.)s
+1982 X(It)s
+2078 X(would)s
+2381 X(also)s
+2586 X(increase)s
+2971 X(the)s
+3133 X(amount)s
+3491 X(of)s
+3610 X(data)s
+3820 X(movement,)s
+4340 X(whereas)s
+4725 X(one)s
+4911 X(of)s
+5030 X(the)s
+5192 X(aims)s
+720 X
+1520 Y(of)s
+839 X(our)s
+1013 X(proposal)s
+1419 X(is)s
+1521 X(to)s
+1635 X(assist)s
+1902 X(the)s
+2064 X(development)s
+2659 X(of)s
+2778 X(software)s
+3182 X(that)s
+3375 X(minimizes)s
+3862 X(data)s
+4072 X(movement.)s
+720 X
+1740 Y
+970 X(It)s
+1068 X(could)s
+1343 X(also)s
+1551 X(be)s
+1685 X(argued)s
+2013 X(that)s
+2209 X(algorithms)s
+2711 X(can)s
+2893 X(be)s
+3027 X(rewritten)s
+3454 X(to)s
+3572 X(require)s
+3913 X(only)s
+4141 X(one)s
+4331 X(of)s
+4454 X(the)s
+4620 X(patterns)s
+4999 X(of)s
+5122 X(access)s
+720 X
+1900 Y(for)s
+880 X(symmetric,)s
+1405 X(Hermitian)s
+1883 X(or)s
+2007 X(triangular)s
+2466 X(matrices)s
+2870 X(\(i.e.,)s
+3102 X(upper)s
+3384 X(or)s
+3508 X(lower)s
+3790 X(triangle\),)s
+4222 X(but)s
+4396 X(we)s
+4556 X(do)s
+4699 X(not)s
+4873 X(feel)s
+5069 X(that)s
+5266 X(the)s
+720 X
+2060 Y(BLAS)s
+1030 X(should)s
+1352 X(be)s
+1483 X(dictating)s
+1896 X(this)s
+2084 X(to)s
+2198 X(the)s
+2360 X(user.)s
+720 X
+2280 Y
+970 X(We)s
+1151 X(do)s
+1291 X(not)s
+1462 X(provide)s
+1827 X(routines)s
+2211 X(for)s
+2368 X(operations)s
+2855 X(involving)s
+3308 X(trapezoidal)s
+3824 X(matrices;)s
+4256 X(all)s
+4396 X(our)s
+4572 X(triangular)s
+5029 X(matrices)s
+720 X
+2440 Y(are)s
+887 X(square.)s
+1235 X(This)s
+1465 X(is)s
+1573 X(consistent)s
+2047 X(with)s
+2277 X(the)s
+2445 X(Level)s
+2728 X(2)s
+2817 X(BLAS.)s
+3161 X(It)s
+3262 X(would)s
+3571 X(be)s
+3708 X(possible)s
+4103 X(to)s
+4223 X(extend)s
+4549 X(the)s
+4717 X(routines)s
+5105 X(for)s
+5266 X(tri-)s
+720 X
+2600 Y(angular)s
+1090 X(matrices,)s
+1532 X(so)s
+1673 X(that)s
+1881 X(they)s
+2113 X(could)s
+2400 X(handle)s
+2735 X(trapezoidal)s
+3264 X(matrices,)s
+3706 X(at)s
+3828 X(the)s
+4005 X(cost)s
+4225 X(of)s
+4359 X(introducing)s
+4909 X(extra)s
+5170 X(argu-)s
+720 X
+2760 Y(ments.)s
+1050 X(On)s
+1223 X(the)s
+1396 X(other)s
+1660 X(hand,)s
+1940 X(a)s
+2027 X(trapezoidal)s
+2552 X(matrix)s
+2878 X(can)s
+3068 X(always)s
+3411 X(be)s
+3553 X(partitioned)s
+4068 X(into)s
+4279 X(a)s
+4366 X(triangular)s
+4831 X(matrix)s
+5156 X(and)s
+5352 X(a)s
+720 X
+2920 Y(rectangular)s
+1239 X(matrix.)s
+720 X
+3140 Y
+970 X(We)s
+1161 X(have)s
+1407 X(not)s
+1588 X(included)s
+2006 X(specialized)s
+2532 X(routines)s
+2927 X(to)s
+3054 X(take)s
+3277 X(advantage)s
+3761 X(of)s
+3893 X(packed)s
+4243 X(storage)s
+4600 X(schemes)s
+5012 X(for)s
+5180 X(sym-)s
+720 X
+3300 Y(metric,)s
+1067 X(Hermitian,)s
+1579 X(or)s
+1709 X(triangular)s
+2174 X(matrices,)s
+2612 X(nor)s
+2797 X(of)s
+2927 X(compact)s
+3336 X(storage)s
+3690 X(schemes)s
+4099 X(for)s
+4264 X(banded)s
+4618 X(matrices,)s
+5055 X(because)s
+720 X
+3460 Y(such)s
+953 X(storage)s
+1301 X(schemes)s
+1704 X(do)s
+1847 X(not)s
+2021 X(seem)s
+2279 X(to)s
+2398 X(lend)s
+2620 X(themselves)s
+3141 X(to)s
+3260 X(partitioning)s
+3807 X(into)s
+4012 X(blocks)s
+4332 X(and)s
+4523 X(hence)s
+4810 X(are)s
+4975 X(not)s
+5149 X(likely)s
+720 X
+3620 Y(to)s
+836 X(be)s
+969 X(so)s
+1097 X(useful)s
+1395 X(in)s
+1511 X(the)s
+1675 X(type)s
+1894 X(of)s
+2015 X(application)s
+2533 X(we)s
+2689 X(are)s
+2850 X(aiming)s
+3185 X(at.)s
+3321 X(Also)s
+3558 X(packed)s
+3896 X(storage)s
+4241 X(is)s
+4344 X(required)s
+4737 X(much)s
+5010 X(less)s
+5204 X(with)s
+720 X
+3780 Y(large)s
+966 X(memory)s
+1360 X(machines)s
+1802 X(available)s
+2225 X(today,)s
+2525 X(and)s
+2711 X(we)s
+2866 X(wish)s
+3102 X(to)s
+3216 X(keep)s
+3450 X(the)s
+3612 X(set)s
+3762 X(of)s
+3881 X(routines)s
+4263 X(as)s
+4382 X(small)s
+4649 X(as)s
+4768 X(possible.)s
+720 X
+4000 Y
+970 X(We)s
+1150 X(also)s
+1356 X(have)s
+1591 X(not)s
+1761 X(speci\256ed)s
+2180 X(a)s
+2257 X(set)s
+2408 X(of)s
+2528 X(extended-precision)s
+3390 X(routines)s
+3773 X(analogous)s
+4248 X(to)s
+4364 X(the)s
+4528 X(ES)s
+4687 X(and)s
+4875 X(EC)s
+5046 X(routines)s
+720 X
+4160 Y(in)s
+834 X(the)s
+996 X(Level)s
+1273 X(2)s
+1356 X(BLAS,)s
+1694 X(since)s
+1947 X(this)s
+2135 X(would)s
+2438 X(require)s
+2775 X(a)s
+2851 X(two-dimensional)s
+3618 X(array)s
+3869 X(in)s
+3983 X(extended)s
+4406 X(precision.)s
+720 X
+4380 Y
+970 X(As)s
+1131 X(with)s
+1366 X(the)s
+1539 X(Level)s
+1827 X(2)s
+1921 X(BLAS)s
+2243 X(no)s
+2393 X(check)s
+2687 X(has)s
+2873 X(been)s
+3119 X(included)s
+3537 X(for)s
+3704 X(singularity,)s
+4243 X(or)s
+4374 X(near)s
+4601 X(singularity,)s
+5140 X(in)s
+5266 X(the)s
+720 X
+4540 Y(routines)s
+1107 X(for)s
+1267 X(solving)s
+1625 X(triangular)s
+2084 X(equations.)s
+2594 X(The)s
+2797 X(requirements)s
+3402 X(for)s
+3562 X(such)s
+3796 X(a)s
+3877 X(test)s
+4063 X(depend)s
+4412 X(on)s
+4555 X(the)s
+4722 X(application)s
+5242 X(and)s
+720 X
+4700 Y(so)s
+846 X(we)s
+1001 X(felt)s
+1175 X(that)s
+1368 X(this)s
+1556 X(should)s
+1878 X(not)s
+2047 X(be)s
+2178 X(included,)s
+2612 X(but)s
+2781 X(should)s
+3103 X(instead)s
+3442 X(be)s
+3573 X(performed)s
+4056 X(outside)s
+4402 X(the)s
+4564 X(triangular)s
+5018 X(solver.)s
+720 X
+4920 Y
+970 X(We)s
+1160 X(have)s
+1406 X(tried)s
+1647 X(to)s
+1773 X(adhere)s
+2103 X(to)s
+2229 X(the)s
+2403 X(convention)s
+2931 X(of,)s
+3090 X(and)s
+3288 X(maintain)s
+3713 X(consistency)s
+4265 X(with,)s
+4529 X(the)s
+4703 X(Level)s
+4992 X(2)s
+5087 X(BLAS;)s
+720 X
+5080 Y(however,)s
+1159 X(we)s
+1321 X(have)s
+1562 X(deliberately)s
+2114 X(departed)s
+2525 X(from)s
+2773 X(this)s
+2968 X(approach)s
+3403 X(in)s
+3524 X(a)s
+3607 X(few)s
+3805 X(cases.)s
+4098 X(The)s
+4303 X(input-output)s
+4883 X(matrix)s
+5205 X
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(C)s
+5314 X
+0.0 11 11 f.R ft(in)s
+720 X
+5240 Y(the)s
+883 X(matrix-multiply)s
+1610 X(routines)s
+1993 X(is)s
+2096 X(the)s
+2259 X(analogue)s
+2683 X(of)s
+2803 X(the)s
+2966 X(vector)s
+3268 X
+0.0 11 11 f.I ft(y)s
+3345 X
+0.0 11 11 f.R ft(in)s
+3460 X(the)s
+3623 X(matrix-vector)s
+4248 X(product)s
+4612 X(routines.)s
+5023 X(But)s
+5213 X(here)s
+720 X
+5400 Y
+0.0 11 11 f.I ft(C)s
+830 X
+0.0 11 11 f.R ft(always)s
+1170 X(has)s
+1352 X(the)s
+1522 X(same)s
+1783 X(dimensions,)s
+2349 X(whereas)s
+2742 X
+0.0 11 11 f.I ft(y)s
+2826 X
+0.0 11 11 f.R ft(was)s
+3032 X(either)s
+3317 X(of)s
+3444 X(length)s
+3755 X
+0.0 11 11 f.I ft(m)s
+3870 X
+0.0 11 11 f.R ft(or)s
+3997 X
+0.0 11 11 f.I ft(n)s
+4088 X
+0.0 11 11 f.R ft(depending)s
+4581 X(on)s
+4726 X(context.)s
+5140 X(In)s
+5266 X(the)s
+720 X
+5560 Y(rank-)s
+0.0 11 11 f.I ft(k)s
+1031 X
+0.0 11 11 f.R ft(update)s
+1356 X(routines)s
+1743 X(we)s
+1903 X(have)s
+2142 X(included)s
+2553 X(a)s
+2634 X(parameter)s
+3103 X
+0.0 11 11 f.S ft(b)s
+3197 X
+0.0 11 11 f.R ft(which)s
+3498 X(was)s
+3701 X(not)s
+3875 X(present)s
+4224 X(in)s
+4343 X(the)s
+4510 X(Level)s
+4792 X(2)s
+4880 X(rank)s
+5108 X(update)s
+720 X
+5720 Y(routines.)s
+1168 X(Here)s
+1417 X(we)s
+1582 X(felt)s
+1766 X(that)s
+1969 X(the)s
+2141 X(parameter)s
+2615 X
+0.0 11 11 f.S ft(b)s
+2714 X
+0.0 11 11 f.R ft(is)s
+2826 X(useful)s
+3132 X(in)s
+3256 X(applications,)s
+3853 X(and)s
+4049 X(since)s
+4311 X(the)s
+4482 X(matrix)s
+4806 X(multiply)s
+5218 X(rou-)s
+720 X
+5880 Y(tines)s
+963 X(can)s
+1149 X(also)s
+1361 X(be)s
+1499 X(viewed)s
+1850 X(as)s
+1976 X(rank-)s
+0.0 11 11 f.I ft(k)s
+2289 X
+0.0 11 11 f.R ft(update)s
+2616 X(routines,)s
+3033 X(we)s
+3195 X(have)s
+3436 X(consistency)s
+3983 X(between)s
+4382 X(the)s
+4551 X(MM,)s
+4810 X(RK)s
+4998 X(and)s
+5192 X(R2K)s
+720 X
+6040 Y(routines.)s
+720 X
+6260 Y
+970 X(We)s
+1150 X(have)s
+1385 X(also)s
+1591 X(added)s
+1881 X(a)s
+1958 X(parameter)s
+2423 X
+0.0 11 11 f.S ft(a)s
+2521 X
+0.0 11 11 f.R ft(to)s
+2636 X(the)s
+2799 X(routines)s
+3182 X(involving)s
+3634 X(triangular)s
+4089 X(matrices.)s
+4545 X(This)s
+4770 X(was)s
+4969 X(not)s
+5139 X(felt)s
+5314 X(to)s
+720 X
+6420 Y(be)s
+856 X(needed)s
+1198 X(in)s
+1317 X(the)s
+1484 X(corresponding)s
+2144 X(Level)s
+2426 X(2)s
+2514 X(BLAS,)s
+2857 X(because)s
+3235 X(there)s
+3486 X(would)s
+3794 X(be)s
+3929 X(little)s
+4164 X(additional)s
+4636 X(cost)s
+4845 X(in)s
+4963 X(a)s
+5043 X(separate)s
+720 X
+6580 Y(operation)s
+1165 X(to)s
+1282 X(scale)s
+1531 X(the)s
+1696 X(result)s
+1971 X(vector)s
+2275 X(by)s
+2416 X
+0.0 11 11 f.S ft(a)s
+0.0 11 11 f.R ft(.)s
+2572 X(However)s
+3003 X(in)s
+3120 X(the)s
+3285 X(Level)s
+3565 X(3)s
+3651 X(BLAS)s
+3964 X(where)s
+4261 X(there)s
+4510 X(is)s
+4615 X(a)s
+4695 X(whole)s
+4995 X(matrix)s
+5314 X(to)s
+720 X
+6740 Y(be)s
+851 X(scaled,)s
+1180 X(it)s
+1270 X(is)s
+1372 X(advantageous)s
+1996 X(to)s
+2110 X(incorporate)s
+2636 X(the)s
+2798 X(scaling)s
+3137 X(within)s
+3447 X(_TRMM)s
+3867 X(or)s
+3986 X(_TRSM.)s
+720 X
+6960 Y
+970 X(Finally,)s
+1353 X(we)s
+1522 X(have)s
+1770 X(provided)s
+2202 X(for)s
+2371 X(complex)s
+2791 X(symmetric,)s
+3325 X(as)s
+3458 X(well)s
+3690 X(as)s
+3824 X(complex)s
+4245 X(Hermitian,)s
+4761 X(matrices)s
+5175 X(since)s
+720 X
+7120 Y(they)s
+937 X(occur)s
+1207 X(su)s
+/CFi {  (f) show xsiz pt 20 div neg 0 rmoveto (\256) s
+ } bind def
+
+CFi(ciently)s
+1724 X(often)s
+1977 X(in)s
+2091 X(applications.)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2941 X(- 14 -)s
+720 X
+880 Y
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 11 11 f.B ft(9.)s
+859 X(Applications)s
+720 X
+1100 Y
+970 X
+0.0 11 11 f.R ft(The)s
+1173 X(primary)s
+1553 X(intended)s
+1964 X(application)s
+2485 X(of)s
+2609 X(the)s
+2776 X(Level)s
+3058 X(3)s
+3146 X(BLAS)s
+3461 X(is)s
+3568 X(in)s
+3687 X(implementing)s
+4332 X(algorithms)s
+4837 X(of)s
+4962 X(numerical)s
+720 X
+1260 Y(linear)s
+1010 X(algebra)s
+1372 X(in)s
+1498 X(terms)s
+1782 X(of)s
+1913 X(operations)s
+2410 X(on)s
+2560 X(submatrices)s
+3124 X(\(or)s
+3291 X(blocks\).)s
+3682 X(There)s
+3976 X(is)s
+4090 X(a)s
+4178 X(long)s
+4414 X(history)s
+4760 X(of)s
+4891 X(block)s
+5175 X(algo-)s
+720 X
+1420 Y(rithms:)s
+1088 X(a)s
+1191 X(few)s
+1409 X(references)s
+1910 X(are)s
+2125 X(\(Barron)s
+2521 X(and)s
+2735 X(Swinnerton-Dyer,)s
+3580 X(1960\),)s
+3938 X(\(Chartres,)s
+4429 X(1960\),)s
+4731 X(\(McKellar)s
+5242 X(and)s
+720 X
+1580 Y(Co)s
+/Cff {  (f) show xsiz pt 20 div neg 0 rmoveto (f) s
+ } bind def
+
+Cff(man,)s
+1190 X(1969\),)s
+1548 X(\(Bronlund)s
+2056 X(and)s
+2270 X(Johnsen,)s
+2708 X(1974\),)s
+3066 X(\(Dietrich,)s
+3545 X(1976\),)s
+3903 X(\(DuCroz)s
+4342 X
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(et)s
+4477 X(al.)s
+0.0 11 11 f.R ft(,)s
+4675 X(1981\),)s
+4977 X(\(Calahan,)s
+720 X
+1740 Y(1986\),)s
+1037 X(and)s
+1228 X(\(Dave)s
+1527 X(and)s
+1718 X(Du)s
+Cff(,)s
+1980 X(1987\).)s
+2325 X(Both)s
+2574 X(the)s
+2742 X(NAG)s
+3013 X(and)s
+3205 X(the)s
+3373 X(IMSL)s
+3670 X(\(Edition)s
+4065 X(9\))s
+4190 X(libraries)s
+4583 X(include)s
+4940 X(such)s
+5175 X(algo-)s
+720 X
+1900 Y(rithms)s
+1032 X(\(F01BTF)s
+1473 X(and)s
+1661 X(F01BXF)s
+2078 X(in)s
+2194 X(NAG;)s
+2491 X(LEQIF)s
+2831 X(and)s
+3018 X(LEQOF)s
+3401 X(in)s
+3516 X(IMSL\).)s
+3900 X(The)s
+4099 X(earlier)s
+4406 X(work)s
+4660 X(was)s
+4859 X(usually)s
+5206 X(con-)s
+720 X
+2060 Y(cerned)s
+1046 X(with)s
+1278 X(submatrices)s
+1838 X(being)s
+2118 X(transferred)s
+2627 X(between)s
+3028 X(the)s
+3199 X(main)s
+3456 X(memory)s
+3859 X(and)s
+4054 X(disk)s
+4275 X(or)s
+4403 X(tape.)s
+4650 X(Similar)s
+5012 X(concerns)s
+720 X
+2220 Y(motivated)s
+1209 X(work)s
+1483 X(designed)s
+1922 X(to)s
+2057 X(exploit)s
+2412 X(common)s
+2845 X(page-swapping)s
+3556 X(algorithms)s
+4075 X(in)s
+4209 X(virtual)s
+4544 X(memory)s
+4958 X(machines.)s
+720 X
+2380 Y(Indeed)s
+1052 X(the)s
+1221 X(techniques)s
+1726 X(are)s
+1894 X(similar)s
+2236 X(wherever)s
+2677 X(there)s
+2931 X(exists)s
+3218 X(any)s
+3412 X(hierarchy)s
+3860 X(of)s
+3987 X(data)s
+4205 X(storage)s
+4557 X(\(in)s
+4715 X(terms)s
+4995 X(of)s
+5122 X(access)s
+720 X
+2540 Y(speed\).)s
+1062 X(Additionally,)s
+1676 X(full)s
+1858 X(blocks,)s
+2202 X(and)s
+2389 X(hence)s
+2672 X(the)s
+2835 X(multiplication)s
+3483 X(of)s
+3603 X(full)s
+3784 X(matrices,)s
+4211 X(might)s
+4497 X(appear)s
+4815 X(as)s
+4934 X(a)s
+5010 X(subprob-)s
+720 X
+2700 Y(lem)s
+918 X(when)s
+1188 X(handling)s
+1606 X(large)s
+1858 X(sparse)s
+2165 X(systems)s
+2548 X(of)s
+2673 X(equations)s
+3128 X(\(for)s
+3325 X(example,)s
+3786 X(\(Du)s
+Cff(,)s
+4085 X(1981\),)s
+4387 X(\(George)s
+4778 X(and)s
+4970 X(Rashwan,)s
+720 X
+2860 Y(1985\),)s
+1022 X(\(Dave)s
+1316 X(and)s
+1502 X(Du)s
+Cff(,)s
+1759 X(1987\)\).)s
+720 X
+3080 Y
+970 X(More)s
+1239 X(recently)s
+1623 X(several)s
+1964 X(workers)s
+2348 X(have)s
+2586 X(demonstrated)s
+3209 X(the)s
+3375 X(e)s
+Cff(ectiveness)s
+3972 X(of)s
+4095 X(block)s
+4371 X(algorithms)s
+4874 X(on)s
+5016 X(a)s
+5096 X(variety)s
+720 X
+3240 Y(of)s
+856 X(modern)s
+1236 X(computer)s
+1695 X(architectures,)s
+2326 X(with)s
+2567 X(vector-processing)s
+3390 X(or)s
+3526 X(parallel-processing)s
+4404 X(capabilities,)s
+4977 X(on)s
+5132 X(which)s
+720 X
+3400 Y(potentially)s
+1219 X(high)s
+1443 X(performance)s
+2022 X(can)s
+2201 X(easily)s
+2485 X(be)s
+2616 X(degraded)s
+3044 X(by)s
+3182 X(excessive)s
+3630 X(transfer)s
+3992 X(of)s
+4112 X(data)s
+4351 X(between)s
+4744 X(di)s
+Cff(erent)s
+5144 X(levels)s
+720 X
+3560 Y(of)s
+860 X(memory)s
+1275 X(\(vector)s
+1633 X(registers,)s
+2081 X(cache,)s
+2405 X(local)s
+2667 X(memory,)s
+3110 X(main)s
+3379 X(memory)s
+3794 X(or)s
+3934 X(solid-state)s
+4435 X(disks\))s
+4746 X(\(Dongarra)s
+5242 X(and)s
+720 X
+3720 Y(Hewitt,)s
+1087 X(1986\),)s
+1429 X(\(Berry,)s
+1782 X(Jalby)s
+2054 X(and)s
+2252 X(Meier,)s
+2581 X(1986\),)s
+2924 X(\(IBM,)s
+3237 X(1986\),)s
+3580 X(\(Robert)s
+3956 X(and)s
+4155 X(Sguazzero,)s
+4679 X(1987\),)s
+5022 X(\(Bischof)s
+720 X
+3880 Y(and)s
+920 X(Van)s
+1144 X(Loan,)s
+1439 X(1987\),)s
+1783 X(\(Bucher)s
+2176 X(and)s
+2375 X(Jordan,)s
+2736 X(1984\),)s
+3079 X(\(Schreiber,)s
+3603 X(1986\),)s
+3946 X(\(Calahan,)s
+4410 X(1986\),)s
+4753 X(\(Dongarra)s
+5242 X(and)s
+720 X
+4040 Y(Sorensen,)s
+1179 X(1986\),)s
+1510 X(\(Gallivan)s
+1953 X
+0.0 11 11 f.I ft(et)s
+2061 X(al.)s
+0.0 11 11 f.R ft(,)s
+2232 X(1987\),)s
+2563 X(\(Dongarra,)s
+3068 X(Hammarling,)s
+3680 X(and)s
+3867 X(Sorensen,)s
+4326 X(1987\),)s
+4657 X(\(Carnevali)s
+5149 X
+0.0 11 11 f.I ft(et)s
+5258 X(al.)s
+0.0 11 11 f.R ft(,)s
+720 X
+4200 Y(1987\),)s
+1047 X(and)s
+1265 X(\(Schreiber)s
+1762 X(and)s
+1962 X(Parlett,)s
+2319 X(1988\).)s
+2673 X(See)s
+2873 X(\(Demmel)s
+3329 X
+0.0 11 11 f.I ft(et)s
+3450 X(al.)s
+0.0 11 11 f.R ft(,)s
+3634 X(1987\))s
+3932 X(for)s
+4101 X(a)s
+4191 X(proposal)s
+4611 X(to)s
+4739 X(develop)s
+5128 X(a)s
+5218 X(new)s
+720 X
+4360 Y(linear)s
+997 X(algebra)s
+1346 X(library,)s
+1694 X(using)s
+1961 X(block)s
+2233 X(algorithms)s
+2732 X(wherever)s
+3165 X(possible)s
+3554 X(and)s
+3740 X(calling)s
+4067 X(Level)s
+4344 X(3)s
+4427 X(BLAS.)s
+720 X
+4580 Y
+970 X(Here)s
+1214 X(we)s
+1374 X(illustrate)s
+1792 X(how)s
+2014 X(the)s
+2181 X(Level)s
+2463 X(3)s
+2551 X(BLAS)s
+2867 X(routines)s
+3255 X(can)s
+3440 X(be)s
+3577 X(used)s
+3812 X(to)s
+3932 X(implement)s
+4437 X(a)s
+4519 X(simple)s
+4847 X(algorithm)s
+5309 X(of)s
+720 X
+4740 Y(numerical)s
+1186 X(linear)s
+1463 X(algebra,)s
+1840 X(namely,)s
+2219 X(Cholesky)s
+2663 X(factorization.)s
+720 X
+4960 Y
+970 X(The)s
+1168 X(strategy)s
+1543 X(is)s
+1645 X(to)s
+1759 X(compute)s
+2165 X(at)s
+2272 X(each)s
+2499 X(stage)s
+2752 X(a)s
+2828 X(block)s
+3100 X(of)s
+3219 X(consecutive)s
+3764 X(columns)s
+4165 X(of)s
+4284 X(the)s
+4447 X(result.)s
+4748 X(The)s
+4947 X(size)s
+5146 X(of)s
+5266 X(the)s
+720 X
+5120 Y(block)s
+1005 X(is)s
+1120 X(a)s
+1209 X(parameter,)s
+1714 X
+0.0 11 11 f.I ft(nb)s
+0.0 11 11 f.R ft(,)s
+1893 X(that)s
+2099 X(may)s
+2329 X(be)s
+2473 X(varied)s
+2787 X(to)s
+2913 X(suit)s
+3113 X(the)s
+3287 X(size)s
+3497 X(of)s
+3628 X(the)s
+3802 X(problem)s
+4208 X(and)s
+4406 X(the)s
+4580 X(architecture)s
+5135 X(of)s
+5266 X(the)s
+720 X
+5280 Y(machine.)s
+1153 X(\(For)s
+1376 X(transportable)s
+1982 X(software,)s
+2420 X(we)s
+2581 X(shall)s
+2823 X(need)s
+3063 X(some)s
+3329 X(means)s
+3643 X(of)s
+3768 X(determining)s
+4333 X(the)s
+4501 X(blocksize)s
+4949 X(within)s
+5266 X(the)s
+720 X
+5440 Y(routine,)s
+1087 X(but)s
+1256 X(we)s
+1411 X(set)s
+1561 X(that)s
+1754 X(issue)s
+2002 X(aside)s
+2255 X(here.\))s
+720 X
+5660 Y
+970 X(There)s
+1258 X(are)s
+1425 X(other)s
+1685 X(ways)s
+1945 X(to)s
+2066 X(organize)s
+2477 X(the)s
+2646 X(computation:)s
+3262 X(for)s
+3424 X(example,)s
+3858 X(it)s
+3955 X(is)s
+4064 X(equally)s
+4422 X(possible)s
+4818 X(to)s
+4939 X(compute)s
+5352 X(a)s
+720 X
+5820 Y(block)s
+1010 X(of)s
+1147 X(consecutive)s
+1710 X(rows)s
+1969 X(at)s
+2094 X(each)s
+2339 X(stage.)s
+2638 X(The)s
+2854 X(analysis)s
+3254 X(of)s
+3419 X(\(Dongarra,)s
+3941 X(Gustavson)s
+4451 X(and)s
+4655 X(Karp,)s
+4947 X(1984\))s
+5249 X(can)s
+720 X
+5980 Y(easily)s
+1017 X(be)s
+1161 X(extended)s
+1597 X(to)s
+1724 X(block)s
+2009 X(algorithms.)s
+2549 X(We)s
+2741 X(have)s
+2988 X(chosen)s
+3333 X(an)s
+3477 X(organization)s
+4066 X(that)s
+4272 X(works)s
+4581 X(by)s
+4732 X(columns)s
+5146 X(rather)s
+720 X
+6140 Y(than)s
+937 X(rows,)s
+1206 X(and)s
+1392 X(that)s
+1585 X(involves)s
+1986 X(fewest)s
+2299 X(memory)s
+2693 X(references.)s
+720 X
+6360 Y
+970 X(Also,)s
+1247 X(we)s
+1415 X(have)s
+1662 X(implemented)s
+2277 X(the)s
+2452 X(algorithms)s
+2964 X(in)s
+3091 X(such)s
+3333 X(a)s
+3422 X(way)s
+3645 X(that)s
+3851 X(submatrices)s
+4416 X(passed)s
+4750 X(to)s
+4878 X(the)s
+5054 X(Level)s
+5345 X(3)s
+720 X
+6520 Y(BLAS)s
+1032 X(routines)s
+1416 X(are)s
+1577 X(kept)s
+1795 X(as)s
+1915 X(large)s
+2162 X(as)s
+2282 X(possible)s
+2672 X(\(once)s
+2943 X(the)s
+3106 X(block)s
+3379 X(size)s
+3578 X(has)s
+3753 X(been)s
+3988 X(\256xed\):)s
+4332 X(this)s
+4521 X(gives)s
+4782 X(greatest)s
+5151 X(scope)s
+720 X
+6680 Y(for)s
+878 X(achieving)s
+1335 X(e)s
+/CFi {  (f) show xsiz pt 20 div neg 0 rmoveto (\256) s
+ } bind def
+
+CFi(ciency)s
+1791 X(within)s
+2104 X(the)s
+2269 X(Level)s
+2549 X(3)s
+2635 X(BLAS.)s
+3004 X(Alternatively)s
+3614 X(one)s
+3804 X(might)s
+4094 X(explicitly)s
+4542 X(partition)s
+4947 X(the)s
+5113 X(matrix)s
+720 X
+6840 Y(into,)s
+951 X(say,)s
+1156 X(square)s
+1472 X(blocks)s
+1790 X(of)s
+1912 X(size)s
+2113 X
+0.0 11 11 f.I ft(nb)s
+2232 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(nb)s
+0.0 11 11 f.R ft(:)s
+2465 X(this)s
+2656 X(would)s
+2962 X(require)s
+3302 X(many)s
+3576 X(more)s
+3831 X(calls)s
+4062 X(to)s
+4178 X(the)s
+4342 X(Level)s
+4621 X(3)s
+4706 X(BLAS)s
+5018 X(routines,)s
+720 X
+7000 Y(but)s
+889 X(might)s
+1175 X(allow)s
+1447 X(a)s
+1523 X(more)s
+1776 X(precise)s
+2113 X(control)s
+2452 X(of)s
+2571 X(memory)s
+2965 X(or)s
+3084 X(of)s
+3203 X(parallelism.)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2941 X(- 15 -)s
+720 X
+880 Y
+970 X(We)s
+1154 X(assume)s
+1510 X(that)s
+1708 X(we)s
+1868 X(are)s
+2033 X(given)s
+2310 X(a)s
+2391 X(positive-de\256nite)s
+3139 X(symmetric)s
+3636 X(matrix)s
+3957 X
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(A)s
+4058 X
+0.0 11 11 f.R ft(whose)s
+4372 X(lower)s
+4655 X(triangle)s
+5024 X(is)s
+5132 X(stored)s
+720 X
+1040 Y(in)s
+846 X(the)s
+1020 X(lower)s
+1309 X(triangle)s
+1684 X(of)s
+1815 X(a)s
+1903 X(two-dimensional)s
+2682 X(array,)s
+2973 X(and)s
+3171 X(we)s
+3338 X(wish)s
+3586 X(to)s
+3712 X(compute)s
+4129 X
+0.0 11 11 f.I ft(L)s
+4230 X
+0.0 11 11 f.R ft(overwriting)s
+4781 X(the)s
+4954 X(given)s
+5237 X(ele-)s
+720 X
+1200 Y(ments)s
+1011 X(of)s
+1130 X
+0.0 11 11 f.I ft(A)s
+0.0 11 11 f.R ft(.)s
+720 X
+1420 Y
+970 X(We)s
+1149 X(can)s
+1328 X(partition)s
+1729 X(the)s
+1891 X(matrices)s
+2290 X(so)s
+2416 X(that)s
+720 X
+1607 Y
+1288 X
+0.0 11 11 f.S2 ft(B)s
+1717 Y
+1288 X(A)s
+1827 Y
+1288 X(A)s
+1937 Y
+1288 X(D)s
+1904 Y
+1371 X
+0.0 11 11 f.I ft(A)s
+1926 Y
+1451 X
+0.0 8 8 f.R ft(31)s
+1772 Y
+1371 X
+0.0 11 11 f.I ft(A)s
+1794 Y
+1451 X
+0.0 8 8 f.R ft(21)s
+1627 Y
+1371 X
+0.0 11 11 f.I ft(A)s
+1649 Y
+1451 X
+0.0 8 8 f.R ft(11)s
+1906 Y
+1596 X
+0.0 11 11 f.I ft(A)s
+1928 Y
+1676 X
+0.0 8 8 f.R ft(32)s
+1774 Y
+1596 X
+0.0 11 11 f.I ft(A)s
+1796 Y
+1676 X
+0.0 8 8 f.R ft(22)s
+1629 Y
+1596 X
+0.0 11 11 f.I ft(A)s
+1651 Y
+1669 X
+0.0 8 8 f.R ft(21)s
+1585 Y
+1669 X
+0.0 8 8 f.I ft(T)s
+1908 Y
+1821 X
+0.0 11 11 f.I ft(A)s
+1930 Y
+1901 X
+0.0 8 8 f.R ft(33)s
+1776 Y
+1821 X
+0.0 11 11 f.I ft(A)s
+1798 Y
+1894 X
+0.0 8 8 f.R ft(32)s
+1732 Y
+1894 X
+0.0 8 8 f.I ft(T)s
+1631 Y
+1821 X
+0.0 11 11 f.I ft(A)s
+1653 Y
+1894 X
+0.0 8 8 f.R ft(31)s
+1587 Y
+1894 X
+0.0 8 8 f.I ft(T)s
+1613 Y
+1990 X
+0.0 11 11 f.S2 ft(E)s
+1723 Y
+1990 X(A)s
+1833 Y
+1990 X(A)s
+1943 Y
+1990 X(G)s
+1778 Y
+2073 X
+0.0 11 11 f.I ft(=)s
+1613 Y
+2193 X
+0.0 11 11 f.S2 ft(B)s
+1723 Y
+2193 X(A)s
+1833 Y
+2193 X(A)s
+1943 Y
+2193 X(D)s
+1910 Y
+2276 X
+0.0 11 11 f.I ft(L)s
+1932 Y
+2351 X
+0.0 8 8 f.R ft(31)s
+1778 Y
+2276 X
+0.0 11 11 f.I ft(L)s
+1800 Y
+2351 X
+0.0 8 8 f.R ft(21)s
+1646 Y
+2276 X
+0.0 11 11 f.I ft(L)s
+1668 Y
+2351 X
+0.0 8 8 f.R ft(11)s
+1910 Y
+2496 X
+0.0 11 11 f.I ft(L)s
+1932 Y
+2571 X
+0.0 8 8 f.R ft(32)s
+1778 Y
+2496 X
+0.0 11 11 f.I ft(L)s
+1800 Y
+2571 X
+0.0 8 8 f.R ft(22)s
+1910 Y
+2716 X
+0.0 11 11 f.I ft(L)s
+1932 Y
+2791 X
+0.0 8 8 f.R ft(33)s
+1613 Y
+2880 X
+0.0 11 11 f.S2 ft(E)s
+1723 Y
+2880 X(A)s
+1833 Y
+2880 X(A)s
+1943 Y
+2880 X(G)s
+1613 Y
+2981 X(B)s
+1723 Y
+2981 X(A)s
+1833 Y
+2981 X(A)s
+1943 Y
+2981 X(D)s
+1633 Y
+3064 X
+0.0 11 11 f.I ft(L)s
+1655 Y
+3132 X
+0.0 8 8 f.R ft(11)s
+1589 Y
+3132 X
+0.0 8 8 f.I ft(T)s
+1780 Y
+3277 X
+0.0 11 11 f.I ft(L)s
+1802 Y
+3345 X
+0.0 8 8 f.R ft(22)s
+1736 Y
+3345 X
+0.0 8 8 f.I ft(T)s
+1635 Y
+3277 X
+0.0 11 11 f.I ft(L)s
+1657 Y
+3345 X
+0.0 8 8 f.R ft(21)s
+1591 Y
+3345 X
+0.0 8 8 f.I ft(T)s
+1927 Y
+3490 X
+0.0 11 11 f.I ft(L)s
+1949 Y
+3558 X
+0.0 8 8 f.R ft(33)s
+1883 Y
+3558 X
+0.0 8 8 f.I ft(T)s
+1782 Y
+3490 X
+0.0 11 11 f.I ft(L)s
+1804 Y
+3558 X
+0.0 8 8 f.R ft(32)s
+1738 Y
+3558 X
+0.0 8 8 f.I ft(T)s
+1637 Y
+3490 X
+0.0 11 11 f.I ft(L)s
+1659 Y
+3558 X
+0.0 8 8 f.R ft(31)s
+1593 Y
+3558 X
+0.0 8 8 f.I ft(T)s
+1619 Y
+3647 X
+0.0 11 11 f.S2 ft(E)s
+1729 Y
+3647 X(A)s
+1839 Y
+3647 X(A)s
+1949 Y
+3647 X(G)s
+1784 Y
+3730 X
+0.0 11 11 f.I ft(=)s
+720 X
+2333 Y
+1288 X
+0.0 11 11 f.S2 ft(B)s
+2443 Y
+1288 X(A)s
+2553 Y
+1288 X(A)s
+2663 Y
+1288 X(D)s
+2498 Y
+0.0 11 11 f.R ft( )s
+2643 Y
+0.0 11 11 f.I ft(L)s
+2665 Y
+1446 X
+0.0 8 8 f.R ft(31)s
+2643 Y
+1535 X
+0.0 11 11 f.I ft(L)s
+2665 Y
+1603 X
+0.0 8 8 f.R ft(11)s
+2599 Y
+1603 X
+0.0 8 8 f.I ft(T)s
+2498 Y
+1371 X
+0.0 11 11 f.I ft(L)s
+2520 Y
+1446 X
+0.0 8 8 f.R ft(21)s
+2498 Y
+1535 X
+0.0 11 11 f.I ft(L)s
+2520 Y
+1603 X
+0.0 8 8 f.R ft(11)s
+2454 Y
+1603 X
+0.0 8 8 f.I ft(T)s
+2353 Y
+1371 X
+0.0 11 11 f.I ft(L)s
+2375 Y
+1446 X
+0.0 8 8 f.R ft(11)s
+2353 Y
+1535 X
+0.0 11 11 f.I ft(L)s
+2375 Y
+1603 X
+0.0 8 8 f.R ft(11)s
+2309 Y
+1603 X
+0.0 8 8 f.I ft(T)s
+2500 Y
+1692 X
+0.0 11 11 f.R ft(  )s
+2645 Y
+0.0 11 11 f.I ft(L)s
+2667 Y
+1823 X
+0.0 8 8 f.R ft(31)s
+2645 Y
+1912 X
+0.0 11 11 f.I ft(L)s
+2667 Y
+1980 X
+0.0 8 8 f.R ft(21)s
+2601 Y
+1980 X
+0.0 8 8 f.I ft(T)s
+2645 Y
+2078 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+2667 Y
+2270 X
+0.0 8 8 f.R ft(32)s
+2645 Y
+2359 X
+0.0 11 11 f.I ft(L)s
+2667 Y
+2427 X
+0.0 8 8 f.R ft(22)s
+2601 Y
+2427 X
+0.0 8 8 f.I ft(T)s
+2500 Y
+1748 X
+0.0 11 11 f.I ft(L)s
+2522 Y
+1823 X
+0.0 8 8 f.R ft(21)s
+2500 Y
+1912 X
+0.0 11 11 f.I ft(L)s
+2522 Y
+1980 X
+0.0 8 8 f.R ft(21)s
+2456 Y
+1980 X
+0.0 8 8 f.I ft(T)s
+2500 Y
+2078 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+2522 Y
+2270 X
+0.0 8 8 f.R ft(22)s
+2500 Y
+2359 X
+0.0 11 11 f.I ft(L)s
+2522 Y
+2427 X
+0.0 8 8 f.R ft(22)s
+2456 Y
+2427 X
+0.0 8 8 f.I ft(T)s
+2355 Y
+1971 X
+0.0 11 11 f.I ft(L)s
+2377 Y
+2046 X
+0.0 8 8 f.R ft(11)s
+2355 Y
+2135 X
+0.0 11 11 f.I ft(L)s
+2377 Y
+2203 X
+0.0 8 8 f.R ft(21)s
+2311 Y
+2203 X
+0.0 8 8 f.I ft(T)s
+2502 Y
+2516 X
+0.0 11 11 f.R ft(  )s
+2647 Y
+0.0 11 11 f.I ft(L)s
+2669 Y
+2647 X
+0.0 8 8 f.R ft(31)s
+2647 Y
+2736 X
+0.0 11 11 f.I ft(L)s
+2669 Y
+2804 X
+0.0 8 8 f.R ft(31)s
+2603 Y
+2804 X
+0.0 8 8 f.I ft(T)s
+2647 Y
+2902 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+2669 Y
+3094 X
+0.0 8 8 f.R ft(32)s
+2647 Y
+3183 X
+0.0 11 11 f.I ft(L)s
+2669 Y
+3251 X
+0.0 8 8 f.R ft(32)s
+2603 Y
+3251 X
+0.0 8 8 f.I ft(T)s
+2647 Y
+3349 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+2669 Y
+3541 X
+0.0 8 8 f.R ft(33)s
+2647 Y
+3630 X
+0.0 11 11 f.I ft(L)s
+2669 Y
+3698 X
+0.0 8 8 f.R ft(33)s
+2603 Y
+3698 X
+0.0 8 8 f.I ft(T)s
+2502 Y
+2795 X
+0.0 11 11 f.I ft(L)s
+2524 Y
+2870 X
+0.0 8 8 f.R ft(21)s
+2502 Y
+2959 X
+0.0 11 11 f.I ft(L)s
+2524 Y
+3027 X
+0.0 8 8 f.R ft(31)s
+2458 Y
+3027 X
+0.0 8 8 f.I ft(T)s
+2502 Y
+3125 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+2524 Y
+3317 X
+0.0 8 8 f.R ft(22)s
+2502 Y
+3406 X
+0.0 11 11 f.I ft(L)s
+2524 Y
+3474 X
+0.0 8 8 f.R ft(32)s
+2458 Y
+3474 X
+0.0 8 8 f.I ft(T)s
+2357 Y
+3019 X
+0.0 11 11 f.I ft(L)s
+2379 Y
+3094 X
+0.0 8 8 f.R ft(11)s
+2357 Y
+3183 X
+0.0 11 11 f.I ft(L)s
+2379 Y
+3251 X
+0.0 8 8 f.R ft(31)s
+2313 Y
+3251 X
+0.0 8 8 f.I ft(T)s
+2339 Y
+3787 X
+0.0 11 11 f.S2 ft(E)s
+2449 Y
+3787 X(A)s
+2559 Y
+3787 X(A)s
+2669 Y
+3787 X(G)s
+720 X
+2872 Y
+0.0 11 11 f.R ft(Here)s
+964 X
+0.0 11 11 f.I ft(L)s
+2894 Y
+1039 X
+0.0 8 8 f.R ft(22)s
+2872 Y
+1161 X
+0.0 11 11 f.R ft(and)s
+1352 X
+0.0 11 11 f.I ft(L)s
+2894 Y
+1427 X
+0.0 8 8 f.R ft(32)s
+2872 Y
+1549 X
+0.0 11 11 f.R ft(constitute)s
+2010 X(the)s
+2177 X(current)s
+2519 X(block)s
+2796 X(of)s
+2920 X(columns)s
+3326 X(of)s
+3451 X
+0.0 11 11 f.I ft(L)s
+3547 X
+0.0 11 11 f.R ft(to)s
+3667 X(be)s
+3804 X(computed,)s
+4299 X(and)s
+4491 X(we)s
+4652 X(assume)s
+5009 X(that)s
+5208 X
+0.0 11 11 f.I ft(L)s
+2894 Y
+5283 X
+0.0 8 8 f.R ft(11)s
+2872 Y
+5372 X
+0.0 11 11 f.R ft(,)s
+720 X
+3032 Y
+0.0 11 11 f.I ft(L)s
+3054 Y
+795 X
+0.0 8 8 f.R ft(21)s
+3032 Y
+884 X
+0.0 11 11 f.R ft(,)s
+949 X(and)s
+1144 X
+0.0 11 11 f.I ft(L)s
+3054 Y
+1219 X
+0.0 8 8 f.R ft(31)s
+3032 Y
+1345 X
+0.0 11 11 f.R ft(constitute)s
+1810 X(the)s
+1981 X(blocks,)s
+2333 X(if)s
+2437 X(any,)s
+2660 X(that)s
+2862 X(have)s
+3105 X(already)s
+3462 X(been)s
+3704 X(computed.)s
+4201 X(Note)s
+4450 X(that)s
+4651 X(the)s
+4821 X(blocks)s
+5144 X(in)s
+5266 X(the)s
+720 X
+3192 Y(above)s
+1009 X(partitioning)s
+1551 X(are)s
+1711 X(not)s
+1880 X(all)s
+2018 X(of)s
+2137 X(equal)s
+2402 X(size:)s
+2631 X(the)s
+2793 X(o)s
+/Cff {  (f) show xsiz pt 20 div neg 0 rmoveto (f) s
+ } bind def
+
+Cff(-diagonal)s
+3357 X(blocks)s
+3672 X(are,)s
+3860 X(in)s
+3974 X(general,)s
+4351 X(rectangular.)s
+720 X
+3412 Y
+970 X(Equating)s
+1395 X(blocks,)s
+1738 X(we)s
+1893 X(have)s
+720 X
+3632 Y
+1270 X
+0.0 11 11 f.I ft(A)s
+3654 Y
+1350 X
+0.0 8 8 f.R ft(22)s
+3632 Y
+1439 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(=)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+3654 Y
+1644 X
+0.0 8 8 f.R ft(21)s
+3632 Y
+1733 X
+0.0 11 11 f.I ft(L)s
+3654 Y
+1801 X
+0.0 8 8 f.R ft(21)s
+3588 Y
+1801 X
+0.0 8 8 f.I ft(T)s
+3632 Y
+1899 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+3654 Y
+2091 X
+0.0 8 8 f.R ft(22)s
+3632 Y
+2180 X
+0.0 11 11 f.I ft(L)s
+3654 Y
+2248 X
+0.0 8 8 f.R ft(22)s
+3588 Y
+2248 X
+0.0 8 8 f.I ft(T)s
+720 X
+3852 Y
+1270 X
+0.0 11 11 f.I ft(A)s
+3874 Y
+1350 X
+0.0 8 8 f.R ft(32)s
+3852 Y
+1439 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(=)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+3874 Y
+1644 X
+0.0 8 8 f.R ft(31)s
+3852 Y
+1733 X
+0.0 11 11 f.I ft(L)s
+3874 Y
+1801 X
+0.0 8 8 f.R ft(21)s
+3808 Y
+1801 X
+0.0 8 8 f.I ft(T)s
+3852 Y
+1899 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(+)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+3874 Y
+2091 X
+0.0 8 8 f.R ft(32)s
+3852 Y
+2180 X
+0.0 11 11 f.I ft(L)s
+3874 Y
+2248 X
+0.0 8 8 f.R ft(22)s
+3808 Y
+2248 X
+0.0 8 8 f.I ft(T)s
+720 X
+4072 Y
+0.0 11 11 f.R ft(so)s
+846 X(that)s
+720 X
+4292 Y
+1270 X
+0.0 11 11 f.I ft(L)s
+4314 Y
+1345 X
+0.0 8 8 f.R ft(22)s
+4292 Y
+1434 X
+0.0 11 11 f.I ft(L)s
+4314 Y
+1502 X
+0.0 8 8 f.R ft(22)s
+4248 Y
+1502 X
+0.0 8 8 f.I ft(T)s
+4292 Y
+1600 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(=)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(A)s
+4314 Y
+1810 X
+0.0 8 8 f.R ft(22)s
+4292 Y
+1899 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(-)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+4314 Y
+2091 X
+0.0 8 8 f.R ft(21)s
+4292 Y
+2180 X
+0.0 11 11 f.I ft(L)s
+4314 Y
+2248 X
+0.0 8 8 f.R ft(21)s
+4248 Y
+2248 X
+0.0 8 8 f.I ft(T)s
+720 X
+4512 Y
+1270 X
+0.0 11 11 f.I ft(L)s
+4534 Y
+1345 X
+0.0 8 8 f.R ft(32)s
+4512 Y
+1434 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(=)s
+0.0 11 11 f.R ft( \()s
+0.0 11 11 f.I ft(A)s
+4534 Y
+1680 X
+0.0 8 8 f.R ft(32)s
+4512 Y
+1769 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(-)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+4534 Y
+1961 X
+0.0 8 8 f.R ft(31)s
+4512 Y
+2050 X
+0.0 11 11 f.I ft(L)s
+4534 Y
+2118 X
+0.0 8 8 f.R ft(21)s
+4468 Y
+2118 X
+0.0 8 8 f.I ft(T)s
+4512 Y
+2216 X
+0.0 11 11 f.R ft(\)\()s
+0.0 11 11 f.I ft(L)s
+4534 Y
+2356 X
+0.0 8 8 f.R ft(22)s
+4468 Y
+2356 X
+0.0 8 8 f.I ft(T)s
+4512 Y
+2454 X
+0.0 11 11 f.R ft(\))s
+4468 Y
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+720 X
+4732 Y
+0.0 11 11 f.R ft(Thus)s
+968 X(the)s
+1130 X(computation)s
+1708 X(of)s
+1827 X(one)s
+2013 X(block-column)s
+2651 X(of)s
+2770 X(the)s
+2932 X(result)s
+3204 X(involves)s
+3605 X(the)s
+3767 X(following)s
+4223 X(operations:)s
+720 X
+5052 Y(1.)s
+831 X(update)s
+1151 X(the)s
+1313 X(diagonal)s
+1719 X(block:)s
+720 X
+5272 Y
+1270 X
+0.0 11 11 f.I ft(A)s
+5294 Y
+1343 X
+0.0 8 8 f.R ft(22)s
+5228 Y
+1343 X
+0.0 8 8 f.I ft(\302)s
+5272 Y
+1441 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(A)s
+5294 Y
+1686 X
+0.0 8 8 f.R ft(22)s
+5272 Y
+1775 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(-)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+5294 Y
+1967 X
+0.0 8 8 f.R ft(21)s
+5272 Y
+2056 X
+0.0 11 11 f.I ft(L)s
+5294 Y
+2124 X
+0.0 8 8 f.R ft(21)s
+5228 Y
+2124 X
+0.0 8 8 f.I ft(T)s
+720 X
+5652 Y
+0.0 11 11 f.R ft(2.)s
+831 X(compute)s
+1237 X(the)s
+1399 X(Cholesky)s
+1843 X(factorization)s
+2424 X(of)s
+2543 X(the)s
+2705 X(diagonal)s
+3111 X(block:)s
+720 X
+5872 Y
+1270 X
+0.0 11 11 f.I ft(A)s
+5894 Y
+1343 X
+0.0 8 8 f.R ft(22)s
+5828 Y
+1343 X
+0.0 8 8 f.I ft(\302)s
+5872 Y
+1441 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\256)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+5894 Y
+1681 X
+0.0 8 8 f.R ft(22)s
+5872 Y
+1770 X
+0.0 11 11 f.I ft(L)s
+5894 Y
+1838 X
+0.0 8 8 f.R ft(22)s
+5828 Y
+1838 X
+0.0 8 8 f.I ft(T)s
+720 X
+6252 Y
+0.0 11 11 f.R ft(3.)s
+831 X(update)s
+1151 X(the)s
+1313 X(subdiagonal)s
+1872 X(block:)s
+720 X
+6472 Y
+1270 X
+0.0 11 11 f.I ft(A)s
+6494 Y
+1343 X
+0.0 8 8 f.R ft(32)s
+6428 Y
+1343 X
+0.0 8 8 f.I ft(\302)s
+6472 Y
+1441 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(A)s
+6494 Y
+1686 X
+0.0 8 8 f.R ft(32)s
+6472 Y
+1775 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(-)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(L)s
+6494 Y
+1967 X
+0.0 8 8 f.R ft(31)s
+6472 Y
+2056 X
+0.0 11 11 f.I ft(L)s
+6494 Y
+2124 X
+0.0 8 8 f.R ft(21)s
+6428 Y
+2124 X
+0.0 8 8 f.I ft(T)s
+720 X
+6852 Y
+0.0 11 11 f.R ft(4.)s
+831 X(compute)s
+1237 X(the)s
+1399 X(subdiagonal)s
+1958 X(block)s
+2230 X(of)s
+2349 X
+0.0 11 11 f.I ft(L)s
+0.0 11 11 f.R ft(:)s
+720 X
+7072 Y
+1270 X
+0.0 11 11 f.I ft(L)s
+7094 Y
+1345 X
+0.0 8 8 f.R ft(32)s
+7072 Y
+1434 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(A)s
+7094 Y
+1672 X
+0.0 8 8 f.R ft(32)s
+7028 Y
+1672 X
+0.0 8 8 f.I ft(\302)s
+7072 Y
+1770 X
+0.0 11 11 f.R ft(\()s
+0.0 11 11 f.I ft(L)s
+7094 Y
+1874 X
+0.0 8 8 f.R ft(22)s
+7028 Y
+1874 X
+0.0 8 8 f.I ft(T)s
+7072 Y
+1972 X
+0.0 11 11 f.R ft(\))s
+7028 Y
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 8 8 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2941 X
+0.0 11 11 f.R ft(- 16 -)s
+720 X
+880 Y(To)s
+874 X(express)s
+1234 X(the)s
+1400 X(complete)s
+1834 X(algorithm,)s
+2322 X(we)s
+2481 X(adopt)s
+2757 X(a)s
+2837 X(notation)s
+3230 X(in)s
+3348 X(which)s
+3648 X(the)s
+3814 X(matrix)s
+4133 X(is)s
+4240 X(partitioned)s
+4749 X(into)s
+4954 X(blocks)s
+5274 X
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(A)s
+902 Y
+0.0 8 8 f.I ft(i)s
+5369 X(j)s
+720 X
+1040 Y
+0.0 11 11 f.R ft(of)s
+901 X(size)s
+1161 X
+0.0 11 11 f.I ft(nb)s
+1280 X
+0.0 11 11 f.S ft(\264)s
+0.0 11 11 f.I ft(nb)s
+1569 X
+0.0 11 11 f.R ft(with)s
+1855 X
+0.0 11 11 f.I ft(p)s
+1919 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(=)s
+0.0 11 11 f.R ft( )s
+2067 X
+0.0 11 11 f.S2 ft(H)s
+0.0 11 11 f.I ft(n)s
+2195 X(/nb)s
+0.0 11 11 f.S2 ft(J)s
+2481 X
+0.0 11 11 f.R ft(and)s
+2729 X(use)s
+2965 X
+0.0 11 11 f.I ft(A)s
+1062 Y
+3038 X
+0.0 8 8 f.I ft(j)s
+0.0 8 8 f.R ft(,)s
+3099 X(1:)s
+3167 X
+0.0 8 8 f.I ft(j)s
+3202 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+1040 Y
+3295 X
+0.0 11 11 f.R ft(,)s
+3413 X(for)s
+3630 X(example,)s
+4118 X(to)s
+4293 X(denote)s
+4674 X(the)s
+4897 X(block)s
+5230 X(row)s
+720 X
+1200 Y([)s
+0.0 11 11 f.I ft(A)s
+1222 Y
+829 X
+0.0 8 8 f.I ft(j)s
+0.0 8 8 f.R ft(,)s
+890 X(1)s
+1200 Y
+939 X
+0.0 11 11 f.R ft(,)s
+976 X( )s
+0.0 11 11 f.I ft(A)s
+1222 Y
+1077 X
+0.0 8 8 f.I ft(j)s
+0.0 8 8 f.R ft(,)s
+1138 X(2)s
+1200 Y
+1187 X
+0.0 11 11 f.R ft(,)s
+1167 Y
+1224 X( . . . )s
+1200 Y(,)s
+1457 X( )s
+0.0 11 11 f.I ft(A)s
+1222 Y
+1558 X
+0.0 8 8 f.I ft(j)s
+0.0 8 8 f.R ft(,)s
+1612 X
+0.0 8 8 f.I ft(j)s
+1647 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+1200 Y
+1740 X
+0.0 11 11 f.R ft(].)s
+1888 X(The)s
+2086 X(algorithm)s
+2542 X(is)s
+720 X
+1520 Y
+995 X(for)s
+1159 X
+0.0 11 11 f.I ft(j)s
+1218 X
+0.0 11 11 f.R ft(=)s
+1308 X(1)s
+1391 X(to)s
+1505 X
+0.0 11 11 f.I ft(p)s
+720 X
+1680 Y
+1270 X(A)s
+1702 Y
+1343 X
+0.0 8 8 f.I ft(j)s
+1371 X(j)s
+1680 Y
+1402 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(A)s
+1702 Y
+1640 X
+0.0 8 8 f.I ft(j)s
+1668 X(j)s
+1680 Y
+1699 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(-)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(A)s
+1702 Y
+1889 X
+0.0 8 8 f.I ft(j)s
+0.0 8 8 f.R ft(,)s
+1950 X(1:)s
+2018 X
+0.0 8 8 f.I ft(j)s
+2053 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+1680 Y
+2146 X
+0.0 11 11 f.I ft(A)s
+1702 Y
+2225 X
+0.0 8 8 f.I ft(j)s
+0.0 8 8 f.R ft(,)s
+2286 X(1:)s
+2354 X
+0.0 8 8 f.I ft(j)s
+2389 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+1636 Y
+2219 X
+0.0 8 8 f.I ft(T)s
+1680 Y
+3745 X
+0.0 11 11 f.R ft(\(_SYRK\))s
+720 X
+1840 Y
+1270 X(factorize)s
+1679 X
+0.0 11 11 f.I ft(A)s
+1862 Y
+1752 X
+0.0 8 8 f.I ft(j)s
+1780 X(j)s
+1840 Y
+3470 X
+0.0 11 11 f.R ft(\(unblocked)s
+3991 X(algorithm\))s
+720 X
+2000 Y
+1270 X
+0.0 11 11 f.I ft(A)s
+2022 Y
+1343 X
+0.0 8 8 f.I ft(j)s
+1378 X
+0.0 8 8 f.S ft(+)s
+0.0 8 8 f.R ft(1:)s
+0.0 8 8 f.I ft(p)s
+0.0 8 8 f.R ft(,)s
+1556 X
+0.0 8 8 f.I ft(j)s
+2000 Y
+1587 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(A)s
+2022 Y
+1825 X
+0.0 8 8 f.I ft(j)s
+1860 X
+0.0 8 8 f.S ft(+)s
+0.0 8 8 f.R ft(1:)s
+0.0 8 8 f.I ft(p)s
+0.0 8 8 f.R ft(,)s
+2038 X
+0.0 8 8 f.I ft(j)s
+2000 Y
+2069 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(-)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(A)s
+2022 Y
+2259 X
+0.0 8 8 f.I ft(j)s
+2294 X
+0.0 8 8 f.S ft(+)s
+0.0 8 8 f.R ft(1:)s
+0.0 8 8 f.I ft(p)s
+0.0 8 8 f.R ft(,)s
+2479 X(1:)s
+2547 X
+0.0 8 8 f.I ft(j)s
+2582 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+2000 Y
+2675 X
+0.0 11 11 f.I ft(A)s
+2022 Y
+2754 X
+0.0 8 8 f.I ft(j)s
+0.0 8 8 f.R ft(,)s
+2815 X(1:)s
+2883 X
+0.0 8 8 f.I ft(j)s
+2918 X
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+1956 Y
+2748 X
+0.0 8 8 f.I ft(T)s
+2000 Y
+3745 X
+0.0 11 11 f.R ft(\(_GEMM\))s
+720 X
+2160 Y
+1270 X
+0.0 11 11 f.I ft(A)s
+2182 Y
+1343 X
+0.0 8 8 f.I ft(j)s
+1378 X
+0.0 8 8 f.S ft(+)s
+0.0 8 8 f.R ft(1:)s
+0.0 8 8 f.I ft(p)s
+0.0 8 8 f.R ft(,)s
+1556 X
+0.0 8 8 f.I ft(j)s
+2160 Y
+1587 X
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.S ft(\254)s
+0.0 11 11 f.R ft( )s
+0.0 11 11 f.I ft(A)s
+2182 Y
+1825 X
+0.0 8 8 f.I ft(j)s
+1860 X
+0.0 8 8 f.S ft(+)s
+0.0 8 8 f.R ft(1:)s
+0.0 8 8 f.I ft(p)s
+0.0 8 8 f.R ft(,)s
+2038 X
+0.0 8 8 f.I ft(j)s
+2160 Y
+2069 X
+0.0 11 11 f.R ft(\()s
+0.0 11 11 f.I ft(A)s
+2182 Y
+2184 X
+0.0 8 8 f.I ft(j)s
+2212 X(j)s
+2116 Y
+2178 X(T)s
+2160 Y
+2243 X
+0.0 11 11 f.R ft(\))s
+2116 Y
+0.0 8 8 f.S ft(-)s
+0.0 8 8 f.R ft(1)s
+2160 Y
+3745 X
+0.0 11 11 f.R ft(\(_TRSM\))s
+720 X
+2540 Y
+970 X(In)s
+1092 X(Appendix)s
+1556 X(A)s
+1666 X(we)s
+1824 X(give)s
+2044 X(the)s
+2209 X(Fortran)s
+2563 X(code)s
+2800 X(for)s
+2958 X(a)s
+3037 X(block)s
+3312 X(Cholesky)s
+3759 X(factorization)s
+4344 X(routine)s
+4687 X(DLLTB,)s
+5101 X(calling)s
+720 X
+2700 Y(Level)s
+998 X(3)s
+1082 X(BLAS)s
+1393 X(routines;)s
+1807 X(and)s
+1994 X(also)s
+2200 X(a)s
+2277 X(lower)s
+2555 X(level)s
+2797 X(routine)s
+3137 X(DLLT)s
+3446 X(which)s
+3742 X(is)s
+3844 X(called)s
+4133 X(by)s
+4271 X(DLLTB)s
+4653 X(and)s
+4839 X(calls)s
+5068 X(Level)s
+5345 X(1)s
+720 X
+2860 Y(and)s
+920 X(2)s
+1018 X(BLAS)s
+1343 X(routines.)s
+1796 X(A)s
+1918 X(separate)s
+2318 X(lower)s
+2610 X(level)s
+2866 X(routine)s
+3220 X(is)s
+3337 X(needed)s
+3689 X(since)s
+3957 X(current)s
+4309 X(standard)s
+4723 X(Fortran)s
+5089 X(forbids)s
+720 X
+3020 Y(recursion.)s
+1211 X(The)s
+1409 X(structure)s
+1820 X(of)s
+1939 X(DLLTB)s
+2321 X(has)s
+2495 X(been)s
+2729 X(kept)s
+2946 X(as)s
+3065 X(similar)s
+3399 X(as)s
+3518 X(possible)s
+3907 X(to)s
+4021 X(that)s
+4214 X(of)s
+4333 X(DLLT.)s
+4669 X(The)s
+4867 X(call-tree)s
+5252 X(is)s
+720 X
+3580 Y
+3021 X(DLLTB)s
+720 X
+720 X
+720 X
+4060 Y
+1444 X(DSYRK)s
+2512 X(DLLT)s
+3544 X(DGEMM)s
+4130 X(DTRSM)s
+720 X
+720 X
+720 X
+4540 Y
+1982 X(DDOT)s
+2451 X(DGEMV)s
+3018 X(DSCAL)s
+720 X
+4920 Y
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 11 11 f.B ft(Acknowledgments)s
+720 X
+5140 Y
+970 X
+0.0 11 11 f.R ft(Draft)s
+1237 X(proposals)s
+1695 X(for)s
+1859 X(the)s
+2030 X(Level)s
+2316 X(3)s
+2408 X(BLAS)s
+2727 X(were)s
+2975 X(discussed)s
+3433 X(initially)s
+3814 X(at)s
+3930 X(a)s
+4015 X(workshop)s
+4485 X(at)s
+4601 X(Argonne)s
+5022 X(National)s
+720 X
+5300 Y(Laboratory,)s
+1268 X(on)s
+1412 X(January)s
+1786 X(26-27,)s
+2104 X(1987,)s
+2386 X(and)s
+2578 X(subsequently)s
+3186 X(at)s
+3299 X(various)s
+3656 X(meetings.)s
+4115 X(We)s
+4300 X(thank)s
+4578 X(all)s
+4721 X(the)s
+4888 X(participants)s
+720 X
+5460 Y(in)s
+835 X(those)s
+1096 X(discussions)s
+1627 X(for)s
+1783 X(their)s
+2013 X(comments)s
+2494 X(and)s
+2681 X(encouragement.)s
+3406 X(We)s
+3586 X(thank)s
+3859 X(John)s
+4096 X(Lewis)s
+4393 X(in)s
+4508 X(particular)s
+4956 X(for)s
+5113 X(urging)s
+720 X
+5620 Y(us)s
+846 X(to)s
+960 X(provide)s
+1323 X(for)s
+1478 X(complex)s
+1884 X(symmetric)s
+2376 X(matrices.)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2941 X(- 17 -)s
+720 X
+880 Y
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 11 11 f.B ft(References)s
+720 X
+1420 Y
+0.0 11 11 f.R ft(D.)s
+879 X(W.)s
+1062 X(Barron)s
+1418 X(and)s
+1628 X(H.)s
+1787 X(P.)s
+1929 X(F.)s
+2071 X(Swinnerton-Dyer,)s
+2912 X(``Solution)s
+3411 X(of)s
+3554 X(Simultaneous)s
+4206 X(Linear)s
+4543 X(Equations)s
+5036 X(Using)s
+5352 X(a)s
+720 X
+1580 Y(Magnetic-Tape)s
+1416 X(Store,'')s
+1776 X
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft(Computer)s
+2244 X(J.)s
+0.0 11 11 f.R ft(,)s
+2376 X(vol.)s
+2573 X(3,)s
+2684 X(pp.)s
+2850 X(28-33,)s
+3162 X(1960.)s
+720 X
+1900 Y(M.)s
+874 X(Berry,)s
+1179 X(K.)s
+1314 X(Gallivan,)s
+1748 X(W.)s
+1907 X(Harrod,)s
+2272 X(W.)s
+2432 X(Jalby,)s
+2721 X(S.)s
+2840 X(Lo,)s
+3019 X(U.)s
+3155 X(Meier,)s
+3473 X(B.)s
+3604 X(Philippe,)s
+4029 X(and)s
+4216 X(A.)s
+4352 X(Sameh,)s
+4708 X(``Parallel)s
+5144 X(Algo-)s
+720 X
+2060 Y(rithms)s
+1030 X(on)s
+1168 X(the)s
+1330 X(CEDAR)s
+1731 X(System,'')s
+2184 X
+0.0 11 11 f.I ft(CSRD)s
+2487 X(Report)s
+2814 X(No.)s
+2999 X(581)s
+0.0 11 11 f.R ft(,)s
+3220 X(1986.)s
+720 X
+2380 Y(C.)s
+854 X(Bischof)s
+1228 X(and)s
+1418 X(C.)s
+1552 X(Van)s
+1766 X(Loan,)s
+2051 X(``The)s
+2325 X(WY)s
+2540 X(Representation)s
+3231 X(for)s
+3391 X(Products)s
+3809 X(of)s
+3933 X(Householder)s
+4526 X(Matrices,'')s
+5042 X
+0.0 11 11 f.I ft(SIAM)s
+5324 X(J.)s
+720 X
+2540 Y(Sci.)s
+910 X(Stat.)s
+1138 X(Comp.)s
+0.0 11 11 f.R ft(,)s
+1485 X(vol.)s
+1682 X(8,)s
+1793 X(1,)s
+1904 X(pp.)s
+2070 X(s2-s13,)s
+2413 X(January)s
+2781 X(1987.)s
+720 X
+2860 Y(O.)s
+874 X(E.)s
+1016 X(Bronlund)s
+1479 X(and)s
+1684 X(T.)s
+1826 X(Johnsen,)s
+2255 X(``QR-factorization)s
+3116 X(of)s
+3254 X(Partitioned)s
+3784 X(Matrices,'')s
+4314 X
+0.0 11 11 f.I ft(Comput.)s
+4738 X(Methods)s
+5164 X(Appl.)s
+720 X
+3020 Y(Mech.)s
+1018 X(Engrg.)s
+0.0 11 11 f.R ft(,)s
+1377 X(vol.)s
+1574 X(3,)s
+1685 X(pp.)s
+1851 X(153-172,)s
+2273 X(1974.)s
+720 X
+3340 Y(I.)s
+827 X(Bucher)s
+1186 X(and)s
+1387 X(T.)s
+1525 X(Jordan,)s
+1888 X(``Linear)s
+2289 X(Algebra)s
+2685 X(Programs)s
+3150 X(for)s
+3321 X(Use)s
+3535 X(on)s
+3689 X(a)s
+3781 X(Vector)s
+4122 X(Computer)s
+4606 X(with)s
+4846 X(a)s
+4938 X(Secondary)s
+720 X
+3500 Y(Solid)s
+991 X(State)s
+1247 X(Storage)s
+1618 X(Device,'')s
+2063 X(in)s
+2185 X
+0.0 11 11 f.I ft(Advances)s
+2640 X(in)s
+2762 X(Computer)s
+3238 X(Methods)s
+3652 X(for)s
+3817 X(Partical)s
+4214 X(Di)s
+/Cff {  (f) show xsiz pt 20 div neg 0 rmoveto (f) s
+ } bind def
+
+Cff(erential)s
+4758 X(Equations)s
+0.0 11 11 f.R ft(,)s
+5269 X(ed.)s
+720 X
+3660 Y(R.)s
+850 X(Vichnevetsky)s
+1481 X(and)s
+1667 X(R.)s
+1797 X(Stepleman,)s
+2317 X(pp.)s
+2483 X(546-550,)s
+2905 X(IMACS,)s
+3310 X(1984.)s
+720 X
+3980 Y(D.)s
+889 X(A.)s
+1059 X(Calahan,)s
+1509 X(``Block-Oriented)s
+2326 X(Local-Memory-Based)s
+3356 X(Linear)s
+3704 X(Equation)s
+4164 X(Solution)s
+4602 X(on)s
+4775 X(the)s
+4972 X(CRAY-2:)s
+720 X
+4140 Y(Uniprocessor)s
+1347 X(Algorithms,'')s
+1992 X
+0.0 11 11 f.I ft(Proceedings)s
+2583 X(International)s
+3207 X(Conference)s
+3755 X(on)s
+3908 X(Parallel)s
+4312 X(Processing)s
+0.0 11 11 f.R ft(,)s
+4870 X(IEEE)s
+5149 X(Com-)s
+720 X
+4300 Y(puter)s
+973 X(Society)s
+1331 X(Press,)s
+1619 X(August)s
+1965 X(1986.)s
+720 X
+4620 Y(P.)s
+844 X(Carnevali,)s
+1332 X(G.)s
+1473 X(Radicati)s
+1873 X(di)s
+1993 X(Brozolo,)s
+2409 X(Y.)s
+2550 X(Robert,)s
+2911 X(and)s
+3103 X(P.)s
+3227 X(Sguazzero,)s
+3744 X(``E)s
+/CFi {  (f) show xsiz pt 20 div neg 0 rmoveto (\256) s
+ } bind def
+
+CFi(cient)s
+4222 X(Fortran)s
+4579 X(Implementation)s
+5309 X(of)s
+720 X
+4780 Y(the)s
+889 X(Gaussian)s
+1326 X(Elimination)s
+1882 X(and)s
+2075 X(Householder)s
+2670 X(Reduction)s
+3157 X(Algorithms)s
+3694 X(on)s
+3838 X(the)s
+4006 X(IBM)s
+4248 X(3090)s
+4502 X(Vector)s
+4833 X(Multiproces-)s
+720 X
+4940 Y(sor,'')s
+982 X(IBM)s
+1218 X(ECSEC)s
+1590 X(Report)s
+1917 X(ICE-0012,)s
+2406 X(1987.)s
+720 X
+5260 Y(B.)s
+859 X(Chartres,)s
+1295 X(``Adaption)s
+1813 X(of)s
+1941 X(the)s
+2112 X(Jacobi)s
+2429 X(and)s
+2624 X(Givens)s
+2972 X(Methods)s
+3394 X(for)s
+3559 X(a)s
+3645 X(Computer)s
+4123 X(with)s
+4357 X(Magnetic)s
+4809 X(Tape)s
+5065 X(Backup)s
+720 X
+5420 Y(Store,'')s
+1080 X
+0.0 11 11 f.I ft(University)s
+1565 X(of)s
+1679 X(Sydney)s
+2016 X(Technical)s
+2477 X(Report)s
+2804 X(No.)s
+2989 X(8)s
+0.0 11 11 f.R ft(,)s
+3100 X(1960.)s
+720 X
+5740 Y(A.)s
+865 X(K.)s
+1010 X(Dave)s
+1278 X(and)s
+1474 X(I.)s
+1576 X(S.)s
+1704 X(Du)s
+Cff(,)s
+1971 X(``Sparse)s
+2373 X(Matrix)s
+2710 X(Calculations)s
+3298 X(on)s
+3446 X(the)s
+3618 X(CRAY-2,'')s
+4153 X
+0.0 11 11 f.I ft(Parallel)s
+4552 X(Computing)s
+0.0 11 11 f.R ft(,)s
+5109 X(vol.)s
+5317 X(5,)s
+720 X
+5900 Y(pp.)s
+886 X(55-64,)s
+1198 X(July)s
+1410 X(1987.)s
+720 X
+6220 Y(J.)s
+821 X(Demmel,)s
+1257 X(J.)s
+1358 X(J.)s
+1459 X(Dongarra,)s
+1929 X(J.)s
+2030 X(Du)s
+2194 X(Croz,)s
+2465 X(A.)s
+2602 X(Greenbaum,)s
+3171 X(S.)s
+3292 X(Hammarling,)s
+3906 X(and)s
+4095 X(D.)s
+4233 X(Sorensen,)s
+4694 X(``Prospectus)s
+5273 X(for)s
+720 X
+6380 Y(the)s
+906 X(Development)s
+1549 X(of)s
+1692 X(a)s
+1792 X(Linear)s
+2129 X(Algebra)s
+2532 X(Library)s
+2911 X(for)s
+3089 X(High-Performance)s
+3954 X(Computers,'')s
+4588 X(Argonne)s
+5022 X(National)s
+720 X
+6540 Y(Laboratory)s
+1234 X(Report,)s
+1589 X(ANL-MCS-TM-97,)s
+2487 X(September)s
+2984 X(1987.)s
+720 X
+6860 Y(G.)s
+889 X(Dietrich,)s
+1338 X(``A)s
+1551 X(New)s
+1819 X(Formulation)s
+2426 X(of)s
+2580 X(the)s
+2777 X(Hypermatrix)s
+3400 X(Householder)s
+4023 X(QR-decomposition,'')s
+5023 X
+0.0 11 11 f.I ft(Comput.)s
+720 X
+7020 Y(Methods)s
+1126 X(Appl.)s
+1390 X(Mech.)s
+1688 X(Engrg.)s
+0.0 11 11 f.R ft(,)s
+2047 X(vol.)s
+2244 X(9,)s
+2355 X(pp.)s
+2521 X(273-280,)s
+2943 X(1976.)s
+720 X
+7340 Y(D.)s
+856 X(Dodson)s
+1227 X(and)s
+1414 X(J.)s
+1514 X(Lewis,)s
+1839 X(``Issues)s
+2208 X(Relating)s
+2610 X(to)s
+2726 X(Extension)s
+3196 X(of)s
+3317 X(the)s
+3481 X(Basic)s
+3755 X(Linear)s
+4070 X(Algebra)s
+4452 X(Subprograms,'')s
+5168 X
+0.0 11 11 f.I ft(ACM)s
+7920 Y
+page
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2941 X
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft(- 18 -)s
+720 X
+880 Y
+0.0 11 11 f.I ft(SIGNUM)s
+1162 X(Newsletter)s
+0.0 11 11 f.R ft(,)s
+1689 X(vol.)s
+1886 X(20,)s
+2052 X(1,)s
+2163 X(pp.)s
+2329 X(2-18,)s
+2586 X(1985.)s
+720 X
+1200 Y(J.)s
+819 X(J.)s
+918 X(Dongarra,)s
+1386 X(J.)s
+1485 X(Bunch,)s
+1828 X(C.)s
+1958 X(Moler,)s
+2282 X(and)s
+2468 X(G.)s
+2603 X(Stewart,)s
+2994 X
+0.0 11 11 f.I ft(LINPACK)s
+3476 X(Users')s
+3796 X(Guide,)s
+4120 X
+0.0 11 11 f.R ft(SIAM)s
+4423 X(Pub.,)s
+4679 X(1979.)s
+720 X
+1520 Y(J.)s
+831 X(J.)s
+942 X(Dongarra,)s
+1422 X(J.)s
+1533 X(DuCroz,)s
+1949 X(S.)s
+2080 X(Hammarling,)s
+2704 X(and)s
+2903 X(R.)s
+3046 X(Hanson,)s
+3450 X(``An)s
+3697 X(Extended)s
+4152 X(Set)s
+4334 X(of)s
+4466 X(Fortran)s
+4830 X(Basic)s
+5115 X(Linear)s
+720 X
+1680 Y(Algebra)s
+1100 X(Subprograms,'')s
+1814 X
+0.0 11 11 f.I ft(ACM)s
+2074 X(Trans.)s
+2388 X(Math.)s
+2676 X(Software)s
+0.0 11 11 f.R ft(,)s
+3124 X(vol.)s
+3321 X(14,)s
+3487 X(1,)s
+3598 X(pp.)s
+3764 X(1-17,)s
+4021 X(March)s
+4334 X(1988a.)s
+720 X
+2000 Y(J.)s
+831 X(J.)s
+942 X(Dongarra,)s
+1422 X(J.)s
+1533 X(DuCroz,)s
+1949 X(S.)s
+2080 X(Hammarling,)s
+2704 X(and)s
+2903 X(R.)s
+3046 X(Hanson,)s
+3450 X(``An)s
+3697 X(Extended)s
+4152 X(Set)s
+4334 X(of)s
+4466 X(Fortran)s
+4830 X(Basic)s
+5115 X(Linear)s
+720 X
+2160 Y(Algebra)s
+1102 X(Subprograms:)s
+1749 X(Model)s
+2066 X(Implementation)s
+2792 X(and)s
+2980 X(Test)s
+3199 X(Programs,'')s
+3750 X
+0.0 11 11 f.I ft(ACM)s
+4011 X(Trans.)s
+4326 X(Math.)s
+4615 X(Software)s
+0.0 11 11 f.R ft(,)s
+5064 X(vol.)s
+5262 X(14,)s
+720 X
+2320 Y(1,)s
+831 X(pp.)s
+997 X(18-32,)s
+1309 X(March)s
+1622 X(1988b.)s
+720 X
+2640 Y(J.)s
+825 X(J.)s
+930 X(Dongarra,)s
+1404 X(J.)s
+1510 X(DuCroz,)s
+1920 X(I.)s
+2019 X(S.)s
+2144 X(Du)s
+/Cff {  (f) show xsiz pt 20 div neg 0 rmoveto (f) s
+ } bind def
+
+Cff(,)s
+2408 X(and)s
+2601 X(S.)s
+2726 X(Hammarling,)s
+3344 X(``A)s
+3530 X(Set)s
+3706 X(of)s
+3832 X(Level)s
+4116 X(3)s
+4206 X(Basic)s
+4485 X(Linear)s
+4805 X(Algebra)s
+5192 X(Sub-)s
+720 X
+2800 Y(programs:)s
+1220 X(Model)s
+1562 X(Implementation)s
+2313 X(and)s
+2526 X(Test)s
+2770 X(Programs,'')s
+3346 X(Argonne)s
+3784 X(National)s
+4217 X(Laboratory)s
+4758 X(Report,)s
+5139 X(ANL-)s
+720 X
+2960 Y(MCS-P88-2,)s
+1309 X(August)s
+1655 X(1988.)s
+720 X
+3280 Y(J.)s
+819 X(J.)s
+918 X(Dongarra)s
+1358 X(and)s
+1544 X(I.)s
+1636 X(S.)s
+1754 X(Du)s
+Cff(,)s
+2011 X(``Advanced)s
+2554 X(Architecture)s
+3128 X(Computers,'')s
+3739 X(Argonne)s
+4151 X(National)s
+4558 X(Laboratory)s
+5073 X(Report,)s
+720 X
+3440 Y(ANL-MCS-TM-57)s
+1590 X(\(Revision)s
+2046 X(1\),)s
+2193 X(January,)s
+2589 X(1987.)s
+720 X
+3760 Y(J.)s
+819 X(J.)s
+918 X(Dongarra,)s
+1386 X(F.)s
+1504 X(Gustavson,)s
+2024 X(and)s
+2210 X(A.)s
+2345 X(Karp,)s
+2619 X(``Implementing)s
+3336 X(Linear)s
+3649 X(Algebra)s
+4029 X(Algorithms)s
+4559 X(for)s
+4715 X(Dense)s
+5017 X(Matrices)s
+720 X
+3920 Y(on)s
+858 X(a)s
+934 X(Vector)s
+1259 X(Pipeline)s
+1648 X(Machine,'')s
+2159 X
+0.0 11 11 f.I ft(SIAM)s
+2436 X(Review)s
+0.0 11 11 f.R ft(,)s
+2808 X(vol.)s
+3005 X(26,)s
+3171 X(1,)s
+3282 X(pp.)s
+3448 X(91-112,)s
+3815 X(1984.)s
+720 X
+4240 Y(J.)s
+827 X(J.)s
+934 X(Dongarra,)s
+1410 X(S.)s
+1536 X(Hammarling,)s
+2155 X(and)s
+2349 X(D.C.)s
+2594 X(Sorensen,)s
+3061 X(``Block)s
+3433 X(Reduction)s
+3922 X(of)s
+4050 X(Matrices)s
+4470 X(to)s
+4593 X(Condensed)s
+5118 X(Forms)s
+720 X
+4400 Y(for)s
+901 X(Eigenvalue)s
+1448 X(Computations,'')s
+2221 X(Argonne)s
+2658 X(National)s
+3089 X(Laboratory)s
+3628 X(Report,)s
+4008 X(ANL-MCS-TM-99,)s
+4931 X(September)s
+720 X
+4560 Y(1987.)s
+720 X
+4880 Y(J.)s
+830 X(J.)s
+940 X(Dongarra)s
+1391 X(and)s
+1588 X(T.)s
+1722 X(Hewitt,)s
+2088 X(``Implementing)s
+2816 X(Dense)s
+3128 X(Linear)s
+3452 X(Algebra)s
+3843 X(Algorithms)s
+4384 X(Using)s
+4686 X(Multitasking)s
+5290 X(on)s
+720 X
+5040 Y(the)s
+882 X(CRAY)s
+1216 X(X-MP-4,'')s
+1710 X
+0.0 11 11 f.I ft(SIAM)s
+1987 X(J.)s
+2091 X(Sci.)s
+2281 X(Stat.)s
+2509 X(Comp.)s
+0.0 11 11 f.R ft(,)s
+2856 X(vol.)s
+3053 X(7,)s
+3164 X(1,)s
+3275 X(pp.)s
+3441 X(347-350,)s
+3863 X(January,)s
+4259 X(1986.)s
+720 X
+5360 Y(J.)s
+830 X(J.)s
+941 X(Dongarra)s
+1393 X(and)s
+1591 X(D.C.)s
+1840 X(Sorensen,)s
+2310 X(``Linear)s
+2707 X(Algebra)s
+3099 X(on)s
+3249 X(High-Performance)s
+4103 X(Computers,'')s
+4726 X(in)s
+4852 X
+0.0 11 11 f.I ft(Proceedings)s
+720 X
+5520 Y(Parallel)s
+1109 X(Computing)s
+1627 X(85)s
+0.0 11 11 f.R ft(,)s
+1793 X(ed.)s
+1952 X(U.)s
+2087 X(Schendel,)s
+2545 X(pp.)s
+2711 X(113-136,)s
+3133 X(North)s
+3417 X(Holland,)s
+3827 X(1986.)s
+720 X
+5840 Y(J.)s
+827 X(DuCroz,)s
+1238 X(S.)s
+1364 X(Nugent,)s
+1751 X(J.)s
+1858 X(Reid,)s
+2130 X(and)s
+2324 X(D.)s
+2467 X(Taylor,)s
+2823 X(``Solving)s
+3275 X(Large)s
+3565 X(Full)s
+3780 X(Sets)s
+4000 X(of)s
+4127 X(Linear)s
+4448 X(Equations)s
+4924 X(in)s
+5047 X(a)s
+5132 X(Paged)s
+720 X
+6000 Y(Virtual)s
+1059 X(Store,'')s
+1419 X
+0.0 11 11 f.I ft(ACM)s
+1679 X(Trans.)s
+1993 X(Math.)s
+2281 X(Software)s
+0.0 11 11 f.R ft(,)s
+2729 X(vol.)s
+2926 X(7,)s
+3037 X(4,)s
+3148 X(pp.)s
+3314 X(527-536,)s
+3736 X(1981.)s
+720 X
+6320 Y(I.)s
+819 X(S.)s
+944 X(Du)s
+Cff(,)s
+1208 X(``Full)s
+1494 X(Matrix)s
+1829 X(Techniques)s
+2370 X(in)s
+2492 X(Sparse)s
+2820 X(Gaussian)s
+3258 X(Elimination,'')s
+3915 X
+0.0 11 11 f.I ft(Numerical)s
+4415 X(Analysis)s
+4824 X(Proceedings,)s
+720 X
+6480 Y(Dundee)s
+1088 X(1981,)s
+1364 X(Lecture)s
+1727 X(Notes)s
+2006 X(in)s
+2120 X(Mathematics)s
+2715 X(912)s
+0.0 11 11 f.R ft(,)s
+2936 X(pp.)s
+3102 X(71-84,)s
+3414 X(Springer-Verlag,)s
+4181 X(1981.)s
+720 X
+6800 Y(K.)s
+857 X(Gallivan,)s
+1293 X(W.)s
+1454 X(Jalby,)s
+1744 X(and)s
+1932 X(U.)s
+2069 X(Meier,)s
+2388 X(``The)s
+2660 X(Use)s
+2860 X(of)s
+2981 X(BLAS3)s
+3348 X(in)s
+3464 X(Linear)s
+3779 X(Algebra)s
+4161 X(on)s
+4302 X(a)s
+4381 X(Parallel)s
+4747 X(Processor)s
+5204 X(with)s
+720 X
+6960 Y(a)s
+796 X(Hierarchical)s
+1363 X(Memory,'')s
+1869 X
+0.0 11 11 f.I ft(SIAM)s
+2146 X(J.)s
+2250 X(Sci.)s
+2440 X(Stat.)s
+2668 X(Comput.)s
+0.0 11 11 f.R ft(,)s
+3101 X(vol.)s
+3298 X(8,)s
+3409 X(6,)s
+3520 X(pp.)s
+3686 X(1079-1084,)s
+4218 X(November)s
+4708 X(1987.)s
+720 X
+7280 Y(A.)s
+859 X(George)s
+1212 X(and)s
+1402 X(H.)s
+1541 X(Rashwan,)s
+2003 X(``Auxiliary)s
+2528 X(Storage)s
+2896 X(Methods)s
+3314 X(for)s
+3474 X(Solving)s
+3851 X(Finite)s
+4142 X(Element)s
+4541 X(Systems,'')s
+5042 X
+0.0 11 11 f.I ft(SIAM)s
+5324 X(J.)s
+7920 Y
+page
+/Times-Italic /Times-Italic-8 roman-8-mappings AddRoman-8
+/f.I /Times-Italic-8 findfont def
+
+0.0 11 11 f.I ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2941 X
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft(- 19 -)s
+720 X
+880 Y
+0.0 11 11 f.I ft(Sci.)s
+910 X(Stat.)s
+1138 X(Comput.)s
+0.0 11 11 f.R ft(,)s
+1571 X(vol.)s
+1768 X(6,)s
+1879 X(4,)s
+1990 X(pp.)s
+2156 X(882-910,)s
+2578 X(October)s
+2958 X(1985.)s
+720 X
+1200 Y(IBM,)s
+984 X(``Engineering)s
+1620 X(and)s
+1806 X(Scienti\256c)s
+2250 X(Subroutine)s
+2761 X(Library,'')s
+3217 X(Program)s
+3623 X(Number:)s
+4041 X(5668-863,)s
+4518 X(1986.)s
+720 X
+1520 Y(C.)s
+872 X(Lawson,)s
+1297 X(R.)s
+1449 X(Hanson,)s
+1863 X(D.)s
+2021 X(Kincaid,)s
+2447 X(and)s
+2656 X(F.)s
+2797 X(Krogh,)s
+3156 X(``Basic)s
+3523 X(Linear)s
+3859 X(Algebra)s
+4262 X(Subprograms)s
+4899 X(for)s
+5077 X(Fortran)s
+720 X
+1680 Y(Usage,'')s
+1121 X
+0.0 11 11 f.I ft(ACM)s
+1381 X(Trans.)s
+1695 X(Math.)s
+1983 X(Software)s
+0.0 11 11 f.R ft(,)s
+2431 X(vol.)s
+2628 X(5,)s
+2739 X(pp.)s
+2905 X(308-323,)s
+3327 X(1979a.)s
+720 X
+2000 Y(C.)s
+858 X(Lawson,)s
+1269 X(R.)s
+1407 X(Hanson,)s
+1806 X(D.)s
+1949 X(Kincaid,)s
+2360 X(and)s
+2554 X(F.)s
+2680 X(Krogh,)s
+3024 X(``Algorithm)s
+3591 X(539:)s
+3823 X(Basic)s
+4103 X(Linear)s
+4425 X(Algebra)s
+4814 X(Subprograms)s
+720 X
+2160 Y(for)s
+875 X(Fortran)s
+1226 X(Usage,'')s
+1627 X
+0.0 11 11 f.I ft(ACM)s
+1887 X(Trans.)s
+2201 X(Math.)s
+2489 X(Software)s
+0.0 11 11 f.R ft(,)s
+2937 X(vol.)s
+3134 X(5,)s
+3245 X(pp.)s
+3411 X(324-325,)s
+3833 X(1979b.)s
+720 X
+2480 Y(A.)s
+859 X(C.)s
+993 X(McKellar)s
+1444 X(and)s
+1634 X(E.)s
+1761 X(G.)s
+1900 X(Co)s
+/Cff {  (f) show xsiz pt 20 div neg 0 rmoveto (f) s
+ } bind def
+
+Cff(man,)s
+2345 X(Jr.,)s
+2512 X(``Organizing)s
+3109 X(Matrices)s
+3524 X(and)s
+3715 X(Matrix)s
+4047 X(Operations)s
+4561 X(for)s
+4721 X(Paged)s
+5022 X(Memory)s
+720 X
+2640 Y(Systems,'')s
+1216 X
+0.0 11 11 f.I ft(CACM)s
+0.0 11 11 f.R ft(,)s
+1578 X(vol.)s
+1775 X(12,3,)s
+2024 X(pp.)s
+2190 X(153-165,)s
+2612 X(1969.)s
+720 X
+2960 Y(Y.)s
+855 X(Robert)s
+1182 X(and)s
+1368 X(P.)s
+1486 X(Sguazzero,)s
+1997 X(``The)s
+2267 X(LU)s
+2441 X(Decomposition)s
+3141 X(Algorithm)s
+3628 X(and)s
+3814 X(Its)s
+3952 X(E)s
+/CFi {  (f) show xsiz pt 20 div neg 0 rmoveto (\256) s
+ } bind def
+
+CFi(cient)s
+4352 X(Fortran)s
+4704 X(Implementation)s
+720 X
+3120 Y(on)s
+858 X(the)s
+1020 X(IBM)s
+1256 X(3090)s
+1504 X(Vector)s
+1829 X(Multiprocessor,'')s
+2622 X(IBM)s
+2858 X(ECSEC)s
+3230 X(Report)s
+3557 X(ICE-0006,)s
+4046 X(1987.)s
+720 X
+3440 Y(R.)s
+866 X(Schreiber,)s
+1357 X(``Module)s
+1815 X(Design)s
+2170 X(Speci\256cation)s
+2788 X(\(Version)s
+3215 X(1.0\),'')s
+3533 X(SAXPY)s
+3938 X(Computer)s
+4422 X(Corporation,)s
+5025 X(255)s
+5235 X(San)s
+720 X
+3600 Y(Geronimo)s
+1193 X(Way,)s
+1455 X(Sunnyvale,)s
+1975 X(Calif.)s
+2251 X(94086,)s
+2582 X(1986.)s
+720 X
+3920 Y(R.)s
+860 X(Schreiber)s
+1317 X(and)s
+1513 X(B.)s
+1653 X(Parlett,)s
+2006 X(``Block)s
+2379 X(Re\257ectors:)s
+2893 X(Theory)s
+3247 X(and)s
+3444 X(Computation,'')s
+4159 X
+0.0 11 11 f.I ft(SIAM)s
+4447 X(J.)s
+4562 X(Numer.)s
+4928 X(Anal.)s
+0.0 11 11 f.R ft(,)s
+5231 X(vol.)s
+720 X
+4080 Y(25,)s
+886 X(1,)s
+997 X(pp.)s
+1163 X(189-205,)s
+1585 X(February)s
+2008 X(1988.)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 11 11 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+520 Y
+2941 X(- 20 -)s
+720 X
+880 Y
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 11 11 f.B ft(Appendix)s
+1209 X(A)s
+1316 X(-)s
+1380 X(Blocked)s
+1788 X(Cholesky)s
+2251 X(Factorization)s
+720 X
+1150 Y
+1121 X
+0.0 10 10 f.R ft(S)s
+1179 X(U)s
+1248 X(B)s
+1314 X(R)s
+1377 X(O)s
+1443 X(U)s
+1514 X(T)s
+1594 X(I)s
+1641 X(N)s
+1712 X(E)s
+1839 X(D)s
+1910 X(L)s
+1976 X(L)s
+2042 X(T)s
+2106 X(B)s
+2188 X(\()s
+2235 X(N)s
+2324 X(,)s
+2367 X(A)s
+2456 X(,)s
+2504 X(LD)s
+2631 X(A)s
+2720 X(,)s
+2782 X(I)s
+2829 X(N)s
+2903 X(F)s
+2961 X(O)s
+3046 X(\))s
+720 X
+1260 Y
+728 X(*)s
+720 X
+1370 Y
+728 X(*)s
+1116 X(C)s
+1190 X(o)s
+1242 X(m)s
+1322 X(p)s
+1388 X(u)s
+1465 X(t)s
+1523 X(e)s
+1591 X(s)s
+1721 X(a)s
+1784 X(n)s
+1910 X(L)s
+1982 X(*)s
+2042 X(L)s
+2114 X(*)s
+2180 X(*)s
+2240 X(T)s
+2386 X(f)s
+2447 X(a)s
+2513 X(c)s
+2587 X(t)s
+2642 X(o)s
+2716 X(r)s
+2785 X(i)s
+2843 X(z)s
+2909 X(a)s
+2983 X(t)s
+3049 X(i)s
+3104 X(o)s
+3170 X(n)s
+3302 X(o)s
+3376 X(f)s
+3503 X(a)s
+3637 X(s)s
+3698 X(y)s
+3750 X(m)s
+3816 X(m)s
+3899 X(e)s
+3973 X(t)s
+4036 X(r)s
+4105 X(i)s
+4163 X(c)s
+4292 X(p)s
+4358 X(o)s
+4429 X(s)s
+4501 X(i)s
+4567 X(t)s
+4633 X(i)s
+4688 X(v)s
+4757 X(e)s
+4828 X(-)s
+4886 X(d)s
+4955 X(e)s
+5015 X(\256)s
+5084 X(n)s
+5161 X(i)s
+5227 X(t)s
+5285 X(e)s
+720 X
+1480 Y
+728 X(*)s
+1110 X(m)s
+1193 X(a)s
+1267 X(t)s
+1330 X(r)s
+1399 X(i)s
+1454 X(x)s
+1575 X(A)s
+1664 X(.)s
+720 X
+1590 Y
+728 X(*)s
+1116 X(B)s
+1201 X(l)s
+1256 X(o)s
+1325 X(c)s
+1388 X(k)s
+1457 X(e)s
+1520 X(d)s
+1652 X(v)s
+1721 X(e)s
+1792 X(r)s
+1855 X(s)s
+1927 X(i)s
+1982 X(o)s
+2048 X(n)s
+2126 X(,)s
+2249 X(c)s
+2315 X(a)s
+2389 X(l)s
+2455 X(l)s
+2521 X(i)s
+2576 X(n)s
+2642 X(g)s
+2768 X(L)s
+2843 X(e)s
+2906 X(v)s
+2975 X(e)s
+3049 X(l)s
+3170 X(3)s
+3294 X(B)s
+3362 X(LA)s
+3497 X(S)s
+3578 X(.)s
+720 X
+1700 Y
+728 X(*)s
+720 X
+1810 Y
+1132 X(I)s
+1179 X(N)s
+1250 X(T)s
+1316 X(EG)s
+1448 X(E)s
+1512 X(R)s
+2254 X(I)s
+2301 X(N)s
+2375 X(F)s
+2433 X(O)s
+2522 X(,)s
+2636 X(LD)s
+2763 X(A)s
+2852 X(,)s
+2961 X(N)s
+720 X
+1920 Y
+1113 X(D)s
+1179 X(O)s
+1245 X(U)s
+1314 X(B)s
+1382 X(L)s
+1448 X(E)s
+1583 X(P)s
+1644 X(R)s
+1712 X(E)s
+1776 X(C)s
+1858 X(I)s
+1913 X(S)s
+1990 X(I)s
+2037 X(O)s
+2103 X(N)s
+2235 X(A)s
+2320 X(\()s
+2372 X(LD)s
+2499 X(A)s
+2588 X(,)s
+2642 X(*)s
+2716 X(\))s
+720 X
+2030 Y
+1132 X(I)s
+1179 X(N)s
+1250 X(T)s
+1316 X(EG)s
+1448 X(E)s
+1512 X(R)s
+2251 X(J)s
+2324 X(,)s
+2449 X(J)s
+2502 X(B)s
+720 X
+2140 Y
+1132 X(I)s
+1179 X(N)s
+1250 X(T)s
+1316 X(EG)s
+1448 X(E)s
+1512 X(R)s
+2235 X(N)s
+2304 X(B)s
+720 X
+2250 Y
+1121 X(P)s
+1179 X(A)s
+1248 X(R)s
+1311 X(A)s
+1369 X(M)s
+1448 X(E)s
+1514 X(T)s
+1580 X(E)s
+1644 X(R)s
+2254 X(\()s
+2301 X(N)s
+2370 X(B)s
+2441 X(=)s
+2510 X(6)s
+2576 X(4)s
+2650 X(\))s
+720 X
+2360 Y
+1118 X(EX)s
+1250 X(T)s
+1316 X(E)s
+1380 X(R)s
+1443 X(N)s
+1509 X(A)s
+1580 X(L)s
+2235 X(D)s
+2301 X(G)s
+2372 X(E)s
+2425 X(M)s
+2491 X(M)s
+2588 X(,)s
+2697 X(D)s
+2768 X(L)s
+2834 X(L)s
+2900 X(T)s
+2984 X(,)s
+3093 X(D)s
+3167 X(S)s
+3225 X(Y)s
+3294 X(R)s
+3357 X(K)s
+3446 X(,)s
+3555 X(D)s
+3626 X(T)s
+3690 X(R)s
+3761 X(S)s
+3811 X(M)s
+720 X
+2470 Y
+728 X(*)s
+720 X
+2580 Y
+1132 X(I)s
+1179 X(N)s
+1253 X(F)s
+1311 X(O)s
+1451 X(=)s
+1586 X(0)s
+720 X
+2690 Y
+1113 X(D)s
+1179 X(O)s
+1322 X(1)s
+1388 X(0)s
+1525 X(J)s
+1649 X(=)s
+1784 X(1)s
+1862 X(,)s
+1971 X(N)s
+2060 X(,)s
+2169 X(N)s
+2238 X(B)s
+720 X
+2800 Y
+1327 X(J)s
+1380 X(B)s
+1517 X(=)s
+1633 X(M)s
+1726 X(I)s
+1773 X(N)s
+1858 X(\()s
+1905 X(N)s
+1974 X(B)s
+2060 X(,)s
+2103 X(N)s
+2188 X(-)s
+2251 X(J)s
+2309 X(+)s
+2378 X(1)s
+2452 X(\))s
+720 X
+2910 Y
+728 X(*)s
+720 X
+3020 Y
+728 X(*)s
+1311 X(U)s
+1388 X(p)s
+1454 X(d)s
+1523 X(a)s
+1597 X(t)s
+1655 X(e)s
+1784 X(d)s
+1861 X(i)s
+1919 X(a)s
+1982 X(g)s
+2048 X(o)s
+2114 X(n)s
+2183 X(a)s
+2257 X(l)s
+2378 X(b)s
+2455 X(l)s
+2510 X(o)s
+2579 X(c)s
+2642 X(k)s
+2720 X(.)s
+720 X
+3130 Y
+728 X(*)s
+720 X
+3240 Y
+1314 X(C)s
+1377 X(A)s
+1448 X(L)s
+1514 X(L)s
+1641 X(D)s
+1715 X(S)s
+1773 X(Y)s
+1842 X(R)s
+1905 X(K)s
+1990 X(\()s
+2056 X(')s
+2108 X(L)s
+2180 X(o)s
+2235 X(w)s
+2315 X(e)s
+2386 X(r)s
+2452 X(')s
+2522 X(,)s
+2584 X(')s
+2631 X(N)s
+2708 X(o)s
+2851 X(t)s
+2914 X(r)s
+2975 X(a)s
+3038 X(n)s
+3109 X(s)s
+3170 X(p)s
+3236 X(o)s
+3307 X(s)s
+3371 X(e)s
+3442 X(')s
+3512 X(,)s
+3571 X(J)s
+3624 X(B)s
+3710 X(,)s
+3769 X(J)s
+3838 X(-)s
+3896 X(1)s
+3974 X(,)s
+4036 X(-)s
+4094 X(1)s
+4172 X(.)s
+4226 X(0)s
+4281 X(D)s
+4358 X(0)s
+4436 X(,)s
+4479 X(A)s
+4564 X(\()s
+4627 X(J)s
+4700 X(,)s
+4754 X(1)s
+4828 X(\))s
+4898 X(,)s
+4946 X(LD)s
+5073 X(A)s
+5162 X(,)s
+720 X
+3350 Y
+1058 X($)s
+2048 X(1)s
+2126 X(.)s
+2180 X(0)s
+2235 X(D)s
+2312 X(0)s
+2390 X(,)s
+2433 X(A)s
+2518 X(\()s
+2581 X(J)s
+2654 X(,)s
+2713 X(J)s
+2782 X(\))s
+2852 X(,)s
+2900 X(LD)s
+3027 X(A)s
+3112 X(\))s
+720 X
+3460 Y
+728 X(*)s
+720 X
+3570 Y
+728 X(*)s
+1319 X(F)s
+1391 X(a)s
+1457 X(c)s
+1531 X(t)s
+1586 X(o)s
+1660 X(r)s
+1729 X(i)s
+1787 X(z)s
+1853 X(e)s
+1982 X(d)s
+2059 X(i)s
+2117 X(a)s
+2180 X(g)s
+2246 X(o)s
+2312 X(n)s
+2381 X(a)s
+2455 X(l)s
+2576 X(b)s
+2653 X(l)s
+2708 X(o)s
+2777 X(c)s
+2840 X(k)s
+2975 X(a)s
+3038 X(n)s
+3104 X(d)s
+3247 X(t)s
+3305 X(e)s
+3373 X(s)s
+3445 X(t)s
+3574 X(f)s
+3632 X(o)s
+3706 X(r)s
+720 X
+3680 Y
+728 X(*)s
+1322 X(n)s
+1388 X(o)s
+1454 X(n)s
+1528 X(-)s
+1586 X(p)s
+1652 X(o)s
+1723 X(s)s
+1795 X(i)s
+1861 X(t)s
+1927 X(i)s
+1982 X(v)s
+2051 X(e)s
+2122 X(-)s
+2180 X(d)s
+2249 X(e)s
+2309 X(\256)s
+2378 X(n)s
+2455 X(i)s
+2521 X(t)s
+2579 X(e)s
+2642 X(n)s
+2711 X(e)s
+2779 X(s)s
+2845 X(s)s
+2918 X(.)s
+720 X
+3790 Y
+728 X(*)s
+720 X
+3900 Y
+1314 X(C)s
+1377 X(A)s
+1448 X(L)s
+1514 X(L)s
+1641 X(D)s
+1712 X(L)s
+1778 X(L)s
+1844 X(T)s
+1924 X(\()s
+1987 X(J)s
+2040 X(B)s
+2126 X(,)s
+2169 X(A)s
+2254 X(\()s
+2317 X(J)s
+2390 X(,)s
+2449 X(J)s
+2518 X(\))s
+2588 X(,)s
+2636 X(LD)s
+2763 X(A)s
+2852 X(,)s
+2914 X(I)s
+2961 X(N)s
+3035 X(F)s
+3093 X(O)s
+3178 X(\))s
+720 X
+4010 Y
+1330 X(I)s
+1385 X(F)s
+1528 X(\()s
+1594 X(I)s
+1641 X(N)s
+1715 X(F)s
+1773 X(O)s
+1862 X(.)s
+1905 X(N)s
+1976 X(E)s
+2060 X(.)s
+2114 X(0)s
+2188 X(\))s
+2301 X(G)s
+2367 X(O)s
+2504 X(TO)s
+2708 X(2)s
+2774 X(0)s
+720 X
+4120 Y
+728 X(*)s
+720 X
+4230 Y
+1330 X(I)s
+1385 X(F)s
+1528 X(\()s
+1591 X(J)s
+1649 X(+)s
+1723 X(J)s
+1776 X(B)s
+1862 X(.)s
+1910 X(L)s
+1976 X(E)s
+2060 X(.)s
+2103 X(N)s
+2188 X(\))s
+2306 X(TH)s
+2438 X(EN)s
+720 X
+4340 Y
+728 X(*)s
+720 X
+4450 Y
+728 X(*)s
+1509 X(U)s
+1586 X(p)s
+1652 X(d)s
+1721 X(a)s
+1795 X(t)s
+1853 X(e)s
+1987 X(s)s
+2048 X(u)s
+2114 X(b)s
+2180 X(d)s
+2257 X(i)s
+2315 X(a)s
+2378 X(g)s
+2444 X(o)s
+2510 X(n)s
+2579 X(a)s
+2653 X(l)s
+2774 X(b)s
+2851 X(l)s
+2906 X(o)s
+2975 X(c)s
+3038 X(k)s
+3116 X(.)s
+720 X
+4560 Y
+728 X(*)s
+720 X
+4670 Y
+1512 X(C)s
+1575 X(A)s
+1646 X(L)s
+1712 X(L)s
+1839 X(D)s
+1905 X(G)s
+1976 X(E)s
+2029 X(M)s
+2095 X(M)s
+2188 X(\()s
+2254 X(')s
+2301 X(N)s
+2378 X(o)s
+2521 X(t)s
+2584 X(r)s
+2645 X(a)s
+2708 X(n)s
+2779 X(s)s
+2840 X(p)s
+2906 X(o)s
+2977 X(s)s
+3041 X(e)s
+3112 X(')s
+3182 X(,)s
+3244 X(')s
+3296 X(T)s
+3376 X(r)s
+3437 X(a)s
+3500 X(n)s
+3571 X(s)s
+3632 X(p)s
+3698 X(o)s
+3769 X(s)s
+3833 X(e)s
+3904 X(')s
+3974 X(,)s
+4017 X(N)s
+4102 X(-)s
+4165 X(J)s
+4234 X(-)s
+4297 X(J)s
+4350 X(B)s
+4421 X(+)s
+4490 X(1)s
+4568 X(,)s
+4627 X(J)s
+4680 X(B)s
+4766 X(,)s
+4825 X(J)s
+4894 X(-)s
+4952 X(1)s
+5030 X(,)s
+720 X
+4780 Y
+1058 X($)s
+2254 X(-)s
+2312 X(1)s
+2390 X(.)s
+2444 X(0)s
+2499 X(D)s
+2576 X(0)s
+2654 X(,)s
+2697 X(A)s
+2782 X(\()s
+2845 X(J)s
+2903 X(+)s
+2977 X(J)s
+3030 X(B)s
+3116 X(,)s
+3170 X(1)s
+3244 X(\))s
+3314 X(,)s
+3362 X(LD)s
+3489 X(A)s
+3578 X(,)s
+3621 X(A)s
+3706 X(\()s
+3769 X(J)s
+3842 X(,)s
+3896 X(1)s
+3970 X(\))s
+4040 X(,)s
+4088 X(LD)s
+4215 X(A)s
+4304 X(,)s
+4358 X(1)s
+4436 X(.)s
+4490 X(0)s
+4545 X(D)s
+4622 X(0)s
+4700 X(,)s
+4743 X(A)s
+4828 X(\()s
+4891 X(J)s
+4949 X(+)s
+5023 X(J)s
+5076 X(B)s
+5162 X(,)s
+5221 X(J)s
+5290 X(\))s
+5360 X(,)s
+720 X
+4890 Y
+1058 X($)s
+2240 X(LD)s
+2367 X(A)s
+2452 X(\))s
+720 X
+5000 Y
+728 X(*)s
+720 X
+5110 Y
+728 X(*)s
+1512 X(C)s
+1586 X(o)s
+1638 X(m)s
+1718 X(p)s
+1784 X(u)s
+1861 X(t)s
+1919 X(e)s
+2053 X(s)s
+2114 X(u)s
+2180 X(b)s
+2246 X(d)s
+2323 X(i)s
+2381 X(a)s
+2444 X(g)s
+2510 X(o)s
+2576 X(n)s
+2645 X(a)s
+2719 X(l)s
+2840 X(b)s
+2917 X(l)s
+2972 X(o)s
+3041 X(c)s
+3104 X(k)s
+3236 X(o)s
+3310 X(f)s
+3428 X(L)s
+3512 X(.)s
+720 X
+5220 Y
+728 X(*)s
+720 X
+5330 Y
+1512 X(C)s
+1575 X(A)s
+1646 X(L)s
+1712 X(L)s
+1839 X(D)s
+1910 X(T)s
+1974 X(R)s
+2045 X(S)s
+2095 X(M)s
+2188 X(\()s
+2254 X(')s
+2304 X(R)s
+2389 X(i)s
+2444 X(g)s
+2510 X(h)s
+2587 X(t)s
+2650 X(')s
+2720 X(,)s
+2782 X(')s
+2834 X(L)s
+2906 X(o)s
+2961 X(w)s
+3041 X(e)s
+3112 X(r)s
+3178 X(')s
+3248 X(,)s
+3310 X(')s
+3362 X(T)s
+3442 X(r)s
+3503 X(a)s
+3566 X(n)s
+3637 X(s)s
+3698 X(p)s
+3764 X(o)s
+3835 X(s)s
+3899 X(e)s
+3970 X(')s
+4040 X(,)s
+4102 X(')s
+4149 X(N)s
+4226 X(o)s
+4292 X(n)s
+4366 X(-)s
+4424 X(u)s
+4490 X(n)s
+4567 X(i)s
+4633 X(t)s
+4696 X(')s
+4766 X(,)s
+4809 X(N)s
+4894 X(-)s
+4957 X(J)s
+5026 X(-)s
+5089 X(J)s
+5142 X(B)s
+5213 X(+)s
+5282 X(1)s
+5360 X(,)s
+720 X
+5440 Y
+1058 X($)s
+2251 X(J)s
+2304 X(B)s
+2390 X(,)s
+2444 X(1)s
+2522 X(.)s
+2576 X(0)s
+2631 X(D)s
+2708 X(0)s
+2786 X(,)s
+2829 X(A)s
+2914 X(\()s
+2977 X(J)s
+3050 X(,)s
+3109 X(J)s
+3178 X(\))s
+3248 X(,)s
+3296 X(LD)s
+3423 X(A)s
+3512 X(,)s
+3555 X(A)s
+3640 X(\()s
+3703 X(J)s
+3761 X(+)s
+3835 X(J)s
+3888 X(B)s
+3974 X(,)s
+4033 X(J)s
+4102 X(\))s
+4172 X(,)s
+4220 X(LD)s
+4347 X(A)s
+4432 X(\))s
+720 X
+5550 Y
+1316 X(EN)s
+1443 X(D)s
+1594 X(I)s
+1649 X(F)s
+720 X
+5660 Y
+926 X(1)s
+992 X(0)s
+1116 X(C)s
+1179 X(O)s
+1245 X(N)s
+1316 X(T)s
+1396 X(I)s
+1443 X(N)s
+1509 X(U)s
+1580 X(E)s
+720 X
+5770 Y
+1116 X(R)s
+1184 X(E)s
+1250 X(TU)s
+1380 X(R)s
+1443 X(N)s
+720 X
+5880 Y
+728 X(*)s
+720 X
+5990 Y
+926 X(2)s
+992 X(0)s
+1132 X(I)s
+1179 X(N)s
+1253 X(F)s
+1311 X(O)s
+1451 X(=)s
+1594 X(I)s
+1641 X(N)s
+1715 X(F)s
+1773 X(O)s
+1913 X(+)s
+2053 X(J)s
+2188 X(-)s
+2312 X(1)s
+720 X
+6100 Y
+1116 X(R)s
+1184 X(E)s
+1250 X(TU)s
+1380 X(R)s
+1443 X(N)s
+720 X
+6210 Y
+1118 X(EN)s
+1245 X(D)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 10 10 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+470 Y
+2859 X
+0.0 11 11 f.R ft(-)s
+2936 X( )s
+2996 X(2)s
+3069 X(1)s
+3155 X( )s
+3224 X(-)s
+720 X
+830 Y
+1121 X
+0.0 10 10 f.R ft(S)s
+1179 X(U)s
+1248 X(B)s
+1314 X(R)s
+1377 X(O)s
+1443 X(U)s
+1514 X(T)s
+1594 X(I)s
+1641 X(N)s
+1712 X(E)s
+1839 X(D)s
+1910 X(L)s
+1976 X(L)s
+2042 X(T)s
+2122 X(\()s
+2169 X(N)s
+2258 X(,)s
+2301 X(A)s
+2390 X(,)s
+2438 X(LD)s
+2565 X(A)s
+2654 X(,)s
+2716 X(I)s
+2763 X(N)s
+2837 X(F)s
+2895 X(O)s
+2980 X(\))s
+720 X
+940 Y
+728 X(*)s
+720 X
+1050 Y
+728 X(*)s
+1116 X(C)s
+1190 X(o)s
+1242 X(m)s
+1322 X(p)s
+1388 X(u)s
+1465 X(t)s
+1523 X(e)s
+1591 X(s)s
+1721 X(a)s
+1784 X(n)s
+1910 X(L)s
+1982 X(*)s
+2042 X(L)s
+2114 X(*)s
+2180 X(*)s
+2240 X(T)s
+2386 X(f)s
+2447 X(a)s
+2513 X(c)s
+2587 X(t)s
+2642 X(o)s
+2716 X(r)s
+2785 X(i)s
+2843 X(z)s
+2909 X(a)s
+2983 X(t)s
+3049 X(i)s
+3104 X(o)s
+3170 X(n)s
+3302 X(o)s
+3376 X(f)s
+3503 X(a)s
+3637 X(s)s
+3698 X(y)s
+3750 X(m)s
+3816 X(m)s
+3899 X(e)s
+3973 X(t)s
+4036 X(r)s
+4105 X(i)s
+4163 X(c)s
+4292 X(p)s
+4358 X(o)s
+4429 X(s)s
+4501 X(i)s
+4567 X(t)s
+4633 X(i)s
+4688 X(v)s
+4757 X(e)s
+4828 X(-)s
+4886 X(d)s
+4955 X(e)s
+5015 X(\256)s
+5084 X(n)s
+5161 X(i)s
+5227 X(t)s
+5285 X(e)s
+720 X
+1160 Y
+728 X(*)s
+1110 X(m)s
+1193 X(a)s
+1267 X(t)s
+1330 X(r)s
+1399 X(i)s
+1454 X(x)s
+1575 X(A)s
+1664 X(.)s
+720 X
+1270 Y
+728 X(*)s
+1113 X(U)s
+1190 X(n)s
+1256 X(b)s
+1333 X(l)s
+1388 X(o)s
+1457 X(c)s
+1520 X(k)s
+1589 X(e)s
+1652 X(d)s
+1784 X(v)s
+1853 X(e)s
+1924 X(r)s
+1987 X(s)s
+2059 X(i)s
+2114 X(o)s
+2180 X(n)s
+2258 X(,)s
+2381 X(c)s
+2447 X(a)s
+2521 X(l)s
+2587 X(l)s
+2653 X(i)s
+2708 X(n)s
+2774 X(g)s
+2900 X(L)s
+2975 X(e)s
+3038 X(v)s
+3107 X(e)s
+3181 X(l)s
+3302 X(2)s
+3437 X(a)s
+3500 X(n)s
+3566 X(d)s
+3692 X(L)s
+3767 X(e)s
+3830 X(v)s
+3899 X(e)s
+3973 X(l)s
+4094 X(1)s
+4218 X(B)s
+4286 X(LA)s
+4421 X(S)s
+4502 X(.)s
+720 X
+1380 Y
+728 X(*)s
+720 X
+1490 Y
+1132 X(I)s
+1179 X(N)s
+1250 X(T)s
+1316 X(EG)s
+1448 X(E)s
+1512 X(R)s
+2254 X(I)s
+2301 X(N)s
+2375 X(F)s
+2433 X(O)s
+2522 X(,)s
+2636 X(LD)s
+2763 X(A)s
+2852 X(,)s
+2961 X(N)s
+720 X
+1600 Y
+1113 X(D)s
+1179 X(O)s
+1245 X(U)s
+1314 X(B)s
+1382 X(L)s
+1448 X(E)s
+1583 X(P)s
+1644 X(R)s
+1712 X(E)s
+1776 X(C)s
+1858 X(I)s
+1913 X(S)s
+1990 X(I)s
+2037 X(O)s
+2103 X(N)s
+2235 X(A)s
+2320 X(\()s
+2372 X(LD)s
+2499 X(A)s
+2588 X(,)s
+2642 X(*)s
+2716 X(\))s
+720 X
+1710 Y
+1132 X(I)s
+1179 X(N)s
+1250 X(T)s
+1316 X(EG)s
+1448 X(E)s
+1512 X(R)s
+2251 X(J)s
+720 X
+1820 Y
+1113 X(D)s
+1179 X(O)s
+1245 X(U)s
+1314 X(B)s
+1382 X(L)s
+1448 X(E)s
+1583 X(P)s
+1644 X(R)s
+1712 X(E)s
+1776 X(C)s
+1858 X(I)s
+1913 X(S)s
+1990 X(I)s
+2037 X(O)s
+2103 X(N)s
+2235 X(D)s
+2301 X(D)s
+2367 X(O)s
+2438 X(T)s
+720 X
+1930 Y
+1118 X(EX)s
+1250 X(T)s
+1316 X(E)s
+1380 X(R)s
+1443 X(N)s
+1509 X(A)s
+1580 X(L)s
+2235 X(D)s
+2301 X(D)s
+2367 X(O)s
+2438 X(T)s
+720 X
+2040 Y
+1118 X(EX)s
+1250 X(T)s
+1316 X(E)s
+1380 X(R)s
+1443 X(N)s
+1509 X(A)s
+1580 X(L)s
+2235 X(D)s
+2301 X(G)s
+2372 X(E)s
+2425 X(M)s
+2499 X(V)s
+2588 X(,)s
+2697 X(D)s
+2771 X(S)s
+2832 X(C)s
+2895 X(A)s
+2966 X(L)s
+720 X
+2150 Y
+728 X(*)s
+720 X
+2260 Y
+1132 X(I)s
+1179 X(N)s
+1253 X(F)s
+1311 X(O)s
+1451 X(=)s
+1586 X(0)s
+720 X
+2370 Y
+1113 X(D)s
+1179 X(O)s
+1322 X(1)s
+1388 X(0)s
+1525 X(J)s
+1649 X(=)s
+1784 X(1)s
+1862 X(,)s
+1971 X(N)s
+720 X
+2480 Y
+728 X(*)s
+720 X
+2590 Y
+728 X(*)s
+1311 X(U)s
+1388 X(p)s
+1454 X(d)s
+1523 X(a)s
+1597 X(t)s
+1655 X(e)s
+1787 X(a)s
+1858 X(\()s
+1927 X(j)s
+1994 X(,)s
+2059 X(j)s
+2122 X(\))s
+2192 X(.)s
+720 X
+2700 Y
+728 X(*)s
+720 X
+2810 Y
+1311 X(A)s
+1396 X(\()s
+1459 X(J)s
+1532 X(,)s
+1591 X(J)s
+1660 X(\))s
+1781 X(=)s
+1905 X(A)s
+1990 X(\()s
+2053 X(J)s
+2126 X(,)s
+2185 X(J)s
+2254 X(\))s
+2386 X(-)s
+2499 X(D)s
+2565 X(D)s
+2631 X(O)s
+2702 X(T)s
+2782 X(\()s
+2845 X(J)s
+2914 X(-)s
+2972 X(1)s
+3050 X(,)s
+3093 X(A)s
+3178 X(\()s
+3241 X(J)s
+3314 X(,)s
+3368 X(1)s
+3442 X(\))s
+3512 X(,)s
+3560 X(LD)s
+3687 X(A)s
+3776 X(,)s
+3819 X(A)s
+3904 X(\()s
+3967 X(J)s
+4040 X(,)s
+4094 X(1)s
+4168 X(\))s
+4238 X(,)s
+4286 X(LD)s
+4413 X(A)s
+4498 X(\))s
+720 X
+2920 Y
+728 X(*)s
+720 X
+3030 Y
+728 X(*)s
+1314 X(C)s
+1388 X(o)s
+1440 X(m)s
+1520 X(p)s
+1586 X(u)s
+1663 X(t)s
+1721 X(e)s
+1861 X(l)s
+1924 X(\()s
+1993 X(j)s
+2060 X(,)s
+2125 X(j)s
+2188 X(\))s
+2315 X(a)s
+2378 X(n)s
+2444 X(d)s
+2587 X(t)s
+2645 X(e)s
+2713 X(s)s
+2785 X(t)s
+2914 X(f)s
+2972 X(o)s
+3046 X(r)s
+3170 X(n)s
+3236 X(o)s
+3302 X(n)s
+3376 X(-)s
+3434 X(p)s
+3500 X(o)s
+3571 X(s)s
+3643 X(i)s
+3709 X(t)s
+3775 X(i)s
+3830 X(v)s
+3899 X(e)s
+3970 X(-)s
+4028 X(d)s
+4097 X(e)s
+4157 X(\256)s
+4226 X(n)s
+4303 X(i)s
+4369 X(t)s
+4427 X(e)s
+4490 X(n)s
+4559 X(e)s
+4627 X(s)s
+4693 X(s)s
+4766 X(.)s
+720 X
+3140 Y
+728 X(*)s
+720 X
+3250 Y
+1330 X(I)s
+1385 X(F)s
+1528 X(\()s
+1575 X(A)s
+1660 X(\()s
+1723 X(J)s
+1796 X(,)s
+1855 X(J)s
+1924 X(\))s
+1994 X(.)s
+2042 X(L)s
+2108 X(E)s
+2192 X(.)s
+2246 X(0)s
+2324 X(.)s
+2378 X(0)s
+2433 X(D)s
+2510 X(0)s
+2584 X(\))s
+2697 X(G)s
+2763 X(O)s
+2900 X(TO)s
+3104 X(2)s
+3170 X(0)s
+720 X
+3360 Y
+1311 X(A)s
+1396 X(\()s
+1459 X(J)s
+1532 X(,)s
+1591 X(J)s
+1660 X(\))s
+1781 X(=)s
+1913 X(S)s
+1971 X(Q)s
+2040 X(R)s
+2108 X(T)s
+2188 X(\()s
+2235 X(A)s
+2320 X(\()s
+2383 X(J)s
+2456 X(,)s
+2515 X(J)s
+2584 X(\))s
+2650 X(\))s
+720 X
+3470 Y
+728 X(*)s
+720 X
+3580 Y
+1330 X(I)s
+1385 X(F)s
+1528 X(\()s
+1591 X(J)s
+1664 X(.)s
+1712 X(L)s
+1778 X(T)s
+1862 X(.)s
+1905 X(N)s
+1990 X(\))s
+2108 X(TH)s
+2240 X(EN)s
+720 X
+3690 Y
+728 X(*)s
+720 X
+3800 Y
+728 X(*)s
+1509 X(U)s
+1586 X(p)s
+1652 X(d)s
+1721 X(a)s
+1795 X(t)s
+1853 X(e)s
+1985 X(e)s
+2059 X(l)s
+2117 X(e)s
+2166 X(m)s
+2249 X(e)s
+2312 X(n)s
+2389 X(t)s
+2449 X(s)s
+2587 X(j)s
+2639 X(+)s
+2708 X(1)s
+2785 X(:)s
+2840 X(n)s
+2972 X(o)s
+3046 X(f)s
+3181 X(j)s
+3244 X(-)s
+3313 X(t)s
+3368 X(h)s
+3503 X(c)s
+3566 X(o)s
+3643 X(l)s
+3698 X(u)s
+3750 X(m)s
+3830 X(n)s
+3908 X(.)s
+720 X
+3910 Y
+728 X(*)s
+720 X
+4020 Y
+1512 X(C)s
+1575 X(A)s
+1646 X(L)s
+1712 X(L)s
+1839 X(D)s
+1905 X(G)s
+1976 X(E)s
+2029 X(M)s
+2103 X(V)s
+2188 X(\()s
+2254 X(')s
+2301 X(N)s
+2378 X(o)s
+2521 X(t)s
+2584 X(r)s
+2645 X(a)s
+2708 X(n)s
+2779 X(s)s
+2840 X(p)s
+2906 X(o)s
+2977 X(s)s
+3041 X(e)s
+3112 X(')s
+3182 X(,)s
+3225 X(N)s
+3310 X(-)s
+3373 X(J)s
+3446 X(,)s
+3505 X(J)s
+3574 X(-)s
+3632 X(1)s
+3710 X(,)s
+3772 X(-)s
+3830 X(1)s
+3908 X(.)s
+3962 X(0)s
+4017 X(D)s
+4094 X(0)s
+4172 X(,)s
+4215 X(A)s
+4300 X(\()s
+4363 X(J)s
+4421 X(+)s
+4490 X(1)s
+4568 X(,)s
+4622 X(1)s
+4696 X(\))s
+4766 X(,)s
+4814 X(LD)s
+4941 X(A)s
+5030 X(,)s
+720 X
+4130 Y
+1058 X($)s
+2235 X(A)s
+2320 X(\()s
+2383 X(J)s
+2456 X(,)s
+2510 X(1)s
+2584 X(\))s
+2654 X(,)s
+2702 X(LD)s
+2829 X(A)s
+2918 X(,)s
+2972 X(1)s
+3050 X(.)s
+3104 X(0)s
+3159 X(D)s
+3236 X(0)s
+3314 X(,)s
+3357 X(A)s
+3442 X(\()s
+3505 X(J)s
+3563 X(+)s
+3632 X(1)s
+3710 X(,)s
+3769 X(J)s
+3838 X(\))s
+3908 X(,)s
+3962 X(1)s
+4036 X(\))s
+720 X
+4240 Y
+728 X(*)s
+720 X
+4350 Y
+728 X(*)s
+1512 X(C)s
+1586 X(o)s
+1638 X(m)s
+1718 X(p)s
+1784 X(u)s
+1861 X(t)s
+1919 X(e)s
+2051 X(e)s
+2125 X(l)s
+2183 X(e)s
+2232 X(m)s
+2315 X(e)s
+2378 X(n)s
+2455 X(t)s
+2515 X(s)s
+2653 X(j)s
+2705 X(+)s
+2774 X(1)s
+2851 X(:)s
+2906 X(n)s
+3038 X(o)s
+3112 X(f)s
+3247 X(j)s
+3310 X(-)s
+3379 X(t)s
+3434 X(h)s
+3569 X(c)s
+3632 X(o)s
+3709 X(l)s
+3764 X(u)s
+3816 X(m)s
+3896 X(n)s
+4028 X(o)s
+4102 X(f)s
+4220 X(L)s
+4304 X(.)s
+720 X
+4460 Y
+728 X(*)s
+720 X
+4570 Y
+1512 X(C)s
+1575 X(A)s
+1646 X(L)s
+1712 X(L)s
+1839 X(D)s
+1913 X(S)s
+1974 X(C)s
+2037 X(A)s
+2108 X(L)s
+2188 X(\()s
+2235 X(N)s
+2320 X(-)s
+2383 X(J)s
+2456 X(,)s
+2510 X(1)s
+2588 X(.)s
+2642 X(0)s
+2697 X(D)s
+2774 X(0)s
+2851 X(/)s
+2895 X(A)s
+2980 X(\()s
+3043 X(J)s
+3116 X(,)s
+3175 X(J)s
+3244 X(\))s
+3314 X(,)s
+3357 X(A)s
+3442 X(\()s
+3505 X(J)s
+3563 X(+)s
+3632 X(1)s
+3710 X(,)s
+3769 X(J)s
+3838 X(\))s
+3908 X(,)s
+3962 X(1)s
+4036 X(\))s
+720 X
+4680 Y
+1316 X(EN)s
+1443 X(D)s
+1594 X(I)s
+1649 X(F)s
+720 X
+4790 Y
+926 X(1)s
+992 X(0)s
+1116 X(C)s
+1179 X(O)s
+1245 X(N)s
+1316 X(T)s
+1396 X(I)s
+1443 X(N)s
+1509 X(U)s
+1580 X(E)s
+720 X
+4900 Y
+1116 X(R)s
+1184 X(E)s
+1250 X(TU)s
+1380 X(R)s
+1443 X(N)s
+720 X
+5010 Y
+728 X(*)s
+720 X
+5120 Y
+926 X(2)s
+992 X(0)s
+1132 X(I)s
+1179 X(N)s
+1253 X(F)s
+1311 X(O)s
+1451 X(=)s
+1591 X(J)s
+720 X
+5230 Y
+1116 X(R)s
+1184 X(E)s
+1250 X(TU)s
+1380 X(R)s
+1443 X(N)s
+720 X
+5340 Y
+1118 X(EN)s
+1245 X(D)s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 10 10 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+720 X
+470 Y
+2859 X
+0.0 11 11 f.R ft(-)s
+2936 X( )s
+2996 X(2)s
+3069 X(2)s
+3155 X( )s
+3224 X(-)s
+720 X
+830 Y
+/Times-Bold /Times-Bold-8 roman-8-mappings AddRoman-8
+/f.B /Times-Bold-8 findfont def
+
+0.0 10 10 f.B ft(Appendix)s
+1163 X(B)s
+1255 X(-)s
+1313 X(Calling)s
+1650 X(Sequences)s
+2114 X(for)s
+2266 X(all)s
+2397 X(the)s
+2555 X(Level)s
+2813 X(3)s
+2888 X(BLAS.)s
+720 X
+1160 Y
+779 X
+0.0 8 8 f.R ft(n)s
+835 X(a)s
+875 X(m)s
+941 X(e)s
+1521 X(o)s
+1574 X(p)s
+1636 X(t)s
+1689 X(i)s
+1733 X(o)s
+1786 X(n)s
+1844 X(s)s
+3111 X(d)s
+3173 X(i)s
+3207 X(m)s
+3487 X(s)s
+3538 X(c)s
+3591 X(a)s
+3650 X(l)s
+3697 X(a)s
+3754 X(r)s
+3843 X(m)s
+3909 X(a)s
+3968 X(t)s
+4019 X(r)s
+4074 X(i)s
+4118 X(x)s
+4267 X(m)s
+4333 X(a)s
+4392 X(t)s
+4443 X(r)s
+4498 X(i)s
+4542 X(x)s
+4653 X(s)s
+4704 X(c)s
+4757 X(a)s
+4816 X(l)s
+4863 X(a)s
+4920 X(r)s
+5009 X(m)s
+5075 X(a)s
+5134 X(t)s
+5185 X(r)s
+5240 X(i)s
+5284 X(x)s
+720 X
+1380 Y
+726 X(_)s
+771 X(G)s
+828 X(E)s
+870 X(M)s
+923 X(M)s
+1051 X(\()s
+1729 X(T)s
+1780 X(R)s
+1831 X(A)s
+1884 X(N)s
+1943 X(S)s
+1990 X(A)s
+2061 X(,)s
+2153 X(T)s
+2204 X(R)s
+2255 X(A)s
+2308 X(N)s
+2367 X(S)s
+2416 X(B)s
+2485 X(,)s
+2990 X(M)s
+3068 X(,)s
+3156 X(N)s
+3227 X(,)s
+3315 X(K)s
+3386 X(,)s
+3474 X(A)s
+3531 X(L)s
+3586 X(P)s
+3633 X(H)s
+3686 X(A)s
+3757 X(,)s
+3845 X(A)s
+3916 X(,)s
+4008 X(LD)s
+4110 X(A)s
+4181 X(,)s
+4271 X(B)s
+4340 X(,)s
+4432 X(LD)s
+4536 X(B)s
+4605 X(,)s
+4695 X(B)s
+4750 X(E)s
+4803 X(TA)s
+4923 X(,)s
+5013 X(C)s
+5082 X(,)s
+5174 X(LD)s
+5278 X(C)s
+5344 X(\))s
+720 X
+1490 Y
+726 X(_)s
+777 X(S)s
+824 X(Y)s
+870 X(M)s
+923 X(M)s
+1051 X(\()s
+1095 X(S)s
+1157 X(I)s
+1195 X(D)s
+1252 X(E)s
+1319 X(,)s
+1407 X(U)s
+1466 X(P)s
+1517 X(LO)s
+1637 X(,)s
+2990 X(M)s
+3068 X(,)s
+3156 X(N)s
+3227 X(,)s
+3474 X(A)s
+3531 X(L)s
+3586 X(P)s
+3633 X(H)s
+3686 X(A)s
+3757 X(,)s
+3845 X(A)s
+3916 X(,)s
+4008 X(LD)s
+4110 X(A)s
+4181 X(,)s
+4271 X(B)s
+4340 X(,)s
+4432 X(LD)s
+4536 X(B)s
+4605 X(,)s
+4695 X(B)s
+4750 X(E)s
+4803 X(TA)s
+4923 X(,)s
+5013 X(C)s
+5082 X(,)s
+5174 X(LD)s
+5278 X(C)s
+5344 X(\))s
+720 X
+1600 Y
+726 X(_)s
+771 X(H)s
+828 X(E)s
+870 X(M)s
+923 X(M)s
+1051 X(\()s
+1095 X(S)s
+1157 X(I)s
+1195 X(D)s
+1252 X(E)s
+1319 X(,)s
+1407 X(U)s
+1466 X(P)s
+1517 X(LO)s
+1637 X(,)s
+2990 X(M)s
+3068 X(,)s
+3156 X(N)s
+3227 X(,)s
+3474 X(A)s
+3531 X(L)s
+3586 X(P)s
+3633 X(H)s
+3686 X(A)s
+3757 X(,)s
+3845 X(A)s
+3916 X(,)s
+4008 X(LD)s
+4110 X(A)s
+4181 X(,)s
+4271 X(B)s
+4340 X(,)s
+4432 X(LD)s
+4536 X(B)s
+4605 X(,)s
+4695 X(B)s
+4750 X(E)s
+4803 X(TA)s
+4923 X(,)s
+5013 X(C)s
+5082 X(,)s
+5174 X(LD)s
+5278 X(C)s
+5344 X(\))s
+720 X
+1710 Y
+726 X(_)s
+777 X(S)s
+824 X(Y)s
+879 X(R)s
+930 X(K)s
+1051 X(\()s
+1407 X(U)s
+1466 X(P)s
+1517 X(LO)s
+1637 X(,)s
+1729 X(T)s
+1780 X(R)s
+1831 X(A)s
+1884 X(N)s
+1943 X(S)s
+2061 X(,)s
+3156 X(N)s
+3227 X(,)s
+3315 X(K)s
+3386 X(,)s
+3474 X(A)s
+3531 X(L)s
+3586 X(P)s
+3633 X(H)s
+3686 X(A)s
+3757 X(,)s
+3845 X(A)s
+3916 X(,)s
+4008 X(LD)s
+4110 X(A)s
+4181 X(,)s
+4695 X(B)s
+4750 X(E)s
+4803 X(TA)s
+4923 X(,)s
+5013 X(C)s
+5082 X(,)s
+5174 X(LD)s
+5278 X(C)s
+5344 X(\))s
+720 X
+1820 Y
+726 X(_)s
+771 X(H)s
+828 X(E)s
+879 X(R)s
+930 X(K)s
+1051 X(\()s
+1407 X(U)s
+1466 X(P)s
+1517 X(LO)s
+1637 X(,)s
+1729 X(T)s
+1780 X(R)s
+1831 X(A)s
+1884 X(N)s
+1943 X(S)s
+2061 X(,)s
+3156 X(N)s
+3227 X(,)s
+3315 X(K)s
+3386 X(,)s
+3474 X(A)s
+3531 X(L)s
+3586 X(P)s
+3633 X(H)s
+3686 X(A)s
+3757 X(,)s
+3845 X(A)s
+3916 X(,)s
+4008 X(LD)s
+4110 X(A)s
+4181 X(,)s
+4695 X(B)s
+4750 X(E)s
+4803 X(TA)s
+4923 X(,)s
+5013 X(C)s
+5082 X(,)s
+5174 X(LD)s
+5278 X(C)s
+5344 X(\))s
+720 X
+1930 Y
+726 X(_)s
+777 X(S)s
+824 X(Y)s
+879 X(R)s
+938 X(2)s
+983 X(K)s
+1051 X(\()s
+1407 X(U)s
+1466 X(P)s
+1517 X(LO)s
+1637 X(,)s
+1729 X(T)s
+1780 X(R)s
+1831 X(A)s
+1884 X(N)s
+1943 X(S)s
+2061 X(,)s
+3156 X(N)s
+3227 X(,)s
+3315 X(K)s
+3386 X(,)s
+3474 X(A)s
+3531 X(L)s
+3586 X(P)s
+3633 X(H)s
+3686 X(A)s
+3757 X(,)s
+3845 X(A)s
+3916 X(,)s
+4008 X(LD)s
+4110 X(A)s
+4181 X(,)s
+4271 X(B)s
+4340 X(,)s
+4432 X(LD)s
+4536 X(B)s
+4605 X(,)s
+4695 X(B)s
+4750 X(E)s
+4803 X(TA)s
+4923 X(,)s
+5013 X(C)s
+5082 X(,)s
+5174 X(LD)s
+5278 X(C)s
+5344 X(\))s
+720 X
+2040 Y
+726 X(_)s
+771 X(H)s
+828 X(E)s
+879 X(R)s
+938 X(2)s
+983 X(K)s
+1051 X(\()s
+1407 X(U)s
+1466 X(P)s
+1517 X(LO)s
+1637 X(,)s
+1729 X(T)s
+1780 X(R)s
+1831 X(A)s
+1884 X(N)s
+1943 X(S)s
+2061 X(,)s
+3156 X(N)s
+3227 X(,)s
+3315 X(K)s
+3386 X(,)s
+3474 X(A)s
+3531 X(L)s
+3586 X(P)s
+3633 X(H)s
+3686 X(A)s
+3757 X(,)s
+3845 X(A)s
+3916 X(,)s
+4008 X(LD)s
+4110 X(A)s
+4181 X(,)s
+4271 X(B)s
+4340 X(,)s
+4432 X(LD)s
+4536 X(B)s
+4605 X(,)s
+4695 X(B)s
+4750 X(E)s
+4803 X(TA)s
+4923 X(,)s
+5013 X(C)s
+5082 X(,)s
+5174 X(LD)s
+5278 X(C)s
+5344 X(\))s
+720 X
+2150 Y
+726 X(_)s
+775 X(T)s
+826 X(R)s
+870 X(M)s
+923 X(M)s
+1051 X(\()s
+1095 X(S)s
+1157 X(I)s
+1195 X(D)s
+1252 X(E)s
+1319 X(,)s
+1407 X(U)s
+1466 X(P)s
+1517 X(LO)s
+1637 X(,)s
+1729 X(T)s
+1780 X(R)s
+1831 X(A)s
+1884 X(N)s
+1943 X(S)s
+1990 X(A)s
+2061 X(,)s
+2573 X(D)s
+2641 X(I)s
+2679 X(A)s
+2732 X(G)s
+2803 X(,)s
+2990 X(M)s
+3068 X(,)s
+3156 X(N)s
+3227 X(,)s
+3474 X(A)s
+3531 X(L)s
+3586 X(P)s
+3633 X(H)s
+3686 X(A)s
+3757 X(,)s
+3845 X(A)s
+3916 X(,)s
+4008 X(LD)s
+4110 X(A)s
+4181 X(,)s
+4271 X(B)s
+4340 X(,)s
+4432 X(LD)s
+4536 X(B)s
+4602 X(\))s
+720 X
+2260 Y
+726 X(_)s
+775 X(T)s
+826 X(R)s
+883 X(S)s
+923 X(M)s
+1051 X(\()s
+1095 X(S)s
+1157 X(I)s
+1195 X(D)s
+1252 X(E)s
+1319 X(,)s
+1407 X(U)s
+1466 X(P)s
+1517 X(LO)s
+1637 X(,)s
+1729 X(T)s
+1780 X(R)s
+1831 X(A)s
+1884 X(N)s
+1943 X(S)s
+1990 X(A)s
+2061 X(,)s
+2573 X(D)s
+2641 X(I)s
+2679 X(A)s
+2732 X(G)s
+2803 X(,)s
+2990 X(M)s
+3068 X(,)s
+3156 X(N)s
+3227 X(,)s
+3474 X(A)s
+3531 X(L)s
+3586 X(P)s
+3633 X(H)s
+3686 X(A)s
+3757 X(,)s
+3845 X(A)s
+3916 X(,)s
+4008 X(LD)s
+4110 X(A)s
+4181 X(,)s
+4271 X(B)s
+4340 X(,)s
+4432 X(LD)s
+4536 X(B)s
+4602 X(\))s
+7920 Y
+page
+/Times-Roman /Times-Roman-8 roman-8-mappings AddRoman-8
+/f.R /Times-Roman-8 findfont def
+
+0.0 8 8 f.R ft
+/lineWidthScale 1.0000 def
+lineWidthScale xsiz mul 1.7 div setlinewidth
+
+restore
+%%Trailer
+%%DocumentFonts: 
+restore

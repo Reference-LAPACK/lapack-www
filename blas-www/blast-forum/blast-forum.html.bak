@@ -1,0 +1,456 @@
+<head>
+<title>BLAS Technical Forum </title>
+</head>
+<body>
+
+<center>
+<h1>BLAS Technical Forum </h1>
+</center>
+
+<hr>
+<p>
+The <i>final draft</i> of the <font color="red">BLAST document</font> is
+in preparation, as well
+as reference implementations and test suites for the routines in Fortran95,
+Fortran77, and C.  As soon
+as the reference implementations are completed, the document will be
+announced and available in ps/pdf/html form.  The reference implementations
+and test suites will also be available on this webpage.
+<p>
+<ul>
+<li> To view the <i>draft</i> of the document:
+  <ul>
+  <li> To read/download a chapter, click on the chapter name in the "Chapter"
+       column of the table.  This will access the postscript or pdf
+       file.
+  <li> To download the tar file of latex source of the document, click
+       <a href="http://www.netlib.org/blas/blast-forum/blas-report.tgz">here</a>.
+  <li> <font color="red">Authors:  All revisions are due by November 1, 2000! </font>
+  </ul>
+</ul>
+<p>
+<!--
+<hr>
+<p>
+<ul>
+<li><a href="#1">Minutes</a> from the previous meeting (Dec 14-16, 1998 at UC Berkeley) are now available!<IMG SRC="/utk/papers/new.gif">
+</ul>
+</p>
+<hr>
+<p>
+<center>
+<h2><font color="blue">VIRTUAL BLAST Meeting voting has been completed.</font></h2>
+</center>
+<ul>
+<li><h3> Feb 2 -- 10 : <FONT COLOR="red">BLAST Chapter voting by eligible voters</FONT></h3>
+   <ul>
+   <li> To enter the voting page, click on the link below.  You will be
+        taken to a login page where you can choose your name, if you have
+        already registered.  You would then click the ``Enter'' button
+        to enter the Voting page.
+   <li> However, people who have not registered to vote should
+        click on the ``Register to Vote'' button.
+   <li> You may enter the <FONT COLOR="red">Vote Page</FONT> anonymously
+        in order to view the vote tally for each chapter.  However, you are
+        not permitted to vote anonymously.
+   <li> A voting page is provided for each chapter.
+   <li> Multiple people from an eligible institution may vote, but only one 
+        person per chapter.
+   <li> You can submit a partial vote on a chapter, and return later to finish
+        your vote.
+   <li> When voting, click on a section name to view an html version of the
+        section.
+   <li> Additional comments on sections/chapters may be submitted from the
+        <FONT COLOR="red">Vote Page</FONT>.
+   <li> Don't forget to click on <FONT COLOR="red">Submit Vote</FONT> when
+        you have finished voting on a chapter/section!
+   <li> After submitting a vote, you may return later and change your vote.
+   </ul>
+<P>
+<li><h3><a href="http://www.netlib.org/cgi-bin/vote/blast/login.pl">Click here
+to enter the vote page</a></h3>
+</ul>
+</p>
+-->
+<hr>
+<p>
+<!--
+<center>
+<h2><FONT COLOR="blue">VIRTUAL BLAST Meeting has ended!</FONT></h2>
+</center>
+<p>
+<ul>
+<li><h3>July 1 -- 21 :  <FONT COLOR="red">Commenting/reviewing of chapters</FONT></h3>
+  <ul>
+  <li> To read a chapter, click on the chapter name in the "Chapter"
+       column of the table.  This will access the postscript or pdf
+       file.
+  <li> To view other users' comments or submit comments for a chapter,
+       click on the appropriate chapter in the "Comments" column of the table.  
+  <li> <FONT color="red">NOTE:</FONT> Several of the sections/chapters
+       are preliminary and have not had first readings yet.  These new
+       sections are NOT necessarily what will be included.  We need
+       user comments to know if a section/chapter is ready for a "first"
+       reading.  Some sections/chapters may need major revisions.
+  </ul>
+<li><h3> July 21 -- Aug 10 : <FONT COLOR="red">Authors incorporate changes</FONT></h3>
+<li><h3> Aug 12 -- Sept 2 :  <FONT COLOR="red">Preliminary voting by eligible voters</FONT></h3>
+   <ul>
+   <li> To enter the voting page, click on the link below.  You will be
+        taken to a login page where you can choose your name, if you have
+        already registered.  You would then click the ``Enter'' button
+        to enter the Voting page.
+   <li> However, people who have not registered to vote should
+        click on the ``Register to Vote'' button.
+   <li> You may enter the <FONT COLOR="red">Vote Page</FONT> anonymously
+        in order to view the vote tally for each chapter.  However, you are
+        not permitted to vote anonymously.
+   <li> A voting page is provided for each chapter.
+   <li> Multiple people from an eligible institution may vote, but only one 
+        person per chapter.
+   <li> You can submit a partial vote on a chapter, and return later to finish
+        your vote.
+   <li> When voting, click on a section name to view an html version of the
+        section.
+   <li> Additional comments on sections/chapters may be submitted from the
+        <FONT COLOR="red">Vote Page</FONT>.
+   <li> Don't forget to click on <FONT COLOR="red">Submit Vote</FONT> when
+        you have finished voting on a chapter/section!
+   <li> After submitting a vote, you may return later and change your vote.
+   </ul>
+<P>
+<li><h3><a href="http://www.netlib.org/cgi-bin/vote/blast/login.pl">Click here
+to enter the vote page</a></h3>
+</ul>
+<hr>
+-->
+<p>
+<center>
+<H2><FONT COLOR="red">Document for the BLAS Standard (DRAFT)</FONT></H2>
+</center>
+
+<P>
+
+<!-- INSERT THE CGI STUFF HERE -->
+
+<!--
+<P>
+<FONT color="red">ATTENTION AUTHORS:</FONT>  If you would like to modify
+the latex source of a chapter, please go to the <a href=/cgi-bin/checkout/blast/blast.pl?show_checkout=1>chapter checkout page</a>.
+-->
+
+<!--
+<p>
+<FONT color="red">NOTE</FONT>:  The "Check Out" column of the table is our "revision control"
+system for authors' modifications to the chapters.
+If you wish to "check-out" a chapter and make modifications, here are
+your instructions:
+<ul>
+<li> Click on the latex filename in the "Check Out" column of the table.
+     You will then be prompted for your name, which will be entered into
+     the "Status" column of the table.
+<li> "Checking-out" a chapter puts a lock on the file and no other users
+     can access the latex source file.
+<li> When you have completed your modifications, please return the latex
+     file to <a href="mailto:susan@cs.utk.edu">susan@cs.utk.edu</a>.
+<li> After the chapter has been returned, the "Status" column will be
+     reset for that chapter.
+</ul> 
+-->
+
+<p>
+
+<hr>
+<p>
+<center>
+<H2><FONT COLOR="red">Modules and Include Files</FONT></H2>
+</center>
+
+<p>
+Fortran 95
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_dense.f90"><b>blas_dense.f90</b></a> -- Fortran 95 module for Chapter 2
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_operator_arguments.f90"><b>blas_operator_arguments.f90</b></a> -- Fortran 95 module of derived types for Chapters 2 and 4
+<li>
+<a href="/blas/blast-forum/blas_precision.f90"><b>blas_precision.f90</b></a> -- Fortran 95 module of precisions for Chapters 2 and 4
+<li>
+<a href="/blas/blast-forum/blas_dense_red_op.f90"><b>blas_dense_red_op.f90</b></a> -- Fortran 95 module of reduction operations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_gen_trans.f90"><b>blas_dense_gen_trans.f90</b></a> -- Fortran 95 module of generate transformations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_vec_op.f90"><b>blas_dense_vec_op.f90</b></a> -- Fortran 95 module of vector operations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_vec_mov.f90"><b>blas_dense_vec_mov.f90</b></a> -- Fortran 95 module of data movement with vectors routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_mat_vec_op.f90"><b>blas_dense_mat_vec_op.f90</b></a> -- Fortran 95 module of matrix-vector operations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_mat_op.f90"><b>blas_dense_mat_op.f90</b></a> -- Fortran 95 module of matrix operations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_mat_mat_op.f90"><b>blas_dense_mat_mat_op.f90</b></a> -- Fortran 95 module of matrix-matrix operations routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_mat_mov.f90"><b>blas_dense_mat_mov.f90</b></a> -- Fortran 95 module of data movement with matrices routines for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_dense_fpinfo.f90"><b>blas_dense_fpinfo.f90</b></a> -- Fortran 95 module of environmental enquiry routine for Chapter 2
+
+</ul>
+</ul>
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_sparse.f90"><b>blas_sparse.f90</b></a> -- Fortran 95 module for Chapter 3
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_sparse_namedconstants.f90"><b>blas_sparse_namedconstants.f90</b></a> -- Fortran 95 module of named constants for Chapter 3
+</ul>
+</ul>
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_extended.f90"><b>blas_extended.f90</b></a> -- Fortran 95 module for Chapter 4
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_extended_red_op.f90"><b>blas_extended_red_op.f90</b></a> -- Fortran 95 module of reduction operations routines for Chapter 4
+<li>
+<a href="/blas/blast-forum/blas_extended_vec_op.f90"><b>blas_extended_vec_op.f90</b></a> -- Fortran 95 module of vector operations routines for Chapter 4
+</ul>
+</ul>
+Fortran 77
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_namedconstants.h"><b>blas_namedconstants.h</b></a> -- Fortran 77 include file for the values of named constants
+</ul>
+C
+<ul>
+<li>
+<a href="/blas/blast-forum/blas.h"><b>blas.h</b></a> -- C include file containing the value of enumerated types and all prototypes for Chapters 2, 3, and 4
+</li>
+</ul>
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_dense.h"><b>blas_dense.h</b></a> -- C include file for Chapter 2 (containing blas_enum.h + blas_dense_proto.h)
+<li>
+<a href="/blas/blast-forum/blas_sparse.h"><b>blas_sparse.h</b></a> -- C include file for Chapter 3 (containing blas_enum.h + blas_sparse_proto.h)
+<li>
+<a href="/blas/blast-forum/blas_extended.h"><b>blas_extended.h</b></a> -- C include file for Chapter 4 (containing blas_enum.h + blas_extended_proto.h)
+</ul>
+<ul>
+<li>
+<a href="/blas/blast-forum/blas_enum.h"><b>blas_enum.h</b></a> -- C include file for the value of enumerated types
+<li>
+<a href="/blas/blast-forum/blas_dense_proto.h"><b>blas_dense_proto.h</b></a> -- C include file containing the prototypes for Chapter 2
+<li>
+<a href="/blas/blast-forum/blas_sparse_proto.h"><b>blas_sparse_proto.h</b></a> -- C include file containing the prototypes for Chapter 3
+<li>
+<a href="/blas/blast-forum/blas_extended_proto.h"><b>blas_extended_proto.h</b></a> -- C include file containing the prototypes for Chapter 4
+</ul>
+</p>
+
+<hr>
+<center>
+<H2><FONT COLOR="red">Reference Implementations</FONT></H2>
+</center>
+
+<p>
+<a href="/blas/blast-forum/cblas.tgz"><b>Reference implementation for the C interface to the Legacy BLAS</b></a><FONT COLOR="red"> (March, 1999)</FONT></p>
+<ul>
+<li><a href="/blas/blast-forum/cblas.h">cblas.h</a>
+</ul>
+<p>
+<a href="http://www.nag.co.uk/numeric/F95_BLAS_proposal/F95_BLAS_proposal.html"><b>Reference implementation for the Fortran95 interface to the Legacy BLAS</b></a></p>
+
+<p>
+<a href="http://www.cerfacs.fr/~voemel/SparseBLAS/SparseBLAS.html"><b>Sparse BLAS in Fortran 95</b></a><FONT COLOR="red"> (December, 2000)</FONT></p>
+
+<hr>
+<p>
+<center>
+<H2><FONT COLOR="red">Related Papers/Documentation</FONT></H2>
+</center>
+
+<p>
+<ul>
+<li><a HREF="http://www.netlib.org/lapack/lawns/lawn148.ps">
+<b>On Computing Givens rotations reliably and efficiently</b></a>,
+D. Bindel, J. Demmel, W. Kahan, O. Marques, University of Tennessee 
+Technical Report CS-00-449, October, 2000.
+<ul>
+<li>
+<a href="/lapack/lawnspdf/lawn148.pdf"><b>PDF version</b></a>
+</ul>
+<li><a HREF="http://www.netlib.org/lapack/lawns/lawn149.ps">
+<b>Design, Implementation and Testing of Extended and Mixed Precision BLAS</b></a>,
+X. Li, J. Demmel, D. Bailey, G. Henry, Y. Hida, J. Iskandar,
+W. Kahan, A. Kapur, M. Martin, T. Tung, D. J. Yoo, University of Tennessee 
+Technical Report CS-00-451, October, 2000.
+<ul>
+<li>
+<a href="/lapack/lawnspdf/lawn149.pdf"><b>PDF version</b></a>
+</ul>
+</ul>
+</p>
+
+<!--
+<p>
+<li><a href="#1">Minutes</a> from the last meeting (April 27-29, 1998 in Eagan, MN)<IMG SRC="./new.gif">
+</ul>
+-->
+<hr>
+<p>
+<center>
+<H2><FONT COLOR="red">Goals</FONT></H2>
+</center>
+
+<p>
+
+The existing BLAS have proven to be very effective in assisting portable,
+efficient software for sequential, vector and shared memory 
+high-performance computers.  
+We have decided to establish a Forum to consider expanding the BLAS
+in a number of ways in light of modern software, language, and
+hardware developments.
+<p>
+
+Goals:</p>
+<UL>
+<li>
+  Stimulate thought,
+<li>
+  Discussion, 
+<li> 
+  Functionality and
+<li>
+  Future development of a set of standards for basic matrix
+  data structures,
+<li>
+  Both dense and sparse,
+<li>
+  Calling sequences for a set of low-level computational kernels for 
+  the parallel and sequential settings.
+</UL>
+<P>
+
+Major aims of these standards will be to enable linear algebra
+libraries (both public domain and commercial) to interoperate
+efficiently and easily.
+ 
+ 
+Numerical methods for dense matrices on parallel computers require high
+efficiency kernels that provide functionality similar to that in
+traditional BLAS on sequential machines.
+We have begun the forum with a discussion of
+the  need for a light weight interface to much of the functionality
+of traditional BLAS. In addition, iterative and sparse direct methods
+require additional functionality not in traditional BLAS.
+
+
+<p>
+Who should be viewed as the end users of the interfaces developed by the
+forum? computer vendors (both hardware and software), 
+average application programmers, higher level library writers?
+We would like to get your input on these questions as well as
+what you would like to see in a set of basic operations for linear algebra.
+<hr>
+
+<p>
+<center>
+<a name="1"><H2><FONT COLOR="red">Minutes</FONT></H2></a>
+</center>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.march16-18.99.html">Minutes from the March 16-18, 1999</a>
+BLAST Forum Meeting at Ramada Inn and Suites, Oak Ridge, TN
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.dec14-16.98.html">Minutes from the December 14-16, 1998</a>
+BLAST Forum Meeting at LBL, Berkeley, CA.
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.oct8-9.98.html">Minutes from the October 8-9, 1998</a>
+BLAST Forum Meeting at NIST, Washington, D.C..
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.april27-29.98.html">Minutes from the April 27-29, 1998</a>
+BLAST Forum Meeting at Cray Research, Eagan, MN.
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.dec3-5.97.html">
+Minutes from the December 3-5, 1997</a>
+BLAST Forum Meeting at Hilton Hotel, Knoxville, TN.
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.aug14-15.97.html">
+Minutes from the August 14-15, 1997</a>
+BLAST Forum Meeting at Benson Hotel, Portland, OR.
+</p>
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.feb27-28.97.html">
+Minutes from the February 27-28, 1997
+</a>
+BLAST Forum Meeting at Clarion Hotel, Dallas, TX.
+</p>
+
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.nov7-8.96.html">
+Minutes from the November 7-8, 1996
+</a>
+BLAST Forum Meeting at Cray Research, Eagan, MN.
+</p>
+
+
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.may20-21.html">
+Minutes from the May 20-21, 1996 
+</a>
+BLAST Forum Meeting in Atlanta.
+
+<p>
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-minutes.feb19-20.html">
+Minutes from the February 19-20, 1996 
+</a>
+BLAST Forum Meeting in Nashville.
+
+<p>
+<a href="http://www.netlib.org/utk/papers/sblas-meeting.html">
+Information
+from the BLAS Technical Workshop held on November 13-14, 1995 
+</a>
+at the University of Tennessee, Knoxville.
+<p>
+<hr>
+
+<p>
+For a preliminary set of forum rules see:
+<a href="http://www.netlib.org/blas/blast-forum/blast-forum-rules.html">
+rules</a>
+
+A number of  mailing lists have been set up.
+The mail is being archived on netlib in directory blast.
+ 
+The mailing lists are
+<UL>
+<LI>  blast-comm@cs.utk.edu    -- general mailing list to all
+<LI>  blast-funct@cs.utk.edu  -- for discussion of what functions should be included
+<LI>  blast-lite@cs.utk.edu  -- for discussion of a ``light'' weight interface for the BLAS
+<LI>  blast-parallel@cs.utk.edu  -- for discussion of parallel processing
+<LI>  blast-sparse@cs.utk.edu  -- for discussion of sparse operations
+<LI>  blast-lb@cs.utk.edu  -- for discussion of language bindings
+<LI>  blast-nearterm@cs.utk.edu  -- for discussion of short term goals
+</UL>
+
+ 
+To subscribe yourself, send a message of the form
+  <pre>subscribe blast-comm</pre>
+to majordomo@cs.utk.edu.
+ 
+<p>
+To unsubscribe yourself, send a message of the form
+  <pre>unsubscribe blast-comm</pre>
+to majordomo@cs.utk.edu.
+ 
+<p>
+To send mail to the list simply:
+  <pre>mail blast-comm@cs.utk.edu</pre>
+ 
+<p>
+The mail is being archived in netlib under directory blast.
+</body>

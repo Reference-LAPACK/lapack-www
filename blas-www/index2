@@ -1,0 +1,76 @@
+
+===== CORE index =====
+
+MACHINE CONSTANTS
+i1mach  integer machine constants (like Fortran units for standard input)
+r1mach  real machine constants (like "machine epsilon" and "biggest number")
+d1mach  double precision machine constants
+
+These routines were introduced in the PORT library and published in TOMS;
+They represent values checked by extensive testing and are not naive counts
+of "how many bits in a word".  Because some machines use extended precision
+registers, trying to calculate such quantities directly is problematical. As
+far as possible, we replace machine constants in the various netlib libraries
+by calls to *1mach and keep these three routines up to date.
+
+
+BASIC LINEAR ALGEBRA MODULES  (Level 1)
+.....function......      ....prefix,suffix.....  rootname
+dot product              s-  d- c-u c-c z-u z-c  -dot-
+y = a*x + y              s-  d-     c-      z-   -axpy
+setup Givens rotation    s-  d-                  -rotg
+apply Givens rotation    s-  d-     cs-     zd-  -rot
+copy x into y            s-  d-     c-      z-   -copy
+swap x and y             s-  d-     c-      z-   -swap
+Euclidean norm           s-  d-     sc-     dz-  -nrm2
+sum of absolute values   s-  d-     sc-     dz-  -asum
+x = a*x                  s-  d- cs- c-  cd- z-   -scal
+index of max abs value  is- id-     ic-     iz-  -amax
+
+
+SUPER-BLAS  (Level 2)
+
+   MV Matrix vector multiply
+   R1 Rank one update to a matrix
+   R2 Rank two update to a matrix
+   SV Solving certain triangular matrix problems.
+
+single precision level 2 BLAS     |     Double precision level 2 BLAS
+-----------------------------------------------------------------------
+        MV   R    R2  SV          |             MV   R    R2  SV
+SGE     x    x                    |     DGE     x    x     
+SGB     x                         |     DGB     x
+SSP     x    x    x               |     DSP     x    x    x
+SSY     x    x    x               |     DSY     x    x    x
+SSB     x                         |     DSB     x
+STR     x              x          |     DTR     x              x   
+STB     x              x          |     DTB     x              x
+STP     x              x          |     DTP     x              x
+
+complex  level 2 BLAS             |      Double precision complex level 2 BLAS
+-----------------------------------------------------------------------
+        MV   R     RC   RU  R2  SV|              MV   R     RC   RU  R2  SV
+CGE     x          x    x         |      ZGE     x          x    x
+CGB     x                         |      ZGB     x
+CHE     x    x              x     |      ZHE     x    x              x
+CHP     x    x              x     |      ZHP     x    x              x
+CHB     x                         |      ZHB     x
+CTR     x                       x |      ZTR     x                       x   
+CTB     x                       x |      ZTB     x                       x
+CTP     x                       x |      ZTP     x                       x
+
+
+For more details on the level 2 blas,
+   send blas2-paper from core
+To get all the level 2 blas for a class of operands,
+   send sblas2 from core    (real)
+   send dblas2 from core    (double)
+   send cblas2 from core    (complex)
+   send zblas2 from core    (double complex)
+   send esblas2 from core   (real, with extended precision accumulation)
+   send ecblas2 from core   (complex, with extended precision accumulation)
+To get the routine and data for testing the level 2 blas,
+   send sblat2,sblat2d from core    (real)
+   send dblat2,dblat2d from core    (double)
+   send cblat2,cblat2d from core    (complex)
+   send zblat2,zblat2d from core    (double complex)

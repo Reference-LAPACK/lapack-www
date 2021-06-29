@@ -1,0 +1,18 @@
+      subroutine zblas()
+      d = dcabs1(z)
+      call drotg(da,db,c,s)
+      d = dzasum(n,zx,incx)
+      d = dznrm2( n, zx, incx)
+      call  zdrot (n,zx,incx,zy,incy,c,s)
+      i = izamax(n,zx,incx)
+      call zaxpy(n,za,zx,incx,zy,incy)
+      call  zcopy(n,zx,incx,zy,incy)
+      z = zdotc(n,zx,incx,zy,incy)
+      z = zdotu(n,zx,incx,zy,incy)
+      call  zdscal(n,da,zx,incx)
+      d = zmach(job)
+      call zrotg(ca,cb,c,s)
+      call  zscal(n,za,zx,incx)
+      call  zswap (n,zx,incx,zy,incy)
+      stop
+      end

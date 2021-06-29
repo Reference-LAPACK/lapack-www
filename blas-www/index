@@ -1,0 +1,1326 @@
+#####################################################################
+#       BLAS Index (Levels 1, 2, and 3)                             #
+#                                                                   #
+#       NOTE:  All BLAS routines are listed in the order in which   #
+#              they appear on the BLAS Quick Reference Guide.       #
+#                                                                   #
+#       Organization of this index:                                 #
+#           Documentation and Test Suites                           #
+#           Miscellaneous and Auxiliary Routines                    #
+#           Level 1 BLAS routines                                   #
+#           Level 2 BLAS routines                                   #
+#           Level 3 BLAS routines                                   #
+#           Extended precision Level 2 BLAS routines                #
+#####################################################################
+
+file	blas/faq.html
+for	List of frequently asked questions about blas
+
+file	blas/blas.tgz
+for	Fortran77 reference implementation of the LEVEL 1, 2, and 3
+,	BLAS routines in all precisions
+,	(If only a specific precision or level is desired, please
+,	see the appropriate section of this index for details.)
+prec	single, double, complex, doublecomplex
+lang	fortran
+LAST UPDATE: Tuesday Apr 19th 2011
+
+file	blas/blast-forum/cblas.tgz
+for	C interface to the BLAS
+prec	single, double, complex, doublecomplex
+lang	C
+LAST UPDATE: Thursday Jan 20th 2011
+
+
+ref     <a href="http://www.amd.com/acml">ACML AMD Core Math Library</a>
+ref     <a href="http://www.intel.com/software/products/mkl">Intel Math Kernel Library</a>
+,       The AMD Core Math Library (ACML) and the Intel Math Kernel Library 
+,       (Intel MKL) includes BLAS, LAPACK, and ScaLAPACK, which are designed 
+,       to be used by a wide range of software developers to obtain excellent 
+,       performance from their applications running on AMD and Intel platforms.
+
+file	blas/blast-forum/cinterface.ps
+file	blas/blast-forum/cinterface.pdf
+for	Documentation for the C interface to the BLAS
+
+lib	blas/gemm_based
+for	Level 3 BLAS tuned for single processors with caches
+by	Kagstrom B., Ling P., and Van Loan C.
+title	High Performance GEMM-Based Level-3 BLAS
+ref	High Performance Computing II, 1991, North-Holland
+lang	Fortran
+
+lib	atlas
+for	Automatically Tuned Linear Algebra Software (ATLAS)
+by	R. C. Whaley and J. J. Dongarra
+lang	C
+
+lib	blas/blast-forum
+for	BLAS Technical Forum Standard
+,	Document, Reference Implementations, and Minutes from
+,	the BLAST Technical Forum meetings
+
+#
+#	DOCUMENTATION AND TEST SUITES
+#
+
+
+file	blas/blasqr.ps
+for	quick reference guide for the BLAS.
+lang	postscript
+
+
+file	blas/blas3-paper.ps
+for	details on the Level 3 BLAS
+lang	PostScript
+
+
+file	blas/blas2-paper.ps
+for	details on the Level 2 BLAS
+lang	PostScript
+
+
+file	blas/blas2test.f
+for	original test driver for the real level two blas
+
+
+file	blas/sblat1
+for	Level 1 BLAS Test Suite
+prec	single
+lang	fortran
+
+file	blas/dblat1
+for	Level 1 BLAS Test Suite
+prec	double
+lang	fortran
+
+file	blas/cblat1
+for	Level 1 BLAS Test Suite
+prec	complex
+lang	fortran
+
+file	blas/zblat1
+for	Level 1 BLAS Test Suite
+prec	doublecomplex
+lang	fortran
+
+
+file	blas/sblat2
+for	Level 2 BLAS Test Suite
+prec	single
+lang	fortran
+
+file	blas/dblat2
+for	Level 2 BLAS Test Suite
+prec	double
+lang	fortran
+
+file	blas/cblat2
+for	Level 2 BLAS Test Suite
+prec	complex
+lang	fortran
+
+file	blas/zblat2
+for	Level 2 BLAS Test Suite
+prec	doublecomplex
+lang	fortran
+
+
+file	blas/sblat2d
+for	Data file required by the Level 2 BLAS Test Suite
+
+file	blas/dblat2d
+for	Data file required by the Level 2 BLAS Test Suite
+
+file	blas/cblat2d
+for	Data file required by the Level 2 BLAS Test Suite
+
+file	blas/zblat2d
+for	Data file required by the Level 2 BLAS Test Suite
+
+
+file	blas/sblat3
+for	Level 3 BLAS Test Suite
+prec	single
+lang	fortran
+
+file	blas/dblat3
+for	Level 3 BLAS Test Suite
+prec	double
+lang	fortran
+
+file	blas/cblat3
+for	Level 3 BLAS Test Suite
+prec	complex
+lang	fortran
+
+file	blas/zblat3
+for	Level 3 BLAS Test Suite
+prec	doublecomplex
+lang	fortran
+
+
+file	blas/sblat3d
+for	Data file required by the Level 3 BLAS Test Suite
+
+file	blas/dblat3d
+for	Data file required by the Level 3 BLAS Test Suite
+
+file	blas/cblat3d
+for	Data file required by the Level 3 BLAS Test Suite
+
+file	blas/zblat3d
+for	Data file required by the Level 3 BLAS Test Suite
+
+#
+#	MISCELLANEOUS AND AUXILIARY ROUTINES
+#
+
+
+file	blas/i1mach.f
+gams	r1
+for	integer machine constants (like Fortran units for standard input)
+
+
+file	blas/r1mach.f
+gams	r1
+for	real machine constants (like "machine epsilon" and "biggest number")
+
+
+file	blas/d1mach.f
+gams	r1
+for	double precision machine constants
+
+
+file	blas/old1mach
+gams	r1
+for	machine constants for obsolete computers
+
+
+
+
+file	blas/machar.f
+gams	r1
+prec	single, double
+,	precisions can be extracted from the supplied source
+,	code with simple editing changes.  NOTE: at least one
+,	version MUST be extracted before the source will compile.
+for	MACHAR is an evolving subroutine for dynamically determining thirteen
+,	fundamental parameters associated with floating-point arithmetic.  The
+,	original version was published in Cody and Waite, Software Manual for
+,	the Elementary Functions, Prentice-Hall, 1980.  The present version has
+,	been modified to operate correctly with IEEE floating-point arithmetic.
+,	It will malfunction on many CRAY and most CYBER systems, however.  See
+by	W. J. Cody
+ref	"MACHAR: dynamically determine machine parameters," TOMS 14, Dec 1988
+
+
+file	blas/machar.c
+gams	r1
+for	C source for machar and a driver.  Float and  double  
+,	versions are selected with compiler directives.
+
+
+file	blas/smach.f
+for	computes machine parameters of floating point
+,	arithmetic for use in testing only.
+prec	single
+
+file	blas/dmach.f
+for	computes machine parameters of floating point
+,	arithmetic for use in testing only.
+prec	double
+
+file	blas/cmach.f
+for	computes machine parameters of floating point
+,	arithmetic for use in testing only.
+prec	complex
+
+file	blas/zmach.f
+for	computes machine parameters of floating point
+,	arithmetic for use in testing only.
+prec	doublecomplex
+
+
+file	blas/slamch.f
+for 	LAPACK routine to determine machine parameters
+prec	single
+
+file	blas/dlamch.f
+for 	LAPACK routine to determine machine parameters
+prec	double
+
+
+file	blas/dgelu.f
+
+file	blas/dgelub.f
+for	LU factorization of an m-by-n matrix A
+prec	double
+
+
+file	blas/dmr
+prec	double
+for	DGEMM for IBM RS/6000 by Dongarra, Mayes, and Radicatti
+gams	D1b6
+lang	Fortran
+
+file	blas/scabs1.f
+for	computes absolute value of a complex number
+,	(Auxiliary Routine for a few Level 1 BLAS routines)
+prec	complex
+
+file	blas/dcabs1.f
+for	computes absolute value of a doublecomplex number
+,	(Auxiliary Routine for a few Level 1 BLAS routines)
+prec	doublecomplex
+
+
+file	blas/lsame.f
+for	Test if the characters are equal.
+,	(Auxiliary Routine in Level 2 and 3 BLAS routines)
+
+
+file	blas/xerbla.f
+for	error handler for the Level 2 and 3 BLAS routines.
+,	(Auxiliary Routine)
+
+#
+#	LEVEL 1 BLAS ROUTINES
+#
+
+
+file	blas/blas1.tgz
+for	Level 1 BLAS routines in all precisions
+prec	single, double, complex, doublecomplex
+gams	D1a
+
+
+file	blas/sblas1.f
+for	all the Level 1 BLAS for this type
+prec	single
+gams	D1a
+
+file	blas/dblas1.f
+for	all the Level 1 BLAS for this type
+prec	double
+gams	D1a
+
+file	blas/cblas1.f
+for	all the Level 1 BLAS for this type
+prec	complex
+gams	D1a
+
+file	blas/zblas1.f
+for	all the Level 1 BLAS for this type
+prec	doublecomplex
+gams	D1a
+
+
+file	blas/srotg.f
+for	setup Givens rotation
+prec	single
+gams	D1b10
+
+file	blas/drotg.f
+for	setup Givens rotation
+prec	double
+gams	D1b10
+
+file	blas/crotg.f
+for	setup Givens rotation
+prec	complex
+gams	D1b10
+
+file	blas/zrotg.f
+for	setup Givens rotation
+prec	doublecomplex
+gams	D1b10
+
+
+file	blas/srotmg.f
+for	setup modified Givens rotation
+prec	single
+
+file	blas/drotmg.f
+for	setup modified Givens rotation
+prec	double
+
+
+file	blas/srot.f
+for	apply Givens rotation
+prec	single
+gams	D1a8, D1b10
+
+file	blas/drot.f
+for	apply Givens rotation
+prec	double
+gams	D1a8, D1b10
+
+file	blas/csrot.f
+for	apply Givens rotation
+prec	complex
+gams	D1a8, D1b10
+
+file	blas/zdrot.f
+for	apply Givens rotation
+prec	doublecomplex
+gams	D1a8, D1b10
+
+
+file	blas/srotm.f
+for	apply modified Givens rotation
+prec	single
+
+file	blas/drotm.f
+for	apply modified Givens rotation
+prec	double
+
+
+file	blas/sswap.f
+for	swap x and y
+prec	single
+gams	D1a5
+
+file	blas/dswap.f
+for	swap x and y
+prec	double
+gams	D1a5
+
+file	blas/cswap.f
+for	swap x and y
+prec	complex
+gams	D1a5
+
+file	blas/zswap.f
+for	swap x and y
+prec	doublecomplex
+gams	D1a5
+
+
+file	blas/sscal.f
+for	x = a*x
+prec	single
+gams	D1a6
+
+file	blas/dscal.f
+for	x = a*x
+prec	double
+gams	D1a6
+
+file	blas/cscal.f
+for	x = a*x
+prec	complex
+gams	D1a6
+
+file	blas/zscal.f
+for	x = a*x
+prec	doublecomplex
+gams	D1a6
+
+file	blas/csscal.f
+for	x = a*x
+prec	complex
+gams	D1a6
+
+file	blas/zdscal.f
+for	x = a*x
+prec	doublecomplex
+gams	D1a6
+
+
+file	blas/scopy.f
+for	copy x into y
+prec	single
+gams	D1a5
+
+file	blas/dcopy.f
+for	copy x into y
+prec	double
+gams	D1a5
+
+file	blas/ccopy.f
+for	copy x into y
+prec	complex
+gams	D1a5
+
+file	blas/zcopy.f
+for	copy x into y
+prec	doublecomplex
+gams	D1a5
+
+
+file	blas/saxpy.f
+for	y = a*x + y
+prec	single
+gams	D1a7
+
+file	blas/daxpy.f
+for	y = a*x + y
+prec	double
+gams	D1a7
+
+file	blas/caxpy.f
+for	y = a*x + y
+prec	complex
+gams	D1a7
+
+file	blas/zaxpy.f
+for	y = a*x + y
+prec	doublecomplex
+gams	D1a7
+
+
+file	blas/sdot.f
+for	dot product
+prec	single
+gams	D1a4
+
+file	blas/ddot.f
+for	dot product
+prec	double
+gams	D1a4
+
+file	blas/sdsdot.f
+for	dot product with extended precision accumulation
+
+file	blas/dsdot.f
+for	dot product with extended precision accumulation and result
+
+file	blas/cdotu.f
+for	dot product
+prec	complex
+gams	D1a4
+
+file	blas/zdotu.f
+for	dot product
+prec	doublecomplex
+gams	D1a4
+
+
+file	blas/cdotc.f
+for	dot product, conjugating the first vector
+prec	complex
+gams	D1a4
+
+file	blas/zdotc.f
+for	dot product, conjugating the first vector
+prec	doublecomplex
+gams	D1a4
+
+
+file	blas/snrm2.f
+for	Euclidean norm
+prec	single
+gams	D1a3b
+
+file	blas/dnrm2.f
+for	Euclidean norm
+prec	double
+gams	D1a3b
+
+file	blas/scnrm2.f
+for	Euclidean norm
+prec	complex
+gams	D1a3b
+
+file	blas/dznrm2.f
+for	Euclidean norm
+prec	doublecomplex
+gams	D1a3b
+
+
+file	blas/sasum.f
+for	sum of absolute values
+prec	single
+gams	D1a3a
+
+file	blas/dasum.f
+for	sum of absolute values
+prec	double
+gams	D1a3a
+
+file	blas/scasum.f
+for	sum of absolute values
+prec	complex
+gams	D1a3a
+
+file	blas/dzasum.f
+for	sum of absolute values
+prec	doublecomplex
+gams	D1a3a
+
+
+file	blas/isamax.f
+for	index of max abs value
+prec	single
+gams	D1a2,D1a3c,N5a
+
+file	blas/idamax.f
+for	index of max abs value
+prec	double
+gams	D1a2,D1a3c,N5a
+
+file	blas/icamax.f
+for	index of max abs value
+prec	complex
+gams	D1a2,D1a3c,N5a
+
+file	blas/izamax.f
+for	index of max abs value
+prec	doublecomplex
+gams	D1a2,D1a3c,N5a
+
+#
+#	LEVEL 2 BLAS ROUTINES
+#
+
+
+file	blas/blas2.tgz
+for	Level 2 BLAS routines in all precisions
+prec	single, double, complex, doublecomplex
+gams	D1a
+
+
+file	blas/sblas2.f
+for	all the Level 2 BLAS for this type
+prec	single
+gams	D1a
+
+file	blas/dblas2.f
+for	all the Level 2 BLAS for this type
+prec	double
+gams	D1a
+
+file	blas/cblas2.f
+for	all the Level 2 BLAS for this type
+prec	complex
+gams	D1a
+
+file	blas/zblas2.f
+for	all the Level 2 BLAS for this type
+prec	doublecomplex
+gams	D1a
+
+
+file	blas/sblas2time.f
+for	timing the Level 2 BLAS
+prec	single
+
+file	blas/dblas2time.f
+for	timing the Level 2 BLAS
+prec	double
+
+file	blas/cblas2time.f
+for	timing the Level 2 BLAS
+prec	complex
+
+file	blas/zblas2time.f
+for	timing the Level 2 BLAS
+prec	doublecomplex
+
+
+file	blas/sgemv.f
+for	matrix vector multiply
+prec	single
+gams	D1b4
+
+file	blas/dgemv.f
+for	matrix vector multiply
+prec	double
+gams	D1b4
+
+for	matrix vector multiply
+prec	complex
+gams	D1b4
+file	blas/cgemv.f
+
+file	blas/zgemv.f
+for	matrix vector multiply
+prec	doublecomplex
+gams	D1b4
+
+
+file	blas/sgbmv.f
+for	banded matrix vector multiply
+prec	single
+gams	D1b4
+
+file	blas/dgbmv.f
+for	banded matrix vector multiply
+prec	double
+gams	D1b4
+
+file	blas/cgbmv.f
+for	banded matrix vector multiply
+prec	complex
+gams	D1b4
+
+file	blas/zgbmv.f
+for	banded matrix vector multiply
+prec	doublecomplex
+gams	D1b4
+
+
+file	blas/chemv.f
+for	hermitian matrix vector multiply
+prec	complex
+gams	D1b6
+
+file	blas/zhemv.f
+for	hermitian matrix vector multiply
+prec	doublecomplex
+gams	D1b6
+
+
+file	blas/chbmv.f
+for	hermitian banded matrix vector multiply
+prec	complex
+gams	D1b4
+
+file	blas/zhbmv.f
+for	hermitian banded matrix vector multiply
+prec	doublecomplex
+gams	D1b4
+
+
+file	blas/chpmv.f
+for	hermitian packed matrix vector multiply
+prec	complex
+gams	D1b4
+
+file	blas/zhpmv.f
+for	hermitian packed matrix vector multiply
+prec	doublecomplex
+gams	D1b4
+
+
+file	blas/ssymv.f
+for	symmetric matrix vector multiply
+prec	single
+gams	D1b4
+
+file	blas/dsymv.f
+for	symmetric matrix vector multiply
+prec	double
+gams	D1b4
+
+
+file	blas/ssbmv.f
+for	symmetric banded matrix vector multiply
+prec	single
+gams	D1b4
+
+file	blas/dsbmv.f
+for	symmetric banded matrix vector multiply
+prec	double
+gams	D1b4
+
+
+file	blas/sspmv.f
+for	symmetric packed matrix vector multiply
+prec	single
+gams	D1b4
+
+file	blas/dspmv.f
+for	symmetric packed matrix vector multiply
+prec	double
+gams	D1b4
+
+
+file	blas/strmv.f
+for	triangular matrix vector multiply
+prec	single
+gams	D1b4
+
+file	blas/dtrmv.f
+for	triangular matrix vector multiply
+prec	double
+gams	D1b4
+
+file	blas/ctrmv.f
+for	triangular matrix vector multiply
+prec	complex
+gams	D1b4
+
+file	blas/ztrmv.f
+for	triangular matrix vector multiply
+prec	doublecomplex
+gams	D1b4
+
+
+file	blas/stbmv.f
+for	triangular banded matrix vector multiply
+prec	single
+gams	D1b4
+
+file	blas/dtbmv.f
+for	triangular banded matrix vector multiply
+prec	double
+gams	D1b4
+
+file	blas/ctbmv.f
+for	triangular banded matrix vector multiply
+prec	complex
+gams	D1b4
+
+file	blas/ztbmv.f
+for	triangular banded matrix vector multiply
+prec	doublecomplex
+gams	D1b4
+
+
+file	blas/stpmv.f
+for	triangular packed matrix vector multiply
+prec	single
+gams	D1b4
+
+file	blas/dtpmv.f
+for	triangular packed matrix vector multiply
+prec	double
+gams	D1b4
+
+file	blas/ctpmv.f
+for	triangular packed matrix vector multiply
+prec	complex
+gams	D1b4
+
+file	blas/ztpmv.f
+for	triangular packed matrix vector multiply
+prec	doublecomplex
+gams	D1b4
+
+
+file	blas/strsv.f
+for	solving triangular matrix problems
+prec	single
+gams	D2a3,D2c3
+
+file	blas/dtrsv.f
+for	solving triangular matrix problems
+prec	double
+gams	D2a3,D2c3
+
+file	blas/ctrsv.f
+for	solving triangular matrix problems
+prec	complex
+gams	D2a3,D2c3
+
+file	blas/ztrsv.f
+for	solving triangular matrix problems
+prec	doublecomplex
+gams	D2a3,D2c3
+
+
+file	blas/stbsv.f
+for	solving triangular banded matrix problems
+prec	single
+gams	D2a3,D2a2,D2c2,D2c3
+
+file	blas/dtbsv.f
+for	solving triangular banded matrix problems
+prec	double
+gams	D2a3,D2a2,D2c2,D2c3
+
+file	blas/ctbsv.f
+for	solving triangular banded matrix problems
+prec	complex
+gams	D2a3,D2a2,D2c2,D2c3
+
+file	blas/ztbsv.f
+for	solving triangular banded matrix problems
+prec	doublecomplex
+gams	D2a3,D2a2,D2c2,D2c3
+
+
+file	blas/stpsv.f
+for	solving triangular packed matrix problems
+prec	single
+gams	D2a3,D2c3
+
+file	blas/dtpsv.f
+for	solving triangular packed matrix problems
+prec	double
+gams	D2a3,D2c3
+
+file	blas/ctpsv.f
+for	solving triangular packed matrix problems
+prec	complex
+gams	D2a3,D2c3
+
+file	blas/ztpsv.f
+for	solving triangular packed matrix problems
+prec	doublecomplex
+gams	D2a3,D2c3
+
+
+file	blas/sger.f
+for	performs the rank 1 operation A := alpha*x*y' + A,
+prec	single
+gams	D1b5
+
+file	blas/dger.f
+for	performs the rank 1 operation A := alpha*x*y' + A,
+prec	double
+gams	D1b5
+
+
+file	blas/cgeru.f
+for     performs the rank 1 operation A := alpha*x*y' + A
+prec	complex
+gams	D1a5
+
+file	blas/zgeru.f
+for     performs the rank 1 operation A := alpha*x*y' + A
+prec	doublecomplex
+gams	D1a5
+
+
+file	blas/cgerc.f
+for	performs the rank 1 operation A := alpha*x*conjg( y' ) + A
+prec	complex
+gams	D1a5
+
+file	blas/zgerc.f
+for	performs the rank 1 operation A := alpha*x*conjg( y' ) + A
+prec	doublecomplex
+gams	D1a5
+
+
+file	blas/cher.f
+for     hermitian rank 1 operation A := alpha*x*conjg(x') + A
+prec	complex
+gams	D1b5
+
+file	blas/zher.f
+for     hermitian rank 1 operation A := alpha*x*conjg(x') + A
+prec	doublecomplex
+gams	D1b5
+
+
+file	blas/chpr.f
+for	hermitian packed rank 1 operation A := alpha*x*conjg( x' ) + A
+prec	complex
+gams	D1b5
+
+file	blas/zhpr.f
+for	hermitian packed rank 1 operation A := alpha*x*conjg( x' ) + A
+prec	doublecomplex
+gams	D1b5
+
+
+
+file	blas/cher2.f
+for     hermitian rank 2 operation
+,       A := alpha*x*conjg( y' ) + conjg( alpha )*y*conjg( x' ) + A
+prec	complex
+gams	D1b5
+
+file	blas/zher2.f
+for     hermitian rank 2 operation
+,       A := alpha*x*conjg( y' ) + conjg( alpha )*y*conjg( x' ) + A
+prec	doublecomplex
+gams	D1b5
+
+
+file	blas/chpr2.f
+for     hermitian packed rank 2 operation
+,       A := alpha*x*conjg( y' ) + conjg( alpha )*y*conjg( x' ) + A
+prec	complex
+gams	D1b5
+
+file	blas/zhpr2.f
+for     hermitian packed rank 2 operation
+,       A := alpha*x*conjg( y' ) + conjg( alpha )*y*conjg( x' ) + A
+prec	doublecomplex
+gams	D1b5
+
+
+file	blas/ssyr.f
+for     performs the symmetric rank 1 operation A := alpha*x*x' + A
+prec	single
+gams	D1b5
+
+file	blas/dsyr.f
+for     performs the symmetric rank 1 operation A := alpha*x*x' + A
+prec	double
+gams	D1b5
+
+
+file	blas/sspr.f
+for	symmetric packed rank 1 operation  A := alpha*x*x' + A
+prec	single
+gams	D1b5
+
+file	blas/dspr.f
+for	symmetric packed rank 1 operation  A := alpha*x*x' + A
+prec	double
+gams	D1b5
+
+
+file	blas/ssyr2.f
+for	performs the symmetric rank 2 operation
+,	A := alpha*x*y' + alpha*y*x' + A
+prec	single
+gams	D1b5
+
+file	blas/dsyr2.f
+for	performs the symmetric rank 2 operation
+,	A := alpha*x*y' + alpha*y*x' + A
+prec	double
+gams	D1b5
+
+
+file	blas/sspr2.f
+for	performs the symmetric packed rank 2 operation
+,	A := alpha*x*y' + alpha*y*x' + A
+prec	single
+gams	D1b5
+
+file	blas/dspr2.f
+for	performs the symmetric packed rank 2 operation
+,	A := alpha*x*y' + alpha*y*x' + A
+prec	double
+gams	D1b5
+
+#
+#	LEVEL 3 BLAS ROUTINES
+#
+
+
+file	blas/blas3.tgz
+for	Level 3 BLAS routines in all precisions
+prec	single, double, complex, doublecomplex
+gams	D1b
+
+
+file	blas/sblas3.f
+for	all the Level 3 BLAS of this type
+prec	single
+gams	D1b
+
+file	blas/dblas3.f
+for	all the Level 3 BLAS of this type
+prec	double
+gams	D1b
+
+file	blas/cblas3.f
+for	all the Level 3 BLAS of this type
+prec	complex
+gams	D1b
+
+file	blas/zblas3.f
+for	all the Level 3 BLAS of this type
+prec	doublecomplex
+gams	D1b
+
+
+file	blas/sblas3time.f
+for	timing the Level 3 BLAS
+prec	single
+
+file	blas/dblas3time.f
+for	timing the Level 3 BLAS
+prec	double
+
+file	blas/cblas3time.f
+for	timing the Level 3 BLAS
+prec	complex
+
+file	blas/zblas3time.f
+for	timing the Level 3 BLAS
+prec	doublecomplex
+
+
+file	blas/sgemm.f
+for	matrix matrix multiply
+prec	single
+gams	D1b6
+
+file	blas/dgemm.f
+for	matrix matrix multiply
+prec	double
+gams	D1b6
+
+file	blas/cgemm.f
+for	matrix matrix multiply
+prec	complex
+gams	D1b6
+
+file	blas/zgemm.f
+for	matrix matrix multiply
+prec	doublecomplex
+gams	D1b6
+
+
+file	blas/ssymm.f
+for	symmetric matrix matrix multiply
+prec	single
+gams	D1b6
+
+file	blas/dsymm.f
+for	symmetric matrix matrix multiply
+prec	double
+gams	D1b6
+
+file	blas/csymm.f
+for	symmetric matrix matrix multiply
+prec	complex
+gams	D1b6
+
+file	blas/zsymm.f
+for	symmetric matrix matrix multiply
+prec	doublecomplex
+gams	D1b6
+
+
+file	blas/chemm.f
+for	hermitian matrix matrix multiply
+prec	complex
+gams	D1b6
+
+file	blas/zhemm.f
+for	hermitian matrix matrix multiply
+prec	doublecomplex
+gams	D1b6
+
+
+file	blas/ssyrk.f
+for	symmetric rank-k update to a matrix
+prec	single
+gams	D1b5
+
+file	blas/dsyrk.f
+for	symmetric rank-k update to a matrix
+prec	double
+gams	D1b5
+
+file	blas/csyrk.f
+for	symmetric rank-k update to a matrix
+prec	complex
+gams	D1b5
+
+file	blas/zsyrk.f
+for	symmetric rank-k update to a matrix
+prec	doublecomplex
+gams	D1b5
+
+
+file	blas/cherk.f
+for	hermitian rank-k update to a matrix
+prec	complex
+gams	D1b5
+
+file	blas/zherk.f
+for	hermitian rank-k update to a matrix
+prec	doublecomplex
+gams	D1b5
+
+
+file	blas/ssyr2k.f
+for	symmetric rank-2k update to a matrix
+prec	single
+gams	D1b5
+
+file	blas/dsyr2k.f
+for	symmetric rank-2k update to a matrix
+prec	double
+gams	D1b5
+
+file	blas/csyr2k.f
+for	symmetric rank-2k update to a matrix
+prec	complex
+gams	D1b5
+
+file	blas/zsyr2k.f
+for	symmetric rank-2k update to a matrix
+prec	doublecomplex
+gams	D1b5
+
+
+file	blas/cher2k.f
+for	hermitian rank-2k update to a matrix
+prec	complex
+gams	D1b5
+
+file	blas/zher2k.f
+for	hermitian rank-2k update to a matrix
+prec	doublecomplex
+gams	D1b5
+
+
+file	blas/strmm.f
+for	triangular matrix matrix multiply
+prec	single
+gams	D1b6
+
+file	blas/dtrmm.f
+for	triangular matrix matrix multiply
+prec	double
+gams	D1b6
+
+file	blas/ctrmm.f
+for	triangular matrix matrix multiply
+prec	complex
+gams	D1b6
+
+file	blas/ztrmm.f
+for	triangular matrix matrix multiply
+prec	doublecomplex
+gams	D1b6
+
+
+file	blas/strsm.f
+for	solving triangular matrix with multiple right hand sides
+prec	single
+gams	D2a3,D2c3
+
+file	blas/dtrsm.f
+for	solving triangular matrix with multiple right hand sides
+prec	double
+gams	D2a3,D2c3
+
+file	blas/ctrsm.f
+for	solving triangular matrix with multiple right hand sides
+prec	complex
+gams	D2a3,D2c3
+
+file	blas/ztrsm.f
+for	solving triangular matrix with multiple right hand sides
+prec	doublecomplex
+gams	D2a3,D2c3
+
+#
+#	EXTENDED PRECISION LEVEL 2 BLAS
+#
+
+
+file	blas/ecblas2.f
+for	all the Level 2 BLAS for this type, with extended
+,	precision accumulation
+prec	complex
+gams	D1a
+
+
+file	blas/ecgbmv.f
+
+file	blas/ecgemv.f
+for	performs one of the matrix-vector operations:
+,	y := alpha*A*x + beta*y, or   y := alpha*A'*x + beta*y, 
+,	or y := alpha*conjg( A' )*x + beta*y
+
+
+file	blas/ecgerc.f
+for	performs the rank 1 operation A := alpha*x*conjg( y' ) + A
+
+
+file	blas/ecgeru.f
+for	performs the rank 1 operation A := alpha*x*y' + A
+
+
+file	blas/echemv.f
+
+file	blas/echbmv.f
+
+file	blas/echpmv.f
+for	performs the matrix-vector operation y := alpha*A*x + beta*y
+
+
+file	blas/echer.f
+for	performs the hermitian rank 1 operation A := alpha*x*conjg( x' ) + A
+
+
+file	blas/echer2.f
+for	hermitian rank 2 operation 
+,	A := alpha*x*conjg( y' ) + conjg( alpha )*y*conjg( x' ) + A
+
+
+file	blas/echpr.f
+for	hermitian rank 1 operation A := alpha*x*conjg( x' ) + A
+
+
+file	blas/echpr2.f
+for	hermitian rank 2 operation 
+,	A := alpha*x*conjg( y' ) + conjg( alpha )*y*conjg( x' ) + A
+
+
+file	blas/ectrmv.f
+
+file	blas/ectbmv.f
+
+file	blas/ectpmv.f
+for	performs one of the matrix-vector operations
+,	x := A*x,   or   x := A'*x,   or   x := conjg( A' )*x
+
+
+file	blas/ectrsv.f
+
+file	blas/ectbsv.f
+
+file	blas/ectpsv.f
+for	solves one of the systems of equations
+,	A*x = b,   or   A'*x = b,   or   conjg( A' )*x = b
+
+
+file	blas/esblas2.f
+for	all the Level 2 BLAS for this type, with extended
+,	precision accumulation
+prec	single
+gams	D1a
+
+
+file	blas/esgbmv.f
+
+file	blas/esgemv.f
+for	performs one of the matrix-vector operations
+,	y := alpha*A*x + beta*y,   or   y := alpha*A'*x + beta*y
+
+
+file	blas/esger.f
+for	performs the rank 1 operation  A := alpha*x*y' + A
+,	where alpha is a scalar, x is an m element vector, y is an n element
+,	vector and A is an m by n matrix.
+
+
+file	blas/essymv.f
+
+file	blas/essbmv.f
+
+file	blas/esspmv.f
+for	performs the matrix-vector  operation y := alpha*A*x + beta*y
+
+
+file	blas/essyr.f
+
+file	blas/esspr.f
+for 	performs the symmetric rank 1 operation  A := alpha*x*x' + A
+,	where alpha is a real scalar, x is an n element vector and A is an
+,	n by n symmetric matrix.
+
+
+file	blas/essyr2.f
+
+file	blas/esspr2.f
+for	performs the symmetric rank 2 operation  
+,	A := alpha*x*y' + alpha*y*x' + A, where alpha is a scalar, x and
+,	y are n element vectors and A is an n by n symmetric matrix.
+
+
+file	blas/estrmv.f
+
+file	blas/estbmv.f
+
+file	blas/estpmv.f
+for	performs one of the matrix-vector operations x := A*x, or x := A'*x
+,	where x is n element vector and A is an n by n unit, or non-unit,
+,	upper or lower triangular matrix.
+
+
+file	blas/estrsv.f
+
+file	blas/estbsv.f
+
+file	blas/estpsv.f
+for	solves one of the systems of equations  A*x = b, or A'*x = b,
+,	where b and x are n element vectors and A is an n by n unit, or
+,	non-unit, upper or lower triangular matrix.
+

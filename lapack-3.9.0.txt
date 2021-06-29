@@ -51,7 +51,7 @@ Block reflectors are also returned in T (same output format as DGEQRT).
  NEW: SORGTSQR.f
  NEW: ZUNGTSQR.f
 
-DOGTSQR reconstructs a matrix with orthonormal columns from the output of DLATSQR.
+DORTSQR reconstructs a matrix with orthonormal columns from the output of DLATSQR.
 
 Contributors: Igor Kozachenko and Jim Demmel 􏰋􏰒 􏰌􏰡􏰝􏱄􏰡􏰗􏰡􏰩
 

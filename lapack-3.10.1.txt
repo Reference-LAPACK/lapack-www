@@ -1,0 +1,191 @@
+LAPACK 3.10.1
+=============
+
+Release date: 04/12/22.
+
+This material is based upon work supported by the National Science Foundation
+and the Department of Energy.
+
+LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
+
+
+1. Support and questions:
+-------------------------
+
+http://icl.cs.utk.edu/lapack-forum/
+
+https://github.com/Reference-LAPACK/lapack/
+
+2. LAPACK 3.10.1: What's new
+----------------------------
+
+ * Download: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.10.1.tar.gz[lapack-3.10.1.tar.gz]
+
+This is a minor release addressing multiple bug fixes and improvements.
+
+2.1. Principal Bug fixes
+-------------------------
+
+
+.Pull Request https://github.com/Reference-LAPACK/lapack/pull/657[657]: Fix workspace size returned by getsls
+
+**Description:** Make least squares solver getsls work as a drop-in replacement of gels
+ - [dz]getsls: cast workspace size with dble, not real
+ - Move workspace write to precede xerbla. Follow the documentation and return the optimal workspace in work(1) even on quick return
+
+Clean up unused variables.
+
+**Contribution by:** https://github.com/angsch[angsch]
+
+.Pull Request https://github.com/Reference-LAPACK/lapack/pull/654[654], https://github.com/Reference-LAPACK/lapack/pull/656[656], https://github.com/Reference-LAPACK/lapack/pull/646[646]: Fix some argument checks
+
+**Description:** Various argument check and typo corrections
+
+**Contribution by:** https://github.com/angsch[angsch]
+
+.Pull Request https://github.com/Reference-LAPACK/lapack/pull/649[649]: Fix a bug in the Blue's scaling constants
+
+**Description:** Fixes a bug in the Blue's scaling constants of nrm2 thanks to Arm Performance Libraries!
+This is the same bug fixed on #559 for la_constants.f90.
+
+**Contribution by:** https://github.com/weslleyspereira[Weslley S. Pereira]
+
+.Pull Request https://github.com/Reference-LAPACK/lapack/pull/638[638]: Fix workspace query of xGEQRF and xGERQF
+
+**Description:** xGEQRF and xGERQF return wrong optimal dimension LWORK when M and N equals zero, respectively. This applies the fixes proposed by @andreasvarga and @VasileSima4 in https://github.com/Reference-LAPACK/lapack/pull/633[PR
+#633].
+
+**Contribution by:** https://github.com/andreasvarga[Andreas Varga] and https://github.com/VasileSima4[Vasile Sima]
+
+.Pull Request https://github.com/Reference-LAPACK/lapack/pull/625[625]: Fix out of bounds read in xLARRV which resolves CVE-2021-4048
+
+**Description:** See https://nvd.nist.gov/vuln/detail/CVE-2021-4048[CVE-2021-4048]
+
+**Contribution by:** https://github.com/Keno[Keno Fischer]
+
+.Pull Request https://github.com/Reference-LAPACK/lapack/pull/624[624]: Fix use of 8-byte integers on Windows
+
+**Description:** CBLAS and LAPACKE layers are not built with 8 byte integers when cmake option BUILD_INDEX64=ON is passed.
+The reason is because long's in windows are 4 bytes (MSVC c/c++, intel compilers). This patch uses int64_t and int32_t
+to ensure ILP interface is built.
+
+Additionally, this patch adds support ifort's 8 byte integer flag to cmake system for building BLAS and LAPACK.
+
+**Contribution by:** https://github.com/ericlars[Eric Lars]
+
+.Pull Request https://github.com/Reference-LAPACK/lapack/pull/621[621]: Fix support to IBM XL Fortran compiler
+
+**Description:** This PR addresses https://github.com/Reference-LAPACK/lapack/issues/606[Issue #606], by adding correct detection for the IBM XL Fortran (xlf) recursive option (-qrecur).
+
+**Contribution by:** https://github.com/quellyn[QuellynSnead]
+
+.Pull Request https://github.com/Reference-LAPACK/lapack/pull/617[617]: Fix use of integer64 flag for Cray and NVIDIA Fortran compilers
+
+**Description:** use default64 flag for Cray ftn compiler when BUILD_INDEX64 is ON.
+
+**Contribution by:** https://github.com/ajaypanyala[Ajay Panyala]
+
+.Pull Request https://github.com/Reference-LAPACK/lapack/pull/607[607]: Fix xLAPY2 and xLAPY3 for infinity inputs
+
+**Description:** If some of the inputs are inf, {s,d}lapy{2,3} and the new {s,d}nrm2 routines return inconsistent results, NaN in contrast to inf.
+
+ - lapy2 if both inputs are inf
+ - lapy3 if at least one of the 3 inputs is inf
+
+This commit adds a check to avoid the divisions inf / inf that introduce NaN.
+
+**Contribution by:** https://github.com/angsch[angsch]
+
+.Pull Request https://github.com/Reference-LAPACK/lapack/pull/605[605]: Fix workspace computation for GESDD routines
+
+**Description:** There is a known bug in LAPACK related to workspaces smaller than the value computed by the routine. This is because the routines use a floating-point variable to return the integer workspace size. See https://github.com/Reference-LAPACK/lapack/issues/600[Issue #600]. The intent here is to mitigate the problem of overestimating the workspace when doing the conversion INTEGER -> REAL (or DOUBLE PRECISION) highlighted in #600. I do not solve the problem of a possible overflow in LWORK.
+
+This PR applies the same strategy from the MAGMA package to solve the issue (See https://github.com/Reference-LAPACK/lapack/issues/600#issuecomment-884426097[Isse #600 (comment) from @mgates3]).
+
+**Contribution by:** https://github.com/mgates3[Mark Gates]
+
+
+
+
+2.2 Build Improvements
+----------------------
+
+.https://github.com/Reference-LAPACK/lapack/pull/570[Pull Request 570]
+Deprecate xCOMBSSQ and use xLASSQ directly
+
+
+.https://github.com/Reference-LAPACK/lapack/pull/637[Pull Request 637] and https://github.com/Reference-LAPACK/lapack/pull/616[Pull Request 616]
+Improve build and installation via CMake
+
+
+.https://github.com/Reference-LAPACK/lapack/pull/588[Pull Request 588]
+Use CBLAS_INDEX and CBLAS_INT integer types in CBLAS as in previous versions of LAPACK
+
+2.3 All Bug fixes and Improvements
+----------------------------------
+For details please see our Github repository
+
+ * link:https://github.com/Reference-LAPACK/lapack[LAPACK Github Repository]
+ * link:https://github.com/Reference-LAPACK/lapack/issues?q=is%3Aclosed+milestone%3A%22LAPACK+3.10.1[LAPACK 3.10.1 Milestone]
+
+
+
+2.6 Notes about compiler dependency
+-----------------------------------
+
+Some LAPACK routines rely on trustworthy complex division and ABS routines in the FORTRAN compiler.
+This [link](https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivisionFound.txt) lists the LAPACK COMPLEX*16 algorithms that contain compiler dependent complex divisions of the form
+
+     REAL / COMPLEX   or   COMPLEX / COMPLEX
+
+See link:https://github.com/Reference-LAPACK/lapack/issues/575[Issue #575] and link:https://github.com/Reference-LAPACK/lapack/issues/577[Issue #577] for a more complete discussion on this topic.
+
+
+3. Developer list
+-----------------
+
+.LAPACK developers involved in this release
+
+    * Weslley da Silva Pereira (University of Colorado Denver, USA)
+    * Julie Langou (University of Tennessee, USA)
+
+.Principal Investigators
+
+    * Jim Demmel (University of California,  Berkeley, USA)
+    * Jack Dongarra (University of Tennessee and ORNL, USA)
+    * Julien Langou (University of Colorado Denver, USA)
+
+4. Thanks
+---------
+
+
+* MathWorks: Penny Anderson, Amanda Barry, Mary Ann Freeman, Bobby Cheng,
+Pat Quillen, Christine Tobler.
+
+* GitHub Users:
+ link:https://github.com/angsch[angsch],
+ link:https://github.com/jip[jip],
+ link:https://github.com/ajaypanyala[Ajay Panyala],
+ link:https://github.com/isuruf[Isuru Fernando],
+ link:https://github.com/christoph-conrads[Christoph Conrads]
+ link:https://github.com/nakatamaho[Nakata Maho],
+ link:https://github.com/quellyn[QuellynSnead],
+ link:https://github.com/svillemot[Sebastien Villemot],
+ link:https://github.com/mathstuf[Ben Boeckel],
+ link:https://github.com/Keno[Keno Fisher],
+ link:https://github.com/bjack205[Brian Jackson],
+ link:https://github.com/ericlars[Eric Lars]
+
+Github contribution details link:https://github.com/Reference-LAPACK/lapack/graphs/contributors?from=2021-06-27&to=2022-04-12&type=c[here]
+
+
+5.  Bug Fix
+-----------
+
+ * link:https://github.com/Reference-LAPACK/lapack/milestone/6?closed=1[Closed bugs]
+ * link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&q=is%3Aissue%20is%3Aopen%20label%3A%22Type%3A%20Bug%22%20[Open bugs]
+ * link:https://github.com/Reference-LAPACK/lapack/issues[All open issues]
+
+
+// vim: set syntax=asciidoc:

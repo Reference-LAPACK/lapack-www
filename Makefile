@@ -16,13 +16,13 @@ pre: release_notes.txt release_notes-3.9.1.txt lapack-3.9.1.txt
 	asciidoc -a toc lapack-3.9.1.txt
 	asciidoc -a toc -a toc-title="Menu" index.txt
 
-release_notes: release_notes.txt release_notes-3.10.0.txt lapack-3.10.0.txt
+release_notes: release_notes.txt release_notes-3.10.1.txt lapack-3.10.1.txt
 
-	asciidoc release_notes-3.10.0.txt
-	asciidoc -a toc lapack-3.10.0.txt
+	asciidoc release_notes-3.10.1.txt
+	asciidoc -a toc lapack-3.10.1.txt
 
-	scp release_notes-3.10.0.html release_notes-3.10.0.txt julie@zoot.icl.utk.edu:/nfs/www/netlib/lapack
-	scp lapack-3.10.0.html lapack-3.10.0.txt julie@zoot.icl.utk.edu:/nfs/www/netlib/lapack
+	scp release_notes-3.10.1.html release_notes-3.10.1.txt julie@zoot.icl.utk.edu:/nfs/www/netlib/lapack
+	scp lapack-3.10.1.html lapack-3.10.1.txt julie@zoot.icl.utk.edu:/nfs/www/netlib/lapack
 
 
 improvement.html: improvement.txt

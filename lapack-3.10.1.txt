@@ -135,7 +135,7 @@ For details please see our Github repository
 -----------------------------------
 
 Some LAPACK routines rely on trustworthy complex division and ABS routines in the FORTRAN compiler.
-This [link](https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivisionFound.txt) lists the LAPACK COMPLEX*16 algorithms that contain compiler dependent complex divisions of the form
+This https://github.com/Reference-LAPACK/lapack/files/6672436/complexDivisionFound.txt[link] lists the LAPACK COMPLEX*16 algorithms that contain compiler dependent complex divisions of the form
 
      REAL / COMPLEX   or   COMPLEX / COMPLEX
 
@@ -160,8 +160,8 @@ See link:https://github.com/Reference-LAPACK/lapack/issues/575[Issue #575] and l
 ---------
 
 
-* MathWorks: Penny Anderson, Amanda Barry, Mary Ann Freeman, Bobby Cheng,
-Pat Quillen, Christine Tobler.
+* MathWorks: Penny Anderson, Mary Ann Freeman, Bobby Cheng,
+Pat Quillen, Christine Tobler, Heiko Weichelt.
 
 * GitHub Users:
  link:https://github.com/angsch[angsch],

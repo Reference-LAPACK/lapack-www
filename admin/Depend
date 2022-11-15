@@ -33,6 +33,9 @@ case $1 in
                 fi
 	done >> .depend_tmp
 
+		#gfortran -c -o la_constants.o la_constants.f90
+		gfortran -c -o la_xisnan.o la_xisnan.F90
+
 	for FILE in *.f90;do
                 if [ $FILE != '*.f90' ]; then
 		  echo "F $FILE"

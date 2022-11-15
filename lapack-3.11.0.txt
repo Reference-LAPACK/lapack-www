@@ -1,0 +1,145 @@
+LAPACK 3.11.0
+=============
+
+Release date: 11/11/22.
+
+This material is based upon work supported by the National Science Foundation
+and the Department of Energy.
+
+LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
+
+
+1. Support and questions:
+-------------------------
+
+http://icl.cs.utk.edu/lapack-forum/
+
+https://github.com/Reference-LAPACK/lapack/
+
+2. LAPACK 3.11.0: What's new
+----------------------------
+
+ * Download: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.11.tar.gz[lapack-3.11.0.tar.gz]
+
+
+This is a major release and also addressing multiple bug fixes.
+
+2.1. Normwise criterion for infinite eigenvalues in the QZ algorithm by https://github.com/thijssteel[@thijssteel]
+----------------------------------------------------------------------------------------------------------------
+
+The normwise criterion is more robust at detecting infinite eigenvalues than the elementwise criterion (link:https://github.com/Reference-LAPACK/lapack/pull/698[PR #698]). See also https://arxiv.org/abs/2208.02057.
+
+
+2.2 level-3 BLAS solvers for the triangular system and triangular Sylvester equations by https://github.com/angsch[@angsch]
+---------------------------------------------------------------------------------------------------------------------------
+
+The triangular Sylvester equation has been recognized to be prone to overflow. For that purpose, `*TRSYL` utilizes a scaling factor to represent the solution as `(s^{-1} X)` and solve the scaled equation `AX + XB = s C`. Due to the scaling factor, there is some flexibility in the representation of the solution. The proposed level-3 BLAS version computes the scaling factors based on the upper bounds of blocks to enable level-3 BLAS. The scaling is typically slightly more aggressive so that an alternatively scaled final solution is computed. This is no problem as long as the scaling factor does not get flushed to zero (https://github.com/Reference-LAPACK/lapack/pull/651[PR #651]). The same upper bound calculation was used to write the level-3 BLAS solver for the triangular system, `*LATRS3`.
+
+2.3 Givens rotations generated with less accumulation error by https://github.com/weslleyspereira[@weslleyspereira]
+-----------------------------------------------------------------------------------------------------------------
+
+New algorithms for computing Givens rotations in complex arithmetic that reduce the accumulation errors for computing each of the outputs, `c, s, r`. The new algorithms are, on average, more accurate than both the algorithms from LAPACK 3.9.1 and LAPACK 3.10.0 (https://github.com/Reference-LAPACK/lapack/pull/631[PR #631]). See also https://arxiv.org/abs/2211.04010.
+
+2.4 Faster algorithms for Least Squares by https://github.com/scr2016[@scr2016]
+--------------------------------------------------------------------------------
+
+The new algorithms, `*GELST`, are similar to `*GELS`. `*GELST` avoids computing triangular blocks twice as in `*GELS`, which means `*GELST` runs faster (https://github.com/Reference-LAPACK/lapack/pull/739[PR #739]).
+
+
+2.5 Improvements on the building system and the Continuous Testing framework
+-----------------------------------------------------------------------------
+- Regression test for illegal modification of Y in `*GEMV` by https://github.com/matcross[@matcross] in https://github.com/Reference-LAPACK/lapack/pull/622[PR #622].
+- Test the Fortran intrinsic ABS and complex divisions and report failures during build by https://github.com/weslleyspereira[@weslleyspereira] in https://github.com/Reference-LAPACK/lapack/pull/623[PR #623].
+- Appveyor is working in the Continuous Testing once more by https://github.com/martin-frbg[@martin-frbg] in https://github.com/Reference-LAPACK/lapack/pull/627[PR #627].
+- More tests and fixes for type mismatches by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/675[PR #675].
+- Solve build issues with IBM XLF by https://github.com/friedc[@friedc] in https://github.com/Reference-LAPACK/lapack/pull/677[PR #677].
+- Explicit type casts to INT by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/684[PR #684].
+- Fix an out-of-bounds write in the tests by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/685[PR #685].
+- Adding support for NAG Fortran compiler (nagfor) by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/686[PR #686].
+- Fix time check flag propagation and default value by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/696[PR #696].
+- Fixed format warnings in 64 bit integer builds by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/700[PR #700].
+- Explicit type casts and more rigorous CI by https://github.com/weslleyspereira[@weslleyspereira] in https://github.com/Reference-LAPACK/lapack/pull/703[PR #703].
+- Fix type mismatches in function calls of testing code by https://github.com/mjacobse[@mjacobse] in https://github.com/Reference-LAPACK/lapack/pull/706[PR #706].
+- Fix lower triangular band matrix generation by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/728[PR #728].
+
+2.6 Other improvements
+----------------------
+
+- Improves the computation of norms in `{S,D}ORBDB6` and `{C,Z}UNBDB6` by https://github.com/christoph-conrads[@Christoph Conrads] in https://github.com/Reference-LAPACK/lapack/pull/647[PR #647].
+- Uses a Newton step to compute the initial guess for `ETA` in `{S,D}LAED4` to reduce the number of iterations by https://github.com/weslleyspereira[@weslleyspereira] in https://github.com/Reference-LAPACK/lapack/pull/655[PR #655].
+- Return immediately when scaling with one by @angsch in https://github.com/Reference-LAPACK/lapack/pull/674[PR #674].
+- Rearrange the application of the Householder reflectors in `*LAQR5`, which lowers the instruction count when FMA is available by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/681[PR #681].
+- Set SCALE early for robust triangular solvers by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/712[PR #712].
+- Add `{C,Z}ROTG`, `{CS,ZD}ROT`,  `{S,D}CABS1` to CBLAS by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/721[PR #721].
+- Add `*LANGB` to LAPACKE by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/725[PR #725].
+- NaN check for trapezoidal matrices on LAPACKE by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/738[PR #738] and https://github.com/Reference-LAPACK/lapack/pull/742[PR #742].
+
+2.7 Bug fixes
+-------------
+
+- Fix `LAPACKE_*tpmqrt_work` for row-major matrices by https://github.com/weslleyspereira[@weslleyspereira] in https://github.com/Reference-LAPACK/lapack/pull/540[PR 540].
+- Fix leading dimension check in LAPACKE's `*geesv[x]` and `*gges[x]` by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/665[PR 665].
+- Fix the left-looking variant of GEQRF by https://github.com/weslleyspereira[@weslleyspereira] in https://github.com/Reference-LAPACK/lapack/pull/690[PR 690].
+- Fix workspace query for `*SYEVD` and `*HEEVD` routines by https://github.com/[neil-lindquist]@neil-lindquist in https://github.com/Reference-LAPACK/lapack/pull/691[PR 691].
+- Fix behavior of `SCALE` in `*LATBS` and `*LATRS`, and avoids NaN generation if entries in `CNORM` exceed the overflow threshold by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/712[PR 712].
+
+**https://github.com/Reference-LAPACK/lapack/compare/v3.10.1...v3.11[Full Changelog]**
+
+
+3. Developer list
+-----------------
+
+.LAPACK developers involved in this release
+
+    * Weslley da Silva Pereira (University of Colorado Denver, USA)
+    * Igor Kozachenko (University of California, Berkeley, USA)
+    * Julie Langou (University of Tennessee, USA)
+
+.Principal Investigators
+
+    * Jim Demmel (University of California,  Berkeley, USA)
+    * Jack Dongarra (University of Tennessee and ORNL, USA)
+    * Julien Langou (University of Colorado Denver, USA)
+
+3.1 New Contributors
+--------------------
+
+    * https://github.com/PhillHS[@PhillHS] made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/601[PR 601]
+    * https://github.com/mtowara[@mtowara] made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/663[PR 663]
+    * https://github.com/dbakshee[@dbakshee] made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/671[PR 671]
+    * https://github.com/ACSimon33[@ACSimon33] made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/686[PR 686]
+    * https://github.com/friedc[@friedc] made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/677[PR 677]
+    * https://github.com/[neil-lindquist]@neil-lindquist made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/691[PR 691]
+    * https://github.com/[ivan-pi]@ivan-pi made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/699[PR 699]
+    * https://github.com/[mjacobse]@mjacobse made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/702[PR 702]
+    * https://github.com/[MonicaLiu0311]@MonicaLiu0311 made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/720[PR 720]
+    * https://github.com/[eltociear]@eltociear made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/735[PR 735]
+
+
+4. Thanks again!
+---------------
+
+* MathWorks: Penny Anderson, Mary Ann Freeman, Bobby Cheng, Pat Quillen, Christine Tobler, Heiko Weichelt.
+
+* GitHub Users:
+ link:https://github.com/angsch[@angsch],
+ link:https://github.com/christoph-conrads[@Christoph Conrads]
+ link:https://github.com/martin-frbg[@martin-frbg],
+ link:https://github.com/thijssteel[@thijssteel]
+
+Github contribution details link:https://github.com/Reference-LAPACK/lapack/graphs/contributors?from=2022-04-13&to=2022-11-11&type=c[here]
+
+
+Thanks you all!
+
+
+5.  Bug Fix
+-----------
+
+ * link:https://github.com/Reference-LAPACK/lapack/milestone/6?closed=1[Closed bugs]
+ * link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&q=is%3Aissue%20is%3Aopen%20label%3A%22Type%3A%20Bug%22%20[Open bugs]
+ * link:https://github.com/Reference-LAPACK/lapack/issues[All open issues]
+
+
+// vim: set syntax=asciidoc:

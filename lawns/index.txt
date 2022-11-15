@@ -2,6 +2,12 @@
 
 link:lawn.bib[LAWNS bibtex]
 
+== lawn298 +[link:http://www.netlib.org/lapack/lawnspdf/lawn298.pdf[pdf]]+
+.A LAPACK implementation of the Dynamic Mode Decomposition I
+by *Zlatko Drmac*
+
+Oct 2022
+
 == lawn297 +[link:http://www.netlib.org/lapack/lawnspdf/lawn297.pdf[pdf]]+
 .Prospectus for the Next LAPACK and ScaLAPACK Libraries: Basic ALgebra LIbraries for Sustainable Technology with Interdisciplinary Collaboration (BALLISTIC)
 by *Demmel, J., J. Dongarra, J. Langou, J. Langou, P. Luszczek, and M. Mahoney*

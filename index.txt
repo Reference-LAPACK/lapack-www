@@ -237,7 +237,7 @@ link:manpages.tgz[gzip tar file of the manual pages for LAPACK ]
 
 Please follow the instructions of the link:README-MANPAGES[README] to install the LAPACK manpages on your machine.
 
-The LAPACK team would like to thank Sylvestre Ledru for helping us maintaing those manpages and Albert from the Doxygen team.
+The LAPACK team would like to thank Sylvestre Ledru for helping us maintain those manpages and Albert from the Doxygen team.
 
 === *LAWNS*: LAPACK Working Notes
 

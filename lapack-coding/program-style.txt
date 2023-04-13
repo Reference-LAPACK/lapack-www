@@ -85,7 +85,7 @@ Interoperability with C is important but difficult to achieve
 both simply and portably.  Some considerations are listed in
 <<c-interop>>.
 
-LAPACK strives to accomodate both users who want control over
+LAPACK strives to accommodate both users who want control over
 memory allocation as well as users who want automatic workspace
 allocation.  We have decided not to use dynamic allocation within
 LAPACK computational routines.  Instead, we will provide a
@@ -888,7 +888,7 @@ Source Formatting [[src-format,Source Formatting]]
 
 In general, follow existing LAPACK style.  The LAPACK routines
 conform to a single set of conventions for their design and
-documentation.  To accomodate ease of parsing just described, we
+documentation.  To accommodate ease of parsing just described, we
 will insist on a uniform format.
 
 The structure of a LAPACK routine includes:

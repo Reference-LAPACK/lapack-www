@@ -12,15 +12,14 @@ faq.html: faq.txt
 	asciidoc -a toc faq.txt
 
 
-release_notes: release_notes.txt release_notes-3.11.0.txt lapack-3.11.0.txt
+release_notes: release_notes.txt release_notes-3.12.0.txt lapack-3.12.0.txt
 
-	asciidoc release_notes-3.11.0.txt
-	cp release_notes-3.11.0.txt release_notes.txt
+	asciidoc release_notes-3.12.0.txt
+	cp release_notes-3.12.0.txt release_notes.txt
 	asciidoc release_notes.txt
-	asciidoc -a toc lapack-3.11.0.txt
-
-	scp release_notes-3.11.0.html release_notes-3.11.0.txt release_notes.html release_notes.txt julie@methane.icl.utk.edu:/nfs/www/netlib/lapack
-	scp lapack-3.11.0.html lapack-3.11.0.txt julie@methane.icl.utk.edu:/nfs/www/netlib/lapack
+	asciidoc -a toc lapack-3.12.0.txt
+	scp release_notes-3.12.0.html release_notes-3.12.0.txt release_notes.html release_notes.txt julie@netlib.org:websites/netlib/lapack
+	scp lapack-3.12.0.html lapack-3.12.0.txt julie@netlib.org:websites/netlib/lapack
 
 
 improvement.html: improvement.txt
@@ -28,7 +27,7 @@ improvement.html: improvement.txt
 
 index: index.txt
 	asciidoc -a toc -a toc-title="Menu" index.txt
-	scp index.html index.txt julie@methane.icl.utk.edu:/nfs/www/netlib/lapack
+	scp index.html index.txt julie@netlib.org:websites/netlib/lapack
 
 
 err: Errata/index2.txt Errata/index2.txt Errata/errata_scalapack.txt
@@ -36,7 +35,7 @@ err: Errata/index2.txt Errata/index2.txt Errata/errata_scalapack.txt
 
 lawn: lawns/index.txt
 	@(cd lawns && make && cd ..)
-	scp lawns/*.txt lawns/*.html lawns/lawn.bib julie@methane.icl.utk.edu:/nfs/www/netlib/lapack/lawns
+	scp lawns/*.txt lawns/*.html lawns/lawn.bib julie@netlib.org:websites/netlib/lapack/lawns
 
 coding: lapack-coding/program-style.txt
 	@(cd lapack-coding && make && cd ..)

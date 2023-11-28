@@ -37,11 +37,11 @@ Like all software, it is copyrighted. It is not trademarked, but we do ask the f
 
 * We will gladly answer any questions regarding the software. If a modification is done, however, it is the responsibility of the person who modified the routine to provide support.
 
-=== REFERENCE BLAS Version 3.11.0
+=== REFERENCE BLAS Version 3.12.0
 
- * Download http://www.netlib.org/blas/blas-3.11.0.tgz[blas-3.11.0.tgz]
+ * Download http://www.netlib.org/blas/blas-3.12.0.tgz[blas-3.12.0.tgz]
 
- * Updated November 2022
+ * Updated November 2023
 
  * http://www.netlib.org/blas/blasqr.pdf[Quick Reference Guide]
 

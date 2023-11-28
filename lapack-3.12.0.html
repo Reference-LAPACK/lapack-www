@@ -1,0 +1,1446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 10.1.1" />
+<title>LAPACK 3.12.0</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overridden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>LAPACK 3.12.0</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>Release date: 11/24/23.</p></div>
+<div class="paragraph"><p>This material is based upon work supported by the National Science Foundation
+and the Department of Energy.</p></div>
+<div class="paragraph"><p>LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California, Berkeley, Univ. of Colorado Denver and NAG Ltd..</p></div>
+</div>
+</div>
+<h1 id="_support_and_questions">Support and questions:</h1>
+<div class="paragraph"><p><a href="http://icl.cs.utk.edu/lapack-forum/">http://icl.cs.utk.edu/lapack-forum/</a></p></div>
+<div class="paragraph"><p><a href="https://github.com/Reference-LAPACK/lapack/">https://github.com/Reference-LAPACK/lapack/</a></p></div>
+<h1 id="_lapack_3_12_0_what_8217_s_new">LAPACK 3.12.0: What&#8217;s new</h1>
+<div class="ulist"><ul>
+<li>
+<p>
+Download: <a href="https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.12.tar.gz">lapack-3.12.0.tar.gz</a>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>This is a major release and also addressing multiple bug fixes.</p></div>
+<h1 id="_dynamic_mode_decomposition_dmd">Dynamic Mode Decomposition (DMD)</h1>
+<div class="ulist"><ul>
+<li>
+<p>
+xGEDMD computes the Dynamic Mode Decomposition (DMD) for a pair of data snapshot matrices. For the input matrices X and Y such that Y = A*X with an inaccessible matrix A, xGEDMD computes a certain number of Ritz pairs of A using the standard Rayleigh-Ritz extraction from a subspace of range(X) that is determined using the leading left singular vectors of X. Optionally, xGEDMD returns the residuals of the computed Ritz pairs, the information needed for a refinement of the Ritz vectors, or the eigenvectors of the Exact DMD.
+</p>
+</li>
+<li>
+<p>
+xGEDMDQ does the same as xGEDMD but uses a QR factorization based compression of the data.
+</p>
+</li>
+<li>
+<p>
+See: Z. Drmac: A LAPACK implementation of the Dynamic Mode Decomposition I. Technical report. AIMDyn Inc. and LAPACK Working Note 298.
+</p>
+</li>
+<li>
+<p>
+Developed and coded by Zlatko Drmac, Faculty of Science, University of Zagreb. In cooperation with AIMdyn Inc., Santa Barbara, CA. And supported by (1) DARPA SBIR project "Koopman Operator-Based Forecasting for Nonstationary Processes from Near-Term, Limited Observational Data", Contract No: W31P4Q-21-C-0007; (2) DARPA PAI project "Physics-Informed Machine Learning Methodologies", Contract No: HR0011-18-9-0033; (3) DARPA MoDyL project "A Data-Driven, Operator-Theoretic Framework for Space-Time Analysis of Process Dynamics", Contract No: HR0011-16-C-0116. Any opinions, findings and conclusions or recommendations expressed in this material are those of the author and do not necessarily reflect the views of the DARPA SBIR Program Office. Distribution Statement A: Approved for Public Release, Distribution Unlimited. Cleared by DARPA on September 29, 2022
+</p>
+</li>
+<li>
+<p>
+Adding Dynamic Mode Decomposition (DMD) into LAPACK by <a href="https://github.com/dbielich">@dbielich</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/736">PR 736</a>
+</p>
+</li>
+<li>
+<p>
+Update C prototypes and LAPACKE interfaces for ?GEDMD/?GEDMDQ by <a href="https://github.com/martin-frbg">@martin-frbg</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/880">PR 880</a>
+</p>
+</li>
+</ul></div>
+<h1 id="_truncated_qr_with_column_pivoting">Truncated QR with Column Pivoting</h1>
+<div class="ulist"><ul>
+<li>
+<p>
+The routine computes a truncated (rank K) or full rank Householder QR factorization with column pivoting of a real M-by-N matrix A using Level 3 BLAS.
+</p>
+</li>
+<li>
+<p>
+The truncation criteria (i.e. when to stop the factorization) can be any of the following: (1) The input parameter KMAX, the maximum number of columns KMAX to factorize; (2) The input parameter ABSTOL, the absolute tolerance for the maximum column 2-norm of the residual matrix R22(K); (3) The input parameter RELTOL, the tolerance for the maximum column 2-norm matrix of the residual matrix R22(K) divided by the maximum column 2-norm of the original matrix A, which is equal to abs(R(1,1)).  The algorithm stops when any of these conditions is first satisfied, otherwise the whole matrix A is factorized.
+</p>
+</li>
+<li>
+<p>
+Truncated QR with Column Pivoting by <a href="https://github.com/scr2016">@scr2016</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/891">PR 891</a>
+</p>
+</li>
+</ul></div>
+<h1 id="_reciprocal_scaling_of_complex_vectors">Reciprocal Scaling of complex vectors</h1>
+<div class="ulist"><ul>
+<li>
+<p>
+[C/Z]RSCL multiplies an n-element complex vector x by the complex scalar 1/a. This is done without overflow or underflow as long as the final result x/a does not overflow or underflow.
+</p>
+</li>
+<li>
+<p>
+See: "An algorithm for scaling vectors by the reciprocal of a complex number", Weslley da Silva Pereira, [arXiv:2311.05736](<a href="https://arxiv.org/abs/2311.05736">https://arxiv.org/abs/2311.05736</a>)
+</p>
+</li>
+<li>
+<p>
+Adds CRSCL by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/839">PR 839</a>
+</p>
+</li>
+</ul></div>
+<h1 id="_improvements_in_the_64_bit_api">Improvements in the 64-bit API</h1>
+<div class="ulist"><ul>
+<li>
+<p>
+Fix CBLAS tests with 64-bit indexing by <a href="https://github.com/svillemot">@svillemot</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/767">PR 767</a>
+</p>
+</li>
+<li>
+<p>
+Add Index-64 API as extended API with _64 suffix for CBLAS by <a href="https://github.com/mkrainiuk">@mkrainiuk</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/846">PR 846</a>
+</p>
+</li>
+<li>
+<p>
+Revert "Add Index-64 API as extended API with _64 suffix for CBLAS" by <a href="https://github.com/langou">@langou</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/856">PR 856</a>
+</p>
+</li>
+<li>
+<p>
+Add Index-64 API as extended API with _64 suffix for CBLAS by <a href="https://github.com/mkrainiuk">@mkrainiuk</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/857">PR 867</a>
+</p>
+</li>
+<li>
+<p>
+Create DOCS/CBLAS.md by <a href="https://github.com/mkrainiuk">@mkrainiuk</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/853">PR 863</a>
+</p>
+</li>
+<li>
+<p>
+Reduce number of macros in fortran compilation line for BLAS _64 API by <a href="https://github.com/mkrainiuk">@mkrainiuk</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/861">PR 861</a>
+</p>
+</li>
+</ul></div>
+<h1 id="_bug_fixes_and_other_changes">Bug fixes and other changes</h1>
+<div class="ulist"><ul>
+<li>
+<p>
+Windows build fix by <a href="https://github.com/ACSimon33">@ACSimon33</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/760">PR 760</a>
+</p>
+</li>
+<li>
+<p>
+Added option to enable flat namespace on macOS by <a href="https://github.com/ACSimon33">@ACSimon33</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/762">PR 762</a>
+</p>
+</li>
+<li>
+<p>
+Fix bug in new test case for LAPACK 3.11 SLATRS3 by <a href="https://github.com/dklyuchinskiy">@dklyuchinskiy</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/755">PR 755</a>
+</p>
+</li>
+<li>
+<p>
+Check for NaNs in *GECON by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/765">PR 765</a>
+</p>
+</li>
+<li>
+<p>
+Fixed bug in array bounds in complex syl01 test by <a href="https://github.com/dklyuchinskiy">@dklyuchinskiy</a>in <a href="https://github.com/Reference-LAPACK/lapack/pull/758">PR 758</a>
+</p>
+</li>
+<li>
+<p>
+Fix uninitialized M when quick return in DLARRD and SLARRD by <a href="https://github.com/akobotov">@akobotov</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/769">PR 769</a>
+</p>
+</li>
+<li>
+<p>
+In LAPACKE tgsen, allocate iwork when ijob = 0. Fixes #772. by <a href="https://github.com/mgates3">@mgates3</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/773">PR 773</a>
+</p>
+</li>
+<li>
+<p>
+Fix SLATRS3 and CLATRS3 tests by @bartoldeman in <a href="https://github.com/Reference-LAPACK/lapack/pull/764">PR 764</a>
+</p>
+</li>
+<li>
+<p>
+Fix uninitialized out variables in <strong>LARR</strong> functions by <a href="https://github.com/echeresh">@echeresh</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/775">PR 775</a>
+</p>
+</li>
+<li>
+<p>
+Warnings supression in some LAPACKE functions by <a href="https://github.com/jgpallero">@jgpallero</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/780">PR 780</a>
+</p>
+</li>
+<li>
+<p>
+Revert "Warnings supression in some LAPACKE functions" by <a href="https://github.com/langou">@langou</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/781">PR 781</a>
+</p>
+</li>
+<li>
+<p>
+Warnings supression and deletion of unnecessary check in some LAPACKE xLARFB functions by <a href="https://github.com/jgpallero">@jgpallero</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/782">PR 782</a>
+</p>
+</li>
+<li>
+<p>
+remove redundant space from xerbla call sbgv/hbgv by <a href="https://github.com/dklyuchinskiy">@dklyuchinskiy</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/792">PR 792</a>
+</p>
+</li>
+<li>
+<p>
+don&#8217;t subtract N_DEFLATED from istop twice by <a href="https://github.com/thijssteel">@thijssteel</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/794">PR 794</a>
+</p>
+</li>
+<li>
+<p>
+fix rfp test for DIAG = U by <a href="https://github.com/dklyuchinskiy">@dklyuchinskiy</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/796">PR 796</a>
+</p>
+</li>
+<li>
+<p>
+fix bug in complex precision tests (c|z)het21 by <a href="https://github.com/EduardFedorenkov">@EduardFedorenkov</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/798">PR 798</a>
+</p>
+</li>
+<li>
+<p>
+CMake: Disable TEST_FORTRAN_COMPILER by <a href="https://github.com/jschueller">@jschueller</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/761">PR 761</a>
+</p>
+</li>
+<li>
+<p>
+Fix typos in documentation by <a href="https://github.com/angsch">@angsch</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/750">PR 750</a>
+</p>
+</li>
+<li>
+<p>
+Add minimum permissions to workflows by <a href="https://github.com/gabibguti">@gabibguti</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/804">PR 804</a>
+</p>
+</li>
+<li>
+<p>
+Add numerical tests for trevc3 by <a href="https://github.com/angsch">@angsch</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/682">PR 682</a>
+</p>
+</li>
+<li>
+<p>
+Remove legacy function LABAD by <a href="https://github.com/angsch">@angsch</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/805">PR 805</a>
+</p>
+</li>
+<li>
+<p>
+Refactor xGEBAL by <a href="https://github.com/eprovst">@eprovst</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/808">PR 808</a>
+</p>
+</li>
+<li>
+<p>
+Fix typos and errors in comments by <a href="https://github.com/jip">@jip</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/809">PR 809</a>
+</p>
+</li>
+<li>
+<p>
+cmake: allow setting a prefix for the library names by <a href="https://github.com/joseeroman">@joseeroman</a>  in <a href="https://github.com/Reference-LAPACK/lapack/pull/810">PR 810</a>
+</p>
+</li>
+<li>
+<p>
+Fix typos in comments by <a href="https://github.com/jip">@jip</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/811">PR 811</a>
+</p>
+</li>
+<li>
+<p>
+fix #813 by <a href="https://github.com/langou">@langou</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/814">PR 814</a>
+</p>
+</li>
+<li>
+<p>
+Replace the (partially defined) constant index variable INDIBL in ?SBGVX and related by <a href="https://github.com/martin-frbg">@martin-frbg</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/807">PR 807</a>
+</p>
+</li>
+<li>
+<p>
+CTGEVC, ZTGEVC: fix typo in description of VR argument by <a href="https://github.com/svillemot">@svillemot</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/812">PR 812</a>
+</p>
+</li>
+<li>
+<p>
+Add Security Policy by <a href="https://github.com/gabibguti">@gabibguti</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/819">PR 819</a>
+</p>
+</li>
+<li>
+<p>
+typos by <a href="https://github.com/musvaage">@musvaage</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/820">PR 820</a>
+</p>
+</li>
+<li>
+<p>
+extend tests for error exit sysv sytd2 gehd2 by <a href="https://github.com/dklyuchinskiy">@dklyuchinskiy</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/795">PR 795</a>
+</p>
+</li>
+<li>
+<p>
+CMake: avoid "make" in blas++ and lapack++ by <a href="https://github.com/nim65s">@nim65s</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/821">PR 821</a>
+</p>
+</li>
+<li>
+<p>
+appveyor: output test failures by <a href="https://github.com/nim65s">@nim65s</a>  in <a href="https://github.com/Reference-LAPACK/lapack/pull/822">PR 822</a>
+</p>
+</li>
+<li>
+<p>
+Reference actions by commit SHA by <a href="https://github.com/gabibguti">@gabibguti</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/829">PR 829</a>
+</p>
+</li>
+<li>
+<p>
+LAPACKE interfaces for [cz]unhr_col and [sd]orhr_col by <a href="https://github.com/sknepper">@sknepper</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/827">PR 827</a>
+</p>
+</li>
+<li>
+<p>
+fix segfault problem when executing LAPACKE_*geqrt on row major #766 by <a href="https://github.com/sbite0138">@sbite0138</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/768">PR 768</a>
+</p>
+</li>
+<li>
+<p>
+Adds comment related to zero-sized matrix B in GELSY by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/833">PR 833</a>
+</p>
+</li>
+<li>
+<p>
+update brief descriptions of function purpose, Closes #230 by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/831">PR 831</a>
+</p>
+</li>
+<li>
+<p>
+Fix scaling in (S/D)TGSNA, fix #103, thanks to @elivanova by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/830">PR 830</a>
+</p>
+</li>
+<li>
+<p>
+Exits xLARUV when N &lt; 1 by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/837">PR 837</a>
+</p>
+</li>
+<li>
+<p>
+Create GitHub action to test CMake build system on Windows by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/524">PR 524</a>
+</p>
+</li>
+<li>
+<p>
+Fix bug in lapacke_[s,d]geesx by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/836">PR 836</a>
+</p>
+</li>
+<li>
+<p>
+Removes unused SMIN from bdsqr by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/832">PR 832</a>
+</p>
+</li>
+<li>
+<p>
+Use a better (more informative) message when we say the compiler intr… by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/845">PR 845</a>
+</p>
+</li>
+<li>
+<p>
+Improve variants of Cholesky and QR by <a href="https://github.com/angsch">@angsch</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/847">PR 847</a>
+</p>
+</li>
+<li>
+<p>
+fixes #848 by <a href="https://github.com/jaganmn">@jaganmn</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/849">PR 849</a>
+</p>
+</li>
+<li>
+<p>
+Attempt to fix Appveyor on Windows by <a href="https://github.com/angsch">@angsch</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/854">PR 854</a>
+</p>
+</li>
+<li>
+<p>
+fix dlasd0 / slasd0 documentation issue by <a href="https://github.com/mtowara">@mtowara</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/855">PR 855</a>
+</p>
+</li>
+<li>
+<p>
+Remove legacy warning for non IEEE 754 compliant machines by <a href="https://github.com/angsch">@angsch</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/852">PR 852</a>
+</p>
+</li>
+<li>
+<p>
+Add verbose build to CI by <a href="https://github.com/mkrainiuk">@mkrainiuk</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/858">PR 858</a>
+</p>
+</li>
+<li>
+<p>
+[cz]hetrd_hb2st.F, [sd]sytrd_sb2st.F OpenMP fixes by <a href="https://github.com/chrwarm">@chrwarm</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/860">PR 860</a>
+</p>
+</li>
+<li>
+<p>
+new doxygen group structure by <a href="https://github.com/mgates3">@mgates3</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/802">PR 802</a>
+</p>
+</li>
+<li>
+<p>
+Correct the order of returned eigenvalue and eigenvectors for 2x2 matrices with IL=IU in C/D/S/Z/STEMR by <a href="https://github.com/aravindh-krishnamoorthy">@aravindh-krishnamoorthy</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/867">PR 867</a>
+</p>
+</li>
+<li>
+<p>
+fix nrhs=0 case in ?gelss by <a href="https://github.com/eaberendeev">@eaberendeev</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/876">PR 876</a>
+</p>
+</li>
+<li>
+<p>
+Fix computation of uplo in LAPACKE_xlarfb by <a href="https://github.com/vladimir-ch">@vladimir-ch</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/878">PR 878</a>
+</p>
+</li>
+<li>
+<p>
+Fix workspace query corner cases by <a href="https://github.com/angsch">@angsch</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/883">PR 883</a>
+</p>
+</li>
+<li>
+<p>
+Fix actual arguments in some procedure calls by <a href="https://github.com/mjacobse">@mjacobse</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/885">PR 885</a>
+</p>
+</li>
+<li>
+<p>
+Improve Cholesky variants by <a href="https://github.com/angsch">@angsch</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/889">PR 889</a>
+</p>
+</li>
+<li>
+<p>
+Removes usage of Experimental (interactive) mode in ctest by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/892">PR 892</a>
+</p>
+</li>
+<li>
+<p>
+Updates the documentation of xGEMV and xGBMV related to when M=0 and N=0 by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/843">PR 843</a>
+</p>
+</li>
+<li>
+<p>
+Add Scorecard by <a href="https://github.com/gabibguti">@gabibguti</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/895">PR 895</a>
+</p>
+</li>
+<li>
+<p>
+Remove auxiliary GEQRS, GELQS by <a href="https://github.com/angsch">@angsch</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/900">PR 900</a>
+</p>
+</li>
+<li>
+<p>
+CMake config for IntelLLVM (ifx) and NVIDIA HPC SDK (nvfortran) by <a href="https://github.com/ACSimon33">@ACSimon33</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/898">PR 898</a>
+</p>
+</li>
+<li>
+<p>
+Fix build for CMake &gt;= 3.27 by <a href="https://github.com/scivision">@scivision</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/910">PR 910</a>
+</p>
+</li>
+<li>
+<p>
+allow absolute GNU install dirs by <a href="https://github.com/chayleaf">@chayleaf</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/893">PR 893</a>
+</p>
+</li>
+<li>
+<p>
+dtgex2: add 2 to iwork length to prevent OOB interaction in Dtgsy2 by <a href="https://github.com/soypat">@soypat</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/907">PR 907</a>
+</p>
+</li>
+<li>
+<p>
+Adds OpenSSF Scorecard badge by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/896">PR 896</a>
+</p>
+</li>
+<li>
+<p>
+Fix issue #908 related to accumulation in xLASSQ by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/909">PR 909</a>
+</p>
+</li>
+<li>
+<p>
+Apply ROUNDUP_LWORK function in lapack by <a href="https://github.com/kleineLi">@kleineLi</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/904">PR 904</a>
+</p>
+</li>
+<li>
+<p>
+Compilation of LAPACKE possibly independent from Fortran by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/834">PR 834</a>
+</p>
+</li>
+<li>
+<p>
+Always use C as linker language for CBLAS by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/920">PR 920</a>
+</p>
+</li>
+<li>
+<p>
+Uses Valgrind for ExperimentalMemCheck in ctest by <a href="https://github.com/weslleyspereira">@weslleyspereira</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/844">PR 844</a>
+</p>
+</li>
+<li>
+<p>
+Adding in quotes in cmake for Intel ifx and linux build  by <a href="https://github.com/colleeneb">@colleeneb</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/922">PR 922</a>
+</p>
+</li>
+<li>
+<p>
+Fix complex BDSQR maxit by <a href="https://github.com/pleshkovvli">@pleshkovvli</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/927">PR 927</a>
+</p>
+</li>
+<li>
+<p>
+xORBDB6/xUNBDB6: fix a constant by <a href="https://github.com/christoph-conrads">@christoph-conrads</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/928">PR 928</a>
+</p>
+</li>
+<li>
+<p>
+Fixed Fortran preprocessor flag for NAG Fortran compiler by <a href="https://github.com/ACSimon33">@ACSimon33</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/939">PR 939</a>
+</p>
+</li>
+<li>
+<p>
+Fixed void main() for AppleClang by <a href="https://github.com/ACSimon33">@ACSimon33</a> in <a href="https://github.com/Reference-LAPACK/lapack/pull/940">PR 940</a>
+</p>
+</li>
+</ul></div>
+<h1 id="_developer_list">Developer list</h1>
+<div class="ulist"><div class="title">LAPACK developers involved in this release</div><ul>
+<li>
+<p>
+Weslley da Silva Pereira (University of Colorado Denver, USA)
+</p>
+</li>
+<li>
+<p>
+Igor Kozachenko (University of California, Berkeley, USA)
+</p>
+</li>
+<li>
+<p>
+Julie Langou (University of Tennessee, USA)
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">Principal Investigators</div><ul>
+<li>
+<p>
+Jim Demmel (University of California,  Berkeley, USA)
+</p>
+</li>
+<li>
+<p>
+Jack Dongarra (University of Tennessee and ORNL, USA)
+</p>
+</li>
+<li>
+<p>
+Julien Langou (University of Colorado Denver, USA)
+</p>
+</li>
+</ul></div>
+<h1 id="_new_contributors">New Contributors</h1>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://github.com/dklyuchinskiy">@dklyuchinskiy</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/755">PR 755</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/akobotov">@akobotov</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/769">PR 769</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/bartoldeman">@bartoldeman</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/764">PR 764</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/jgpallero">@jgpallero</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/780">PR 780</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/EduardFedorenkov">@EduardFedorenkov</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/798">PR 798</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/gabibguti">@gabibguti</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/804">PR 804</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/eprovst">@eprovst</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/808">PR 808</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/joseeroman">@joseeroman</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/810">PR 810</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/musvaage">@musvaage</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/820">PR 820</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/nim65s">@nim65s</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/821">PR 821</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/sknepper">@sknepper</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/827">PR 827</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/sbite0138">@sbite0138</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/768">PR 768</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/dbielich">@dbielich</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/736">PR 736</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/jaganmn">@jaganmn</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/849">PR 849</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/mkrainiuk">@mkrainiuk</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/846">PR 846</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/chrwarm">@chrwarm</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/860">PR 860</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/aravindh-krishnamoorthy">@aravindh-krishnamoorthy</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/867">PR 867</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/eaberendeev">@eaberendeev</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/876">PR 876</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/chayleaf">@chayleaf</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/893">PR 893</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/soypat">@soypat</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/907">PR 907</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/kleineLi">@kleineLi</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/904">PR 904</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/colleeneb">@colleeneb</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/922">PR 922</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/pleshkovvli">@pleshkovvli</a> made their first contribution in <a href="https://github.com/Reference-LAPACK/lapack/pull/927">PR 927</a>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p><strong>Full Changelog</strong>: <a href="https://github.com/Reference-LAPACK/lapack/compare/v3.11.0&#8230;v3.12.0">https://github.com/Reference-LAPACK/lapack/compare/v3.11.0&#8230;v3.12.0</a></p></div>
+<div class="paragraph"><p>Thanks to all our contributors!</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Special Thanks to the Mathworks team: Penny Anderson, Mary Ann Freeman, Bobby Cheng, Pat Quillen, Christine Tobler, Heiko Weichelt.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>The LAPACK team</p></div>
+<div class="paragraph"><p>Thanks you all!</p></div>
+<h1 id="_bug_fix">Bug Fix</h1>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://github.com/Reference-LAPACK/lapack/milestone/6?closed=1">Closed bugs</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&amp;q=is%3Aissue%20is%3Aopen%20label%3A%22Type%3A%20Bug%22%20">Open bugs</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://github.com/Reference-LAPACK/lapack/issues">All open issues</a>
+</p>
+</li>
+</ul></div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2023-11-28 12:17:06 PST
+</div>
+</div>
+</body>
+</html>

@@ -12,14 +12,14 @@ faq.html: faq.txt
 	asciidoc -a toc faq.txt
 
 
-release_notes: release_notes.txt release_notes-3.12.0.txt lapack-3.12.0.txt
+release_notes: release_notes.txt release_notes-3.12.1.txt lapack-3.12.1.txt
 
-	asciidoc release_notes-3.12.0.txt
-	cp release_notes-3.12.0.txt release_notes.txt
+	asciidoc release_notes-3.12.1.txt
+	cp release_notes-3.12.1.txt release_notes.txt
 	asciidoc release_notes.txt
-	asciidoc -a toc lapack-3.12.0.txt
-	scp release_notes-3.12.0.html release_notes-3.12.0.txt release_notes.html release_notes.txt julie@netlib.org:websites/netlib/lapack
-	scp lapack-3.12.0.html lapack-3.12.0.txt julie@netlib.org:websites/netlib/lapack
+	asciidoc -a toc lapack-3.12.1.txt
+	scp release_notes-3.12.1.html release_notes-3.12.1.txt release_notes.html release_notes.txt julie@netlib.org:websites/netlib/lapack
+	scp lapack-3.12.1.html lapack-3.12.1.txt julie@netlib.org:websites/netlib/lapack
 
 
 improvement.html: improvement.txt

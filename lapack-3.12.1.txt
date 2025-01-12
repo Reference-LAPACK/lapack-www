@@ -1,0 +1,130 @@
+LAPACK 3.12.1
+=============
+
+Release date: 08/01/25.
+
+This material is based upon work supported by the National Science Foundation
+and the Department of Energy.
+
+LAPACK is a software package provided by Univ. of Tennessee, Univ. of
+California, Berkeley, Univ. of Colorado Denver and NAG Ltd..
+
+
+= Support and questions:
+
+http://icl.cs.utk.edu/lapack-forum/
+
+https://github.com/Reference-LAPACK/lapack/
+
+= LAPACK 3.12.1: What's new
+
+ * Download: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.12.1.tar.gz[lapack-3.12.1.tar.gz]
+
+
+= Bug fixes and other changes
+
+
+What's Changed
+
+* Enables Fortran before including CheckFortranFunctionExists in CMakeL… by https://github.com/weslleyspereira[@weslleyspereira] in https://github.com/Reference-LAPACK/lapack/pull/948[948]
+* Fixes for the NAG Fortran compiler by https://github.com/ACSimon33[@ACSimon33] inhttps://github.com/Reference-LAPACK/lapack/pull/951[951]
+* Fixed HAS_ATTRIBUTE_WEAK_SUPPORT flag for CBLAS objects by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/950[950]
+* Fixed memory leak in testing framework by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/953[953]
+* Fixed search phrase for determining the amount of successful tests by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/954[954]
+* handle and document corner cases of lwork in lapack by https://github.com/dklyuchinskiy[@dklyuchinskiy] in https://github.com/Reference-LAPACK/lapack/pull/942[942]
+* fix some DMD issues by https://github.com/dklyuchinskiy[@dklyuchinskiy] in https://github.com/Reference-LAPACK/lapack/pull/959[959]
+* Remove executable permissions from source files by https://github.com/turboencabulator[@turboencabulator] in https://github.com/Reference-LAPACK/lapack/pull/970[970]
+* CMake: restore compatibility with v3.10 and older by https://github.com/christoph-conrads[@christoph-conrads] in https://github.com/Reference-LAPACK/lapack/pull/976[976]
+* Re-sync Doxyfile with CMake by https://github.com/turboencabulator[@turboencabulator] in https://github.com/Reference-LAPACK/lapack/pull/978[978]
+* Fix Doxygen warnings by https://github.com/turboencabulator[@turboencabulator] in https://github.com/Reference-LAPACK/lapack/pull/979[979]
+* {C,Z}LARFGP: re-scale input vector more often by https://github.com/christoph-conrads[@christoph-conrads] in https://github.com/Reference-LAPACK/lapack/pull/981[981]
+* Typo by @FrK5E in https://github.com/Reference-LAPACK/lapack/pull/984[984]
+* Add Index-64 API as extended API with _64 suffix for LAPACKE by https://github.com/mkrainiuk[@mkrainiuk] in https://github.com/Reference-LAPACK/lapack/pull/888[888]
+* Two small fixes of bdsqr by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/989[989]
+* xGEDMD(Q): silence warning with 64-bit integers by https://github.com/christoph-conrads[@christoph-conrads] in https://github.com/Reference-LAPACK/lapack/pull/993[993]
+* xSY/HEEVR: clarify use of multiple algorithms by https://github.com/christoph-conrads[@christoph-conrads] inhttps://github.com/Reference-LAPACK/lapack/pull/998[998]
+* fix comments by https://github.com/jip[@jip] in https://github.com/Reference-LAPACK/lapack/pull/1004[1004]
+* fix comments by https://github.com/jip[@jip] in https://github.com/Reference-LAPACK/lapack/pull/1007[1007]
+* #1008 Allow installing binaries to subdirectory while keeping CMake package scripts in the same place by https://github.com/lepus2589[@lepus2589] in https://github.com/Reference-LAPACK/lapack/pull/1009[1009]
+* fix LARFB documentation, #1011 by https://github.com/EduardFedorenkov[@EduardFedorenkov] in https://github.com/Reference-LAPACK/lapack/pull/1016[1016]
+* fix out-of-bounds access in orhr_col by https://github.com/mgates3[@mgates3] in https://github.com/Reference-LAPACK/lapack/pull/1018[1018]
+* Allow User Configuration of RPATH Settings by @ahnaf-tahmid-chowdhury in https://github.com/Reference-LAPACK/lapack/pull/1002[1002]
+* changing the order of loop to improve performance by https://github.com/Goddan-wq[@Goddan-wq] in https://github.com/Reference-LAPACK/lapack/pull/1023[1023]
+* Use more modern CMake by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/1022[1022]
+* Fix infinite loop when an error occurs in tests ddrvst and sdrvst by https://github.com/cenewcombe[@cenewcombe] in https://github.com/Reference-LAPACK/lapack/pull/1024[1024]
+* Configurable type of hidden Fortran strlen arguments by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/1025[1025]
+* develop DLARF1F and implement in ORM2R, #1011 by https://github.com/EduardFedorenkov[@EduardFedorenkov] in https://github.com/Reference-LAPACK/lapack/pull/1019[1019]
+* Fix the wrong implementation of the new tests for xblat1.f by https://github.com/cdluminate[@cdluminate] in https://github.com/Reference-LAPACK/lapack/pull/964[964]
+* Implementation of dorm2r and dlarf1f by https://github.com/jprhyne[@jprhyne] in https://github.com/Reference-LAPACK/lapack/pull/1020[1020]
+* Fix lto type mismatch by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/1027[1027]
+* Fix NAG Fortran compiler flag by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/1028[1028]
+* align documentation of BDSQR workspace with code by https://github.com/dklyuchinskiy[@dklyuchinskiy] in https://github.com/Reference-LAPACK/lapack/pull/1029[1029]
+* Fixed usage of uninitialized variables in TESTING by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/961[961]
+* fix few typos and sytrd boundary workspace by https://github.com/dklyuchinskiy[@dklyuchinskiy] in https://github.com/Reference-LAPACK/lapack/pull/1030[1030]
+* Implement xGEMMTR and cblas_xGEMMTR by https://github.com/grisuthedragon[@grisuthedragon] in https://github.com/Reference-LAPACK/lapack/pull/887[887]
+* Prevent compilers from using FMA instructions by https://github.com/ACSimon33[@ACSimon33] in https://github.com/Reference-LAPACK/lapack/pull/1033[1033]
+* Clarify documentation of singularity/rank-deficiency checks by https://github.com/TiborGY[@TiborGY] in https://github.com/Reference-LAPACK/lapack/pull/924[924]
+* PR contains bug fixes found in ?tfsm (triangular solve for a RFP matrix) by https://github.com/sergey-v-kuznetsov[@sergey-v-kuznetsov] in https://github.com/Reference-LAPACK/lapack/pull/1042[1042]
+* Remove CMake < 3 CMP0042 workarounds by @haampie in https://github.com/Reference-LAPACK/lapack/pull/1040[1040]
+* Declare project dependency on C to avoid the CMAKE default of C,C++ by https://github.com/martin-frbg[@martin-frbg] in https://github.com/Reference-LAPACK/lapack/pull/1044[1044]
+* DOC:trsly3: Add dtrsyl3/strsyl3 grouping statements by @ilayn in https://github.com/Reference-LAPACK/lapack/pull/1051[1051]
+* Add a few forgotten API_SUFFIX wrappers in the recently changed LAPACKE ?TFSM by https://github.com/jprhyne[@martin-frbg] in https://github.com/Reference-LAPACK/lapack/pull/1046[1046]
+* Revert "Add a few forgotten API_SUFFIX wrappers in the recently changed LAPACKE ?TFSM" by https://github.com/langou[@langou] in https://github.com/Reference-LAPACK/lapack/pull/1058[1058]
+* Revert "Revert "Add a few forgotten API_SUFFIX wrappers in the recently changed LAPACKE ?TFSM"" by https://github.com/weslleyspereira[@weslleyspereira] in https://github.com/Reference-LAPACK/lapack/pull/1059[1059]
+* CI: Update the MacOS jobs to use gcc-14 in github workflows by https://github.com/martin-frbg[@martin-frbg] in https://github.com/Reference-LAPACK/lapack/pull/1045[1045]
+* fix leading dimension for matrix B in test routine get52 by https://github.com/dklyuchinskiy[@dklyuchinskiy] in https://github.com/Reference-LAPACK/lapack/pull/1064[1064]
+* Remove comparison as these conditions are never true by https://github.com/schnorr[@schnorr] in https://github.com/Reference-LAPACK/lapack/pull/1062[1062]
+* Use GEMMTR for SY/HE linear updates by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/1069[1069]
+* [Github workflow] Bump scorecard version by https://github.com/angsch[@angsch] in https://github.com/Reference-LAPACK/lapack/pull/1071[1071]
+* updating gitignore to ignore the mod files when we compile by https://github.com/jprhyne[@jprhyne] in https://github.com/Reference-LAPACK/lapack/pull/1082[1082]
+* Fixing misspelling of 'triangular' in {s,d,c,z}gemmtr.f by https://github.com/jprhyne[@jprhyne] in https://github.com/Reference-LAPACK/lapack/pull/1081[1081]
+* Fix line lengths for the extended API by https://github.com/hjjvandam[@hjjvandam] in https://github.com/Reference-LAPACK/lapack/pull/1079[1079]
+* Adding a recursive xLARFT by https://github.com/jprhyne[@jprhyne] in https://github.com/Reference-LAPACK/lapack/pull/1080[1080]
+
+= Developer list
+
+.LAPACK developers involved in this release
+
+    * Weslley da Silva Pereira (University of Colorado Denver, USA)
+    * Igor Kozachenko (University of California, Berkeley, USA)
+    * Julie Langou (University of Tennessee, USA)
+
+.Principal Investigators
+
+    * Jim Demmel (University of California,  Berkeley, USA)
+    * Jack Dongarra (University of Tennessee and ORNL, USA)
+    * Julien Langou (University of Colorado Denver, USA)
+
+= New Contributors
+
+* @FrK5E made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/984[984]
+* @lepus2589 made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/1009[1009]
+* @ahnaf-tahmid-chowdhury made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/1002[1002]
+* @Goddan-wq made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/1023[1023]
+* @cenewcombe made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/1024[1024]
+* @cdluminate made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/1964[1964]
+* @jprhyne made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/1020[1020]
+* @TiborGY made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/924[924]
+* @schnorr made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/1062[1062]
+* @hjjvandam made their first contribution in https://github.com/Reference-LAPACK/lapack/pull/1079[1079]
+
+**Full Changelog**: https://github.com/Reference-LAPACK/lapack/compare/v3.12.0...v3.12.1
+
+Thanks to all our contributors!
+
+* Special Thanks to the Mathworks team: Penny Anderson, Mary Ann Freeman, Bobby Cheng, Pat Quillen, Christine Tobler, Heiko Weichelt.
+* Special Thanks to the AIMdyn Inc. team Igor Mezic and Maria Fonoberova.
+
+The LAPACK team
+
+
+Thanks you all!
+
+= Bug Fix
+
+ * link:https://github.com/Reference-LAPACK/lapack/milestone/6?closed=1[Closed bugs]
+ * link:https://github.com/Reference-LAPACK/lapack/issues?utf8=✓&q=is%3Aissue%20is%3Aopen%20label%3A%22Type%3A%20Bug%22%20[Open bugs]
+ * link:https://github.com/Reference-LAPACK/lapack/issues[All open issues]
+
+
+// vim: set syntax=asciidoc:

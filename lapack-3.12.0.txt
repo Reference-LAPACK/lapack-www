@@ -18,7 +18,7 @@ https://github.com/Reference-LAPACK/lapack/
 
 = LAPACK 3.12.0: What's new
 
- * Download: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.12.tar.gz[lapack-3.12.0.tar.gz]
+ * Download: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.12.0.tar.gz[lapack-3.12.0.tar.gz]
 
 
 This is a major release and also addressing multiple bug fixes.
@@ -178,6 +178,7 @@ This is a major release and also addressing multiple bug fixes.
 Thanks to all our contributors!
 
 * Special Thanks to the Mathworks team: Penny Anderson, Mary Ann Freeman, Bobby Cheng, Pat Quillen, Christine Tobler, Heiko Weichelt.
+* Special Thanks to the AIMdyn Inc. team Igor Mezic and Maria Fonoberova.
 
 The LAPACK team
 
